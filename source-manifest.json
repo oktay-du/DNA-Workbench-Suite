@@ -177,7 +177,7 @@
   },
   {
     "path": "DNA_Software/Launcher/public_package.py",
-    "sha256": "fe42487c61d4e402b426de04b43fac9b6b2bb01fb7ea63419f7750d2e0ecba57"
+    "sha256": "7b6807704e5d100f5cd9c1c41a83cf04d0e87ac22f53aaefaf1b21d654da408c"
   },
   {
     "path": "DNA_Software/Launcher/test_family.py",
@@ -645,7 +645,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "3628907b25edbcb84376e6966c9d2da27b9b9c672b45533996e361ebceb65ac2"
+    "sha256": "71bc3d16027d6f737fa44f3216e0625e5b2b4d6c88c4ed712cfe436f222707f9"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -681,7 +681,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Notices/COMPONENT-SCOPE.json",
-    "sha256": "e0100d6090f2d3a2777bd9d0300160913f5954a0d478b741530de3b73f1c122d"
+    "sha256": "2d7e5d63562431531d081b5d030071023861f2e52bb135d50c0e89e98f848e04"
   },
   {
     "path": "DNA_Software/Launcher/Notices/POLYFORM-NONCOMMERCIAL-1.0.0.md",
@@ -769,7 +769,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "8262597f9ad2f375f4e301a613dc3902dd752a459c5e8ac191b310ee719a7f87"
+    "sha256": "2a99f9b7b920d2dc6f9d0266a4c9a484354d24a401c80ca96ff911ac4bc112cc"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -777,7 +777,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/README.md",
-    "sha256": "b579113cd66eb6c697ef293c058d057591c742949a042a4647049e1c4636525f"
+    "sha256": "21964c886ce424d3da3a667a6abdafabc62f380e551ca22adba1ce64a672f5d0"
   },
   {
     "path": "DNA_Software/Launcher/Public/LICENSE",
@@ -1201,7 +1201,7 @@
   },
   {
     "path": "CONTRIBUTING.md",
-    "sha256": "dd8a65afc13105f6e47d259b2f991366b3e7e3e109e6bf5d6389d7df8af2cbf1"
+    "sha256": "e4be306bb315fa37150e733d579184e8ffcd40f175248d3216679f577be57c0a"
   },
   {
     "path": "docs/AGENTS.md",
@@ -1478,5 +1478,13 @@
   {
     "path": "docs/RESEARCH_LAB.md",
     "sha256": "49729a6b9fdc62bd3e1cf213d0f7db071f531ba34a61fe9c421c5fad0da99d55"
+  },
+  {
+    "path": "AI_CONTRIBUTING.md",
+    "sha256": "edf257f11d968641b578ff4e4b3ae9c408d19ff87fea0951339c97d44954d6d0"
+  },
+  {
+    "path": "docs/images/project-banner.svg",
+    "sha256": "0c3af6883a840c8e7ed8b3f1d2e381538cb1eb9f2c0d3b277b37ac7c00be4dcc"
   }
 ]

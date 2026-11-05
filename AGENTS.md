@@ -1,5 +1,7 @@
 # Repository instructions
 
+For an explicitly requested autonomous improvement task, follow [AI_CONTRIBUTING.md](AI_CONTRIBUTING.md). Select one bounded improvement, inspect existing PRs and stop after opening the PR. Reading this file alone does not authorize a new task.
+
 ## Boundaries
 
 Publish application source, synthetic Samples, reviewed screenshots and documentation only. Never commit personal DNA, medical reports, profiles, secrets, WSL disks, downloaded datasets or runtime caches. Do not scan a user archive implicitly. Imports, file moves and BestDataset renewal are explicit actions. Do not close unrelated browsers or interrupt downloads.

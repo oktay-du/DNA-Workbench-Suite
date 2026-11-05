@@ -179,7 +179,7 @@
     },
     {
       "path": "DNA_Software/Launcher/public_package.py",
-      "sha256": "fe42487c61d4e402b426de04b43fac9b6b2bb01fb7ea63419f7750d2e0ecba57"
+      "sha256": "7b6807704e5d100f5cd9c1c41a83cf04d0e87ac22f53aaefaf1b21d654da408c"
     },
     {
       "path": "DNA_Software/Launcher/test_family.py",
@@ -679,7 +679,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Notices/COMPONENT-SCOPE.json",
-      "sha256": "e0100d6090f2d3a2777bd9d0300160913f5954a0d478b741530de3b73f1c122d"
+      "sha256": "2d7e5d63562431531d081b5d030071023861f2e52bb135d50c0e89e98f848e04"
     },
     {
       "path": "DNA_Software/Launcher/Notices/POLYFORM-NONCOMMERCIAL-1.0.0.md",
@@ -767,7 +767,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-      "sha256": "8262597f9ad2f375f4e301a613dc3902dd752a459c5e8ac191b310ee719a7f87"
+      "sha256": "2a99f9b7b920d2dc6f9d0266a4c9a484354d24a401c80ca96ff911ac4bc112cc"
     },
     {
       "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -775,7 +775,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/README.md",
-      "sha256": "b579113cd66eb6c697ef293c058d057591c742949a042a4647049e1c4636525f"
+      "sha256": "21964c886ce424d3da3a667a6abdafabc62f380e551ca22adba1ce64a672f5d0"
     },
     {
       "path": "DNA_Software/Launcher/Public/LICENSE",
