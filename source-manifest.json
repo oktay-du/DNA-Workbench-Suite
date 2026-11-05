@@ -645,7 +645,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "2fdbf14393c4ee0e0c5d1f42d4cb71c8492a83ccd253cbcabad8682ab81bea6e"
+    "sha256": "3628907b25edbcb84376e6966c9d2da27b9b9c672b45533996e361ebceb65ac2"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -681,7 +681,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Notices/COMPONENT-SCOPE.json",
-    "sha256": "1f9b23ed61d425531126d82da43b8b3c1090ad47da4b4a5c5ae732b7d1a69b35"
+    "sha256": "e0100d6090f2d3a2777bd9d0300160913f5954a0d478b741530de3b73f1c122d"
   },
   {
     "path": "DNA_Software/Launcher/Notices/POLYFORM-NONCOMMERCIAL-1.0.0.md",
@@ -769,7 +769,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "fe80f799c97e66929f1f94e12a8803e5e7beef65eff8c8860cb3014d421e7b25"
+    "sha256": "8262597f9ad2f375f4e301a613dc3902dd752a459c5e8ac191b310ee719a7f87"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -1469,11 +1469,11 @@
   },
   {
     "path": "site/index.html",
-    "sha256": "d9f18cbb5ed5d795bb8e4077f72e3c4e40931ba859d1113d504d2cb3fea0627b"
+    "sha256": "259d9ea8b4bc330e06bc655bd08b8ced4ef05b90d8441d699e21151a67709fdb"
   },
   {
     "path": "site/style.css",
-    "sha256": "0d16e921385ded3db4d8912d7ce3c3c6cf8c6a6bcaf808baa0168da41eaa32b8"
+    "sha256": "18a48da0fa67f8b756d14ac1b95ee96913f6ff562f5075329908ff47178ca347"
   },
   {
     "path": "docs/RESEARCH_LAB.md",

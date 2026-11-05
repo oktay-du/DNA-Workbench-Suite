@@ -344,13 +344,13 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "d9f18cbb5ed5d795bb8e4077f72e3c4e40931ba859d1113d504d2cb3fea0627b",
-      "bytes": 6026
+      "sha256": "259d9ea8b4bc330e06bc655bd08b8ced4ef05b90d8441d699e21151a67709fdb",
+      "bytes": 6093
     },
     {
       "path": "site/style.css",
-      "sha256": "0d16e921385ded3db4d8912d7ce3c3c6cf8c6a6bcaf808baa0168da41eaa32b8",
-      "bytes": 2938
+      "sha256": "18a48da0fa67f8b756d14ac1b95ee96913f6ff562f5075329908ff47178ca347",
+      "bytes": 2951
     },
     {
       "path": "docs/RESEARCH_LAB.md",

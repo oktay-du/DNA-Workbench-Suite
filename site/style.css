@@ -154,7 +154,8 @@ section {
   align-items: center;
   flex-wrap: wrap;
 }
-.support img {
+.support img,
+.support-qr {
   width: 120px;
 }
 .support p {

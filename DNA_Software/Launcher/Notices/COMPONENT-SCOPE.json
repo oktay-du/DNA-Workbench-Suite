@@ -3450,7 +3450,7 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "d9f18cbb5ed5d795bb8e4077f72e3c4e40931ba859d1113d504d2cb3fea0627b",
+      "sha256": "259d9ea8b4bc330e06bc655bd08b8ced4ef05b90d8441d699e21151a67709fdb",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
