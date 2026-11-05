@@ -9,8 +9,8 @@
     },
     {
       "path": "CONTRIBUTING.md",
-      "sha256": "dd8a65afc13105f6e47d259b2f991366b3e7e3e109e6bf5d6389d7df8af2cbf1",
-      "bytes": 2037
+      "sha256": "e4be306bb315fa37150e733d579184e8ffcd40f175248d3216679f577be57c0a",
+      "bytes": 2215
     },
     {
       "path": "docs/AGENTS.md",
@@ -355,6 +355,14 @@
     {
       "path": "docs/RESEARCH_LAB.md",
       "sha256": "49729a6b9fdc62bd3e1cf213d0f7db071f531ba34a61fe9c421c5fad0da99d55"
+    },
+    {
+      "path": "AI_CONTRIBUTING.md",
+      "sha256": "edf257f11d968641b578ff4e4b3ae9c408d19ff87fea0951339c97d44954d6d0"
+    },
+    {
+      "path": "docs/images/project-banner.svg",
+      "sha256": "0c3af6883a840c8e7ed8b3f1d2e381538cb1eb9f2c0d3b277b37ac7c00be4dcc"
     }
   ]
 }

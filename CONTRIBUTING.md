@@ -1,5 +1,7 @@
 # Contributing
 
+Using a coding agent? Start with the [AI contributor guide](AI_CONTRIBUTING.md): product direction, a copyable prompt, duplicate checks and a one-improvement-per-PR workflow.
+
 Contributions are welcome under the applicable file terms described in [licensing scope](docs/LICENSING.md). Contributors retain copyright; commercial relicensing of their additions requires their permission. Third-party licenses remain separate. Work on a branch and submit a focused pull request with the concrete problem, resulting behaviour, relevant validation and limits.
 
 Read the architecture and workflow method notes first. Agree on command schemas, profile ownership, file types/build semantics and output contracts before changing multiple layers. For parallel human/agent work, use separate Git worktrees and non-overlapping responsibilities; integrate and test the complete journey afterwards. More agents or subscriptions are not required.

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="280" viewBox="0 0 1280 280" role="img" aria-labelledby="title description">
+<title id="title">DNA Workbench Suite</title><desc id="description">Your genome. Your workspace. Local-first genomics research by OD.</desc>
+<defs><linearGradient id="back" x2="1" y2="1"><stop stop-color="#102c38"/><stop offset="1" stop-color="#074f52"/></linearGradient><linearGradient id="helix" x2="1" y2="1"><stop stop-color="#7ee7d5"/><stop offset="1" stop-color="#24a59d"/></linearGradient></defs>
+<rect width="1280" height="280" rx="24" fill="url(#back)"/>
+<circle cx="1195" cy="30" r="220" fill="#b7fff0" opacity=".025"/><circle cx="1130" cy="260" r="170" fill="#b7fff0" opacity=".035"/>
+<g transform="translate(70 47)" fill="none" stroke-linecap="round"><path d="M28 0C140 45-18 133 94 183" stroke="url(#helix)" stroke-width="10"/><path d="M94 0C-18 45 140 133 28 183" stroke="#e1f6f0" stroke-width="10"/><path d="M44 17H78M47 45H75M35 73H87M35 103H87M47 132H75M44 160H78" stroke="#63d5c4" stroke-width="4"/></g>
+<text x="250" y="79" font-family="Segoe UI,Arial,sans-serif" font-size="15" letter-spacing="4" fill="#7ee7d5">LOCAL-FIRST GENOMICS</text>
+<text x="247" y="140" font-family="Segoe UI,Arial,sans-serif" font-size="53" font-weight="700" fill="#f2fbf8">DNA Workbench Suite</text>
+<text x="250" y="184" font-family="Segoe UI,Arial,sans-serif" font-size="25" fill="#d4e9e5">Your genome. Your workspace.</text>
+<text x="250" y="224" font-family="Segoe UI,Arial,sans-serif" font-size="15" fill="#9dc9c2">WINDOWS  ·  RESEARCH  ·  OPTIONAL AI  ·  BY OD</text>
+</svg>

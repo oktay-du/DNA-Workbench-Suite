@@ -404,6 +404,7 @@ def presentation_entries():
             in (
                 "README.de.md",
                 "CONTRIBUTING.md",
+                "AI_CONTRIBUTING.md",
                 "docs/examples/combined-research.pdf",
                 "site/index.html",
                 "site/privacy.html",
@@ -417,7 +418,7 @@ def presentation_entries():
                 ".github/ISSUE_TEMPLATE/feature_request.yml",
             )
             or re.fullmatch(
-                r"docs/(?:[A-Z_]+\.md|software-data-catalog\.json|images/[a-z0-9-]+\.(?:png|jpg))",
+                r"docs/(?:[A-Z_]+\.md|software-data-catalog\.json|images/[a-z0-9-]+\.(?:png|jpg|svg))",
                 name,
             )
         ):
@@ -503,6 +504,7 @@ def package():
         "requirements-security.txt",
         "NuGet.Config",
         ".github/dependabot.yml",
+        ".github/PULL_REQUEST_TEMPLATE.md",
         ".github/workflows/codeql.yml",
         ".github/workflows/pages.yml",
         "scripts/Seal-Source.py",

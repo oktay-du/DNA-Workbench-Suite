@@ -112,29 +112,33 @@
     },
     {
       "path": "AGENTS.md",
-      "sha256": "c0259ce64704bdb4e768041f7c135c6e08a0a0ab089fee9466710587ad6a13ab",
+      "sha256": "a6f64db6c1c103bc690017d7713ea80ba37d992b88ad0a47789c1f7d0541b52e",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
         [
-          2,
-          4
+          4,
+          6
         ]
       ]
     },
     {
       "path": "CONTRIBUTING.md",
-      "sha256": "dd8a65afc13105f6e47d259b2f991366b3e7e3e109e6bf5d6389d7df8af2cbf1",
+      "sha256": "e4be306bb315fa37150e733d579184e8ffcd40f175248d3216679f577be57c0a",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
         [
           1,
-          2
+          1
         ],
         [
           4,
-          13
+          4
+        ],
+        [
+          6,
+          15
         ]
       ]
     },
@@ -1426,7 +1430,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/README.md",
-      "sha256": "b579113cd66eb6c697ef293c058d057591c742949a042a4647049e1c4636525f",
+      "sha256": "21964c886ce424d3da3a667a6abdafabc62f380e551ca22adba1ce64a672f5d0",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
@@ -1436,23 +1440,23 @@
         ],
         [
           4,
-          6
+          4
         ],
         [
-          14,
-          16
+          10,
+          10
         ],
         [
-          24,
-          24
+          20,
+          22
         ],
         [
-          53,
-          54
+          72,
+          73
         ],
         [
-          56,
-          59
+          75,
+          78
         ]
       ]
     },
@@ -1504,7 +1508,7 @@
     },
     {
       "path": "DNA_Software/Launcher/public_package.py",
-      "sha256": "fe42487c61d4e402b426de04b43fac9b6b2bb01fb7ea63419f7750d2e0ecba57",
+      "sha256": "7b6807704e5d100f5cd9c1c41a83cf04d0e87ac22f53aaefaf1b21d654da408c",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
@@ -1518,11 +1522,23 @@
         ],
         [
           215,
-          407
+          406
         ],
         [
-          418,
-          558
+          408,
+          408
+        ],
+        [
+          419,
+          420
+        ],
+        [
+          422,
+          506
+        ],
+        [
+          508,
+          560
         ]
       ]
     },
@@ -2648,7 +2664,7 @@
     },
     {
       "path": "README.md",
-      "sha256": "b579113cd66eb6c697ef293c058d057591c742949a042a4647049e1c4636525f",
+      "sha256": "21964c886ce424d3da3a667a6abdafabc62f380e551ca22adba1ce64a672f5d0",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
@@ -2658,23 +2674,23 @@
         ],
         [
           4,
-          6
+          4
         ],
         [
-          14,
-          16
+          10,
+          10
         ],
         [
-          24,
-          24
+          20,
+          22
         ],
         [
-          53,
-          54
+          72,
+          73
         ],
         [
-          56,
-          59
+          75,
+          78
         ]
       ]
     },
