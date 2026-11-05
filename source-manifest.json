@@ -41,7 +41,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Launcher.cs",
-    "sha256": "2ea8660076d870465e006dca247b0a182500059d7a1dc71dafe337b4032d191c"
+    "sha256": "48ebd39f7cadef4783243c9150feea5653e4b82c07673dbae36641ae3368f88c"
   },
   {
     "path": "DNA_Software/Launcher/Startup.cs",
@@ -105,7 +105,7 @@
   },
   {
     "path": "DNA_Software/Launcher/inspector.py",
-    "sha256": "1dc5930a95e15ebeb69024e53af2d75340e0c30e3cbacfef2a5da5c717345fc7"
+    "sha256": "ccdfeec6d9486d2608c89e47a83937d8372a133f03db91277f0d1ff9b14a2ccd"
   },
   {
     "path": "DNA_Software/Launcher/source_store.py",
@@ -157,7 +157,7 @@
   },
   {
     "path": "DNA_Software/Launcher/install-lock.json",
-    "sha256": "857deaff0c5313bb29883403a3d19abffd3751e83c749f7903c19c07bf189964"
+    "sha256": "89fae0fd39ec28976091068f3123427152e6db36c2c06e93300b0a8820813753"
   },
   {
     "path": "DNA_Software/Launcher/fetch_webview_sdk.py",
@@ -189,7 +189,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_quality.py",
-    "sha256": "670aa8bfdd128b82549be3ebcb367d285a72a10d1e683e259c83b4b1b023b125"
+    "sha256": "9a059243acaeae0a91dc26fd58ab34fedb6a62fe4c865149e85a94655a91acfe"
   },
   {
     "path": "DNA_Software/Launcher/test_visual.py",
@@ -393,19 +393,19 @@
   },
   {
     "path": "DNA_Software/Launcher/batch_intake.py",
-    "sha256": "9a70f72e7d725e905f12204186faa4f2bf09fa30bb1eae0f6448217e15153a78"
+    "sha256": "a946552bfce984cd483290d8a7259c4fd69d948f9ee67a5deb3473820dc17747"
   },
   {
     "path": "DNA_Software/Launcher/intake-ui.js",
-    "sha256": "483678b4743a088e47981212b543f842af61f979288bca1e4e9184195407c09b"
+    "sha256": "901a46687892ceca2b02405ae331758467eccd6e964821c7ef3ee7e1f11d3ead"
   },
   {
     "path": "DNA_Software/Launcher/test_batch_intake.py",
-    "sha256": "9b048fc15e20c65d31fc9c0298da4f7d049633a74e78ddbbeedb4030fc93ab5b"
+    "sha256": "993a8aaea0037beadaac66e0f40a55f427bf4eb94acdf1a911fb6a80273e8bd7"
   },
   {
     "path": "DNA_Software/Launcher/BATCH_PREPARATION.md",
-    "sha256": "fcaf4ad2927ca5a0d8fb945bf3ffd77eb5ee22bb846d9c4e197462fea80702c0"
+    "sha256": "abfbf8be44d33a196bb84698b5a1ebf2039556638b385c8154a456bec415e593"
   },
   {
     "path": "DNA_Software/Launcher/cloud_ai.py",
@@ -545,11 +545,11 @@
   },
   {
     "path": "DNA_Software/Launcher/result_cache.py",
-    "sha256": "90ea8e77a14514f68887a6b1ffa2bb94f79cba414409aeb5092cc6119edeb1bc"
+    "sha256": "88ff1e9d124b478666f680722b63d8cde8bfa6ebb758078176b3225a9d989b96"
   },
   {
     "path": "DNA_Software/Launcher/test_result_cache.py",
-    "sha256": "b9cff59de9fe4f8ff641d71e51edbbad6c8348d14eeeedbd59983c5442369529"
+    "sha256": "78c8497ec3c40f1f1d643d324c8c6a9b7a674895473d707054c4c3236444dee9"
   },
   {
     "path": "DNA_Software/Launcher/workflow_sources.py",
@@ -645,7 +645,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "71bc3d16027d6f737fa44f3216e0625e5b2b4d6c88c4ed712cfe436f222707f9"
+    "sha256": "1283bf78daa50689f6044dd0a2f8d384f1f22791e877a83f9cf0e89b2e1ce3d2"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -681,7 +681,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Notices/COMPONENT-SCOPE.json",
-    "sha256": "2d7e5d63562431531d081b5d030071023861f2e52bb135d50c0e89e98f848e04"
+    "sha256": "0314a6405c9065f36b964266ee1a3c15f98e1d252c9f74a958ac0088ea052691"
   },
   {
     "path": "DNA_Software/Launcher/Notices/POLYFORM-NONCOMMERCIAL-1.0.0.md",
@@ -717,7 +717,7 @@
   },
   {
     "path": "DNA_Software/Launcher/durable_store.py",
-    "sha256": "102b520169eba15e122cf5b87340270446f78e20ff488c4fcbc6726c11271d5a"
+    "sha256": "023191bd460ebf165c5db93cd4c99d511ea5eecb3cdce7b04d205c50ce5c0a69"
   },
   {
     "path": "DNA_Software/Launcher/test_research_explorer.py",
@@ -725,7 +725,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_durable_store.py",
-    "sha256": "2e13a71b8d72ce0bd0e504def71b63c0069f0e1ba2db4e7d9636bcb4e6944638"
+    "sha256": "d28825c699fb38ae4e952edf7655c849d88a5fe296d059a6ffe2cb9fbdfcba38"
   },
   {
     "path": "DNA_Software/Launcher/research-projects.json",

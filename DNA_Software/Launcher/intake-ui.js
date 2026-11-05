@@ -20,7 +20,7 @@ window.renderIntakePage = async function () {
     registered = el("input"),
     detail = el("section", "", "card");
   registered.type = "checkbox";
-  registered.checked = true;
+  registered.checked = false;
   const label = el("label");
   label.append(
     registered,

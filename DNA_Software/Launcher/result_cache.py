@@ -204,7 +204,9 @@ def lookup(root, person, task, values, history):
             pass
     history = list(known.values())
     for job in sorted(
-        history, key=lambda j: j.get("finished", j.get("started", "")), reverse=True
+        history,
+        key=lambda j: str(j.get("finished") or j.get("started") or ""),
+        reverse=True,
     ):
         if job.get("task") != task["id"] or job.get("status") != "Complete":
             continue

@@ -2,6 +2,8 @@
 
 Choose files, a complete folder (including subfolders), or all explicitly imported sources of the current profile. Optional format filters can select FASTQ and BAM together, VCF/BCF, reports, GEDCOM or other groups. Private download folders are never enumerated on startup.
 
+New batches check only the explicitly selected files by default. Rechecking already imported sources is opt-in. Full checksum reads report byte progress; this is technical integrity progress, not genomic coverage or clinical validation.
+
 The initial pass checks files together without importing or moving them. Review each profile/provider assignment. Unknown versions/builds remain unknown; optional manual declarations cannot contradict a detected build. GRCh37 and GRCh38 can coexist in the same profile and are not silently relabelled or compared as equal coordinates.
 
 After review choose Move (default) or Copy and explicitly confirm. Sources go under `Profiles/<stable profile ID>/Sources/<provider>/<batch>/001-original-name`. Matching sidecar stems and original names are preserved in the registry. Byte-identical files are deduplicated. Move removes sources only after destination verification and successful registration. Registered sources held externally can also be organized without changing their file IDs.

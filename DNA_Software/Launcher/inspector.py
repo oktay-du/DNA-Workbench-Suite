@@ -1,7 +1,7 @@
 """Content-based provenance and conservative file QC; no phenotype guesses."""
 
 from pathlib import Path
-import csv, gzip, hashlib, io, re, zipfile, datetime
+import csv, gzip, hashlib, io, re, zipfile, datetime, time
 import portable_json as json
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -146,6 +146,22 @@ def tokens(head, name):
     return result
 
 
+def file_sha256(path, log=lambda value: None):
+    path = Path(path)
+    size = path.stat().st_size
+    digest = hashlib.sha256()
+    completed = 0
+    next_update = time.monotonic() + 2
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(8 * 1024 * 1024), b""):
+            digest.update(block)
+            completed += len(block)
+            if time.monotonic() >= next_update:
+                log(f"Checksum progress: {completed} / {size} bytes")
+                next_update = time.monotonic() + 2
+    return digest.hexdigest()
+
+
 def inspect(path, log=lambda x: None):
     from data_scope import describe
 
@@ -158,17 +174,14 @@ def inspect(path, log=lambda x: None):
 def _inspect(path, log=lambda x: None):
     p = Path(path).resolve()
     st = p.stat()
-    h = hashlib.sha256()
     log("Testing:" + p.name)
-    with p.open("rb") as f:
-        for block in iter(lambda: f.read(8 * 1024 * 1024), b""):
-            h.update(block)
+    digest = file_sha256(p, log)
     result = {
         "path": str(p),
         "name": p.name,
         "bytes": st.st_size,
         "mtime_ns": st.st_mtime_ns,
-        "sha256": h.hexdigest(),
+        "sha256": digest,
         "rules": RULES_VERSION,
         "checked": datetime.datetime.now().astimezone().isoformat(),
         "format": "Unknown",

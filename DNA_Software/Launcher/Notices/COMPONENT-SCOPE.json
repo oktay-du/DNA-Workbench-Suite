@@ -336,41 +336,71 @@
     },
     {
       "path": "DNA_Software/Launcher/batch_intake.py",
-      "sha256": "9a70f72e7d725e905f12204186faa4f2bf09fa30bb1eae0f6448217e15153a78",
+      "sha256": "a946552bfce984cd483290d8a7259c4fd69d948f9ee67a5deb3473820dc17747",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
         [
           1,
-          321
+          26
         ],
         [
-          323,
-          437
+          30,
+          141
         ],
         [
-          441,
-          878
+          143,
+          248
         ],
         [
-          883,
-          891
+          250,
+          280
         ],
         [
-          893,
-          1074
+          282,
+          302
         ],
         [
-          1078,
-          1210
+          304,
+          317
+        ],
+        [
+          319,
+          433
+        ],
+        [
+          437,
+          874
+        ],
+        [
+          879,
+          887
+        ],
+        [
+          889,
+          1070
+        ],
+        [
+          1074,
+          1206
         ]
       ]
     },
     {
       "path": "DNA_Software/Launcher/BATCH_PREPARATION.md",
-      "sha256": "fcaf4ad2927ca5a0d8fb945bf3ffd77eb5ee22bb846d9c4e197462fea80702c0",
-      "scope": "entire-file",
-      "license": "MIT with any separately stated upstream terms"
+      "sha256": "abfbf8be44d33a196bb84698b5a1ebf2039556638b385c8154a456bec415e593",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          3
+        ],
+        [
+          6,
+          19
+        ]
+      ]
     },
     {
       "path": "DNA_Software/Launcher/best_assets.py",
@@ -860,25 +890,45 @@
     },
     {
       "path": "DNA_Software/Launcher/inspector.py",
-      "sha256": "1dc5930a95e15ebeb69024e53af2d75340e0c30e3cbacfef2a5da5c717345fc7",
+      "sha256": "ccdfeec6d9486d2608c89e47a83937d8372a133f03db91277f0d1ff9b14a2ccd",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
         [
           1,
+          3
+        ],
+        [
+          5,
           125
         ],
         [
           141,
-          254
+          148
         ],
         [
-          281,
-          281
+          165,
+          176
         ],
         [
-          283,
-          740
+          177,
+          177
+        ],
+        [
+          179,
+          183
+        ],
+        [
+          185,
+          267
+        ],
+        [
+          294,
+          294
+        ],
+        [
+          296,
+          753
         ]
       ]
     },
@@ -890,7 +940,7 @@
     },
     {
       "path": "DNA_Software/Launcher/install-lock.json",
-      "sha256": "857deaff0c5313bb29883403a3d19abffd3751e83c749f7903c19c07bf189964",
+      "sha256": "89fae0fd39ec28976091068f3123427152e6db36c2c06e93300b0a8820813753",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
@@ -906,13 +956,23 @@
     },
     {
       "path": "DNA_Software/Launcher/intake-ui.js",
-      "sha256": "483678b4743a088e47981212b543f842af61f979288bca1e4e9184195407c09b",
-      "scope": "entire-file",
-      "license": "MIT with any separately stated upstream terms"
+      "sha256": "901a46687892ceca2b02405ae331758467eccd6e964821c7ef3ee7e1f11d3ead",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          22
+        ],
+        [
+          24,
+          338
+        ]
+      ]
     },
     {
       "path": "DNA_Software/Launcher/Launcher.cs",
-      "sha256": "2ea8660076d870465e006dca247b0a182500059d7a1dc71dafe337b4032d191c",
+      "sha256": "48ebd39f7cadef4783243c9150feea5653e4b82c07673dbae36641ae3368f88c",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
@@ -1568,9 +1628,19 @@
     },
     {
       "path": "DNA_Software/Launcher/result_cache.py",
-      "sha256": "90ea8e77a14514f68887a6b1ffa2bb94f79cba414409aeb5092cc6119edeb1bc",
-      "scope": "entire-file",
-      "license": "MIT with any separately stated upstream terms"
+      "sha256": "88ff1e9d124b478666f680722b63d8cde8bfa6ebb758078176b3225a9d989b96",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          206
+        ],
+        [
+          210,
+          257
+        ]
+      ]
     },
     {
       "path": "DNA_Software/Launcher/sample_data.py",
@@ -1724,17 +1794,21 @@
     },
     {
       "path": "DNA_Software/Launcher/test_batch_intake.py",
-      "sha256": "9b048fc15e20c65d31fc9c0298da4f7d049633a74e78ddbbeedb4030fc93ab5b",
+      "sha256": "993a8aaea0037beadaac66e0f40a55f427bf4eb94acdf1a911fb6a80273e8bd7",
       "scope": "text-portions",
       "license": "MIT with any separately stated upstream terms",
       "line_ranges": [
         [
           1,
-          191
+          83
         ],
         [
-          193,
-          210
+          96,
+          203
+        ],
+        [
+          205,
+          222
         ]
       ]
     },
@@ -1912,15 +1986,35 @@
     },
     {
       "path": "DNA_Software/Launcher/test_quality.py",
-      "sha256": "670aa8bfdd128b82549be3ebcb367d285a72a10d1e683e259c83b4b1b023b125",
-      "scope": "entire-file",
-      "license": "MIT with any separately stated upstream terms"
+      "sha256": "9a059243acaeae0a91dc26fd58ab34fedb6a62fe4c865149e85a94655a91acfe",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          26
+        ],
+        [
+          43,
+          120
+        ]
+      ]
     },
     {
       "path": "DNA_Software/Launcher/test_result_cache.py",
-      "sha256": "b9cff59de9fe4f8ff641d71e51edbbad6c8348d14eeeedbd59983c5442369529",
-      "scope": "entire-file",
-      "license": "MIT with any separately stated upstream terms"
+      "sha256": "78c8497ec3c40f1f1d643d324c8c6a9b7a674895473d707054c4c3236444dee9",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          51
+        ],
+        [
+          74,
+          114
+        ]
+      ]
     },
     {
       "path": "DNA_Software/Launcher/test_security_boundaries.py",

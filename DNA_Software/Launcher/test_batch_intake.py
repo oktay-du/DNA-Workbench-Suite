@@ -82,6 +82,18 @@ class BatchTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             b.start({"person": "A"})
 
+    def test_new_batch_does_not_recheck_registered_sources_by_default(self):
+        old = self.file("old.txt")
+        s.import_batch("A", [str(old)], "Test", "Prior batch", log=lambda _: None)
+        new = self.file("new.txt")
+        with patch.object(
+            s, "listing", side_effect=AssertionError("Unexpected full source rescan")
+        ):
+            batch = self.wait(b.start({"person": "A", "files": [str(new)]}))
+        self.assertEqual([item["name"] for item in batch["items"]], ["new.txt"])
+        self.assertEqual(batch["total"], 1)
+        self.assertEqual(batch["phase"], "review")
+
     def test_recursive_folder_mixed_types_and_filter(self):
         a = self.file("reads/sample_R1_001.fastq", "@read\nACGT\n+\nIIII\n")
         self.file("reports/note.txt")

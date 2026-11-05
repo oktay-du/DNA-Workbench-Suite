@@ -32,6 +32,40 @@ class DurableStoreTests(unittest.TestCase):
             self.assertEqual(json.loads(self.path.read_text())["version"], 1)
             self.assertEqual(list(self.path.parent.glob("*.partial")), [])
 
+    def test_transient_windows_reader_lock_is_retried(self):
+        replace = durable_store.os.replace
+        attempts = []
+
+        def busy_then_replace(source, destination):
+            attempts.append(destination)
+            if len(attempts) < 3:
+                raise PermissionError("Synthetic sharing violation")
+            return replace(source, destination)
+
+        with (
+            patch.object(durable_store.os, "replace", side_effect=busy_then_replace),
+            patch.object(durable_store.time, "sleep"),
+        ):
+            durable_store.write(self.path, {"version": 2})
+        self.assertEqual(len(attempts), 3)
+        self.assertEqual(json.loads(self.path.read_text())["version"], 2)
+        self.assertEqual(list(self.path.parent.glob("*.partial")), [])
+
+    def test_persistent_permission_denial_preserves_old_state_and_cleans_temp(self):
+        with (
+            patch.object(
+                durable_store.os,
+                "replace",
+                side_effect=PermissionError("Synthetic ACL denial"),
+            ) as replace,
+            patch.object(durable_store.time, "sleep"),
+        ):
+            with self.assertRaises(PermissionError):
+                durable_store.write(self.path, {"version": 2})
+        self.assertEqual(replace.call_count, 7)
+        self.assertEqual(json.loads(self.path.read_text())["version"], 1)
+        self.assertEqual(list(self.path.parent.glob("*.partial")), [])
+
     def test_one_validated_backup_retained_and_identical_save_does_not_replace_it(self):
         durable_store.write(self.path, {"version": 2}, backup=True)
         backup = self.path.with_name("state.json.bak")
