@@ -1,0 +1,3540 @@
+{
+  "schema": 1,
+  "line_ranges": "One-based inclusive ranges in the identified distributed file. Upstream notices take precedence for upstream material. Matching text is conservatively retained; a match does not establish originality or copyrightability.",
+  "components": [
+    {
+      "path": ".editorconfig",
+      "sha256": "b9e263da2fa76f0ecd6d1659045ee3b2c61723ebadf7730c530573fb722dad52",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "e508dd288a366c1cb9d38ab8d29c556a63c17d099b32eaf08e1c30de06ece25a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": ".github/dependabot.yml",
+      "sha256": "054900ef2e71d6dfffe46320247869d3519f6418dfb09536c8406ed7563213a0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": ".github/FUNDING.yml",
+      "sha256": "b7b4674c3e91ad7945cac5b1a945f40e6ce6c048024174c0bbfe187435896f9c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": ".github/workflows/build.yml",
+      "sha256": "3b1468254ac7fa360bb597dc06051e54bdc91a2863aa73d9dce787478f392be4",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          34
+        ],
+        [
+          36,
+          97
+        ],
+        [
+          99,
+          150
+        ]
+      ]
+    },
+    {
+      "path": ".github/workflows/codeql.yml",
+      "sha256": "3e5251de05c2037c7fbb0f907f85b6558539e4c1be1d3c917fd5c0679148defa",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          2,
+          16
+        ],
+        [
+          18,
+          28
+        ],
+        [
+          30,
+          46
+        ],
+        [
+          48,
+          115
+        ],
+        [
+          117,
+          141
+        ]
+      ]
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "sha256": "befb74d0da4fcd6bc45bfcce469722854e5ba74c16993f0dd4070ff45439edf3",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "6ef978afaa50e3f4c4244940cecd46e3fb1b994186b92c44f061bd8185fb9d83",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          69
+        ]
+      ]
+    },
+    {
+      "path": ".htmlvalidate.json",
+      "sha256": "cc073f39a90ffe90d787fd5bc01b9f4ae76bbd79f29348eedc40eeb0e0e0333e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": ".prettierrc.json",
+      "sha256": "7884bfd8dff90e75a16db98726d284f9edb0d25f3add9bbc6b9cc292157cb627",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": ".stylelintrc.json",
+      "sha256": "5335e7641fb535dce5c313510c3add8a5d1fc2c7a21e06d535418362c371583a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "c0259ce64704bdb4e768041f7c135c6e08a0a0ab089fee9466710587ad6a13ab",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          2,
+          4
+        ]
+      ]
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha256": "dd8a65afc13105f6e47d259b2f991366b3e7e3e109e6bf5d6389d7df8af2cbf1",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          13
+        ]
+      ]
+    },
+    {
+      "path": "DNA.cmd",
+      "sha256": "a31548777a18a7e4e356f92d8658ac61b21dea06a1386ce6743bc7464cc632b7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
+      "sha256": "cf440b0e8a568799e0895e62cbf81d243871c2d4390f927df956d9698df2caff",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          7
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/agent-projects.json",
+      "sha256": "7733eb8800203dcdf9461f6e2a78c1632613a69627fbe5de9d3cb83738b7c979",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/agent.js",
+      "sha256": "16c0e82ac86dacb65b100035e96635f8a5a0d4cfb7c3cd372202c0b5419329fa",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/agent_client.py",
+      "sha256": "b48a0e9d620a4980baa42e11d68484c61fb02dcd71553b89a21f8a720414fbe7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/AGENT_CONTROL.md",
+      "sha256": "e43b63bd756328e14f88318e52fce0a665c7fa3f20786baaa44f160b98057374",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/agent_control.py",
+      "sha256": "efc18855f845d0e0f4e4daf8046504913750e642cc61fd10cf29cf039c6c403e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/ai-packages.json",
+      "sha256": "c513d8f639f1467e7968dd681ed62d0c7aba4ded328bee64fe0e7e77ebca504b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/analysis_reports.py",
+      "sha256": "3bdddf52f6503d19aec97b3f81405ee1fd085484d8d08cc6d270a0ecf3b25f46",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/API_AI.md",
+      "sha256": "598e7720ad3a08eb6919fb4be1f35f087ff71fd5cb2f4ac18aca8181b24718d5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/app.css",
+      "sha256": "bff00878c0246db0ce460a0605b7446974efc0c2483c22f542b1cd00284b9a90",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/app.html",
+      "sha256": "cc4403f34dc1a33ccb5467a749b27075706bdd0298a1d5a08960ecb9a7ccb2b3",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          45
+        ],
+        [
+          52,
+          103
+        ],
+        [
+          106,
+          106
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/app.js",
+      "sha256": "e31c6244859f2b4f132e3aa9d220d21f14ac15aff0246fdc104fe0fdb29ccc8e",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          244
+        ],
+        [
+          246,
+          680
+        ],
+        [
+          682,
+          705
+        ],
+        [
+          707,
+          709
+        ],
+        [
+          712,
+          799
+        ],
+        [
+          801,
+          896
+        ],
+        [
+          900,
+          907
+        ],
+        [
+          909,
+          925
+        ],
+        [
+          927,
+          1156
+        ],
+        [
+          1274,
+          1280
+        ],
+        [
+          1282,
+          1282
+        ],
+        [
+          1287,
+          1294
+        ],
+        [
+          1296,
+          1350
+        ],
+        [
+          1352,
+          1429
+        ],
+        [
+          1431,
+          1433
+        ],
+        [
+          1435,
+          1436
+        ],
+        [
+          1438,
+          2219
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/app.manifest",
+      "sha256": "e46f44bde7b5e813ec9bb9cbd5761bb36e5b19b683f3097c8e437917f631a9e9",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/archive_io.py",
+      "sha256": "cf4f7213af19f1027e004fa32ad32107929acf60351a7a46c9a4e6db0b9a0a34",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/artwork-ui.js",
+      "sha256": "e9ec8bf02ee19cb80bc971d69734efc1e95f046f73c4704a9cefe432c7cb8f4c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/atlas-countries.json",
+      "sha256": "d12fc8f332321f8e1890bbcc3764c5cb294e2cca8ed3cba2418c9d9b123abe41",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/batch_intake.py",
+      "sha256": "9a70f72e7d725e905f12204186faa4f2bf09fa30bb1eae0f6448217e15153a78",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          321
+        ],
+        [
+          323,
+          437
+        ],
+        [
+          441,
+          878
+        ],
+        [
+          883,
+          891
+        ],
+        [
+          893,
+          1074
+        ],
+        [
+          1078,
+          1210
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/BATCH_PREPARATION.md",
+      "sha256": "fcaf4ad2927ca5a0d8fb945bf3ffd77eb5ee22bb846d9c4e197462fea80702c0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/best_assets.py",
+      "sha256": "31f711e02cec26cafaf6f32d086f7b64c2102f409935e38a41bb6f1ac438b423",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/BEST_DATASET.md",
+      "sha256": "94c7e922b8c8768775c8149a03d5bcb72aaa5f401d02452e1acc789a2fb05a8a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/best_dataset.py",
+      "sha256": "72f197d8ab653a064c7fffd50e8a40b3f786e22de63fa8c3bc3e57762c586eb9",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/build.ps1",
+      "sha256": "75bfc73049ef45bd43602f524e02f158db99189da7c71ccea9b73e14e16dd6d6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/build_heritage_catalog.py",
+      "sha256": "6afd365b9b144b14055ad796e58ac2aa0f7834587eb716ab9b0a8bb40738f989",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/catalog-ui.js",
+      "sha256": "b619072f8d9e66ff316cb30b7b716652626c33ac79af0b2eff0864e78c4642eb",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/catalog.json",
+      "sha256": "53d0a5ab2ecfe6e69b0c6e4a73ef06dfd4280f95a8e098c65da8adf775675d42",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2360
+        ],
+        [
+          2362,
+          2370
+        ],
+        [
+          2372,
+          2415
+        ],
+        [
+          2417,
+          2425
+        ],
+        [
+          2427,
+          2445
+        ],
+        [
+          2447,
+          2483
+        ],
+        [
+          2485,
+          2493
+        ],
+        [
+          2495,
+          2752
+        ],
+        [
+          3003,
+          3005
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/cloud-ui.js",
+      "sha256": "5677619695f2998e9b622d184d2cda8e8cf4bad84c17c1cf9bd3ad17a473773b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/cloud_ai.py",
+      "sha256": "9e218e9e91aaccd79c5bfc5221f2a40f8d1b26ea875d6de57563b51cd2b6fe29",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/command_bus.py",
+      "sha256": "3cdd167a07a30bc9245f53884ee32086aab48ed8c1979167f0e1553fb0527113",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          19
+        ],
+        [
+          23,
+          147
+        ],
+        [
+          154,
+          410
+        ],
+        [
+          467,
+          1364
+        ],
+        [
+          1369,
+          1467
+        ],
+        [
+          1488,
+          1731
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/comparison_cache.py",
+      "sha256": "99c857e29b7f3150b61fe3f4307adb8cd59d8a54050fa7a4ee8c2cc69a5d05d6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/creative_exports.py",
+      "sha256": "e82966db0a1029e4b9c94cbd7f4c30a23128a1559fbc847c9bb087234fd64bbe",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/CULTURAL_ATLAS.md",
+      "sha256": "b18b9fe0dfe8fe4d59385c90ee143ec603013e999da7a08e015b0fc74b9f4994",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/DATA_SCOPE.md",
+      "sha256": "fea7547593fad15736ca66555c6279d2c16c7477f58211fd8936112cf64d0bf3",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/data_scope.py",
+      "sha256": "0d9ff9d87d2a5a053e0c0f1869bec3754cb67f0ddfd246347e996fdc38f4f726",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Dependencies.cs",
+      "sha256": "b3ae11aab15592555a69a9af7943a80f740bfc67a6672c0af9a4a9acfe1bdf73",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/dependency_manager.py",
+      "sha256": "b995a1466f3a17ef5fed90aefb9ca40df645ddbab4902c58fc0f220158082227",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/derived_sources.py",
+      "sha256": "279d624e83e2a743f0dd247ab62b74abed0a25f9f4b17fb0d9c53ff997a444ee",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          7
+        ],
+        [
+          11,
+          11
+        ],
+        [
+          18,
+          53
+        ],
+        [
+          55,
+          55
+        ],
+        [
+          57,
+          78
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/design-tokens.css",
+      "sha256": "7480100232e9bc33e19a23cbf89acfc66b2493d7ae6516b593776be6c64a2355",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/DNA.cmd",
+      "sha256": "a31548777a18a7e4e356f92d8658ac61b21dea06a1386ce6743bc7464cc632b7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/dna_cli.py",
+      "sha256": "c1a1c2b374bc5504d5d84dcc23fdddd15b2b3cfe073a8f6f88da463e5eaf3a8f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/DNA_COMPARISONS.md",
+      "sha256": "955303e2e17f675a124120c00a2725570603d7a1fed8666e35968f7235c63fe8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/DNAWorkbench.csproj",
+      "sha256": "5dc449a9f2869285faffc641da76900fa12c9532deb1ea508d9b35360ea7148a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/document-packages.json",
+      "sha256": "47d745f1eb4ccaa8083be6f0028e6206275ffbadf30462851d34d27c50d79c73",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/document_processing.py",
+      "sha256": "6a48b751da395ad687ae77cfc9abd7a942f70acb7573998e36acad0f5492655c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/engine.py",
+      "sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          19
+        ],
+        [
+          23,
+          866
+        ],
+        [
+          890,
+          1707
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/execution_journal.py",
+      "sha256": "7b1828403cd7f396a77daa8dab4f76ea13f161a59de001e24e4d1d1eec97ac47",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/extended_plot.py",
+      "sha256": "53fa5463aac28e7739e3acf64b6b58f20c91f0df7b1392d2ddd759b5bf30c8fd",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/family.html",
+      "sha256": "466e2b6c9ac4efc3e3f128c2a2f7051bdfe049973931b4eb9a62cb2543126b1e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/family.py",
+      "sha256": "d8ba51917b319ef8639f7fafdacee824cdd937d4871349abcee3a8134ddf5e77",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          451
+        ],
+        [
+          453,
+          481
+        ],
+        [
+          483,
+          829
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/family_verification.py",
+      "sha256": "d41e12d718dd54e07a0c8846fff0bcdb5a41ceff22b517f448df96f58a250d1c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/fetch_heritage_images.py",
+      "sha256": "561a98a71444a84cf85573552f5edda0c18eaedb621da63759d366065c55f49c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/fetch_webview_runtime.py",
+      "sha256": "89b9f985dc78c178e07fdee5a182ad7f2567775247a83d3fe60ac11b8f7e003d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/fetch_webview_sdk.py",
+      "sha256": "fe0c1239ac6596d3a111b21002df6d65a4a997644e60bd982ba89b793560fe04",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/fetch_world.py",
+      "sha256": "e0ae12dc8724e154dbaafa0b54e2950d6092e88b58fa2051e97fea916e3a4ee4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/genealogy_research.py",
+      "sha256": "4329bf81671dde072f73acff206eda68dececa9d90e421e5af609bad774cb059",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/genocat-catalog.json",
+      "sha256": "b9d00024bb1db78a465ae9df6bf845d33d8783c7fea0eb437d39c38d5707fd2b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/GENOCAT.md",
+      "sha256": "d4442e0fb73f56c8066cdc4315ff5af8da9048e597478b3edeaf0b6dc42658e1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/GENOME_VISUALIZATION.md",
+      "sha256": "07d0de5e14e473afd37803985975a6ece28005098f421eefcb55dbc245c21cbc",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-art/archaic-humans-v1.png",
+      "sha256": "ee75371c53c02f867a9d350bced9dc39d1673c4c2eb9a552c69f8c44e1cd071a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-art/lifeways-v1.png",
+      "sha256": "eddee841bf1bce36345ffd5f57f76b039b3b1207bc6de97d49153a2c187ba3b4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-art/peru-painted-v1.png",
+      "sha256": "4e28e233f65e7109b5c75ca890d6a7fdfe92c1676b9ab1bfcc455fbaff37b79d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-art/world-atlas-v1.png",
+      "sha256": "7d414bcc37d71ccb605a6c8f37725c895fcba3d6d7b299d12a1d388baf8a36f1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-art.json",
+      "sha256": "5aa49613683b81653086523069fa15082caafa6aa6abcf5088d91e37f1d663c4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/am-geghard.jpg",
+      "sha256": "ed8d2da28480a243e8c25e51abcbfc5dff86baebd77f2099c2af0805aec244b5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/at-vienna.jpg",
+      "sha256": "08fd00f6179d42eef4f4d9b3970fe3aa62fe475d9c9ca3087a58335f18ec0a77",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/cz-prague.jpg",
+      "sha256": "e5bd360ece238cc0fb4cc0a862953afc002ca27d5c552ab00504a1b3d9da6deb",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/de-castle.jpg",
+      "sha256": "21e86def1503fff86fa8b3910b601fe61c63e01e2ec4829d98ddbec27ba44d7e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/de-city.jpg",
+      "sha256": "ba587fc42153cedcf292815fc2b72844cda4d028fffe9dda6ad29415c6c86f58",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/ge-ushguli.jpg",
+      "sha256": "5d31084f99d1eefddf4462798297dbf94e4f50bd8d2b141d927e6098b05c6071",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/gr-athens.jpg",
+      "sha256": "ef62b0947e82e5736b40b24ff96236e9ce68768e3d501da35baa2bcd874295e5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/ir-shiraz.jpg",
+      "sha256": "0e5605dec3e357cb34f5e8295faa5d17ff78b3a12f0b00c16c60250a104a048a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/it-florence.jpg",
+      "sha256": "4de782e11b794c17898427170072ec2bc4be6e0d84d0e61d996f2f755d88ad8c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/pl-krakow.jpg",
+      "sha256": "a3a7c883d70ceb50c4f07f0bd64568fa970e6329230798d991a8538f49227d2c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/pt-porto.jpg",
+      "sha256": "5af7f1134d2ee349753348073504dc0e2ca651a96b687bbf57a70b53251b82df",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-assets/tr-ani.jpg",
+      "sha256": "89469463d7c1ca5cb6bd427f78f05e0f4a177d4abc92ec6c12368937a652c823",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-images.json",
+      "sha256": "9c74a091df9a6dbe58ead77b5a0779ad12fc16b27728697842eef48f5bad3327",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage-places.json",
+      "sha256": "7eaecc462dc3a4e115b5dff0b10c0406345f38e55b1e2fcfb66abd7bf2c98a9b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage.css",
+      "sha256": "1831124c9d3b68e121136dabd871629a1733a27c8509c12f22dda048758fe73f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage.js",
+      "sha256": "250cd745860883503902fb21faa0f545eebe14204534faf94fdad1f76f69f886",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage.py",
+      "sha256": "f25e18756343cd6dfd717362502823e59d19c35e777be6aa2542c622e26ee572",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/heritage_story.py",
+      "sha256": "f51d34f5f82e7d69dd8b54a0d999beeffa973e841e73f3075d0857cc2c90ef4e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/inspector.py",
+      "sha256": "1dc5930a95e15ebeb69024e53af2d75340e0c30e3cbacfef2a5da5c717345fc7",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          125
+        ],
+        [
+          141,
+          254
+        ],
+        [
+          281,
+          281
+        ],
+        [
+          283,
+          740
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/install-foundation.sh",
+      "sha256": "08ed6fe099f8ca3a1823ec839f712a7e11fe9a893b26a102b0efd0f43101a434",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/install-lock.json",
+      "sha256": "857deaff0c5313bb29883403a3d19abffd3751e83c749f7903c19c07bf189964",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          5,
+          774
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/intake-ui.js",
+      "sha256": "483678b4743a088e47981212b543f842af61f979288bca1e4e9184195407c09b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Launcher.cs",
+      "sha256": "2ea8660076d870465e006dca247b0a182500059d7a1dc71dafe337b4032d191c",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          14
+        ],
+        [
+          16,
+          132
+        ],
+        [
+          134,
+          156
+        ],
+        [
+          158,
+          158
+        ],
+        [
+          173,
+          1919
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/layout_migration.py",
+      "sha256": "5067040bd93377844b8e88806f5df6ecafbd7ccf7cca879f44a32be0b438ddc6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/legacy-layout.json",
+      "sha256": "948d10a0dc9a2a1c756d4f77ec73f5292cfdb4954f68356cc6874bd0608d265a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/LegacyLayout.cs",
+      "sha256": "c5010339841d9d82a2a1edfee20372494426f757adcd09cba6218678aa18ca44",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/linux_helpers.py",
+      "sha256": "1f656dfc11f124012f8810993295354c9985c03774f6bcec08693e7d62260b82",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/local_ai.py",
+      "sha256": "c4ad4937075cc50cba949c1efb7b7d67546ab798e40bca3c5e91b9130766ff4e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locales/de-intents.json",
+      "sha256": "62a371c07ee627c2c11fd70396bf0292621b6969460a6e56168894716e2703f0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locales/de.json",
+      "sha256": "9d3b00114e5629270c813403158a8b8d28995d25875e6ee94967d72b00b0f09e",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2665
+        ],
+        [
+          2774,
+          2774
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/localization.py",
+      "sha256": "ef6b6240e3856298ec655b84eef8c489b3e03d5e664458553cc376151ea39372",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/dnafeaturesviewer-windows.txt",
+      "sha256": "b5993a6f0cd4511d0e827c55f3e7397845004146412f4c8be4c6c6acc7febf99",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/document-translation-windows.txt",
+      "sha256": "f6766d2b716d0eb0ac252b86187491ce256983d1d10216a85ff85ab5bffab85e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/foundation-linux.in",
+      "sha256": "4022fc2cd7338894fc10f706aedfba8629d7f876871599f7628e8ec8a67516f8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/foundation-linux.txt",
+      "sha256": "a76a1973d98444cf425a08d45c37ce8338e3aba8cb83586b0a825de1b1fb710f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/peddy-linux.txt",
+      "sha256": "3caf3791baa1fa48adc0ec5a037d74dac6fb9157746aafe5ba80187214aa8905",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/pycirclize-windows.txt",
+      "sha256": "34a6aca3156844b3e3cb2aca14a39578ff2846d9d9def63ca09f691f15b7e31d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/pygenomeviz-windows.txt",
+      "sha256": "09a7b7a0509690a30c5a5f5a734e2eebe1ae38650cde954b17aa79aa98b937b2",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/pyliftover-windows.txt",
+      "sha256": "536c4a997c5b58f9b46be41bfcda51249a64e8c00cd332f8442bbe70e6d576c8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/sequence-python-windows.txt",
+      "sha256": "07e8e681e22f95c842cc34cf3246c836c844cd817e40551c0af8b52e6aecf2cf",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/truvari-linux.txt",
+      "sha256": "6b92567e9662e7f6c4c0d273a607c4f04d9488063fc365aa245af7044ee9f741",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Locks/whatshap-linux.txt",
+      "sha256": "d58963293f6b30623acf5bd81d60393c9fbed33e6cf9282b7c793e7870b2620f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/make_catalog.py",
+      "sha256": "a6c6ac7675efab69c1833115f63a2461221723d57674e32f02544a6ee494db11",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          1001
+        ],
+        [
+          1004,
+          1028
+        ],
+        [
+          1030,
+          1049
+        ],
+        [
+          1153,
+          1331
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/matching.css",
+      "sha256": "eec45f9897983fa7f52b56bec90b27ef7ce9012e44208481e742654358cea523",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/matching.html",
+      "sha256": "c2dccd846d6a2d0b95b74909ebbd732ee05344f6de662ef7af829c4d691e1ce3",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/matching.js",
+      "sha256": "9b8dda7a7f9084c6798c9877796746112f834e6cd9b9ee16e91f119af39885c8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/matching.py",
+      "sha256": "e9977e58bab7c099ec9248f7d7d5a44c8c6231331c9e2527cba489e48adf62bd",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/matching_features.py",
+      "sha256": "6d13915e81d48a8e7ab358918c6eb0071c49a25fc5c24a455aed18468afba154",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/mcp_dna.py",
+      "sha256": "c6597e23042c0feccdce72963a305f6b68757bb4cca6913d113e14942f46e972",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/ModernShell.cs",
+      "sha256": "0ab59af53ce4981fda12074945929341a83f6baddca79d180ab725ad100bfe74",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/network_io.py",
+      "sha256": "52c45db4f1959adea8256fdcd6d95b7df1bb8f49d52fe9e63a5db2e1d8c2bd20",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Notices/GENOCAT-LICENSE.txt",
+      "sha256": "0d341b52ceaf1fe349aedccb5ef1c12def0f2527c8f482ccfe3d8663fdda9cec",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Notices/RFMIX-LICENSE.txt",
+      "sha256": "b823ef87e5cb76238ecd8b4bb1cd38c2b1506fae661adbca7d0d14ab2a15d412",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Notices/UI-PROMPTS-LICENSE.txt",
+      "sha256": "719ae06cfdc061438eeb3da5466eb113919c951197ab52c04831c8b41f7f2549",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Notices/UNICODE-LICENSE.txt",
+      "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          219
+        ],
+        [
+          221,
+          221
+        ],
+        [
+          224,
+          971
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/OnDemand.cs",
+      "sha256": "a5feb07cf1e225948c58a5d4870907ddce13096a3c7c036ab7413de5f00f1460",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/peddy_compat.py",
+      "sha256": "9154e385169629ff9be26de5f7309cfb03d6332aaabe706d10876bd040bb7ab2",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/person_profile.py",
+      "sha256": "354bfdd6c98e9125bec7cdb1b337936092c13ba0579e1967eb870133e980955d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/plugin_fixture.py",
+      "sha256": "913408f9999d409cddea7af7340f197053d2f34903289bad2c95caaebe35904d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/plugins.html",
+      "sha256": "49cf836eac6ae8ad3733459829d9ad2397cd4a1825e849693a31f510e2e88e7b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/plugins.js",
+      "sha256": "94ccbc25597b6bc76d2f57617a2540d6f6f48687cff3d8217ce5e7a9e03f15e1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/PLUGINS_AND_LICENSES.md",
+      "sha256": "30efdd6947091c7e688f3ac861aa6acca52e1db7975c99042e5ae29e475173e8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/PORTABILITY.md",
+      "sha256": "75f008bbd695b8d374bb7717ddd59fa2d211ae1187bef66313c2debda50f376d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/portable-check.ps1",
+      "sha256": "fa22cbbf0eeb284598c3eb2c24a8426e2002511889cfcbdbd335830daa8de7be",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Portable.ps1",
+      "sha256": "33a7100916d03c71187388e84b9b89629e3fd408169fa05754dda7a8090ca50c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/portable_json.py",
+      "sha256": "c64a4c471562c9a83070d952eea91fcf0a7b429066242e87e5df8183f52d47b4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/portable_paths.py",
+      "sha256": "eeda73f230b93e19e7d7a1fde3568ede862447a4c9bf40d4749248b7bb8aa01f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/prepare_embedded.py",
+      "sha256": "1919940e0f8c684a827320c2348ce117ad6b4077d1c821dbae5fc493c6d4d6fc",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile-extras.js",
+      "sha256": "181eb79b3270d21e0b3d62aedad81016d022d62246bef16164aed0502f0e9be1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile-files.js",
+      "sha256": "d023288a2979bb5138906692f525b1459204bde07c6ae74ce3210bb3bf6c4f9b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile-page.js",
+      "sha256": "209857c2c765b47d96f4c17b5031a78ac65f2b4a680aadc3a945b090bbf82387",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile_collections.py",
+      "sha256": "26d0e772e764d393247a9552b9c9c33e642eca662e8af51dd4adebe8d48b3fa4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile_documents.py",
+      "sha256": "145815922497a6ef1b6dcbf3597fd286bc5297c8d68705a392628fae462b1ce0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile_files.py",
+      "sha256": "6270e6b6da8e2699e2a9a4205c0b85aa3148716c694de490a334b642f078a7c9",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile_identity.py",
+      "sha256": "a660d0f3865a15f5ce36e2e24fde5bd0fa3bc80354f2025df047e8919e8cafc4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/PROFILE_PIPELINE.md",
+      "sha256": "b66864bfcada2e954899ec1ce0dad6432810d0a7e013d11178a217769d9d201a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile_pipeline.py",
+      "sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          257
+        ],
+        [
+          262,
+          264
+        ],
+        [
+          266,
+          1193
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/PROFILE_SOURCES_AND_RESULTS.md",
+      "sha256": "4a7e4553f2821d1a62565163f14df2880339159391310f197032415f93b5b97f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/profile_transfer.py",
+      "sha256": "fe7d039a43b3a83927af7009fe9682d9e4daed7b3e1cb1c8ba9f1264ac32dd32",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/PROFILES_AND_EXPORTS.md",
+      "sha256": "0ddcf781d9a67b9e1920de0f961400d8a88db71c37a4f35984bb8a4fdb61d54c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/project-audit.json",
+      "sha256": "49d378154d7c45cd5bb1e8519f2a46d3a2346dd3d174c3786081cddfb46fe7fe",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/project_info.json",
+      "sha256": "c9d88b89b79256fb57f1d914bbf57bb126059fff789a1cd3f7aeaddb47fb7da3",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          11
+        ],
+        [
+          22,
+          22
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/provider_exports.py",
+      "sha256": "1d6c728d4a96b42200ccaa76bb8f2f6d7b8e1ac093a2ca8cb815214de95d251c",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          164
+        ],
+        [
+          219,
+          266
+        ],
+        [
+          271,
+          271
+        ],
+        [
+          273,
+          304
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/.gitattributes",
+      "sha256": "e508dd288a366c1cb9d38ab8d29c556a63c17d099b32eaf08e1c30de06ece25a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/.gitignore",
+      "sha256": "0916a812b6ed20b80d2c6b4bf55473ae13f3715f3ff0b3ab8fcdd2f447c3df39",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/build.yml",
+      "sha256": "b7b8b53266cb5f631f06b6a39f1d31d7ef0de19be394ff2d63582754d880e01e",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          97
+        ],
+        [
+          99,
+          150
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/FUNDING.yml",
+      "sha256": "b7b4674c3e91ad7945cac5b1a945f40e6ce6c048024174c0bbfe187435896f9c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/README.md",
+      "sha256": "b579113cd66eb6c697ef293c058d057591c742949a042a4647049e1c4636525f",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          53,
+          54
+        ],
+        [
+          56,
+          59
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/RELEASING.md",
+      "sha256": "606d0b4c105edeb82603d90a56588722bbb53bb8f58067c73efee71f042ce4c5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/SECURITY.md",
+      "sha256": "84062e9fb3cae0f0e5d73031587dd489690680bd9b939ab9819eedad1924eaf5",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          16
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/Public/THIRD_PARTY.md",
+      "sha256": "204b55a7c476c2fa7557e82c276af4159592f4259ae36c6ed3be207453161ea1",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          11,
+          19
+        ],
+        [
+          21,
+          93
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/public_package.py",
+      "sha256": "fe42487c61d4e402b426de04b43fac9b6b2bb01fb7ea63419f7750d2e0ecba57",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          193
+        ],
+        [
+          207,
+          207
+        ],
+        [
+          215,
+          407
+        ],
+        [
+          418,
+          558
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/release-ui.js",
+      "sha256": "04f5a26827c71057f9eabc35452ebd39a5852795df1d5efcabaf061448b629c0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/release_catalog.py",
+      "sha256": "f0f78a49b1d8e2e8ebfc8014b9b598810f2fe183fcbc2d7c33d68c203bc8ead7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/release_tools.py",
+      "sha256": "e58a6d32f997ab6805cba2f6d4c6a7b604cd2bdb7aa2b32b50c7c6e5c4422241",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/research_synthesis.py",
+      "sha256": "e9a689114bc6b9e6dd9cde032902474c7226ecede2e92cda07941be7f34f25f0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/result_cache.py",
+      "sha256": "90ea8e77a14514f68887a6b1ffa2bb94f79cba414409aeb5092cc6119edeb1bc",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/sample_data.py",
+      "sha256": "8a20ce81404b069bbe6e931591304a6d93c28268d551376958a39789b624cede",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/SECURITY_AND_RELEASE.md",
+      "sha256": "8e716e7234df5a9c151d8face0ebc7a2947a32412e5e8aa946e9656835d39f67",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          7
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/security_paths.py",
+      "sha256": "ef9e6f485bbea1a4c359d316b38801b021bff06d8bd573d5afe9fe1083876442",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/security_sql.py",
+      "sha256": "7759adba94926b60bc4d9d1acb6d6c456c98ef94fb80938abb59c5e66dd402c4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/SEQUENCE_TOOLS.md",
+      "sha256": "0b63fb9ac6652b6ded27a43d5a19bf0cc8de5bd59f189d945d84681fd84cb44a",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          7
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/sequence_tools.py",
+      "sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/setup-linux-public.sh",
+      "sha256": "7823a29fe1a0428630277158e9648ce77ad6b9bcca9e31b377ccc9264b351dae",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/setup.ps1",
+      "sha256": "0614a9d6dd69bb4ebf5759db1c5bac73607b14acb6ab1ba82e7ee5f67f5d5091",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/shared-ui.css",
+      "sha256": "2048a7770c83f01009738fda3616d17b15fd3f67a90612d0e87fd74d0c57bdc4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/shared-ui.js",
+      "sha256": "b75f018a83d481c38122f9845c8a9fd1d22f5fda9d639c1c59fb91ad643fd849",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/snp_liftover.py",
+      "sha256": "65a13576ffe4f9ac8ee8ba3274a508b8603589a61c67e850efcfd449a7a0f976",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/source_batch.py",
+      "sha256": "e13510f6daeb8d5630b016a970332c5cc2143025f0d3cbbb3d04db4cfbc441ce",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/SOURCE_GROUPS.md",
+      "sha256": "9c45d6d63d275ea30bff3febebf99671c63d1c949e6d005c0de504a3ad375ac7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/source_store.py",
+      "sha256": "a74b7ba1bf46f63d8c531341d07ab6f49cf74549d59864e584694ba75b053f0a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/Startup.cs",
+      "sha256": "56bb8d8d5d292e8b6c2c91eeb41eba23d41b2cb8a060a4340ade88fd9e53b04c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/story_art.py",
+      "sha256": "4f590965bf16ff358fab90b5f48343f14e4090d9a483f653f6c0237ad0dcb417",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/suite_api.py",
+      "sha256": "8224097e69d5a1bd0d15929e8e6c6fa161f036b0399ec614e1788757e4c170f4",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          29
+        ],
+        [
+          37,
+          37
+        ],
+        [
+          38,
+          702
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/support-qr.jpg",
+      "sha256": "e829ece50a38f17b3f28cbe702b16df8bfbfcbf71cd41cba3340a34a9df7c3c1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/system_tools.py",
+      "sha256": "fe014bd5a1e441b390285639f64ab81975c134ae130ab0d34e022e3f2b21aa5c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_agent_control.py",
+      "sha256": "915be65ebb6888a0d062ec8701ed5bf26957d35fb0997c1c8ce7f812762621bf",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_batch_intake.py",
+      "sha256": "9b048fc15e20c65d31fc9c0298da4f7d049633a74e78ddbbeedb4030fc93ab5b",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          191
+        ],
+        [
+          193,
+          210
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/test_best_dataset.py",
+      "sha256": "7b2ca9788be54775a029e76575a176b4515844bab4cbe3b4f7ac24fff24ed0a8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_cloud_ai.py",
+      "sha256": "839ace4bc39c5ab34d6545e42967291f0d2236b56c00e08e6b86ae5c4f4eba1a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_comparison_cache.py",
+      "sha256": "fbe681610a2d89120d6b10a4b5b856fa261b6c4346394450fe990884aea528ad",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_data_scope.py",
+      "sha256": "75cfa937b497d58a229e0986df10f55c15ffe605f92b2d81d39265b15286fed5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_dependencies.py",
+      "sha256": "7c80a104fca7764f07cc7f8f7f8dfc3b2d7e669252bf44ed5197976a47bc6fbe",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_document_processing.py",
+      "sha256": "d423d1780aabc7359d68bbc42de5fc1a233dfcace76f4fa6e155322edace8fef",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_embedded_service.py",
+      "sha256": "27ae38489fbb49f232442720a3caaa9116db85e5820802af983644424f7f3fe7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_family.py",
+      "sha256": "85283342c43192e96acce54f0444611609dae3b2a833c56c00c8730ce3c070eb",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_family_verification.py",
+      "sha256": "1380e001f9aca2a467e06f7b526b1f023076dedd261455ad0c2ea66c0298009c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_heritage.py",
+      "sha256": "fe0b1b0153cd40f2dc9ca466bedd90310ff30aaa5892981bb1f0779d70fab0e6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_heritage_story.py",
+      "sha256": "6363d141d44b0d6d0d14a66e82ea884b987d24c9c5631ce436905e46a13efa16",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_import_mode.py",
+      "sha256": "e48342e0065238a9617adc03a76e4fc50d91a09c659380f19dc4ef10f342f535",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_jobs_performance.py",
+      "sha256": "6814d02dd4dd9717d7ff02159460ad169e950511e5aef66863054d9a97a6683a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_local_ai.py",
+      "sha256": "3ca2209c00d247fb91bbac21df81138890ad2651865dfbb203bf6ff84fb626bb",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_localization.py",
+      "sha256": "d5837efe2aa303047b1b07be7dc584b0f00f21d3b8cb86cbb4899edaef21c875",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_matching.py",
+      "sha256": "0fe7539f1f9d78157adfa6b68c2c9e80db1fe40ee4e7380b62da27897f4d3701",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_on_demand.py",
+      "sha256": "0b3b4f946ce912b91d050d349128f84d721fbf637410dec50c88ffdb178a23cc",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_plugin_workflows.py",
+      "sha256": "be4f6df505f8c59ffffe022b614eab9eb35a4e1dc30d171502c1d34a0b224de4",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_plugins.py",
+      "sha256": "dfe79c2878f7b355c3ce81d30013313f1cd6a2c9d9aa3375c2d808267daf3ff9",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_portability.py",
+      "sha256": "0df42e96dd31de61042a0774dfefadf7e75864f91fcf94c927f073aa1bec35f0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_portability_linux.py",
+      "sha256": "a473fc2aaf68886cd2780a8f02e75cea14329c5d8177b8028adeb502330299ee",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_profile_experience.py",
+      "sha256": "22256283580bb380d4324752e74eac01d95ac4358c99b3b928946e03a92862a1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_profile_files.py",
+      "sha256": "bf11a09232aae2eb482fb0d3dadcc7555a4bb2621188fe66a60bf2387b7b6800",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_profile_pipeline.py",
+      "sha256": "b26bd0d2f87deaef44bae590f97883dc739a975cf742917d00187ef9667abe66",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_profile_transfer.py",
+      "sha256": "a65f4a0a715624b56ea21f8bff4b1513c0732964d0b61a33c57f8d0194f69404",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_provider_exports.py",
+      "sha256": "f866168f0698851b647acba05372e331395459a34ca8961438caca40f46208e2",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          2,
+          68
+        ],
+        [
+          150,
+          198
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/test_public_samples.py",
+      "sha256": "9bf25dbebee7bbbb9f9dd60dc14e19b7aedb78209892db5076931e1765cff3c8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_quality.py",
+      "sha256": "670aa8bfdd128b82549be3ebcb367d285a72a10d1e683e259c83b4b1b023b125",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_result_cache.py",
+      "sha256": "b9cff59de9fe4f8ff641d71e51edbbad6c8348d14eeeedbd59983c5442369529",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_security_boundaries.py",
+      "sha256": "c3c9626f532837b0113b25dd1940206580cfa65d51e8afb1281a0a71df0ec5b1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_sequence_tools.py",
+      "sha256": "d2fabfc47f22e6078cb8d2f939a94ceb6b81ace632e7712ebc11744aba9cbb33",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_source_batch.py",
+      "sha256": "6cb5c9d1952d436f338454313b046f436791edcec9ba21ee04b2f6a9a9c18543",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_story_art.py",
+      "sha256": "c81fc50344512b9a437a3c0468c4277fcccd5664ba231f5a02283bef894827a6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_suite_api.py",
+      "sha256": "289f607bb3fa5784a86439ba2a579083f754d2145128b3920906f416d0dcf019",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_tool_contracts.py",
+      "sha256": "537a3b17363c4c222b6bd8c73dffcdc7334dc99e196279697200f502d46f1b31",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_tool_inputs.py",
+      "sha256": "03b1b1cd8dcc9d13592547f79b0f0a8cb27d8edc08a1c4a2ff4aaab478cfe6ba",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          45
+        ],
+        [
+          66,
+          155
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/test_tool_media.py",
+      "sha256": "0bc7ee054d1f8c03e73788b22c5e9553037dfd4dd0da8559f7e7f742da930594",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_visual.py",
+      "sha256": "1e5393d85dd86252176a4a23076c109752b655d03abedaec4a8207bc686814d7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_visual_tools.py",
+      "sha256": "2fef29ee7b719c097a1aa246053dad5150ef9eab3de72222ccb10c679ceeee61",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_workflow_sources.py",
+      "sha256": "8e8081656a3b09617b6de7a361386f686c181ccbf28affc0ac77361de2650ed6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_workflows.py",
+      "sha256": "3317bd7634b6f6477c210a6f187f5be32c54dfcb9b80e43d30f91c752a29b0d7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/themes.css",
+      "sha256": "7ddd89055c58a2bcf7d77dd270e5234cb132da1c2db2604d96553ea088beeeb5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/THEMES.md",
+      "sha256": "dff00867dd6ba51429b512c756b5a99a160fb2fb33734bb23f816ce0be188194",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/tool-media.json",
+      "sha256": "cba821ff4e311dff49c01b55efd1e6de63fa71fa2a5f550b1eb504d430fc306c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/tool-wizard.js",
+      "sha256": "044e7142784a182402112610f21c6dfcda5c06a302660f9fba1ecc26ae36929f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/tool_contracts.py",
+      "sha256": "f49114973150eb5c454437bc529580f5b55a9975ad3a0710da2f23c4fcc877e3",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          141
+        ],
+        [
+          149,
+          150
+        ],
+        [
+          153,
+          159
+        ],
+        [
+          162,
+          418
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/TOOL_FORMATS.md",
+      "sha256": "2ddc553b4bd4e9ce33eff82135d38dc6574b4162e5c40527c48577ecb09b6aa3",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/tool_inputs.py",
+      "sha256": "0a161965f80e9d486db852b9ff1a97d1015457af95370e7cdba9164fb6c7e07a",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          126
+        ],
+        [
+          145,
+          246
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/tool_media.py",
+      "sha256": "8ce5631331656425dbf381a259bdeafbfa31a75a99d54656a860e1f06c265c73",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/ui-components.js",
+      "sha256": "cb268b3523f6fbac145a3b911827564cf060ba191c3f50b05722ae0c1e46be55",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/visual-packages.json",
+      "sha256": "7166208cc84205a658b7ecf90fd855074cfc3b5cf5fe0b36c7a55e2a0e8c8c00",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/visual-viewer.html",
+      "sha256": "3d6407a5481b410dc140afd7c12ebefe3438a1f5a6dcd754f6af1f29ed20bd3b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/visual.html",
+      "sha256": "ddca1ad904eee94c976ee677442f30b7d187b9a6d901b6eab6f2161f38f53534",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/visual_plot.py",
+      "sha256": "9b3921e0c8e84294429d6d33fdbf9c06df9ecc650bfc7087e507c83d845cb2ed",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/visual_store.py",
+      "sha256": "b4dfc655270313e5100d17215976c985e70df9e5da7be6ac166fbd4e2630381e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/visual_tools.py",
+      "sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/VisualTools.cs",
+      "sha256": "24dd7e786c79d40aec474392379d71eff9c3c67231bb3f29e42e7333c27731f1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/workbench-ui.css",
+      "sha256": "25082cc753cc74f98fb26695558ebe343f5c52247ba36739fac31abdbf4d57a4",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          504
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/workflow_sources.py",
+      "sha256": "fb6b6e8010760edbce069df6efc86d652cd357cf012073548a1b92503902daba",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          52
+        ],
+        [
+          56,
+          89
+        ],
+        [
+          91,
+          619
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/workflows-ui.js",
+      "sha256": "a95b3e7530e007f5d1a39250c28d9422cbb9ff76e60727fb79e77f465ddc0381",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Launcher/workflows.py",
+      "sha256": "bded5130d8cf09cd93c014c383970e7072c669aef1ba2493a5bd25857b48f6f8",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          10
+        ],
+        [
+          23,
+          748
+        ]
+      ]
+    },
+    {
+      "path": "DNA_Software/Launcher/world-land.json",
+      "sha256": "e96fe0443b2dc99420dbe530e46d31d660543f83c54226608dc0bd426961158a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/admixtools-gui.R",
+      "sha256": "b252cd9025774568d8334cffc152fc92cd92b63af4812b57ada67023862a4f76",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/containers-compose.yaml",
+      "sha256": "69d3eed869639cddbaf4b10235b8208afa93fbf8e0ccbb01b74b095f68578bce",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/dna-nextflow.config",
+      "sha256": "98eec575706c4dbe0f9f02f919be412c868843d8ce78004075490f62fd07f2bb",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/DNA.ps1",
+      "sha256": "5904bbc1bc578b58137b981d53533be419a8380260a9abc39ea688a83f4bac1b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/docker-dna.sh",
+      "sha256": "b8256d2ec81694c14962709c4dc3389283793e979a4a5d4efe096424c10114f0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/linux-launch.sh",
+      "sha256": "e8fa45fc202a3d64534ee1a295a271ec6e69e23bd6dcda6d6f4606032b8fab97",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/profile-dna.sh",
+      "sha256": "47c2ac0554fba27d0ce4d5a63021cd35b87c01288a2b2c7771ad9839fd01a85b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "DNA_Software/Start/relocate-linux.py",
+      "sha256": "134e0340baaad2ba59e5afbd3a1b37573618e5e20428762123fd5a12f64415fa",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/AGENTS.md",
+      "sha256": "819d9659882e3094be67d5f38cf0dd94c32420cca63fde6df57979472d9a4ee6",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          18
+        ]
+      ]
+    },
+    {
+      "path": "docs/API_AI.md",
+      "sha256": "598e7720ad3a08eb6919fb4be1f35f087ff71fd5cb2f4ac18aca8181b24718d5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "sha256": "7e4cde299e3f0a6d87fb39e6361af75a89add5c48070097a0d14926b353e8eb6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/ARTWORK.md",
+      "sha256": "d13727968b3d191c7e2f73b5068d6d230dbeb3a8e66642c5a6df09de6d16bf74",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/BATCH_PREPARATION.md",
+      "sha256": "fcaf4ad2927ca5a0d8fb945bf3ffd77eb5ee22bb846d9c4e197462fea80702c0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/BEST_DATASET.md",
+      "sha256": "94c7e922b8c8768775c8149a03d5bcb72aaa5f401d02452e1acc789a2fb05a8a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/DATA_DOWNLOADS.md",
+      "sha256": "94385858d61f042b094269df063e5f781a58eb65593a90ca0590dd9c7e71b362",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "sha256": "dbdb01389c26b7edb28cc612e1cc126e288f28c5ce3afb1f92f8e1c020156d20",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/examples/combined-research.pdf",
+      "sha256": "d1f1dc65d26e692f9d48d3b1626e2702ec779bcc69f22c31c7c2e4bc3effceb0",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/FEATURES.md",
+      "sha256": "3ee81fff54abc7bdedc23431524d6265c572d5fd1a0817ca7a9e15f3f9cdbd55",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          91
+        ]
+      ]
+    },
+    {
+      "path": "docs/GALLERY.md",
+      "sha256": "d7f53f9ac688763072acfc08a9f70ab9baa5d2e0b67d3667b6de6d87683e4b04",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          134
+        ]
+      ]
+    },
+    {
+      "path": "docs/GENOCAT.md",
+      "sha256": "d4442e0fb73f56c8066cdc4315ff5af8da9048e597478b3edeaf0b6dc42658e1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/GETTING_STARTED.md",
+      "sha256": "b86eacb1aa867073df804bc4360cbcccfe8b37c6e493ff231fc4b673d8d1759e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/00-first-run.png",
+      "sha256": "2e03ac6f5ccf920d70c3f2a29f84f30f4c7c306f8ced99a53e74ccca1ee13c40",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/01-light-dark.png",
+      "sha256": "ae4cfb371c6a908bdfed9e1a821817833a2cce529019dadc37a1ec92da33cf5e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/02-sample-data.png",
+      "sha256": "ca06959e16bc4dc4f631f8e8f718990f130560d861b1f737dc1d53aeedbd79fc",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/03-overview-light.png",
+      "sha256": "ae4cfb371c6a908bdfed9e1a821817833a2cce529019dadc37a1ec92da33cf5e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/04-overview-dark.png",
+      "sha256": "0a65db379705593d0c48b4a60b90b79d93307972a7c6f26bd850cbc42cc8c05f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/05-ancestry-map.png",
+      "sha256": "43dfd8eb32a1fe96b710ca5efb1a03ea03d0360e40dd15d665e01149f05414ff",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/06-import.png",
+      "sha256": "a10ce48a7fdfc14e358ad4882b79a9c47793d1ac5731b3660072638b09704651",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/07-family-tree.png",
+      "sha256": "23bc4e546311dffe6690d62c3811c23a0d6d64820f59a23ee8ef9108226f8889",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/08-workflow.png",
+      "sha256": "3e4996545acfc375d7cd8ccc31b50fb842cb2819df90327b93d97c0a87d00910",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/09-plugins-english.png",
+      "sha256": "7637d5b07c0ce048e956fb732db2000e69262af573bd5c4c7e53012f93417be5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/09-processing-result.png",
+      "sha256": "d16a135645b8bd81c2e220fb1d2796969c79c5a78772265c06effceda857546c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/10-chromosome-segments.png",
+      "sha256": "ff56e6d251e7fbd617524c9aa9c439fef99d6d2411d5d3878f7d9a061b19f180",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/11-comparison-matrix.png",
+      "sha256": "ce75e84287a4e4e6189f2c4be2077058784d99bee0c85808cde61e7657a3dc10",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/12-tool-library.png",
+      "sha256": "1a726696e79d212045d39661b6e09529c261c34d2b03b882c60d03037db1951d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/13-versions-data.png",
+      "sha256": "518a97b906ddcdd35f8fcdabd7bd0b019d253e8ad135dc9120c176eee1c7cee5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/14-agents-cli.png",
+      "sha256": "f679d5d9f95dbf526c8c06bd74a6b344c6e8351d3299d77220aa4f2aada0d8b9",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/15-core-ready.png",
+      "sha256": "1d71cc8d8a82765cd09e47aba9e46dda34b3c3a538a2b9bd38b658c700333264",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/17-plugin-download.png",
+      "sha256": "fa0be0d1d732dc068390b785945e66d361837df5a2fda0a521f2e3e37d597df6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/18-seqviz.png",
+      "sha256": "eb7ec8046897640cb8fa34e58bdd8a4b8fb2fc6d9c2ba590d0342ec673c8e5a8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/api-request-review.png",
+      "sha256": "625eec57ee42fc7fdd59f8e4c921529670a19f9d70f3202fe50bd0b12b0ef859",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/api-settings.png",
+      "sha256": "15a47ba28052dc739a9d4521300ff3222585ecd00bebde13729168708b39e74d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/batch-review.png",
+      "sha256": "3d9eceeaec5063ed29a6af9b2b072acc750ab285b702d88f3f887e5dc3ef2696",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/calculated-summary.png",
+      "sha256": "19a6cd92082c59b265216039d72d4063d6bfa4eb0a4f666acd7d5081417acc69",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/heritage-story.png",
+      "sha256": "2c4a25c0c10f83e9b507f3fa669dd38b8df856cfbd2c7483764e683000b9970e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/image-assistant.png",
+      "sha256": "f13e9134566927858222e59e16ddc2155490b4a7a59c01a21d726744301e72d9",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/peru-painted-story.png",
+      "sha256": "a4cf7cf04c1cedd92f815a406ca7116379a8007ff77435dd38be040473249d54",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/profile-file-manager.png",
+      "sha256": "114699c83e484f14b0383430b8b4e89af3684e13b6ba479df90b03476fd4f004",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/profile-findings.png",
+      "sha256": "37a618c1f942e599d57313c5b8a821c4314759099b5c0b4309a3b69625569817",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/provider-selection.png",
+      "sha256": "40519f8dab79895660cf0bc5555609011df91a6947819fd5ead94400f576b447",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/saved-results.png",
+      "sha256": "a9f07964cca25c0fda1d07b60c49e1310f5d424f1002f8e33e568ecbe1c19fb1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/shared-workflows.png",
+      "sha256": "2a85d6e7d20d77aa5c8a299e446e675c1ad5cb1e61288457748404778e26fb2d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/support-qr.jpg",
+      "sha256": "e829ece50a38f17b3f28cbe702b16df8bfbfcbf71cd41cba3340a34a9df7c3c1",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/tool-input-after.png",
+      "sha256": "d412edb1844de24aa7fd36a8f7a44ffec01b170e54df3b6420de393040bb76c7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/images/tool-input-before.png",
+      "sha256": "2dc16590e8ae62c072bd82436ce245dd9c8d5dc016dff06b4998dae9c23c478c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/PROFILE_FILE_MANAGER.md",
+      "sha256": "e961ddc03b5d5015820be1a704c0973188d1b6cda888e4d8d9b146b74f5d7128",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/QUALITY.md",
+      "sha256": "086fd91516c1d036cc8e1f956aa01263cd7ca2afe1ee253c3f185303f60a4196",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/RESULTS_AND_FINDINGS.md",
+      "sha256": "f31570eee4077f5284a391fbc9c11aab4498277fda89c204c96ea6861edd5f6e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/SECURITY_CHECKS.md",
+      "sha256": "e061cf6c87527a2f8db82ec06f7707c9acf37bc8548f16615eda11513b1b2bbd",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          23
+        ]
+      ]
+    },
+    {
+      "path": "docs/software-data-catalog.json",
+      "sha256": "a350daee2d2727537632f7b732861e24f67c1f061af5ef8ede4aa1b321a80290",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/SOURCE_GROUPS.md",
+      "sha256": "9c45d6d63d275ea30bff3febebf99671c63d1c949e6d005c0de504a3ad375ac7",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/TOOL_FORMATS.md",
+      "sha256": "2ddc553b4bd4e9ce33eff82135d38dc6574b4162e5c40527c48577ecb09b6aa3",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "sha256": "036eb31c15c802cda46fe0f8700f3590f44a1bf25e7369f9fb76dd6418a18c12",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          7
+        ]
+      ]
+    },
+    {
+      "path": "docs/VERSIONS.md",
+      "sha256": "139380fefda1e67e884c5856c6211b750ac0aa49292040f7c8cd3c9bb7f6e078",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          259
+        ]
+      ]
+    },
+    {
+      "path": "docs/WORKFLOWS.md",
+      "sha256": "a3371a1408532dd14f0a9f94785cb09f74bc2f946b8138100e0cf80d647c04f6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "eslint.config.mjs",
+      "sha256": "be91a0ba022ac0582d5b34332d4e586f6752019f6cadfa4b87c85b9e7e422dbb",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "fuzz/corpus/gedcom/malformed.ged",
+      "sha256": "988e57b12f5cc5bba0f934f3a6eef784044cd2c568bdba8084ab57fed4665a1a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "fuzz/corpus/gedcom/minimal.ged",
+      "sha256": "d6231833c66f83e4d6c309fa51c8ee5c8beca482b6682d55ab5584d8b478683d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "fuzz/fuzz_parsers.py",
+      "sha256": "7630ecf815019b860293e41d9305649043f4086e56a07af1c3ff3af50b09068f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "NuGet.Config",
+      "sha256": "f545a7e2ea14ac53cdfb91217cae67b8ff14275313f6298f9a3331d205b6c948",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "pyproject.toml",
+      "sha256": "ddcf5e7b472c629a5b39723899a1a1be2d04a344af9cc1fe997eff8805663a0f",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "README.md",
+      "sha256": "b579113cd66eb6c697ef293c058d057591c742949a042a4647049e1c4636525f",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          6
+        ],
+        [
+          14,
+          16
+        ],
+        [
+          24,
+          24
+        ],
+        [
+          53,
+          54
+        ],
+        [
+          56,
+          59
+        ]
+      ]
+    },
+    {
+      "path": "RELEASING.md",
+      "sha256": "606d0b4c105edeb82603d90a56588722bbb53bb8f58067c73efee71f042ce4c5",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "requirements-dev.txt",
+      "sha256": "506d73f4a0f393d8d79bff3e1559f82832b6144565f455b82370b292404bdb68",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "requirements-fuzz.in",
+      "sha256": "efab4cebff414b1833bc0eadbe44fc6bc78fb529027547e43009340c63f0072a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "requirements-fuzz.txt",
+      "sha256": "caa6aabd99eff3a7cfd7c4c56f5493dd436ade0d3e712689910cec4159743f41",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "requirements-quality.in",
+      "sha256": "7ca66dd9a29fd6c11f97ded0648e799eb109f19db8b591cd42aef628558949bf",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "requirements-quality.txt",
+      "sha256": "8103b620fb4c8a45f3cac433e5f2583c252323cc9610afe45d98c9bb3dfecc8e",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "requirements-security.txt",
+      "sha256": "8b932180034e663e524497222b004feb85bed10fab9483fbc8230d4f363dde27",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic-intervals.bed",
+      "sha256": "257c816db0971f62549efd3374d4a1965cb4d1bf99d62e9f6790db2c0a17fe5b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic-reference.fasta",
+      "sha256": "a54290baf9f40c2399f20116abc285499102de15654ec3b06ec6ed9a3e05c1d8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic-reference.fasta.fai",
+      "sha256": "1cf692c837b5ccfd3a1c172aa3a9bdbc8a9ebaa9566a6ebba4d0429ceb3bbb75",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic.bam",
+      "sha256": "886f6c5e8045d3a9feffbb97e25de5c1a2f1078b11271f74f9113112b93b9e22",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic.bam.bai",
+      "sha256": "e934cb2ea096969a88e03eae7623c49b40ac812d2c1ad1580bcb5065a1eaa22a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic.cram",
+      "sha256": "e515adce0801cee974810c048908bb5ec52645f22ced4300e49c0c334c46198a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic.cram.crai",
+      "sha256": "52e3fafef285771e33cee43b4a7c1ccb22448ae5b24501a7e269ee749b4ecd2c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic.sam",
+      "sha256": "91aeed8b7a2af8a9fe6f329bce0d4cc8e50f0fc0934540d443d5fc9d0124f734",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic_R1.fastq",
+      "sha256": "ad1d28aa5fc81409c908d2f9c2291e48711a4949618a5cc3dfb4ace5992c1d65",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic_R1.fastq.gz",
+      "sha256": "a6108c693c25780f0ae41a64d747ecdd58f69f700f9fb0ec4eb179dcbe4a1c05",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic_R2.fastq",
+      "sha256": "ad1d28aa5fc81409c908d2f9c2291e48711a4949618a5cc3dfb4ace5992c1d65",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Formats/synthetic_R2.fastq.gz",
+      "sha256": "b2dc59c7e9faa60e49845b8aa5918cd0f72583e05eec838a486afada440481e3",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/manifest.json",
+      "sha256": "107433e5a7aa307949a1885fbc9d6f97d178d7bc49a1558c6ad55421bff74210",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Alex/synthetic-chip.txt",
+      "sha256": "f1e190a6730d3ecb498706e8fdd523d842a4a5c748fc4d83dacd681f068cfc2b",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Alex/synthetic.vcf",
+      "sha256": "4f0489af71e45165d878f3d7a79d315456739bb3e75c60d33bd5b6980b616890",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Robin/synthetic-chip.txt",
+      "sha256": "a9cf75dfeb7b945df192f4f13d7427d02e498a8741441e888cb0a045d9062c37",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Robin/synthetic.vcf",
+      "sha256": "f55ec12ed97f337c5ce3e876eb8a41e548054e7b20612192ba5ac3539668aa57",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Sam/synthetic-chip.txt",
+      "sha256": "78ff4835662270da0b20634d5b4724b191efd09c4162023425b911a31c050ad8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Sam/synthetic.vcf",
+      "sha256": "3918718788e8fc3c86c5ea5b0f5cac4fa0c687e2ff5314bd9cb9a1b7b0cd69ba",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Taylor/synthetic-chip.txt",
+      "sha256": "3d1ff7c53bd8577201c2090eb8e5b83a7b945da6dac50fbfcc97801698bc18af",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Profiles/DEMO_Taylor/synthetic.vcf",
+      "sha256": "dacc4035fdafb8750a7d89f604748424d13adb8003b80d31043ad79d353343c8",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/README.md",
+      "sha256": "25dea90b8482fb3291288c6cca3679ea829e68be8eb4dd3148fdc954b72e0c4c",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Results/ancestry-composition.csv",
+      "sha256": "c655388453af867897aedd44a47fcc32c5133e5b28cd77a8111f8227faaccc19",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Results/family-tree.json",
+      "sha256": "1c8570289660a75621cfc2aaf6dca869846a991e6b4f59edd9048d2c0b04f931",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Results/family.ged",
+      "sha256": "dde8530b8ffd60835097f48d1a8fc8ad6e44fc305e8b09a22986acbee45eb77d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Results/illustrative-ancestry.json",
+      "sha256": "b3090766fc9e3a2746900e56362573ced41cbdc466509e55001891bfb4ecc59d",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Results/illustrative-segments.csv",
+      "sha256": "6ec6ca05f0bd3f1c30d2de7c1ffa6f4ab4120f5ae949ca7e2774d3919d807056",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "Samples/Results/synthetic-provider-report.pdf",
+      "sha256": "7b86c6b8f3941602cdb3d56d2c73cc2bdddac8780e768564422de6c61a660694",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "scripts/Benchmark-Workflows.py",
+      "sha256": "8197b37f888461bbf74ff18083be75bbcf320266ad705b938570e0ca843e7fe6",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "scripts/Deploy-Local.ps1",
+      "sha256": "2c49255a116be777b276cc850b1090499f7ff169c80b53e68d363be7b5a0476a",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "scripts/Seal-Source.py",
+      "sha256": "fa281118f3008209563236d66bbef0673835607230e8f669d3bbd482bdcf8f55",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "scripts/Security-Audit.py",
+      "sha256": "fb714991bbf37904458d38eb40a11586a583bf877e131be78e46aca8ff13946b",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          111
+        ],
+        [
+          113,
+          291
+        ]
+      ]
+    },
+    {
+      "path": "scripts/Test-NativeContracts.ps1",
+      "sha256": "0d4054615098949087582f1b3c68d1c3fdd1351044d15c42e8c228a62ee31411",
+      "scope": "entire-file",
+      "license": "MIT with any separately stated upstream terms"
+    },
+    {
+      "path": "security/ReviewedFindings.json",
+      "sha256": "9b290fc860068fa8bfa21ae1f0c3d2fb9693fc258d1a2ca2ef0886ec3f4b9c6c",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          97
+        ],
+        [
+          99,
+          101
+        ],
+        [
+          104,
+          109
+        ],
+        [
+          111,
+          116
+        ],
+        [
+          119,
+          124
+        ],
+        [
+          126,
+          131
+        ],
+        [
+          134,
+          139
+        ],
+        [
+          141,
+          146
+        ],
+        [
+          149,
+          154
+        ],
+        [
+          156,
+          161
+        ],
+        [
+          164,
+          169
+        ],
+        [
+          171,
+          176
+        ],
+        [
+          179,
+          184
+        ],
+        [
+          186,
+          188
+        ],
+        [
+          191,
+          196
+        ],
+        [
+          198,
+          203
+        ],
+        [
+          206,
+          211
+        ],
+        [
+          213,
+          218
+        ],
+        [
+          221,
+          226
+        ],
+        [
+          228,
+          233
+        ],
+        [
+          236,
+          241
+        ],
+        [
+          243,
+          245
+        ],
+        [
+          248,
+          340
+        ],
+        [
+          342,
+          344
+        ],
+        [
+          347,
+          352
+        ],
+        [
+          354,
+          359
+        ],
+        [
+          362,
+          367
+        ],
+        [
+          369,
+          374
+        ],
+        [
+          377,
+          382
+        ],
+        [
+          384,
+          389
+        ],
+        [
+          392,
+          397
+        ],
+        [
+          399,
+          404
+        ],
+        [
+          407,
+          412
+        ],
+        [
+          414,
+          419
+        ],
+        [
+          422,
+          427
+        ],
+        [
+          429,
+          434
+        ],
+        [
+          437,
+          622
+        ],
+        [
+          624,
+          626
+        ],
+        [
+          629,
+          634
+        ],
+        [
+          636,
+          641
+        ],
+        [
+          644,
+          649
+        ],
+        [
+          651,
+          656
+        ],
+        [
+          659,
+          731
+        ],
+        [
+          733,
+          742
+        ],
+        [
+          744,
+          756
+        ],
+        [
+          758,
+          770
+        ],
+        [
+          772,
+          784
+        ],
+        [
+          786,
+          790
+        ],
+        [
+          793,
+          798
+        ],
+        [
+          800,
+          804
+        ],
+        [
+          807,
+          812
+        ],
+        [
+          814,
+          818
+        ],
+        [
+          821,
+          826
+        ],
+        [
+          828,
+          832
+        ],
+        [
+          835,
+          840
+        ],
+        [
+          842,
+          846
+        ],
+        [
+          849,
+          880
+        ],
+        [
+          882,
+          886
+        ],
+        [
+          889,
+          894
+        ],
+        [
+          896,
+          900
+        ],
+        [
+          903,
+          960
+        ],
+        [
+          962,
+          965
+        ],
+        [
+          968,
+          973
+        ],
+        [
+          975,
+          978
+        ],
+        [
+          993,
+          1068
+        ],
+        [
+          1071,
+          1073
+        ],
+        [
+          1075,
+          1113
+        ],
+        [
+          1115,
+          1124
+        ],
+        [
+          1126,
+          1275
+        ],
+        [
+          1341,
+          1343
+        ],
+        [
+          1345,
+          1347
+        ],
+        [
+          1350,
+          1355
+        ],
+        [
+          1357,
+          1359
+        ],
+        [
+          1362,
+          1367
+        ],
+        [
+          1369,
+          1371
+        ],
+        [
+          1374,
+          1412
+        ],
+        [
+          1414,
+          1423
+        ],
+        [
+          1425,
+          1434
+        ],
+        [
+          1436,
+          1445
+        ],
+        [
+          1447,
+          1483
+        ],
+        [
+          1568,
+          1727
+        ],
+        [
+          1729,
+          1738
+        ],
+        [
+          1740,
+          1749
+        ],
+        [
+          1751,
+          1760
+        ],
+        [
+          1762,
+          1771
+        ],
+        [
+          1773,
+          1782
+        ],
+        [
+          1784,
+          1793
+        ],
+        [
+          1795,
+          1804
+        ],
+        [
+          1806,
+          1815
+        ],
+        [
+          1817,
+          1826
+        ],
+        [
+          1828,
+          1837
+        ],
+        [
+          1839,
+          1848
+        ],
+        [
+          1850,
+          1859
+        ],
+        [
+          1861,
+          1870
+        ],
+        [
+          1872,
+          1881
+        ],
+        [
+          1883,
+          1892
+        ],
+        [
+          1894,
+          1903
+        ],
+        [
+          1905,
+          1969
+        ],
+        [
+          1971,
+          1980
+        ],
+        [
+          1982,
+          1991
+        ],
+        [
+          1993,
+          2002
+        ],
+        [
+          2004,
+          2013
+        ],
+        [
+          2015,
+          2024
+        ],
+        [
+          2026,
+          2029
+        ],
+        [
+          2044,
+          2412
+        ],
+        [
+          2414,
+          2416
+        ],
+        [
+          2419,
+          2424
+        ],
+        [
+          2426,
+          2428
+        ],
+        [
+          2431,
+          2436
+        ],
+        [
+          2438,
+          2440
+        ],
+        [
+          2443,
+          2448
+        ],
+        [
+          2450,
+          2452
+        ],
+        [
+          2455,
+          2471
+        ],
+        [
+          2473,
+          2482
+        ],
+        [
+          2484,
+          2531
+        ],
+        [
+          2534,
+          2551
+        ],
+        [
+          2553,
+          2555
+        ],
+        [
+          2558,
+          2563
+        ],
+        [
+          2565,
+          2567
+        ],
+        [
+          2570,
+          2622
+        ],
+        [
+          2625,
+          2627
+        ],
+        [
+          2629,
+          2634
+        ],
+        [
+          2636,
+          2639
+        ],
+        [
+          2642,
+          2644
+        ]
+      ]
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "84062e9fb3cae0f0e5d73031587dd489690680bd9b939ab9819eedad1924eaf5",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          4
+        ],
+        [
+          6,
+          16
+        ]
+      ]
+    },
+    {
+      "path": "site/index.html",
+      "sha256": "d9f18cbb5ed5d795bb8e4077f72e3c4e40931ba859d1113d504d2cb3fea0627b",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    {
+      "path": "THIRD_PARTY.md",
+      "sha256": "204b55a7c476c2fa7557e82c276af4159592f4259ae36c6ed3be207453161ea1",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          9
+        ],
+        [
+          11,
+          19
+        ],
+        [
+          21,
+          93
+        ]
+      ]
+    },
+    {
+      "path": "tools/quality/package-lock.json",
+      "sha256": "4d4794dd63c79f0953e5401f3c946f434583fe378fc8b8842c77a6fc05a38d77",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          2
+        ],
+        [
+          4,
+          8
+        ],
+        [
+          10,
+          1944
+        ]
+      ]
+    },
+    {
+      "path": "tools/quality/package.json",
+      "sha256": "5b7feab11d8243ec940a39a84661b4f428d46085a28e5d13e3f65c844dc7fad4",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          3
+        ],
+        [
+          5,
+          27
+        ]
+      ]
+    },
+    {
+      "path": "tools/quality/run.mjs",
+      "sha256": "24a4e1f3a3718eae6f57071960b398e94b567b1dfe62d7acb1e818ac7d3b633d",
+      "scope": "text-portions",
+      "license": "MIT with any separately stated upstream terms",
+      "line_ranges": [
+        [
+          1,
+          15
+        ],
+        [
+          22,
+          134
+        ]
+      ]
+    }
+  ]
+}

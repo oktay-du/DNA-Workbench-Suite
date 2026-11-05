@@ -1,0 +1,442 @@
+{
+  "checked": "2026-11-04",
+  "tools": {
+    "genomespy": {
+      "name": "genome-spy",
+      "project": "https://github.com/genome-spy/genome-spy",
+      "commit": "482e9a1d42d5b6bb1c293737a9cf0b647f229f3e",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/genome-spy/genome-spy/master/docs/img/teaser.png",
+          "publisher_page": "https://github.com/genome-spy/genome-spy/blob/482e9a1d42d5b6bb1c293737a9cf0b647f229f3e/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "igvjs": {
+      "name": "igv.js",
+      "project": "https://github.com/igvteam/igv.js",
+      "commit": "b5d64807ee940a2eaf9a64b093f71445e9a3c620",
+      "images": [],
+      "catalog": false
+    },
+    "jbrowse": {
+      "name": "jbrowse-components",
+      "project": "https://github.com/GMOD/jbrowse-components",
+      "commit": "6a83698a567eb4119df8afab98b3e5e32632db0f",
+      "images": [],
+      "catalog": false
+    },
+    "pygenomeviz": {
+      "name": "pyGenomeViz",
+      "project": "https://github.com/moshi4/pyGenomeViz",
+      "commit": "fb137ded78d56b1d55229309d500aa54c80e3abe",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/moshi4/pyGenomeViz/main/docs/images/pygenomeviz_gallery.png",
+          "publisher_page": "https://github.com/moshi4/pyGenomeViz/blob/fb137ded78d56b1d55229309d500aa54c80e3abe/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/moshi4/pyGenomeViz/main/src/pygenomeviz/gui/assets/pgv_demo.gif",
+          "publisher_page": "https://github.com/moshi4/pyGenomeViz/blob/fb137ded78d56b1d55229309d500aa54c80e3abe/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/moshi4/pyGenomeViz/main/docs/images/example/features.png",
+          "publisher_page": "https://github.com/moshi4/pyGenomeViz/blob/fb137ded78d56b1d55229309d500aa54c80e3abe/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "pycirclize": {
+      "name": "pyCirclize",
+      "project": "https://github.com/moshi4/pyCirclize",
+      "commit": "5a0f36111a4bbfab3e3d765e7365a1108f891dcb",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/moshi4/pyCirclize/main/docs/images/pyCirclize_gallery.png",
+          "publisher_page": "https://github.com/moshi4/pyCirclize/blob/5a0f36111a4bbfab3e3d765e7365a1108f891dcb/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/moshi4/pyCirclize/main/docs/images/example01.png",
+          "publisher_page": "https://github.com/moshi4/pyCirclize/blob/5a0f36111a4bbfab3e3d765e7365a1108f891dcb/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/moshi4/pyCirclize/main/docs/images/example02.png",
+          "publisher_page": "https://github.com/moshi4/pyCirclize/blob/5a0f36111a4bbfab3e3d765e7365a1108f891dcb/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "dnafeaturesviewer": {
+      "name": "DnaFeaturesViewer",
+      "project": "https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer",
+      "commit": "049bbe4e3063e90ae9b0f88ac7e92f47b735d38a",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer/master/docs/_static/images/title.png",
+          "publisher_page": "https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer/blob/049bbe4e3063e90ae9b0f88ac7e92f47b735d38a/README.rst",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer/master/examples/graphic_record_defined_by_hand.png",
+          "publisher_page": "https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer/blob/049bbe4e3063e90ae9b0f88ac7e92f47b735d38a/README.rst",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer/master/examples/graphic_record_defined_by_hand.png",
+          "publisher_page": "https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer/blob/049bbe4e3063e90ae9b0f88ac7e92f47b735d38a/README.rst",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "snps": {
+      "name": "snps",
+      "project": "https://github.com/apriha/snps",
+      "commit": "f9a7443c3075b2187f788cf3a4c18979576f4513",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/apriha/snps/main/docs/images/snps_banner.png",
+          "publisher_page": "https://github.com/apriha/snps/blob/f9a7443c3075b2187f788cf3a4c18979576f4513/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "peddy": {
+      "name": "peddy",
+      "project": "https://github.com/brentp/peddy",
+      "commit": "1d340cd3e87623c8c58b4a82b18f33ba532101aa",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/brentp/peddy/master/docs/_static/peddy-v-king.png",
+          "publisher_page": "https://github.com/brentp/peddy/blob/1d340cd3e87623c8c58b4a82b18f33ba532101aa/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "whatshap": {
+      "name": "whatshap",
+      "project": "https://github.com/whatshap/whatshap",
+      "commit": "6697f41d3ae41d616a4daffb8116ad5bb364a0b1",
+      "images": [],
+      "catalog": false
+    },
+    "truvari": {
+      "name": "truvari",
+      "project": "https://github.com/ACEnglish/truvari",
+      "commit": "c3a59e59bff81559d6e9f45062c3c8e29589cec3",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/ACEnglish/truvari/develop/imgs/BoxScale1_DarkBG.png",
+          "publisher_page": "https://github.com/ACEnglish/truvari/blob/c3a59e59bff81559d6e9f45062c3c8e29589cec3/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "sarek": {
+      "name": "sarek",
+      "project": "https://github.com/nf-core/sarek",
+      "commit": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+      "images": [],
+      "catalog": false
+    },
+    "pgsc-calc": {
+      "name": "pgsc_calc",
+      "project": "https://github.com/PGScatalog/pgsc_calc",
+      "commit": "72ee54f2119d2fe65ac671327342dfc412bd0a3b",
+      "images": [],
+      "catalog": false
+    },
+    "pharmcat": {
+      "name": "PharmCAT",
+      "project": "https://github.com/PharmGKB/PharmCAT",
+      "commit": "8e6f81b9372da54f9281d452cd171253c6a8974f",
+      "images": [],
+      "catalog": false
+    },
+    "hap-ibd": {
+      "name": "hap-ibd",
+      "project": "https://github.com/browning-lab/hap-ibd",
+      "commit": "a3fdd2d6294903387ee29d2f67ce6260593b681f",
+      "images": [],
+      "catalog": false
+    },
+    "rfmix": {
+      "name": "rfmix",
+      "project": "https://github.com/slowkoni/rfmix",
+      "commit": "09599c19c69f81571c7a7aab4cd2d847a9e0633a",
+      "images": [],
+      "catalog": false
+    },
+    "gramps": {
+      "name": "gramps",
+      "project": "https://github.com/gramps-project/gramps",
+      "commit": "e9c09a44791def6a6b81079dc7f8cbe8c7e69cc0",
+      "images": [],
+      "catalog": false
+    },
+    "mgra": {
+      "name": "mgra",
+      "project": "https://github.com/ablab/mgra",
+      "commit": "fb8125f5a507e3b169e89cedd6842a564e222001",
+      "images": [],
+      "catalog": false
+    },
+    "ragout": {
+      "name": "Ragout",
+      "project": "https://github.com/fenderglass/Ragout",
+      "commit": "5f2caaeaf935db6e01aae68ba8b93c46ddf18f10",
+      "images": [],
+      "catalog": false
+    },
+    "fdstools": {
+      "name": "FDSTools",
+      "project": "https://github.com/Jerrythafast/FDSTools",
+      "commit": "5cad6d057fd2f16bd77f9aa2420e920ccfcc7aa6",
+      "images": [],
+      "catalog": false
+    },
+    "megammerge": {
+      "name": "MeGAMerge",
+      "project": "https://github.com/LANL-Bioinformatics/MeGAMerge",
+      "commit": "616ed05b2b3d117a4407b5a8927dc1ab9b44a1f1",
+      "images": [],
+      "catalog": false
+    },
+    "biopython": {
+      "name": "biopython",
+      "project": "https://github.com/biopython/biopython",
+      "commit": "49fefbc675e08f3ab6741896d08397952ce4dd9c",
+      "images": [],
+      "catalog": false
+    },
+    "gatk": {
+      "name": "gatk",
+      "project": "https://github.com/broadinstitute/gatk",
+      "commit": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+      "images": [],
+      "catalog": false
+    },
+    "galaxy": {
+      "name": "galaxy",
+      "project": "https://github.com/galaxyproject/galaxy",
+      "commit": "66760b892698397b0558a28ba168298179ed0444",
+      "images": [],
+      "catalog": false
+    },
+    "vg": {
+      "name": "vg",
+      "project": "https://github.com/vgteam/vg",
+      "commit": "453e6c01bb412186eaa948fd1bb413d45c089f0e",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/vgteam/vg/master/doc/figures/smallgraph.png",
+          "publisher_page": "https://github.com/vgteam/vg/blob/453e6c01bb412186eaa948fd1bb413d45c089f0e/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/vgteam/vg/453e6c01bb412186eaa948fd1bb413d45c089f0e/doc/figures/download-linux.png",
+          "publisher_page": "https://github.com/vgteam/vg/blob/453e6c01bb412186eaa948fd1bb413d45c089f0e/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "khmer": {
+      "name": "khmer",
+      "project": "https://github.com/dib-lab/khmer",
+      "commit": "fb65d21eaedf0d397d49ae3debc578897f9d6eb4",
+      "images": [],
+      "catalog": false
+    },
+    "bioreason": {
+      "name": "BioReason",
+      "project": "https://github.com/bowang-lab/BioReason",
+      "commit": "684ff7c09eb1d65e70925c114a7a05a1fcc0403f",
+      "images": [],
+      "catalog": false
+    },
+    "gpn": {
+      "name": "gpn",
+      "project": "https://github.com/songlab-cal/gpn",
+      "commit": "dc5fd287599f2955a79d010bca0e0f7f8178c67e",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/songlab-cal/gpn/dc5fd287599f2955a79d010bca0e0f7f8178c67e/docs/_static/gpn_star_overview.png",
+          "publisher_page": "https://github.com/songlab-cal/gpn/blob/dc5fd287599f2955a79d010bca0e0f7f8178c67e/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "seqviz": {
+      "name": "seqviz",
+      "project": "https://github.com/Lattice-Automation/seqviz",
+      "commit": "7a0e8f4c45ad5f4d076178f54f08f071e91d7b6a",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/Lattice-Automation/seqviz/7a0e8f4c45ad5f4d076178f54f08f071e91d7b6a/demo/public/seqviz-screenshot.png",
+          "publisher_page": "https://github.com/Lattice-Automation/seqviz/blob/7a0e8f4c45ad5f4d076178f54f08f071e91d7b6a/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "htsjdk": {
+      "name": "htsjdk",
+      "project": "https://github.com/samtools/htsjdk",
+      "commit": "3b92d7b7bbb7046828627dc203a220f9fa560d77",
+      "images": [],
+      "catalog": false
+    },
+    "pyfastx": {
+      "name": "pyfastx",
+      "project": "https://github.com/lmdu/pyfastx",
+      "commit": "7d82c66b1f5d079d6b7d46f878d156cbaa6c01aa",
+      "images": [],
+      "catalog": false
+    },
+    "ugene": {
+      "name": "ugene",
+      "project": "https://github.com/ugeneunipro/ugene",
+      "commit": "559b098575cd281e30f86ff72a5ceea065a700bd",
+      "images": [],
+      "catalog": false
+    },
+    "tmerge": {
+      "name": "tmerge",
+      "project": "https://github.com/guigolab/tmerge",
+      "commit": "5f9dee7d262913ca481716c2845d6e1b12c7bec7",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/guigolab/tmerge/5f9dee7d262913ca481716c2845d6e1b12c7bec7/tmerge1.50dpi.png",
+          "publisher_page": "https://github.com/guigolab/tmerge/blob/5f9dee7d262913ca481716c2845d6e1b12c7bec7/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/guigolab/tmerge/5f9dee7d262913ca481716c2845d6e1b12c7bec7/tmerge1.50dpi.png",
+          "publisher_page": "https://github.com/guigolab/tmerge/blob/5f9dee7d262913ca481716c2845d6e1b12c7bec7/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/guigolab/tmerge/5f9dee7d262913ca481716c2845d6e1b12c7bec7/tmerge2.50dpi.png",
+          "publisher_page": "https://github.com/guigolab/tmerge/blob/5f9dee7d262913ca481716c2845d6e1b12c7bec7/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "nucmerge": {
+      "name": "NucMerge",
+      "project": "https://github.com/uio-bmi/NucMerge",
+      "commit": "0f1f76d20e9e3f6a1642162f150f8eb36e4c41af",
+      "images": [],
+      "catalog": false
+    },
+    "merge-genbank": {
+      "name": "merge-genbank",
+      "project": "https://github.com/bawee/merge-genbank",
+      "commit": "021e53300ce4e4d60e4462e1c2e38e2fc1ad95e3",
+      "images": [],
+      "catalog": false
+    },
+    "genomex-dataexchange": {
+      "name": "GenomeX-DataExchange",
+      "project": "https://github.com/CodeX-HL7-FHIR-Accelerator/GenomeX-DataExchange",
+      "commit": "df269af5f2d69ccf5bf9aad3433a721a1574616a",
+      "images": [],
+      "catalog": false
+    },
+    "vilmaa": {
+      "name": "VILMAA",
+      "project": "https://github.com/mh11/VILMAA",
+      "commit": "59d7c269aeb9f7ddfaf794efd3094879a16a07bd",
+      "images": [],
+      "catalog": false
+    },
+    "splace": {
+      "name": "splace",
+      "project": "https://github.com/reinator/splace",
+      "commit": "16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/reinator/splace/16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2/docs/gifs/splace_welcome_screen.gif",
+          "publisher_page": "https://github.com/reinator/splace/blob/16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/reinator/splace/16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2/docs/gifs/splace_top_menu.png",
+          "publisher_page": "https://github.com/reinator/splace/blob/16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        },
+        {
+          "url": "https://raw.githubusercontent.com/reinator/splace/16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2/docs/gifs/splace_left_menu.gif",
+          "publisher_page": "https://github.com/reinator/splace/blob/16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    },
+    "concatenate-genome": {
+      "name": "concatenate_genome",
+      "project": "https://github.com/sgalla32/concatenate_genome",
+      "commit": "b2afd74909ee9da6451d2b2608c98925a29285f6",
+      "images": [],
+      "catalog": false
+    },
+    "carbon": {
+      "name": "carbon",
+      "project": "https://github.com/huggingface/carbon",
+      "commit": "4ca3ce3e5c55e5821d6068bac5c6e3806027a26f",
+      "images": [],
+      "catalog": false
+    },
+    "hyena-dna": {
+      "name": "hyena-dna",
+      "project": "https://github.com/HazyResearch/hyena-dna",
+      "commit": "d553021b483b82980aa4b868b37ec2d4332e198a",
+      "images": [
+        {
+          "url": "https://raw.githubusercontent.com/HazyResearch/hyena-dna/d553021b483b82980aa4b868b37ec2d4332e198a/assets/pipeline.png",
+          "publisher_page": "https://github.com/HazyResearch/hyena-dna/blob/d553021b483b82980aa4b868b37ec2d4332e198a/README.md",
+          "provenance": "Project-published image: screenshot, diagram or example output; not necessarily a GUI.",
+          "redistribution": "Preview cached locally; rights remain with the upstream image owner."
+        }
+      ],
+      "catalog": false
+    }
+  }
+}

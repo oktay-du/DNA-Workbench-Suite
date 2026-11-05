@@ -1,0 +1,14 @@
+# Tested on Windows x64 / Python 3.12; optional isolated environment.
+biopython==1.88
+contourpy==1.4.0
+cycler==0.12.1
+dna_features_viewer==3.1.5
+fonttools==4.68.0
+kiwisolver==1.5.1
+matplotlib==3.11.2
+numpy==2.5.4
+packaging==26.3
+pillow==13.0.0
+pyparsing==3.3.3
+python-dateutil==4.0.0
+tzdata==2026.6

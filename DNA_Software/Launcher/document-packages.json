@@ -1,0 +1,208 @@
+{
+  "runtime": {
+    "ctranslate2": {
+      "version": "4.8.5",
+      "url": "https://files.pythonhosted.org/packages/cb/84/6a2f815ca1f6f29c3f176902e4b9ddaf7a105e07a822d7740858f331e417/ctranslate2-4.8.5-cp312-cp312-win_amd64.whl",
+      "sha256": "16b1478f9dccd3c6eedb7a1b2e23cb2a41f03976266b71afa1bd9019df7c7014",
+      "bytes": 20407486,
+      "license": "MIT",
+      "source": "https://pypi.org/project/ctranslate2/"
+    },
+    "sentencepiece": {
+      "version": "0.2.2",
+      "url": "https://files.pythonhosted.org/packages/8d/11/753fca2e6b109be3ab7867abf357dfe48677fe726ae5a5363d0b54ca9450/sentencepiece-0.2.2-cp312-cp312-win_amd64.whl",
+      "sha256": "7c6e7bf684dc12145bfa685d3060beaea55139134ba848289bee514ed42e7383",
+      "bytes": 1248030,
+      "license": "Apache-2.0",
+      "source": "https://pypi.org/project/sentencepiece/"
+    },
+    "numpy": {
+      "version": "2.5.4",
+      "url": "https://files.pythonhosted.org/packages/12/33/fefe62073dc8acfd0f2b9ed7c003af2f50aa61555e113e6db02b8f79f145/numpy-2.5.4-cp312-cp312-win_amd64.whl",
+      "sha256": "a7b1b6353e36a7e50de2973a38d705c88ee93adcf120673cee7f45a4a3fa223a",
+      "bytes": 12573091,
+      "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "source": "https://pypi.org/project/numpy/"
+    },
+    "PyYAML": {
+      "version": "6.0.3",
+      "url": "https://files.pythonhosted.org/packages/86/bf/899e81e4cce32febab4fb42bb97dcdf66bc135272882d1987881a4b519e9/pyyaml-6.0.3-cp312-cp312-win_amd64.whl",
+      "sha256": "5fcd34e47f6e0b794d17de1b4ff496c00986e1c83f7ab2fb8fcfe9616ff7477b",
+      "bytes": 154003,
+      "license": "See upstream",
+      "source": "https://pypi.org/project/PyYAML/"
+    },
+    "argostranslate": {
+      "version": "1.11.0",
+      "url": "https://files.pythonhosted.org/packages/85/16/aa4ddcbc3a3fe352ca3046ef90e612147e0604cbc84a2a70e48df4021bb9/argostranslate-1.11.0-py3-none-any.whl",
+      "sha256": "a89b42d82f40843900338f9ac60d4c82fda590b6898247f5d0c15d46731ca7df",
+      "bytes": 41551,
+      "license": "See official distribution license",
+      "source": "https://pypi.org/project/argostranslate/"
+    },
+    "sacremoses": {
+      "version": "0.2.0",
+      "url": "https://files.pythonhosted.org/packages/f6/b7/c00aa54e29f8d79ba8ec22e7c48a1f02fa1b7c55bd1e4429edf7c6ecb231/sacremoses-0.2.0-py3-none-any.whl",
+      "sha256": "d413d118486b3a449f829566b3759a4b33bbc56b12496369316b52708585f594",
+      "bytes": 867756,
+      "license": "See official distribution license",
+      "source": "https://pypi.org/project/sacremoses/"
+    },
+    "click": {
+      "version": "8.5.0",
+      "url": "https://files.pythonhosted.org/packages/58/50/6c0d534c5f134586a8e1ba4e330569e32f057e33372ae556463212fb4cd3/click-8.5.0-py3-none-any.whl",
+      "sha256": "255bc9599cf7748b4b1a446ccc735421bd08a2ae529a8b88597d3de5664ee360",
+      "bytes": 125251,
+      "license": "BSD-3-Clause",
+      "source": "https://pypi.org/project/click/"
+    },
+    "joblib": {
+      "version": "1.6.0",
+      "url": "https://files.pythonhosted.org/packages/18/53/84099323c2ec4be98d935f63c033ac4151ee83836ca1050ede3b3aadf155/joblib-1.6.0-py3-none-any.whl",
+      "sha256": "3dbbf9f6e4b592a2357b854608e980fe6390d131d7a82f011a377ef2ebef7aba",
+      "bytes": 306115,
+      "license": "BSD-3-Clause",
+      "source": "https://pypi.org/project/joblib/"
+    },
+    "regex": {
+      "version": "2026.9.29",
+      "url": "https://files.pythonhosted.org/packages/93/19/489bc8db91196381c935752df01ba3f607140daece33b78d88573f028e64/regex-2026.9.29-cp312-cp312-win_amd64.whl",
+      "sha256": "fdd88ed5e20b1bcdd234421e454962c971aa44b653bdb7f1ea9ef683e90fb649",
+      "bytes": 280334,
+      "license": "Apache-2.0 AND CNRI-Python",
+      "source": "https://pypi.org/project/regex/"
+    },
+    "tqdm": {
+      "version": "4.70.1",
+      "url": "https://files.pythonhosted.org/packages/a7/03/921a3d3c75785aca9ebfbfcabfbc3a1be12e2ab5265deb026d55a5a3f83e/tqdm-4.70.1-py3-none-any.whl",
+      "sha256": "c293e525e6fef9c20e8728fd4612df02a0aa31bb5fe91ecd93e123b1b7bffa73",
+      "bytes": 80199,
+      "license": "See official distribution license",
+      "source": "https://pypi.org/project/tqdm/"
+    },
+    "colorama": {
+      "version": "0.4.6",
+      "url": "https://files.pythonhosted.org/packages/d1/d6/3965ed04c63042e047cb6a3e6ed1a63a35087b6a609aa3a15ed8ac56c221/colorama-0.4.6-py2.py3-none-any.whl",
+      "sha256": "4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6",
+      "bytes": 25335,
+      "license": "See official distribution license",
+      "source": "https://pypi.org/project/colorama/"
+    },
+    "cloudpickle": {
+      "version": "3.1.2",
+      "url": "https://files.pythonhosted.org/packages/88/39/799be3f2f0f38cc727ee3b4f1445fe6d5e4133064ec2e4115069418a5bb6/cloudpickle-3.1.2-py3-none-any.whl",
+      "sha256": "9acb47f6afd73f60dc1df93bb801b472f05ff42fa6c84167d25cb206be1fbf4a",
+      "bytes": 22228,
+      "license": "See distribution license",
+      "source": "https://pypi.org/project/cloudpickle/"
+    }
+  },
+  "models": [
+    {
+      "from": "ar",
+      "to": "en",
+      "version": "1.0",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-ar_en-1_0.argosmodel",
+      "filename": "translate-ar_en-1_0.argosmodel",
+      "bytes": 81869670,
+      "sha256": "bc98cd4e27ca1cebfae9b7086b2ebc635e4dbed45e7cb5f0891cb7d22feacfad",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": false,
+      "quality_note": "Disabled: 2026-11-04 synthetic medical-term smoke test mistranslated lactose intolerance. OCR remains supported."
+    },
+    {
+      "from": "en",
+      "to": "de",
+      "version": "1.3",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-en_de-1_3.argosmodel",
+      "filename": "translate-en_de-1_3.argosmodel",
+      "bytes": 150508297,
+      "sha256": "6cd847f0c06c9c66013e6b0932e07fd54a6d90894659c02bf6c5247b72fb25b1",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": true
+    },
+    {
+      "from": "fr",
+      "to": "en",
+      "version": "1.9",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-fr_en-1_9.argosmodel",
+      "filename": "translate-fr_en-1_9.argosmodel",
+      "bytes": 66585033,
+      "sha256": "3b3052fee6bb1e8e8e632a26a723eb2a2c7710dfe73ba61ffd9b83e85d4f14c1",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": true
+    },
+    {
+      "from": "de",
+      "to": "en",
+      "version": "1.3",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-de_en-1_3.argosmodel",
+      "filename": "translate-de_en-1_3.argosmodel",
+      "bytes": 150512831,
+      "sha256": "becc2b0011f8249fcb89be9ecb75ba0d876b1fab93c28ee6ff0420936897d637",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": true
+    },
+    {
+      "from": "pl",
+      "to": "en",
+      "version": "1.9",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-pl_en-1_9.argosmodel",
+      "filename": "translate-pl_en-1_9.argosmodel",
+      "bytes": 71696499,
+      "sha256": "07eda9edbd6ae5121df7c1d7bd847030423269b8c5056f1c222495c4a81e1721",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": true
+    },
+    {
+      "from": "ru",
+      "to": "en",
+      "version": "1.9",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-ru_en-1_9.argosmodel",
+      "filename": "translate-ru_en-1_9.argosmodel",
+      "bytes": 156239112,
+      "sha256": "e9ba8bf722d10a4a4c39f74289d5938fd47eac08dbe4ed0afd22d89445a5c3ac",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": true
+    },
+    {
+      "from": "es",
+      "to": "en",
+      "version": "1.9",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-es_en-1_9.argosmodel",
+      "filename": "translate-es_en-1_9.argosmodel",
+      "bytes": 285208831,
+      "sha256": "c54df2b62fceaf54a3ce5d97db6bf56efd7940063329f6778f4212d2acb370d4",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": true
+    },
+    {
+      "from": "tr",
+      "to": "en",
+      "version": "1.5",
+      "url": "https://data.argosopentech.com/argospm/v1/translate-tr_en-1_5.argosmodel",
+      "filename": "translate-tr_en-1_5.argosmodel",
+      "bytes": 120561223,
+      "sha256": "15217905586561fac843efb5730aabff9a1534d5a9aa3f6ebcc0f9641394ac2d",
+      "source": "https://github.com/argosopentech/argospm-index",
+      "license": "See model package/upstream terms; weights are not redistributed",
+      "hash_basis": "SHA-256 recorded from HTTPS research download; not an upstream signature",
+      "enabled": true
+    }
+  ],
+  "snapshot": "2026-11-04"
+}

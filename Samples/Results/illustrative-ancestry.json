@@ -1,0 +1,29 @@
+{
+  "person": "DEMO_Alex",
+  "provider": "DNA Workbench SYNTHETIC illustration",
+  "model": "Manually authored map example; not inferred from genotypes",
+  "version": "synthetic-demo-1.1",
+  "data_date": "2026-11-03",
+  "source_note": "Entirely synthetic percentages for software demonstration. No genetic ancestry was calculated.",
+  "regions": [
+    {
+      "name": "Sweden \u00b7 synthetic illustration",
+      "percent": 45,
+      "lat": 60,
+      "lon": 18
+    },
+    {
+      "name": "Japan \u00b7 synthetic illustration",
+      "percent": 35,
+      "lat": 36,
+      "lon": 138
+    },
+    {
+      "name": "Peru \u00b7 synthetic illustration",
+      "percent": 20,
+      "lat": -10,
+      "lon": -75
+    }
+  ],
+  "traits": {}
+}

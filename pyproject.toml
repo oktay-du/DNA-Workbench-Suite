@@ -1,0 +1,10 @@
+[tool.ruff]
+required-version = "==0.17.3"
+target-version = "py312"
+line-length = 88
+
+[tool.ruff.lint]
+select = ["F"]
+
+[tool.ruff.format]
+line-ending = "lf"

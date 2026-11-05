@@ -1,0 +1,180 @@
+.result-state {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  margin: 16px 0;
+  background: #f1f6f8;
+  border-radius: 10px;
+}
+.result-state p {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.heritage-explorer {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.8fr) minmax(270px, 1.35fr);
+  gap: 22px;
+  margin-top: 24px;
+}
+.region:focus-visible {
+  outline: 3px solid #eba751;
+  outline-offset: 3px;
+}
+.region:hover {
+  background: #f2f8f7;
+}
+.culture-controls label {
+  font-size: 13px;
+}
+.culture-controls select {
+  width: 100%;
+  min-width: 0;
+}
+.culture-controls p {
+  line-height: 1.6;
+}
+.culture-controls {
+  margin-bottom: 14px;
+}
+#culture-candidates {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+#culture-candidates button {
+  font-size: 12px;
+  padding: 7px 10px;
+}
+.culture-card {
+  --place-accent: #127f80;
+  border: 1px solid #dce6eb;
+  border-radius: 14px;
+  overflow: hidden;
+  background: white;
+}
+.culture-head {
+  padding: 22px 22px 16px;
+  border-top: 5px solid var(--place-accent);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(125deg, #f0f6f5, #fff);
+}
+.culture-head h3 {
+  font-size: 24px;
+  color: var(--place-accent);
+  position: relative;
+  margin: 8px 0;
+}
+.culture-head small {
+  position: relative;
+}
+.culture-motif {
+  position: absolute;
+  inset: 0 0 0 55%;
+  opacity: 0.12;
+  pointer-events: none;
+  background: repeating-linear-gradient(90deg, transparent 0 24px, var(--place-accent) 24px 27px);
+}
+.culture-motif[data-motif="gable"] {
+  background:
+    repeating-linear-gradient(45deg, transparent 0 24px, var(--place-accent) 24px 27px),
+    repeating-linear-gradient(-45deg, transparent 0 24px, var(--place-accent) 24px 27px);
+}
+.culture-motif[data-motif="arch"] {
+  background: radial-gradient(
+    ellipse at 50% 110%,
+    transparent 45%,
+    var(--place-accent) 46% 49%,
+    transparent 50%
+  );
+  background-size: 70px 110px;
+}
+.culture-motif[data-motif="tiles"] {
+  background: repeating-conic-gradient(from 45deg, var(--place-accent) 0% 25%, transparent 0% 50%);
+  background-size: 38px 38px;
+}
+.culture-motif[data-motif="towers"] {
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0 20px,
+    var(--place-accent) 20px 44px,
+    transparent 44px 58px
+  );
+}
+#culture-image {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+}
+#culture-image[hidden] {
+  display: none;
+}
+.culture-body {
+  padding: 20px 22px;
+}
+.culture-body h4 {
+  font-size: 14px;
+  margin: 18px 0 8px;
+}
+.culture-body p {
+  font-size: 14px;
+  line-height: 1.8;
+  margin: 0;
+}
+.culture-credit {
+  padding: 12px 22px;
+  background: #f4f7f8;
+  font-size: 11px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.culture-credit small {
+  display: block;
+  font-size: 11px;
+}
+.culture-credit strong {
+  font-weight: 600;
+}
+.culture-photo-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 18px;
+}
+.culture-photo-buttons[hidden] {
+  display: none;
+}
+.culture-photo-buttons button {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+.culture-sources {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+  font-size: 12px;
+}
+.context-label {
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  font-weight: 700;
+  color: var(--place-accent);
+}
+@media (max-width: 800px) {
+  .heritage-explorer {
+    grid-template-columns: 1fr;
+  }
+}
+@media print {
+  .culture-controls,
+  .culture-photo-buttons {
+    display: none;
+  }
+  #culture-image {
+    height: 180px;
+    object-fit: contain;
+  }
+}

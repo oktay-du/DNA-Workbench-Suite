@@ -1,0 +1,21 @@
+# Tested on Ubuntu 24.04 / Python 3.12; tools remain optional.
+cloudpickle==3.1.2
+edlib==1.3.9.post1
+intervaltree==3.2.1
+joblib==1.6.0
+markdown-it-py==4.2.0
+mdurl==0.1.2
+numpy==2.5.4
+pandas==3.1.0
+psutil==7.2.2
+pyabpoa==1.5.7.1
+pyarrow==26.0.0
+Pygments==2.21.0
+pysam==0.24.1
+pytabix==0.1
+python-dateutil==4.0.0
+pywfa==0.6.0
+rich==15.0.0
+sortedcontainers==2.4.0
+truvari==5.5.0
+tzdata==2026.6

@@ -1,0 +1,171 @@
+name: Build and synthetic checks
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+      - name: Install synthetic-test dependencies
+        run: python -m pip install -r requirements-dev.txt
+      - name: Synthetic regression checks
+        run: python -m unittest discover -s DNA_Software/Launcher -p "test_*.py"
+      - name: Build Windows application
+        shell: powershell
+        run: .\DNA_Software\Launcher\build.ps1
+      - name: Verify native serialization contracts
+        shell: powershell
+        run: .\scripts\Test-NativeContracts.ps1
+      - name: Stage reviewed public release files
+        shell: powershell
+        run: |
+          python DNA_Software/Launcher/public_package.py
+          python DNA_Software/Launcher/release_tools.py
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          retention-days: 7
+          name: DNA-Workbench-Suite-Windows-x64
+          path: DNAWorkbench_Release/*/*
+
+  script-security:
+    name: PowerShell security and syntax
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Load checksum-pinned PSScriptAnalyzer
+        shell: pwsh
+        run: |
+          $archive = Join-Path $env:RUNNER_TEMP 'PSScriptAnalyzer.zip'
+          Invoke-WebRequest 'https://github.com/PowerShell/PSScriptAnalyzer/releases/download/1.25.0/PSScriptAnalyzer.1.25.0.nupkg' -OutFile $archive
+          if ((Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash -ne '14e634c828eb98efb9f40b2918ba90f139ed5eccdf663a2a747736d996995d60') { throw 'Analyzer checksum mismatch' }
+          $module = Join-Path $env:RUNNER_TEMP 'PSScriptAnalyzer'
+          Expand-Archive -LiteralPath $archive -DestinationPath $module
+          Import-Module (Join-Path $module 'PSScriptAnalyzer.psd1') -Force
+          $rules = @('PSAvoidUsingInvokeExpression','PSAvoidUsingConvertToSecureStringWithPlainText','PSAvoidUsingPlainTextForPassword','PSAvoidUsingUsernameAndPasswordParams','PSUsePSCredentialType')
+          $findings = @()
+          foreach ($file in (git ls-files '*.ps1' '*.psm1' '*.psd1')) {
+            $tokens = $null; $parseErrors = $null
+            [void][System.Management.Automation.Language.Parser]::ParseFile((Resolve-Path -LiteralPath $file), [ref]$tokens, [ref]$parseErrors)
+            if ($parseErrors) { throw ($parseErrors | Out-String) }
+            $findings += @(Invoke-ScriptAnalyzer -Path $file -IncludeRule $rules -ErrorAction Stop)
+          }
+          ConvertTo-Json -InputObject @($findings) -Depth 5 | Set-Content powershell-security.json
+          if ($findings.Count) { $findings | Format-Table -AutoSize; throw 'PowerShell security findings require review' }
+  source-quality:
+    name: Shell, JavaScript and workflow checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Fetch checksum-pinned linters
+        run: |
+          mkdir -p security-tools
+          curl --proto '=https' --tlsv1.2 -fLsS https://github.com/koalaman/shellcheck/releases/download/v0.11.0/shellcheck-v0.11.0.linux.x86_64.tar.gz -o security-tools/shellcheck.tar.gz
+          echo 'b7af85e41cc99489dcc21d66c6d5f3685138f06d34651e6d34b42ec6d54fe6f6  security-tools/shellcheck.tar.gz' | sha256sum --check --strict
+          tar -xzf security-tools/shellcheck.tar.gz -C security-tools --strip-components=1 shellcheck-v0.11.0/shellcheck
+          curl --proto '=https' --tlsv1.2 -fLsS https://github.com/rhysd/actionlint/releases/download/v1.7.12/actionlint_1.7.12_linux_amd64.tar.gz -o security-tools/actionlint.tar.gz
+          echo '8aca8db96f1b94770f1b0d72b6dddcb1ebb8123cb3712530b08cc387b349a3d8  security-tools/actionlint.tar.gz' | sha256sum --check --strict
+          tar -xzf security-tools/actionlint.tar.gz -C security-tools actionlint
+      - name: Check source without running the application
+        run: |
+          git ls-files -z '*.sh' | xargs -0 -r security-tools/shellcheck --severity=warning
+          security-tools/actionlint -shellcheck= -pyflakes=
+          git ls-files -z '*.js' | xargs -0 -r -n 1 node --check
+          python3 - <<'PY'
+          import ast, pathlib, subprocess
+          for name in subprocess.check_output(['git','ls-files','*.py'],text=True).splitlines():
+              ast.parse(pathlib.Path(name).read_text(encoding='utf-8-sig'),filename=name)
+          PY
+
+  code-quality:
+    name: Code quality and benchmarks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '26'
+      - name: Install locked development tools
+        run: |
+          python -m pip install --require-hashes -r requirements-quality.txt
+          npm ci --prefix tools/quality --ignore-scripts --no-audit --no-fund
+      - name: Audit JavaScript tool dependencies
+        run: npm audit --prefix tools/quality
+      - name: Check Python, web sources and duplicate blocks
+        run: |
+          ruff check DNA_Software/Launcher scripts fuzz
+          ruff format --check DNA_Software/Launcher scripts fuzz
+          node tools/quality/run.mjs
+      - name: Synthetic job-view benchmark
+        run: python scripts/Benchmark-Workflows.py --output quality-reports/benchmarks.json
+      - name: Check optional R adapter syntax
+        run: |
+          if ! command -v Rscript >/dev/null; then
+            sudo apt-get update
+            sudo apt-get install --no-install-recommends -y r-base-core
+          fi
+          Rscript --version
+          Rscript --vanilla -e 'for (f in commandArgs(TRUE)) parse(file=f)' DNA_Software/Start/admixtools-gui.R
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        if: always()
+        with:
+          name: source-quality-reports
+          path: quality-reports/
+          retention-days: 7
+  parser-fuzzing:
+    name: Coverage-guided parser fuzzing
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --require-hashes -r requirements-fuzz.txt
+      - name: Fuzz bounded local parsers using synthetic seeds
+        env:
+          PYTHONPATH: DNA_Software/Launcher
+        run: |
+          mkdir -p fuzz-artifacts/corpus fuzz-artifacts/crashes
+          cp fuzz/corpus/gedcom/*.ged fuzz-artifacts/corpus/
+          python fuzz/fuzz_parsers.py fuzz-artifacts/corpus -max_total_time=30 -timeout=3 -rss_limit_mb=1024 -max_len=8192 -artifact_prefix=fuzz-artifacts/crashes/ >fuzz-artifacts/run.log 2>&1
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        if: always()
+        with:
+          name: parser-fuzzing-evidence
+          path: fuzz-artifacts/
+          retention-days: 7
+
+  csharp-analyzers:
+    name: C# build and analyzers
+    runs-on: windows-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
+        with:
+          dotnet-version: '8.0.x'
+      - name: Prepare source and compile with required analyzers
+        run: |
+          python DNA_Software/Launcher/fetch_webview_sdk.py
+          if ($LASTEXITCODE -ne 0) { throw 'SDK preparation failed' }
+          python DNA_Software/Launcher/public_package.py --payload
+          if ($LASTEXITCODE -ne 0) { throw 'Payload preparation failed' }
+          dotnet build DNA_Software/Launcher/DNAWorkbench.csproj --configuration Release --no-incremental
+          if ($LASTEXITCODE -ne 0) { throw 'C# analyzer build failed' }

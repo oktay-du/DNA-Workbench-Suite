@@ -1,0 +1,41 @@
+{
+  "version": "2026-11-04.1",
+  "images": [
+    {
+      "id": "world-atlas-v1",
+      "file": "heritage-art/world-atlas-v1.png",
+      "sha256": "7d414bcc37d71ccb605a6c8f37725c895fcba3d6d7b299d12a1d388baf8a36f1",
+      "bytes": 3999107,
+      "prompt": "Use case illustration-story. Original premium painterly watercolor and gouache world cultural atlas backdrop, wide 3:2 landscape. A geographically recognizable whole world map in soft jade and parchment, surrounded and organically filled with tiny atmospheric illustrative landscape and cultural vignettes spanning ALL continents: European town and forests, African savanna and desert architecture, Asian mountains and courtyard roofs, North American forests and mesas, South American Andes and terraces, Australian red earth and eucalyptus and Pacific islands, Antarctica ice. Harmonious subtle woven ornamental edging. Sophisticated editorial heritage book, warm gold teal terracotta pigments, fine paper grain, no caricatures, no implication of a person's appearance. Rich visual detail, quiet light upper left for later DOM text. No text, labels, numbers, logos, flags with symbols, stock copying. A coherent full page illustration not an icon sheet. Accurate broad continent placement, country borders will be overlaid separately by software.",
+      "generator": "Built-in imagegen",
+      "interpretation": "AI-generated educational illustration, not archaeological documentation or individual genetic reconstruction"
+    },
+    {
+      "id": "lifeways-v1",
+      "file": "heritage-art/lifeways-v1.png",
+      "sha256": "eddee841bf1bce36345ffd5f57f76b039b3b1207bc6de97d49153a2c187ba3b4",
+      "bytes": 4203349,
+      "prompt": "Use case illustration-story. Create original painterly historical educational artwork as a clean 3 column by 2 row contact sheet of SIX equally sized square paintings, zero gutters, no text. Each panel edge-to-edge watercolor/gouache, consistent elegant warm parchment jade teal ochre palette and atmospheric paper grain. Upper left: early settled farmers tending a grain field beside modest dwellings; upper middle: hunter-gatherers gathering edible plants and tracking game at a wooded river clearing, no violence; upper right: fishing community with woven nets and small wooden boats by a coast. Lower left: desert dwellers beside date palms, oasis, adobe shelters and camels; lower middle: pastoral herders with sheep on broad grasslands; lower right: human migration silhouettes walking a broad mountain valley without fixed ethnic facial stereotypes. These are generic symbolic regional lifeway scenes, NOT claims of exact archaeological cultures. Detailed landscapes flow across every panel, no inset frames, text, letters, numbers or logos. Faces are small, clothing modest. Software will crop each cell as a themed backdrop.",
+      "generator": "Built-in imagegen",
+      "interpretation": "AI-generated educational illustration, not archaeological documentation or individual genetic reconstruction"
+    },
+    {
+      "id": "archaic-humans-v1",
+      "file": "heritage-art/archaic-humans-v1.png",
+      "sha256": "ee75371c53c02f867a9d350bced9dc39d1673c4c2eb9a552c69f8c44e1cd071a",
+      "bytes": 3359280,
+      "prompt": "Use case illustration-story. Original museum-quality painterly watercolor and gouache educational art in THREE equal VERTICAL panels side by side, no gutters, no labels, no text. Cohesive atmospheric earth pigment and teal palette, luminous prehistoric landscapes, careful respectful non-caricatured people in small scale. Left third: a Neanderthal-era group by a sheltered rock overhang in a cool Eurasian woodland, shared hearth, simple stone tools, faces not closeups. Middle third: a Denisovan-associated highland cave landscape in Asia, small anonymous human silhouettes at the mouth and sparse archaeological tools; deliberately avoid detailed facial reconstruction because anatomy/appearance is uncertain. Right third: early Homo sapiens in a warm open African landscape near a river, a small group walking and gathering. All scenes are artistic interpretations, not proven faces or genetic portraits. No modern nationality flags, no weapons being used on people, no stock art copying, no UI. Each panel should fill its whole rectangular area and have a little quiet misty upper region for later headings.",
+      "generator": "Built-in imagegen",
+      "interpretation": "AI-generated educational illustration, not archaeological documentation or individual genetic reconstruction"
+    },
+    {
+      "id": "peru-painted-v1",
+      "file": "heritage-art/peru-painted-v1.png",
+      "sha256": "4e28e233f65e7109b5c75ca890d6a7fdfe92c1676b9ab1bfcc455fbaff37b79d",
+      "bytes": 3663446,
+      "prompt": "Use case: illustration-story. Create an original premium full-bleed landscape illustration for a personal heritage storybook page about Peru. Wide 3:2 landscape composition. Beautiful painterly watercolor and gouache, elegant editorial travel art, richly detailed but atmospheric, matte paper grain. One coherent immersive panorama, NOT an icon sheet, collage with separate boxes, infographic or poster. Terraced Machu Picchu and dramatic misty Andean peaks flow across the middle distance. In the lower right a warm stone plaza with Cusco-inspired twin-tower cathedral architecture blending into the landscape. Foreground subtle woven Andean textile borders and a small still-life of ceviche with maize on ceramic ware, one alpaca, two small respectfully portrayed Andean artisans in richly colored contemporary traditional woven clothing. Warm ochre, terracotta, jade, deep teal and muted crimson, luminous golden high-altitude light, cloud wisps and mountain silhouettes extend edge to edge. Leave the upper-left quarter and some left-middle sky quiet light parchment/mist with very little detail for dark UI text overlaid later. Keep important motifs out of that text region. Add restrained red-white-red fabric accents, no coat of arms. The image depicts cultural context, not a claim about an individual's appearance or ancestry. NO text, numbers, letters, watermark, logos, readable labels or UI. No stock-art copying. Reference user wants Peruvian landmarks, food, textiles and alpaca details organically integrated into the entire painted scene.",
+      "generator": "Built-in imagegen",
+      "interpretation": "Artistic combination of distinct locations, not one real view; cultural context, not a personal phenotype."
+    }
+  ]
+}

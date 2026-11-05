@@ -1,0 +1,3005 @@
+{
+  "version": 1,
+  "categories": [
+    "All steps",
+    "Files & sources",
+    "Quality & formats",
+    "WGS & variants",
+    "Sequence tools",
+    "Family & ancestry",
+    "Health & traits",
+    "Reports & management",
+    "Tools & system"
+  ],
+  "tasks": [
+    {
+      "id": "import",
+      "category": "Files & sources",
+      "title": "Import provider datasets",
+      "description": "Assign multiple files to a provider, dataset and a person.",
+      "tools": "SQLite · SHA-256 · Original archive",
+      "action": "import",
+      "fields": [
+        {
+          "key": "files",
+          "label": "Files in this dataset",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        },
+        {
+          "key": "provider",
+          "label": "Provider",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "label",
+          "label": "Dataset name",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "declared_build",
+          "label": "Reference build",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Unknown",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "measurement",
+          "label": "Genotype origin / measurement",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Unknown / mixed",
+            "Measured",
+            "Imputed",
+            "Phased/derived"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "note",
+          "label": "Sample / kit note",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "storage_mode",
+          "label": "File handling",
+          "kind": "choice",
+          "required": true,
+          "help": "Move removes external source files only after the checked and registered destination. Copy them. Existing identical bytes are not re-stored.",
+          "choices": [
+            "Verschieben",
+            "Kopieren"
+          ],
+          "multi": false,
+          "default": "Verschieben"
+        }
+      ],
+      "help": "Import here means locally on your SSD. Move or copy files outside of your personal archive can be selected. Files in your existing personal archive are registered there. SHA-256 detects identical file bytes; repeated vendor imports are documented separately as sources. No genotypes are blindly merged.",
+      "step": 1,
+      "button": "Import locally",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "inventory",
+      "category": "Files & sources",
+      "title": "Register original files",
+      "description": "Select files, create checksums and document origin.",
+      "tools": "SHA-256 · File Register",
+      "action": "inventory",
+      "fields": [
+        {
+          "key": "files",
+          "label": "Original files",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        },
+        {
+          "key": "provider",
+          "label": "Provider",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Unknown",
+            "23andMe",
+            "MyHeritage",
+            "Nebula",
+            "Sequencing.com",
+            "National Geographic",
+            "Andere"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "note",
+          "label": "Sample / source note",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Originals are only read. ZIP content is listed; archives are not overwritten or unpacked unchecked. A selection of people documents your assignment and does not yet prove genetic identity.",
+      "step": 1,
+      "button": "Start job",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "missing",
+      "category": "Files & sources",
+      "title": "Check missing downloads",
+      "description": "Create a checklist for existing and still needed file types.",
+      "tools": "File Register · Provider Checklist",
+      "action": "checklist",
+      "fields": [
+        {
+          "key": "files",
+          "label": "Available files",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        }
+      ],
+      "help": "For a WGS recalculation, FASTQ or BAM/CRAM, index and exact reference are often missing. VCF, gVCF, measured chip data, imputed data and vendor reports are kept separately. The launcher does not upload personal DNA data to vendors.",
+      "step": 2,
+      "button": "Create checklist",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "identity",
+      "category": "Files & sources",
+      "title": "Compare source identity",
+      "description": "Test two VCFs on common SNPs for genotype compliance.",
+      "tools": "BCFtools · Vergleichsskript",
+      "action": "compare",
+      "fields": [
+        {
+          "key": "a",
+          "label": "First-source VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "b",
+          "label": "Second-source VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build_a",
+          "label": "First-source build",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "build_b",
+          "label": "Second-source build",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "Both files must use the same coordinate system and comparable alleles, compared with measured biallelical SNP calls; missing digits remain unknown, high match is a hint, not a single proof of identity, and chip files are prepared beforehand in their own conversion step.",
+      "step": 3,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "inspect",
+      "category": "Quality & formats",
+      "title": "Inspect file format",
+      "description": "Read headers, references, samples and quality statistics.",
+      "tools": "BCFtools · SAMtools · snps",
+      "action": "inspect",
+      "fields": [
+        {
+          "key": "file",
+          "label": "VCF, BAM/CRAM or chip data",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "VCF: header and variant statistics. BAM/CRAM: header and file checker. Chip: format/build detection and error values. No quality values are invented and no original files are changed.",
+      "step": 4,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "vcf_qc",
+      "category": "Quality & formats",
+      "title": "Measure variant quality",
+      "description": "Generate statistics on FILTER, genotypes, depth and quality fields.",
+      "tools": "BCFtools stats",
+      "action": "vcf_qc",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "DP/GQ are not included in every data set. A VCF variant does not show complete genomic coverage. PASS shares of different callers are not a direct ranking of the laboratories.",
+      "step": 5,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "chip_vcf",
+      "category": "Quality & formats",
+      "title": "Convert chip data to VCF",
+      "description": "Transfer measured SNPs with matching FASTA into a documented VCF.",
+      "tools": "snps · pysam",
+      "action": "chip_vcf",
+      "fields": [
+        {
+          "key": "file",
+          "label": "23andMe / MyHeritage raw data or ZIP",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Only actually existing SNP genotypes are output; no imputation, no filling up of unknown positions; I/D codes and inconclusively reproducible entries are counted and omitted; the reference is read from the selected FASTA; a detected deviant build leads to cancellation.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "fastq_qc",
+      "category": "Quality & formats",
+      "title": "Check and filter FASTQ copies",
+      "description": "Check base quality and adapters; generate filtered R1/R2 working copies.",
+      "tools": "fastp",
+      "action": "fastq_qc",
+      "fields": [
+        {
+          "key": "r1",
+          "label": "FASTQ R1 (.fastq.gz)",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "r2",
+          "label": "FASTQ R2 (.fastq.gz)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Paired-end data requires the associated R1 / R2 files. The output can be large. Original reads are preserved. The fastp HTML report documents the applied filters.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "bam_qc",
+      "category": "Quality & formats",
+      "title": "Check reads, mapping and coverage",
+      "description": "Calculate alignment statistics and coverage in your own work folder.",
+      "tools": "SAMtools · mosdepth",
+      "action": "bam_qc",
+      "fields": [
+        {
+          "key": "bam",
+          "label": "BAM or CRAM",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": false,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "For CRAM, the exact matching reference is required; a missing index is created alongside a reference in the work folder, not the original; the analysis evaluates mapping and coverage; an average depth does not replace a region check.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "multiqc",
+      "category": "Quality & formats",
+      "title": "Combine quality reports",
+      "description": "Select a folder with fastp, SAMtools and other quality reports.",
+      "tools": "MultiQC",
+      "action": "multiqc",
+      "fields": [
+        {
+          "key": "folder",
+          "label": "Quality report folder",
+          "kind": "folder",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "MultiQC summarizes supported reports; it does not subsequently calculate missing readings and does not automatically evaluate clinical usability.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "sarek",
+      "category": "WGS & variants",
+      "title": "Reanalyse WGS from FASTQ",
+      "description": "Start a local Sarek pipeline with your reads and reference.",
+      "tools": "Nextflow · nf-core Sarek",
+      "action": "sarek",
+      "fields": [
+        {
+          "key": "r1",
+          "label": "FASTQ R1",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "r2",
+          "label": "FASTQ R2",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "sex",
+          "label": "Chromosome complement for the pipeline",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Not specified",
+            "XX",
+            "XY"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "caller",
+          "label": "Variant caller",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "strelka",
+            "haplotypecaller",
+            "deepvariant"
+          ],
+          "multi": false,
+          "default": "strelka"
+        }
+      ],
+      "help": "This large computational step can run long and take up a lot of SSD space. A new samplesheet with a personal identifier is created. Without additional known variants, the base recalibration is skipped and this is documented in the plan. Sequencing, reference and model must fit the sample.",
+      "step": 6,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "deepvariant",
+      "category": "WGS & variants",
+      "title": "Call variants from alignments",
+      "description": "From BAM/CRAM and a suitable reference, generate a new VCF and gVCF.",
+      "tools": "DeepVariant 1.10 · SAMtools · Docker",
+      "action": "deepvariant",
+      "fields": [
+        {
+          "key": "bam",
+          "label": "BAM or CRAM",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "model",
+          "label": "Model / sequencing technology",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "WGS",
+            "WES",
+            "PACBIO"
+          ],
+          "multi": false,
+          "default": "WGS"
+        }
+      ],
+      "help": "CPU execution with built-in model. Not for chip data. The model must match your reads; WGS is not an automatic confirmation for any sequencing technique. Original alignments remain unchanged.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "normalize",
+      "category": "WGS & variants",
+      "title": "Normalise VCF",
+      "description": "Check reference alleles, align variants to the left and split multiple alleles.",
+      "tools": "BCFtools norm",
+      "action": "normalize",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "It only changes presentation and normalization, and a reference error stops the job, and this step doesn't make a build change and doesn't correct supposedly incorrect genotypes without evidence.",
+      "step": 7,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "filter",
+      "category": "WGS & variants",
+      "title": "Filter variants",
+      "description": "Select FILTER and optionally DP/GQ and generate a new filtered VCF.",
+      "tools": "BCFtools view",
+      "action": "filter",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "pass_only",
+          "label": "FILTER selection",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Pass and unset filter",
+            "PASS only",
+            "All entries"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "dp",
+          "label": "Minimum FORMAT/DP (0 = disabled)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "0"
+        },
+        {
+          "key": "gq",
+          "label": "Minimum FORMAT/GQ (0 = disabled)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "0"
+        }
+      ],
+      "help": "DP/GQ thresholds are used only on request. If these fields are missing, a requested DP/GQ filtering is terminated. The quality of different callers remains separately traceable.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "conflicts",
+      "category": "WGS & variants",
+      "title": "Compare source conflicts",
+      "description": "Shared variants and genotype deviations as a report.",
+      "tools": "BCFtools · Konfliktbericht",
+      "action": "compare",
+      "fields": [
+        {
+          "key": "a",
+          "label": "Normalised first-source VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "b",
+          "label": "Normalised second-source VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build_a",
+          "label": "First-source build",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "build_b",
+          "label": "Second-source build",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "No preferred truth is chosen and nothing is filled in silently. SNPs with different REF/ALT representations do not count as directly comparable. Sources and errors remain separate.",
+      "step": 8,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "merge",
+      "category": "Family & ancestry",
+      "title": "Prepare a multi-sample VCF",
+      "description": "Compile sources as separate samples, with documented sample names.",
+      "tools": "BCFtools merge",
+      "action": "merge",
+      "fields": [
+        {
+          "key": "files",
+          "label": "Normalised VCFs with matching reference",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "The sources are merged as separate sample columns, thus preventing multiple files from becoming an improved common genotype.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "roh",
+      "category": "Family & ancestry",
+      "title": "Find runs of homozygosity",
+      "description": "Calculate ROH with PLINK 1.9 from an appropriate genotype marker panel.",
+      "tools": "PLINK 1.9",
+      "action": "roh",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Requires a representative genotype panel with homozygous reference positions. A pure variant VCF is unsuitable for this. PLINK standard parameters must match the marker density. ROH does not prove an exact parental relationship.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "peddy",
+      "category": "Family & ancestry",
+      "title": "Check VCF and pedigree",
+      "description": "Peddy checks genotype proximity, outliers, and specified family roles.",
+      "tools": "Peddy",
+      "action": "peddy",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "Multi-sample VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "ped",
+          "label": "PED file with matching sample IDs",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "Requires sufficient common measured markers, matching sample identifiers and PED. XX/XY clues and origin PCA are limited estimates, not proof of identity or ancestry.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "whatshap",
+      "category": "WGS & variants",
+      "title": "Phase using sequencing reads",
+      "description": "WhatsHap verwendet passende Reads statt nur statistischer Referenzpanels.",
+      "tools": "WhatsHap",
+      "action": "whatshap",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "alignment",
+          "label": "BAM / CRAM from the same sample",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "VCF, reference, read groups and sample must fit together. Missing phase remains unknown. Source files remain intact.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "truvari",
+      "category": "Quality & formats",
+      "title": "Compare structural variants",
+      "description": "Zwei kompatible SV-VCFs anhand expliziter Parameter vergleichen.",
+      "tools": "Truvari",
+      "action": "truvari",
+      "fields": [
+        {
+          "key": "base",
+          "label": "Comparison baseline (SV VCF)",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "comparison",
+          "label": "Comparison SV VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "The basis is only a truth record if this is independently proven. A comparison of two providers does not prove error-free. Standard SV thresholds may be unsuitable for the caller.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "kinship",
+      "category": "Family & ancestry",
+      "title": "Estimate relatedness",
+      "description": "Calculate KING coefficients for a prepared multi-person VCF.",
+      "tools": "PLINK 2 / KING-Verfahren",
+      "action": "kinship",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "Multi-sample VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Uses autosomal biallelial SNPs and removes markers with many errors. Coefficients are indications of genetic proximity. They are not an automatic pedigree reconstruction and not a legal pedigree.",
+      "step": 9,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "ref_export",
+      "category": "Family & ancestry",
+      "title": "Export a reference panel",
+      "description": "1000 genomes or HGDP for a chromosome as VCF.",
+      "tools": "PLINK 2 · 1000 Genomes / HGDP",
+      "action": "ref_export",
+      "fields": [
+        {
+          "key": "panel",
+          "label": "Reference panel",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "1000 Genomes GRCh38",
+            "HGDP GRCh38"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "chrom",
+          "label": "Chromosome",
+          "kind": "choice",
+          "required": true,
+          "help": "Phasing and local origin are performed per chromosome.",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22"
+          ],
+          "multi": false,
+          "default": "1"
+        }
+      ],
+      "help": "The installed panels are located on GRCh38. They serve as comparison groups; they must not be mixed with GRCh37 target coordinates.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "pca",
+      "category": "Family & ancestry",
+      "title": "Visualise ancestry PCA",
+      "description": "Represent a prepared common cohort after LD thinning as PCA.",
+      "tools": "PLINK 2 · Plotly",
+      "action": "pca",
+      "fields": [
+        {
+          "key": "file",
+          "label": "Common VCF or PLINK .pgen file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "labels",
+          "label": "Population metadata (.psam / CSV / TSV)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "For ancestry comparisons, input must include your samples AND suitable references, export panels if necessary and compile them with harmonised target samples, and without references, the PCA only shows differences within the selected group, and the graph does not produce ethnicity percentages.",
+      "step": 10,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "beagle",
+      "category": "Family & ancestry",
+      "title": "Phase genotypes",
+      "description": "Statistical phasing of associated alleles with an optional reference panel.",
+      "tools": "Beagle 5.5",
+      "action": "beagle",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "map",
+          "label": "Genetic map in Beagle / PLINK format",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "chrom",
+          "label": "Chromosome",
+          "kind": "choice",
+          "required": true,
+          "help": "Phasing and local origin are performed per chromosome.",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22"
+          ],
+          "multi": false,
+          "default": "1"
+        },
+        {
+          "key": "refpanel",
+          "label": "Phased reference panel, VCF.gz",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Additional position imputation is disabled. Phasing is a statistical estimate. Genetic map, reference panel, chromosome name and build must match.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "ibd",
+      "category": "Family & ancestry",
+      "title": "Find shared DNA segments",
+      "description": "Calculate IBD segments from phased genotypes.",
+      "tools": "hap-IBD",
+      "action": "ibd",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "Phased multi-sample VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "map",
+          "label": "Genetic map in PLINK format",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Required phased, comparable markers without missing alleles. Small segments can be uncertain. Genetic segment length in cM and simple base pair distance are different.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "rfmix",
+      "category": "Family & ancestry",
+      "title": "Model local ancestry",
+      "description": "Model origin along a chromosome with labeled reference samples.",
+      "tools": "RFMix 2",
+      "action": "rfmix",
+      "fields": [
+        {
+          "key": "query",
+          "label": "Phased target VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "refpanel",
+          "label": "Phased reference VCF",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "samplemap",
+          "label": "Reference samples and populations",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "map",
+          "label": "Genetic map for RFMix",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "chrom",
+          "label": "Chromosome",
+          "kind": "choice",
+          "required": true,
+          "help": "Phasing and local origin are performed per chromosome.",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22"
+          ],
+          "multi": false,
+          "default": "1"
+        }
+      ],
+      "help": "Requires curated reference populations and correctly phased data, the results depend on the reference selection, according to the project, the license is aimed at academic research; the project license is in the repository.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "ancient",
+      "category": "Family & ancestry",
+      "title": "Explore ancient reference data",
+      "description": "Open ADMIXTOOLS with graphical interface and examine AADR as a reference.",
+      "tools": "ADMIXTOOLS 2 · AADR",
+      "action": "launch",
+      "fields": [],
+      "help": "The interface provides historical models and f-statistics. AADR is under DNA_references. Reference populations and model assumptions must be chosen consciously. Similarity to ancient samples does not prove direct ancestry from a particular person or culture.",
+      "step": 0,
+      "button": "Opening ADMIXTOOLS",
+      "platform": "WSL",
+      "kind": "launch",
+      "core": "Admixtools"
+    },
+    {
+      "id": "mito",
+      "category": "Family & ancestry",
+      "title": "Estimate maternal haplogroup",
+      "description": "Evaluate an mtDNA-VCF with the installed Phylotree.",
+      "tools": "Haplogrep 3",
+      "action": "mito",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF with mitochondrial positions",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "A pure list of variants is not a complete indication of coverage. Missing mtDNA entries must not be considered as safely measured reference bases.",
+      "step": 11,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "yhaplo",
+      "category": "Family & ancestry",
+      "title": "Estimate paternal haplogroup",
+      "description": "Examine Y-DNA data with yhaplo.",
+      "tools": "yhaplo",
+      "action": "yhaplo",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF with Y-chromosome positions",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "The installed yhaplo database uses GRCh37. For GRCh38, first create a validated matching data set. Without sufficiently meaningful Y positions, no reliable allocation is possible.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "opencravat_run",
+      "category": "Health & traits",
+      "title": "Annotate health-related variants",
+      "description": "Annotate ClinVar and gnomAD locally and generate tables.",
+      "tools": "OpenCRAVAT · ClinVar · gnomAD4",
+      "action": "opencravat_run",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "Uses only the local annotators ClinVar and gnomAD4. Contradictory or unclear variants are not diagnoses. A missing entry is not an exclusion of disease. genotype quality and clinical confirmation remain to be assessed separately.",
+      "step": 12,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "vep",
+      "category": "Health & traits",
+      "title": "Annotate genes and transcripts",
+      "description": "Use the local Ensembl VEP cache 116 for GRCh38.",
+      "tools": "Ensembl VEP",
+      "action": "vep",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "The installed cache is GRCh38. GRCh37 files cannot simply be referred to as GRCh38 here. Build change must be validated separately. Consequence predictions are not automatic clinical evaluation.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "pharmcat",
+      "category": "Health & traits",
+      "title": "Explore pharmacogenetics",
+      "description": "Evaluate a suitable GRCh38-VCF with PharmCAT.",
+      "tools": "PharmCAT 3.4",
+      "action": "pharmcat",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        }
+      ],
+      "help": "Requires suitable and sufficiently fully measured genotypes. Unknown positions are not added to reference genotypes by the launcher. Complex genes and structural variants can limit the significance. The report does not replace a medical drug decision.",
+      "step": 13,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "pgs",
+      "category": "Health & traits",
+      "title": "Calculate a polygenic score",
+      "description": "Apply a published weighting model to your prepared genotypes.",
+      "tools": "PGS Catalog Calculator",
+      "action": "pgs",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "score",
+          "label": "PGS weights (.txt / .txt.gz)",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "A model must fit the feature, build, population and question. The launcher calculates scores without re-interpretation into an absolute risk of disease. The weighting file is explicitly selected; missing variants and brand overlap are visible in the pipeline report.",
+      "step": 0,
+      "button": "Start job",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "report",
+      "category": "Reports & management",
+      "title": "Create a research report",
+      "description": "Create a printable source and results report for that person.",
+      "tools": "Local HTML / Markdown report",
+      "action": "report",
+      "fields": [
+        {
+          "key": "note",
+          "label": "Additional personal note",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "The report links the jobs, inputs, versions, and results created in the launcher, it doesn't invent diagnoses and marks the evaluation as a research overview, and in the browser you can print it as a PDF.",
+      "step": 14,
+      "button": "Create report",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "export",
+      "category": "Reports & management",
+      "title": "Export datasets and reports",
+      "description": "Enter reports and supporting documents into a clearly named ZIP.",
+      "tools": "ZIP-Export · SHA-256",
+      "action": "export",
+      "fields": [
+        {
+          "key": "files",
+          "label": "Reports and evidence to export",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        },
+        {
+          "key": "compression_mode",
+          "label": "Compression",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Automatic (recommended)",
+            "Manual"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "packaging",
+          "label": "Manual packaging",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "ZIP",
+            "GZIP (individual file)",
+            "Without archive (folder)"
+          ],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "compression_level",
+          "label": "Manual compression level",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "6 balanced",
+            "1 fast",
+            "9 maximum",
+            "0 uncompressed"
+          ],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Only the explicitly selected files are copied. The same file names are given separate subfolders. The ZIP and the source files are given checksums. Large raw data is not added unasked. Automatic: multiple files as ZIP; already compressed contents are not recompressed. Individual compressed files are copied unchanged. Manually select packaging and level itself. GZIP is a packaging, not a genotype conversion; for indexable VCF exports use the master way.",
+      "step": 15,
+      "button": "Create export",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "versions",
+      "category": "Reports & management",
+      "title": "Installation and versions",
+      "description": "Open the documented installation, tool versions and exams.",
+      "tools": "Installationsregister",
+      "action": "versions",
+      "fields": [],
+      "help": "Shows the stored start tests and public sample runs, which confirm the setup of the tools, not the quality of a personal DNA sample.",
+      "step": 0,
+      "button": "Opening of registers",
+      "platform": "Windows",
+      "kind": "launch"
+    },
+    {
+      "id": "gramps",
+      "category": "Tools & system",
+      "title": "Gramps Desktop",
+      "description": "pedigree, persons, sources and genealogical reports.",
+      "tools": "Gramps Desktop",
+      "action": "launch",
+      "fields": [],
+      "help": "pedigree, persons, sources and genealogical reports.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Gramps"
+    },
+    {
+      "id": "grampsweb",
+      "category": "Tools & system",
+      "title": "Gramps Web",
+      "description": "Interactive pedigree and chromosome views. Create your own local owner account when you first visit.",
+      "tools": "Gramps Web",
+      "action": "launch",
+      "fields": [],
+      "help": "Interactive pedigree and chromosome views. Create your own local owner account when you first visit.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "GrampsWeb"
+    },
+    {
+      "id": "igv",
+      "category": "Tools & system",
+      "title": "IGV Desktop",
+      "description": "Visually control reads, coverage and variants. Select BAM/CRAM including index and appropriate reference in the program.",
+      "tools": "IGV Desktop",
+      "action": "launch",
+      "fields": [],
+      "help": "Visually control reads, coverage and variants. Select BAM/CRAM including index and appropriate reference in the program.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "IGV"
+    },
+    {
+      "id": "jbrowse",
+      "category": "Tools & system",
+      "title": "JBrowse Desktop",
+      "description": "Genome browser with tracks for variants and sequence data.",
+      "tools": "JBrowse Desktop",
+      "action": "launch",
+      "fields": [],
+      "help": "Genome browser with tracks for variants and sequence data.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "JBrowse"
+    },
+    {
+      "id": "ocgui",
+      "category": "Tools & system",
+      "title": "OpenCRAVAT interface",
+      "description": "Local variation interface. Select input files in the interface.",
+      "tools": "OpenCRAVAT interface",
+      "action": "launch",
+      "fields": [],
+      "help": "Local variation interface. Select input files in the interface.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "OpenCRAVAT"
+    },
+    {
+      "id": "hapgui",
+      "category": "Tools & system",
+      "title": "Haplogrep interface",
+      "description": "mtDNA classification with the installed reference tree version.",
+      "tools": "Haplogrep interface",
+      "action": "launch",
+      "fields": [],
+      "help": "mtDNA classification with the installed reference tree version.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Haplogrep"
+    },
+    {
+      "id": "jupyter",
+      "category": "Tools & system",
+      "title": "JupyterLab",
+      "description": "Own analyses, diagrams and notebooks. The local access address appears in the started window.",
+      "tools": "JupyterLab",
+      "action": "launch",
+      "fields": [],
+      "help": "Own analyses, diagrams and notebooks. The local access address appears in the started window.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Jupyter"
+    },
+    {
+      "id": "terminal",
+      "category": "Tools & system",
+      "title": "Ubuntu terminal",
+      "description": "Use all installed Linux commands and start your own SSD container runtime.",
+      "tools": "Ubuntu terminal",
+      "action": "launch",
+      "fields": [],
+      "help": "Use all installed Linux commands and start your own SSD container runtime.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Linux"
+    },
+    {
+      "id": "wslstart",
+      "category": "Tools & system",
+      "title": "Start Ubuntu",
+      "description": "Launches Ubuntu and the container runtime without terminal windows.",
+      "tools": "Start Ubuntu",
+      "action": "launch",
+      "fields": [],
+      "help": "Launches Ubuntu and the container runtime without terminal windows.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Start"
+    },
+    {
+      "id": "wslstop",
+      "category": "Tools & system",
+      "title": "Stop WSL",
+      "description": "Terminate ALL WSL distributions on this computer and the shared paging file, and ongoing WSL evaluations are interrupted.",
+      "tools": "Stop WSL",
+      "action": "launch",
+      "fields": [],
+      "help": "Terminate ALL WSL distributions on this computer and the shared paging file, and ongoing WSL evaluations are interrupted.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "StopAll"
+    },
+    {
+      "id": "backup",
+      "category": "Tools & system",
+      "title": "Back up Ubuntu as TAR",
+      "description": "Finish DNA SSD and write a full WSL export to the SSD, which can take a lot of space.",
+      "tools": "Back up Ubuntu as TAR",
+      "action": "launch",
+      "fields": [],
+      "help": "Finish DNA SSD and write a full WSL export to the SSD, which can take a lot of space.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Export"
+    },
+    {
+      "id": "powershell",
+      "category": "Tools & system",
+      "title": "PowerShell",
+      "description": "Open Windows PowerShell in the SSD Project folder.",
+      "tools": "PowerShell",
+      "action": "launch",
+      "fields": [],
+      "help": "Open Windows PowerShell in the SSD Project folder.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "PowerShell"
+    },
+    {
+      "id": "cmd",
+      "category": "Tools & system",
+      "title": "Windows command prompt",
+      "description": "Open CMD in the SSD project folder.",
+      "tools": "Windows command prompt",
+      "action": "launch",
+      "fields": [],
+      "help": "Open CMD in the SSD project folder.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Cmd"
+    },
+    {
+      "id": "explorer",
+      "category": "Tools & system",
+      "title": "Open SSD project folder",
+      "description": "Open results, orders and input registers in the Explorer.",
+      "tools": "Open SSD project folder",
+      "action": "launch",
+      "fields": [],
+      "help": "Open results, orders and input registers in the Explorer.",
+      "step": 0,
+      "button": "Open",
+      "platform": "Windows / WSL",
+      "kind": "launch",
+      "core": "Explorer"
+    },
+    {
+      "id": "archive_index",
+      "category": "Files & sources",
+      "title": "Register the existing archive",
+      "description": "Include the existing provider subfolders of this person in the database.",
+      "tools": "SQLite · SHA-256",
+      "action": "archive_index",
+      "fields": [],
+      "help": "Read and register the selected person's existing original archive. Files are not copied again. A source group is created per provider folder. Checksums are calculated; large WGS files can take a long time.",
+      "step": 0,
+      "button": "Register profile archive",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "variant_index",
+      "category": "Files & sources",
+      "title": "Index source variants",
+      "description": "Store genotypes and quality fields from selected VCFs separately.",
+      "tools": "SQLite · VCF-Index",
+      "action": "variant_index",
+      "fields": [
+        {
+          "key": "files",
+          "label": "Registered VCF / VCF.gz sources",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        },
+        {
+          "key": "fallback",
+          "label": "Build for sources without metadata",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Source/Unknown",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Import files to source management first. Variants, samples, build, GT, DP, GQ and FILTER remain connected to their source file. Missing calls are not added and conflicting sources are not automatically unified. Large VCFs require time and additional database space.",
+      "step": 0,
+      "button": "Index variants",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "profile_view",
+      "category": "Files & sources",
+      "title": "Evidence-backed DNA profile",
+      "description": "View source quality, XX/XY notes and results per person.",
+      "tools": "Source database · Profile documents",
+      "action": "profile_view",
+      "fields": [],
+      "help": "XX/XY is indicated as a preliminary indication if there are sufficient X/Y markers; if there are too few or conflicting data, it remains indeterminate. The marker test does not confirm a chromosome number. Haplogroups require suitable positions and analysis. ABO/Rh remains unknown without a validated procedure.",
+      "step": 0,
+      "button": "Opening profile",
+      "platform": "Windows",
+      "kind": "launch"
+    },
+    {
+      "id": "family",
+      "category": "Family & ancestry",
+      "title": "Family tree and inheritance",
+      "description": "Link profiles, track mother/father lines and calculate individual genotype inheritances.",
+      "tools": "Lokale Familien-Datenbank · Mendel-Rechner",
+      "action": "family",
+      "fields": [],
+      "help": "Opens the local pedigree page. Parents, children and partners are explicitly linked. Hypothetical individuals remain separate from measurement data. Single-position inheritance requires indexed QC-labeled genotypes marked as measured. No automatic disease, blood type or hair color prediction and no partner compatibility value.",
+      "step": 0,
+      "button": "Opening the Family Page",
+      "platform": "Windows",
+      "kind": "launch"
+    },
+    {
+      "id": "visual",
+      "category": "Family & ancestry",
+      "title": "Ancestry and appearance",
+      "description": "Offline world map, origin parts and schematic avatar with feature probabilities.",
+      "tools": "Lokale Weltkarte · Merkmalsansicht",
+      "action": "visual",
+      "fields": [],
+      "help": "Shows imported structured analysis results separated by person, vendor, model and version. No direct feature prediction from raw DNA yet. Unknown features remain neutral. The avatar is a schematic illustration; not a facial reconstruction.",
+      "step": 0,
+      "button": "Opening up origin and appearance",
+      "platform": "Windows",
+      "kind": "launch"
+    },
+    {
+      "id": "profile_analyze",
+      "category": "Quality & formats",
+      "title": "Compare registered SNP sources",
+      "description": "Compare only already imported genotype sources. Check all file types collected under Prepare files together.",
+      "tools": "SHA-256 · SQLite · Source comparison",
+      "action": "profile_analyze",
+      "fields": [
+        {
+          "key": "target",
+          "label": "Vergleichs-Build",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "GRCh38",
+            "Getrennt belassen"
+          ],
+          "multi": false,
+          "default": "GRCh38"
+        },
+        {
+          "key": "chain",
+          "label": "GRCh37→GRCh38-Chain (leer = Suite-Referenz)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "reference",
+          "label": "GRCh38-FASTA (leer = Suite-Referenz)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Background job. GRCh37 SNPs can be mapped with matching chain and target FASTA for comparison to GRCh38; original coordinates are preserved. Alternatively, keep builds separate. BAM/CRAM/FASTQ, reports and unsupported formats are listed but not interpreted as genotypes. Absent variants are not reference genotypes. Match is not clinical validation. Large files can take a long time.",
+      "step": 0,
+      "button": "Starting with profile analysis",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "profile_generate",
+      "category": "WGS & variants",
+      "title": "Create a cleaned SNP selection",
+      "description": "From the complete profile analysis, a comprehensible best selection of observed SNPs can be generated.",
+      "tools": "SQLite · FASTA · Roundtrip exam",
+      "action": "profile_generate",
+      "fields": [
+        {
+          "key": "analysis",
+          "label": "Completed analysis folder (empty = latest profile analysis)",
+          "kind": "folder",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Only explicitly measured sources of the same build. Conflicts are omitted; individual SNPs require PASS/DP≥10/GQ≥20, otherwise matching sources with at least one VCF. Provider uploads are not automatically independent measurements. No indels/SVs, no imputation, and no complete genome. Outputs: VCF, generic TXT, TSV, exclusion report, and provenance manifest. Activate only after testing as preferred.",
+      "step": 0,
+      "button": "Create SNP selection",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "profile_activate",
+      "category": "WGS & variants",
+      "title": "Prefer tested SNP selection",
+      "description": "Register validated editions and prefer for suitable SNP tools.",
+      "tools": "SHA-256 · Source history",
+      "action": "profile_activate",
+      "fields": [
+        {
+          "key": "folder",
+          "label": "Result folder of the SNP selection",
+          "kind": "folder",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Re-checks sources and result checksums. Originals are preserved and marked as used in the selection. Priority is given to SNP-QC, ROH, Beagle and PGS. Complete original WGS files remain necessary for indels/SVs and comprehensive health analyses.",
+      "step": 0,
+      "button": "Activate preferred set",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "liftover_snps",
+      "category": "WGS & variants",
+      "title": "GRCh37 ↔ GRCh38 · Convert SNP coordinates",
+      "description": "Convert uniquely mapped SNP calls with target FASTA and Chain.",
+      "tools": "PyLiftover 0.4.1 · FASTA",
+      "action": "liftover_snps",
+      "fields": [
+        {
+          "key": "file",
+          "label": "VCF or chip SNP file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "target",
+          "label": "Ziel-Build",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "GRCh38",
+            "GRCh37"
+          ],
+          "multi": false,
+          "default": "GRCh38"
+        },
+        {
+          "key": "chain",
+          "label": "Passende LiftOver-Chain (.chain.gz)",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Only SNPs, no indels/SVs, gVCF blocks, phase or reads. Reverse strand is complemented and GT is recoded against the target reference. Ambiguous/unmapped locations and target collisions are reported. No resequencing and no coverage addition.",
+      "step": 0,
+      "button": "Start SNP liftover",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "profile_refresh",
+      "category": "Quality & formats",
+      "title": "Renew Best Selection",
+      "description": "Re-analyze profile sources, create SNP selection and replace current selections.",
+      "tools": "Profile pipeline · source portions",
+      "action": "profile_refresh",
+      "fields": [],
+      "help": "New imports only show a hint. Only the button creates a renewal order. It starts immediately or waits behind running orders. Analysis, creation and activation are part of this explicitly started order. Previous orders remain as a history; current.json is switched to the new validated version. If there are errors, the previous version remains.",
+      "step": 0,
+      "button": "Refresh now",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "storybook",
+      "category": "Reports & management",
+      "title": "Export a haplogroup storybook",
+      "description": "Mother line, father line, Neanderthal and today as an illustrated PDF with sources.",
+      "tools": "ReportLab · local provider reports",
+      "action": "storybook",
+      "fields": [
+        {
+          "key": "maternal_report",
+          "label": "Maternal Haplogroup Report (PDF)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "paternal_report",
+          "label": "Paternal Haplogroup Report (PDF)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "archaic_report",
+          "label": "Neanderthal report (PDF)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "language",
+          "label": "Output language",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "English",
+            "German"
+          ],
+          "multi": false,
+          "default": "English"
+        }
+      ],
+      "help": "Supports personal 23andMe haplogroup and Neanderthal reports. Missing or unknown data is still in progress. Routes are broad, schematic regional models from the selected reports, no journeys of individual ancestors. 45% customer comparison is not a DNA component. No new haplogroup calculation.",
+      "step": 0,
+      "button": "Create storybook",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "helix_export",
+      "category": "Reports & management",
+      "title": "Exporting Personal 3D-DNA Helix",
+      "description": "30 coherent Q30 bases from a FASTQ read as labeled STL and colored 3MF.",
+      "tools": "Manifold3D · NumPy · local reads",
+      "action": "helix_export",
+      "fields": [
+        {
+          "key": "file",
+          "label": "FASTQ / FASTQ.gz",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "A contiguous observed read piece, no composite VCF SNPs and no validated personal haplotype; base pair teaching model and schematic backbone; no atomic molecular model; STL is geometrically combined and tested; printer and material may require supports or adjustments.",
+      "step": 0,
+      "button": "Create 3D print files",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "avatar_pack",
+      "category": "Reports & management",
+      "title": "Prepare photo avatar",
+      "description": "Export profile photo, uniform style and optional proven origin in a local design package.",
+      "tools": "Profile photo · Prompt · Sources Manifesto",
+      "action": "avatar_pack",
+      "fields": [
+        {
+          "key": "include_ancestry",
+          "label": "Include origin in design",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "No",
+            "Yes"
+          ],
+          "multi": false,
+          "default": "No"
+        }
+      ],
+      "help": "Select profile photo first under My Profile. Export photo, design prompt and selected structured origin results as ZIP. The small text AI does not produce images. An image generator is required for rendering; finished PNG/JPEG can be selected as profile photo. No genetic facial reconstruction.",
+      "step": 0,
+      "button": "Export design package",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "sequence_stats",
+      "category": "Sequence tools",
+      "title": "Inspect FASTA / FASTQ",
+      "description": "Test sequence lengths, GC, unknown bases and FASTQ quality with visible sample size.",
+      "tools": "Local sequence statistics · Biopython",
+      "action": "sequence_stats",
+      "fields": [
+        {
+          "key": "files",
+          "label": "FASTA / FASTQ files",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        },
+        {
+          "key": "read_limit",
+          "label": "Maximum FASTQ reads to inspect",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "10000"
+        }
+      ],
+      "help": "FASTA is read in full. FASTQ is limited by default to 10,000 reads. Sequence numbers and Q30 bases are not verified genotypes, WGS coverage, and clinical quality certificate. Originals remain unchanged.",
+      "step": 0,
+      "button": "Create sequence statistics",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "fasta_collect",
+      "category": "Sequence tools",
+      "title": "Create a FASTA collection",
+      "description": "Merge FASTA entries with unique identifiers, source list and optional sequence deduplication.",
+      "tools": "Streaming · SQLite · SHA-256",
+      "action": "fasta_collect",
+      "fields": [
+        {
+          "key": "files",
+          "label": "FASTA files",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": true,
+          "default": ""
+        },
+        {
+          "key": "deduplicate",
+          "label": "Remove identical sequences",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "No",
+            "Yes"
+          ],
+          "multi": false,
+          "default": "No"
+        }
+      ],
+      "help": "Depends on sequence entries; no alignment, no variant consensus and no genome error correction; each output is given a unique identifier, the old header is in the source list; it is not automatically registered as a best selection.",
+      "step": 0,
+      "button": "Create FASTA collection",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "sequence_extract",
+      "category": "Sequence tools",
+      "title": "Extract a sequence interval",
+      "description": "Read a section from FASTA or FASTQ; index and output remain in the order.",
+      "tools": "pyfastx",
+      "action": "sequence_extract",
+      "fields": [
+        {
+          "key": "file",
+          "label": "FASTA / FASTQ file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "record",
+          "label": "Sequence record (blank = first record)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "start",
+          "label": "Start (1-based, inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1"
+        },
+        {
+          "key": "end",
+          "label": "End (inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1000"
+        }
+      ],
+      "help": "Coordinates refer to the selected sequence entry, not to a random reference build, up to 5 million bases per section. The index is created in the order folder. A large genome/FASTQ index can take time and a lot of SSD space.",
+      "step": 0,
+      "button": "Extract interval",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "sequence_transform",
+      "category": "Sequence tools",
+      "title": "Reverse Complement / Translation",
+      "description": "Complement a selected section or translate it in the first reading frame.",
+      "tools": "Biopython · pyfastx",
+      "action": "sequence_transform",
+      "fields": [
+        {
+          "key": "file",
+          "label": "FASTA / FASTQ file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "record",
+          "label": "Sequence record (blank = first record)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "start",
+          "label": "Start (1-based, inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1"
+        },
+        {
+          "key": "end",
+          "label": "End (inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1000"
+        },
+        {
+          "key": "operation",
+          "label": "Sequence operation",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Reverse complement",
+            "Translate frame 1"
+          ],
+          "multi": false,
+          "default": "Reverse complement"
+        }
+      ],
+      "help": "Translation uses the standard code and explicitly selected section, incomplete final codons are documented and omitted, no gene discovery, disease prediction or profile change.",
+      "step": 0,
+      "button": "Transform sequence",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "seqviz_view",
+      "category": "Sequence tools",
+      "title": "View sequence with SeqViz",
+      "description": "Linear and circular sequence view locally in the EXE; additionally offline export.",
+      "tools": "SeqViz · pyfastx",
+      "action": "seqviz_view",
+      "fields": [
+        {
+          "key": "file",
+          "label": "FASTA / FASTQ file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "record",
+          "label": "Sequence record (blank = first record)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "start",
+          "label": "Start (1-based, inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1"
+        },
+        {
+          "key": "end",
+          "label": "End (inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1000"
+        }
+      ],
+      "help": "Up to 50,000 bases per view. DNA remains local, no automatic transfer to project sites. A representation is not a check of genetic identity or variant quality. The interactive view opens from the finished job.",
+      "step": 0,
+      "button": "Create SeqViz view",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "gatk_validate",
+      "category": "Quality & formats",
+      "title": "Validate VCF with GATK",
+      "description": "Check format, alleles and reference compliance of a VCF with matching FASTA.",
+      "tools": "GATK · SAMtools",
+      "action": "gatk_validate",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "build",
+          "label": "Reference genome",
+          "kind": "choice",
+          "required": true,
+          "help": "The coordinate system, not the measurement or download year.",
+          "choices": [
+            "Please select",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "multi": false,
+          "default": "Please select"
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": true,
+          "help": "Must match the input file. In addition, check the original laboratory reference / checksum for CRAM.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "ValidateVariants checks structure and reference consistency, not the biological correctness of all genotypes. Without dbSNP, the IDS comparison is omitted.",
+      "step": 0,
+      "button": "Start GATK validation",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "ugene",
+      "category": "Tools & system",
+      "title": "Opening the UGEN",
+      "description": "Optional portable sequence and alignment surface start.",
+      "tools": "UGENE",
+      "action": "ugene",
+      "fields": [
+        {
+          "key": "file",
+          "label": "Open file in UGENE (optional)",
+          "kind": "file",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Separate GPL application; download and install via the dependencies menu. Starts only on explicit click. Save projects and exports in the app folder.",
+      "step": 0,
+      "button": "Start UGENE",
+      "platform": "Windows",
+      "kind": "launch"
+    },
+    {
+      "id": "provider_export",
+      "category": "Files & sources",
+      "title": "Inspect 23andMe exports",
+      "description": "Check report, origin segments, pedigree JSON, raw data, R6 or phased data as separate sources.",
+      "tools": "Local export parser",
+      "action": "provider_export",
+      "fields": [
+        {
+          "key": "file",
+          "label": "23andMe export file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "export_kind",
+          "label": "Export type",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Detect automatically",
+            "Reports Summary",
+            "Ancestry Composition CSV",
+            "Family Tree JSON",
+            "Raw Data TXT",
+            "Imputed Genotype Data R6",
+            "Phased Genotype Data"
+          ],
+          "multi": false,
+          "default": "Detect automatically"
+        }
+      ],
+      "help": "PDF is a report, CSV contains origin segments, JSON is first inventoried structurally. Unknown tree schemes do not generate family links. R6 is imputed and exclusively for research; phasing is no further measurement. ZIP with several VCFs is extracted first individually. Edition: JSON and HTML in the order folder; no automatic profile change.",
+      "step": 0,
+      "button": "Examining exports",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "fastq_report",
+      "category": "Quality & formats",
+      "title": "FASTQ quality report without copying reads",
+      "description": "Check all selected FASTQ reads with fastp; save only HTML/JSON reports.",
+      "tools": "fastp",
+      "action": "fastq_report",
+      "fields": [
+        {
+          "key": "r1",
+          "label": "FASTQ R1",
+          "kind": "file",
+          "required": true,
+          "multi": false
+        },
+        {
+          "key": "r2",
+          "label": "FASTQ R2",
+          "kind": "file",
+          "required": false,
+          "multi": false
+        }
+      ],
+      "help": "Report-only: original reads remain unchanged. No filtered FASTQ copies or inferred genotypes.",
+      "step": 0,
+      "button": "Create report",
+      "platform": "WSL",
+      "kind": "analysis"
+    },
+    {
+      "id": "variant_convert",
+      "category": "Quality & formats",
+      "title": "Repack VCF / BCF",
+      "description": "Convert variant formats without adding genotypes or relabelling reference builds.",
+      "tools": "BCFtools",
+      "action": "variant_convert",
+      "platform": "WSL",
+      "kind": "analysis",
+      "step": 0,
+      "button": "Convert",
+      "help": "VCF, VCF.gz (BGZF) or BCF. Only the display is converted; no liftover, no error correction and no missing reads are generated. Original remains. The header is checked by the BCFtools parser in the course.",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / BCF",
+          "kind": "file",
+          "required": true,
+          "multi": false
+        },
+        {
+          "key": "output_format",
+          "label": "Output format",
+          "kind": "choice",
+          "required": true,
+          "default": "VCF.gz (BGZF)",
+          "choices": [
+            "VCF.gz (BGZF)",
+            "VCF",
+            "BCF"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "best_dataset",
+      "category": "Files & sources",
+      "title": "Build / renew BestDataset",
+      "description": "Compare imported sources, select supported observed SNPs and publish a preferred versioned dataset with provenance.",
+      "tools": "Lokale SNP-Pipeline · SHA-256",
+      "action": "best_dataset",
+      "platform": "Windows",
+      "kind": "analysis",
+      "step": 0,
+      "button": "Build BestDataset",
+      "help": "No perfect or complete genome reconstruction. Conflicts, unknown measurements and missing positions are not invented. Current issue: VCF/TXT/TSV and GZIP, provenance per SNP and source; Reads/Alignments remain linked original sources. BCF/PLINK via explicit conversion. Previous versions are preserved. Only the button starts the update.",
+      "fields": [
+        {
+          "key": "build",
+          "label": "Ziel-Build",
+          "kind": "choice",
+          "required": true,
+          "choices": [
+            "Automatic",
+            "GRCh37",
+            "GRCh38"
+          ],
+          "default": "Automatic"
+        },
+        {
+          "key": "reference",
+          "label": "Matching reference FASTA",
+          "kind": "file",
+          "required": false,
+          "multi": false
+        },
+        {
+          "key": "chain",
+          "label": "Passende LiftOver-Chain (.chain.gz)",
+          "kind": "file",
+          "required": false,
+          "multi": false
+        }
+      ]
+    },
+    {
+      "id": "research_synthesis",
+      "category": "Reports & management",
+      "title": "Create a combined research report",
+      "description": "Compile source reports, local tests and final profiles with proof of origin.",
+      "tools": "Local evidence synthesis · ReportLab",
+      "action": "research_synthesis",
+      "platform": "Windows",
+      "kind": "analysis",
+      "step": 0,
+      "button": "Create combined report",
+      "fields": [],
+      "help": "Chip data can be used for suitable measured positions. Non-comparable origin models, diseases or risk scores are not blindly averaged. Documented comparable model metadata and marker-related weights are a prerequisite for an exploratory numerical summary. Original reports are preserved."
+    },
+    {
+      "id": "variant_evidence_audit",
+      "category": "Quality & formats",
+      "title": "Audit variant evidence",
+      "description": "Read every VCF record and account for no-calls, filters, ploidy and selected-sample evidence.",
+      "tools": "Local VCF accounting · Python",
+      "action": "variant_evidence_audit",
+      "fields": [
+        {
+          "key": "vcf",
+          "label": "VCF / VCF.gz",
+          "kind": "file",
+          "required": true,
+          "help": "Variants file. Original remains unchanged; results end up in the order folder.",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "sample",
+          "label": "VCF sample (required when multiple samples exist)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "VCF 4.1–4.5, plain or gzip/BGZF. Reports counts without exporting genotypes. No automatic first-sample choice, allele truncation, diagnosis, deduplication or WGS completeness claim. Use BCF conversion first for binary files.",
+      "step": 0,
+      "button": "Audit VCF",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "sequence_explore",
+      "category": "Sequence tools",
+      "title": "Explore six frames & motifs",
+      "description": "Explore both strands, six reading frames, IUPAC motifs and sequence composition.",
+      "tools": "Biopython · pyfastx",
+      "action": "sequence_explore",
+      "fields": [
+        {
+          "key": "file",
+          "label": "FASTA / FASTQ file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "record",
+          "label": "Sequence record (blank = first record)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "start",
+          "label": "Start (1-based, inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1"
+        },
+        {
+          "key": "end",
+          "label": "End (inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1000"
+        },
+        {
+          "key": "motif",
+          "label": "IUPAC motif (optional, up to 64 bases)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "genetic_code",
+          "label": "Genetic code",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "1",
+            "2"
+          ],
+          "multi": false,
+          "default": "1"
+        }
+      ],
+      "help": "At most 100,000 bases. Code 1 is standard; code 2 is vertebrate mitochondrial. Neither code nor biological origin is inferred. Overlapping motif hits retain uncertainty, strand and interval coordinates. Export HTML, JSON and six protein frames; no gene prediction.",
+      "step": 0,
+      "button": "Explore sequence",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "model_readiness",
+      "category": "Sequence tools",
+      "title": "Check sequence model inputs",
+      "description": "Check sequence length and ambiguity against five long-range benchmark tasks before installing models.",
+      "tools": "Local readiness check · pyfastx",
+      "action": "model_readiness",
+      "fields": [
+        {
+          "key": "file",
+          "label": "FASTA / FASTQ file",
+          "kind": "file",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "record",
+          "label": "Sequence record (blank = first record)",
+          "kind": "text",
+          "required": false,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        },
+        {
+          "key": "start",
+          "label": "Start (1-based, inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1"
+        },
+        {
+          "key": "end",
+          "label": "End (inclusive)",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": "1000"
+        },
+        {
+          "key": "model_task",
+          "label": "Benchmark task",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Enhancer–target gene",
+            "eQTL",
+            "Contact map",
+            "Regulatory activity",
+            "Transcription initiation"
+          ],
+          "multi": false,
+          "default": "Enhancer–target gene"
+        }
+      ],
+      "help": "Reports required input length and evaluation metric from DNALongBench. No weights or reference datasets are downloaded. This does not execute AI inference, estimate GPU memory or establish personal health validity.",
+      "step": 0,
+      "button": "Check model input",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "dna_message",
+      "category": "Sequence tools",
+      "title": "DNA message studio",
+      "description": "Encode UTF-8 text into an educational DNA alphabet, or decode the same format.",
+      "tools": "Local UTF-8 / 2-bit encoding",
+      "action": "dna_message",
+      "fields": [
+        {
+          "key": "mode",
+          "label": "Operation",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "Encode text",
+            "Decode DNA"
+          ],
+          "multi": false,
+          "default": "Encode text"
+        },
+        {
+          "key": "text",
+          "label": "Text or encoded DNA",
+          "kind": "text",
+          "required": true,
+          "help": "",
+          "choices": [],
+          "multi": false,
+          "default": ""
+        }
+      ],
+      "help": "Maximum 4096 UTF-8 bytes or 16,384 DNA symbols. Export a FASTA and a source receipt. This is reversible encoding, not encryption, laboratory synthesis or personal genetic data.",
+      "step": 0,
+      "button": "Create message",
+      "platform": "Windows",
+      "kind": "analysis"
+    },
+    {
+      "id": "agent_handoff",
+      "category": "Tools & system",
+      "title": "Export agent workspace",
+      "description": "Create a local evidence snapshot and typed command guide for an external or local AI assistant.",
+      "tools": "Versioned JSON · Shared command registry",
+      "action": "agent_handoff",
+      "fields": [
+        {
+          "key": "include_quotes",
+          "label": "Include report quotations and profile details",
+          "kind": "choice",
+          "required": true,
+          "help": "",
+          "choices": [
+            "No",
+            "Yes"
+          ],
+          "multi": false,
+          "default": "No"
+        }
+      ],
+      "help": "Uses the active profile. Default export omits report quotations and detailed personal metadata. No raw genotype files or control credentials are included. Review the output before sharing; this action does not contact an AI provider.",
+      "step": 0,
+      "button": "Export agent context",
+      "platform": "Windows",
+      "kind": "analysis"
+    }
+  ]
+}

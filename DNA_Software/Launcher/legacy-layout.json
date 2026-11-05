@@ -1,0 +1,87 @@
+{
+  "directories": {
+    "DNA_Projekte": "Projects",
+    "DNA_Referenzen": "References",
+    "Benutzerdaten": "UserData",
+    "Protokolle": "Logs",
+    "Ergebnisse": "Results",
+    "Quellen": "Sources",
+    "Launcher_Importe": "Imports",
+    "Datenbanken": "Databases",
+    "Quellarchive": "SourceArchives",
+    "Quellcode_Recherche": "ResearchSources"
+  },
+  "files": {
+    "eingaben.json": "inputs.json",
+    "auftrag.json": "job.json",
+    "analyse.json": "analysis.json",
+    "familie.sqlite": "family.sqlite",
+    "pruefergebnis.json": "inspection.json",
+    "quellenanteile.tsv": "source-contributions.tsv",
+    "quellenanteile.json": "source-contributions.json",
+    "quelle.json": "source.json",
+    "ergebnisuebersicht.html": "results-overview.html",
+    "pruefstatus.json": "inspection-status.json",
+    "aktivierung.json": "activation.json",
+    "aktualisierung.json": "refresh.json",
+    "archiv_register.json": "archive-register.json",
+    "auftraege.json": "jobs.json",
+    "befehl.txt": "command.txt",
+    "bericht.html": "report.html",
+    "chip_statistik.json": "chip-statistics.json",
+    "dateiregister.json": "file-register.json",
+    "dienst.json": "service.json",
+    "DNA-Konsens-Vorbereitung.json": "DNA-consensus-preparation.json",
+    "DNA-Vergleich-Belege.json": "DNA-comparison-evidence.json",
+    "einstellungen.json": "settings.json",
+    "export_pruefsummen.json": "export-checksums.json",
+    "filter_statistik.txt": "filter-statistics.txt",
+    "fir-kandidaten.csv": "fir-candidates.csv",
+    "gedcom-suche.csv": "gedcom-search.csv",
+    "gemeinsame-matches.csv": "shared-matches.csv",
+    "gemeinsame-vorfahren.csv": "shared-ancestors.csv",
+    "haplogruppen.txt": "haplogroups.txt",
+    "quellen.sqlite": "sources.sqlite"
+  },
+  "status_values": {
+    "Läuft": "Running",
+    "Wartet": "Queued",
+    "Abgeschlossen": "Complete",
+    "Fehlgeschlagen": "Failed",
+    "Abgebrochen": "Cancelled",
+    "Vorschau": "Preview",
+    "vorbereitet": "Preparing"
+  },
+  "choice_values": {
+    "measurement": {
+      "Unbekannt / gemischt": "Unknown / mixed"
+    },
+    "provider": {
+      "Automatisch erkennen": "Detect automatically",
+      "Anderes Labor": "Other laboratory"
+    },
+    "export_kind": {
+      "Automatisch erkennen": "Detect automatically"
+    },
+    "pass_only": {
+      "Nur PASS": "PASS only"
+    },
+    "compression_mode": {
+      "Manuell": "Manual",
+      "Automatisch (empfohlen)": "Automatic (recommended)"
+    },
+    "compression_level": {
+      "6 ausgewogen": "6 balanced",
+      "1 schnell": "1 fast",
+      "9 stark": "9 maximum",
+      "0 ohne Komprimierung": "0 uncompressed"
+    },
+    "deduplicate": {
+      "Nein": "No",
+      "Ja": "Yes"
+    },
+    "language": {
+      "Deutsch": "German"
+    }
+  }
+}

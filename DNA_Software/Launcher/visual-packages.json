@@ -1,0 +1,53 @@
+{
+  "genomespy": {
+    "kind": "npm",
+    "package": "@genome-spy/core",
+    "version": "1.2.0",
+    "url": "https://registry.npmjs.org/@genome-spy/core/-/core-1.2.0.tgz",
+    "integrity": "sha512-E+TWMtFfqj3OihZX0WVMoHLKTdnk4laECR7eL7SBHCyJuonojHAFfZDueXCoyhUFuO+njT5VpwL/zjqZvSQcig==",
+    "entry": "dist/bundle/index.es.js"
+  },
+  "igvjs": {
+    "kind": "npm",
+    "package": "igv",
+    "version": "3.8.10",
+    "url": "https://registry.npmjs.org/igv/-/igv-3.8.10.tgz",
+    "integrity": "sha512-foqT9SJHoKvVXl7euYUsOy7XMs1nTrPeJMQbGRp7qWU7a6HzF345FER/nHUTdsL5cumaoAe19gDmJYsEHO08rw==",
+    "entry": "dist/igv.esm.min.js"
+  },
+  "jbrowse": {
+    "kind": "zip",
+    "version": "4.3.0",
+    "url": "https://github.com/GMOD/jbrowse-components/releases/download/v4.3.0/jbrowse-web-v4.3.0.zip",
+    "sha256": "a9d42417102ee088a1cbf85c6d857c1065d66984ea6c56f3115ef9dd56d76702",
+    "entry": "index.html"
+  },
+  "pygenomeviz": {
+    "kind": "pip",
+    "package": "pygenomeviz",
+    "version": "1.7.0",
+    "entry": "venv/Scripts/python.exe",
+    "module": "pygenomeviz"
+  },
+  "pycirclize": {
+    "kind": "pip",
+    "package": "pycirclize",
+    "version": "1.10.1",
+    "module": "pycirclize",
+    "entry": "venv/Scripts/python.exe"
+  },
+  "dnafeaturesviewer": {
+    "kind": "pip",
+    "package": "dna_features_viewer",
+    "version": "3.1.5",
+    "module": "dna_features_viewer",
+    "entry": "venv/Scripts/python.exe"
+  },
+  "seqviz": {
+    "kind": "npm",
+    "version": "3.10.25",
+    "url": "https://registry.npmjs.org/seqviz/-/seqviz-3.10.25.tgz",
+    "integrity": "sha512-qq2pzNuJRLMzebieI4W6I9LxuD6JGXTDvujQTQ1SBoCUknpOLJkZp1KagkPLcDX7TJqQ5l+m9G5ICy4VKpckNA==",
+    "entry": "dist/seqviz.min.js"
+  }
+}

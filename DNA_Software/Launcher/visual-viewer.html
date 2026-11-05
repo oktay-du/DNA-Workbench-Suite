@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en"
+  ><meta charset="utf-8" /><meta name="viewport" content="width=device-width" /><title
+    >DNA · Genomansicht</title
+  >
+  <style>
+    body {
+      margin: 0;
+      background: #f4f7fa;
+      color: #193047;
+      font:
+        15px Segoe UI,
+        Arial;
+    }
+    header {
+      padding: 20px 26px;
+      background: #15283d;
+      color: white;
+    }
+    h1 {
+      font-size: 24px;
+      margin: 0 0 8px;
+    }
+    #meta {
+      color: #bfddd9;
+    }
+    #notice {
+      margin: 18px 24px;
+      padding: 14px;
+      background: #fff3d9;
+      border-left: 4px solid #e8ad40;
+      white-space: pre-line;
+    }
+    #view {
+      background: white;
+      margin: 18px 24px;
+      padding: 16px;
+      min-height: 350px;
+    }
+    a {
+      color: #00877e;
+    }
+    button {
+      padding: 9px 16px;
+      border: 0;
+      background: #00877e;
+      color: white;
+      cursor: pointer;
+    }
+    .error {
+      color: #a12222;
+      white-space: pre-wrap;
+    }
+    img {
+      max-width: 100%;
+    }
+    #status {
+      padding: 0 24px;
+    }
+  </style>
+  <header><h1 id="title"></h1><div id="meta"></div></header
+  ><div id="notice"></div
+  ><p id="status">Local view is being prepared ...</p
+  ><div id="view"></div>
+  <script type="module">
+    const run = __RUN__;
+    const assetRoot = new URLSearchParams(location.search).has("native")
+      ? "https://dna-assets.local"
+      : "/tool-assets";
+    document.querySelector("#title").textContent = {
+      genomespy: "GenomeSpy · Variants and Features",
+      igvjs: "IGV · Local genome browser",
+      jbrowse: "JBrowse · Local genome browser",
+      pygenomeviz: "pyGenomeViz · Genome diagram",
+      pycirclize: "pyCirclize · Circular diagram",
+      dnafeaturesviewer: "DNA Features Viewer · Annotated genomic regions",
+    }[run.tool];
+    document.querySelector("#meta").textContent =
+      run.person +
+      " · Version " +
+      run.version +
+      " · " +
+      run.region.chrom +
+      ":" +
+      run.region.start +
+      "–" +
+      run.region.end;
+    const notice = document.querySelector("#notice");
+    notice.textContent = run.note + "\nReference build, chromosome names and indices must match.";
+    if (run.stats)
+      notice.textContent +=
+        "\n" +
+        run.stats.records_shown +
+        "Entries displayed" +
+        (run.stats.limited ? "· LIMITED IN STEEL; other entries not shown." : "") +
+        " · " +
+        run.stats.note;
+    try {
+      const root = "/visual-run/" + run.id + "/";
+      if (run.tool === "genomespy") {
+        const { embed } = await import(assetRoot + "/genomespy/dist/bundle/index.es.js");
+        const points = await (await fetch(root + "points.json")).json();
+        const hasQuality = points.some((p) => p.quality !== null);
+        await embed(document.querySelector("#view"), {
+          width: "container",
+          height: 380,
+          data: { values: points },
+          mark: { type: "point", size: 55, opacity: 0.7 },
+          encoding: {
+            x: {
+              field: "pos",
+              type: "quantitative",
+              title: "Position · Chromosome " + run.region.chrom,
+              scale: { domain: [run.region.start, run.region.end], zoom: true },
+            },
+            y: {
+              field: "score",
+              type: "quantitative",
+              title: hasQuality
+                ? "VCF QUAL (no clinical safety)"
+                : "QUAL unavailable · marker positions",
+            },
+            color: { field: "status", type: "nominal" },
+            tooltip: [
+              { field: "label", type: "nominal" },
+              { field: "pos", type: "quantitative" },
+              { field: "quality", type: "quantitative" },
+              { field: "status", type: "nominal" },
+            ],
+          },
+        });
+      } else if (run.tool === "igvjs") {
+        const { default: igv } = await import(assetRoot + "/igvjs/dist/igv.esm.min.js");
+        const config = await (await fetch(root + "config.json")).json();
+        await igv.createBrowser(document.querySelector("#view"), config);
+      } else if (["pygenomeviz", "pycirclize", "dnafeaturesviewer"].includes(run.tool)) {
+        const image = document.createElement("img");
+        image.src = root + "plot.svg";
+        image.alt = "Diagram of the variants or features in the selected window";
+        document.querySelector("#view").append(image);
+        for (const ext of run.tool === "pygenomeviz" ? ["svg", "png"] : ["svg", "png", "pdf"]) {
+          const a = document.createElement("a");
+          a.href = root + "plot." + ext;
+          a.download = "Genome diagram." + ext;
+          a.textContent = ext.toUpperCase() + " save";
+          a.style.marginRight = "24px";
+          document.querySelector("#view").append(a);
+        }
+      } else if (run.tool === "jbrowse") {
+        const frame = document.createElement("iframe");
+        frame.src =
+          assetRoot +
+          "/jbrowse/index.html?config=" +
+          encodeURIComponent(location.origin + root + "config.json") +
+          "&loc=" +
+          encodeURIComponent(run.region.chrom + ":" + run.region.start + ".." + run.region.end);
+        frame.title = "JBrowse";
+        frame.style = "width:100%;height:650px;border:0";
+        document.querySelector("#view").append(frame);
+      }
+      document.querySelector("#status").textContent =
+        "View loaded · Files and libraries are deployed locally.";
+      document.documentElement.dataset.ready = "true";
+    } catch (error) {
+      document.querySelector("#status").textContent = "View could not be loaded.";
+      document.querySelector("#view").className = "error";
+      document.querySelector("#view").textContent = String(error);
+      document.documentElement.dataset.error = String(error);
+    }
+  </script></html
+>

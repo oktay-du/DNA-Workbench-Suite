@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"
+  ><meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1" /><title>DNA · Lokale Vergleiche</title>
+  <link rel="stylesheet" href="/matching.css" /><header
+    ><span class="eyebrow">DNA WORKBENCH · LOCAL DATA</span
+    ><h1>DNA comparisons & family research</h1
+    ><p>Compare profiles, explore segments and check hypotheses against evidence.</p></header
+  >
+  <div class="toolbar"
+    ><label>Focus profile<select id="focus"></select></label
+    ><label>Comparison profile<select id="other"></select></label
+    ><label
+      >Build<select id="build"
+        ><option>GRCh38</option
+        ><option>GRCh37</option></select
+      ></label
+    ><label
+      >Scope<select id="scope"
+        ><option value="autosomal">Autosomes</option
+        ><option value="X">X-DNA</option
+        ><option value="all">All imported regions</option></select
+      ></label
+    ><label
+      >Minimum cM<input id="mincm" type="number" min="0" max="1000" value="7" step="0.1" /></label
+    ><button id="analyze">Show comparisons</button
+    ><button id="reload" class="secondary">Refresh sources</button></div
+  >
+  <details class="options"
+    ><summary>Quality filters and SNP sources</summary
+    ><div class="row"
+      ><label>Minimum SNPs per segment<input id="minsnps" type="number" min="0" value="0" /></label
+      ><label class="check"
+        ><input id="phased" type="checkbox" />Only segments with haplotype indications</label
+      ><label>SNP source reference profile<select id="kit-a"></select></label
+      ><label>SNP source comparative profile<select id="kit-b"></select></label></div
+    ><p
+      >0 SNPs as a filter allows for unknown marker numbers. genotype match is shown separately from
+      imported IBD segments.</p
+    ></details
+  >
+  <div id="error" role="alert"></div
+  ><div id="busy" role="status"></div
+  ><div class="shell"
+    ><nav id="menu" aria-label="Comparison tools"></nav
+    ><main
+      ><div class="section-heading"
+        ><div
+          ><span id="feature-state" class="badge"></span><h2 id="feature-title">Dashboard</h2
+          ><p id="feature-help"></p><small id="reference"></small></div
+        ><button id="help" class="secondary" title="Methods and requirements">?</button></div
+      ><div id="content"></div></main
+  ></div>
+  <dialog id="method-dialog"
+    ><h2>What do these results mean?</h2
+    ><p
+      >This suite compares local profiles, has no access to the global GEDmatch database and does
+      not adopt proprietary Tier 1 models.</p
+    ><ul
+      ><li>SNP genotype match (IBS) is not a shared DNA portion.</li
+      ><li
+        >Segment import does not mean that IBD or personal assignment have been independently
+        confirmed.</li
+      ><li>Overlapping segments are not blindly added to a cM total.</li
+      ><li
+        >Triangulation and IBD2 candidates require additional testing of phase, marker coverage and
+        assignment.</li
+      ><li
+        >Ancestry and relatedness require appropriate references. ROH alone does not establish an
+        exact parental relationship.</li
+      ></ul
+    ><p
+      ><a href="https://github.com/browning-lab/hap-ibd" target="_blank" rel="noreferrer"
+        >hap-IBD</a
+      >
+      ·
+      <a href="https://www.cog-genomics.org/plink/2.0/distance" target="_blank" rel="noreferrer"
+        >PLINK / KING</a
+      >
+      · <a href="https://gedcom.io/specifications/" target="_blank" rel="noreferrer">GEDCOM</a></p
+    ><button id="close-method">Close</button></dialog
+  >
+  <script>
+    window.DNA_RESEARCH_TOKEN = "__TOKEN__";</script
+  ><script src="/matching.js"></script
+></html>

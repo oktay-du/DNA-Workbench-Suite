@@ -1,0 +1,6 @@
+open-cravat==3.2.4
+snps==2.12.1
+multiqc==1.35
+jupyterlab==4.6.5
+plotly==7.1.0
+pysam==0.24.1

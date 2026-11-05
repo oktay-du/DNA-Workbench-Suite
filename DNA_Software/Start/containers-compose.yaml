@@ -1,0 +1,36 @@
+name: dna-ssd
+services:
+  grampsweb: &grampsweb
+    image: ghcr.io/gramps-project/grampsweb@sha256:dbd20a8ba954e19ae8ed17e5e1537d55a3d16ccef6adf7a8fe8cb783bab81411
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5055:5000"
+    environment:
+      GRAMPSWEB_TREE: "Familie"
+      GRAMPSWEB_BASE_URL: "http://localhost:5055"
+      GRAMPSWEB_CELERY_CONFIG__broker_url: "redis://redis:6379/0"
+      GRAMPSWEB_CELERY_CONFIG__result_backend: "redis://redis:6379/0"
+      GRAMPSWEB_RATELIMIT_STORAGE_URI: "redis://redis:6379/1"
+      GUNICORN_NUM_WORKERS: "2"
+    volumes:
+      - /opt/dna/ssd/DNA_Software/Benutzerdaten/GrampsWeb/users:/app/users
+      - /opt/dna/ssd/DNA_Software/Benutzerdaten/GrampsWeb/index:/app/indexdir
+      - /opt/dna/ssd/DNA_Software/Benutzerdaten/GrampsWeb/thumbnails:/app/thumbnail_cache
+      - /opt/dna/ssd/DNA_Software/Benutzerdaten/GrampsWeb/cache:/app/cache
+      - /opt/dna/ssd/DNA_Software/Benutzerdaten/GrampsWeb/secret:/app/secret
+      - /opt/dna/ssd/DNA_Software/Benutzerdaten/GrampsWeb/database:/root/.gramps/grampsdb
+      - /opt/dna/ssd/DNA_Software/Benutzerdaten/GrampsWeb/media:/app/media
+      - gramps_tmp:/tmp
+    depends_on:
+      - redis
+  grampsweb-worker:
+    <<: *grampsweb
+    ports: []
+    command: celery -A gramps_webapi.celery worker --loglevel=INFO --concurrency=2
+    depends_on:
+      - redis
+  redis:
+    image: valkey/valkey@sha256:2602ace2be6569bc2bbb06f873776516ab9089821525be34f4305c67eb9db02a
+    restart: unless-stopped
+volumes:
+  gramps_tmp:

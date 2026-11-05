@@ -1,0 +1,22 @@
+{
+  "author": "OD",
+  "donation_url": "https://nowpayments.io/donation/oktayd",
+  "buymeacoffee_url": "https://buymeacoffee.com/okioki",
+  "affiliate_url": "https://account.nowpayments.io/de/create-account?link_id=2318328728",
+  "support_links": {
+    "nowpayments": "https://nowpayments.io/donation/oktayd",
+    "buymeacoffee": "https://buymeacoffee.com/okioki",
+    "nowpayments-affiliate": "https://account.nowpayments.io/de/create-account?link_id=2318328728"
+  },
+  "donation_optional": true,
+  "license": "PolyForm-Noncommercial-1.0.0 for designated contributions; component terms apply",
+  "repository": "https://github.com/oktay-du/DNA-Workbench-Suite",
+  "reverse_engineering_proof": false,
+  "ai_assisted": true,
+  "ai_notice": "Created with AI assistance. Maintained by OD and contributors. AI assistance is not evidence of scientific or legal validation.",
+  "privacy_url": "https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/PRIVACY.md",
+  "feedback_url": "https://github.com/oktay-du/DNA-Workbench-Suite/issues/new",
+  "contact_name": "Oktay Du",
+  "contact_email": "oktaydu@proton.me",
+  "commercial_license_contact": "mailto:oktaydu@proton.me"
+}

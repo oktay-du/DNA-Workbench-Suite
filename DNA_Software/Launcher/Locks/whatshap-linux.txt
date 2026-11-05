@@ -1,0 +1,21 @@
+# Tested on Ubuntu 24.04 / Python 3.12; tools remain optional.
+annotated-types==0.8.0
+backports.zstd==1.8.0
+biopython==1.88
+cpsat-logutils==1.0.0
+isal==1.9.0
+networkx==3.7
+numpy==2.5.4
+orloge==1.0.0
+packaging==26.3
+PuLP==4.2.0
+pydantic==2.14.2
+pydantic_core==2.50.2
+pyfaidx==0.9.2.2
+pysam==0.24.1
+scipy==1.18.1
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+whatshap==2.8
+xopen==2.1.0
+zlib-ng==1.0.0

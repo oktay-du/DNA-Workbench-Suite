@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en"
+  ><head
+    ><meta charset="utf-8" /><meta
+      name="viewport"
+      content="width=device-width,initial-scale=1" /><title>DNA Workbench</title
+    ><link rel="stylesheet" href="/design-tokens.css" /><link
+      rel="stylesheet"
+      href="/app.css" /><link rel="stylesheet" href="/workbench-ui.css" /><link
+      rel="stylesheet"
+      href="/themes.css" /></head
+  ><body
+    ><a class="wb-skip" id="skip-main" href="#main">Skip to main content</a>
+    <aside id="sidebar"
+      ><a aria-label="DNA Workbench" class="brand" href="#dashboard"
+        ><span class="brand-icon">◈</span
+        ><span
+          >DNA<span class="brand-light">Workbench</span><small>PERSONAL GENOMICS</small></span
+        ></a
+      ><nav id="navigation" aria-label="Main navigation"></nav
+      ><div class="sidebar-bottom"
+        ><span class="local-dot"></span><span id="local-label">Local workspace</span
+        ><small id="app-version"></small></div
+    ></aside>
+    <button id="nav-shade" type="button" tabindex="-1" aria-label="Close navigation"></button
+    ><div class="app-shell"
+      ><header class="topbar"
+        ><div class="breadcrumbs"
+          ><span>Workspace</span><span class="separator">/</span
+          ><strong id="breadcrumb">Overview</strong></div
+        ><div class="top-actions"
+          ><button
+            id="menu-toggle"
+            type="button"
+            class="button secondary wb-menu"
+            aria-controls="sidebar"
+            aria-expanded="false"
+            >☰</button
+          ><button id="search-toggle" class="search-button"
+            ><span>⌕</span><span id="search-label">Search</span><kbd>Ctrl K</kbd></button
+          ><button id="theme-toggle" class="icon-button" title="Theme">◐</button
+          ><span id="language-flag" class="language-flag flag-en" aria-hidden="true"></span
+          ><select id="language" aria-label="Language"
+            ><option value="de">🇩🇪 DE</option
+            ><option value="en" selected>🇬🇧 EN</option></select
+          ><button
+            id="feedback-toggle"
+            type="button"
+            class="button secondary"
+            data-command="menu.feedback"
+            >Feedback</button
+          ><button
+            id="donate-toggle"
+            class="button secondary donate-toggle"
+            data-command="menu.donations"
+            >♡ Donate</button
+          ><div class="profile-selector"
+            ><span class="avatar" id="profile-initials">P</span
+            ><select id="profile" aria-label="Profiles"></select></div></div
+      ></header>
+      <div id="sample-notice" class="wb-sample-banner" role="note" hidden></div
+      ><div id="error" role="alert"></div><main id="main" tabindex="-1"></main
+      ><footer
+        ><span class="local-dot"></span><span id="footer-text"></span
+        ><span id="footer-state"></span></footer
+    ></div>
+    <dialog id="task-dialog" aria-labelledby="task-title" aria-describedby="task-description"
+      ><div class="dialog-head"
+        ><div><span id="task-tag" class="eyebrow"></span><h2 id="task-title"></h2></div
+        ><button id="close-task" class="icon-button">✕</button></div
+      ><p id="task-description" class="muted"></p><form id="task-fields"></form
+      ><details class="method-details"
+        ><summary id="task-help-label"></summary><p id="task-help"></p></details
+      ><div class="dialog-actions"
+        ><button id="task-dependencies" class="button secondary"></button
+        ><button id="task-plan" class="button secondary"></button
+        ><button id="task-run" class="button primary"></button></div
+    ></dialog>
+    <dialog id="search-dialog" aria-labelledby="search-title"
+      ><div class="dialog-head"
+        ><h2 id="search-title"></h2><button id="close-search" class="icon-button">✕</button></div
+      ><input
+        type="search"
+        aria-labelledby="search-title"
+        id="global-search"
+        class="large-input"
+        autofocus /><div id="search-results"></div
+    ></dialog>
+    <script>
+      window.DNA_SUITE_TOKEN = "__TOKEN__";</script
+    ><script src="/ui-components.js"></script
+    ><script src="/shared-ui.js"></script
+    ><script src="/app.js"></script
+    ><script src="/agent.js"></script
+    ><script src="/profile-page.js"></script
+    ><script src="/profile-extras.js"></script
+    ><script src="/profile-files.js"></script
+    ><script src="/workflows-ui.js"></script
+    ><script src="/artwork-ui.js"></script
+    ><script src="/cloud-ui.js"></script
+    ><script src="/intake-ui.js"></script
+    ><script src="/tool-wizard.js"></script
+    ><script src="/catalog-ui.js"></script
+    ><script src="/release-ui.js"></script
+    ><script src="/feedback-ui.js"></script></body
+></html>

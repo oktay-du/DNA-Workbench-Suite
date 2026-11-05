@@ -1,0 +1,3536 @@
+{
+  "schema": 1,
+  "checked": "2026-11-05",
+  "notice": "Upstream-declared license inventory, not a legal compatibility certification. Separate optional tools are not all bundled. Inspect full notices in each actual distribution; data/reference licenses are separate.",
+  "items": [
+    {
+      "asset_id": "23andme-yhaplo",
+      "name": "23andMe/yhaplo",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/23andMe/yhaplo",
+      "license": "NOASSERTION",
+      "license_url": "https://github.com/23andMe/yhaplo/blob/master/LICENSE.txt",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "name": "7-Zip",
+      "source": "https://www.7-zip.org/",
+      "license": "LGPL-2.1-or-later plus unRAR restriction and BSD portions",
+      "license_url": "https://www.7-zip.org/license.txt",
+      "scope": "Optional user-installed utility; not bundled or used by built-in ZIP/TAR extraction",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "@cacheable/memory",
+      "version": "2.2.0",
+      "source": "https://www.npmjs.com/package/@cacheable/memory",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@cacheable/memory",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@cacheable/utils",
+      "version": "2.5.0",
+      "source": "https://www.npmjs.com/package/@cacheable/utils",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@cacheable/utils",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@csstools/css-calc",
+      "version": "3.4.3",
+      "source": "https://www.npmjs.com/package/@csstools/css-calc",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@csstools/css-calc",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@csstools/css-parser-algorithms",
+      "version": "4.0.2",
+      "source": "https://www.npmjs.com/package/@csstools/css-parser-algorithms",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@csstools/css-parser-algorithms",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@csstools/css-syntax-patches-for-csstree",
+      "version": "1.1.16",
+      "source": "https://www.npmjs.com/package/@csstools/css-syntax-patches-for-csstree",
+      "license": "MIT-0",
+      "license_url": "https://www.npmjs.com/package/@csstools/css-syntax-patches-for-csstree",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@csstools/css-tokenizer",
+      "version": "4.0.2",
+      "source": "https://www.npmjs.com/package/@csstools/css-tokenizer",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@csstools/css-tokenizer",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@csstools/media-query-list-parser",
+      "version": "5.0.2",
+      "source": "https://www.npmjs.com/package/@csstools/media-query-list-parser",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@csstools/media-query-list-parser",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@csstools/selector-resolve-nested",
+      "version": "4.0.2",
+      "source": "https://www.npmjs.com/package/@csstools/selector-resolve-nested",
+      "license": "MIT-0",
+      "license_url": "https://www.npmjs.com/package/@csstools/selector-resolve-nested",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@csstools/selector-specificity",
+      "version": "6.0.1",
+      "source": "https://www.npmjs.com/package/@csstools/selector-specificity",
+      "license": "MIT-0",
+      "license_url": "https://www.npmjs.com/package/@csstools/selector-specificity",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint-community/eslint-utils",
+      "version": "4.10.1",
+      "source": "https://www.npmjs.com/package/@eslint-community/eslint-utils",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@eslint-community/eslint-utils",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint-community/regexpp",
+      "version": "4.12.2",
+      "source": "https://www.npmjs.com/package/@eslint-community/regexpp",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@eslint-community/regexpp",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint/config-array",
+      "version": "0.23.5",
+      "source": "https://www.npmjs.com/package/@eslint/config-array",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@eslint/config-array",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint/config-helpers",
+      "version": "0.7.0",
+      "source": "https://www.npmjs.com/package/@eslint/config-helpers",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@eslint/config-helpers",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint/core",
+      "version": "1.2.1",
+      "source": "https://www.npmjs.com/package/@eslint/core",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@eslint/core",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint/js",
+      "version": "10.0.1",
+      "source": "https://www.npmjs.com/package/@eslint/js",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@eslint/js",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint/object-schema",
+      "version": "3.0.5",
+      "source": "https://www.npmjs.com/package/@eslint/object-schema",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@eslint/object-schema",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@eslint/plugin-kit",
+      "version": "0.7.3",
+      "source": "https://www.npmjs.com/package/@eslint/plugin-kit",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@eslint/plugin-kit",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@html-validate/stylish",
+      "version": "6.1.0",
+      "source": "https://www.npmjs.com/package/@html-validate/stylish",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@html-validate/stylish",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@humanfs/core",
+      "version": "0.19.2",
+      "source": "https://www.npmjs.com/package/@humanfs/core",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@humanfs/core",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@humanfs/node",
+      "version": "0.16.8",
+      "source": "https://www.npmjs.com/package/@humanfs/node",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@humanfs/node",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@humanfs/types",
+      "version": "0.15.0",
+      "source": "https://www.npmjs.com/package/@humanfs/types",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@humanfs/types",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@humanwhocodes/module-importer",
+      "version": "1.0.1",
+      "source": "https://www.npmjs.com/package/@humanwhocodes/module-importer",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@humanwhocodes/module-importer",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@humanwhocodes/retry",
+      "version": "0.4.3",
+      "source": "https://www.npmjs.com/package/@humanwhocodes/retry",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@humanwhocodes/retry",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@isaacs/nonrecursive-glob-match",
+      "version": "1.0.3",
+      "source": "https://www.npmjs.com/package/@isaacs/nonrecursive-glob-match",
+      "license": "BlueOak-1.0.0",
+      "license_url": "https://www.npmjs.com/package/@isaacs/nonrecursive-glob-match",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@keyv/bigmap",
+      "version": "1.3.1",
+      "source": "https://www.npmjs.com/package/@keyv/bigmap",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@keyv/bigmap",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@keyv/serialize",
+      "version": "1.1.1",
+      "source": "https://www.npmjs.com/package/@keyv/serialize",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@keyv/serialize",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@sidvind/better-ajv-errors",
+      "version": "7.0.0",
+      "source": "https://www.npmjs.com/package/@sidvind/better-ajv-errors",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/@sidvind/better-ajv-errors",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@types/esrecurse",
+      "version": "4.3.1",
+      "source": "https://www.npmjs.com/package/@types/esrecurse",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@types/esrecurse",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@types/estree",
+      "version": "1.0.10",
+      "source": "https://www.npmjs.com/package/@types/estree",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@types/estree",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "@types/json-schema",
+      "version": "7.0.15",
+      "source": "https://www.npmjs.com/package/@types/json-schema",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/@types/json-schema",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "acorn",
+      "version": "8.19.0",
+      "source": "https://www.npmjs.com/package/acorn",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/acorn",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "acorn-jsx",
+      "version": "5.3.2",
+      "source": "https://www.npmjs.com/package/acorn-jsx",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/acorn-jsx",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "actionlint",
+      "source": "https://github.com/rhysd/actionlint",
+      "license": "MIT",
+      "license_url": "https://github.com/rhysd/actionlint/blob/main/LICENSE.txt",
+      "scope": "Development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "actions/checkout",
+      "version": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "license": "MIT",
+      "source": "https://github.com/actions/checkout",
+      "license_url": "https://github.com/actions/checkout/blob/3d3c42e5aac5ba805825da76410c181273ba90b1/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/configure-pages",
+      "version": "45bfe0192ca1faeb007ade9deae92b16b8254a0d",
+      "license": "MIT",
+      "source": "https://github.com/actions/configure-pages",
+      "license_url": "https://github.com/actions/configure-pages/blob/45bfe0192ca1faeb007ade9deae92b16b8254a0d/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/dependency-review-action",
+      "version": "a1d282b36b6f3519aa1f3fc636f609c47dddb294",
+      "license": "MIT",
+      "source": "https://github.com/actions/dependency-review-action",
+      "license_url": "https://github.com/actions/dependency-review-action/blob/a1d282b36b6f3519aa1f3fc636f609c47dddb294/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/deploy-pages",
+      "version": "368f82528645a54fb793d4d04e342629a3f51346",
+      "license": "MIT",
+      "source": "https://github.com/actions/deploy-pages",
+      "license_url": "https://github.com/actions/deploy-pages/blob/368f82528645a54fb793d4d04e342629a3f51346/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/setup-dotnet",
+      "version": "0f4a354dd5547a28c70b7853dbd95d5b67886e73",
+      "license": "MIT",
+      "source": "https://github.com/actions/setup-dotnet",
+      "license_url": "https://github.com/actions/setup-dotnet/blob/0f4a354dd5547a28c70b7853dbd95d5b67886e73/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/setup-node",
+      "version": "949feb2413d6458794dcd2491c4babbbce0c15c1",
+      "license": "MIT",
+      "source": "https://github.com/actions/setup-node",
+      "license_url": "https://github.com/actions/setup-node/blob/949feb2413d6458794dcd2491c4babbbce0c15c1/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/setup-python",
+      "version": "6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+      "license": "MIT",
+      "source": "https://github.com/actions/setup-python",
+      "license_url": "https://github.com/actions/setup-python/blob/6d4fd22b20465ccc0f7354476588e8df7c9ca0e0/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/upload-artifact",
+      "version": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "license": "MIT",
+      "source": "https://github.com/actions/upload-artifact",
+      "license_url": "https://github.com/actions/upload-artifact/blob/cf430e030ddbb5b0abf93d22962f4752f3646cd9/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "actions/upload-pages-artifact",
+      "version": "fc324d3547104276b827a68afc52ff2a11cc49c9",
+      "license": "MIT",
+      "source": "https://github.com/actions/upload-pages-artifact",
+      "license_url": "https://github.com/actions/upload-pages-artifact/blob/fc324d3547104276b827a68afc52ff2a11cc49c9/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "asset_id": "java21-windows",
+      "name": "adoptium/temurin21-binaries",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/adoptium/temurin21-binaries",
+      "license": "OpenJDK GPL-2.0 with Classpath Exception; included distribution notices",
+      "license_url": "https://adoptium.net/docs/faq/",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "name": "aiohappyeyeballs",
+      "version": "2.7.1",
+      "source": "https://pypi.org/project/aiohappyeyeballs/2.7.1/",
+      "license": "PSF-2.0",
+      "license_url": "https://pypi.org/project/aiohappyeyeballs/2.7.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "aiohttp",
+      "version": "3.14.5",
+      "source": "https://pypi.org/project/aiohttp/3.14.5/",
+      "license": "Apache-2.0 AND MIT",
+      "license_url": "https://pypi.org/project/aiohttp/3.14.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "aiosignal",
+      "version": "1.4.0",
+      "source": "https://pypi.org/project/aiosignal/1.4.0/",
+      "license": "Apache 2.0",
+      "license_url": "https://pypi.org/project/aiosignal/1.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "aiosqlite",
+      "version": "0.22.1",
+      "source": "https://pypi.org/project/aiosqlite/0.22.1/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/aiosqlite/0.22.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ajv",
+      "version": "6.15.0",
+      "source": "https://www.npmjs.com/package/ajv",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/ajv",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "source": "https://www.npmjs.com/package/ajv",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/ajv",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "amqp",
+      "version": "5.4.2",
+      "source": "https://pypi.org/project/amqp/5.4.2/",
+      "license": "BSD",
+      "license_url": "https://pypi.org/project/amqp/5.4.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "annotated-types",
+      "version": "0.8.0",
+      "source": "https://pypi.org/project/annotated-types/0.8.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/annotated-types/0.8.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "anyio",
+      "version": "4.16.0",
+      "source": "https://pypi.org/project/anyio/4.16.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/anyio/4.16.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "argon2-cffi",
+      "version": "25.1.0",
+      "source": "https://pypi.org/project/argon2-cffi/25.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/argon2-cffi/25.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "argon2-cffi-bindings",
+      "version": "26.1.0",
+      "source": "https://pypi.org/project/argon2-cffi-bindings/26.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/argon2-cffi-bindings/26.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "argostranslate",
+      "version": "1.11.0",
+      "source": "https://pypi.org/project/argostranslate/1.11.0/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/argostranslate/1.11.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "argparse",
+      "version": "3.0.4",
+      "source": "https://www.npmjs.com/package/argparse",
+      "license": "PSF-2.0",
+      "license_url": "https://www.npmjs.com/package/argparse",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "arrow",
+      "version": "1.4.0",
+      "source": "https://pypi.org/project/arrow/1.4.0/",
+      "license": "License :: OSI Approved :: Apache Software License",
+      "license_url": "https://pypi.org/project/arrow/1.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "asttokens",
+      "version": "3.0.2",
+      "source": "https://pypi.org/project/asttokens/3.0.2/",
+      "license": "Apache 2.0",
+      "license_url": "https://pypi.org/project/asttokens/3.0.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "async-lru",
+      "version": "2.4.0",
+      "source": "https://pypi.org/project/async-lru/2.4.0/",
+      "license": "MIT License",
+      "license_url": "https://pypi.org/project/async-lru/2.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "atheris",
+      "version": "3.1.0",
+      "source": "https://pypi.org/project/atheris/3.1.0/",
+      "license": "See distribution license",
+      "license_url": "https://pypi.org/project/atheris/3.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "Atheris",
+      "source": "https://github.com/google/atheris",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/google/atheris/blob/master/LICENSE",
+      "scope": "Development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "atomicwrites",
+      "version": "1.4.1",
+      "source": "https://pypi.org/project/atomicwrites/1.4.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/atomicwrites/1.4.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "source": "https://pypi.org/project/attrs/26.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/attrs/26.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "babel",
+      "version": "2.18.0",
+      "source": "https://pypi.org/project/babel/2.18.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/babel/2.18.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "backports.zstd",
+      "version": "1.8.0",
+      "source": "https://pypi.org/project/backports.zstd/1.8.0/",
+      "license": "PSF-2.0",
+      "license_url": "https://pypi.org/project/backports.zstd/1.8.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "balanced-match",
+      "version": "4.0.4",
+      "source": "https://www.npmjs.com/package/balanced-match",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/balanced-match",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "bandit",
+      "version": "1.9.4",
+      "source": "https://pypi.org/project/bandit/1.9.4/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/bandit/1.9.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "Bandit",
+      "source": "https://github.com/PyCQA/bandit",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/PyCQA/bandit/blob/main/LICENSE",
+      "scope": "Development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "asset_id": "beagle-5-5",
+      "name": "Beagle",
+      "version": "5.5",
+      "source": "https://faculty.washington.edu/browning/beagle/beagle.html",
+      "license": "GPL-3.0-or-later; included Broad Institute code MIT",
+      "license_url": "https://faculty.washington.edu/browning/beagle/beagle.html",
+      "scope": "Separate Java tool"
+    },
+    {
+      "name": "Bearer",
+      "source": "https://github.com/Bearer/bearer",
+      "license": "Elastic-2.0",
+      "license_url": "https://github.com/Bearer/bearer/blob/main/LICENSE.txt",
+      "scope": "Development; separate scanner",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "beautifulsoup4",
+      "version": "4.15.0",
+      "source": "https://pypi.org/project/beautifulsoup4/4.15.0/",
+      "license": "MIT License",
+      "license_url": "https://pypi.org/project/beautifulsoup4/4.15.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "billiard",
+      "version": "4.3.2",
+      "source": "https://pypi.org/project/billiard/4.3.2/",
+      "license": "BSD",
+      "license_url": "https://pypi.org/project/billiard/4.3.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "biopython",
+      "version": "1.88",
+      "source": "https://pypi.org/project/biopython/1.88/",
+      "license": "LicenseRef-Biopython-License-Agreement",
+      "license_url": "https://pypi.org/project/biopython/1.88/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "biopython",
+      "version": "49fefbc675e08f3ab6741896d08397952ce4dd9c",
+      "source": "https://github.com/biopython/biopython",
+      "license": "Biopython License Agreement / teilweise BSD-3-Clause",
+      "license_url": "https://github.com/biopython/biopython/blob/49fefbc675e08f3ab6741896d08397952ce4dd9c/LICENSE.rst",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "bioreason",
+      "version": "684ff7c09eb1d65e70925c114a7a05a1fcc0403f",
+      "source": "https://github.com/bowang-lab/BioReason",
+      "license": "Apache 2.0; Test model weights separately",
+      "license_url": "https://github.com/bowang-lab/BioReason/tree/684ff7c09eb1d65e70925c114a7a05a1fcc0403f",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "bleach",
+      "version": "6.4.0",
+      "source": "https://pypi.org/project/bleach/6.4.0/",
+      "license": "Apache Software License",
+      "license_url": "https://pypi.org/project/bleach/6.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "blinker",
+      "version": "1.9.0",
+      "source": "https://pypi.org/project/blinker/1.9.0/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/blinker/1.9.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "boto3",
+      "version": "1.43.123",
+      "source": "https://pypi.org/project/boto3/1.43.123/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/boto3/1.43.123/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "botocore",
+      "version": "1.43.123",
+      "source": "https://pypi.org/project/botocore/1.43.123/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/botocore/1.43.123/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "brace-expansion",
+      "version": "5.0.12",
+      "source": "https://www.npmjs.com/package/brace-expansion",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/brace-expansion",
+      "scope": "Development npm dependency"
+    },
+    {
+      "asset_id": "mosdepth",
+      "name": "brentp/mosdepth",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/brentp/mosdepth",
+      "license": "MIT",
+      "license_url": "https://github.com/brentp/mosdepth/blob/master/LICENSE",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "name": "cacheable",
+      "version": "2.5.0",
+      "source": "https://www.npmjs.com/package/cacheable",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/cacheable",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "cachelib",
+      "version": "0.17.0",
+      "source": "https://pypi.org/project/cachelib/0.17.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/cachelib/0.17.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "carbon",
+      "version": "4ca3ce3e5c55e5821d6068bac5c6e3806027a26f",
+      "source": "https://github.com/huggingface/carbon",
+      "license": "Apache 2.0; Test model weights separately",
+      "license_url": "https://github.com/huggingface/carbon/tree/4ca3ce3e5c55e5821d6068bac5c6e3806027a26f",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "celery",
+      "version": "5.6.3",
+      "source": "https://pypi.org/project/celery/5.6.3/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/celery/5.6.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "certifi",
+      "version": "2026.10.23",
+      "source": "https://pypi.org/project/certifi/2026.10.23/",
+      "license": "MPL-2.0",
+      "license_url": "https://pypi.org/project/certifi/2026.10.23/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "cffi",
+      "version": "2.1.1",
+      "source": "https://pypi.org/project/cffi/2.1.1/",
+      "license": "MIT-0",
+      "license_url": "https://pypi.org/project/cffi/2.1.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "chardet",
+      "version": "5.2.0",
+      "source": "https://pypi.org/project/chardet/5.2.0/",
+      "license": "LGPL",
+      "license_url": "https://pypi.org/project/chardet/5.2.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "charset-normalizer",
+      "version": "3.5.2",
+      "source": "https://pypi.org/project/charset-normalizer/3.5.2/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/charset-normalizer/3.5.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "asset_id": "plink2-linux",
+      "name": "chrchang/plink-ng",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/chrchang/plink-ng",
+      "license": "Unknown; review upstream",
+      "license_url": "https://github.com/chrchang/plink-ng",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "name": "click",
+      "version": "8.5.0",
+      "source": "https://pypi.org/project/click/8.5.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/click/8.5.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "click-didyoumean",
+      "version": "0.3.1",
+      "source": "https://pypi.org/project/click-didyoumean/0.3.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/click-didyoumean/0.3.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "click-plugins",
+      "version": "1.1.1.2",
+      "source": "https://pypi.org/project/click-plugins/1.1.1.2/",
+      "license": "New BSD",
+      "license_url": "https://pypi.org/project/click-plugins/1.1.1.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "click-repl",
+      "version": "0.4.1",
+      "source": "https://pypi.org/project/click-repl/0.4.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/click-repl/0.4.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "cloudpickle",
+      "version": "3.1.2",
+      "source": "https://pypi.org/project/cloudpickle/3.1.2/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/cloudpickle/3.1.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "CodeQL",
+      "source": "https://github.com/github/codeql",
+      "license": "MIT query/library code; CodeQL CLI separate terms",
+      "license_url": "https://github.com/github/codeql-cli-binaries/blob/main/LICENSE.md",
+      "scope": "GitHub security CI",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "source": "https://pypi.org/project/colorama/0.4.6/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/colorama/0.4.6/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "colord",
+      "version": "2.10.0",
+      "source": "https://www.npmjs.com/package/colord",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/colord",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "coloredlogs",
+      "version": "15.0.1",
+      "source": "https://pypi.org/project/coloredlogs/15.0.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/coloredlogs/15.0.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "colormath2",
+      "version": "3.0.3",
+      "source": "https://pypi.org/project/colormath2/3.0.3/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/colormath2/3.0.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "comm",
+      "version": "0.2.3",
+      "source": "https://pypi.org/project/comm/0.2.3/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/comm/0.2.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "concatenate-genome",
+      "version": "b2afd74909ee9da6451d2b2608c98925a29285f6",
+      "source": "https://github.com/sgalla32/concatenate_genome",
+      "license": "Unresolved",
+      "license_url": "https://github.com/sgalla32/concatenate_genome/tree/b2afd74909ee9da6451d2b2608c98925a29285f6",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "contourpy",
+      "version": "1.4.0",
+      "source": "https://pypi.org/project/contourpy/1.4.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/contourpy/1.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "cosmiconfig",
+      "version": "10.0.1",
+      "source": "https://www.npmjs.com/package/cosmiconfig",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/cosmiconfig",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "cpsat-logutils",
+      "version": "1.0.0",
+      "source": "https://pypi.org/project/cpsat-logutils/1.0.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/cpsat-logutils/1.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "cross-spawn",
+      "version": "7.0.6",
+      "source": "https://www.npmjs.com/package/cross-spawn",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/cross-spawn",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "cryptography",
+      "version": "50.0.2",
+      "source": "https://pypi.org/project/cryptography/50.0.2/",
+      "license": "Apache-2.0 OR BSD-3-Clause",
+      "license_url": "https://pypi.org/project/cryptography/50.0.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "css-tree",
+      "version": "3.2.1",
+      "source": "https://www.npmjs.com/package/css-tree",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/css-tree",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "cssesc",
+      "version": "3.0.0",
+      "source": "https://www.npmjs.com/package/cssesc",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/cssesc",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "ctranslate2",
+      "version": "4.8.5",
+      "source": "https://pypi.org/project/ctranslate2/4.8.5/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/ctranslate2/4.8.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "cycler",
+      "version": "0.12.1",
+      "source": "https://pypi.org/project/cycler/0.12.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/cycler/0.12.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "Cython",
+      "version": "3.3.1",
+      "source": "https://pypi.org/project/Cython/3.3.1/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/Cython/3.3.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "cyvcf2",
+      "version": "0.34.0",
+      "source": "https://pypi.org/project/cyvcf2/0.34.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/cyvcf2/0.34.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "debug",
+      "version": "4.4.3",
+      "source": "https://www.npmjs.com/package/debug",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/debug",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "debugpy",
+      "version": "1.8.22",
+      "source": "https://pypi.org/project/debugpy/1.8.22/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/debugpy/1.8.22/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "deep-is",
+      "version": "0.1.4",
+      "source": "https://www.npmjs.com/package/deep-is",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/deep-is",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "defusedxml",
+      "version": "0.7.1",
+      "source": "https://pypi.org/project/defusedxml/0.7.1/",
+      "license": "PSFL",
+      "license_url": "https://pypi.org/project/defusedxml/0.7.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "dna_features_viewer",
+      "version": "3.1.5",
+      "source": "https://pypi.org/project/dna_features_viewer/3.1.5/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/dna_features_viewer/3.1.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "dnafeaturesviewer",
+      "version": "049bbe4e3063e90ae9b0f88ac7e92f47b735d38a",
+      "source": "https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer",
+      "license": "MIT",
+      "license_url": "https://github.com/Edinburgh-Genome-Foundry/DnaFeaturesViewer/blob/049bbe4e3063e90ae9b0f88ac7e92f47b735d38a/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "dotnet",
+      "source": "https://github.com/dotnet/sdk",
+      "license": "MIT and component notices",
+      "license_url": "https://github.com/dotnet/sdk/blob/main/LICENSE.TXT",
+      "scope": "Development / Windows framework prerequisite",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "edlib",
+      "version": "1.3.9.post1",
+      "source": "https://pypi.org/project/edlib/1.3.9.post1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/edlib/1.3.9.post1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "env-paths",
+      "version": "2.2.1",
+      "source": "https://www.npmjs.com/package/env-paths",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/env-paths",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "escape-string-regexp",
+      "version": "4.0.0",
+      "source": "https://www.npmjs.com/package/escape-string-regexp",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/escape-string-regexp",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "eslint",
+      "version": "10.14.0",
+      "source": "https://www.npmjs.com/package/eslint",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/eslint",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "eslint-scope",
+      "version": "9.1.2",
+      "source": "https://www.npmjs.com/package/eslint-scope",
+      "license": "BSD-2-Clause",
+      "license_url": "https://www.npmjs.com/package/eslint-scope",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "eslint-visitor-keys",
+      "version": "3.4.3",
+      "source": "https://www.npmjs.com/package/eslint-visitor-keys",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/eslint-visitor-keys",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "eslint-visitor-keys",
+      "version": "5.0.1",
+      "source": "https://www.npmjs.com/package/eslint-visitor-keys",
+      "license": "Apache-2.0",
+      "license_url": "https://www.npmjs.com/package/eslint-visitor-keys",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "espree",
+      "version": "11.2.0",
+      "source": "https://www.npmjs.com/package/espree",
+      "license": "BSD-2-Clause",
+      "license_url": "https://www.npmjs.com/package/espree",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "esquery",
+      "version": "1.7.0",
+      "source": "https://www.npmjs.com/package/esquery",
+      "license": "BSD-3-Clause",
+      "license_url": "https://www.npmjs.com/package/esquery",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "esrecurse",
+      "version": "4.3.0",
+      "source": "https://www.npmjs.com/package/esrecurse",
+      "license": "BSD-2-Clause",
+      "license_url": "https://www.npmjs.com/package/esrecurse",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "estraverse",
+      "version": "5.3.0",
+      "source": "https://www.npmjs.com/package/estraverse",
+      "license": "BSD-2-Clause",
+      "license_url": "https://www.npmjs.com/package/estraverse",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "esutils",
+      "version": "2.0.3",
+      "source": "https://www.npmjs.com/package/esutils",
+      "license": "BSD-2-Clause",
+      "license_url": "https://www.npmjs.com/package/esutils",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "et-xmlfile",
+      "version": "2.0.0",
+      "source": "https://pypi.org/project/et-xmlfile/2.0.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/et-xmlfile/2.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "executing",
+      "version": "2.3.0",
+      "source": "https://pypi.org/project/executing/2.3.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/executing/2.3.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "fast-deep-equal",
+      "version": "3.1.3",
+      "source": "https://www.npmjs.com/package/fast-deep-equal",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/fast-deep-equal",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "fast-json-stable-stringify",
+      "version": "2.1.0",
+      "source": "https://www.npmjs.com/package/fast-json-stable-stringify",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/fast-json-stable-stringify",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "fast-levenshtein",
+      "version": "2.0.6",
+      "source": "https://www.npmjs.com/package/fast-levenshtein",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/fast-levenshtein",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "fast-uri",
+      "version": "3.1.9",
+      "source": "https://www.npmjs.com/package/fast-uri",
+      "license": "BSD-3-Clause",
+      "license_url": "https://www.npmjs.com/package/fast-uri",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "fastjsonschema",
+      "version": "2.22.3",
+      "source": "https://pypi.org/project/fastjsonschema/2.22.3/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/fastjsonschema/2.22.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "fdir",
+      "version": "6.5.0",
+      "source": "https://www.npmjs.com/package/fdir",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/fdir",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "fdstools",
+      "version": "5cad6d057fd2f16bd77f9aa2420e920ccfcc7aa6",
+      "source": "https://github.com/Jerrythafast/FDSTools",
+      "license": "GPL-3.0",
+      "license_url": "https://github.com/Jerrythafast/FDSTools/tree/5cad6d057fd2f16bd77f9aa2420e920ccfcc7aa6",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "file-entry-cache",
+      "version": "11.1.5",
+      "source": "https://www.npmjs.com/package/file-entry-cache",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/file-entry-cache",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "find-up",
+      "version": "5.0.0",
+      "source": "https://www.npmjs.com/package/find-up",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/find-up",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "flask",
+      "version": "3.1.3",
+      "source": "https://pypi.org/project/flask/3.1.3/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/flask/3.1.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "flask-caching",
+      "version": "2.5.1",
+      "source": "https://pypi.org/project/flask-caching/2.5.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/flask-caching/2.5.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "flat-cache",
+      "version": "6.1.23",
+      "source": "https://www.npmjs.com/package/flat-cache",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/flat-cache",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "flatted",
+      "version": "3.4.4",
+      "source": "https://www.npmjs.com/package/flatted",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/flatted",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "fonttools",
+      "version": "4.68.0",
+      "source": "https://pypi.org/project/fonttools/4.68.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/fonttools/4.68.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "fqdn",
+      "version": "1.6.0",
+      "source": "https://pypi.org/project/fqdn/1.6.0/",
+      "license": "MPL-2.0",
+      "license_url": "https://pypi.org/project/fqdn/1.6.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "frozenlist",
+      "version": "1.8.0",
+      "source": "https://pypi.org/project/frozenlist/1.8.0/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/frozenlist/1.8.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "galaxy",
+      "version": "66760b892698397b0558a28ba168298179ed0444",
+      "source": "https://github.com/galaxyproject/galaxy",
+      "license": "Check upstream license files separately",
+      "license_url": "https://github.com/galaxyproject/galaxy/tree/66760b892698397b0558a28ba168298179ed0444",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "gatk",
+      "version": "0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8",
+      "source": "https://github.com/broadinstitute/gatk",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/broadinstitute/gatk/blob/0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8/LICENSE.TXT",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "asset_id": "haplogrep3-3-3-2-linux-tar-gz",
+      "name": "genepi/haplogrep3",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/genepi/haplogrep3",
+      "license": "MIT",
+      "license_url": "https://github.com/genepi/haplogrep3/blob/main/LICENSE",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "name": "genomespy",
+      "version": "482e9a1d42d5b6bb1c293737a9cf0b647f229f3e",
+      "source": "https://github.com/genome-spy/genome-spy",
+      "license": "MIT",
+      "license_url": "https://github.com/genome-spy/genome-spy/blob/482e9a1d42d5b6bb1c293737a9cf0b647f229f3e/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "genomex-dataexchange",
+      "version": "df269af5f2d69ccf5bf9aad3433a721a1574616a",
+      "source": "https://github.com/CodeX-HL7-FHIR-Accelerator/GenomeX-DataExchange",
+      "license": "Unresolved / Check guide separately",
+      "license_url": "https://github.com/CodeX-HL7-FHIR-Accelerator/GenomeX-DataExchange/tree/df269af5f2d69ccf5bf9aad3433a721a1574616a",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "Git",
+      "source": "https://git-scm.com/",
+      "license": "GPL-2.0",
+      "license_url": "https://github.com/git/git/blob/master/COPYING",
+      "scope": "Development; not bundled",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "GitHub CLI",
+      "source": "https://github.com/cli/cli",
+      "license": "MIT",
+      "license_url": "https://github.com/cli/cli/blob/trunk/LICENSE",
+      "scope": "Development; not bundled",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "github/codeql-action",
+      "version": "33d7b85da1a04171e211befe2c739303b9a4c066",
+      "license": "MIT",
+      "source": "https://github.com/github/codeql-action",
+      "license_url": "https://github.com/github/codeql-action/blob/33d7b85da1a04171e211befe2c739303b9a4c066/LICENSE",
+      "scope": "Development / GitHub Actions"
+    },
+    {
+      "name": "glob-parent",
+      "version": "6.0.2",
+      "source": "https://www.npmjs.com/package/glob-parent",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/glob-parent",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "globals",
+      "version": "17.14.0",
+      "source": "https://www.npmjs.com/package/globals",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/globals",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "gpn",
+      "version": "dc5fd287599f2955a79d010bca0e0f7f8178c67e",
+      "source": "https://github.com/songlab-cal/gpn",
+      "license": "MIT; Test model weights separately",
+      "license_url": "https://github.com/songlab-cal/gpn/tree/dc5fd287599f2955a79d010bca0e0f7f8178c67e",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "gramps",
+      "version": "e9c09a44791def6a6b81079dc7f8cbe8c7e69cc0",
+      "source": "https://github.com/gramps-project/gramps",
+      "license": "GPL-2.0",
+      "license_url": "https://github.com/gramps-project/gramps/blob/e9c09a44791def6a6b81079dc7f8cbe8c7e69cc0/COPYING",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "h11",
+      "version": "0.16.0",
+      "source": "https://pypi.org/project/h11/0.16.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/h11/0.16.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "hap-ibd",
+      "version": "a3fdd2d6294903387ee29d2f67ce6260593b681f",
+      "source": "https://github.com/browning-lab/hap-ibd",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/browning-lab/hap-ibd/blob/a3fdd2d6294903387ee29d2f67ce6260593b681f/LICENSE-2.0.txt",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "hashery",
+      "version": "1.5.1",
+      "source": "https://www.npmjs.com/package/hashery",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/hashery",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "hookified",
+      "version": "1.15.1",
+      "source": "https://www.npmjs.com/package/hookified",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/hookified",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "hookified",
+      "version": "2.2.0",
+      "source": "https://www.npmjs.com/package/hookified",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/hookified",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "html-validate",
+      "version": "11.18.0",
+      "source": "https://www.npmjs.com/package/html-validate",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/html-validate",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "htsjdk",
+      "version": "3b92d7b7bbb7046828627dc203a220f9fa560d77",
+      "source": "https://github.com/samtools/htsjdk",
+      "license": "Check upstream license files separately",
+      "license_url": "https://github.com/samtools/htsjdk/tree/3b92d7b7bbb7046828627dc203a220f9fa560d77",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "httpcore",
+      "version": "1.0.9",
+      "source": "https://pypi.org/project/httpcore/1.0.9/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/httpcore/1.0.9/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "httpx",
+      "version": "0.28.1",
+      "source": "https://pypi.org/project/httpx/0.28.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/httpx/0.28.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "humanfriendly",
+      "version": "10.0",
+      "source": "https://pypi.org/project/humanfriendly/10.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/humanfriendly/10.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "humanize",
+      "version": "4.16.0",
+      "source": "https://pypi.org/project/humanize/4.16.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/humanize/4.16.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "hyena-dna",
+      "version": "d553021b483b82980aa4b868b37ec2d4332e198a",
+      "source": "https://github.com/HazyResearch/hyena-dna",
+      "license": "Apache 2.0; Test model weights separately",
+      "license_url": "https://github.com/HazyResearch/hyena-dna/tree/d553021b483b82980aa4b868b37ec2d4332e198a",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "idna",
+      "version": "3.20",
+      "source": "https://pypi.org/project/idna/3.20/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/idna/3.20/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ignore",
+      "version": "5.3.2",
+      "source": "https://www.npmjs.com/package/ignore",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/ignore",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "ignore",
+      "version": "7.0.14",
+      "source": "https://www.npmjs.com/package/ignore",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/ignore",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "igvjs",
+      "version": "b5d64807ee940a2eaf9a64b093f71445e9a3c620",
+      "source": "https://github.com/igvteam/igv.js",
+      "license": "MIT",
+      "license_url": "https://github.com/igvteam/igv.js/blob/b5d64807ee940a2eaf9a64b093f71445e9a3c620/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "asset_id": "igv-2-19-8",
+      "name": "igvteam/igv",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/igvteam/igv",
+      "license": "MIT",
+      "license_url": "https://github.com/igvteam/igv/blob/main/license.txt",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "name": "import-meta-resolve",
+      "version": "4.2.0",
+      "source": "https://www.npmjs.com/package/import-meta-resolve",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/import-meta-resolve",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "importlib-metadata",
+      "version": "10.1.0",
+      "source": "https://pypi.org/project/importlib-metadata/10.1.0/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/importlib-metadata/10.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "imurmurhash",
+      "version": "0.1.4",
+      "source": "https://www.npmjs.com/package/imurmurhash",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/imurmurhash",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "intervaltree",
+      "version": "3.2.1",
+      "source": "https://pypi.org/project/intervaltree/3.2.1/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/intervaltree/3.2.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ipykernel",
+      "version": "7.4.0",
+      "source": "https://pypi.org/project/ipykernel/7.4.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/ipykernel/7.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ipython",
+      "version": "9.18.1",
+      "source": "https://pypi.org/project/ipython/9.18.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/ipython/9.18.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ipython-pygments-lexers",
+      "version": "1.1.1",
+      "source": "https://pypi.org/project/ipython-pygments-lexers/1.1.1/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/ipython-pygments-lexers/1.1.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "is-extglob",
+      "version": "2.1.1",
+      "source": "https://www.npmjs.com/package/is-extglob",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/is-extglob",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "is-glob",
+      "version": "4.0.3",
+      "source": "https://www.npmjs.com/package/is-glob",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/is-glob",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "isal",
+      "version": "1.9.0",
+      "source": "https://pypi.org/project/isal/1.9.0/",
+      "license": "PSF-2.0",
+      "license_url": "https://pypi.org/project/isal/1.9.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "isexe",
+      "version": "2.0.0",
+      "source": "https://www.npmjs.com/package/isexe",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/isexe",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "isoduration",
+      "version": "20.11.0",
+      "source": "https://pypi.org/project/isoduration/20.11.0/",
+      "license": "License :: OSI Approved :: ISC License (ISCL)",
+      "license_url": "https://pypi.org/project/isoduration/20.11.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "itsdangerous",
+      "version": "2.2.0",
+      "source": "https://pypi.org/project/itsdangerous/2.2.0/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/itsdangerous/2.2.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jbrowse",
+      "version": "6a83698a567eb4119df8afab98b3e5e32632db0f",
+      "source": "https://github.com/GMOD/jbrowse-components",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/GMOD/jbrowse-components/blob/6a83698a567eb4119df8afab98b3e5e32632db0f/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "jedi",
+      "version": "0.20.1",
+      "source": "https://pypi.org/project/jedi/0.20.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/jedi/0.20.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jinja2",
+      "version": "3.1.6",
+      "source": "https://pypi.org/project/jinja2/3.1.6/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/jinja2/3.1.6/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jmespath",
+      "version": "1.1.0",
+      "source": "https://pypi.org/project/jmespath/1.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/jmespath/1.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "joblib",
+      "version": "1.6.0",
+      "source": "https://pypi.org/project/joblib/1.6.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/joblib/1.6.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "js-yaml",
+      "version": "5.5.0",
+      "source": "https://www.npmjs.com/package/js-yaml",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/js-yaml",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-darwin-arm64",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-darwin-arm64",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-darwin-arm64",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-darwin-x64",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-darwin-x64",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-darwin-x64",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-linux-arm64-gnu",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-linux-arm64-gnu",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-linux-arm64-gnu",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-linux-arm64-musl",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-linux-arm64-musl",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-linux-arm64-musl",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-linux-x64-gnu",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-linux-x64-gnu",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-linux-x64-gnu",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-linux-x64-musl",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-linux-x64-musl",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-linux-x64-musl",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-windows-arm64-msvc",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-windows-arm64-msvc",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-windows-arm64-msvc",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "jscpd-windows-x64-msvc",
+      "version": "5.4.2",
+      "source": "https://www.npmjs.com/package/jscpd-windows-x64-msvc",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/jscpd-windows-x64-msvc",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "0.4.1",
+      "source": "https://www.npmjs.com/package/json-schema-traverse",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/json-schema-traverse",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "json-schema-traverse",
+      "version": "1.0.0",
+      "source": "https://www.npmjs.com/package/json-schema-traverse",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/json-schema-traverse",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "json-stable-stringify-without-jsonify",
+      "version": "1.0.1",
+      "source": "https://www.npmjs.com/package/json-stable-stringify-without-jsonify",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/json-stable-stringify-without-jsonify",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "json5",
+      "version": "0.17.3",
+      "source": "https://pypi.org/project/json5/0.17.3/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/json5/0.17.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jsonpointer",
+      "version": "3.8",
+      "source": "https://pypi.org/project/jsonpointer/3.8/",
+      "license": "Modified BSD License",
+      "license_url": "https://pypi.org/project/jsonpointer/3.8/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "source": "https://pypi.org/project/jsonschema/4.26.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/jsonschema/4.26.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "source": "https://pypi.org/project/jsonschema-specifications/2025.9.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/jsonschema-specifications/2025.9.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyter-builder",
+      "version": "1.2.4",
+      "source": "https://pypi.org/project/jupyter-builder/1.2.4/",
+      "license": "Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT",
+      "license_url": "https://pypi.org/project/jupyter-builder/1.2.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyter-client",
+      "version": "8.10.0",
+      "source": "https://pypi.org/project/jupyter-client/8.10.0/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/jupyter-client/8.10.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyter-core",
+      "version": "5.9.1",
+      "source": "https://pypi.org/project/jupyter-core/5.9.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/jupyter-core/5.9.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyter-events",
+      "version": "0.12.1",
+      "source": "https://pypi.org/project/jupyter-events/0.12.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/jupyter-events/0.12.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyter-lsp",
+      "version": "2.3.1",
+      "source": "https://pypi.org/project/jupyter-lsp/2.3.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/jupyter-lsp/2.3.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyter-server",
+      "version": "2.21.1",
+      "source": "https://pypi.org/project/jupyter-server/2.21.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/jupyter-server/2.21.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyter-server-terminals",
+      "version": "0.5.4",
+      "source": "https://pypi.org/project/jupyter-server-terminals/0.5.4/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/jupyter-server-terminals/0.5.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyterlab",
+      "version": "4.6.5",
+      "source": "https://pypi.org/project/jupyterlab/4.6.5/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/jupyterlab/4.6.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyterlab-pygments",
+      "version": "0.3.0",
+      "source": "https://pypi.org/project/jupyterlab-pygments/0.3.0/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/jupyterlab-pygments/0.3.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "jupyterlab-server",
+      "version": "2.28.1",
+      "source": "https://pypi.org/project/jupyterlab-server/2.28.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/jupyterlab-server/2.28.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "kaleido",
+      "version": "0.2.1",
+      "source": "https://pypi.org/project/kaleido/0.2.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/kaleido/0.2.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "keyv",
+      "version": "5.6.0",
+      "source": "https://www.npmjs.com/package/keyv",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/keyv",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "khmer",
+      "version": "fb65d21eaedf0d397d49ae3debc578897f9d6eb4",
+      "source": "https://github.com/dib-lab/khmer",
+      "license": "Check upstream license files separately",
+      "license_url": "https://github.com/dib-lab/khmer/tree/fb65d21eaedf0d397d49ae3debc578897f9d6eb4",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "kiwisolver",
+      "version": "1.5.1",
+      "source": "https://pypi.org/project/kiwisolver/1.5.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/kiwisolver/1.5.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "kleur",
+      "version": "3.0.3",
+      "source": "https://www.npmjs.com/package/kleur",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/kleur",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "kleur",
+      "version": "4.1.5",
+      "source": "https://www.npmjs.com/package/kleur",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/kleur",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "kombu",
+      "version": "5.7.0",
+      "source": "https://pypi.org/project/kombu/5.7.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/kombu/5.7.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "lark",
+      "version": "1.3.1",
+      "source": "https://pypi.org/project/lark/1.3.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/lark/1.3.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "levn",
+      "version": "0.4.1",
+      "source": "https://www.npmjs.com/package/levn",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/levn",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "locate-path",
+      "version": "6.0.0",
+      "source": "https://www.npmjs.com/package/locate-path",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/locate-path",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "looseversion",
+      "version": "1.3.0",
+      "source": "https://pypi.org/project/looseversion/1.3.0/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/looseversion/1.3.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "markdown",
+      "version": "3.11.2",
+      "source": "https://pypi.org/project/markdown/3.11.2/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/markdown/3.11.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "markdown-it-py",
+      "version": "4.2.0",
+      "source": "https://pypi.org/project/markdown-it-py/4.2.0/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/markdown-it-py/4.2.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "markupsafe",
+      "version": "3.0.4",
+      "source": "https://pypi.org/project/markupsafe/3.0.4/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/markupsafe/3.0.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "matplotlib",
+      "version": "3.11.2",
+      "source": "https://pypi.org/project/matplotlib/3.11.2/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/matplotlib/3.11.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "matplotlib-inline",
+      "version": "0.2.2",
+      "source": "https://pypi.org/project/matplotlib-inline/0.2.2/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/matplotlib-inline/0.2.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "mdn-data",
+      "version": "2.27.1",
+      "source": "https://www.npmjs.com/package/mdn-data",
+      "license": "CC0-1.0",
+      "license_url": "https://www.npmjs.com/package/mdn-data",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "mdurl",
+      "version": "0.1.2",
+      "source": "https://pypi.org/project/mdurl/0.1.2/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/mdurl/0.1.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "megammerge",
+      "version": "616ed05b2b3d117a4407b5a8927dc1ab9b44a1f1",
+      "source": "https://github.com/LANL-Bioinformatics/MeGAMerge",
+      "license": "Check upstream license files separately",
+      "license_url": "https://github.com/LANL-Bioinformatics/MeGAMerge/tree/616ed05b2b3d117a4407b5a8927dc1ab9b44a1f1",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "merge-genbank",
+      "version": "021e53300ce4e4d60e4462e1c2e38e2fc1ad95e3",
+      "source": "https://github.com/bawee/merge-genbank",
+      "license": "Unresolved",
+      "license_url": "https://github.com/bawee/merge-genbank/tree/021e53300ce4e4d60e4462e1c2e38e2fc1ad95e3",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "mgra",
+      "version": "fb8125f5a507e3b169e89cedd6842a564e222001",
+      "source": "https://github.com/ablab/mgra",
+      "license": "GPL-2.0",
+      "license_url": "https://github.com/ablab/mgra/blob/fb8125f5a507e3b169e89cedd6842a564e222001/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "minimatch",
+      "version": "11.0.4",
+      "source": "https://www.npmjs.com/package/minimatch",
+      "license": "BlueOak-1.0.0",
+      "license_url": "https://www.npmjs.com/package/minimatch",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "mistune",
+      "version": "3.4.0",
+      "source": "https://pypi.org/project/mistune/3.4.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/mistune/3.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "mpmath",
+      "version": "1.4.1",
+      "source": "https://pypi.org/project/mpmath/1.4.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/mpmath/1.4.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ms",
+      "version": "2.1.3",
+      "source": "https://www.npmjs.com/package/ms",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/ms",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "multidict",
+      "version": "7.2.1",
+      "source": "https://pypi.org/project/multidict/7.2.1/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/multidict/7.2.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "multiqc",
+      "version": "1.35",
+      "source": "https://pypi.org/project/multiqc/1.35/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/multiqc/1.35/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "nanoid",
+      "version": "3.3.20",
+      "source": "https://www.npmjs.com/package/nanoid",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/nanoid",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "narwhals",
+      "version": "2.28.0",
+      "source": "https://pypi.org/project/narwhals/2.28.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/narwhals/2.28.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "natsort",
+      "version": "8.4.0",
+      "source": "https://pypi.org/project/natsort/8.4.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/natsort/8.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "natural-compare",
+      "version": "1.4.0",
+      "source": "https://www.npmjs.com/package/natural-compare",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/natural-compare",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "nbclient",
+      "version": "0.11.0",
+      "source": "https://pypi.org/project/nbclient/0.11.0/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/nbclient/0.11.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "nbconvert",
+      "version": "7.17.2",
+      "source": "https://pypi.org/project/nbconvert/7.17.2/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/nbconvert/7.17.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "nbformat",
+      "version": "5.11.1",
+      "source": "https://pypi.org/project/nbformat/5.11.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/nbformat/5.11.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "nest-asyncio",
+      "version": "1.6.0",
+      "source": "https://pypi.org/project/nest-asyncio/1.6.0/",
+      "license": "BSD",
+      "license_url": "https://pypi.org/project/nest-asyncio/1.6.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "nest-asyncio2",
+      "version": "1.7.4",
+      "source": "https://pypi.org/project/nest-asyncio2/1.7.4/",
+      "license": "BSD",
+      "license_url": "https://pypi.org/project/nest-asyncio2/1.7.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "networkx",
+      "version": "3.7",
+      "source": "https://pypi.org/project/networkx/3.7/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/networkx/3.7/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "Node.js",
+      "source": "https://nodejs.org/",
+      "license": "MIT and included dependency notices",
+      "license_url": "https://github.com/nodejs/node/blob/main/LICENSE",
+      "scope": "Development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "notebook-shim",
+      "version": "0.2.4",
+      "source": "https://pypi.org/project/notebook-shim/0.2.4/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/notebook-shim/0.2.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "nucmerge",
+      "version": "0f1f76d20e9e3f6a1642162f150f8eb36e4c41af",
+      "source": "https://github.com/uio-bmi/NucMerge",
+      "license": "MPL-2.0",
+      "license_url": "https://github.com/uio-bmi/NucMerge/tree/0f1f76d20e9e3f6a1642162f150f8eb36e4c41af",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "numpy",
+      "version": "2.5.4",
+      "source": "https://pypi.org/project/numpy/2.5.4/",
+      "license": "BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0",
+      "license_url": "https://pypi.org/project/numpy/2.5.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "open-cravat",
+      "version": "3.2.4",
+      "source": "https://pypi.org/project/open-cravat/3.2.4/",
+      "license": "See distribution license",
+      "license_url": "https://pypi.org/project/open-cravat/3.2.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "openpyxl",
+      "version": "3.1.5",
+      "source": "https://pypi.org/project/openpyxl/3.1.5/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/openpyxl/3.1.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "optionator",
+      "version": "0.9.4",
+      "source": "https://www.npmjs.com/package/optionator",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/optionator",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "orloge",
+      "version": "1.0.0",
+      "source": "https://pypi.org/project/orloge/1.0.0/",
+      "license": "See distribution license",
+      "license_url": "https://pypi.org/project/orloge/1.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "oyaml",
+      "version": "1.0",
+      "source": "https://pypi.org/project/oyaml/1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/oyaml/1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "p-limit",
+      "version": "3.1.0",
+      "source": "https://www.npmjs.com/package/p-limit",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/p-limit",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "p-locate",
+      "version": "5.0.0",
+      "source": "https://www.npmjs.com/package/p-locate",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/p-locate",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "packaging",
+      "version": "26.3",
+      "source": "https://pypi.org/project/packaging/26.3/",
+      "license": "Apache-2.0 OR BSD-2-Clause",
+      "license_url": "https://pypi.org/project/packaging/26.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pandas",
+      "version": "3.1.0",
+      "source": "https://pypi.org/project/pandas/3.1.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/pandas/3.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pandas",
+      "version": "3.1.1",
+      "source": "https://pypi.org/project/pandas/3.1.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/pandas/3.1.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pandocfilters",
+      "version": "1.5.1",
+      "source": "https://pypi.org/project/pandocfilters/1.5.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/pandocfilters/1.5.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "parso",
+      "version": "0.8.7",
+      "source": "https://pypi.org/project/parso/0.8.7/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/parso/0.8.7/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "paste",
+      "version": "3.11.0",
+      "source": "https://pypi.org/project/paste/3.11.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/paste/3.11.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "path-exists",
+      "version": "4.0.0",
+      "source": "https://www.npmjs.com/package/path-exists",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/path-exists",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "path-key",
+      "version": "3.1.1",
+      "source": "https://www.npmjs.com/package/path-key",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/path-key",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "peddy",
+      "version": "0.4.8",
+      "source": "https://pypi.org/project/peddy/0.4.8/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/peddy/0.4.8/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "peddy",
+      "version": "1d340cd3e87623c8c58b4a82b18f33ba532101aa",
+      "source": "https://github.com/brentp/peddy",
+      "license": "MIT",
+      "license_url": "https://github.com/brentp/peddy/blob/1d340cd3e87623c8c58b4a82b18f33ba532101aa/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "pexpect",
+      "version": "4.9.0",
+      "source": "https://pypi.org/project/pexpect/4.9.0/",
+      "license": "ISC license",
+      "license_url": "https://pypi.org/project/pexpect/4.9.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pgsc-calc",
+      "version": "72ee54f2119d2fe65ac671327342dfc412bd0a3b",
+      "source": "https://github.com/PGScatalog/pgsc_calc",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/PGScatalog/pgsc_calc/blob/72ee54f2119d2fe65ac671327342dfc412bd0a3b/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "pharmcat",
+      "version": "8e6f81b9372da54f9281d452cd171253c6a8974f",
+      "source": "https://github.com/PharmGKB/PharmCAT",
+      "license": "MPL-2.0",
+      "license_url": "https://github.com/PharmGKB/PharmCAT/blob/8e6f81b9372da54f9281d452cd171253c6a8974f/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "picocolors",
+      "version": "1.1.1",
+      "source": "https://www.npmjs.com/package/picocolors",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/picocolors",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "picomatch",
+      "version": "4.0.7",
+      "source": "https://www.npmjs.com/package/picomatch",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/picomatch",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "pillow",
+      "version": "13.0.0",
+      "source": "https://pypi.org/project/pillow/13.0.0/",
+      "license": "MIT-CMU",
+      "license_url": "https://pypi.org/project/pillow/13.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pip-audit",
+      "version": "2.10.1",
+      "source": "https://pypi.org/project/pip-audit/2.10.1/",
+      "license": "License :: OSI Approved :: Apache Software License",
+      "license_url": "https://pypi.org/project/pip-audit/2.10.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pip-audit",
+      "source": "https://github.com/pypa/pip-audit",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/pypa/pip-audit/blob/main/LICENSE",
+      "scope": "Development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "platformdirs",
+      "version": "4.14.5",
+      "source": "https://pypi.org/project/platformdirs/4.14.5/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/platformdirs/4.14.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "plotly",
+      "version": "7.1.0",
+      "source": "https://pypi.org/project/plotly/7.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/plotly/7.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "polars",
+      "version": "2.1.0",
+      "source": "https://pypi.org/project/polars/2.1.0/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/polars/2.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "polars-runtime-32",
+      "version": "2.1.0",
+      "source": "https://pypi.org/project/polars-runtime-32/2.1.0/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/polars-runtime-32/2.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "polars-runtime-compat",
+      "version": "2.1.0",
+      "source": "https://pypi.org/project/polars-runtime-compat/2.1.0/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/polars-runtime-compat/2.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "postcss",
+      "version": "8.5.32",
+      "source": "https://www.npmjs.com/package/postcss",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/postcss",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "postcss-safe-parser",
+      "version": "7.1.0",
+      "source": "https://www.npmjs.com/package/postcss-safe-parser",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/postcss-safe-parser",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "postcss-selector-parser",
+      "version": "7.1.7",
+      "source": "https://www.npmjs.com/package/postcss-selector-parser",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/postcss-selector-parser",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "postcss-value-parser",
+      "version": "4.2.0",
+      "source": "https://www.npmjs.com/package/postcss-value-parser",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/postcss-value-parser",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "PowerShell",
+      "source": "https://github.com/PowerShell/PowerShell",
+      "license": "MIT; Windows PowerShell host terms differ",
+      "license_url": "https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt",
+      "scope": "Host / development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "prelude-ls",
+      "version": "1.2.1",
+      "source": "https://www.npmjs.com/package/prelude-ls",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/prelude-ls",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "prettier",
+      "version": "3.9.10",
+      "source": "https://www.npmjs.com/package/prettier",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/prettier",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "prometheus-client",
+      "version": "0.26.0",
+      "source": "https://pypi.org/project/prometheus-client/0.26.0/",
+      "license": "Apache-2.0 AND BSD-2-Clause",
+      "license_url": "https://pypi.org/project/prometheus-client/0.26.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "prompt-toolkit",
+      "version": "3.0.53",
+      "source": "https://pypi.org/project/prompt-toolkit/3.0.53/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/prompt-toolkit/3.0.53/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "prompts",
+      "version": "2.4.2",
+      "source": "https://www.npmjs.com/package/prompts",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/prompts",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "propcache",
+      "version": "0.5.4",
+      "source": "https://pypi.org/project/propcache/0.5.4/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/propcache/0.5.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "PSScriptAnalyzer",
+      "source": "https://github.com/PowerShell/PSScriptAnalyzer",
+      "license": "MIT",
+      "license_url": "https://github.com/PowerShell/PSScriptAnalyzer/blob/master/LICENSE",
+      "scope": "Development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "psutil",
+      "version": "7.2.2",
+      "source": "https://pypi.org/project/psutil/7.2.2/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/psutil/7.2.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ptyprocess",
+      "version": "0.7.0",
+      "source": "https://pypi.org/project/ptyprocess/0.7.0/",
+      "license": "License :: OSI Approved :: ISC License (ISCL)",
+      "license_url": "https://pypi.org/project/ptyprocess/0.7.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "PuLP",
+      "version": "4.2.0",
+      "source": "https://pypi.org/project/PuLP/4.2.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/PuLP/4.2.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "punycode",
+      "version": "2.3.1",
+      "source": "https://www.npmjs.com/package/punycode",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/punycode",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "pure-eval",
+      "version": "0.2.4",
+      "source": "https://pypi.org/project/pure-eval/0.2.4/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pure-eval/0.2.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyabpoa",
+      "version": "1.5.7.1",
+      "source": "https://pypi.org/project/pyabpoa/1.5.7.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pyabpoa/1.5.7.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyarrow",
+      "version": "26.0.0",
+      "source": "https://pypi.org/project/pyarrow/26.0.0/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/pyarrow/26.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyarrow",
+      "version": "26.0.1",
+      "source": "https://pypi.org/project/pyarrow/26.0.1/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/pyarrow/26.0.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyCirclize",
+      "version": "1.10.1",
+      "source": "https://pypi.org/project/pyCirclize/1.10.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pyCirclize/1.10.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pycirclize",
+      "version": "5a0f36111a4bbfab3e3d765e7365a1108f891dcb",
+      "source": "https://github.com/moshi4/pyCirclize",
+      "license": "MIT",
+      "license_url": "https://github.com/moshi4/pyCirclize/blob/5a0f36111a4bbfab3e3d765e7365a1108f891dcb/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "pycparser",
+      "version": "3.12",
+      "source": "https://pypi.org/project/pycparser/3.12/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/pycparser/3.12/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pydantic",
+      "version": "2.14.2",
+      "source": "https://pypi.org/project/pydantic/2.14.2/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pydantic/2.14.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pydantic-core",
+      "version": "2.50.2",
+      "source": "https://pypi.org/project/pydantic-core/2.50.2/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pydantic-core/2.50.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pydantic_core",
+      "version": "2.50.2",
+      "source": "https://pypi.org/project/pydantic_core/2.50.2/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pydantic_core/2.50.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyfaidx",
+      "version": "0.9.2.2",
+      "source": "https://pypi.org/project/pyfaidx/0.9.2.2/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/pyfaidx/0.9.2.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyfastx",
+      "version": "2.3.1",
+      "source": "https://pypi.org/project/pyfastx/2.3.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pyfastx/2.3.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyfastx",
+      "version": "7d82c66b1f5d079d6b7d46f878d156cbaa6c01aa",
+      "source": "https://github.com/lmdu/pyfastx",
+      "license": "MIT",
+      "license_url": "https://github.com/lmdu/pyfastx/blob/7d82c66b1f5d079d6b7d46f878d156cbaa6c01aa/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "pygenomeviz",
+      "version": "1.7.0",
+      "source": "https://pypi.org/project/pygenomeviz/1.7.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pygenomeviz/1.7.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pygenomeviz",
+      "version": "fb137ded78d56b1d55229309d500aa54c80e3abe",
+      "source": "https://github.com/moshi4/pyGenomeViz",
+      "license": "MIT",
+      "license_url": "https://github.com/moshi4/pyGenomeViz/blob/fb137ded78d56b1d55229309d500aa54c80e3abe/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "Pygments",
+      "version": "2.21.0",
+      "source": "https://pypi.org/project/Pygments/2.21.0/",
+      "license": "BSD-2-Clause",
+      "license_url": "https://pypi.org/project/Pygments/2.21.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyliftover",
+      "version": "0.4.1",
+      "source": "https://pypi.org/project/pyliftover/0.4.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pyliftover/0.4.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyparsing",
+      "version": "3.3.3",
+      "source": "https://pypi.org/project/pyparsing/3.3.3/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pyparsing/3.3.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pypdf",
+      "version": "6.21.4",
+      "source": "https://pypi.org/project/pypdf/6.21.4/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/pypdf/6.21.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pysam",
+      "version": "0.24.1",
+      "source": "https://pypi.org/project/pysam/0.24.1/",
+      "license": "MIT License",
+      "license_url": "https://pypi.org/project/pysam/0.24.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pytabix",
+      "version": "0.1",
+      "source": "https://pypi.org/project/pytabix/0.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pytabix/0.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "Python",
+      "source": "https://www.python.org/",
+      "license": "PSF-2.0 and bundled notices",
+      "license_url": "https://docs.python.org/3/license.html",
+      "scope": "Downloaded runtime",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "2.9.0.post0",
+      "source": "https://pypi.org/project/python-dateutil/2.9.0.post0/",
+      "license": "Dual License",
+      "license_url": "https://pypi.org/project/python-dateutil/2.9.0.post0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "python-dateutil",
+      "version": "4.0.0",
+      "source": "https://pypi.org/project/python-dateutil/4.0.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/python-dateutil/4.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "python-dotenv",
+      "version": "1.2.4",
+      "source": "https://pypi.org/project/python-dotenv/1.2.4/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/python-dotenv/1.2.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "python-json-logger",
+      "version": "4.2.0",
+      "source": "https://pypi.org/project/python-json-logger/4.2.0/",
+      "license": "BSD-2-Clause",
+      "license_url": "https://pypi.org/project/python-json-logger/4.2.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyvcf3",
+      "version": "1.0.4",
+      "source": "https://pypi.org/project/pyvcf3/1.0.4/",
+      "license": "License :: OSI Approved :: BSD License; License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/pyvcf3/1.0.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pywfa",
+      "version": "0.6.0",
+      "source": "https://pypi.org/project/pywfa/0.6.0/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/pywfa/0.6.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyyaml",
+      "version": "6.0.3",
+      "source": "https://pypi.org/project/pyyaml/6.0.3/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/pyyaml/6.0.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "pyzmq",
+      "version": "27.3.0",
+      "source": "https://pypi.org/project/pyzmq/27.3.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/pyzmq/27.3.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "qified",
+      "version": "0.10.1",
+      "source": "https://www.npmjs.com/package/qified",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/qified",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "ragout",
+      "version": "5f2caaeaf935db6e01aae68ba8b93c46ddf18f10",
+      "source": "https://github.com/fenderglass/Ragout",
+      "license": "NOASSERTION",
+      "license_url": "https://github.com/fenderglass/Ragout/blob/5f2caaeaf935db6e01aae68ba8b93c46ddf18f10/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "source": "https://pypi.org/project/referencing/0.37.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/referencing/0.37.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "regex",
+      "version": "2026.9.29",
+      "source": "https://pypi.org/project/regex/2026.9.29/",
+      "license": "Apache-2.0 AND CNRI-Python",
+      "license_url": "https://pypi.org/project/regex/2026.9.29/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "reportlab",
+      "version": "5.1.0",
+      "source": "https://pypi.org/project/reportlab/5.1.0/",
+      "license": "BSD license (see license.txt for details), Copyright (c) 2000-2025, ReportLab Inc.",
+      "license_url": "https://pypi.org/project/reportlab/5.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "requests",
+      "version": "2.34.2",
+      "source": "https://pypi.org/project/requests/2.34.2/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/requests/2.34.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "requests-toolbelt",
+      "version": "1.0.0",
+      "source": "https://pypi.org/project/requests-toolbelt/1.0.0/",
+      "license": "Apache 2.0",
+      "license_url": "https://pypi.org/project/requests-toolbelt/1.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "require-from-string",
+      "version": "2.0.2",
+      "source": "https://www.npmjs.com/package/require-from-string",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/require-from-string",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "rfc3339-validator",
+      "version": "0.1.4",
+      "source": "https://pypi.org/project/rfc3339-validator/0.1.4/",
+      "license": "MIT license",
+      "license_url": "https://pypi.org/project/rfc3339-validator/0.1.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "rfc3986-validator",
+      "version": "0.1.1",
+      "source": "https://pypi.org/project/rfc3986-validator/0.1.1/",
+      "license": "MIT license",
+      "license_url": "https://pypi.org/project/rfc3986-validator/0.1.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "rfc3987-syntax",
+      "version": "1.1.0",
+      "source": "https://pypi.org/project/rfc3987-syntax/1.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/rfc3987-syntax/1.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "rfmix",
+      "version": "09599c19c69f81571c7a7aab4cd2d847a9e0633a",
+      "source": "https://github.com/slowkoni/rfmix",
+      "license": "Stanford noncommercial academic research; separate license otherwise",
+      "license_url": "https://github.com/slowkoni/rfmix/blob/09599c19c69f81571c7a7aab4cd2d847a9e0633a/README.md",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "rich",
+      "version": "15.0.0",
+      "source": "https://pypi.org/project/rich/15.0.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/rich/15.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "rich-click",
+      "version": "1.9.9",
+      "source": "https://pypi.org/project/rich-click/1.9.9/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/rich-click/1.9.9/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1",
+      "source": "https://pypi.org/project/rpds-py/2026.9.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/rpds-py/2026.9.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "ruff",
+      "version": "0.17.3",
+      "source": "https://pypi.org/project/ruff/0.17.3/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/ruff/0.17.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "Ruff",
+      "source": "https://github.com/astral-sh/ruff",
+      "license": "MIT",
+      "license_url": "https://github.com/astral-sh/ruff/blob/main/LICENSE",
+      "scope": "Development",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "s3transfer",
+      "version": "0.19.3",
+      "source": "https://pypi.org/project/s3transfer/0.19.3/",
+      "license": "Apache License 2.0",
+      "license_url": "https://pypi.org/project/s3transfer/0.19.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "sacremoses",
+      "version": "0.2.0",
+      "source": "https://pypi.org/project/sacremoses/0.2.0/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/sacremoses/0.2.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "asset_id": "samtools-bcftools",
+      "name": "samtools/bcftools",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/samtools/bcftools",
+      "license": "NOASSERTION",
+      "license_url": "https://github.com/samtools/bcftools/blob/develop/LICENSE",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "asset_id": "samtools-samtools",
+      "name": "samtools/samtools",
+      "version": "See pinned download manifest",
+      "source": "https://github.com/samtools/samtools",
+      "license": "NOASSERTION",
+      "license_url": "https://github.com/samtools/samtools/blob/develop/LICENSE",
+      "scope": "Separate runtime/tool; retain complete distribution notices"
+    },
+    {
+      "name": "sarek",
+      "version": "6e9b164daa2a54c98f7dda538645d340c561ac24",
+      "source": "https://github.com/nf-core/sarek",
+      "license": "MIT",
+      "license_url": "https://github.com/nf-core/sarek/blob/6e9b164daa2a54c98f7dda538645d340c561ac24/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "scikit-learn",
+      "version": "1.9.1",
+      "source": "https://pypi.org/project/scikit-learn/1.9.1/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/scikit-learn/1.9.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "scipy",
+      "version": "1.18.1",
+      "source": "https://pypi.org/project/scipy/1.18.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/scipy/1.18.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "seaborn",
+      "version": "0.13.2",
+      "source": "https://pypi.org/project/seaborn/0.13.2/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/seaborn/0.13.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "semver",
+      "version": "7.8.6",
+      "source": "https://www.npmjs.com/package/semver",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/semver",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "send2trash",
+      "version": "2.1.0",
+      "source": "https://pypi.org/project/send2trash/2.1.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/send2trash/2.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "sentencepiece",
+      "version": "0.2.2",
+      "source": "https://pypi.org/project/sentencepiece/0.2.2/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/sentencepiece/0.2.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "seqviz",
+      "version": "7a0e8f4c45ad5f4d076178f54f08f071e91d7b6a",
+      "source": "https://github.com/Lattice-Automation/seqviz",
+      "license": "MIT",
+      "license_url": "https://github.com/Lattice-Automation/seqviz/blob/7a0e8f4c45ad5f4d076178f54f08f071e91d7b6a/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "setuptools",
+      "version": "84.2.1",
+      "source": "https://pypi.org/project/setuptools/84.2.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/setuptools/84.2.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "shebang-command",
+      "version": "2.0.0",
+      "source": "https://www.npmjs.com/package/shebang-command",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/shebang-command",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "shebang-regex",
+      "version": "3.0.0",
+      "source": "https://www.npmjs.com/package/shebang-regex",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/shebang-regex",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "ShellCheck",
+      "source": "https://github.com/koalaman/shellcheck",
+      "license": "GPL-3.0-or-later",
+      "license_url": "https://github.com/koalaman/shellcheck/blob/master/LICENSE",
+      "scope": "Development; separate executable",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "signal-exit",
+      "version": "4.1.0",
+      "source": "https://www.npmjs.com/package/signal-exit",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/signal-exit",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "sisteransi",
+      "version": "1.0.5",
+      "source": "https://www.npmjs.com/package/sisteransi",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/sisteransi",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "six",
+      "version": "1.17.0",
+      "source": "https://pypi.org/project/six/1.17.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/six/1.17.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "snps",
+      "version": "2.12.1",
+      "source": "https://pypi.org/project/snps/2.12.1/",
+      "license": "BSD 3-Clause License",
+      "license_url": "https://pypi.org/project/snps/2.12.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "snps",
+      "version": "f9a7443c3075b2187f788cf3a4c18979576f4513",
+      "source": "https://github.com/apriha/snps",
+      "license": "BSD-3-Clause",
+      "license_url": "https://github.com/apriha/snps/blob/f9a7443c3075b2187f788cf3a4c18979576f4513/LICENSE.txt",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "sortedcontainers",
+      "version": "2.4.0",
+      "source": "https://pypi.org/project/sortedcontainers/2.4.0/",
+      "license": "Apache 2.0",
+      "license_url": "https://pypi.org/project/sortedcontainers/2.4.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "soupsieve",
+      "version": "4.0.1",
+      "source": "https://pypi.org/project/soupsieve/4.0.1/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/soupsieve/4.0.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "source-map-js",
+      "version": "1.2.2",
+      "source": "https://www.npmjs.com/package/source-map-js",
+      "license": "BSD-3-Clause",
+      "license_url": "https://www.npmjs.com/package/source-map-js",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "spectra",
+      "version": "0.1.0",
+      "source": "https://pypi.org/project/spectra/0.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/spectra/0.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "splace",
+      "version": "16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2",
+      "source": "https://github.com/reinator/splace",
+      "license": "GPL-3.0",
+      "license_url": "https://github.com/reinator/splace/tree/16bf0529aba4c7d24dd0510a2ff17f1f3509d3f2",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "stack-data",
+      "version": "0.6.3",
+      "source": "https://pypi.org/project/stack-data/0.6.3/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/stack-data/0.6.3/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "stylelint",
+      "version": "18.0.0",
+      "source": "https://www.npmjs.com/package/stylelint",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/stylelint",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "stylelint-config-recommended",
+      "version": "19.0.0",
+      "source": "https://www.npmjs.com/package/stylelint-config-recommended",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/stylelint-config-recommended",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "stylelint-config-standard",
+      "version": "41.0.0",
+      "source": "https://www.npmjs.com/package/stylelint-config-standard",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/stylelint-config-standard",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "terminado",
+      "version": "0.18.1",
+      "source": "https://pypi.org/project/terminado/0.18.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/terminado/0.18.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "threadpoolctl",
+      "version": "3.7.0",
+      "source": "https://pypi.org/project/threadpoolctl/3.7.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/threadpoolctl/3.7.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "tiktoken",
+      "version": "0.14.0",
+      "source": "https://pypi.org/project/tiktoken/0.14.0/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/tiktoken/0.14.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "tinycss2",
+      "version": "1.5.1",
+      "source": "https://pypi.org/project/tinycss2/1.5.1/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/tinycss2/1.5.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "tinyglobby",
+      "version": "0.2.17",
+      "source": "https://www.npmjs.com/package/tinyglobby",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/tinyglobby",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "tmerge",
+      "version": "5f9dee7d262913ca481716c2845d6e1b12c7bec7",
+      "source": "https://github.com/guigolab/tmerge",
+      "license": "MIT",
+      "license_url": "https://github.com/guigolab/tmerge/tree/5f9dee7d262913ca481716c2845d6e1b12c7bec7",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "toolshed",
+      "version": "0.4.8",
+      "source": "https://pypi.org/project/toolshed/0.4.8/",
+      "license": "BSD-2-Clause",
+      "license_url": "https://pypi.org/project/toolshed/0.4.8/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "tornado",
+      "version": "6.6",
+      "source": "https://pypi.org/project/tornado/6.6/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/tornado/6.6/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "tqdm",
+      "version": "4.70.1",
+      "source": "https://pypi.org/project/tqdm/4.70.1/",
+      "license": "MPL-2.0 AND MIT",
+      "license_url": "https://pypi.org/project/tqdm/4.70.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "traitlets",
+      "version": "5.16.1",
+      "source": "https://pypi.org/project/traitlets/5.16.1/",
+      "license": "See distribution license; full notice in upstream package",
+      "license_url": "https://pypi.org/project/traitlets/5.16.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "truvari",
+      "version": "5.5.0",
+      "source": "https://pypi.org/project/truvari/5.5.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/truvari/5.5.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "truvari",
+      "version": "c3a59e59bff81559d6e9f45062c3c8e29589cec3",
+      "source": "https://github.com/ACEnglish/truvari",
+      "license": "MIT",
+      "license_url": "https://github.com/ACEnglish/truvari/blob/c3a59e59bff81559d6e9f45062c3c8e29589cec3/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "twobitreader",
+      "version": "4.0.2",
+      "source": "https://pypi.org/project/twobitreader/4.0.2/",
+      "license": "Artistic-2.0",
+      "license_url": "https://pypi.org/project/twobitreader/4.0.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "type-check",
+      "version": "0.4.0",
+      "source": "https://www.npmjs.com/package/type-check",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/type-check",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "typeguard",
+      "version": "4.6.0",
+      "source": "https://pypi.org/project/typeguard/4.6.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/typeguard/4.6.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "typing-extensions",
+      "version": "4.16.0",
+      "source": "https://pypi.org/project/typing-extensions/4.16.0/",
+      "license": "PSF-2.0",
+      "license_url": "https://pypi.org/project/typing-extensions/4.16.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.4",
+      "source": "https://pypi.org/project/typing-inspection/0.4.4/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/typing-inspection/0.4.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "typing-inspection",
+      "version": "0.4.5",
+      "source": "https://pypi.org/project/typing-inspection/0.4.5/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/typing-inspection/0.4.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "typing_extensions",
+      "version": "4.16.0",
+      "source": "https://pypi.org/project/typing_extensions/4.16.0/",
+      "license": "PSF-2.0",
+      "license_url": "https://pypi.org/project/typing_extensions/4.16.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "tzdata",
+      "version": "2026.6",
+      "source": "https://pypi.org/project/tzdata/2026.6/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/tzdata/2026.6/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "tzlocal",
+      "version": "5.4.5",
+      "source": "https://pypi.org/project/tzlocal/5.4.5/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/tzlocal/5.4.5/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "Ubuntu",
+      "source": "https://ubuntu.com/",
+      "license": "Per-package licenses",
+      "license_url": "https://ubuntu.com/legal/intellectual-property-policy",
+      "scope": "Downloaded WSL environment",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "ugene",
+      "version": "559b098575cd281e30f86ff72a5ceea065a700bd",
+      "source": "https://github.com/ugeneunipro/ugene",
+      "license": "GPL-2.0",
+      "license_url": "https://github.com/ugeneunipro/ugene/blob/559b098575cd281e30f86ff72a5ceea065a700bd/LICENSE.txt",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "uri-js",
+      "version": "4.4.1",
+      "source": "https://www.npmjs.com/package/uri-js",
+      "license": "BSD-2-Clause",
+      "license_url": "https://www.npmjs.com/package/uri-js",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "uri-template",
+      "version": "1.3.0",
+      "source": "https://pypi.org/project/uri-template/1.3.0/",
+      "license": "MIT License",
+      "license_url": "https://pypi.org/project/uri-template/1.3.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "urllib3",
+      "version": "2.8.0",
+      "source": "https://pypi.org/project/urllib3/2.8.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/urllib3/2.8.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "util-deprecate",
+      "version": "1.0.2",
+      "source": "https://www.npmjs.com/package/util-deprecate",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/util-deprecate",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "vg",
+      "version": "453e6c01bb412186eaa948fd1bb413d45c089f0e",
+      "source": "https://github.com/vgteam/vg",
+      "license": "Check upstream and third-party components separately",
+      "license_url": "https://github.com/vgteam/vg/tree/453e6c01bb412186eaa948fd1bb413d45c089f0e",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "vilmaa",
+      "version": "59d7c269aeb9f7ddfaf794efd3094879a16a07bd",
+      "source": "https://github.com/mh11/VILMAA",
+      "license": "Apache-2.0",
+      "license_url": "https://github.com/mh11/VILMAA/tree/59d7c269aeb9f7ddfaf794efd3094879a16a07bd",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "vine",
+      "version": "5.1.0",
+      "source": "https://pypi.org/project/vine/5.1.0/",
+      "license": "BSD",
+      "license_url": "https://pypi.org/project/vine/5.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "waitress",
+      "version": "3.0.2",
+      "source": "https://pypi.org/project/waitress/3.0.2/",
+      "license": "ZPL 2.1",
+      "license_url": "https://pypi.org/project/waitress/3.0.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "wcwidth",
+      "version": "0.9.4",
+      "source": "https://pypi.org/project/wcwidth/0.9.4/",
+      "license": "License :: OSI Approved :: MIT License",
+      "license_url": "https://pypi.org/project/wcwidth/0.9.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "webcolors",
+      "version": "25.10.0",
+      "source": "https://pypi.org/project/webcolors/25.10.0/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/webcolors/25.10.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "webencodings",
+      "version": "0.6.1",
+      "source": "https://pypi.org/project/webencodings/0.6.1/",
+      "license": "License :: OSI Approved :: BSD License",
+      "license_url": "https://pypi.org/project/webencodings/0.6.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "websocket-client",
+      "version": "1.9.2",
+      "source": "https://pypi.org/project/websocket-client/1.9.2/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/websocket-client/1.9.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "websockets",
+      "version": "17.4",
+      "source": "https://pypi.org/project/websockets/17.4/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/websockets/17.4/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "WebView2",
+      "source": "https://developer.microsoft.com/microsoft-edge/webview2/",
+      "license": "Microsoft terms / included third-party notices",
+      "license_url": "https://learn.microsoft.com/microsoft-edge/webview2/concepts/distribution",
+      "scope": "SDK and runtime",
+      "version": "See pinned manifest / host"
+    },
+    {
+      "name": "werkzeug",
+      "version": "3.1.9",
+      "source": "https://pypi.org/project/werkzeug/3.1.9/",
+      "license": "BSD-3-Clause",
+      "license_url": "https://pypi.org/project/werkzeug/3.1.9/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "whatshap",
+      "version": "2.8",
+      "source": "https://pypi.org/project/whatshap/2.8/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/whatshap/2.8/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "whatshap",
+      "version": "6697f41d3ae41d616a4daffb8116ad5bb364a0b1",
+      "source": "https://github.com/whatshap/whatshap",
+      "license": "MIT",
+      "license_url": "https://github.com/whatshap/whatshap/blob/6697f41d3ae41d616a4daffb8116ad5bb364a0b1/LICENSE",
+      "scope": "Optional tool / adapter; see installation manifest"
+    },
+    {
+      "name": "which",
+      "version": "2.0.2",
+      "source": "https://www.npmjs.com/package/which",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/which",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "whitenoise",
+      "version": "6.12.0",
+      "source": "https://pypi.org/project/whitenoise/6.12.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/whitenoise/6.12.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "word-wrap",
+      "version": "1.2.5",
+      "source": "https://www.npmjs.com/package/word-wrap",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/word-wrap",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "write-file-atomic",
+      "version": "8.0.0",
+      "source": "https://www.npmjs.com/package/write-file-atomic",
+      "license": "ISC",
+      "license_url": "https://www.npmjs.com/package/write-file-atomic",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "xlsxwriter",
+      "version": "3.3.1",
+      "source": "https://pypi.org/project/xlsxwriter/3.3.1/",
+      "license": "BSD-2-Clause",
+      "license_url": "https://pypi.org/project/xlsxwriter/3.3.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "xopen",
+      "version": "2.1.0",
+      "source": "https://pypi.org/project/xopen/2.1.0/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/xopen/2.1.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "yarl",
+      "version": "1.25.1",
+      "source": "https://pypi.org/project/yarl/1.25.1/",
+      "license": "Apache-2.0",
+      "license_url": "https://pypi.org/project/yarl/1.25.1/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "yocto-queue",
+      "version": "0.1.0",
+      "source": "https://www.npmjs.com/package/yocto-queue",
+      "license": "MIT",
+      "license_url": "https://www.npmjs.com/package/yocto-queue",
+      "scope": "Development npm dependency"
+    },
+    {
+      "name": "zipp",
+      "version": "4.1.2",
+      "source": "https://pypi.org/project/zipp/4.1.2/",
+      "license": "MIT",
+      "license_url": "https://pypi.org/project/zipp/4.1.2/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    },
+    {
+      "name": "zlib-ng",
+      "version": "1.0.0",
+      "source": "https://pypi.org/project/zlib-ng/1.0.0/",
+      "license": "PSF-2.0",
+      "license_url": "https://pypi.org/project/zlib-ng/1.0.0/",
+      "scope": "Pinned Python dependency; may be optional or development-only"
+    }
+  ]
+}

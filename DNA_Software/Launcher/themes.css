@@ -1,0 +1,41 @@
+/* Theme boundary: own selectors/tokens only; keep command IDs and semantics. */
+html[data-design="archive"][data-theme="light"] {
+  --bg: #e7e1d4;
+  --surface: #f8f2e7;
+  --card: #f8f2e7;
+  --text: #293d36;
+  --accent: #567c6d;
+  --border: #d1c7b7;
+}
+html[data-design="archive"] .card {
+  border-radius: 7px;
+  border-top: 3px solid #a98548;
+  box-shadow: 0 9px 30px #1824190d;
+}
+html[data-design="archive"] h1,
+html[data-design="archive"] h2,
+html[data-design="archive"] h3 {
+  font-family: Georgia, serif;
+  font-weight: 500;
+}
+html[data-design="archive"][data-theme="light"] main {
+  background: linear-gradient(125deg, #e7e1d4, #f4eedf);
+}
+html[data-design="archive"] .brand-icon {
+  color: #c9ad70;
+}
+html[data-design="archive"] .workflow-number {
+  color: #b48d4a;
+}
+html[data-design="archive"][data-theme="dark"] .card {
+  border-top-color: #a98548;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .card {
+    animation: none !important;
+    transition: none !important;
+  }
+}

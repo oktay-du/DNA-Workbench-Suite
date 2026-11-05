@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en"
+  ><meta charset="utf-8" /><title>DNA · Family & Inheritance</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f1f5f8;
+      color: #23374b;
+      font:
+        16px Segoe UI,
+        Arial;
+    }
+    header {
+      padding: 28px 5%;
+      background: #142b40;
+      color: white;
+    }
+    main {
+      max-width: 1250px;
+      margin: auto;
+      padding: 28px;
+    }
+    section {
+      background: white;
+      border: 1px solid #dce5ec;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 22px;
+    }
+    h1,
+    h2 {
+      margin: 0 0 16px;
+    }
+    button {
+      background: #087f82;
+      color: white;
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 15px;
+      cursor: pointer;
+    }
+    select,
+    input {
+      padding: 10px;
+      border: 1px solid #bacbd6;
+      border-radius: 6px;
+      max-width: 95%;
+    }
+    label {
+      display: inline-block;
+      margin: 8px 14px 12px 0;
+    }
+    label span {
+      display: block;
+      margin-bottom: 6px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 15px;
+    }
+    .card {
+      border: 1px solid #cbd9e2;
+      border-radius: 9px;
+      padding: 18px;
+    }
+    .hyp {
+      border: 2px dashed #bd8730;
+    }
+    .badge {
+      color: #935c03;
+      font-weight: bold;
+    }
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: 14px Segoe UI;
+      background: #f2f6f9;
+      padding: 18px;
+    }
+    small {
+      display: block;
+      color: #526779;
+      margin: 10px 0;
+    }
+    .msg {
+      padding: 12px;
+      color: #9b2c28;
+    }
+    nav a {
+      color: #b5efeb;
+      margin-right: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 12px;
+      border-bottom: 1px solid #e1e8ee;
+    }
+    html.embedded header {
+      display: none;
+    }
+  </style>
+  <header
+    ><h1>Family & inheritance</h1><p>Link profiles · trace family lines · explore inheritance</p
+    ><nav
+      ><a href="/visual">Ancestry and appearance</a><a href="#tree">Family tree</a
+      ><a href="#profile">Profiles and Lines</a><a href="#child">Possible children</a></nav
+    ></header
+  ><main>
+    <div id="error" class="msg" role="alert"></div>
+    <section
+      ><h2>DNA comparison with the active profile</h2
+      ><label
+        ><span>Focus profile</span
+        ><select id="focus"></select></label
+      ><button id="verify">Check DNA evidence & relatedness</button
+      ><p id="verifyStatus" role="status">Not yet tested.</p
+      ><small
+        >Shared DNA, genotype concordance and estimated relatedness are different measures. Cards
+        show KING estimates where available, not definitive proof of a particular family
+        relationship.</small
+      ><details
+        ><summary>KING-Auswertung zuordnen</summary
+        ><p
+          >In the launcher, first run “kinship” with a tested multi-person VCF, then open the file
+          “kinship.kin0” and assign the samples to profiles.</p
+        ><input id="kingfile" type="file" accept=".kin0,.txt,.tsv" /><div id="kingmap"></div
+        ><label
+          ><span>Build des Vergleichspanels</span
+          ><select id="kingbuild"
+            ><option>GRCh38</option
+            ><option>GRCh37</option></select
+          ></label
+        ><label
+          ><span>Source / Panel / QC / Order folder</span
+          ><input id="kingnote" style="width: 90%" /></label
+        ><button id="kingimport">Importing KING results</button
+        ><small
+          >At least 10,000 commonly used markers are a prerequisite for classification. This alone
+          does not guarantee a good analysis: unified, genome-wide and suitable genotype data are
+          required. Variant lists can be distorted by their selection. Sample assignment and Panel
+          QC remain to be examined.</small
+        ></details
+      ></section
+    ><section id="tree"
+      ><h2>Link the family tree</h2
+      ><small
+        >Father and mother refer to biological parents. Stepparents are separate roles; partners are
+        not biological relatives. Other relationships follow documented parents and ancestors. Links
+        are not automatically genetically confirmed.</small
+      >
+      <label
+        ><span>Person / parent</span
+        ><select id="a"></select></label
+      ><label
+        ><span>Relationship</span
+        ><select id="kind"
+          ><option value="mother">is mother of</option
+          ><option value="father">is father of</option
+          ><option value="stepfather">is Stepfather of</option
+          ><option value="stepmother">is Stepmother of</option
+          ><option value="brother">is Brother of</option
+          ><option value="sister">is Sister of</option
+          ><option value="halfbrother">is Half-brother of</option
+          ><option value="halfsister">is Half-sister of</option
+          ><option value="stepbrother">is Stepbrother of</option
+          ><option value="stepsister">is Stepsister of</option
+          ><option value="partner">is Partner of</option></select
+        ></label
+      ><label
+        ><span>Person / child</span
+        ><select id="b"></select></label
+      ><label><span>Source / note</span><input id="note" /></label><button id="link">Link</button>
+      <div id="graph" class="grid"></div><table id="links"></table>
+      <h3>Missing person as a hypothesis</h3
+      ><input id="hypname" placeholder="For example, unknown grandfather" /><button id="hyp"
+        >Creating a hypothetical profile</button
+      ><small
+        >Hypotheses do not receive invented DNA and are not exported as measured data sets.</small
+      ></section
+    >
+    <section id="profile"
+      ><h2>Profile & mother/father line</h2
+      ><select id="person"></select
+      ><button id="show">Update profile</button><pre id="lines"></pre><pre id="summary"></pre
+      ><small
+        >The page reads the current source status when updating. haplogroups and blood type are not
+        taken by a relative as their own measurement.</small
+      ></section
+    >
+    <section
+      ><h2>Family affiliation over a certain line</h2>
+      <p
+        >Example: I → Father → Brother of the Father → his son (my cousin) Create missing
+        intermediaries first as an empty profile, then select here.</p
+      >
+      <label
+        ><span>Starting profile (e.g. me)</span
+        ><select id="ra"></select
+      ></label>
+      <label
+        ><span>Target person is my</span
+        ><select id="rr"
+          ><option value="cousin">Cousin</option
+          ><option value="uncle">Uncle</option
+          ><option value="aunt">Aunt</option
+          ><option value="brother">Brother</option
+          ><option value="sister">Sister</option
+          ><option value="halfbrother">Halbbruder</option
+          ><option value="halfsister">Halbschwester</option
+          ><option value="stepbrother">Stepbrother</option
+          ><option value="stepsister">Stepsister</option></select
+        ></label
+      >
+      <label
+        ><span>Family side</span
+        ><select id="rs"
+          ><option value="father">Paternal side</option
+          ><option value="mother">Mother's side</option
+          ><option value="unknown">Unknown / for siblings</option></select
+        ></label
+      >
+      <label
+        ><span>Parent profile on this side</span
+        ><select id="rp"></select
+      ></label>
+      <label
+        ><span>Intermediate parent for a cousin</span
+        ><select id="rb"></select
+      ></label>
+      <label
+        ><span>Intermediate person is</span
+        ><select id="rk"
+          ><option value="brother">Parent’s brother (uncle)</option
+          ><option value="sister">Parent’s sister (aunt)</option></select
+        ></label
+      >
+      <label
+        ><span>Target profile (with DNA if applicable)</span
+        ><select id="rt"></select></label
+      ><button id="route">Save relationship path</button>
+      <small
+        >Brother and sister, half-brother and half-sister as well as step-brother and step-sister
+        are separate relationships. The specific parents can be linked in addition. Mother/Father
+        page is set for aunt, uncle and cousin/cousin by the chosen parent profile.</small
+      ><pre id="routes"></pre> <h3>Connecting Empty Profile to DNA Later</h3
+      ><label
+        ><span>Empty intermediate profile</span
+        ><select id="empty"></select></label
+      ><label
+        ><span>Imported DNA profile</span
+        ><select id="dna"></select></label
+      ><button id="bind">Assign DNA source profile</button
+      ><small
+        >Link the source management to the empty family profile. Original files remain in their
+        personal archive.</small
+      ></section
+    >
+    <section id="child"
+      ><h2>Genotypes of possible children</h2
+      ><p
+        >Calculation from two QC-occupied genotypes at the same autosomal position, also applicable
+        to unrelated partners.</p
+      >
+      <label
+        ><span>Parent profile A</span
+        ><select id="pa"></select></label
+      ><label
+        ><span>Parent profile B</span
+        ><select id="pb"></select></label
+      ><label
+        ><span>Existing child (optional)</span
+        ><select id="pc"></select></label
+      ><br />
+      <label
+        ><span>Reference build</span
+        ><select id="build"
+          ><option>GRCh38</option
+          ><option>GRCh37</option></select
+        ></label
+      ><label
+        ><span>Chromosome 1–22</span
+        ><input id="chrom" value="1" type="number" min="1" max="22" /></label
+      ><label><span>Position</span><input id="pos" type="number" min="1" /></label
+      ><button id="calc">Calculate inheritance</button>
+      <small
+        >Prerequisite: import VCFs per person, mark them as “measured” and index variants. Missing
+        positions, imputation, conflicting sources and calls without PASS/DP≥10/GQ≥20 do not lead to
+        an estimate. Single position model without changes in copy number or new mutations.</small
+      ><pre id="result">No calculation yet.</pre>
+      <p
+        >Hair color, eye color, ABO/Rh and disease risks: no validated automatic model is included
+        yet.</p
+      ><small
+        >The genotype distribution describes each possible pregnancy separately, and a risk of
+        disease additionally requires the reliable variant evaluation, inheritance and, if
+        necessary, further variants in the same gene.<a
+          href="https://medlineplus.gov/genetics/understanding/inheritance/riskassessment/"
+          target="_blank"
+          rel="noreferrer"
+          >Background: MedlinePlus Genetics</a
+        ></small
+      ></section
+    ></main
+  >
+  <script>
+    const embeddedProfile =
+      new URLSearchParams(location.hash.slice(1)).get("person") ||
+      sessionStorage.getItem("dna.profile") ||
+      "";
+    if (window.chrome && window.chrome.webview) document.documentElement.classList.add("embedded");
+
+    const R = {
+      mother: "Mother of",
+      father: "Father of",
+      parent: "Parent role not yet specified for",
+      partner: "Partner of",
+      brother: "Brother of",
+      sister: "Sister of",
+      sibling: "Sibling role not yet specified for",
+      halfbrother: "Half-brother of",
+      halfsister: "Half-sister of",
+      stepfather: "Stepfather of",
+      stepmother: "Stepmother of",
+      stepbrother: "Stepbrother of",
+      stepsister: "Stepsister of",
+    };
+    let data;
+    const $ = (id) => document.getElementById(id);
+    async function api(path, args = {}) {
+      const r = await fetch(path, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-DNA-Token": "__TOKEN__" },
+        body: JSON.stringify(args),
+      });
+      const d = await r.json();
+      if (d.error) throw Error(d.error);
+      return d;
+    }
+    function el(tag, text) {
+      const e = document.createElement(tag);
+      e.textContent = text;
+      return e;
+    }
+    function name(id) {
+      return data.people.find((p) => p.id === id)?.label || id;
+    }
+    async function refresh() {
+      data = await api("/data");
+      for (const id of [
+        "a",
+        "b",
+        "person",
+        "pa",
+        "pb",
+        "pc",
+        "ra",
+        "rp",
+        "rb",
+        "rt",
+        "empty",
+        "dna",
+        "focus",
+      ]) {
+        const s = $(id),
+          old = s.value || (["focus", "person", "ra", "pa"].includes(id) ? embeddedProfile : "");
+        s.replaceChildren();
+        if (id === "pc") s.append(new Option("Do not choose a child", ""));
+        for (const p of data.people.filter((p) =>
+          id === "empty" ? p.synthetic : id === "dna" ? !p.synthetic : true
+        ))
+          s.append(new Option(p.label + (p.synthetic ? " [Hypothesis]" : ""), p.id));
+        if ([...s.options].some((o) => o.value === old)) s.value = old;
+      }
+      $("graph").replaceChildren();
+      for (const p of data.people) {
+        const c = el("div", "");
+        c.className = "card" + (p.synthetic ? " hyp" : "");
+        c.append(
+          el("strong", p.label),
+          el(
+            "small",
+            p.source_person
+              ? "Profile with source management"
+              : "LOW / HYPOTHESIS · no measured DNA"
+          )
+        );
+        for (const l of data.links.filter(
+          (l) => l.b === p.id && ["mother", "father", "parent"].includes(l.kind)
+        ))
+          c.append(
+            el(
+              "p",
+              { mother: "Mother", father: "Father", parent: "Parent" }[l.kind] + ": " + name(l.a)
+            )
+          );
+        const siblings = new Set(
+          data.links
+            .filter((l) => l.b === p.id && ["mother", "father", "parent"].includes(l.kind))
+            .flatMap((l) =>
+              data.links
+                .filter(
+                  (k) =>
+                    k.a === l.a && k.b !== p.id && ["mother", "father", "parent"].includes(k.kind)
+                )
+                .map((k) => name(k.b))
+            )
+        );
+        if (siblings.size) c.append(el("small", "Common Parent with:" + [...siblings].join(", ")));
+        const metric = el("pre", "DNA kinship percentage: not yet tested");
+        metric.id = "dna_" + p.id;
+        c.append(metric);
+        $("graph").append(c);
+      }
+      $("links").replaceChildren();
+      for (const l of data.links) {
+        const row = el("tr", "");
+        row.append(el("td", name(l.a)), el("td", R[l.kind]), el("td", name(l.b)), el("td", l.note));
+        const td = el("td", ""),
+          b = el("button", "Resolve the linkage");
+        b.onclick = () =>
+          run(async () => {
+            await api("/unlink", l);
+            await refresh();
+          });
+        td.append(b);
+        row.append(td);
+        $("links").append(row);
+      }
+    }
+    async function run(fn) {
+      $("error").textContent = "";
+      try {
+        await fn();
+      } catch (e) {
+        $("error").textContent = e.message;
+      }
+    }
+    $("link").onclick = () =>
+      run(async () => {
+        await api("/link", {
+          a: $("a").value,
+          b: $("b").value,
+          kind: $("kind").value,
+          note: $("note").value,
+        });
+        await refresh();
+      });
+    $("hyp").onclick = () =>
+      run(async () => {
+        await api("/hypothesis", { label: $("hypname").value });
+        await refresh();
+      });
+    $("show").onclick = () =>
+      run(async () => {
+        const id = $("person").value;
+        await refresh();
+        const r = await api("/lines", { person: id });
+        $("lines").textContent =
+          "Maternal line: " +
+          r.maternal.map(name).join(" ← ") +
+          "\nPaternal line: " +
+          r.paternal.map(name).join(" ← ") +
+          "\n\n" +
+          r.note;
+        $("summary").textContent = data.people.find((p) => p.id === id)?.profile || "";
+      });
+    $("calc").onclick = () =>
+      run(async () => {
+        $("result").textContent = JSON.stringify(
+          await api("/calculate", {
+            a: $("pa").value,
+            b: $("pb").value,
+            child: $("pc").value,
+            build: $("build").value,
+            chrom: $("chrom").value,
+            pos: $("pos").value,
+          }),
+          null,
+          2
+        );
+      });
+
+    // Extended relationship paths
+    const baseRefresh = refresh;
+    refresh = async function () {
+      await baseRefresh();
+      $("routes").textContent =
+        (data.routes || [])
+          .map(
+            (r) =>
+              ({ mother: "Mother's side", father: "Paternal side", unknown: "Line unknown" })[
+                r.side
+              ] +
+              ": " +
+              JSON.parse(r.path).map(name).join(" → ")
+          )
+          .join("\n") || "No kinship paths have yet been stored.";
+    };
+    $("route").onclick = () =>
+      run(async () => {
+        await api("/route", {
+          anchor: $("ra").value,
+          target: $("rt").value,
+          relation: $("rr").value,
+          side: $("rs").value,
+          parent: $("rp").value,
+          bridge: $("rb").value,
+          sibling_role: $("rk").value,
+        });
+        await refresh();
+      });
+    $("bind").onclick = () =>
+      run(async () => {
+        await api("/bind", { person: $("empty").value, source: $("dna").value });
+        await refresh();
+      });
+
+    let kingText = "";
+    async function verifyCards() {
+      const focus = $("focus").value;
+      if (!focus) return;
+      $("verifyStatus").textContent = "Comparative data are checked ...";
+      const report = await api("/verify-family", { focus });
+      for (const p of data.people) {
+        const box = $("dna_" + p.id);
+        if (p.id === focus) {
+          box.textContent = "REFERENCE PROFILE · Comparison with itself is omitted";
+          continue;
+        }
+        const r = report.comparisons.find((x) => x.person === p.id);
+        let text =
+          "Estimated relatedness: " +
+          (r.relatedness_percent == null
+            ? "Not available"
+            : r.relatedness_percent.toLocaleString(document.documentElement.lang, {
+                maximumFractionDigits: 1,
+              }) + "% (estimated from KING, no measured segment share)");
+        text += "\n" + r.status;
+        if (r.possible_relationships) text += "\n" + r.possible_relationships;
+        if (r.pedigree_check) text += "\n" + r.pedigree_check;
+        if (r.evidence) text += "\nMarkers in KING comparison: " + r.evidence.nsnp;
+        if (r.marker_comparison)
+          text +=
+            "\nGenotype concordance: " +
+            r.marker_comparison.concordance_percent.toLocaleString(document.documentElement.lang, {
+              maximumFractionDigits: 2,
+            }) +
+            "% across " +
+            r.marker_comparison.common_snps +
+            "Markers (no relative share)";
+        box.textContent = text;
+      }
+      $("verifyStatus").textContent = "Focus: " + name(focus) + " · " + report.note;
+    }
+    const priorRefresh = refresh;
+    refresh = async function () {
+      await priorRefresh();
+      await verifyCards();
+    };
+    $("focus").onchange = () => {
+      sessionStorage.setItem("dna.profile", $("focus").value);
+      run(verifyCards);
+    };
+    $("verify").onclick = () => run(verifyCards);
+    $("kingfile").onchange = () =>
+      run(async () => {
+        const f = $("kingfile").files[0];
+        if (!f) return;
+        if (f.size > 150000)
+          throw Error("Table too large: please evaluate the family group concerned separately.");
+        kingText = await f.text();
+        const lines = kingText.trim().split(/\r?\n/),
+          h = lines[0].replace(/^#/, "").trim().split(/\s+/),
+          i = h.indexOf("IID1"),
+          j = h.indexOf("IID2");
+        if (i < 0 || j < 0) throw Error("IID1/IID2 is missing in the KING table.");
+        const samples = [
+          ...new Set(
+            lines
+              .slice(1)
+              .filter((l) => l.trim())
+              .flatMap((l) => {
+                const c = l.trim().split(/\s+/);
+                return [c[i], c[j]];
+              })
+          ),
+        ];
+        $("kingmap").replaceChildren();
+        for (const id of samples) {
+          const label = el("label", "Sample " + id),
+            select = el("select", "");
+          select.dataset.sample = id;
+          select.append(new Option("Select profile", ""));
+          for (const p of data.people) select.append(new Option(p.label, p.id));
+          label.append(select);
+          $("kingmap").append(label);
+        }
+      });
+    $("kingimport").onclick = () =>
+      run(async () => {
+        if (!kingText) throw Error("Select the KING file.");
+        const mapping = {};
+        for (const s of $("kingmap").querySelectorAll("select")) {
+          if (!s.value) throw Error("Assign every sample to a profile.");
+          mapping[s.dataset.sample] = s.value;
+        }
+        const result = await api("/king-import", {
+          text: kingText,
+          mapping,
+          build: $("kingbuild").value,
+          note: $("kingnote").value,
+        });
+        $("verifyStatus").textContent = result.pairs + " pairwise comparisons saved.";
+        await verifyCards();
+      });
+    run(refresh);
+  </script></html
+>

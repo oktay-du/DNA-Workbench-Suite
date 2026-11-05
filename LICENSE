@@ -1,0 +1,23 @@
+DNA Workbench Suite — component license terms
+
+Required Notice: Copyright 2026 Oktay Du / OD — DNA Workbench Suite
+Required Notice: https://github.com/oktay-du/DNA-Workbench-Suite
+
+Designated copyright-eligible original contributions supplied by Oktay Du / OD
+are offered under the unmodified PolyForm Noncommercial License 1.0.0:
+DNA_Software/Launcher/Notices/POLYFORM-NONCOMMERCIAL-1.0.0.md
+
+For a separate written commercial agreement, contact oktaydu@proton.me.
+A donation, download or inquiry does not grant commercial permission.
+
+MIT-covered components and portions retain the permission and copyright notice
+in DNA_Software/Launcher/Notices/LEGACY-MIT-LICENSE.txt. The component scope map
+DNA_Software/Launcher/Notices/COMPONENT-SCOPE.json identifies retained portions.
+In mixed files, this project does not restrict the rights granted for those
+MIT-covered portions. Uncertain ownership does not establish exclusive rights.
+
+Third-party code, dependencies, tools, data, models and assets retain their own
+terms. See THIRD_PARTY.md and docs/LICENSING.md. These project terms neither
+replace upstream permissions nor grant rights the project does not hold.
+Facts, personal DNA and purely AI-generated material are not claimed as
+exclusively protected by this notice. Mandatory statutory rights remain intact.

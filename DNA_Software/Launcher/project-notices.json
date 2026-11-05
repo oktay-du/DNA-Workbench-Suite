@@ -1,0 +1,30 @@
+{
+  "updated": "2026-11-05",
+  "ai": {
+    "en": "Created with AI assistance. Maintained by OD and contributors. AI assistance is not evidence of scientific or legal validation.",
+    "de": "Mit KI-Unterstützung erstellt. Gepflegt von OD und Mitwirkenden. KI-Unterstützung ist kein Nachweis wissenschaftlicher oder rechtlicher Validierung."
+  },
+  "privacy": {
+    "en": "DNA and reports are processed locally by default. DNA Workbench has no automatic DNA, telemetry or crash-report upload to OD. Downloads and update checks contact their providers. Optional cloud AI sends only the reviewed payload after approval; external tools and services have their own policies. GitHub issues are public: anything you submit can be read by OD and others. GitHub Pages logs visitor IP addresses. Local files and settings remain on your drive until you delete them. This notice does not waive applicable privacy rights or legal duties.",
+    "de": "DNA und Befunde werden standardmäßig lokal verarbeitet. DNA Workbench sendet DNA, Telemetrie oder Absturzberichte nicht automatisch an OD. Downloads und Update-Prüfungen kontaktieren die Anbieter. Optionale Cloud-KI sendet erst nach Freigabe die angezeigten Daten; andere Tools und Dienste haben eigene Regeln. GitHub-Issues sind öffentlich: Eingereichte Inhalte können OD und andere lesen. GitHub Pages protokolliert IP-Adressen. Lokale Dateien und Einstellungen bleiben bis zur Löschung auf deinem Laufwerk. Gesetzliche Datenschutzrechte und Pflichten bleiben bestehen."
+  },
+  "research": {
+    "en": "Experimental research and development software. Not a clinical diagnostic system or medical advice. Results require independent verification. Use only data you are authorized to process; do not publish personal DNA or third-party medical reports. No guarantee of completeness, accuracy or fitness. Liability exclusions apply only to the extent permitted by law; mandatory rights and liability remain unaffected.",
+    "de": "Experimentelle Forschungs- und Entwicklungssoftware. Kein klinisches Diagnosesystem und keine medizinische Beratung. Ergebnisse unabhängig prüfen. Nur berechtigt verarbeitete Daten verwenden; persönliche DNA und fremde Befunde nicht veröffentlichen. Keine Gewähr für Vollständigkeit, Richtigkeit oder Eignung. Haftungsausschlüsse gelten nur im gesetzlich zulässigen Umfang; zwingende Rechte und Haftung bleiben unberührt."
+  },
+  "licensing": {
+    "en": "Designated original contributions: PolyForm Noncommercial 1.0.0. Credit DNA Workbench Suite / OD. Commercial permissions: oktaydu@proton.me. MIT-covered portions and other components retain their listed terms. See Licenses & Notices. Personal DNA is not licensed by the project.",
+    "de": "Ausgewiesene eigene Beiträge: PolyForm Noncommercial 1.0.0. Namensnennung: DNA Workbench Suite / OD. Kommerzielle Rechte: oktaydu@proton.me. MIT-Anteile und andere Komponenten behalten ihre ausgewiesenen Bedingungen. Siehe Lizenzen und Hinweise. Persönliche DNA fällt nicht unter die Projektlizenz."
+  },
+  "links": {
+    "Privacy notice": "https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/PRIVACY.md",
+    "Research and legal notice": "https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/LEGAL.md",
+    "Third-party notices": "https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/THIRD_PARTY.md",
+    "License": "https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/LICENSE",
+    "Licensing scope": "https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/LICENSING.md"
+  },
+  "contact": {
+    "name": "Oktay Du",
+    "email": "oktaydu@proton.me"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "format": "DNAWorkbenchSyntheticTree",
+  "version": 1,
+  "people": [
+    {
+      "id": "DEMO_Alex",
+      "name": "Alex Example"
+    },
+    {
+      "id": "DEMO_Robin",
+      "name": "Robin Example"
+    },
+    {
+      "id": "DEMO_Sam",
+      "name": "Sam Example"
+    },
+    {
+      "id": "DEMO_Taylor",
+      "name": "Taylor Example"
+    }
+  ],
+  "note": "Synthetic JSON structure; not a real 23andMe export schema"
+}

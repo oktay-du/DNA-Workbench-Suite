@@ -1,0 +1,404 @@
+:root {
+  --ink: #193549;
+  --muted: #5b7384;
+  --teal: #087f80;
+  --line: #dbe5eb;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  color: var(--ink);
+  background: #f2f6f8;
+  font:
+    15px Segoe UI,
+    Arial;
+}
+header {
+  background: #142d40;
+  color: white;
+  padding: 24px 30px;
+}
+header h1 {
+  font-size: 27px;
+  margin: 8px 0;
+}
+header p {
+  margin: 0;
+  color: #bdd6df;
+}
+.eyebrow {
+  letter-spacing: 0.1em;
+  font-size: 11px;
+}
+button,
+input,
+select,
+textarea {
+  font:
+    14px Segoe UI,
+    Arial;
+}
+button {
+  border: 0;
+  border-radius: 7px;
+  background: var(--teal);
+  color: white;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+button.secondary {
+  background: #e5eef2;
+  color: var(--ink);
+}
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid #e9ad42;
+  outline-offset: 3px;
+}
+label {
+  font-size: 12px;
+  color: var(--muted);
+}
+select,
+input,
+textarea {
+  border: 1px solid #bdced8;
+  border-radius: 6px;
+  background: white;
+  color: var(--ink);
+  padding: 9px;
+  display: block;
+  margin-top: 5px;
+}
+select {
+  min-width: 145px;
+  max-width: 280px;
+}
+input[type="number"] {
+  width: 110px;
+}
+input[type="checkbox"] {
+  display: inline;
+}
+.check {
+  padding-top: 20px;
+}
+textarea {
+  width: 100%;
+  min-height: 190px;
+  font-family: Consolas, monospace;
+}
+.toolbar,
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: end;
+  flex-wrap: wrap;
+}
+.toolbar {
+  background: white;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--line);
+}
+.options {
+  margin: 12px 24px;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 13px;
+  border-radius: 8px;
+}
+.options summary {
+  cursor: pointer;
+  color: var(--teal);
+}
+.options p,
+small {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.options .row {
+  padding-top: 10px;
+}
+.shell {
+  display: grid;
+  grid-template-columns: 225px minmax(0, 1fr);
+  gap: 20px;
+  padding: 8px 24px 30px;
+}
+nav {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+  position: sticky;
+  top: 8px;
+  max-height: 85vh;
+  overflow: auto;
+  align-self: start;
+}
+nav h3 {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 18px 6px 7px;
+}
+nav button {
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 9px 10px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 13px;
+  margin: 2px 0;
+}
+nav button.active {
+  background: #deefee;
+  color: #046a6c;
+  font-weight: 600;
+}
+main {
+  min-width: 0;
+}
+.section-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  background: white;
+  border: 1px solid var(--line);
+  padding: 20px 24px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+.section-heading h2 {
+  font-size: 25px;
+  margin: 10px 0;
+}
+.section-heading p {
+  line-height: 1.7;
+  margin: 0 0 8px;
+}
+section,
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 22px;
+  margin: 16px 0;
+}
+section h3 {
+  margin: 0 0 14px;
+}
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  padding: 5px 10px;
+  background: #e0f0ed;
+  color: #1b6a63;
+  border-radius: 18px;
+}
+.note {
+  padding: 14px 17px;
+  border-left: 4px solid #d4a045;
+  background: #fff3dc;
+  line-height: 1.7;
+  font-size: 13px;
+  margin: 14px 0;
+}
+.empty {
+  padding: 24px;
+  border: 1px dashed #bbccd5;
+  border-radius: 9px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+.stat {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: white;
+}
+.stat strong {
+  display: block;
+  font-size: 25px;
+  color: var(--teal);
+  margin-bottom: 5px;
+}
+.table-wrap {
+  overflow: auto;
+  max-height: 520px;
+}
+table {
+  border-collapse: collapse;
+  font-size: 13px;
+  width: 100%;
+}
+th,
+td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+  white-space: normal;
+  min-width: 85px;
+}
+th {
+  background: #edf3f6;
+  position: sticky;
+  top: 0;
+  font-size: 12px;
+}
+td button {
+  font-size: 12px;
+  padding: 5px 9px;
+}
+pre {
+  font:
+    12px Consolas,
+    monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: #f2f6f8;
+  padding: 14px;
+  border-radius: 8px;
+}
+.chart {
+  padding: 16px;
+  overflow: auto;
+  background: #f7fafb;
+  border-radius: 10px;
+}
+.chart svg {
+  width: 100%;
+  min-width: 620px;
+}
+.chart.spatial {
+  perspective: 1100px;
+  padding: 50px 30px;
+  overflow: auto;
+}
+.chart.spatial svg {
+  transform: rotateX(28deg) rotateY(-12deg);
+  transform-origin: center;
+}
+.chart.compact svg {
+  max-height: 360px;
+}
+.legend {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 12px;
+  margin: 12px 0;
+}
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  margin-right: 5px;
+}
+#error {
+  margin: 0 24px;
+  color: #9d2f2f;
+  white-space: pre-wrap;
+}
+#busy {
+  padding: 0 24px;
+  color: var(--teal);
+  font-size: 13px;
+  min-height: 20px;
+}
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.search {
+  width: 100%;
+  max-width: 450px;
+  margin-bottom: 12px;
+}
+dialog {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  max-width: 680px;
+  padding: 26px;
+  color: var(--ink);
+}
+dialog::backdrop {
+  background: #122b4070;
+}
+dialog p,
+dialog li {
+  line-height: 1.7;
+}
+a {
+  color: var(--teal);
+}
+.matrix td {
+  min-width: 75px;
+  text-align: center;
+}
+.matrix .present {
+  background: #d8ece9;
+}
+h4 {
+  margin: 20px 0 10px;
+}
+@media (max-width: 900px) {
+  .shell {
+    grid-template-columns: 1fr;
+    padding: 10px;
+  }
+  nav {
+    position: static;
+    max-height: 240px;
+  }
+  .toolbar {
+    padding: 14px;
+  }
+  nav button {
+    display: inline-block;
+    width: auto;
+  }
+  .options {
+    margin: 10px;
+  }
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media print {
+  nav,
+  .toolbar,
+  .options,
+  button {
+    display: none;
+  }
+  .shell {
+    display: block;
+  }
+  header {
+    background: white;
+    color: var(--ink);
+  }
+  section {
+    break-inside: avoid;
+  }
+  .table-wrap {
+    max-height: none;
+  }
+}

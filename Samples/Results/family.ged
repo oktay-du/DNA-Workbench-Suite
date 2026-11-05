@@ -1,0 +1,16 @@
+0 HEAD
+1 SOUR DNAWorkbenchSynthetic
+1 GEDC
+2 VERS 5.5.1
+1 CHAR UTF-8
+0 @A@ INDI
+1 NAME Alex /Example/
+0 @R@ INDI
+1 NAME Robin /Example/
+0 @S@ INDI
+1 NAME Sam /Example/
+0 @F@ FAM
+1 HUSB @R@
+1 WIFE @S@
+1 CHIL @A@
+0 TRLR

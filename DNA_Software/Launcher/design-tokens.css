@@ -1,0 +1,56 @@
+/* Semantic foundations for the existing Workbench shell. */
+:root {
+  font-family: Workbench, "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+  color-scheme: light;
+  --bg: #f5f7fa;
+  --surface: #fff;
+  --sidebar: #f9fafc;
+  --raised: #f2f5f9;
+  --ink: #17283c;
+  --muted: #52647b;
+  --line: #e3e8ef;
+  --accent: #107276;
+  --accent-soft: #e8f4f1;
+  --nav-active: #e8efef;
+  --shadow: 0 8px 32px #192d4010;
+  --orange: #805900;
+  --danger: #a83c47;
+  --dark: #173749;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --text-body: 14px;
+  --text-caption: 12px;
+  --motion-fast: 140ms;
+  --motion-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --focus: #147f82;
+  --warning-soft: #fff1d6;
+  --danger-soft: #fbe9eb;
+  --touch-target: 44px;
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e141e;
+  --surface: #171f2c;
+  --sidebar: #121a26;
+  --raised: #1e2938;
+  --ink: #e6edf5;
+  --muted: #9aaabd;
+  --line: #293547;
+  --accent: #5bc9be;
+  --accent-soft: #193c3d;
+  --nav-active: #203536;
+  --shadow: 0 8px 32px #0003;
+  --orange: #e0b25e;
+  --danger: #ee8a8e;
+  --dark: #d3e8ed;
+  --focus: #73ded0;
+  --warning-soft: #3b2e18;
+  --danger-soft: #45262f;
+}

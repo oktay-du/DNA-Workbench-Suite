@@ -1,0 +1,4475 @@
+{
+  "version": "2026-11-03.1",
+  "places": [
+    {
+      "id": "ac",
+      "name": "Ascension",
+      "aliases": [
+        "Ascension"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ad",
+      "name": "Andorra",
+      "aliases": [
+        "Andorra"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ae",
+      "name": "United Arab Emirates",
+      "aliases": [
+        "Vereinigte Arabische Emirate"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "af",
+      "name": "Afghanistan",
+      "aliases": [
+        "Afghanistan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ag",
+      "name": "Antigua and Barbuda",
+      "aliases": [
+        "Antigua and Barbuda"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ai",
+      "name": "Anguilla",
+      "aliases": [
+        "Anguilla"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "al",
+      "name": "Albania",
+      "aliases": [
+        "Albanien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "am",
+      "name": "Armenia",
+      "aliases": [
+        "Armenien",
+        "Armenian",
+        "Armenia",
+        "Armenisch"
+      ],
+      "landscape": "Highlands, volcanic landscapes and valleys characterize many parts of the country.",
+      "architecture": "Stone churches and monasteries as well as the cross stones, Khachkare, are important parts of the cultural heritage.",
+      "curated": true,
+      "theme": {
+        "accent": "#497165",
+        "motif": "towers"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/am/"
+        }
+      ]
+    },
+    {
+      "id": "ao",
+      "name": "Angola",
+      "aliases": [
+        "Angola"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "aq",
+      "name": "Antarctica",
+      "aliases": [
+        "Antarktis"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ar",
+      "name": "Argentina",
+      "aliases": [
+        "Argentinien",
+        "Argentinian",
+        "Argentina",
+        "Argentinisch"
+      ],
+      "landscape": "Andes, Pampas and Patagonia form different landscapes.",
+      "architecture": "Regional forms of settlement and historical urban architecture show different cultural connections.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ar/"
+        }
+      ]
+    },
+    {
+      "id": "as",
+      "name": "Amerikanisch-Samoa",
+      "aliases": [
+        "Amerikanisch-Samoa"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "at",
+      "name": "Austria",
+      "aliases": [
+        "Austria",
+        "Austria",
+        "Austrian"
+      ],
+      "landscape": "Alpine valleys, lakes and the Danube region connect mountain landscapes with historic cities.",
+      "architecture": "Viennese city palaces, baroque churches and regional wooden buildings show different building traditions.",
+      "curated": true,
+      "theme": {
+        "accent": "#315d77",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/at/"
+        }
+      ]
+    },
+    {
+      "id": "au",
+      "name": "Australia",
+      "aliases": [
+        "Australien",
+        "Australian",
+        "Australia",
+        "Australisch"
+      ],
+      "landscape": "Coasts, dry inland areas and tropical landscapes form different regions.",
+      "architecture": "The cultural history of the Aboriginal Peoples and Torres Strait Islander Peoples is distinct and diverse; recent urban architecture shows further eras.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/au/"
+        }
+      ]
+    },
+    {
+      "id": "aw",
+      "name": "Aruba",
+      "aliases": [
+        "Aruba"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ax",
+      "name": "Ålandinseln",
+      "aliases": [
+        "Ålandinseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "az",
+      "name": "Azerbaijan",
+      "aliases": [
+        "Aserbaidschan",
+        "Azerbaijani",
+        "Azerbaijan",
+        "Azeri"
+      ],
+      "landscape": "Caspian Sea, dry plains and Caucasus mountains form different landscapes.",
+      "architecture": "The old town of Baku and historical caravanserai show different layers of regional building history.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/az/"
+        }
+      ]
+    },
+    {
+      "id": "ba",
+      "name": "Bosnia and Herzegovina",
+      "aliases": [
+        "Bosnia and Herzegovina"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bb",
+      "name": "Barbados",
+      "aliases": [
+        "Barbados"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bd",
+      "name": "Bangladesh",
+      "aliases": [
+        "Bangladesch"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "be",
+      "name": "Belgium",
+      "aliases": [
+        "Belgien",
+        "Belgian",
+        "Belgium",
+        "Belgisch"
+      ],
+      "landscape": "The North Sea coast, lowlands and Ardennes lie in a densely interconnected European area.",
+      "architecture": "Historic marketplaces, bellies and Art Nouveau buildings show various urban traditions.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/be/"
+        }
+      ]
+    },
+    {
+      "id": "bf",
+      "name": "Burkina Faso",
+      "aliases": [
+        "Burkina Faso"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bg",
+      "name": "Bulgaria",
+      "aliases": [
+        "Bulgarien",
+        "Bulgarian",
+        "Bulgaria",
+        "Bulgarisch"
+      ],
+      "landscape": "The Balkan and Rhodopen mountains, plains and Black Sea coasts characterise different regions.",
+      "architecture": "Monastery complexes, historical townhouses and archaeological sites provide insights into different eras.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/bg/"
+        }
+      ]
+    },
+    {
+      "id": "bh",
+      "name": "Bahrain",
+      "aliases": [
+        "Bahrain"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bi",
+      "name": "Burundi",
+      "aliases": [
+        "Burundi"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bj",
+      "name": "Benin",
+      "aliases": [
+        "Benin"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bl",
+      "name": "St. Barthélemy",
+      "aliases": [
+        "St. Barthélemy"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bm",
+      "name": "Bermuda",
+      "aliases": [
+        "Bermuda"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bn",
+      "name": "Brunei",
+      "aliases": [
+        "Brunei Darussalam"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bo",
+      "name": "Bolivia",
+      "aliases": [
+        "Bolivien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bq",
+      "name": "Karibische Niederlande",
+      "aliases": [
+        "Karibische Niederlande"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "br",
+      "name": "Brazil",
+      "aliases": [
+        "Brasilien",
+        "Brazilian",
+        "Brazil",
+        "Brasilianisch"
+      ],
+      "landscape": "Amazonia, coasts and highlands form different landscapes.",
+      "architecture": "Indigenous building traditions, historic cities and modern architecture are part of a diverse cultural heritage.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/br/"
+        }
+      ]
+    },
+    {
+      "id": "bs",
+      "name": "The Bahamas",
+      "aliases": [
+        "Bahamas"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bt",
+      "name": "Bhutan",
+      "aliases": [
+        "Bhutan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bv",
+      "name": "Bouvetinsel",
+      "aliases": [
+        "Bouvetinsel"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "bw",
+      "name": "Botswana",
+      "aliases": [
+        "Botsuana"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "by",
+      "name": "Belarus",
+      "aliases": [
+        "Belarus",
+        "Belarusian",
+        "Belarusisch"
+      ],
+      "landscape": "Plains, forests and river landscapes characterize large parts of the country.",
+      "architecture": "Castle complexes, religious buildings and historical centers show different cultural connections.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/by/"
+        }
+      ]
+    },
+    {
+      "id": "bz",
+      "name": "Belize",
+      "aliases": [
+        "Belize"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ca",
+      "name": "Canada",
+      "aliases": [
+        "Kanada",
+        "Canadian",
+        "Canada",
+        "Kanadisch"
+      ],
+      "landscape": "The Atlantic and Pacific coasts, forests, prairies and Arctic regions characterize the large area.",
+      "architecture": "Indigenous building traditions, historical settlements and modern architecture are part of different regional histories.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ca/"
+        }
+      ]
+    },
+    {
+      "id": "cc",
+      "name": "Kokosinseln",
+      "aliases": [
+        "Kokosinseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cd",
+      "name": "Democratic Republic of the Congo",
+      "aliases": [
+        "Kongo-Kinshasa"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cf",
+      "name": "Central African Republic",
+      "aliases": [
+        "Zentralafrikanische Republik"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cg",
+      "name": "Republic of the Congo",
+      "aliases": [
+        "Kongo-Brazzaville"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ch",
+      "name": "Switzerland",
+      "aliases": [
+        "Schweiz",
+        "Swiss",
+        "Switzerland",
+        "Schweizer"
+      ],
+      "landscape": "The Alps, the Pre-Alpines and the Mittelland characterise the landscape; several language areas are close together.",
+      "architecture": "Old towns with arbor aisles, regional wooden houses and modern architecture form a variety of townscapes.",
+      "curated": true,
+      "theme": {
+        "accent": "#315d77",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ch/"
+        }
+      ]
+    },
+    {
+      "id": "ci",
+      "name": "Ivory Coast",
+      "aliases": [
+        "Côte d’Ivoire"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ck",
+      "name": "Cookinseln",
+      "aliases": [
+        "Cookinseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cl",
+      "name": "Chile",
+      "aliases": [
+        "Chile"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cm",
+      "name": "Cameroon",
+      "aliases": [
+        "Kamerun"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cn",
+      "name": "China",
+      "aliases": [
+        "China",
+        "Chinese",
+        "Chinesisch"
+      ],
+      "landscape": "Mountains, river basins, coasts and dry landscapes form very different regions.",
+      "architecture": "Historic courthouses, gardens and temples stand alongside numerous regional and modern forms of construction.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/cn/"
+        }
+      ]
+    },
+    {
+      "id": "co",
+      "name": "Colombia",
+      "aliases": [
+        "Kolumbien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cp",
+      "name": "Clipperton-Insel",
+      "aliases": [
+        "Clipperton-Insel"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cq",
+      "name": "Sark",
+      "aliases": [
+        "Sark"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cr",
+      "name": "Costa Rica",
+      "aliases": [
+        "Costa Rica"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cu",
+      "name": "Cuba",
+      "aliases": [
+        "Kuba"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cv",
+      "name": "Cabo Verde",
+      "aliases": [
+        "Cabo Verde"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cw",
+      "name": "Curaçao",
+      "aliases": [
+        "Curaçao"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cx",
+      "name": "Weihnachtsinsel",
+      "aliases": [
+        "Weihnachtsinsel"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cy",
+      "name": "Cyprus",
+      "aliases": [
+        "Zypern"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "cz",
+      "name": "Czechia",
+      "aliases": [
+        "Tschechien",
+        "Czech",
+        "Czechia",
+        "Bohemian",
+        "Tschech"
+      ],
+      "landscape": "Bohemia and Moravia connect hillside landscapes, river valleys and historic cities.",
+      "architecture": "Gothic, Renaissance and Baroque characterize many city centers; Prague is a well-known but not only example.",
+      "curated": true,
+      "theme": {
+        "accent": "#315d77",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/cz/"
+        }
+      ]
+    },
+    {
+      "id": "de",
+      "name": "Germany",
+      "aliases": [
+        "Deutschland",
+        "German",
+        "Germany",
+        "Deutsch",
+        "Southern German"
+      ],
+      "landscape": "Between the North and Baltic coasts, the Middle Mountains and the Alps there are very different cultural landscapes.",
+      "architecture": "Brick Gothic, half-timbered, baroque residences and modernism show different chapters of architectural history, and a single castle does not stand for the whole of Germany.",
+      "curated": true,
+      "theme": {
+        "accent": "#315d77",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/de/"
+        }
+      ]
+    },
+    {
+      "id": "dg",
+      "name": "Diego Garcia",
+      "aliases": [
+        "Diego Garcia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "dj",
+      "name": "Djibouti",
+      "aliases": [
+        "Dschibuti"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "dk",
+      "name": "Denmark",
+      "aliases": [
+        "Denmark",
+        "Danish",
+        "Denmark",
+        "Danish"
+      ],
+      "landscape": "Islands, peninsulas and coasts characterize the landscape.",
+      "architecture": "Brick churches, coloured townhouses and modern architecture give different insights into the history of construction.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/dk/"
+        }
+      ]
+    },
+    {
+      "id": "dm",
+      "name": "Dominica",
+      "aliases": [
+        "Dominica"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "do",
+      "name": "Dominican Republic",
+      "aliases": [
+        "Dominikanische Republik"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "dz",
+      "name": "Algeria",
+      "aliases": [
+        "Algerien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ea",
+      "name": "Ceuta and Melilla",
+      "aliases": [
+        "Ceuta and Melilla"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ec",
+      "name": "Ecuador",
+      "aliases": [
+        "Ecuador"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ee",
+      "name": "Estonia",
+      "aliases": [
+        "Estland",
+        "Estonian",
+        "Estonia",
+        "Estnisch"
+      ],
+      "landscape": "Islands, coasts and forest landscapes form different habitats.",
+      "architecture": "Tallinn’s old town and regional timber buildings are examples of architectural heritage.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ee/"
+        }
+      ]
+    },
+    {
+      "id": "eg",
+      "name": "Egypt",
+      "aliases": [
+        "Egypt",
+        "Egyptian",
+        "Egypt",
+        "Egyptian"
+      ],
+      "landscape": "Nile valley, delta, deserts and coasts characterize different habitats.",
+      "architecture": "Ancient monuments, historic neighbourhoods and recent architecture stand for different eras.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/eg/"
+        }
+      ]
+    },
+    {
+      "id": "eh",
+      "name": "Western Sahara",
+      "aliases": [
+        "Westsahara"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "er",
+      "name": "Eritrea",
+      "aliases": [
+        "Eritrea"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "es",
+      "name": "Spain",
+      "aliases": [
+        "Spanien",
+        "Spanish",
+        "Spain",
+        "Galician",
+        "Galicia",
+        "Spanisch"
+      ],
+      "landscape": "Atlantic, Mediterranean, plateaus and mountains make the Iberian Peninsula scenically diverse.",
+      "architecture": "Romanesque, Gothic, Islamic-influenced architecture and modernism stand for various regional stories.",
+      "curated": true,
+      "theme": {
+        "accent": "#316e9a",
+        "motif": "tiles"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/es/"
+        }
+      ]
+    },
+    {
+      "id": "et",
+      "name": "Ethiopia",
+      "aliases": [
+        "Ethiopia",
+        "Ethiopian",
+        "Ethiopia",
+        "Ethiopian"
+      ],
+      "landscape": "Highlands and rift landscapes form very different natural spaces.",
+      "architecture": "Rock churches, historical installations and regional residential buildings provide insights into a wide range of building traditions.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/et/"
+        }
+      ]
+    },
+    {
+      "id": "fi",
+      "name": "Finland",
+      "aliases": [
+        "Finnland",
+        "Finnish",
+        "Finland",
+        "Finnisch"
+      ],
+      "landscape": "Lakes, forests, coasts and northern landscapes characterize different regions.",
+      "architecture": "Wooden construction, traditional saunas and the architecture of modernity offer different design motifs.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/fi/"
+        }
+      ]
+    },
+    {
+      "id": "fj",
+      "name": "Fiji",
+      "aliases": [
+        "Fidschi"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "fk",
+      "name": "Falkland Islands",
+      "aliases": [
+        "Falklandinseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "fm",
+      "name": "Mikronesien",
+      "aliases": [
+        "Mikronesien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "fo",
+      "name": "Faroe Islands",
+      "aliases": [
+        "Faroe Islands"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "fr",
+      "name": "France",
+      "aliases": [
+        "Frankreich",
+        "French",
+        "France",
+        "French"
+      ],
+      "landscape": "Atlantic, Mediterranean, river landscapes and mountains connect different regional habitats.",
+      "architecture": "Romanesque and Gothic churches, half-timbered places, castles and modern architecture stand side by side.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/fr/"
+        }
+      ]
+    },
+    {
+      "id": "ga",
+      "name": "Gabon",
+      "aliases": [
+        "Gabun"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gb",
+      "name": "United Kingdom",
+      "aliases": [
+        "United Kingdom",
+        "British",
+        "Britain",
+        "United Kingdom",
+        "English",
+        "Scottish",
+        "Welsh"
+      ],
+      "landscape": "Coasts, hillside landscapes and historic cities characterize the different parts of the country.",
+      "architecture": "Castles, terraced houses, industrial architecture and modern buildings show different regional developments.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/gb/"
+        }
+      ]
+    },
+    {
+      "id": "gd",
+      "name": "Grenada",
+      "aliases": [
+        "Grenada"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ge",
+      "name": "Georgia",
+      "aliases": [
+        "Georgien",
+        "Georgian",
+        "Georgia",
+        "Kartvelian"
+      ],
+      "landscape": "Between the Black Sea and the Caucasus are wine-growing regions, valleys and high mountain villages.",
+      "architecture": "Swanese fortified towers, historic churches and Tbilisi townhouses show regional building traditions.",
+      "curated": true,
+      "theme": {
+        "accent": "#497165",
+        "motif": "towers"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ge/"
+        }
+      ]
+    },
+    {
+      "id": "gf",
+      "name": "French Guiana",
+      "aliases": [
+        "French Guiana"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gg",
+      "name": "Guernsey",
+      "aliases": [
+        "Guernsey"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gh",
+      "name": "Ghana",
+      "aliases": [
+        "Ghana"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gi",
+      "name": "Gibraltar",
+      "aliases": [
+        "Gibraltar"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gl",
+      "name": "Greenland",
+      "aliases": [
+        "Greenland"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gm",
+      "name": "Gambia",
+      "aliases": [
+        "Gambia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gn",
+      "name": "Guinea",
+      "aliases": [
+        "Guinea"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gp",
+      "name": "Guadeloupe",
+      "aliases": [
+        "Guadeloupe"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gq",
+      "name": "Equatorial Guinea",
+      "aliases": [
+        "Equatorial Guinea"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gr",
+      "name": "Greece",
+      "aliases": [
+        "Griechenland",
+        "Greek",
+        "Greece",
+        "Griechisch"
+      ],
+      "landscape": "Aegean islands, coasts and mountains form very different cultural landscapes.",
+      "architecture": "Ancient temples, Byzantine churches and regional island architecture belong to different eras and places.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/gr/"
+        }
+      ]
+    },
+    {
+      "id": "gs",
+      "name": "South Georgia and the Southern Sandwich Islands",
+      "aliases": [
+        "South Georgia and the Southern Sandwich Islands"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gt",
+      "name": "Guatemala",
+      "aliases": [
+        "Guatemala"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gu",
+      "name": "Guam",
+      "aliases": [
+        "Guam"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gw",
+      "name": "Guinea-Bissau",
+      "aliases": [
+        "Guinea-Bissau"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "gy",
+      "name": "Guyana",
+      "aliases": [
+        "Guyana"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "hk",
+      "name": "Sonderverwaltungsregion Hongkong",
+      "aliases": [
+        "Sonderverwaltungsregion Hongkong"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "hm",
+      "name": "Heard and McDonald Islands",
+      "aliases": [
+        "Heard and McDonald Islands"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "hn",
+      "name": "Honduras",
+      "aliases": [
+        "Honduras"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "hr",
+      "name": "Croatia",
+      "aliases": [
+        "Kroatien",
+        "Croatian",
+        "Croatia",
+        "Kroatisch"
+      ],
+      "landscape": "Adriatic coast, islands and the interior form different landscapes.",
+      "architecture": "Historic stone towns on the coast and regional buildings inland show various influences.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/hr/"
+        }
+      ]
+    },
+    {
+      "id": "ht",
+      "name": "Haiti",
+      "aliases": [
+        "Haiti"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "hu",
+      "name": "Hungary",
+      "aliases": [
+        "Ungarn",
+        "Hungarian",
+        "Hungary",
+        "Ungar"
+      ],
+      "landscape": "Danube, Balaton and the Great Hungarian Plain form different landscapes.",
+      "architecture": "Budapest urban architecture, thermal baths and rural forms of construction provide various insights into the region.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/hu/"
+        }
+      ]
+    },
+    {
+      "id": "ic",
+      "name": "Kanarische Inseln",
+      "aliases": [
+        "Kanarische Inseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "id",
+      "name": "Indonesia",
+      "aliases": [
+        "Indonesien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ie",
+      "name": "Ireland",
+      "aliases": [
+        "Irland",
+        "Irish",
+        "Ireland",
+        "Irisch"
+      ],
+      "landscape": "Atlantic coasts, grasslands and moors characterize many regions of the island.",
+      "architecture": "Monastery complexes, stone round towers and Georgian townhouses offer different historical insights.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ie/"
+        }
+      ]
+    },
+    {
+      "id": "il",
+      "name": "Israel",
+      "aliases": [
+        "Israel"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "im",
+      "name": "Isle of Man",
+      "aliases": [
+        "Isle of Man"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "in",
+      "name": "India",
+      "aliases": [
+        "Indien",
+        "Indian",
+        "India",
+        "Indisch"
+      ],
+      "landscape": "Himalayas, river plains, highlands and coasts connect numerous regions and cultures.",
+      "architecture": "Temples, mosques, fortresses and regional housing show a variety that does not reflect a single style.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/in/"
+        }
+      ]
+    },
+    {
+      "id": "io",
+      "name": "Britisches Territorium im Indischen Ozean",
+      "aliases": [
+        "Britisches Territorium im Indischen Ozean"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "iq",
+      "name": "Iraq",
+      "aliases": [
+        "Irak",
+        "Irak / Mesopotamien",
+        "Iraqi",
+        "Iraq",
+        "Mesopotamian",
+        "Mesopotamia",
+        "Mesopotamien"
+      ],
+      "landscape": "Euphrates and Tigris connect historical settlement spaces with plains and marsh landscapes.",
+      "architecture": "Archaeological cities, brick buildings and religious buildings show a long and diverse history.",
+      "curated": true,
+      "theme": {
+        "accent": "#976138",
+        "motif": "arch"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/iq/"
+        }
+      ]
+    },
+    {
+      "id": "ir",
+      "name": "Iran",
+      "aliases": [
+        "Iran",
+        "Iranian",
+        "Persian",
+        "Persisch"
+      ],
+      "landscape": "Highlands, mountains and dry basins connect very different landscapes and settlement spaces.",
+      "architecture": "Gardens, courtyards, brick vaults and colored tiles are examples of a diverse architectural history.",
+      "curated": true,
+      "theme": {
+        "accent": "#976138",
+        "motif": "arch"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ir/"
+        }
+      ]
+    },
+    {
+      "id": "is",
+      "name": "Iceland",
+      "aliases": [
+        "Island"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "it",
+      "name": "Italy",
+      "aliases": [
+        "Italien",
+        "Italian",
+        "Italy",
+        "Italienisch"
+      ],
+      "landscape": "From the Alps and the Po Valley to the Mediterranean coasts and islands, there is a great variety of landscapes.",
+      "architecture": "Ancient cities, Romanesque churches, Renaissance palaces and modern buildings show different regional histories.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/it/"
+        }
+      ]
+    },
+    {
+      "id": "je",
+      "name": "Jersey",
+      "aliases": [
+        "Jersey"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "jm",
+      "name": "Jamaica",
+      "aliases": [
+        "Jamaika"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "jo",
+      "name": "Jordan",
+      "aliases": [
+        "Jordanien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "jp",
+      "name": "Japan",
+      "aliases": [
+        "Japan",
+        "Japanese",
+        "Japanisch"
+      ],
+      "landscape": "Mountain landscapes and coasts characterize the islands and their different settlement areas.",
+      "architecture": "Wooden temples, shrines, gardens and contemporary architecture show different design approaches.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/jp/"
+        }
+      ]
+    },
+    {
+      "id": "ke",
+      "name": "Kenya",
+      "aliases": [
+        "Kenia",
+        "Kenyan",
+        "Kenya",
+        "Kenianisch"
+      ],
+      "landscape": "The Indian Ocean, the highlands and the rift landscapes form different regions.",
+      "architecture": "Swahili coastal towns and various constructions inland show regional cultural heritage.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ke/"
+        }
+      ]
+    },
+    {
+      "id": "kg",
+      "name": "Kyrgyzstan",
+      "aliases": [
+        "Kirgisistan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "kh",
+      "name": "Cambodia",
+      "aliases": [
+        "Kambodscha"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ki",
+      "name": "Kiribati",
+      "aliases": [
+        "Kiribati"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "km",
+      "name": "Komoren",
+      "aliases": [
+        "Komoren"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "kn",
+      "name": "Saint Kitts and Nevis",
+      "aliases": [
+        "Saint Kitts and Nevis"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "kp",
+      "name": "North Korea",
+      "aliases": [
+        "Nordkorea"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "kr",
+      "name": "South Korea",
+      "aliases": [
+        "South Korea",
+        "Korean",
+        "Korea",
+        "Koreanisch"
+      ],
+      "landscape": "Mountains, coasts and historical settlements characterize the southern Korean peninsula.",
+      "architecture": "Hanok houses, palace complexes and modern urban architecture show different eras.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/kr/"
+        }
+      ]
+    },
+    {
+      "id": "kw",
+      "name": "Kuwait",
+      "aliases": [
+        "Kuwait"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ky",
+      "name": "Kaimaninseln",
+      "aliases": [
+        "Kaimaninseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "kz",
+      "name": "Kazakhstan",
+      "aliases": [
+        "Kasachstan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "la",
+      "name": "Laos",
+      "aliases": [
+        "Laos"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "lb",
+      "name": "Lebanon",
+      "aliases": [
+        "Libanon"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "lc",
+      "name": "St. Lucia",
+      "aliases": [
+        "St. Lucia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "li",
+      "name": "Liechtenstein",
+      "aliases": [
+        "Liechtenstein"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "lk",
+      "name": "Sri Lanka",
+      "aliases": [
+        "Sri Lanka"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "lr",
+      "name": "Liberia",
+      "aliases": [
+        "Liberia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ls",
+      "name": "Lesotho",
+      "aliases": [
+        "Lesotho"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "lt",
+      "name": "Lithuania",
+      "aliases": [
+        "Litauen",
+        "Lithuanian",
+        "Lithuania",
+        "Litauisch"
+      ],
+      "landscape": "Baltic coast, dunes, lakes and forests connect different landscapes.",
+      "architecture": "The old town of Vilnius, timber construction and regional sacred architecture offer historical insights.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/lt/"
+        }
+      ]
+    },
+    {
+      "id": "lu",
+      "name": "Luxembourg",
+      "aliases": [
+        "Luxemburg"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "lv",
+      "name": "Latvia",
+      "aliases": [
+        "Lettland",
+        "Latvian",
+        "Latvia",
+        "Lettisch"
+      ],
+      "landscape": "The Baltic coast, rivers and forests characterise different regions.",
+      "architecture": "Riga’s Art Nouveau, historic wooden houses and older town centres show several chapters of the history of construction.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/lv/"
+        }
+      ]
+    },
+    {
+      "id": "ly",
+      "name": "Libya",
+      "aliases": [
+        "Libyen"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ma",
+      "name": "Morocco",
+      "aliases": [
+        "Marokko",
+        "Moroccan",
+        "Morocco",
+        "Marokkanisch"
+      ],
+      "landscape": "Atlantic, Mediterranean, Atlas Mountains and dry landscapes connect different regions.",
+      "architecture": "Medinas, courtyard houses and mud buildings show various regional designs.",
+      "curated": true,
+      "theme": {
+        "accent": "#976138",
+        "motif": "arch"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ma/"
+        }
+      ]
+    },
+    {
+      "id": "mc",
+      "name": "Monaco",
+      "aliases": [
+        "Monaco"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "md",
+      "name": "Moldova",
+      "aliases": [
+        "Republik Moldau"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "me",
+      "name": "Montenegro",
+      "aliases": [
+        "Montenegro"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mf",
+      "name": "St. Martin",
+      "aliases": [
+        "St. Martin"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mg",
+      "name": "Madagascar",
+      "aliases": [
+        "Madagaskar"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mh",
+      "name": "Marshallinseln",
+      "aliases": [
+        "Marshallinseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mk",
+      "name": "North Macedonia",
+      "aliases": [
+        "Nordmazedonien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ml",
+      "name": "Mali",
+      "aliases": [
+        "Mali"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mm",
+      "name": "Myanmar",
+      "aliases": [
+        "Myanmar"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mn",
+      "name": "Mongolia",
+      "aliases": [
+        "Mongolei"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mo",
+      "name": "Sonderverwaltungsregion Macau",
+      "aliases": [
+        "Sonderverwaltungsregion Macau"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mp",
+      "name": "Northern Mariana Islands",
+      "aliases": [
+        "Northern Mariana Islands"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mq",
+      "name": "Martinique",
+      "aliases": [
+        "Martinique"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mr",
+      "name": "Mauritania",
+      "aliases": [
+        "Mauretanien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ms",
+      "name": "Montserrat",
+      "aliases": [
+        "Montserrat"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mt",
+      "name": "Malta",
+      "aliases": [
+        "Malta"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mu",
+      "name": "Mauritius",
+      "aliases": [
+        "Mauritius"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mv",
+      "name": "Malediven",
+      "aliases": [
+        "Malediven"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mw",
+      "name": "Malawi",
+      "aliases": [
+        "Malawi"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mx",
+      "name": "Mexico",
+      "aliases": [
+        "Mexiko",
+        "Mexican",
+        "Mexico",
+        "Mexikanisch"
+      ],
+      "landscape": "Highlands, coasts and different climates connect numerous regions.",
+      "architecture": "Pre-colonial sites, historic city centers and modern buildings show several historical layers.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/mx/"
+        }
+      ]
+    },
+    {
+      "id": "my",
+      "name": "Malaysia",
+      "aliases": [
+        "Malaysia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "mz",
+      "name": "Mozambique",
+      "aliases": [
+        "Mosambik"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "na",
+      "name": "Namibia",
+      "aliases": [
+        "Namibia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "nc",
+      "name": "New Caledonia",
+      "aliases": [
+        "Neukaledonien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ne",
+      "name": "Niger",
+      "aliases": [
+        "Niger"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "nf",
+      "name": "Norfolkinsel",
+      "aliases": [
+        "Norfolkinsel"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ng",
+      "name": "Nigeria",
+      "aliases": [
+        "Nigeria",
+        "Nigerian",
+        "Nigerianisch"
+      ],
+      "landscape": "Coasts, rivers and savannahs connect numerous linguistic and cultural areas.",
+      "architecture": "Historical urban complexes and regional construction methods are diverse and cannot be assigned to a single motif.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ng/"
+        }
+      ]
+    },
+    {
+      "id": "ni",
+      "name": "Nicaragua",
+      "aliases": [
+        "Nicaragua"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "nl",
+      "name": "Netherlands",
+      "aliases": [
+        "Niederlande",
+        "Dutch",
+        "Netherlands",
+        "Dutch"
+      ],
+      "landscape": "Estuaries, coasts and polder landscapes combine hydraulic engineering with settlement history.",
+      "architecture": "Canal houses, brick buildings and modern urban planning are well-known, regionally different design motifs.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/nl/"
+        }
+      ]
+    },
+    {
+      "id": "no",
+      "name": "Norwegen",
+      "aliases": [
+        "Norwegen",
+        "Norwegian",
+        "Norway",
+        "Norwegisch"
+      ],
+      "landscape": "Fjords, mountains and a long coastline characterize very different settlement areas.",
+      "architecture": "Stab churches, wooden buildings and coastal towns show regional craft and building traditions.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/no/"
+        }
+      ]
+    },
+    {
+      "id": "np",
+      "name": "Nepal",
+      "aliases": [
+        "Nepal"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "nr",
+      "name": "Nauru",
+      "aliases": [
+        "Nauru"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "nu",
+      "name": "Niue",
+      "aliases": [
+        "Niue"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "nz",
+      "name": "New Zealand",
+      "aliases": [
+        "Neuseeland",
+        "New Zealand"
+      ],
+      "landscape": "Mountains, coasts and volcanic landscapes characterize the islands.",
+      "architecture": "Māori building and design traditions as well as recent architecture show different stories and perspectives.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/nz/"
+        }
+      ]
+    },
+    {
+      "id": "om",
+      "name": "Oman",
+      "aliases": [
+        "Oman"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "pa",
+      "name": "Panama",
+      "aliases": [
+        "Panama"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "pe",
+      "name": "Peru",
+      "aliases": [
+        "Peru",
+        "Peruvian",
+        "Peruanisch"
+      ],
+      "landscape": "The Pacific coast, the Andes and the Amazon region combine very different habitats.",
+      "architecture": "Pre-colonial sites and historic cities provide insights into different eras and regional histories.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/pe/"
+        }
+      ]
+    },
+    {
+      "id": "pf",
+      "name": "French Polynesia",
+      "aliases": [
+        "French Polynesia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "pg",
+      "name": "Papua New Guinea",
+      "aliases": [
+        "Papua-Neuguinea"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ph",
+      "name": "Philippines",
+      "aliases": [
+        "Philippinen"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "pk",
+      "name": "Pakistan",
+      "aliases": [
+        "Pakistan",
+        "Pakistani"
+      ],
+      "landscape": "Indus Valley, dry highlands and mountains form different landscapes.",
+      "architecture": "Archaeological cities, fortresses and religious buildings show different historical layers.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/pk/"
+        }
+      ]
+    },
+    {
+      "id": "pl",
+      "name": "Poland",
+      "aliases": [
+        "Polen",
+        "Polish",
+        "Poland",
+        "Polnisch"
+      ],
+      "landscape": "From the Baltic coast to the Carpathians stretch lake landscapes, plains and mountains.",
+      "architecture": "Brick Gothic, historical marketplaces and regional wooden churches tell of different building and city traditions.",
+      "curated": true,
+      "theme": {
+        "accent": "#315d77",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/pl/"
+        }
+      ]
+    },
+    {
+      "id": "pm",
+      "name": "Saint Pierre and Miquelon",
+      "aliases": [
+        "Saint Pierre and Miquelon"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "pn",
+      "name": "Pitcairninseln",
+      "aliases": [
+        "Pitcairninseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "pr",
+      "name": "Puerto Rico",
+      "aliases": [
+        "Puerto Rico"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ps",
+      "name": "Palestine",
+      "aliases": [
+        "Palestinian Autonomous Areas"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "pt",
+      "name": "Portugal",
+      "aliases": [
+        "Portugal",
+        "Portuguese",
+        "Portugies"
+      ],
+      "landscape": "The Atlantic coast, river valleys and the interior of the country form different cultural landscapes.",
+      "architecture": "Azulejo tiles, historic districts and Manueline architecture offer different design motifs.",
+      "curated": true,
+      "theme": {
+        "accent": "#316e9a",
+        "motif": "tiles"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/pt/"
+        }
+      ]
+    },
+    {
+      "id": "pw",
+      "name": "Palau",
+      "aliases": [
+        "Palau"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "py",
+      "name": "Paraguay",
+      "aliases": [
+        "Paraguay"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "qa",
+      "name": "Qatar",
+      "aliases": [
+        "Katar"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "re",
+      "name": "Réunion",
+      "aliases": [
+        "Réunion"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ro",
+      "name": "Romania",
+      "aliases": [
+        "Romania",
+        "Romanian",
+        "Romania",
+        "Romanian"
+      ],
+      "landscape": "The Carpathians, the Danube and the Black Sea coast connect very different cultural landscapes.",
+      "architecture": "Wooden churches, fortified church complexes and historic city centers show regional diversity.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ro/"
+        }
+      ]
+    },
+    {
+      "id": "rs",
+      "name": "Republic of Serbia",
+      "aliases": [
+        "Serbien",
+        "Serbian",
+        "Serbia",
+        "Serbisch"
+      ],
+      "landscape": "Danube and Save area, plains and mountains connect different settlement areas.",
+      "architecture": "Monasteries, fortresses and historic districts represent different chapters of regional history.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/rs/"
+        }
+      ]
+    },
+    {
+      "id": "ru",
+      "name": "Russia",
+      "aliases": [
+        "Russland",
+        "Russian",
+        "Russia",
+        "Russisch"
+      ],
+      "landscape": "The large area comprises numerous landscape, language and cultural areas.",
+      "architecture": "Regional wood and stone architecture differs greatly; a single motif cannot summarize this diversity.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ru/"
+        }
+      ]
+    },
+    {
+      "id": "rw",
+      "name": "Rwanda",
+      "aliases": [
+        "Ruanda"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sa",
+      "name": "Saudi Arabia",
+      "aliases": [
+        "Saudi-Arabien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sb",
+      "name": "Solomon Islands",
+      "aliases": [
+        "Salomonen"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sc",
+      "name": "Seychellen",
+      "aliases": [
+        "Seychellen"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sd",
+      "name": "Sudan",
+      "aliases": [
+        "Sudan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "se",
+      "name": "Sweden",
+      "aliases": [
+        "Schweden",
+        "Swedish",
+        "Sweden",
+        "Schwedisch"
+      ],
+      "landscape": "Forests, lakes, archipelagos and northern mountain areas form different landscapes.",
+      "architecture": "Wooden houses, historic city centers and modern architecture show several chapters of architectural history.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/se/"
+        }
+      ]
+    },
+    {
+      "id": "sg",
+      "name": "Singapur",
+      "aliases": [
+        "Singapur"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sh",
+      "name": "St. Helena",
+      "aliases": [
+        "St. Helena"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "si",
+      "name": "Slovenia",
+      "aliases": [
+        "Slowenien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sj",
+      "name": "Spitsbergen and Jan Mayen",
+      "aliases": [
+        "Spitsbergen and Jan Mayen"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sk",
+      "name": "Slovakia",
+      "aliases": [
+        "Slowakei",
+        "Slovak",
+        "Slovakia",
+        "Slowak"
+      ],
+      "landscape": "The Carpathians and river valleys connect mountain landscapes with historical settlements.",
+      "architecture": "Castles, wooden churches and old town squares characterize many places.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/sk/"
+        }
+      ]
+    },
+    {
+      "id": "sl",
+      "name": "Sierra Leone",
+      "aliases": [
+        "Sierra Leone"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sm",
+      "name": "San Marino",
+      "aliases": [
+        "San Marino"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sn",
+      "name": "Senegal",
+      "aliases": [
+        "Senegal"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "so",
+      "name": "Somalia",
+      "aliases": [
+        "Somalia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sr",
+      "name": "Suriname",
+      "aliases": [
+        "Suriname"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ss",
+      "name": "South Sudan",
+      "aliases": [
+        "South Sudan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "st",
+      "name": "São Tomé and Príncipe",
+      "aliases": [
+        "São Tomé and Príncipe"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sv",
+      "name": "El Salvador",
+      "aliases": [
+        "El Salvador"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sx",
+      "name": "Sint Maarten",
+      "aliases": [
+        "Sint Maarten"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sy",
+      "name": "Syria",
+      "aliases": [
+        "Syrien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "sz",
+      "name": "eSwatini",
+      "aliases": [
+        "Eswatini"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ta",
+      "name": "Tristan da Cunha",
+      "aliases": [
+        "Tristan da Cunha"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tc",
+      "name": "Turks and Caicos Islands",
+      "aliases": [
+        "Turks and Caicos Islands"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "td",
+      "name": "Chad",
+      "aliases": [
+        "Tschad"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tf",
+      "name": "French Southern and Antarctic Lands",
+      "aliases": [
+        "French Southern and Antarctic territories"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tg",
+      "name": "Togo",
+      "aliases": [
+        "Togo"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "th",
+      "name": "Thailand",
+      "aliases": [
+        "Thailand"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tj",
+      "name": "Tajikistan",
+      "aliases": [
+        "Tadschikistan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tk",
+      "name": "Tokelau",
+      "aliases": [
+        "Tokelau"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tl",
+      "name": "East Timor",
+      "aliases": [
+        "Timor-Leste"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tm",
+      "name": "Turkmenistan",
+      "aliases": [
+        "Turkmenistan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tn",
+      "name": "Tunisia",
+      "aliases": [
+        "Tunesien"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "to",
+      "name": "Tonga",
+      "aliases": [
+        "Tonga"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tr",
+      "name": "Turkey",
+      "aliases": [
+        "Turkey",
+        "Turkey / Anatolia",
+        "Turkey",
+        "Turkish",
+        "Turquoise",
+        "Anatolian",
+        "Anatolia",
+        "Anatolien"
+      ],
+      "landscape": "Anatolia connects coasts, highlands and mountains between several historical transport and cultural areas.",
+      "architecture": "Byzantine, Armenian, Seljuk and Ottoman architectural monuments make different historical layers visible.",
+      "curated": true,
+      "theme": {
+        "accent": "#976138",
+        "motif": "arch"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/tr/"
+        }
+      ]
+    },
+    {
+      "id": "tt",
+      "name": "Trinidad and Tobago",
+      "aliases": [
+        "Trinidad and Tobago"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tv",
+      "name": "Tuvalu",
+      "aliases": [
+        "Tuvalu"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tw",
+      "name": "Taiwan",
+      "aliases": [
+        "Taiwan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "tz",
+      "name": "United Republic of Tanzania",
+      "aliases": [
+        "Tansania"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ua",
+      "name": "Ukraine",
+      "aliases": [
+        "Ukraine",
+        "Ukrainian",
+        "Ukrainisch"
+      ],
+      "landscape": "River landscapes, steppes and Carpathians characterize different parts of the country.",
+      "architecture": "Wooden churches, historic city centers and monasteries are part of a diverse cultural heritage.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/ua/"
+        }
+      ]
+    },
+    {
+      "id": "ug",
+      "name": "Uganda",
+      "aliases": [
+        "Uganda"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "um",
+      "name": "American overseas islands",
+      "aliases": [
+        "American overseas islands"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "us",
+      "name": "United States of America",
+      "aliases": [
+        "Vereinigte Staaten",
+        "USA",
+        "United States",
+        "American"
+      ],
+      "landscape": "Coasts, mountains, plains and deserts connect very different landscapes.",
+      "architecture": "Indigenous building history, immigrant building traditions and modern urban architecture form a diverse heritage.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/us/"
+        }
+      ]
+    },
+    {
+      "id": "uy",
+      "name": "Uruguay",
+      "aliases": [
+        "Uruguay"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "uz",
+      "name": "Uzbekistan",
+      "aliases": [
+        "Usbekistan"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "va",
+      "name": "Vatikanstadt",
+      "aliases": [
+        "Vatikanstadt"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "vc",
+      "name": "Saint Vincent and the Grenadines",
+      "aliases": [
+        "Saint Vincent and the Grenadines"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ve",
+      "name": "Venezuela",
+      "aliases": [
+        "Venezuela"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "vg",
+      "name": "Britische Jungferninseln",
+      "aliases": [
+        "Britische Jungferninseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "vi",
+      "name": "Amerikanische Jungferninseln",
+      "aliases": [
+        "Amerikanische Jungferninseln"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "vn",
+      "name": "Vietnam",
+      "aliases": [
+        "Vietnam"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "vu",
+      "name": "Vanuatu",
+      "aliases": [
+        "Vanuatu"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "wf",
+      "name": "Wallis and Futuna",
+      "aliases": [
+        "Wallis and Futuna"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ws",
+      "name": "Samoa",
+      "aliases": [
+        "Samoa"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "xk",
+      "name": "Kosovo",
+      "aliases": [
+        "Kosovo"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "ye",
+      "name": "Yemen",
+      "aliases": [
+        "Jemen"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "yt",
+      "name": "Mayotte",
+      "aliases": [
+        "Mayotte"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "za",
+      "name": "South Africa",
+      "aliases": [
+        "South Africa",
+        "South African",
+        "South Africa",
+        "South African"
+      ],
+      "landscape": "Coasts, highlands and dry areas form different landscapes.",
+      "architecture": "Numerous communities and eras characterize the architectural heritage; no single style stands for the whole country.",
+      "curated": true,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · World Heritage and Regions",
+          "url": "https://whc.unesco.org/en/statesparties/za/"
+        }
+      ]
+    },
+    {
+      "id": "zm",
+      "name": "Zambia",
+      "aliases": [
+        "Sambia"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "zw",
+      "name": "Zimbabwe",
+      "aliases": [
+        "Simbabwe"
+      ],
+      "landscape": "",
+      "architecture": "",
+      "curated": false,
+      "theme": {
+        "accent": "#127f80",
+        "motif": "courtyard"
+      },
+      "sources": []
+    },
+    {
+      "id": "de-bw",
+      "name": "Baden-Württemberg",
+      "aliases": [
+        "Baden-Württemberg",
+        "Baden Wurttemberg",
+        "Black Forest",
+        "Schwarzwald"
+      ],
+      "landscape": "The Black Forest, Swabian Alb and Neckartal connect different landscape areas.",
+      "architecture": "Half-timbered workshops, monastery complexes and historical residences show various epochs of southwest German architectural history.",
+      "curated": true,
+      "parent": "de",
+      "theme": {
+        "accent": "#326a82",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · Cultural heritage of the region",
+          "url": "https://whc.unesco.org/en/statesparties/de/"
+        }
+      ]
+    },
+    {
+      "id": "de-by",
+      "name": "Bayern",
+      "aliases": [
+        "Bavaria",
+        "Bavarian",
+        "Bayern",
+        "Bayerisch"
+      ],
+      "landscape": "Alps, lakes, river valleys and middle mountains form very different landscapes.",
+      "architecture": "Baroque churches, historic towns and 19th century castles offer different cultural insights.",
+      "curated": true,
+      "parent": "de",
+      "theme": {
+        "accent": "#326a82",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · Cultural heritage of the region",
+          "url": "https://whc.unesco.org/en/statesparties/de/"
+        }
+      ]
+    },
+    {
+      "id": "tr-ardahan",
+      "name": "Ardahan",
+      "aliases": [
+        "Ardahan",
+        "Ardahan Province"
+      ],
+      "landscape": "The province in northeastern Turkey is located in a highland region near the Caucasus.",
+      "architecture": "The fortress of Ardahan and historical buildings in the area provide regional insights, and motifs from other provinces are explicitly named.",
+      "curated": true,
+      "parent": "tr",
+      "theme": {
+        "accent": "#8b6548",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · Cultural heritage of the region",
+          "url": "https://whc.unesco.org/en/statesparties/tr/"
+        }
+      ]
+    },
+    {
+      "id": "caucasus",
+      "name": "Kaukasus",
+      "aliases": [
+        "Caucasian",
+        "Caucasus",
+        "Kaukasisch",
+        "Kaukasus"
+      ],
+      "landscape": "Between the Black Sea and the Caspian Sea are high mountains, valleys and numerous language and cultural areas.",
+      "architecture": "Defence towers, monasteries, fortresses and historic towns show very different regional building traditions.",
+      "curated": true,
+      "parent": "ge",
+      "theme": {
+        "accent": "#8b6548",
+        "motif": "towers"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · Cultural heritage of the region",
+          "url": "https://whc.unesco.org/en/statesparties/ge/"
+        }
+      ]
+    },
+    {
+      "id": "central-europe",
+      "name": "Mitteleuropa",
+      "aliases": [
+        "Central European",
+        "Western European",
+        "European",
+        "Europa",
+        "Europe"
+      ],
+      "landscape": "River landscapes, low mountains, plains and Alps connect numerous regions.",
+      "architecture": "Gothic, half-timbered, Baroque and modern cross the borders of today's state. The motifs serve the cultural exploration.",
+      "curated": true,
+      "parent": "de",
+      "theme": {
+        "accent": "#326a82",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · Cultural heritage of the region",
+          "url": "https://whc.unesco.org/en/statesparties/de/"
+        }
+      ]
+    },
+    {
+      "id": "eastern-europe",
+      "name": "Central and Eastern Europe",
+      "aliases": [
+        "Eastern European",
+        "Central & Eastern European",
+        "Osteuropa"
+      ],
+      "landscape": "The Baltic coast, river basins, plains and Carpathians connect many different regions.",
+      "architecture": "Wooden churches, historic town squares and regional stone buildings show the cultural diversity of this large space.",
+      "curated": true,
+      "parent": "pl",
+      "theme": {
+        "accent": "#326a82",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · Cultural heritage of the region",
+          "url": "https://whc.unesco.org/en/statesparties/pl/"
+        }
+      ]
+    },
+    {
+      "id": "west-asia",
+      "name": "Westasien",
+      "aliases": [
+        "Western Asian",
+        "Northern West Asian",
+        "West Asian",
+        "Westasien"
+      ],
+      "landscape": "Anatolia, Caucasus, Mesopotamia and Iranian highlands comprise different landscapes.",
+      "architecture": "Historic cities, courthouses, churches, mosques and fortresses reflect numerous eras and communities.",
+      "curated": true,
+      "parent": "tr",
+      "theme": {
+        "accent": "#8b6548",
+        "motif": "gable"
+      },
+      "sources": [
+        {
+          "title": "UNESCO · Cultural heritage of the region",
+          "url": "https://whc.unesco.org/en/statesparties/tr/"
+        }
+      ]
+    }
+  ],
+  "note": "Location and culture information are not DNA findings; a motive does not stand for all people or regions.",
+  "territory_source": {
+    "url": "https://raw.githubusercontent.com/unicode-org/cldr-json/main/cldr-json/cldr-localenames-full/main/de/territories.json",
+    "sha256": "e5b7a831cd70afeaad10a56360c08e2d970e9fe79f254ee8d937a7dfa13686b7",
+    "license": "Unicode License v3",
+    "license_url": "https://www.unicode.org/license.txt"
+  }
+}

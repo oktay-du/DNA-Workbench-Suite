@@ -1,0 +1,160 @@
+{
+  "version": "synthetic-demo-1.1",
+  "synthetic": true,
+  "personal_data": false,
+  "people": [
+    {
+      "id": "DEMO_Alex",
+      "name": "Alex Example"
+    },
+    {
+      "id": "DEMO_Robin",
+      "name": "Robin Example"
+    },
+    {
+      "id": "DEMO_Sam",
+      "name": "Sam Example"
+    },
+    {
+      "id": "DEMO_Taylor",
+      "name": "Taylor Example"
+    }
+  ],
+  "files": [
+    {
+      "path": "Profiles/DEMO_Alex/synthetic.vcf",
+      "sha256": "4f0489af71e45165d878f3d7a79d315456739bb3e75c60d33bd5b6980b616890",
+      "bytes": 163947
+    },
+    {
+      "path": "Profiles/DEMO_Alex/synthetic-chip.txt",
+      "sha256": "f1e190a6730d3ecb498706e8fdd523d842a4a5c748fc4d83dacd681f068cfc2b",
+      "bytes": 65762
+    },
+    {
+      "path": "Profiles/DEMO_Robin/synthetic.vcf",
+      "sha256": "f55ec12ed97f337c5ce3e876eb8a41e548054e7b20612192ba5ac3539668aa57",
+      "bytes": 163948
+    },
+    {
+      "path": "Profiles/DEMO_Robin/synthetic-chip.txt",
+      "sha256": "a9cf75dfeb7b945df192f4f13d7427d02e498a8741441e888cb0a045d9062c37",
+      "bytes": 65762
+    },
+    {
+      "path": "Profiles/DEMO_Sam/synthetic.vcf",
+      "sha256": "3918718788e8fc3c86c5ea5b0f5cac4fa0c687e2ff5314bd9cb9a1b7b0cd69ba",
+      "bytes": 163946
+    },
+    {
+      "path": "Profiles/DEMO_Sam/synthetic-chip.txt",
+      "sha256": "78ff4835662270da0b20634d5b4724b191efd09c4162023425b911a31c050ad8",
+      "bytes": 65762
+    },
+    {
+      "path": "Profiles/DEMO_Taylor/synthetic.vcf",
+      "sha256": "dacc4035fdafb8750a7d89f604748424d13adb8003b80d31043ad79d353343c8",
+      "bytes": 163949
+    },
+    {
+      "path": "Profiles/DEMO_Taylor/synthetic-chip.txt",
+      "sha256": "3d1ff7c53bd8577201c2090eb8e5b83a7b945da6dac50fbfcc97801698bc18af",
+      "bytes": 65762
+    },
+    {
+      "path": "Formats/synthetic-reference.fasta",
+      "sha256": "a54290baf9f40c2399f20116abc285499102de15654ec3b06ec6ed9a3e05c1d8",
+      "bytes": 12212
+    },
+    {
+      "path": "Formats/synthetic-reference.fasta.fai",
+      "sha256": "1cf692c837b5ccfd3a1c172aa3a9bdbc8a9ebaa9566a6ebba4d0429ceb3bbb75",
+      "bytes": 17
+    },
+    {
+      "path": "Formats/synthetic_R1.fastq",
+      "sha256": "ad1d28aa5fc81409c908d2f9c2291e48711a4949618a5cc3dfb4ace5992c1d65",
+      "bytes": 12910
+    },
+    {
+      "path": "Formats/synthetic_R2.fastq",
+      "sha256": "ad1d28aa5fc81409c908d2f9c2291e48711a4949618a5cc3dfb4ace5992c1d65",
+      "bytes": 12910
+    },
+    {
+      "path": "Formats/synthetic_R1.fastq.gz",
+      "sha256": "a6108c693c25780f0ae41a64d747ecdd58f69f700f9fb0ec4eb179dcbe4a1c05",
+      "bytes": 529
+    },
+    {
+      "path": "Formats/synthetic_R2.fastq.gz",
+      "sha256": "b2dc59c7e9faa60e49845b8aa5918cd0f72583e05eec838a486afada440481e3",
+      "bytes": 529
+    },
+    {
+      "path": "Formats/synthetic-intervals.bed",
+      "sha256": "257c816db0971f62549efd3374d4a1965cb4d1bf99d62e9f6790db2c0a17fe5b",
+      "bytes": 58
+    },
+    {
+      "path": "Formats/synthetic.sam",
+      "sha256": "91aeed8b7a2af8a9fe6f329bce0d4cc8e50f0fc0934540d443d5fc9d0124f734",
+      "bytes": 7004
+    },
+    {
+      "path": "Formats/synthetic.bam",
+      "sha256": "886f6c5e8045d3a9feffbb97e25de5c1a2f1078b11271f74f9113112b93b9e22",
+      "bytes": 695
+    },
+    {
+      "path": "Formats/synthetic.bam.bai",
+      "sha256": "e934cb2ea096969a88e03eae7623c49b40ac812d2c1ad1580bcb5065a1eaa22a",
+      "bytes": 96
+    },
+    {
+      "path": "Formats/synthetic.cram",
+      "sha256": "e515adce0801cee974810c048908bb5ec52645f22ced4300e49c0c334c46198a",
+      "bytes": 934
+    },
+    {
+      "path": "Formats/synthetic.cram.crai",
+      "sha256": "52e3fafef285771e33cee43b4a7c1ccb22448ae5b24501a7e269ee749b4ecd2c",
+      "bytes": 42
+    },
+    {
+      "path": "Results/illustrative-ancestry.json",
+      "sha256": "b3090766fc9e3a2746900e56362573ced41cbdc466509e55001891bfb4ecc59d",
+      "bytes": 731
+    },
+    {
+      "path": "Results/illustrative-segments.csv",
+      "sha256": "6ec6ca05f0bd3f1c30d2de7c1ffa6f4ab4120f5ae949ca7e2774d3919d807056",
+      "bytes": 175
+    },
+    {
+      "path": "Results/ancestry-composition.csv",
+      "sha256": "c655388453af867897aedd44a47fcc32c5133e5b28cd77a8111f8227faaccc19",
+      "bytes": 147
+    },
+    {
+      "path": "Results/family-tree.json",
+      "sha256": "1c8570289660a75621cfc2aaf6dca869846a991e6b4f59edd9048d2c0b04f931",
+      "bytes": 421
+    },
+    {
+      "path": "Results/family.ged",
+      "sha256": "dde8530b8ffd60835097f48d1a8fc8ad6e44fc305e8b09a22986acbee45eb77d",
+      "bytes": 218
+    },
+    {
+      "path": "README.md",
+      "sha256": "25dea90b8482fb3291288c6cca3679ea829e68be8eb4dd3148fdc954b72e0c4c",
+      "bytes": 1020
+    },
+    {
+      "path": "Results/synthetic-provider-report.pdf",
+      "sha256": "7b86c6b8f3941602cdb3d56d2c73cc2bdddac8780e768564422de6c61a660694",
+      "bytes": 862
+    }
+  ]
+}

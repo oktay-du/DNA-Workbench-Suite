@@ -1,0 +1,149 @@
+{
+  "schema": 1,
+  "checked": "2026-11-05",
+  "notice": "Pinned architecture and source reviews; independently implemented ideas, not a claim of full upstream validation or copied code.",
+  "projects": [
+    {
+      "name": "dna-engine",
+      "repo": "ShadowfetchStudio/dna-engine",
+      "url": "https://github.com/ShadowfetchStudio/dna-engine",
+      "commit": "509ca6915f8805588ecad98feec2ead99bcdac79",
+      "license": "Apache-2.0",
+      "technology": "Swift / SwiftUI",
+      "adopted": "Coverage and file-quality evidence remain separate from biological interpretation.",
+      "integration": "Independent VCF evidence audit; no marker catalog or ancestry reference copied.",
+      "inspected": [
+        "Sources/GenomeParser.swift",
+        "Sources/GenomeView.swift",
+        "Sources/QCEngine.swift",
+        "Sources/Theme.swift"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "DNAgent",
+      "repo": "HocheggerLab/DNAgent",
+      "url": "https://github.com/HocheggerLab/DNAgent",
+      "commit": "570eb03eda7a9f79116936b0ff852e43869ecaf9",
+      "license": "MIT",
+      "technology": "Rust engine / Tauri / TypeScript",
+      "adopted": "One operation engine serves desktop and agents; exports carry explicit context and coordinate conventions.",
+      "integration": "Shared typed workflows, six-frame exploration and an explicit local agent handoff.",
+      "inspected": [
+        "crates/dnagent-app/src/translation.rs",
+        "crates/dnagent-cli/src/main.rs",
+        "crates/dnagent-desktop-api/src/session.rs",
+        "docs/agent-handoff.md"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "bi0cyph3r",
+      "repo": "SampleBias/bi0cyph3r",
+      "url": "https://github.com/SampleBias/bi0cyph3r",
+      "commit": "3dd0a15aaba5b3cd64b99ae0096c9f0cb19998fc",
+      "license": "MIT",
+      "technology": "Rust / terminal UI",
+      "adopted": "Separate reversible educational encoding from encryption and biological interpretation.",
+      "integration": "Independent UTF-8 DNA message studio; no upstream cryptography or plasmid code bundled.",
+      "inspected": [
+        "docs/PROTOCOL_SPECIFICATION.md"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "gin-schnaps",
+      "repo": "MOMISBACK/gin-schnaps",
+      "url": "https://github.com/MOMISBACK/gin-schnaps",
+      "commit": "6ebffa2778bc7dcf8a735372398bcde79c801c56",
+      "license": "GPL-3.0",
+      "technology": "TypeScript / Rust / desktop and browser",
+      "adopted": "Keep selection, biological coordinates and export provenance distinct.",
+      "integration": "Independent interval receipts and strand-aware motif exploration. GPL source is not incorporated.",
+      "inspected": [
+        "src/App.tsx",
+        "src/domain/pcr-provenance.ts",
+        "src/domain/selection-navigation.ts"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "SpliceCraft",
+      "repo": "Binomica-Labs/SpliceCraft",
+      "url": "https://github.com/Binomica-Labs/SpliceCraft",
+      "commit": "14318fc7c764862feac07935950fbe546fc6543c",
+      "license": "MIT",
+      "technology": "Python / Textual",
+      "adopted": "Flush and verify state before replacement; separate persistent libraries from transient UI state.",
+      "integration": "Independent durable JSON writer for job state and backed-up appearance settings.",
+      "inspected": [
+        "docs/agent-api.md",
+        "docs/data-safety.md",
+        "LICENSE"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "DNALONGBENCH",
+      "repo": "ma-compbio/DNALONGBENCH",
+      "url": "https://github.com/ma-compbio/DNALONGBENCH",
+      "commit": "6c43266c6dc85b5529b5a784b880ee88cc1a54b3",
+      "license": "BSD-3-Clause",
+      "technology": "Python / PyTorch / TensorFlow",
+      "adopted": "Choose the prediction task and validate input shape before installing or evaluating a model.",
+      "integration": "Five-task input readiness checks only; no models, training runs or datasets downloaded.",
+      "inspected": [
+        "dnalongbench/utils.py"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "mdna",
+      "repo": "Heezch/mdna",
+      "url": "https://github.com/Heezch/mdna",
+      "commit": "8fa36bfd9876c23ac76372b2a5b3a7900cc40579",
+      "license": "MIT root; bundled submodules retain separate licenses",
+      "technology": "Python / NumPy / MDTraj",
+      "adopted": "Sequence geometry, molecular simulation and printable educational models have different purposes.",
+      "integration": "Scientific structure reference; our printable helix remains a schematic, not atomic simulation.",
+      "inspected": [
+        "mdna/nucleic.py",
+        "mdna//init/.py",
+        "pyproject.toml"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "sovereign-dna",
+      "repo": "abhilashi/sovereign-dna",
+      "url": "https://github.com/abhilashi/sovereign-dna",
+      "commit": "c09601efc6f37341edd19226ed8306627bde023e",
+      "license": "MIT",
+      "technology": "Rust / Tauri / React / TypeScript",
+      "adopted": "Present evidence beside research actions and require explicit approval for external AI data sharing.",
+      "integration": "Grouped sequence-lab navigation, source-linked reports and a local-only agent evidence export.",
+      "inspected": [
+        "src-tauri/src/parser/vcf.rs",
+        "src-tauri/src/research/workbench.rs",
+        "src/design-system/layouts/Sidebar.tsx",
+        "src/pages/ResearchWorkbench.tsx"
+      ],
+      "code_bundled": false
+    },
+    {
+      "name": "dna",
+      "repo": "leifeld-lab/dna",
+      "url": "https://github.com/leifeld-lab/dna",
+      "commit": "df42fa7bf7cdcf3b72fc40f604a0619ab1fc55f0",
+      "license": "Mixed / restricted; inspect upstream terms",
+      "technology": "Java / Swing / R",
+      "adopted": "Linked document and network views can support traceable evidence exploration.",
+      "integration": "Architecture reference only: this is discourse analysis, not genetics. Its included JAR has restrictive terms and is not bundled or installed.",
+      "inspected": [
+        "dna/src/main/java/gui/MainWindow.java",
+        "rDNA/rDNA/LICENSE"
+      ],
+      "code_bundled": false
+    }
+  ]
+}

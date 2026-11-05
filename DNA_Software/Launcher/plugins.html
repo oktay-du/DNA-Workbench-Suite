@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en"
+  ><meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width,initial-scale=1" /><title>DNA · Plugins & Sources</title
+  ><link rel="stylesheet" href="/matching.css" /><style>
+    .plugin-layout {
+      display: grid;
+      grid-template-columns: minmax(260px, 32%) 1fr;
+      gap: 20px;
+      margin: 24px;
+    }
+    .plugin-list {
+      max-height: 70vh;
+      overflow: auto;
+    }
+    .plugin-list button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      margin: 5px 0;
+      background: #e8f0f4;
+      color: #17394c;
+    }
+    .plugin-list button.active {
+      background: #087e83;
+      color: white;
+    }
+    .plugin-detail {
+      background: white;
+      border: 1px solid #d4e2e9;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+    .facts {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 10px;
+      overflow-wrap: anywhere;
+    }
+    .facts dt {
+      color: #577489;
+    }
+    .facts dd {
+      margin: 0;
+    }
+    pre {
+      max-height: 350px;
+      overflow: auto;
+    }
+    .license-box {
+      background: #fff1d7;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .topline {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 22px;
+    }
+    #message {
+      white-space: pre-wrap;
+    }
+    .job {
+      padding: 12px;
+      background: #f0f5f7;
+      border-bottom: 1px solid #d3e0e7;
+    }
+    .badge {
+      margin-right: 8px;
+    }
+    @media (max-width: 900px) {
+      .plugin-layout {
+        grid-template-columns: 1fr;
+      }
+      .plugin-list {
+        max-height: 260px;
+      }
+    }
+  </style>
+  <header
+    ><span class="eyebrow">DNA WORKBENCH · OPTIONAL EXTENSIONS</span
+    ><h1>Plugins, tools & source archives</h1
+    ><p>Install reviewed adapters. Trace sources. Keep models and originals separate.</p></header
+  >
+  <div class="topline"
+    ><input
+      id="search"
+      placeholder="Search projects, categories or functions"
+      aria-label="Search projects"
+    /><label>Focus profile<select id="person"></select></label
+    ><label>Registered dataset<select id="dataset"></select></label
+    ><button id="refresh">Refresh status</button
+    ><button id="linux" class="secondary">Start Ubuntu when needed</button></div
+  >
+  <div id="error" role="alert"></div
+  ><div class="plugin-layout"
+    ><nav id="projects" class="plugin-list" aria-label="Reviewed projects"></nav
+    ><main id="details" class="plugin-detail"></main
+  ></div>
+  <section style="margin: 24px"
+    ><h2>Background jobs</h2><div id="jobs"></div><p id="message" role="status"></p
+  ></section>
+  <script>
+    window.DNA_PLUGIN_TOKEN = "__TOKEN__";</script
+  ><script src="/plugins.js"></script
+  ><script src="/catalog-ui.js"></script
+></html>

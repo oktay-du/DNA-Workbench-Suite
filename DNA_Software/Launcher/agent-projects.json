@@ -1,0 +1,55 @@
+{
+  "checked": "2026-11-03T13:45:49.7934724+01:00",
+  "projects": [
+    {
+      "repo": "everyai-com/agent-ready",
+      "url": "https://github.com/everyai-com/agent-ready",
+      "commit": "b74a2e1700264845a69e9a406f3aa9e47c658d00",
+      "license": "Apache-2.0",
+      "description": "Make your product AI-agent ready. Turn any app into an MCP server, API, and CLI — one click, safe by default."
+    },
+    {
+      "repo": "modelcontextprotocol/python-sdk",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "commit": "af4c6f4db2cd207f44374cd324a12cfbee8d2da6",
+      "license": "MIT",
+      "description": "The official Python SDK for Model Context Protocol servers and clients"
+    },
+    {
+      "repo": "PrefectHQ/fastmcp",
+      "url": "https://github.com/PrefectHQ/fastmcp",
+      "commit": "8ac57b33de929a0941b4c97dbce321b13352a185",
+      "license": "Apache-2.0",
+      "description": "🚀 The fast, Pythonic way to build MCP servers and clients."
+    },
+    {
+      "repo": "webmachinelearning/webmcp",
+      "url": "https://github.com/webmachinelearning/webmcp",
+      "commit": "6cd745ac8a186122bd3f4aeaeb1d6cfa820251d2",
+      "license": "NOASSERTION",
+      "description": "🤖 WebMCP"
+    },
+    {
+      "repo": "modelcontextprotocol/inspector",
+      "url": "https://github.com/modelcontextprotocol/inspector",
+      "commit": "e3217388c8590bcf6796fd8d0528a875ade1ac1f",
+      "license": "NOASSERTION",
+      "description": "Deterministic testing tools for MCP servers"
+    },
+    {
+      "repo": "microsoft/UFO",
+      "url": "https://github.com/microsoft/UFO",
+      "commit": "eae3c0a8d168c47cb10df0652e293e092eda1078",
+      "license": "MIT",
+      "description": "UFO³: Weaving the Digital Agent Galaxy"
+    },
+    {
+      "repo": "microsoft/playwright",
+      "url": "https://github.com/microsoft/playwright",
+      "commit": "df99adab7ff784412ebf5d0970a03a788184ba6a",
+      "license": "Apache-2.0",
+      "description": "Playwright is a framework for Web Testing and Automation. It allows testing Chromium, Firefox and WebKit with a single API. "
+    }
+  ],
+  "implementation": "Shared-manifest design; existing Python/WinForms stack retained. No third-party source copied."
+}

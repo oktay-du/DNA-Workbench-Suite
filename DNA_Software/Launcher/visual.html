@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en"
+  ><meta charset="utf-8" /><meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  /><title>DNA · Origin and appearance</title>
+  <link rel="stylesheet" href="/heritage.css" /><style>
+    :root {
+      --ink: #183547;
+      --muted: #587181;
+      --teal: #067f80;
+      --line: #dce6eb;
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background: #f3f7f8;
+      color: var(--ink);
+      font:
+        16px "Segoe UI",
+        Arial;
+    }
+    header {
+      background: #132e40;
+      color: white;
+      padding: 26px max(24px, 5vw);
+    }
+    header h1 {
+      margin: 8px 0;
+      font-size: 30px;
+    }
+    header p {
+      color: #b9d0dc;
+      margin: 6px 0 18px;
+    }
+    nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: #bcece4;
+      text-decoration: none;
+    }
+    main {
+      max-width: 1400px;
+      margin: auto;
+      padding: 26px;
+    }
+    h2 {
+      font-size: 22px;
+      margin: 0 0 12px;
+    }
+    h3 {
+      font-size: 17px;
+      margin: 0 0 10px;
+    }
+    .toolbar,
+    .row {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .toolbar {
+      background: white;
+      border: 1px solid var(--line);
+      padding: 18px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+    label {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    select,
+    input,
+    textarea {
+      display: block;
+      border: 1px solid #c3d2d9;
+      padding: 10px;
+      border-radius: 7px;
+      font: 15px "Segoe UI";
+      color: var(--ink);
+      background: white;
+      margin-top: 5px;
+      max-width: 100%;
+    }
+    select {
+      min-width: 190px;
+    }
+    button {
+      background: var(--teal);
+      color: white;
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 16px;
+      cursor: pointer;
+      font: 14px "Segoe UI";
+    }
+    .secondary {
+      background: #e8f0f3;
+      color: var(--ink);
+    }
+    .badge {
+      display: inline-block;
+      border-radius: 20px;
+      background: #e2f1ee;
+      color: #176b63;
+      font-size: 12px;
+      padding: 5px 10px;
+    }
+    .amber {
+      background: #fff0d5;
+      color: #885e15;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      gap: 24px;
+    }
+    section,
+    .panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 23px;
+      margin-bottom: 24px;
+    }
+    .muted,
+    small {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .empty {
+      padding: 20px;
+      border: 1px dashed #b8cbd5;
+      border-radius: 9px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .mapframe {
+      background: #eaf2f5;
+      border: 1px solid #d5e3e8;
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      margin: 18px 0 8px;
+    }
+    .mapframe svg {
+      width: 100%;
+      display: block;
+      aspect-ratio: 2;
+    }
+    .tools {
+      position: absolute;
+      right: 12px;
+      top: 12px;
+      display: flex;
+      gap: 5px;
+    }
+    .tools button {
+      background: white;
+      color: var(--ink);
+      padding: 7px 12px;
+      box-shadow: 0 2px 8px #18354720;
+    }
+    .region {
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .bar {
+      height: 7px;
+      border-radius: 6px;
+      background: #e9eff2;
+      margin: 8px 0;
+    }
+    .bar > i {
+      display: block;
+      height: 100%;
+      border-radius: 6px;
+      background: #188d87;
+    }
+    .percent {
+      float: right;
+      font-weight: 600;
+    }
+    .avatarbox {
+      background: linear-gradient(145deg, #f0f6f5, #e6eff4);
+      border-radius: 12px;
+      text-align: center;
+      padding: 12px;
+    }
+    .avatarbox svg {
+      width: 100%;
+      max-width: 300px;
+    }
+    .traits {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 18px 0;
+    }
+    .trait {
+      border: 1px solid var(--line);
+      padding: 17px;
+      border-radius: 9px;
+    }
+    .trait .bar {
+      height: 5px;
+    }
+    .trait small {
+      display: block;
+    }
+    .alert {
+      color: #9c352f;
+      white-space: pre-wrap;
+      margin-bottom: 12px;
+    }
+    details {
+      margin: 18px 0;
+    }
+    summary {
+      cursor: pointer;
+      color: var(--teal);
+      font-weight: 600;
+    }
+    textarea {
+      width: 100%;
+      min-height: 220px;
+      font-family: Consolas, monospace;
+    }
+    pre {
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      background: #f4f7f8;
+      border-radius: 8px;
+      padding: 14px;
+      font:
+        13px Consolas,
+        monospace;
+    }
+    .mapframe path {
+      fill: #c2d1d5;
+      stroke: #f5f9fa;
+      stroke-width: 0.35;
+    }
+    a {
+      color: var(--teal);
+    }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #eba751;
+      outline-offset: 3px;
+    }
+    @media (max-width: 1000px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+    @media print {
+      nav,
+      button,
+      #import {
+        display: none;
+      }
+      body {
+        background: white;
+      }
+      main {
+        padding: 0;
+      }
+      section,
+      .panel {
+        break-inside: avoid;
+      }
+    }
+    html.embedded header {
+      display: none;
+    }
+  </style>
+  <header
+    ><span class="badge">DNA WORKBENCH · LOCAL</span><h1>Ancestry and appearance</h1
+    ><p>Explore geographic estimates and inspect trait probabilities.</p
+    ><nav
+      ><a href="/">Family & genealogy</a><a href="#ancestry">Ancestry / ethnicity</a
+      ><a href="#appearance">Appearance preview</a><a href="#import">Import results</a></nav
+    ></header
+  >
+  <main
+    ><div id="error" class="alert" role="alert"></div
+    ><div class="toolbar"
+      ><label>Person / profile<select id="person"></select></label
+      ><label>Provider / result version<select id="dataset"></select></label
+      ><button id="reload" class="secondary">Refresh</button
+      ><span id="mode" class="badge amber">No estimate selected</span></div
+    >
+    <div class="layout"
+      ><div
+        ><section id="ancestry"
+          ><span class="badge">ANCESTRY ESTIMATE</span
+          ><h2 style="margin-top: 12px">Your ancestry on the world map</h2
+          ><p class="muted"
+            >Reference populations and regions are statistical comparison groups. Map points
+            indicate approximate locations, not citizenship or the origin of a specific person.</p
+          >
+          <div class="result-state" role="status"
+            ><span id="ancestry-state" class="badge amber">Still in progress</span
+            ><p id="ancestry-state-detail"
+              >For this profile, no origin evaluation is yet available.</p
+            ></div
+          ><div class="mapframe"
+            ><div class="tools"
+              ><button id="minus" aria-label="Zoom out">−</button><button id="reset">World</button
+              ><button id="plus" aria-label="Zoom in">+</button></div
+            ><svg
+              id="world"
+              viewBox="0 0 1000 500"
+              role="img"
+              aria-label="World map with estimated regions of origin"
+            >
+              <g id="land"></g>
+              <g id="markers"></g></svg></div
+          ><small>Map: Natural Earth, public domain. No internet connection is required.</small
+          ><div class="heritage-explorer"
+            ><div
+              ><h3>Regions & proportions</h3><div id="regions"></div><p id="total" class="muted"></p
+            ></div>
+            <div
+              ><div class="culture-controls"
+                ><label
+                  >Explore places and cultural context<select
+                    id="place-select"
+                    aria-label="Choose cultural map"
+                  ></select></label
+                ><p id="culture-relation" class="muted"
+                  >Cultural context independent of personal DNA results.</p
+                ><div id="culture-candidates"></div
+              ></div>
+              <article id="culture-card" class="culture-card"
+                ><div class="culture-head"
+                  ><div id="culture-motif" class="culture-motif" data-motif="neutral"></div
+                  ><span class="context-label">LANDSCHAFT · ARCHITEKTUR · KULTUR</span
+                  ><h3 id="culture-title">Ortskarte</h3
+                  ><small>Cultural insight, no additional DNA finding</small></div
+                >
+                <img
+                  id="culture-image"
+                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                  hidden
+                  alt="" /><div id="culture-photo-buttons" class="culture-photo-buttons" hidden
+                  ><button id="culture-prev" class="secondary">← Voriges Motiv</button
+                  ><button id="culture-next" class="secondary">Next motive</button></div
+                ><div id="culture-credit" class="culture-credit"></div
+                ><div class="culture-body"
+                  ><div id="culture-copy"></div
+                  ><div
+                    id="culture-sources"
+                    class="culture-sources"
+                  ></div></div></article></div></div
+          ><details
+            ><summary>What does this map establish?</summary
+            ><p class="muted"
+              >Providers and model booths remain separate; no shares are calculated without imported
+              estimates of origin; a PCA alone is not re-interpreted as ethnicity percentages;
+              regions without coordinates are on the list and are not arbitrarily placed on the
+              map.</p
+            ></details
+          ></section
+        >
+        <section id="appearance"
+          ><span class="badge amber">SCHEMATIC PREVIEW</span
+          ><h2 style="margin-top: 12px">Traits & probabilities</h2
+          ><span id="traits-state" class="badge amber">Still in progress</span
+          ><p class="muted"
+            >The avatar illustrates imported model estimates, not a reconstructed portrait. Unknown
+            traits stay neutral; skin colour is not inferred from ancestry.</p
+          ><div id="traits" class="traits"></div
+          ><details
+            ><summary>Sources, model and limitations</summary
+            ><pre id="provenance">No results yet.</pre
+            ><p class="muted"
+              >The probabilities come from the imported result and are not recalculated here or
+              independently validated; the most common category is not certainty; the common
+              representation of individual features is not a model for a common face.</p
+            ><a
+              href="https://medlineplus.gov/genetics/understanding/traits/"
+              target="_blank"
+              rel="noreferrer"
+              >Background: MedlinePlus Genetics</a
+            ></details
+          ></section
+        ></div
+      >
+      <aside
+        ><div class="panel"
+          ><h2>Appearance preview</h2><div id="avatar" class="avatarbox"></div
+          ><p id="avatarLabel" class="muted"></p
+          ><div class="row"
+            ><button id="likely">Most likely categories</button
+            ><button id="sample" class="secondary">Draw an alternative</button></div
+          ><p class="muted"
+            >Alternatives illustrate per-trait sampling. Unknown traits are not guessed.</p
+          ><button id="export" class="secondary">Export avatar & evidence</button></div
+        ><div class="panel"
+          ><h3>Evidence status</h3><div id="status" class="muted"></div></div></aside
+    ></div>
+    <section id="import" hidden
+      ><h2>Import local analysis results</h2
+      ><p class="muted"
+        >Imports structured origin and feature models as JSON. This is not a raw DNA upload and does
+        not yet trigger a new feature analysis. vendor exports must first be converted into the
+        documented format.</p
+      ><div class="row"
+        ><label
+          >Results file (JSON)<input id="file" type="file" accept=".json,application/json" /></label
+        ><button id="template" class="secondary">Download format template</button></div
+      ><label for="payload">Result content for testing</label
+      ><textarea
+        id="payload"
+        spellcheck="false"
+        placeholder="Open JSON file or insert a structured result"
+      ></textarea
+      ><p class="muted"
+        >The storage is done for the profile selected above. Please check the source, model, version
+        and assignment of people before saving.</p
+      ><button id="save">Check & save as a new result version</button
+      ><p id="saved" role="status"></p
+      ><details
+        ><summary>Format & categories</summary
+        ><pre>
+provider, model, version: required fields (mark unknown values explicitly)
+regions: [{name, percent, lat?, lon?}] · percentages 0–100; total at most 100%
+traits: {hair: {probabilities: {brown: 0.7, blond: 0.3}, evidence: "Result source"}}
+Probabilityichkeiten: 0–1, je Merkmal zusammen 1
+hair: black / brown / blond / red
+eyes: brown / blue / intermediate
+freckles: yes / no
+earlobes: attached / free
+nose: narrow / medium / broad
+Fehlende Merkmale auslassen. nose / earlobes nur bei vorhandenem passendem Modell angeben.
+Template values are not personal DNA results.</pre>
+      </details></section
+    ></main
+  >
+  <script src="/heritage.js"></script
+  ><script>
+    const embeddedProfile =
+      new URLSearchParams(location.hash.slice(1)).get("person") ||
+      sessionStorage.getItem("dna.profile") ||
+      "";
+    if (window.chrome && window.chrome.webview) document.documentElement.classList.add("embedded");
+
+    const $ = (id) => document.getElementById(id),
+      NS = "http://www.w3.org/2000/svg";
+    let data,
+      current = null,
+      box = [0, 0, 1000, 500],
+      shown = {};
+    const labels = {
+        hair: "Hair color",
+        eyes: "Eye color",
+        freckles: "Freckles",
+        earlobes: "Earlobes",
+        nose: "Nose shape",
+      },
+      names = {
+        black: "Black",
+        brown: "Brown",
+        blond: "Blond",
+        red: "Red",
+        blue: "Blue",
+        intermediate: "Intermediate colors",
+        yes: "Present",
+        no: "Not predicted",
+        attached: "Attached",
+        free: "Free",
+        narrow: "Narrow",
+        medium: "Medium",
+        broad: "Broad",
+      };
+    async function api(path, args = {}) {
+      const attempts = path === "/visual-data" ? 3 : 1;
+      for (let attempt = 0; attempt < attempts; attempt++) {
+        const controller = new AbortController(),
+          timer = setTimeout(() => controller.abort(), 6000);
+        try {
+          const r = await fetch(path, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-DNA-Token": "__TOKEN__" },
+            body: JSON.stringify(args),
+            signal: controller.signal,
+          });
+          const d = await r.json();
+          if (d.error) throw Error(d.error);
+          return d;
+        } catch (e) {
+          if (attempt + 1 === attempts || !["TypeError", "AbortError"].includes(e.name))
+            throw Error(
+              ["TypeError", "AbortError"].includes(e.name)
+                ? "Local data service briefly unavailable. Existing results are retained; the update is attempted again."
+                : e.message
+            );
+          await new Promise((resolve) => setTimeout(resolve, 300 * (attempt + 1)));
+        } finally {
+          clearTimeout(timer);
+        }
+      }
+    }
+    function elem(tag, text) {
+      const e = document.createElement(tag);
+      e.textContent = text;
+      return e;
+    }
+    function svg(tag, attrs) {
+      const e = document.createElementNS(NS, tag);
+      for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+      return e;
+    }
+    async function run(fn) {
+      $("error").textContent = "";
+      try {
+        await fn();
+      } catch (e) {
+        $("error").textContent = e.message;
+      }
+    }
+    let visualStateSignature = "",
+      visualRefreshBusy = false;
+    async function refresh() {
+      if (visualRefreshBusy) return;
+      visualRefreshBusy = true;
+      try {
+        const response = await api("/visual-data");
+        const signature = JSON.stringify(response);
+        if (signature === visualStateSignature) return;
+        visualStateSignature = signature;
+        const old = $("person").value || embeddedProfile;
+        data = response;
+        if (response.world && !$("land").children.length) renderWorld(response.world);
+        $("person").replaceChildren(
+          ...data.people.map(
+            (p) => new Option(p.label + (p.synthetic ? "[Empty / hypothetical profile]" : ""), p.id)
+          )
+        );
+        if (data.people.some((p) => p.id === old)) $("person").value = old;
+        choosePerson();
+      } finally {
+        visualRefreshBusy = false;
+      }
+    }
+    function choosePerson() {
+      const old = $("dataset").value;
+      const list = data.results.filter((r) => r.person === $("person").value);
+      $("dataset").replaceChildren(
+        ...list.map(
+          (r) => new Option(r.data.provider + " · " + r.data.model + " · " + r.data.version, r.id)
+        )
+      );
+      if (!list.length) $("dataset").append(new Option("Keine Auswertung vorhanden", ""));
+      if (list.some((r) => r.id === old)) $("dataset").value = old;
+      render();
+    }
+    function render() {
+      current = data.results.find((r) => r.id === $("dataset").value) || null;
+      const d = current?.data;
+      $("mode").textContent = d ? "Imported Estimate ·" + d.version : "No estimate selected";
+      $("regions").replaceChildren();
+      $("markers").replaceChildren();
+      box = [0, 0, 1000, 500];
+      view();
+      let total = 0;
+      for (const r of d?.regions || []) {
+        total += r.percent;
+        const card = elem("div", "");
+        card.className = "region";
+        const title = elem("div", r.name),
+          pct = elem(
+            "span",
+            r.percent.toLocaleString(document.documentElement.lang, { maximumFractionDigits: 2 }) +
+              " %"
+          );
+        pct.className = "percent";
+        title.append(pct);
+        const bar = elem("div", "");
+        bar.className = "bar";
+        const fill = elem("i", "");
+        fill.style.width = r.percent + "%";
+        bar.append(fill);
+        card.append(title, bar);
+        if (r.lat == null) card.append(elem("small", "No map location provided"));
+        else {
+          const x = ((r.lon + 180) / 360) * 1000,
+            y = ((90 - r.lat) / 180) * 500;
+          const m = svg("g", {
+            tabindex: 0,
+            role: "button",
+            "aria-label": r.name + ": " + r.percent + " %",
+          });
+          const circle = svg("circle", {
+            cx: x,
+            cy: y,
+            r: Math.max(5, Math.sqrt(r.percent) * 2),
+            fill: "#128d87",
+            "fill-opacity": ".35",
+            stroke: "#067f80",
+            "stroke-width": 1.5,
+          });
+          const t = svg("title", {});
+          t.textContent = r.name + ": " + r.percent + " %";
+          circle.append(t);
+          m.append(circle);
+          $("markers").append(m);
+          const focus = () => {
+            box = [
+              Math.max(0, Math.min(650, x - 175)),
+              Math.max(0, Math.min(325, y - 87.5)),
+              350,
+              175,
+            ];
+            view();
+          };
+          card.onclick = focus;
+          m.onclick = focus;
+          m.onkeydown = (e) => {
+            if (e.key === "Enter") focus();
+          };
+        }
+        $("regions").append(card);
+      }
+      if (!d?.regions?.length)
+        $("regions").append(
+          Object.assign(
+            elem(
+              "div",
+              "No estimates of origin are yet imported; no estimates of origin from names, relatives or file sizes are made."
+            ),
+            { className: "empty" }
+          )
+        );
+      $("total").textContent = d?.regions?.length
+        ? "Reported proportions: " +
+          total.toLocaleString(document.documentElement.lang, { maximumFractionDigits: 2 }) +
+          "% · not allocated:" +
+          Math.max(0, 100 - total).toLocaleString(document.documentElement.lang, {
+            maximumFractionDigits: 2,
+          }) +
+          " %"
+        : "";
+      $("traits").replaceChildren();
+      for (const [key, label] of Object.entries(labels)) {
+        const card = elem("div", "");
+        card.className = "trait";
+        card.append(elem("h3", label));
+        const trait = d?.traits?.[key];
+        if (!trait) card.append(elem("small", "Still in progress · no model document"));
+        else {
+          for (const [category, p] of Object.entries(trait.probabilities).sort(
+            (a, b) => b[1] - a[1]
+          )) {
+            card.append(
+              elem(
+                "small",
+                names[category] +
+                  " · " +
+                  (p * 100).toLocaleString(document.documentElement.lang, {
+                    maximumFractionDigits: 1,
+                  }) +
+                  " %"
+              )
+            );
+            const b = elem("div", "");
+            b.className = "bar";
+            const f = elem("i", "");
+            f.style.width = p * 100 + "%";
+            b.append(f);
+            card.append(b);
+          }
+          card.append(elem("small", "Imported model estimate"));
+          card.title = trait.evidence;
+        }
+        $("traits").append(card);
+      }
+      $("provenance").textContent = current
+        ? JSON.stringify(
+            {
+              provider: d.provider,
+              model: d.model,
+              version: d.version,
+              data_date: d.data_date,
+              note: d.source_note,
+              sha256: current.sha256,
+              traits: d.traits,
+            },
+            null,
+            2
+          )
+        : "There is no model estimate.";
+      $("status").textContent = current
+        ? "Source:" +
+          d.provider +
+          "\nModel: " +
+          d.model +
+          "\nVersion: " +
+          d.version +
+          "\nNo independent model validation."
+        : "There is no origin or feature model for this profile, and raw DNA is not yet automatically evaluated here.";
+      $("status").style.whiteSpace = "pre-line";
+      draw(false);
+      renderHeritage(d, data, $("person").value);
+    }
+    function view() {
+      $("world").setAttribute("viewBox", box.join(" "));
+    }
+    function zoom(f) {
+      const w = Math.max(125, Math.min(1000, box[2] * f)),
+        h = w / 2;
+      box = [
+        Math.max(0, Math.min(1000 - w, box[0] + (box[2] - w) / 2)),
+        Math.max(0, Math.min(500 - h, box[1] + (box[3] - h) / 2)),
+        w,
+        h,
+      ];
+      view();
+    }
+    function draw(random) {
+      shown = {};
+      for (const [key, trait] of Object.entries(current?.data?.traits || {})) {
+        const entries = Object.entries(trait.probabilities);
+        if (random) {
+          let n = Math.random();
+          for (const [c, p] of entries) {
+            n -= p;
+            if (n <= 0) {
+              shown[key] = c;
+              break;
+            }
+          }
+          if (!shown[key]) shown[key] = entries[entries.length - 1][0];
+        } else shown[key] = entries.sort((a, b) => b[1] - a[1])[0][0];
+      }
+      const s = svg("svg", {
+          viewBox: "0 0 260 310",
+          role: "img",
+          "aria-label": "Schematic avatar based on imported trait probabilities",
+        }),
+        neutral = "#c3ced1",
+        outline = "#6f8a98";
+      s.append(
+        svg("path", { d: "M35 310 Q38 247 100 244 L160 244 Q220 247 225 310", fill: "#6c939b" }),
+        svg("path", { d: "M104 208 L104 252 Q130 273 156 252 L156 208", fill: neutral })
+      );
+      const earY = shown.earlobes === "free" ? 186 : 177;
+      for (const x of [62, 198])
+        s.append(
+          svg("ellipse", { cx: x, cy: 166, rx: 14, ry: earY - 147, fill: neutral, stroke: outline })
+        );
+      s.append(
+        svg("ellipse", {
+          cx: 130,
+          cy: 150,
+          rx: 66,
+          ry: 90,
+          fill: neutral,
+          stroke: outline,
+          "stroke-width": 1.5,
+        })
+      );
+      const hair = { black: "#292d32", brown: "#664833", blond: "#d9b96b", red: "#ac5736" }[
+        shown.hair
+      ];
+      s.append(
+        svg("path", {
+          d: "M62 146 Q47 57 104 48 Q167 21 197 89 L199 150 L183 117 Q156 113 125 79 Q96 120 70 117 Z",
+          fill: hair || "#d5dfe2",
+          stroke: outline,
+          "stroke-dasharray": hair ? "none" : "4 4",
+        })
+      );
+      for (const x of [102, 158]) {
+        s.append(
+          svg("ellipse", { cx: x, cy: 153, rx: 17, ry: 9, fill: "#f5f7f8", stroke: outline })
+        );
+        s.append(
+          svg("circle", {
+            cx: x,
+            cy: 153,
+            r: 6.8,
+            fill:
+              { brown: "#705039", blue: "#5c98b0", intermediate: "#7b9478" }[shown.eyes] ||
+              "#b6c4cb",
+          })
+        );
+        s.append(svg("circle", { cx: x, cy: 153, r: 2.5, fill: "#344e60" }));
+      }
+      const nw = shown.nose === "narrow" ? 6 : shown.nose === "broad" ? 18 : 10;
+      s.append(
+        svg("path", {
+          d: `M130 161 L${130 - nw} 185 Q130 191 ${130 + nw} 185`,
+          fill: "none",
+          stroke: outline,
+          "stroke-width": 2,
+        })
+      );
+      s.append(
+        svg("path", {
+          d: "M107 210 Q130 220 153 210",
+          fill: "none",
+          stroke: outline,
+          "stroke-width": 2,
+        })
+      );
+      if (shown.freckles === "yes")
+        for (const [x, y] of [
+          [83, 177],
+          [93, 182],
+          [103, 175],
+          [154, 177],
+          [166, 181],
+          [179, 176],
+          [119, 180],
+          [141, 181],
+        ])
+          s.append(svg("circle", { cx: x, cy: y, r: 1.7, fill: "#967b69" }));
+      $("avatar").replaceChildren(s);
+      $("avatarLabel").textContent =
+        (random ? "Illustrative Alternative" : "Most common imported categories") +
+        " · " +
+        Object.keys(shown).length +
+        "Gray areas are a neutral design, not a prediction of skin color.";
+    }
+    function download(name, text, type) {
+      const u = URL.createObjectURL(new Blob([text], { type }));
+      const a = document.createElement("a");
+      a.href = u;
+      a.download = name;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(u), 1000);
+    }
+    $("person").onchange = () => {
+      sessionStorage.setItem("dna.profile", $("person").value);
+      choosePerson();
+    };
+    $("dataset").onchange = render;
+    $("reload").onclick = () => run(refresh);
+    $("minus").onclick = () => zoom(1.5);
+    $("plus").onclick = () => zoom(1 / 1.5);
+    $("reset").onclick = () => {
+      box = [0, 0, 1000, 500];
+      view();
+    };
+    $("likely").onclick = () => draw(false);
+    $("sample").onclick = () => draw(true);
+    $("file").onchange = () =>
+      run(async () => {
+        const f = $("file").files[0];
+        if (f) {
+          if (f.size > 180000) throw Error("JSON file too large (maximum 180 KB).");
+          $("payload").value = await f.text();
+        }
+      });
+    $("save").onclick = () =>
+      run(async () => {
+        const r = JSON.parse($("payload").value);
+        if (r.person && r.person !== $("person").value)
+          throw Error(
+            "The person identifier in the file does not match the selected profile. Check assignment first."
+          );
+        r.person = $("person").value;
+        await api("/visual-import", r);
+        $("saved").textContent =
+          "Saved locally as a new result version. Please select the new result at the top.";
+        await refresh();
+      });
+    $("template").onclick = () =>
+      download(
+        "visual-ergebnis-VORLAGE.json",
+        JSON.stringify(
+          {
+            provider: "EXAMPLE – Replace with real source of results",
+            model: "Modellname",
+            version: "Modellversion",
+            data_date: "",
+            source_note:
+              "Template, NO personal DNA result. regions and traits fill only with real results.",
+            regions: [],
+            traits: {},
+          },
+          null,
+          2
+        ),
+        "application/json"
+      );
+    $("export").onclick = () => {
+      const s = $("avatar").firstChild.cloneNode(true);
+      const m = svg("metadata", {});
+      m.textContent = JSON.stringify({
+        type: "Schematic illustration, not a reconstructed face",
+        selected_categories: shown,
+        result_id: current?.id || null,
+        data: current?.data || null,
+      });
+      s.prepend(m);
+      download(
+        "dna-avatar-SCHEMATISCH.svg",
+        new XMLSerializer().serializeToString(s),
+        "image/svg+xml"
+      );
+    };
+    function renderWorld(world) {
+      $("land").replaceChildren();
+      for (const ring of world.rings) {
+        let d = "",
+          last;
+        for (const [lon, lat] of ring) {
+          const x = ((lon + 180) / 360) * 1000,
+            y = ((90 - lat) / 180) * 500;
+          d +=
+            (last == null || Math.abs(x - last) > 500 ? "M" : "L") +
+            x.toFixed(1) +
+            " " +
+            y.toFixed(1) +
+            " ";
+          last = x;
+        }
+        $("land").append(svg("path", { d: d + "Z" }));
+      }
+    }
+    run(refresh);
+    setInterval(() => run(refresh), 15000);
+    function visualImportVisibility() {
+      const show = new URLSearchParams(location.hash.slice(1)).get("import") === "1";
+      $("import").hidden = !show;
+      if (show) setTimeout(() => $("import").scrollIntoView({ behavior: "smooth" }), 150);
+    }
+    visualImportVisibility();
+    window.addEventListener("hashchange", visualImportVisibility);
+    document.querySelector('a[href="#import"]').onclick = (e) => {
+      e.preventDefault();
+      $("import").hidden = false;
+      $("import").scrollIntoView({ behavior: "smooth" });
+    };
+  </script></html
+>

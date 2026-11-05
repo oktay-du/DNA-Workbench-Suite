@@ -1,0 +1,25 @@
+name: Bug report
+description: Bug report for DNA Workbench
+body:
+  - type: markdown
+    attributes:
+      value: "Do not share DNA, medical reports, credentials, identifying paths or unredacted screenshots. This issue is public. Paste the locally reviewed app feedback draft below."
+  - type: textarea
+    id: description
+    attributes:
+      label: Description and steps
+      description: What happened or what would you improve? Include expected behavior.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Optional privacy-filtered diagnostics
+      description: Optional. Review everything before posting. No raw DNA or raw logs.
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Privacy review
+      options:
+        - label: I reviewed the text and attachments for sensitive information.
+          required: true

@@ -1,0 +1,14 @@
+{
+  "elements": ["html5"],
+  "rules": {
+    "doctype-html": "error",
+    "close-order": "error",
+    "no-dup-id": "error",
+    "no-dup-attr": "error",
+    "element-permitted-content": "error",
+    "element-required-attributes": "error",
+    "attribute-allowed-values": "error",
+    "valid-id": "error",
+    "void-style": ["error", { "style": "selfclose" }]
+  }
+}
