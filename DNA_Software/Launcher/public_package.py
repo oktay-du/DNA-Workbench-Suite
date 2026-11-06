@@ -91,6 +91,7 @@ LAUNCHER += [
     "ai-packages.json",
     "test_import_mode.py",
     "test_suite_api.py",
+    "test_menu_snapshot.py",
     "test_local_ai.py",
 ]
 LAUNCHER += [

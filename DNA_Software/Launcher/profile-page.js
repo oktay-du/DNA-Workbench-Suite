@@ -17,14 +17,14 @@ window.renderProfilePage = async function () {
     if (window.renderProfileImport) renderProfileImport($("main"));
     return;
   }
-  const p = await api("/suite/profile-read", { person: pid });
-  if (epoch !== renderEpoch || pid !== currentPerson()) return;
   header(
     "My profile",
     "My profile",
     t("Personal details, family relationships and evidence-backed DNA results."),
     [button(t("Open family tree"), () => go("family"))]
   );
+  const p = await api("/suite/profile-read", { person: pid });
+  if (epoch !== renderEpoch || pid !== currentPerson()) return;
   const grid = el("div", "", "grid-two"),
     card = el("section", "", "card"),
     form = el("form"),

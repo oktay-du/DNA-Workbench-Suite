@@ -11,6 +11,11 @@ portable_paths.configure()
 APP = Path(__file__).parent
 ROOT = APP.parents[1]
 CAT = lambda: json.loads((APP / "catalog.json").read_text(encoding="utf-8"))
+
+
+def catalog_stamp():
+    info = (APP / "catalog.json").stat()
+    return f"{info.st_mtime_ns}:{info.st_size}"
 LOCK = threading.Lock()
 PROCESSES = {}
 
@@ -172,7 +177,7 @@ def all_jobs():
     )
 
 
-def snapshot(pid=None):
+def snapshot(pid=None, catalog_token=None):
     people = profiles()
     pid = (
         pid if pid in {x["id"] for x in people} else people[0]["id"] if people else None
@@ -180,7 +185,8 @@ def snapshot(pid=None):
     import profile_pipeline
     import release_tools, sample_data
 
-    return {
+    token = catalog_stamp()
+    data = {
         "sample_profile": sample_data.is_sample(pid) if pid else False,
         "project": release_tools.info(),
         "people": people,
@@ -189,13 +195,17 @@ def snapshot(pid=None):
         "best_selection": profile_pipeline.summary(pid) if pid else {"sets": []},
         "jobs": jobs(pid) if pid else [],
         "settings": settings(),
-        "catalog": CAT(),
+        "catalog_token": token,
         "providers": inspector.PROVIDERS,
         "root": str(ROOT),
         "version": json.loads((APP / "install-lock.json").read_text(encoding="utf-8"))[
             "app_version"
         ],
     }
+    # The tool catalog is large and stable. Menus reuse it until the file changes.
+    if catalog_token != token:
+        data["catalog"] = CAT()
+    return data
 
 
 def refresh_tick():
@@ -554,7 +564,7 @@ def dispatch(action, r):
             return person_profile.photo(pid, r["data_url"])
         return person_profile.save(pid, r["values"])
     if action == "snapshot":
-        return snapshot(r.get("person"))
+        return snapshot(r.get("person"), r.get("catalog_token") or None)
     if action == "settings":
         return settings(r)
     if action == "run":

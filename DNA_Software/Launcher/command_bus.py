@@ -122,7 +122,27 @@ def validate(value, schema, path="arguments"):
         raise CommandError("INVALID_ARGUMENTS", path + ": string too long")
 
 
+_DEFINITIONS = None
+_DEFINITIONS_TOKEN = None
+
+
 def definitions():
+    """Reuse command schemas until catalog.json changes.
+
+    Rebuilding them rereads the tool catalog. Every menu click was paying
+    that cost before the page could paint.
+    """
+    global _DEFINITIONS, _DEFINITIONS_TOKEN
+    token = suite_api.catalog_stamp()
+    if _DEFINITIONS is not None and _DEFINITIONS_TOKEN == token:
+        return _DEFINITIONS
+    built = _build_definitions()
+    _DEFINITIONS = built
+    _DEFINITIONS_TOKEN = token
+    return built
+
+
+def _build_definitions():
     result = []
 
     def add(id, description, schema, handler, read=True, effects=None):
@@ -399,8 +419,9 @@ def definitions():
     )
     add(
         "workspace.snapshot",
-        "Profiles, registered sources, jobs and settings.",
-        obj({"person": S}),
+        "Profiles, registered sources, jobs and settings. "
+        "Pass catalog_token to skip an unchanged tool catalog.",
+        obj({"person": S, "catalog_token": S}),
         "suite:snapshot",
     )
     add(

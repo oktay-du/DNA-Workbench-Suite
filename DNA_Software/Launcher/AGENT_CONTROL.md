@@ -2,6 +2,8 @@
 
 All interfaces use the typed command registry. Inspect available commands and schemas before invoking them. Menu identifiers use `menu.*`; workflows use `workflow.*`.
 
+The desktop window opens a menu by changing the page hash and painting from the snapshot already on screen. `menu.*` remains the command for the CLI, JSON, and MCP clients, which enqueue that same navigation for the window to acknowledge. A repeat `workspace.snapshot` can pass `catalog_token` so an unchanged tool catalog is not sent again.
+
 ```powershell
 .\DNA.cmd commands
 .\DNA.cmd commands --search pharmcat

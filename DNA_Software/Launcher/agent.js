@@ -39,13 +39,16 @@
         if (![...$("profile").options].some((x) => x.value === p.person))
           throw Error("Profiles no longer exist");
         $("profile").value = p.person;
-        await refresh();
       }
       if (p.type === "navigate") {
         $("task-dialog").close();
         $("search-dialog").close();
-        location.hash = p.route;
-        await refresh();
+        const current = location.hash.slice(1) || "dashboard";
+        if (current !== p.route) location.hash = p.route;
+        else if (state) {
+          render();
+          await loadSnapshot(false);
+        }
       } else if (p.type === "research") {
         $("task-dialog").close();
         sessionStorage.setItem("dna.agent.feature", p.feature);

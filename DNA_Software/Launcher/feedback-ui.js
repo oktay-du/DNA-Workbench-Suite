@@ -186,8 +186,7 @@ window.renderFeedbackPage = async function () {
   card.append(status);
   $("main").append(card);
 };
-document.getElementById("feedback-toggle").onclick = () =>
-  run(() => dnaAgent.execute("menu.feedback", { person: currentPerson() }));
+document.getElementById("feedback-toggle").onclick = () => go("feedback");
 
 window.appendToolSummary = function () {
   if (route !== "dashboard") return;

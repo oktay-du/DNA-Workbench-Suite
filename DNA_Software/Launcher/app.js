@@ -735,12 +735,6 @@ function renderNavigation() {
       a.setAttribute("aria-label", t(de, en));
       a.title = t(de, en);
       a.dataset.command = "menu." + id;
-      a.onclick = (event) => {
-        if (window.dnaAgent) {
-          event.preventDefault();
-          run(() => window.dnaAgent.execute("menu." + id, { person: currentPerson() }));
-        }
-      };
       a.append(el("span", icon, "icon"), el("span", t(de, en), "nav-label"));
       if (id === "sources") a.append(el("span", String(state.files.length), "count"));
       if (id === "ai") a.append(el("span", "AI", "count"));
@@ -755,12 +749,33 @@ function routeName(id) {
   }
   return "Workspace";
 }
-async function refresh() {
+function workspaceStamp(s) {
+  if (!s) return "";
+  const file = (f) => [f.id, f.sha256, f.path, f.provider, f.build, f.qc_color].join(":");
+  const job = (j) => [j.job, j.status, j.activity, j.task].join(":");
+  return JSON.stringify({
+    token: s.catalog_token,
+    person: s.person,
+    sample: s.sample_profile,
+    people: (s.people || []).map((p) => p.id + "\t" + p.label),
+    files: (s.files || []).map(file),
+    jobs: (s.jobs || []).map(job),
+    settings: s.settings,
+    best: s.best_selection?.refresh?.status,
+  });
+}
+async function loadSnapshot(force) {
   const epoch = ++refreshEpoch,
     pid = currentPerson(),
-    next = await api("/suite/snapshot", { person: pid });
+    next = await api("/suite/snapshot", {
+      person: pid,
+      catalog_token: state?.catalog_token || "",
+    });
   if (epoch !== refreshEpoch) return;
+  if (!next.catalog && state?.catalog) next.catalog = state.catalog;
+  const changed = force || workspaceStamp(state) !== workspaceStamp(next);
   state = next;
+  if (!changed) return;
   $("profile").replaceChildren();
   for (const p of state.people) $("profile").append(new Option(p.label, p.id));
   if (state.person) $("profile").value = state.person;
@@ -771,6 +786,9 @@ async function refresh() {
   applySettings();
   renderNavigation();
   render();
+}
+function refresh() {
+  return loadSnapshot(true);
 }
 function applySettings() {
   window.DnaI18n?.apply(state.settings);
@@ -2124,7 +2142,12 @@ $("search-toggle").onclick = () => {
 };
 $("close-search").onclick = () => $("search-dialog").close();
 $("global-search").oninput = search;
-window.onhashchange = () => run(refresh);
+window.onhashchange = () => {
+  // Paint the selected menu from the snapshot already on screen, then refresh
+  // quietly. A click must not wait for another command-catalog rebuild.
+  if (state) render();
+  run(() => loadSnapshot(false));
+};
 document.addEventListener("keydown", (event) => {
   if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
     event.preventDefault();
@@ -2211,9 +2234,4 @@ function donationsPage() {
   $("main").append(card);
 }
 
-$("donate-toggle").onclick = () =>
-  run(() =>
-    window.dnaAgent
-      ? window.dnaAgent.execute("menu.donations", { person: currentPerson() })
-      : go("donations")
-  );
+$("donate-toggle").onclick = () => go("donations");
