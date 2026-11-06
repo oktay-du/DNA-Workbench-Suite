@@ -66,6 +66,10 @@ def main(argv=None):
     sub.add_parser("json", help="Newline-delimited JSON-RPC on stdin/stdout")
     sub.add_parser("mcp", help="Connect an MCP client to the live suite")
     sub.add_parser("serve", help="Start core loopback service without GUI/WSL/model")
+    sub.add_parser(
+        "desktop",
+        help="Open the Linux workspace window (WebKitGTK, not the system browser)",
+    )
     sub.add_parser("openapi")
     sub.add_parser(
         "mcp-config", help="Print configuration with this SSD Python and script paths"
@@ -111,6 +115,10 @@ def main(argv=None):
 
             sys.argv = [str(Path(__file__).with_name("family.py")), "--headless"]
             runpy.run_path(sys.argv[0], run_name="__main__")
+        elif args.action == "desktop":
+            import desktop_host
+
+            return desktop_host.main()
         elif args.action == "mcp":
             import mcp_dna
 

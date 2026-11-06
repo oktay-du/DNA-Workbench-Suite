@@ -87,7 +87,7 @@ def enqueue(payload):
     if not GUI:
         raise CommandError(
             "NO_GUI",
-            "No desktop GUI is attached. Start DNA_Launcher.exe for UI commands.",
+            "No desktop GUI is attached. Start DNA_Launcher.exe on Windows, or run dna_cli.py desktop on Linux.",
         )
     with LOCK:
         if sum(e["status"] == "pending" for e in EVENTS.values()) >= 50:

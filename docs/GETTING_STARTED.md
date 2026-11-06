@@ -23,6 +23,8 @@ Prefer an ordinary user-writable folder, not Program Files. Keep a backup of the
 
 ## Optional Linux
 
+On a Linux desktop, `python3 DNA_Software/Launcher/dna_cli.py desktop` opens the same workspace in a local WebKitGTK window. It does not launch the system browser. `DNA_Software/Launcher/build_linux_appimage.sh` writes `dist/DNA-Workbench-x86_64.AppImage`. The first launch of that AppImage copies a writable tree beside the file and opens the window from there. Windows keeps `DNA_Launcher.exe`, which installs portable Python and WebView2 beside itself.
+
 Core does not require Ubuntu. A Linux workflow offers preparation when needed. PowerShell checks WSL host support; enabling Windows features can require elevation and reboot. The suite's distro VHDX and chosen swap location are stored beside the EXE, but distro registration and Windows features are host-specific. On a different PC, repeat the host check/registration. This is workspace portability, not a guarantee of zero host changes. Existing unrelated WSL workloads are not automatically shut down. See [portable implementation notes](../DNA_Software/Launcher/PORTABILITY.md).
 
 ## Explore safely
