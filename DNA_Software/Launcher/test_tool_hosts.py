@@ -28,8 +28,12 @@ class ToolHostTests(unittest.TestCase):
         self.assertEqual(by_id["ubuntu-wsl"]["linux"], "not used")
         self.assertEqual(by_id["mosdepth"]["windows"], "samtools depth")
         self.assertIn("Win-NGS", by_id["samtools-1-23-1-windows"]["note"])
-        self.assertEqual(tool_hosts.prefer("gramps"), "gramps-6-0-8-1-amd64-snap")
-        self.assertEqual(tool_hosts.prefer("samtools"), "samtools-1-25-tar-bz2")
+        if os.name == "nt":
+            self.assertEqual(tool_hosts.prefer("gramps"), "grampsaio-6-0-8-1-win64-exe")
+            self.assertEqual(tool_hosts.prefer("samtools"), "samtools-1-23-1-windows")
+        else:
+            self.assertEqual(tool_hosts.prefer("gramps"), "gramps-6-0-8-1-amd64-snap")
+            self.assertEqual(tool_hosts.prefer("samtools"), "samtools-1-25-tar-bz2")
         with mock.patch.object(tool_hosts.os, "name", "nt"):
             self.assertEqual(tool_hosts.prefer("plink2"), "plink2-windows")
             self.assertEqual(tool_hosts.prefer("samtools"), "samtools-1-23-1-windows")
