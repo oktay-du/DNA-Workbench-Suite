@@ -17,3 +17,13 @@ Inspect git status before editing. Use focused branches and commits. Do not disc
 Run relevant synthetic tests with `python -m unittest discover -s DNA_Software/Launcher -p "test_*.py"`. Build with `powershell -NoProfile -File DNA_Software/Launcher/build.ps1`. Scientific validation and clean-host installation are separate checks.
 
 Version 1.0 is research software. Consult LICENSE and component notices before reusing or distributing code or data.
+
+## Cursor Cloud specific instructions
+
+Cloud Agent machines are Ubuntu with Python 3.12. The Windows launcher, `DNA_Software/Launcher/build.ps1`, and `scripts/Test-NativeContracts.ps1` run in Windows CI. On this VM, use the Python core.
+
+- Login shells resolve `node` to Node 26.13.0 from `~/.local/bin` (the image also ships Node 22 at `/exec-daemon/node`). Ruff 0.17.3 is on `PATH` after install. Quality packages live in `tools/quality/node_modules`.
+- Synthetic tests: `python3 -m unittest discover -s DNA_Software/Launcher -p "test_*.py"`. Most cases run here. Failures that assume a Windows drive letter, Windows credential encryption, or a case-insensitive path (`Results` vs `results`) are expected on Linux and are covered by the Windows CI job.
+- Quality: `ruff check DNA_Software/Launcher scripts fuzz`, `ruff format --check DNA_Software/Launcher scripts fuzz`, and `node tools/quality/run.mjs`.
+- Headless workspace: `python3 DNA_Software/Launcher/dna_cli.py serve`, then open `http://127.0.0.1:<port>/app`. `commands` and `schema` work without the service. `DNA_Software/UserData/Launcher/control.json` holds the loopback credential; do not print, screenshot, or commit it. `sample.create` adds the four synthetic demo profiles (Alex, Robin, Sam, and Taylor Example).
+- Desktop-only actions, including Family tree, report `NO_GUI` until `DNA_Launcher.exe` is attached. Leave the headless process running in its own tmux session when you still need the UI.
