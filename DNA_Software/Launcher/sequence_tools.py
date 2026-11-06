@@ -408,9 +408,29 @@ def transform(person, inputs, out, log=print, cancel=lambda: False):
 def view(person, inputs, out, log=print, cancel=lambda: False):
     import visual_tools
 
-    if not visual_tools.installed("seqviz"):
-        raise ValueError("Install the optional SeqViz viewer first")
     name, seq, manifest = extract_sequence(inputs, out)
+    if not visual_tools.installed("seqviz"):
+        checked(cancel)
+        complement = seq.translate(str.maketrans("ACGT", "TGCA"))[::-1]
+        page = Path(out) / "sequence-view.html"
+        page.write_text(
+            '<!doctype html><meta charset="utf-8"><title>Local sequence view</title>'
+            "<style>body{font:16px Segoe UI,sans-serif;max-width:980px;margin:32px auto;color:#173246}pre{white-space:pre-wrap;background:#f4f7f8;padding:16px}</style>"
+            "<h1>Local sequence view</h1><p>"
+            + html.escape(person + " · " + name)
+            + "</p><p>SeqViz bundle is not installed. This page shows the selected interval only. It does not establish genotype quality, ancestry or disease.</p><h2>Sequence</h2><pre>"
+            + html.escape(seq)
+            + "</pre><h2>Reverse complement</h2><pre>"
+            + html.escape(complement)
+            + "</pre>",
+            encoding="utf-8",
+        )
+        save(
+            Path(out) / "sequence-view.json",
+            dict(manifest, person=person, viewer="local-html", seqviz_installed=False),
+        )
+        log("SeqViz bundle is not installed. Wrote a local sequence view.")
+        return
     if len(seq) > 50000:
         raise ValueError("SeqViz view limit is 50,000 bases; choose a smaller interval")
     checked(cancel)

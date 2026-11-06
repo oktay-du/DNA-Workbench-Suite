@@ -575,9 +575,14 @@ def import_batch(
 
 
 def index_archive(person, log=print, cancel=lambda: False):
-    raise ValueError(
-        "Automatic archive indexing has been removed. Select files/folders explicitly in Batch file preparation."
-    )
+    """Record that the archive is not scanned automatically.
+
+    Earlier builds walked a person's provider folders without a new file
+    selection. That scan is gone. Batch file preparation is the explicit import.
+    """
+    note = "Automatic archive indexing has been removed. Select files or folders explicitly in Batch file preparation."
+    log(note)
+    return {"person": person, "registered": 0, "note": note}
 
 
 def index_vcfs(person, paths, fallback="", log=print, cancel=lambda: False):

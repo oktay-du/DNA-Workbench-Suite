@@ -642,6 +642,12 @@ class Job:
                     else "HGDP_GRCh38/hgdp_statphase"
                 )
             )
+            if not Path(str(panel) + ".psam").is_file():
+                raise ValueError(
+                    "Reference panel is not installed: "
+                    + panel.name
+                    + ". The sample set does not include 1000 Genomes or HGDP."
+                )
             cmd(
                 "plink2",
                 "--pfile",
@@ -988,17 +994,22 @@ class Job:
         elif a == "profile_analyze":
             import profile_pipeline
 
+            chain = Path(
+                v.get("chain") or ROOT / "References/LiftOver/hg19ToHg38.over.chain.gz"
+            )
+            reference = Path(
+                v.get("reference")
+                or ROOT
+                / "References/FASTA_GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa"
+            )
             report = profile_pipeline.analyze(
                 self.person,
                 self.out,
                 self.log,
                 lambda: (self.folder / "abbrechen.request").exists(),
                 target="GRCh38" if v.get("target") == "GRCh38" else "separate",
-                chain=v.get("chain")
-                or ROOT / "References/LiftOver/hg19ToHg38.over.chain.gz",
-                reference=v.get("reference")
-                or ROOT
-                / "References/FASTA_GRCh38/GRCh38_full_analysis_set_plus_decoy_hla.fa",
+                chain=chain if chain.is_file() else None,
+                reference=reference if reference.is_file() else None,
             )
             if not any(
                 s.get("status") == "analyzed" and s.get("called", 0) > 0

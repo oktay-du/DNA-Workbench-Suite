@@ -93,15 +93,15 @@
   },
   {
     "path": "DNA_Software/Launcher/make_catalog.py",
-    "sha256": "a6c6ac7675efab69c1833115f63a2461221723d57674e32f02544a6ee494db11"
+    "sha256": "0226a834ebf1d77243dc62a0eb45240b5904648bf9a91647ab08c7090ec00053"
   },
   {
     "path": "DNA_Software/Launcher/catalog.json",
-    "sha256": "53d0a5ab2ecfe6e69b0c6e4a73ef06dfd4280f95a8e098c65da8adf775675d42"
+    "sha256": "ec156549a0df375f0676b25782419f1e3a6e21e45f743a2255390341042dbb3a"
   },
   {
     "path": "DNA_Software/Launcher/engine.py",
-    "sha256": "e0fec0d6e1e38ebab8d55ca0d6da78979d941275169d78e14f9545bc6c06881d"
+    "sha256": "449897ea8124b3c9091aa289f9bb4e2cff8bd7ad75e8763f6168a26f458133e7"
   },
   {
     "path": "DNA_Software/Launcher/inspector.py",
@@ -109,7 +109,7 @@
   },
   {
     "path": "DNA_Software/Launcher/source_store.py",
-    "sha256": "a74b7ba1bf46f63d8c531341d07ab6f49cf74549d59864e584694ba75b053f0a"
+    "sha256": "50c9e32cbd724d06418ace0f3e4c8d334c53c67635df5321462624e4694bfd5d"
   },
   {
     "path": "DNA_Software/Launcher/linux_helpers.py",
@@ -157,7 +157,7 @@
   },
   {
     "path": "DNA_Software/Launcher/install-lock.json",
-    "sha256": "3c70177f83c78924fd021e35bb6161d7f9231764472917a80c2d73fb72bd3bfb"
+    "sha256": "d445d0cbc99b2a34780e15f54695863d4e38d97bd0a3dcb2dc08399012e97c38"
   },
   {
     "path": "DNA_Software/Launcher/fetch_webview_sdk.py",
@@ -569,7 +569,7 @@
   },
   {
     "path": "DNA_Software/Launcher/profile_pipeline.py",
-    "sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45"
+    "sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732"
   },
   {
     "path": "DNA_Software/Launcher/snp_liftover.py",
@@ -577,7 +577,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_profile_pipeline.py",
-    "sha256": "b26bd0d2f87deaef44bae590f97883dc739a975cf742917d00187ef9667abe66"
+    "sha256": "e6e963d141159c0964a7a1fb78d94b63ebbd9d9a47c5cc72a9fdab363187a386"
   },
   {
     "path": "DNA_Software/Launcher/PROFILE_PIPELINE.md",
@@ -617,11 +617,11 @@
   },
   {
     "path": "DNA_Software/Launcher/sequence_tools.py",
-    "sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c"
+    "sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439"
   },
   {
     "path": "DNA_Software/Launcher/test_sequence_tools.py",
-    "sha256": "d2fabfc47f22e6078cb8d2f939a94ceb6b81ace632e7712ebc11744aba9cbb33"
+    "sha256": "6bd883166702a6f1b486909167d4be3874c6f1eba81031ac7366437ec0bd6ae7"
   },
   {
     "path": "DNA_Software/Launcher/SEQUENCE_TOOLS.md",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "91bf73e16b72f97a8d4dc589be7e762850c083320bf4da5707634b4ab670ba12"
+    "sha256": "5e9e64e9af8d3987b5386b8bfa2a963c2b6f2f3f21859cddbbceac67907668a6"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -773,7 +773,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "5a8cf34711424cbe237d4e1c03ad582460b70041512861e5c019eb5ae0c5ef7e"
+    "sha256": "08ec03a456312a89a60ab8134eb667bcb948efd973a265a9539d78e037e4ac5d"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -925,7 +925,7 @@
   },
   {
     "path": "DNA_Software/Launcher/on_demand.py",
-    "sha256": "e73f444405f1bfb8c278abcaec696a1c65dc5f35a6c66ecbbc221af568bd38d0"
+    "sha256": "4ca31a2726ee2bfa5afd5ebf79691685996d41e8dc64ce5edc7b061d39efceba"
   },
   {
     "path": "DNA_Software/Launcher/Notices/RFMIX-LICENSE.txt",
@@ -933,7 +933,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_on_demand.py",
-    "sha256": "0b3b4f946ce912b91d050d349128f84d721fbf637410dec50c88ffdb178a23cc"
+    "sha256": "453d77778c8a5e7f51025a2274b0fbb0cf6519877c4e825b13c7d161e7d07ed6"
   },
   {
     "path": "DNA_Software/Launcher/data_scope.py",
@@ -1229,7 +1229,7 @@
   },
   {
     "path": "README.de.md",
-    "sha256": "6fb6f9af8b04605f243aa62c7d306decbcca62bfabe482ed6c56f7ef8a4457a6"
+    "sha256": "2d1e972c8ca92a6f0790d2e0c69d667782d7876eabbdc753f0205a894c048d47"
   },
   {
     "path": "CONTRIBUTING.md",
@@ -1345,7 +1345,7 @@
   },
   {
     "path": "docs/VERSIONS.md",
-    "sha256": "bf66b9e42b3e70ee63c3a26aa1543c685c41f0a456a4deb4410903f163f135c7"
+    "sha256": "837b241fb93ad7065b30a4b7852d5d070708626af24bb309f39be63308b7e6da"
   },
   {
     "path": "docs/RESULTS_AND_FINDINGS.md",
@@ -1501,7 +1501,7 @@
   },
   {
     "path": "site/index.html",
-    "sha256": "1769b73df6277e41bd7acb38408f343ded2ee2326dd9a07f4965710151ef5ad2"
+    "sha256": "ecd0a9caad78c1576c7739a2792fc9ea4a755071afa08fac7a6b14ffe7dc41be"
   },
   {
     "path": "site/style.css",

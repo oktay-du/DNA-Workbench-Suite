@@ -698,7 +698,7 @@ add(
     "Include the existing provider subfolders of this person in the database.",
     "SQLite · SHA-256",
     "archive_index",
-    help="Read and register the selected person's existing original archive. Files are not copied again. A source group is created per provider folder. Checksums are calculated; large WGS files can take a long time.",
+    help="Automatic scanning of an existing archive is no longer available. Choose the files or folders explicitly in Batch file preparation. This action records that reminder and does not walk private download folders.",
     platform="Windows",
     label="Register profile archive",
 )
@@ -1125,7 +1125,12 @@ add(
             choices=["Encode text", "Decode DNA"],
             default="Encode text",
         ),
-        field("text", "Text or encoded DNA", "text"),
+        field(
+            "text",
+            "Text or encoded DNA",
+            "text",
+            default="DNA Workbench sample",
+        ),
     ],
     help="Maximum 4096 UTF-8 bytes or 16,384 DNA symbols. Export a FASTA and a source receipt. This is reversible encoding, not encryption, laboratory synthesis or personal genetic data.",
     platform="Windows",

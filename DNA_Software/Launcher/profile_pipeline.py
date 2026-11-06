@@ -237,7 +237,9 @@ def analyze(
                     raise ValueError("Source changed during the analysis.")
                 detected = r["stats"].get("detected", {})
                 build = detected.get("build") or row["build"]
-                if build not in ("GRCh37", "GRCh38"):
+                if detected.get("synthetic"):
+                    build = "synthetic-educational"
+                elif build not in ("GRCh37", "GRCh38"):
                     raise ValueError("Reference build not occupied; explicitly check.")
                 if (
                     detected.get("build")
@@ -285,12 +287,26 @@ def analyze(
                 r["error"] = str(error)
             db.execute("INSERT INTO sources VALUES(?,?)", (r["id"], json.dumps(r)))
             db.commit()
+        lifted = False
         if target == "GRCh38":
-            if not chain or not reference:
+            needs_lift = any(
+                r.get("status") == "analyzed" and r.get("build") == "GRCh37"
+                for r in sources
+            )
+            chain_ready = chain and Path(chain).is_file()
+            reference_ready = reference and Path(reference).is_file()
+            if needs_lift and not (chain_ready and reference_ready):
                 raise ValueError(
-                    "For joint GRCh38 analysis, chain and indexed GRCh38-FASTA are required."
+                    "GRCh37 sources need the GRCh37 to GRCh38 chain and an indexed GRCh38 FASTA. Keep builds separate when those references are not installed."
                 )
-            harmonize(db, sources, chain, reference, log, cancel)
+            if needs_lift:
+                harmonize(db, sources, chain, reference, log, cancel)
+                lifted = True
+            else:
+                log(
+                    "No GRCh37 sources to lift. Recorded builds stay separate from GRCh38."
+                )
+        reported_target = "GRCh38" if lifted else "separate"
         pairs = []
         eligible = [r for r in sources if r["status"] == "analyzed"]
         for i, a in enumerate(eligible):
@@ -335,11 +351,9 @@ def analyze(
             "person": person,
             "created": NOW(),
             "database_sha256": digest(path, cancel),
-            "target": target,
-            "chain_sha256": digest(chain, cancel) if target == "GRCh38" else None,
-            "reference_sha256": digest(reference, cancel)
-            if target == "GRCh38"
-            else None,
+            "target": reported_target,
+            "chain_sha256": digest(chain, cancel) if lifted else None,
+            "reference_sha256": digest(reference, cancel) if lifted else None,
             "sources": sources,
             "pairs": pairs,
             "scope": "Observed SNP genotypes only; no indels/SVs, coverage, clinical verification or independence proof. Different builds are never compared directly; optional GRCh38 harmonization maps SNPs with strand correction.",
@@ -1171,6 +1185,10 @@ def _refresh(person, out, log=print, cancel=lambda: False):
             if build == "GRCh38"
             else "References/FASTA_GRCh37/hs37d5.fa"
         )
+        if not reference.is_file():
+            raise ValueError(
+                "The suite reference FASTA is not installed: " + reference.name
+            )
         analysis = Path(out) / "Analyse"
         selection = Path(out) / "BestSelection"
         analyze(

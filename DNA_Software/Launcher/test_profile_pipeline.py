@@ -240,6 +240,38 @@ class ProfilePipelineTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             pp.activate(self.pid, out)
 
+    def test_synthetic_sample_stays_on_its_own_build(self):
+        path = self.root / "synthetic.vcf"
+        path.write_text(
+            "##fileformat=VCFv4.2\n##DNAWorkbenchSynthetic=true\n"
+            "##reference=synthetic-educational-v1\n"
+            "#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS\n"
+            "1\t3\trs1\tA\tC\t60\tPASS\t.\tGT:DP:GQ\t0/1:30:60\n"
+        )
+        source_store.import_batch(
+            self.pid,
+            [str(path)],
+            "sample",
+            "synthetic",
+            measurement="Measured",
+            log=lambda s: None,
+        )
+        out = self.folder("synthetic")
+        report = pp.analyze(
+            self.pid,
+            out,
+            log=lambda s: None,
+            target="GRCh38",
+            chain=None,
+            reference=None,
+        )
+        row = report["sources"][0]
+        self.assertEqual(row["status"], "analyzed")
+        self.assertEqual(row["build"], "synthetic-educational")
+        self.assertEqual(row["called"], 1)
+        self.assertEqual(report["target"], "separate")
+        self.assertIsNone(report["chain_sha256"])
+
     def test_build_mismatch_in_file_is_excluded(self):
         row = self.source()
         p = Path(row["path"])

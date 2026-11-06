@@ -744,6 +744,55 @@ def start_linux():
     }
 
 
+def pip_requirements(tool):
+    return [part for part in PIP[tool].replace("/", " ").split() if part]
+
+
+def install_on_linux_host(tool):
+    """Install a host package on Linux without starting WSL.
+
+    Python modules land in the suite package folder already used by the
+    Windows and Linux job runners. PLINK 1.9 is wrapped when the system
+    package is present.
+    """
+    if os.name == "nt" or tool not in TOOLS:
+        return None
+    if tool == "plink19":
+        binary = shutil.which("plink1.9")
+        if not binary:
+            raise ValueError(
+                "Install the plink1.9 package, then retry. Wine and WSL are not used."
+            )
+        target = publish_linux_bin(Path(binary), "plink19")
+        return {
+            "tool": tool,
+            "status": "Linux file installed",
+            "path": str(target),
+        }
+    if TOOLS[tool][2] in ("pip", "windows-pip") and tool in PIP:
+        folder = ROOT / "DNA_Software/Windows/PythonPackages"
+        folder.mkdir(parents=True, exist_ok=True)
+        subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pip",
+                "install",
+                "--disable-pip-version-check",
+                "--target",
+                str(folder),
+                *pip_requirements(tool),
+            ],
+            check=True,
+        )
+        return {
+            "tool": tool,
+            "status": "Installed into the suite package folder",
+            "path": str(folder),
+        }
+    return None
+
+
 def install(tool, license_reviewed=False):
     if tool not in TOOLS:
         raise ValueError("Unbekanntes Werkzeug.")
@@ -751,6 +800,10 @@ def install(tool, license_reviewed=False):
         raise ValueError(LICENSE)
     if os.name != "nt" and tool in LINUX_LOCAL:
         return install_linux_local(tool)
+    if os.name != "nt":
+        hosted = install_on_linux_host(tool)
+        if hosted:
+            return hosted
     companion = None
     if os.name == "nt" and tool in WINDOWS_COMPANION:
         companion = extract_windows_companion(tool)

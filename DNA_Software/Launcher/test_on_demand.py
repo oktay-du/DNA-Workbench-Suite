@@ -1,4 +1,6 @@
+import tempfile
 import unittest
+from pathlib import Path
 from unittest.mock import patch
 import on_demand as demand
 
@@ -47,6 +49,29 @@ class DemandTests(unittest.TestCase):
         for task in demand.CAT["tasks"]:
             for name in demand.mapped(task["id"]):
                 self.assertIn(name, demand.TOOLS)
+
+    def test_linux_pip_install_uses_the_suite_folder(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with (
+                patch.object(demand, "ROOT", root),
+                patch.object(demand.os, "name", "posix"),
+                patch.object(demand.subprocess, "run") as run,
+            ):
+                result = demand.install("snps")
+        self.assertIn("suite package", result["status"])
+        command = run.call_args.args[0]
+        self.assertIn("--target", command)
+        self.assertIn("snps==2.12.1", command)
+        self.assertTrue(any(part.endswith("PythonPackages") for part in command))
+
+    def test_linux_plink19_names_the_package_when_it_is_missing(self):
+        with (
+            patch.object(demand.os, "name", "posix"),
+            patch.object(demand.shutil, "which", return_value=None),
+        ):
+            with self.assertRaisesRegex(ValueError, "plink1.9"):
+                demand.install("plink19")
 
     def test_linux_plink_not_windows_executable(self):
         self.assertEqual(demand.TOOLS["plink2"][1], "plink2-linux")

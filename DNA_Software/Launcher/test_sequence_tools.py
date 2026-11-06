@@ -1,5 +1,6 @@
 import hashlib, importlib.util, json, tempfile, unittest
 from pathlib import Path
+from unittest.mock import patch
 import sequence_tools as seq
 
 
@@ -103,6 +104,23 @@ class SequenceToolsTests(unittest.TestCase):
         self.assertTrue((self.out / "source.fxi").exists())
         self.assertFalse(Path(str(source) + ".fxi").exists())
         self.assertEqual(hashlib.sha256(source.read_bytes()).hexdigest(), before)
+
+    @unittest.skipUnless(
+        importlib.util.find_spec("pyfastx"), "Optional pyfastx package"
+    )
+    def test_missing_seqviz_writes_a_local_view(self):
+        source = self.root / "unique.fa"
+        source.write_text(">chr1\nACGTACGT\n")
+        with patch("visual_tools.installed", return_value=False):
+            seq.view(
+                "p",
+                {"file": str(source), "record": "chr1", "start": "1", "end": "4"},
+                self.out,
+                lambda _: None,
+            )
+        page = (self.out / "sequence-view.html").read_text()
+        self.assertIn("ACGT", page)
+        self.assertIn("SeqViz bundle is not installed", page)
 
     @unittest.skipUnless(
         importlib.util.find_spec("pyfastx"), "Optional pyfastx package"
