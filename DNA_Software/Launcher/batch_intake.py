@@ -24,10 +24,9 @@ def now():
 
 
 def atomic(p, v):
-    p.parent.mkdir(parents=True, exist_ok=True)
-    tmp = p.with_name(p.name + "." + uuid.uuid4().hex + ".tmp")
-    tmp.write_text(json.dumps(v, ensure_ascii=False, indent=2), encoding="utf-8")
-    tmp.replace(p)
+    import durable_store
+
+    durable_store.write(p, v)
 
 
 def location(person, job):
@@ -140,7 +139,7 @@ def start(r):
     person = suite_api.checked_person(r["person"])
     paths = collect(r.get("files", []))
     registered = (
-        source_store.listing(person) if r.get("include_registered", True) else []
+        source_store.listing(person) if r.get("include_registered", False) else []
     )
     wanted = r.get("kinds", [])
     if wanted:
@@ -247,8 +246,7 @@ def scan(folder, v, paths, registered):
                     )
                 if kind in ("FASTQ", "FASTA"):
                     st = p.stat()
-                    with p.open("rb") as f:
-                        h = hashlib.file_digest(f, "sha256").hexdigest()
+                    h = inspector.file_sha256(p, log)
                     op = gzip.open if p.name.lower().endswith((".gz", ".bgz")) else open
                     with op(p, "rt", encoding="utf-8-sig") as f:
                         lines = [f.readline(1024 * 1024) for _ in range(4)]
@@ -280,8 +278,7 @@ def scan(folder, v, paths, registered):
                     from PIL import Image
 
                     st = p.stat()
-                    with p.open("rb") as f:
-                        h = hashlib.file_digest(f, "sha256").hexdigest()
+                    h = inspector.file_sha256(p, log)
                     with Image.open(p) as im:
                         size = list(im.size)
                         im.verify()
@@ -303,8 +300,7 @@ def scan(folder, v, paths, registered):
                     import tool_contracts
 
                     st = p.stat()
-                    with p.open("rb") as f:
-                        h = hashlib.file_digest(f, "sha256").hexdigest()
+                    h = inspector.file_sha256(p, log)
                     meta = tool_contracts.probe(p)
                     detail = {
                         "path": path,

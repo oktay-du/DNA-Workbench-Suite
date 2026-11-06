@@ -25,6 +25,22 @@ class QualityTests(unittest.TestCase):
         p.write_text(header + rows)
         return p
 
+    def test_full_checksum_reports_byte_progress_without_disclosing_content(self):
+        import hashlib
+        from unittest.mock import patch
+
+        payload = b"Synthetic private sequence content"
+        path = self.dir / "large-fixture.fastq"
+        path.write_bytes(payload)
+        messages = []
+        with patch.object(inspector.time, "monotonic", side_effect=[0, 3, 3]):
+            digest = inspector.file_sha256(path, messages.append)
+        self.assertEqual(digest, hashlib.sha256(payload).hexdigest())
+        self.assertEqual(
+            messages, [f"Checksum progress: {len(payload)} / {len(payload)} bytes"]
+        )
+        self.assertNotIn(payload.decode(), "".join(messages))
+
     def test_measured_qc(self):
         r = inspector.inspect(self.vcf())
         self.assertEqual(

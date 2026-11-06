@@ -7,9 +7,23 @@ from pathlib import Path
 import json
 import os
 import threading
+import time
 import uuid
 
 LOCK = threading.RLock()
+
+
+def _replace(source, destination):
+    # Windows readers/antivirus can briefly hold a handle without delete sharing.
+    # A persistent denial still fails and leaves the live state untouched.
+    for attempt in range(7):
+        try:
+            os.replace(source, destination)
+            return
+        except PermissionError:
+            if attempt == 6:
+                raise
+            time.sleep(0.01 * (2**attempt))
 
 
 def write(path, value, backup=False):
@@ -41,8 +55,8 @@ def write(path, value, backup=False):
                         stream.write(old)
                         stream.flush()
                         os.fsync(stream.fileno())
-                    os.replace(backup_temp, previous)
-            os.replace(temp, path)
+                    _replace(backup_temp, previous)
+            _replace(temp, path)
             if os.name != "nt":
                 directory = os.open(
                     path.parent, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0)

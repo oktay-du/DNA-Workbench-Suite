@@ -49,6 +49,28 @@ class ResultCacheTests(unittest.TestCase):
     def test_same_selection_reuses(self):
         self.assertTrue(self.lookup()["verified"])
 
+    def test_running_job_with_null_finished_does_not_break_cached_lookup(self):
+        complete = dict(self.history[0], finished="2026-11-05T10:00:00")
+        running = {
+            "job": "intake_pending",
+            "task": "batch_intake",
+            "status": "Running",
+            "started": "2026-11-05T11:00:00",
+            "finished": None,
+        }
+        self.assertTrue(self.lookup(history=[complete, running])["verified"])
+
+    def test_missing_job_timestamps_do_not_break_lookup(self):
+        complete = dict(self.history[0], finished="2026-11-05T10:00:00")
+        missing = {
+            "job": "pending",
+            "task": "batch_intake",
+            "status": "Failed",
+            "started": None,
+            "finished": None,
+        }
+        self.assertTrue(self.lookup(history=[complete, missing])["verified"])
+
     def test_different_parent_pair_initial_run(self):
         p = self.root / "mother.txt"
         p.write_text("mother")
