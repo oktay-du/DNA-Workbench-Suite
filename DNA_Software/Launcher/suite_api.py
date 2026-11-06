@@ -16,6 +16,8 @@ CAT = lambda: json.loads((APP / "catalog.json").read_text(encoding="utf-8"))
 def catalog_stamp():
     info = (APP / "catalog.json").stat()
     return f"{info.st_mtime_ns}:{info.st_size}"
+
+
 LOCK = threading.Lock()
 PROCESSES = {}
 

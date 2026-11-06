@@ -8,10 +8,11 @@ import desktop_host
 
 class DesktopHostTests(unittest.TestCase):
     def test_embedded_command_owns_the_service_without_a_browser(self):
-        command = desktop_host.embedded_command(Path("/tmp/service.json"), "python3")
+        info = Path("/tmp/service.json")
+        command = desktop_host.embedded_command(info, "python3")
         self.assertEqual(command[0], "python3")
         self.assertTrue(command[1].endswith("family.py"))
-        self.assertEqual(command[2:], ["--embedded", "/tmp/service.json"])
+        self.assertEqual(command[2:], ["--embedded", str(info)])
         self.assertNotIn("--headless", command)
 
     def test_workspace_url_is_only_the_local_app(self):
@@ -55,7 +56,9 @@ class DesktopHostTests(unittest.TestCase):
         process.poll.return_value = 1
         process.stderr.read.return_value = b"already running"
         with self.assertRaises(RuntimeError) as error:
-            desktop_host.wait_for_service(Path("/no/such/service.json"), process, timeout=1)
+            desktop_host.wait_for_service(
+                Path("/no/such/service.json"), process, timeout=1
+            )
         self.assertIn("already running", str(error.exception))
 
 
