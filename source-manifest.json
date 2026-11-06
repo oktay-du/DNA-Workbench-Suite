@@ -101,7 +101,7 @@
   },
   {
     "path": "DNA_Software/Launcher/engine.py",
-    "sha256": "335061e2e363bc67f08a4c1a1ab0f28f5b5d5154188ffd7a872dc75d013376f0"
+    "sha256": "e0fec0d6e1e38ebab8d55ca0d6da78979d941275169d78e14f9545bc6c06881d"
   },
   {
     "path": "DNA_Software/Launcher/inspector.py",
@@ -113,7 +113,7 @@
   },
   {
     "path": "DNA_Software/Launcher/linux_helpers.py",
-    "sha256": "1f656dfc11f124012f8810993295354c9985c03774f6bcec08693e7d62260b82"
+    "sha256": "a3fb52d090f9a04df6448bd6c9bf2965eadac29c1a079b41832772414d780dcb"
   },
   {
     "path": "DNA_Software/Launcher/family.py",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "7833bf34af355ddf5750aaa597dceef1faadc21c2bf5681da0f6cecb61f3aded"
+    "sha256": "91bf73e16b72f97a8d4dc589be7e762850c083320bf4da5707634b4ab670ba12"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -865,7 +865,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_tool_hosts.py",
-    "sha256": "670b74279d17b85bafbd9bbbe96cdf41365899940d05fe4a4f6d94fe67bd5a6d"
+    "sha256": "0e38b349182a9b8a08e22d5da80d2cdfb2c1afd77c03f625d7978ffdf83a618c"
   },
   {
     "path": "DNA_Software/Launcher/build_linux.sh",

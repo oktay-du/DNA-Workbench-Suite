@@ -54,25 +54,85 @@ def check_build(path, selected):
     return known
 
 
-def inspect_chip(path, out):
-    from snps import SNPs
+class ChipRows:
+    """Row view shared by a provider parse and the educational SNP table."""
 
-    s = SNPs(path, resources_dir="/opt/dna/cache/snps")
-    df = s.snps
-    if df.empty:
-        raise ValueError(
-            "No chip genotypes detected. Please select measured raw data instead of parentage/report files."
+    def __init__(self, rows):
+        self.rows = rows
+
+    def __len__(self):
+        return len(self.rows)
+
+    @property
+    def empty(self):
+        return not self.rows
+
+    def iterrows(self):
+        for rsid, chrom, pos, genotype in self.rows:
+            yield (
+                rsid,
+                collections.SimpleNamespace(chrom=chrom, pos=pos, genotype=genotype),
+            )
+
+
+def synthetic_chip_rows(path):
+    """Read the educational SNP table shipped with the sample profiles.
+
+    The snps package only accepts provider exports. The sample file is marked
+    DNAWorkbenchSynthetic and is counted here so the inspect workflow still
+    writes a result.
+    """
+    lines = Path(path).read_text(encoding="utf-8-sig", errors="replace").splitlines()
+    if not lines or "DNAWorkbenchSynthetic=true" not in lines[0]:
+        return None
+    rows = []
+    for line in lines[1:]:
+        if not line or line.startswith("#"):
+            continue
+        parts = line.split("\t")
+        if len(parts) != 4 or not re.fullmatch(r"rs\d+", parts[0]):
+            raise ValueError("Synthetic SNP table has an unreadable row.")
+        if not parts[2].isdigit():
+            raise ValueError("Synthetic SNP table has a non-numeric position.")
+        rows.append((parts[0], parts[1], int(parts[2]), parts[3]))
+    if not rows:
+        raise ValueError("Synthetic SNP table has no genotype rows.")
+    return rows
+
+
+def inspect_chip(path, out):
+    synthetic = synthetic_chip_rows(path)
+    if synthetic is not None:
+        called = sum(1 for row in synthetic if re.fullmatch(r"[ACGT]{1,2}", row[3]))
+        result = dict(
+            records=len(synthetic),
+            called=called,
+            call_rate=float(called / len(synthetic)),
+            header_build=None,
+            parser_build="synthetic-educational",
+            note="Synthetic SNP table counted locally. It is not a provider export and has no genome build.",
         )
-    gen = df.genotype.fillna("").astype(str)
-    called = gen.str.fullmatch("[ACGT]{1,2}").sum()
-    result = dict(
-        records=int(len(df)),
-        called=int(called),
-        call_rate=float(called / len(df)),
-        header_build=detected_build(path),
-        parser_build=str(s.build),
-        note="The parser build can be an assumption if the header is missing.",
-    )
+        df = ChipRows(synthetic)
+    else:
+        from snps import SNPs
+
+        s = SNPs(path, resources_dir="/opt/dna/cache/snps")
+        frame = s.snps
+        if frame.empty:
+            raise ValueError(
+                "No chip genotypes detected. Please select measured raw data instead of parentage/report files."
+            )
+        gen = frame.genotype.fillna("").astype(str)
+        called = int(gen.str.fullmatch("[ACGT]{1,2}").sum())
+        result = dict(
+            records=int(len(frame)),
+            called=called,
+            call_rate=float(called / len(frame)),
+            header_build=detected_build(path),
+            parser_build=str(s.build),
+            note="The parser build can be an assumption if the header is missing.",
+        )
+        df = frame
     Path(out, "chip-statistics.json").write_text(
         json.dumps(result, indent=2, ensure_ascii=False)
     )

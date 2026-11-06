@@ -1,5 +1,6 @@
 """Every pinned download has a Windows and Linux host decision."""
 
+import json
 import os
 import tempfile
 import unittest
@@ -101,6 +102,57 @@ class ToolHostTests(unittest.TestCase):
         )
         table = tool_hosts.markdown_table().strip()
         self.assertIn(table, text)
+
+    def test_linux_bash_jobs_skip_the_windows_host(self):
+        with mock.patch.object(engine.os, "name", "posix"):
+            self.assertEqual(engine.wsl_host_bootstrap("inspect"), [])
+            self.assertEqual(engine.wsl_host_bootstrap("sarek"), [])
+        with (
+            mock.patch.object(engine.os, "name", "nt"),
+            mock.patch.object(
+                engine, "windows_executable", return_value="powershell.exe"
+            ),
+        ):
+            inspect = engine.wsl_host_bootstrap("inspect")
+            sarek = engine.wsl_host_bootstrap("sarek")
+        self.assertEqual(inspect[0][-1], "Start")
+        self.assertEqual([step[-1] for step in sarek], ["Start", "Docker"])
+
+    def test_missing_installation_snapshot_does_not_block_a_job(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with mock.patch.object(engine, "ROOT", Path(tmp)):
+                recorded = engine.recorded_installation()
+        self.assertFalse(recorded["recorded"])
+        self.assertIn("PATH", recorded["note"])
+
+    def test_synthetic_chip_inspect_writes_a_count(self):
+        import linux_helpers
+
+        with tempfile.TemporaryDirectory() as tmp:
+            folder = Path(tmp)
+            source = folder / "chip.txt"
+            out = folder / "out"
+            out.mkdir()
+            source.write_text(
+                "# DNAWorkbenchSynthetic=true\n"
+                "# rsid\tchromosome\tposition\tgenotype\n"
+                "rs900000001\t1\t3\tAC\n"
+                "rs900000002\t1\t6\tAA\n",
+                encoding="utf-8",
+            )
+            frame = linux_helpers.inspect_chip(source, out)
+            stats = json.loads((out / "chip-statistics.json").read_text())
+        self.assertEqual(stats["records"], 2)
+        self.assertEqual(stats["called"], 2)
+        self.assertEqual(stats["parser_build"], "synthetic-educational")
+        self.assertEqual(len(frame), 2)
+        self.assertIsNone(linux_helpers.synthetic_chip_rows(__file__))
+
+    def test_linux_helpers_use_the_host_python_without_the_wsl_env(self):
+        if os.name == "nt":
+            self.skipTest("Windows jobs keep the WSL Python path")
+        with mock.patch.object(Path, "is_file", return_value=False):
+            self.assertEqual(engine.analysis_python(), engine.sys.executable)
 
 
 if __name__ == "__main__":

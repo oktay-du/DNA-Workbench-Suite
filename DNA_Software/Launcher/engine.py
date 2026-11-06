@@ -38,6 +38,60 @@ def linux(path):
     return "/mnt/" + p.drive[0].lower() + "/" + p.as_posix()[3:]
 
 
+def analysis_python():
+    """Interpreter for the bash job helpers.
+
+    Windows runs those helpers inside WSL, where the portable env lives at
+    /opt/dna. Linux uses that env when it is present and the host Python otherwise.
+    """
+    bundled = "/opt/dna/envs/analysis/bin/python"
+    if os.name != "nt" and not Path(bundled).is_file():
+        return sys.executable
+    return bundled
+
+
+def recorded_installation():
+    """Copy the Windows setup snapshot when one exists.
+
+    Linux jobs do not create that WSL verification file. They still record that
+    no snapshot was available instead of failing before the tool runs.
+    """
+    path = ROOT / "DNA_Software/Logs/installation-verification.json"
+    if path.is_file():
+        return json.loads(path.read_text(encoding="utf-8"))
+    return {
+        "recorded": False,
+        "note": "This host has no installation-verification snapshot. The job uses the tools on its PATH.",
+    }
+
+
+def wsl_host_bootstrap(action):
+    """Prepare the Windows WSL distro before a bash job.
+
+    Native Linux already runs the same script with the host shell, so it does
+    not call PowerShell or wsl.exe.
+    """
+    if os.name != "nt":
+        return []
+
+    def powershell(step):
+        return [
+            windows_executable("powershell.exe"),
+            "-NoProfile",
+            "-ExecutionPolicy",
+            "Bypass",
+            "-File",
+            str(CORE),
+            "-Action",
+            step,
+        ]
+
+    commands = [powershell("Start")]
+    if action in ["sarek", "deepvariant", "pgs"]:
+        commands.append(powershell("Docker"))
+    return commands
+
+
 def sha(path):
     h = hashlib.sha256()
     with open(path, "rb") as f:
@@ -155,7 +209,7 @@ class Job:
             lines.append(" ".join(Q(str(x)) for x in args))
 
         def py(*args):
-            cmd("/opt/dna/envs/analysis/bin/python", helper, *args)
+            cmd(analysis_python(), helper, *args)
 
         def prepared(source, name):
             target = self.o(name + ".vcf.gz")
@@ -1512,39 +1566,9 @@ class Job:
         if self.task["action"] == "launch":
             self.launch()
         elif linux_action:
-            self.run_process(
-                [
-                    windows_executable("powershell.exe"),
-                    "-NoProfile",
-                    "-ExecutionPolicy",
-                    "Bypass",
-                    "-File",
-                    str(CORE),
-                    "-Action",
-                    "Start",
-                ]
-            )
-            if self.task["action"] in ["sarek", "deepvariant", "pgs"]:
-                self.run_process(
-                    [
-                        windows_executable("powershell.exe"),
-                        "-NoProfile",
-                        "-ExecutionPolicy",
-                        "Bypass",
-                        "-File",
-                        str(CORE),
-                        "-Action",
-                        "Docker",
-                    ]
-                )
-            atomic(
-                self.folder / "versionen.json",
-                json.loads(
-                    (
-                        ROOT / "DNA_Software/Logs/installation-verification.json"
-                    ).read_text()
-                ),
-            )
+            for args in wsl_host_bootstrap(self.task["action"]):
+                self.run_process(args)
+            atomic(self.folder / "versionen.json", recorded_installation())
             if os.name == "nt":
                 self.run_process(
                     [
