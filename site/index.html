@@ -5,25 +5,31 @@
       name="viewport"
       content="width=device-width,initial-scale=1" /><meta
       name="description"
-      content="DNA Workbench Suite: a local Windows workspace for DNA sources, family evidence and reproducible research. Version 1.0 by OD." /><title
+      content="DNA Workbench Suite: a local Windows and Linux workspace for DNA sources, family evidence and reproducible research. Version 1.0.1 by OD." /><title
       >DNA Workbench Suite · Your genome. Your workspace.</title
     ><link rel="stylesheet" href="style.css" /></head
   ><body
     ><div class="wrap"
       ><nav
         ><strong>◈ DNA Workbench Suite / OD</strong><a href="#features">Features</a
-        ><a href="#start">Get started</a
+        ><a href="#requirements">Requirements</a><a href="#start">Get started</a
         ><a href="https://github.com/oktay-du/DNA-Workbench-Suite">GitHub</a
         ><a href="#support">Support</a></nav
       ><header class="hero"
-        ><span class="badge">Version 1.0 · Windows x64 · Research software</span
+        ><span class="badge">Version 1.0.1 · Windows and Linux x64 · Research software</span
         ><h1>Your genome.<br />Your workspace.</h1
         ><p
-          >Bring DNA sources, family records and research tools together. Keep evidence traceable,
-          reuse results and explore your data locally.</p
+          >Bring DNA sources, family records and research tools together on Windows or Linux. Keep
+          evidence traceable, reuse results and explore your data locally.</p
         ><div class="actions"
-          ><a class="button" href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest"
+          ><a
+            class="button primary"
+            href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Windows-x64.zip"
             >Download for Windows</a
+          ><a
+            class="button primary"
+            href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Linux-x64.zip"
+            >Download for Linux</a
           ><a
             href="https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/GETTING_STARTED.md"
             >Read the guide →</a
@@ -75,16 +81,34 @@
           ><a href="https://github.com/PharmGKB/PharmCAT">PharmCAT</a
           ><a href="https://github.com/gramps-project/gramps">Gramps</a></div
         ></section
+      ><section id="requirements"
+        ><h2>Requirements</h2
+        ><div class="grid"
+          ><article class="card"
+            ><h3>Windows x64</h3
+            ><p
+              >Extract DNAWorkbench-Windows-x64.zip and run DNA_Launcher.exe. The host needs .NET
+              Framework 4.8. Core setup downloads portable Python and WebView2. Linux programs such
+              as samtools run inside WSL, which can require administrator access and a restart.</p
+            ></article
+          ><article class="card"
+            ><h3>Linux x64</h3
+            ><p
+              >Extract DNAWorkbench-Linux-x64.zip and run ./DNA-Workbench.sh. The host supplies
+              Python 3.12, GTK 3 and WebKitGTK 4.1. The same Linux programs run on this host. WSL is
+              not used, and Windows-only installers are not started through Wine.</p
+            ></article
+          ></div
+        ></section
       ><section id="start"
         ><h2>Start with a sample. Keep control of your data.</h2
         ><p
-          >Extract the Windows package into a writable folder, run DNA_Launcher.exe and complete
-          Core setup. Artificial sample profiles are included. Personal DNA and large references are
-          not included in the repository.</p
+          >On Windows, extract the package, run DNA_Launcher.exe and complete Core setup. On Linux,
+          extract the package and run ./DNA-Workbench.sh. Artificial sample profiles are included.
+          Personal DNA and large references are not included in the repository.</p
         ><p
           >Local processing is the default. Optional cloud AI and external services have separate
-          data flows and policies. WSL requires host support and may require administrator access
-          and a restart.</p
+          data flows and policies.</p
         ><p
           >Developers can use the same typed commands through GUI, CLI, JSON and MCP. English is the
           source language, with German localization and light/dark themes.</p

@@ -1,7 +1,7 @@
 """Public release staging from an explicit allowlist. No personal workspace exports."""
 
 from pathlib import Path
-import hashlib, json, zipfile, urllib.parse
+import hashlib, json, os, zipfile, urllib.parse
 
 ROOT = Path(__file__).resolve().parents[2]
 APP = Path(__file__).parent
@@ -48,6 +48,78 @@ def verify():
         "authenticated": False,
         "notice": "Unsigned checksums detect accidental changes against this local manifest. They do not prove publisher identity or resist replacement of both file and manifest.",
     }
+
+
+LINUX_LAUNCHER = """#!/bin/sh
+set -eu
+cd "$(dirname "$(readlink -f "$0")")"
+exec python3 DNA_Software/Launcher/dna_cli.py desktop
+"""
+
+
+def build_linux_zip(archive):
+    """Package the Linux desktop from the public allowlist.
+
+    This is the Linux counterpart of the Windows release zip. It does not
+    require DNA_Launcher.exe. The shell launcher opens the WebKitGTK window.
+    """
+    import public_package
+
+    archive = Path(archive)
+    archive.parent.mkdir(parents=True, exist_ok=True)
+    seen = set()
+    with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
+        info = zipfile.ZipInfo("DNA-Workbench.sh")
+        info.create_system = 3
+        info.external_attr = 0o100755 << 16
+        bundle.writestr(info, LINUX_LAUNCHER)
+        seen.add("DNA-Workbench.sh")
+        selected = list(public_package.entries()) + list(
+            public_package.presentation_entries()
+        )
+        for name in (
+            "README.md",
+            "LICENSE",
+            "THIRD_PARTY.md",
+            "SECURITY.md",
+            "RELEASING.md",
+        ):
+            selected.append((APP / "Public" / name, name))
+        for source, target in selected:
+            if target in seen or not source.is_file():
+                continue
+            seen.add(target)
+            bundle.write(source, target)
+    return archive
+
+
+def stage_linux():
+    version = json.loads((APP / "install-lock.json").read_text(encoding="utf-8"))[
+        "app_version"
+    ]
+    dest = ROOT / "DNAWorkbench_Release" / version
+    archive = build_linux_zip(dest / "DNAWorkbench-Linux-x64.zip")
+    with archive.open("rb") as stream:
+        digest = hashlib.file_digest(stream, "sha256").hexdigest()
+    files = [{"path": archive.name, "sha256": digest, "bytes": archive.stat().st_size}]
+    (dest / "release.json").write_text(
+        json.dumps(
+            {
+                "version": version,
+                "author": "OD",
+                "target": "linux",
+                "files": files,
+                "signed": False,
+                "publication_status": "Prepared locally; not uploaded to GitHub",
+            },
+            indent=2,
+        ),
+        encoding="utf-8",
+    )
+    (dest / "SHA256SUMS.txt").write_text(
+        digest + "  " + archive.name + "\n", encoding="ascii"
+    )
+    return str(dest)
 
 
 def prepare():
@@ -154,5 +226,26 @@ def prepare():
     return str(dest)
 
 
+def main(argv=None):
+    import argparse
+
+    parser = argparse.ArgumentParser(description="Stage the native release zip")
+    parser.add_argument(
+        "--target",
+        choices=("auto", "windows", "linux"),
+        default="auto",
+        help="auto builds the package for this operating system",
+    )
+    args = parser.parse_args(argv)
+    target = args.target
+    if target == "auto":
+        target = "windows" if os.name == "nt" else "linux"
+    if target == "windows":
+        print(prepare())
+    else:
+        print(stage_linux())
+    return 0
+
+
 if __name__ == "__main__":
-    print(prepare())
+    raise SystemExit(main())

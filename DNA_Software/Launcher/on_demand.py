@@ -4,9 +4,10 @@ import network_io
 """Explicit per-function preparation; status checks never start a WSL distro."""
 from portable_paths import distro_name
 from pathlib import Path
-import datetime, hashlib, os, shlex, subprocess, sys, urllib.request, zipfile
+import datetime, hashlib, os, shlex, shutil, subprocess, sys, tarfile, urllib.request, zipfile
 import portable_json as json
 import portable_paths
+import tool_hosts
 
 portable_paths.configure()
 ROOT = Path(__file__).resolve().parents[2]
@@ -267,7 +268,141 @@ def mapped(task, filename=""):
 
 def linux_path(path):
     p = Path(path).resolve()
+    if os.name != "nt":
+        return p.as_posix()
     return "/mnt/" + p.drive[0].lower() + p.as_posix()[2:]
+
+
+LINUX_LOCAL = {
+    "plink2",
+    "haplogrep",
+    "ugene",
+    "java-windows",
+    "jbrowse",
+    "mosdepth",
+    "gramps",
+}
+WINDOWS_COMPANION = {
+    "plink2": ("plink2-windows", "DNA_Software/Windows/PLINK2", "plink2.exe"),
+    "haplogrep": (
+        "haplogrep3-3-3-2-windows-tar-gz",
+        "DNA_Software/Windows/Haplogrep",
+        "haplogrep3.exe",
+    ),
+    "samtools": (
+        "samtools-1-23-1-windows",
+        "DNA_Software/Windows/Samtools",
+        "samtools.exe",
+    ),
+    "bcftools": (
+        "bcftools-1-23-1-windows",
+        "DNA_Software/Windows/Bcftools",
+        "bcftools.exe",
+    ),
+}
+LINUX_SPEC = {
+    "plink2": ("plink2-linux", "DNA_Software/Linux/PLINK2", "plink2", "plink2"),
+    "haplogrep": (
+        "haplogrep3-3-3-2-linux-tar-gz",
+        "DNA_Software/Linux/Haplogrep",
+        "haplogrep3",
+        "haplogrep",
+    ),
+    "ugene": ("ugene-53-1-linux", "DNA_Software/Linux/UGENE", "ugene", "ugene"),
+    "java-windows": ("java21-linux", "DNA_Software/Linux/Java21", "java", "java"),
+    "mosdepth": ("mosdepth", None, None, "mosdepth"),
+    "jbrowse": (
+        "jbrowse-desktop-v4-3-0-linux-appimage",
+        None,
+        None,
+        "jbrowse-desktop.AppImage",
+    ),
+    "gramps": ("gramps-6-0-8-1-amd64-snap", None, None, None),
+}
+
+
+def skips_wsl(tool):
+    if tool in WINDOWS:
+        return True
+    return os.name != "nt" and tool in LINUX_LOCAL
+
+
+def place_archive(archive, dest):
+    dest = Path(dest)
+    dest.mkdir(parents=True, exist_ok=True)
+    if zipfile.is_zipfile(archive):
+        with zipfile.ZipFile(archive) as packed:
+            for entry in packed.infolist():
+                path = (dest / entry.filename).resolve()
+                if not path.is_relative_to(dest.resolve()):
+                    raise ValueError("Invalid archive path")
+                if entry.is_dir():
+                    path.mkdir(parents=True, exist_ok=True)
+                else:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(packed.read(entry))
+        return
+    with tarfile.open(archive) as packed:
+        packed.extractall(dest, filter="data")
+
+
+def find_named(dest, name):
+    return [path for path in Path(dest).rglob(name) if path.is_file()]
+
+
+def publish_linux_bin(source, name):
+    bindir = ROOT / "DNA_Software/Linux/bin"
+    bindir.mkdir(parents=True, exist_ok=True)
+    source = Path(source)
+    source.chmod(source.stat().st_mode | 0o111)
+    target = bindir / name
+    if target.exists() or target.is_symlink():
+        target.unlink()
+    if source.parent == bindir and source.name == name:
+        return target
+    wrapper = "#!/bin/sh\nexec " + shlex.quote(str(source)) + ' "$@"\n'
+    target.write_text(wrapper, encoding="utf-8")
+    target.chmod(0o755)
+    return target
+
+
+def extract_windows_companion(tool):
+    artifact, folder, name = WINDOWS_COMPANION[tool]
+    dest = ROOT / folder
+    place_archive(fetch(artifact), dest)
+    found = find_named(dest, name)
+    if not found:
+        raise ValueError("Windows entry point missing: " + name)
+    return {
+        "tool": tool,
+        "status": "Windows file extracted. The Linux file is still used inside WSL when that workflow is a shell script.",
+    }
+
+
+def install_linux_local(tool):
+    artifact, folder, entry, binary = LINUX_SPEC[tool]
+    archive = fetch(artifact)
+    if tool == "gramps":
+        return {
+            "tool": tool,
+            "status": "Linux Gramps snap downloaded. Install it with snapd; Wine is not used.",
+            "path": str(archive),
+        }
+    if folder is None:
+        dest = ROOT / "DNA_Software/Linux/bin" / binary
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(archive, dest)
+        dest.chmod(0o755)
+        return {"tool": tool, "status": "Linux file installed", "path": str(dest)}
+    dest = ROOT / folder
+    place_archive(archive, dest)
+    found = find_named(dest, entry)
+    if tool == "java-windows":
+        found = [path for path in found if path.parent.name == "bin"]
+    if len(found) != 1:
+        raise ValueError("Linux entry point missing: " + entry)
+    publish_linux_bin(found[0], binary)
+    return {"tool": tool, "status": "Linux file installed", "path": str(found[0])}
 
 
 def linux_state():
@@ -328,7 +463,7 @@ def linux_state():
 
 def status(task, filename=""):
     required = mapped(task, filename)
-    needs_linux = bool(set(required) - WINDOWS)
+    needs_linux = any(not skips_wsl(tool) for tool in required)
     state = (
         linux_state()
         if needs_linux
@@ -369,9 +504,10 @@ def status(task, filename=""):
     records = []
     for tool in required:
         source, artifact, recipe = TOOLS[tool]
+        artifact = tool_hosts.prefer(tool, artifact)
         known = installed.get(tool)
         item = next((i for i in LOCK["items"] if i["id"] == artifact), {})
-        if tool in WINDOWS:
+        if tool in WINDOWS and os.name == "nt":
             base = ROOT / "DNA_Software/Windows"
             known = (
                 bool(list((base / "Java21").glob("**/java.exe")))
@@ -419,6 +555,24 @@ def status(task, filename=""):
                 known = visual_tools.installed("seqviz")
             if tool == "ugene":
                 known = bool(list((base / "UGENE").glob("**/ugeneui.exe")))
+        elif os.name != "nt" and tool in LINUX_LOCAL:
+            bindir = ROOT / "DNA_Software/Linux/bin"
+            if tool == "gramps":
+                known = shutil.which("gramps") is not None
+            elif tool == "java-windows":
+                known = bool(find_named(ROOT / "DNA_Software/Linux/Java21", "java"))
+            elif tool == "haplogrep":
+                known = (bindir / "haplogrep").is_file()
+            elif tool == "ugene":
+                known = (bindir / "ugene").is_file()
+            elif tool == "jbrowse":
+                known = (bindir / "jbrowse-desktop.AppImage").is_file()
+            elif tool == "mosdepth":
+                known = (bindir / "mosdepth").is_file()
+            elif tool == "plink2":
+                known = (bindir / "plink2").is_file()
+        elif tool in WINDOWS:
+            known = False
         records.append(
             {
                 "id": tool,
@@ -430,7 +584,8 @@ def status(task, filename=""):
                 else "Check after Linux start",
                 "source": source,
                 "recipe": recipe,
-                "installable": recipe not in ["manual", "windows-manual"],
+                "installable": (os.name != "nt" and tool in LINUX_LOCAL)
+                or recipe not in ["manual", "windows-manual"],
                 "version": item.get("version")
                 or item.get("commit")
                 or PIP.get(tool, "Paketquelle / nach Installation protokolliert"),
@@ -509,14 +664,10 @@ def fetch(artifact, license_reviewed=False):
 def shell(lines):
     LOG.mkdir(parents=True, exist_ok=True)
     script = LOG / ("install-" + os.urandom(5).hex() + ".sh")
-    text = (
-        "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\nexport PATH=/opt/dna/envs/analysis/bin:/opt/dna/bin:$PATH\nexport PIP_CACHE_DIR=/opt/dna/cache/pip\nmkdir -p /opt/dna/bin /opt/dna/tools /opt/dna/build\n"
-        + "\n".join(lines)
-        + "\nchown -R dna:dna /opt/dna\n"
-    )
-    script.write_bytes(text.encode())
-    p = subprocess.run(
-        [
+    header = "#!/usr/bin/env bash\nset -euo pipefail\nexport DEBIAN_FRONTEND=noninteractive\nexport PATH=/opt/dna/envs/analysis/bin:/opt/dna/bin:$PATH\nexport PIP_CACHE_DIR=/opt/dna/cache/pip\nmkdir -p /opt/dna/bin /opt/dna/tools /opt/dna/build\n"
+    if os.name == "nt":
+        text = header + "\n".join(lines) + "\nchown -R dna:dna /opt/dna\n"
+        command = [
             windows_executable("wsl.exe"),
             "-d",
             distro_name(ROOT),
@@ -525,7 +676,13 @@ def shell(lines):
             "--",
             "bash",
             linux_path(script),
-        ],
+        ]
+    else:
+        text = header + "\n".join(lines) + "\n"
+        command = ["bash", str(script)]
+    script.write_bytes(text.encode())
+    p = subprocess.run(
+        command,
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
     )
@@ -592,8 +749,15 @@ def install(tool, license_reviewed=False):
         raise ValueError("Unbekanntes Werkzeug.")
     if tool == "rfmix" and not license_reviewed:
         raise ValueError(LICENSE)
+    if os.name != "nt" and tool in LINUX_LOCAL:
+        return install_linux_local(tool)
+    companion = None
+    if os.name == "nt" and tool in WINDOWS_COMPANION:
+        companion = extract_windows_companion(tool)
     state = linux_state() if tool not in WINDOWS else {"running": False}
     if tool not in WINDOWS and not state["running"]:
+        if companion:
+            return companion
         raise ValueError("Linux first explicitly start / set up.")
     source, artifact, recipe = TOOLS[tool]
     lines = []

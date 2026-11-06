@@ -5,10 +5,10 @@
 [![Release](https://img.shields.io/github/v/release/oktay-du/DNA-Workbench-Suite?style=flat-square&color=087f8c)](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest)
 [![Build](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/build.yml/badge.svg)](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/build.yml)
 [![Security checks](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/codeql.yml/badge.svg)](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/codeql.yml)
-[![Windows x64](https://img.shields.io/badge/Windows-x64-243b53?style=flat-square)](docs/GETTING_STARTED.md)
+[![Windows and Linux](https://img.shields.io/badge/Windows%20%2B%20Linux-x64-243b53?style=flat-square)](docs/GETTING_STARTED.md)
 [![Source available](https://img.shields.io/badge/License-source_available-586b78?style=flat-square)](LICENSE)
 
-**DNA sources, family evidence and reusable research workflows — in one local Windows workspace.**
+**DNA sources, family evidence and reusable research workflows — in one local workspace for Windows and Linux.**
 
 [**Download**](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest) · [Website](https://oktay-du.github.io/DNA-Workbench-Suite/) · [Getting started](docs/GETTING_STARTED.md) · [Screenshots](docs/GALLERY.md) · [Wiki](https://github.com/oktay-du/DNA-Workbench-Suite/wiki) · [Deutsch](README.de.md)
 
@@ -39,12 +39,23 @@ Import supported DNA files and family records, compare compatible sources, follo
 
 ## Get started
 
-1. Download **DNAWorkbench-Windows-x64.zip** from [Releases](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest).
-2. Extract into a writable folder and run `DNA_Launcher.exe`.
-3. Complete Core setup and try the included artificial sample profiles.
-4. Import data you are authorized to process, then install the modules needed for your chosen workflow.
+**Windows.** Download [DNAWorkbench-Windows-x64.zip](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Windows-x64.zip), extract it into a writable folder, and run `DNA_Launcher.exe`. Core setup downloads portable Python and WebView2.
 
-Application data, downloads and caches use the application folder. Windows x64 and .NET Framework 4.8 are required. WSL and virtualization need host support and may require administrator access and a restart. [Installation and portability →](docs/GETTING_STARTED.md)
+**Linux.** Download [DNAWorkbench-Linux-x64.zip](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Linux-x64.zip), extract it into a writable folder, and run `./DNA-Workbench.sh`.
+
+Then try the included artificial sample profiles. Import data you are authorized to process, and install the modules needed for your chosen workflow. Application data, downloads and caches stay in the application folder. [Installation and portability →](docs/GETTING_STARTED.md)
+
+## Requirements
+
+| | Windows x64 | Linux x64 |
+|---|---|---|
+| Release zip | `DNAWorkbench-Windows-x64.zip` | `DNAWorkbench-Linux-x64.zip` |
+| Start | `DNA_Launcher.exe` | `./DNA-Workbench.sh` |
+| Host | 64-bit Windows and .NET Framework 4.8 | A graphical session, Python 3.12, GTK 3 and WebKitGTK 4.1 |
+| First-run runtimes | Core setup downloads portable Python and WebView2 | The host supplies Python and WebKitGTK |
+| Build | `DNA_Software/Launcher/build.ps1`, then `release_tools.py --target windows` | `DNA_Software/Launcher/build_linux.sh` |
+
+When a tool publishes both builds, each host uses its own file. That covers PLINK 2, Haplogrep, Gramps, JBrowse, UGENE and Temurin. samtools and bcftools publish source only, so Linux builds 1.25 and Windows uses the Win-NGS 1.23.1 bundles. mosdepth is a Linux binary; Windows coverage uses samtools depth. Wine is not used. WSL remains the Windows host for programs that still have only a Linux file. [Where each program runs →](docs/VERSIONS.md)
 
 ## A connected research workspace
 
@@ -65,7 +76,7 @@ Availability and prerequisites vary by module. Large reference genomes, panels a
 | Integration author | [GUI, CLI, JSON and MCP](docs/AGENTS.md) · [Input contracts](docs/TOOL_FORMATS.md) |
 | User | [Feedback and improvements](https://github.com/oktay-du/DNA-Workbench-Suite/issues/new/choose) · [Wiki](https://github.com/oktay-du/DNA-Workbench-Suite/wiki) |
 
-The Windows shell uses C# and WebView2, local workflows use Python, and embedded views use HTML, CSS and JavaScript. English is the source language, with German localization and light/dark themes.
+The Windows shell uses C# and WebView2. The Linux shell uses Python with GTK 3 and WebKitGTK. Local workflows use Python, and embedded views use HTML, CSS and JavaScript. English is the source language, with German localization and light/dark themes.
 
 <details>
 <summary><strong>Development commands</strong></summary>
@@ -74,6 +85,13 @@ The Windows shell uses C# and WebView2, local workflows use Python, and embedded
 python -m pip install -r requirements-dev.txt
 python -m unittest discover -s DNA_Software/Launcher -p "test_*.py"
 powershell -NoProfile -File DNA_Software/Launcher/build.ps1
+python DNA_Software/Launcher/public_package.py
+python DNA_Software/Launcher/release_tools.py --target windows
+```
+
+```sh
+python3 -m unittest discover -s DNA_Software/Launcher -p "test_*.py"
+sh DNA_Software/Launcher/build_linux.sh
 ```
 
 Use the [synthetic Samples](Samples/README.md). Keep personal DNA, medical records, credentials, runtime databases and downloaded reference datasets out of Git.

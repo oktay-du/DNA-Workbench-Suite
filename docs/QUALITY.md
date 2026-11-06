@@ -27,7 +27,7 @@ node tools/quality/run.mjs
 python scripts/Benchmark-Workflows.py --output quality-reports/benchmarks.json
 ```
 
-Use Node 26 and Python 3.12. Install the three dependencies in `requirements-dev.txt` for the complete synthetic regression suite. Build with `DNA_Software/Launcher/build.ps1`; then run `scripts/Test-NativeContracts.ps1` using Windows PowerShell. The native compiler remains compatible with C# 5 / .NET Framework 4.8; analyzers are enabled in the SDK project.
+Use Node 26 and Python 3.12. Install the three dependencies in `requirements-dev.txt` for the complete synthetic regression suite. On Windows, build with `DNA_Software/Launcher/build.ps1`, then run `scripts/Test-NativeContracts.ps1` using Windows PowerShell. The native compiler remains compatible with C# 5 / .NET Framework 4.8; analyzers are enabled in the SDK project. On Linux, `sh DNA_Software/Launcher/build_linux.sh` writes `DNAWorkbench-Linux-x64.zip`.
 
 Web reports are written to `quality-reports/`. Formatting and fixes are reviewed changes, not automatic modifications to DNA-processing algorithms. The ESLint/config-array minimatch overrides select patched 11.0.4 for GHSA-g3hv-75wg-m249; npm audit and positive-control checks cover the locked tool graph.
 

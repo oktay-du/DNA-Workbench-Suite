@@ -769,6 +769,78 @@
       "expected_sha256": "71be27b6ce4100347c2c7a851e62ace84abdddd1d79bfb0bb8ab89dfbf81e9fe",
       "source": "https://github.com/ugeneunipro/ugene",
       "group": "tools"
+    },
+    {
+      "id": "gramps-6-0-8-1-amd64-snap",
+      "name": "gramps_6.0.8-1_amd64.snap",
+      "version": "v6.0.8",
+      "url": "https://github.com/gramps-project/gramps/releases/download/v6.0.8/gramps_6.0.8-1_amd64.snap",
+      "relative_path": "DNA_Software/Downloads/gramps_6.0.8-1_amd64.snap",
+      "expected_bytes": 93876224,
+      "expected_sha256": "3b505b30d794cb2ddc1c294364f1408407a57a586b69e8d78b984c33b6bac538",
+      "source": "https://github.com/gramps-project/gramps",
+      "group": "tools",
+      "checksum_origin": "locally recorded public upstream archive; not an independent publisher signature"
+    },
+    {
+      "id": "jbrowse-desktop-v4-3-0-linux-appimage",
+      "name": "jbrowse-desktop-v4.3.0-linux.AppImage",
+      "version": "v4.3.0",
+      "url": "https://github.com/GMOD/jbrowse-components/releases/download/v4.3.0/jbrowse-desktop-v4.3.0-linux.AppImage",
+      "relative_path": "DNA_Software/Downloads/jbrowse-desktop-v4.3.0-linux.AppImage",
+      "expected_bytes": 119568888,
+      "expected_sha256": "f1dfe71767bdd812d8ce5c3b31f2e89fe756667c27a081422f2fa04c6035135e",
+      "source": "https://github.com/GMOD/jbrowse-components",
+      "group": "tools",
+      "checksum_origin": "locally recorded public upstream archive; not an independent publisher signature"
+    },
+    {
+      "id": "ugene-53-1-linux",
+      "name": "ugene-53.1-linux-x86-64.tar.gz",
+      "version": "53.1",
+      "url": "https://github.com/ugeneunipro/ugene/releases/download/53.1/ugene-53.1-linux-x86-64.tar.gz",
+      "relative_path": "DNA_Software/Downloads/UGENE/ugene-53.1-linux-x86-64.tar.gz",
+      "expected_bytes": 499455439,
+      "expected_sha256": "7827bbadc3cbef116ce1be7cd8e3cc49af2a5b3653087adb784a2fda60a742e7",
+      "source": "https://github.com/ugeneunipro/ugene",
+      "group": "tools",
+      "checksum_origin": "locally recorded public upstream archive; not an independent publisher signature"
+    },
+    {
+      "id": "java21-linux",
+      "name": "OpenJDK21U-jre_x64_linux_hotspot_21.0.13_9.tar.gz",
+      "version": "21.0.13+9",
+      "url": "https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.13%2B9/OpenJDK21U-jre_x64_linux_hotspot_21.0.13_9.tar.gz",
+      "relative_path": "DNA_Software/Downloads/OpenJDK21U-jre_x64_linux_hotspot_21.0.13_9.tar.gz",
+      "expected_bytes": 52181297,
+      "expected_sha256": "a535a1df9c6284d9618872984e026ae0352d1f7e9e0605425c0e6114f47351dd",
+      "source": "https://github.com/adoptium/temurin21-binaries",
+      "group": "tools",
+      "checksum_origin": "publisher SHA-256 from the same Adoptium release"
+    },
+    {
+      "id": "samtools-1-23-1-windows",
+      "name": "samtools-1.23.1-windows-ucrt64.zip",
+      "version": "1.23.1",
+      "url": "https://github.com/win-ngs/samtools-windows-bundle/releases/download/v1.23.1-windows-ucrt64/samtools-1.23.1-windows-ucrt64.zip",
+      "relative_path": "DNA_Software/Downloads/samtools-1.23.1-windows-ucrt64.zip",
+      "expected_bytes": 8205673,
+      "expected_sha256": "b2ce7e17843f2d610b41c093e9322011180fc787e0ca83e3e0b427257fc728df",
+      "source": "https://github.com/win-ngs/samtools-windows-bundle",
+      "group": "tools",
+      "checksum_origin": "Unofficial Win-NGS bundle of upstream samtools 1.23.1. The samtools project does not publish a Windows binary. SHA-256 recorded from that GitHub archive."
+    },
+    {
+      "id": "bcftools-1-23-1-windows",
+      "name": "bcftools-1.23.1-windows-ucrt64.zip",
+      "version": "1.23.1",
+      "url": "https://github.com/win-ngs/bcftools-windows-bundle/releases/download/v1.23.1-windows-ucrt64/bcftools-1.23.1-windows-ucrt64.zip",
+      "relative_path": "DNA_Software/Downloads/bcftools-1.23.1-windows-ucrt64.zip",
+      "expected_bytes": 17404486,
+      "expected_sha256": "947498c2e5f34e0fbe59d914b8a4e16bc8474e9c834f22c1874cafa14dabaa4b",
+      "source": "https://github.com/win-ngs/bcftools-windows-bundle",
+      "group": "tools",
+      "checksum_origin": "Unofficial Win-NGS bundle of upstream bcftools 1.23.1. The bcftools project does not publish a Windows binary. SHA-256 recorded from that GitHub archive."
     }
   ]
 }

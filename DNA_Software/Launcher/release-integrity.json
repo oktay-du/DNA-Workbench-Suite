@@ -103,7 +103,7 @@
     },
     {
       "path": "DNA_Software/Launcher/engine.py",
-      "sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120"
+      "sha256": "335061e2e363bc67f08a4c1a1ab0f28f5b5d5154188ffd7a872dc75d013376f0"
     },
     {
       "path": "DNA_Software/Launcher/inspector.py",
@@ -159,7 +159,7 @@
     },
     {
       "path": "DNA_Software/Launcher/install-lock.json",
-      "sha256": "89fae0fd39ec28976091068f3123427152e6db36c2c06e93300b0a8820813753"
+      "sha256": "3c70177f83c78924fd021e35bb6161d7f9231764472917a80c2d73fb72bd3bfb"
     },
     {
       "path": "DNA_Software/Launcher/fetch_webview_sdk.py",
@@ -179,7 +179,7 @@
     },
     {
       "path": "DNA_Software/Launcher/public_package.py",
-      "sha256": "f6d3d1aeacfab0c649f5cdbed903519526df5ce8a53d7687d31d0a1762f62650"
+      "sha256": "33b7544fd793ebe114a6a4b693e98bb3c8c1d169afef6f34e8385d4cbdb9da26"
     },
     {
       "path": "DNA_Software/Launcher/test_family.py",
@@ -607,7 +607,7 @@
     },
     {
       "path": "DNA_Software/Launcher/PORTABILITY.md",
-      "sha256": "75f008bbd695b8d374bb7717ddd59fa2d211ae1187bef66313c2debda50f376d"
+      "sha256": "939cb52b74aaa80018da34e215dc2e127ede342dd69aed1f9e72a88880eaae0d"
     },
     {
       "path": "DNA_Software/Launcher/portable-check.ps1",
@@ -643,7 +643,7 @@
     },
     {
       "path": "DNA_Software/Launcher/release_tools.py",
-      "sha256": "e58a6d32f997ab6805cba2f6d4c6a7b604cd2bdb7aa2b32b50c7c6e5c4422241"
+      "sha256": "c74c96ab238d619d7d3067819d8cab2dce0a03bd52db344ea4b2505a7e934f27"
     },
     {
       "path": "DNA_Software/Launcher/project_info.json",
@@ -771,7 +771,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-      "sha256": "8f063eca1a6c8e5dc09bdc9c690414a98c0a80f07f9e93d919a147441e14b4aa"
+      "sha256": "5a8cf34711424cbe237d4e1c03ad582460b70041512861e5c019eb5ae0c5ef7e"
     },
     {
       "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -779,7 +779,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/README.md",
-      "sha256": "21964c886ce424d3da3a667a6abdafabc62f380e551ca22adba1ce64a672f5d0"
+      "sha256": "ecd86e5e6949811cf58027b6aa1bfee9b0d5148df0d6f78bf1c4131dd24be746"
     },
     {
       "path": "DNA_Software/Launcher/Public/LICENSE",
@@ -795,7 +795,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/RELEASING.md",
-      "sha256": "606d0b4c105edeb82603d90a56588722bbb53bb8f58067c73efee71f042ce4c5"
+      "sha256": "c045e4a166660a9fe4d192cb0f8c83a5538c40d546bb5194f94345fc2c1c6c61"
     },
     {
       "path": "DNA_Software/Launcher/Public/FUNDING.yml",
@@ -803,7 +803,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/build.yml",
-      "sha256": "b7b8b53266cb5f631f06b6a39f1d31d7ef0de19be394ff2d63582754d880e01e"
+      "sha256": "04a50d802e19f2e515409ad81c81417ab26cd8fb923188ad8828b7051699e44e"
     },
     {
       "path": "DNA_Software/Launcher/Public/.gitignore",
@@ -852,6 +852,22 @@
     {
       "path": "DNA_Software/Launcher/test_desktop_host.py",
       "sha256": "a3a0aaad89d1997afcb7c61da8df066cc771b7a4378c05e61a23765bc5fad8cf"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_linux_release.py",
+      "sha256": "afd97682706d0236187a8e833b010a9e0d80a5177cb353512328b6c21a9065d3"
+    },
+    {
+      "path": "DNA_Software/Launcher/tool_hosts.py",
+      "sha256": "b9a9ebe8131e80f82e3f4af00372a9eb102a3e5c8564785b463fab48bd85fb63"
+    },
+    {
+      "path": "DNA_Software/Launcher/test_tool_hosts.py",
+      "sha256": "2db60e37b0b7f89729868f290514ad9973dfcdc6c45db72fa8c666c37359b712"
+    },
+    {
+      "path": "DNA_Software/Launcher/build_linux.sh",
+      "sha256": "33beb850ff845045d9ffc5f288eb4cb80759054240df6e66138d7ab77affee8c"
     },
     {
       "path": "DNA_Software/Launcher/build_linux_appimage.sh",
@@ -907,7 +923,7 @@
     },
     {
       "path": "DNA_Software/Launcher/on_demand.py",
-      "sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464"
+      "sha256": "e73f444405f1bfb8c278abcaec696a1c65dc5f35a6c66ecbbc221af568bd38d0"
     },
     {
       "path": "DNA_Software/Launcher/Notices/RFMIX-LICENSE.txt",

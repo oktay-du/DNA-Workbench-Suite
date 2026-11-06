@@ -1,10 +1,34 @@
 # Installation and first analysis
 
+## Requirements
+
+| | Windows x64 | Linux x64 |
+|---|---|---|
+| Release zip | `DNAWorkbench-Windows-x64.zip` | `DNAWorkbench-Linux-x64.zip` |
+| Start | `DNA_Launcher.exe` | `./DNA-Workbench.sh` |
+| Desktop | .NET Framework 4.8 and WebView2 | Python 3.12, GTK 3 and WebKitGTK 4.1 |
+| Python for the app | Downloaded by Core setup | The host Python |
+| Linux analysis tools | A Linux-only program runs inside WSL | The same program runs on the host |
+| Tools with both builds | PLINK 2, Haplogrep, Gramps, JBrowse, UGENE and Temurin each use the Windows file | Those same releases use the Linux file |
+| No official Windows binary | samtools and bcftools use the Win-NGS 1.23.1 bundles. mosdepth has no Windows build, so coverage uses samtools depth | Official samtools and bcftools 1.25 source, plus the Linux mosdepth binary |
+
+On Debian and Ubuntu the desktop packages are `python3`, `python3-gi`, `gir1.2-gtk-3.0` and `gir1.2-webkit2-4.1`.
+
 ## Windows release
 
-Extract the release into a writable SSD folder. Run `DNA_Launcher.exe` without administrator privileges for normal work. First-run Core setup downloads verified pinned Python and WebView2 archives, caches them under `DNA_Software/Downloads` and installs them under `DNA_Software/Windows`. Allow enough room for archives and extracted runtimes. The app code is embedded in the EXE; the source ZIP is not required to launch it.
+Extract `DNAWorkbench-Windows-x64.zip` into a writable SSD folder. Run `DNA_Launcher.exe` without administrator privileges for normal work. First-run Core setup downloads verified pinned Python and WebView2 archives, caches them under `DNA_Software/Downloads` and installs them under `DNA_Software/Windows`. Allow enough room for archives and extracted runtimes. The app code is embedded in the EXE; the source ZIP is not required to launch it.
 
 Prefer an ordinary user-writable folder, not Program Files. Keep a backup of the complete workspace. Do not disconnect the SSD during a write, analysis or WSL operation.
+
+The Windows build is `powershell -NoProfile -File DNA_Software/Launcher/build.ps1`, then `python DNA_Software/Launcher/public_package.py` and `python DNA_Software/Launcher/release_tools.py --target windows`.
+
+## Linux release
+
+Extract `DNAWorkbench-Linux-x64.zip` into a writable folder and run `./DNA-Workbench.sh`. The script opens the workspace in a local window. It does not open the system browser.
+
+`sh DNA_Software/Launcher/build_linux.sh` creates that zip on Linux from the public file list. It does not compile `DNA_Launcher.exe`. `DNA_Software/Launcher/build_linux_appimage.sh` can also write an AppImage; that AppImage still uses the host Python and WebKitGTK.
+
+Linux programs such as samtools, bcftools, PLINK2 Linux and Haplogrep Linux run on this host. Windows-only pins stay unused. WSL is not installed.
 
 ## Folder layout
 
@@ -21,11 +45,9 @@ Prefer an ordinary user-writable folder, not Program Files. Keep a backup of the
 | `References` | Downloaded reference data, annotations and panels |
 | `DNA_Linux` | Optional WSL distribution storage |
 
-## Optional Linux
+## Optional WSL on Windows
 
-On a Linux desktop, `python3 DNA_Software/Launcher/dna_cli.py desktop` opens the same workspace in a local WebKitGTK window. It does not launch the system browser. `DNA_Software/Launcher/build_linux_appimage.sh` writes `dist/DNA-Workbench-x86_64.AppImage`. The first launch of that AppImage copies a writable tree beside the file and opens the window from there. Windows keeps `DNA_Launcher.exe`, which installs portable Python and WebView2 beside itself.
-
-Core does not require Ubuntu. A Linux workflow offers preparation when needed. PowerShell checks WSL host support; enabling Windows features can require elevation and reboot. The suite's distro VHDX and chosen swap location are stored beside the EXE, but distro registration and Windows features are host-specific. On a different PC, repeat the host check/registration. This is workspace portability, not a guarantee of zero host changes. Existing unrelated WSL workloads are not automatically shut down. See [portable implementation notes](../DNA_Software/Launcher/PORTABILITY.md).
+Core does not require Ubuntu. A Linux workflow offers preparation when needed. PowerShell checks WSL host support; enabling Windows features can require elevation and reboot. The suite's distro VHDX and chosen swap location are stored beside the EXE, but distro registration and Windows features are host-specific. On a different PC, repeat the host check/registration. This is workspace portability, not a guarantee of zero host changes. Existing unrelated WSL workloads are not automatically shut down. See [portable implementation notes](../DNA_Software/Launcher/PORTABILITY.md) and [where each program runs](VERSIONS.md).
 
 ## Explore safely
 

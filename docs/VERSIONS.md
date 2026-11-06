@@ -2,9 +2,61 @@
 
 Pins, archive presence, package metadata and successful execution are different evidence. No private DNA or local account paths are exported. Reference and model licenses remain separate.
 
-Catalog snapshot: 2026-11-04 · suite 1.0.0
+Catalog snapshot: 2026-11-04 · suite 1.0.1
 
 Large files are optional and downloaded separately. Retrieval labels are not source publication dates. Unknown sizes/checksums are intentionally left unknown.
+
+## Where the programs run
+
+Reference files are the same on both hosts. A program uses the same project on both hosts when that project publishes both builds. The host then uses its own file. When a project publishes only one operating system, the other host gets the named alternative. Wine is not used. `DNA_Software/Launcher/tool_hosts.py` is the source of this table.
+
+| Pinned id | Windows | Linux | What that means |
+|---|---|---|---|
+| `python-windows` | native | host Python 3.12 | Windows CPython archive. Linux uses the system Python because the desktop needs GTK bindings. |
+| `webview2-runtime` | native | WebKitGTK | Windows WebView2 runtime. Linux uses WebKitGTK 4.1. |
+| `grampsaio-6-0-8-1-win64-exe` | native | same release, other file | Windows installer. Linux uses the official gramps_6.0.8 amd64 snap from this release. |
+| `jbrowse-desktop-v4-3-0-win-exe` | native | same release, other file | Windows installer. Linux uses the official JBrowse 4.3.0 desktop AppImage. |
+| `jbrowse-web-v4-3-0-zip` | browser | browser | Web bundle for both hosts. The desktop app has a separate file per host. |
+| `haplogrep3-3-3-2-windows-tar-gz` | native | same release, other file | Windows Haplogrep 3.3.2. Linux uses the Linux tar from the same release. |
+| `pharmcat-3-4-0-all-jar` | Java on the host | Java on the host | One jar for both hosts. Windows uses the Temurin Windows JRE. Linux uses the Temurin Linux JRE. |
+| `pharmcat-pipeline-3-4-0-tar-gz` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `ubuntu-wsl` | WSL guest | not used | Windows can run a Linux-only program inside this Ubuntu image. A Linux desktop does not install WSL. |
+| `igv-2-19-8` | Java on the host | Java on the host | One Java desktop zip for both hosts, with the Temurin JRE for that host. |
+| `plink2-windows` | native | same release, other file | Windows PLINK 2. Linux uses the Linux zip from the same build. |
+| `openjdk21u-jre-x64-windows-hotspot-21-0-13-9-zip` | native | same release, other file | Windows Temurin 21 JRE. Linux uses java21-linux from the same Adoptium release. |
+| `beagle-5-5` | Java on the host | Java on the host | One jar for both hosts, with the Temurin JRE for that host. |
+| `samtools-1-25-tar-bz2` | Windows bundle is 1.23.1 | native source | Official samtools 1.25 source. Linux builds it. Windows uses the Win-NGS 1.23.1 bundle because samtools publishes no Windows binary. |
+| `bcftools-1-25-tar-bz2` | Windows bundle is 1.23.1 | native source | Official bcftools 1.25 source. Linux builds it. Windows uses the Win-NGS 1.23.1 bundle because bcftools publishes no Windows binary. |
+| `mosdepth` | samtools depth | native | Linux static binary. mosdepth publishes no Windows build. Windows coverage uses samtools depth from the Windows samtools bundle. |
+| `karchinlab-open-cravat` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `ensembl-ensembl-vep` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `gramps-project-gramps-web` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `gramps-project-gramps-web-api` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `samtools-samtools` | Windows bundle is 1.23.1 | native source | Source checkout of samtools 1.25. Same host split as the release tarball. |
+| `samtools-bcftools` | Windows bundle is 1.23.1 | native source | Source checkout of bcftools 1.25. Same host split as the release tarball. |
+| `apriha-snps` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `multiqc-multiqc` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `brentp-mosdepth` | samtools depth | native source | mosdepth source. The runnable file is the Linux binary. Windows uses samtools depth. |
+| `browning-lab-hap-ibd` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `slowkoni-rfmix` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `23andme-yhaplo` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `pgscatalog-pgsc-calc` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `nextflow-io-nextflow` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `nf-core-sarek` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `google-deepvariant` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `uqrmaie1-admixtools` | WSL or the Windows alternative when one is pinned | native | Linux program or source build. Linux runs it on the host. Windows uses the pinned Windows file when one exists, otherwise WSL. |
+| `haplogrep3-3-3-2-linux-tar-gz` | same release, other file | native | Linux Haplogrep 3.3.2. Windows uses the Windows tar from the same release. |
+| `plink2-linux` | same release, other file | native | Linux PLINK 2. Windows uses the Windows zip from the same build. |
+| `java21-windows` | native | same release, other file | Windows Temurin 21 JRE. Linux uses java21-linux from the same Adoptium release. |
+| `nextflow-dist` | Java on the host | Java on the host | One Nextflow distribution for both hosts, with the Temurin JRE for that host. |
+| `gatk-4-7-0-0` | Java on the host | Java on the host | One zip for both hosts, with the Temurin JRE for that host. |
+| `ugene-53-1-windows` | native | same release, other file | Windows UGENE 53.1. Linux uses the official Linux tar from this release. |
+| `gramps-6-0-8-1-amd64-snap` | same release, other file | native | Official Linux snap of Gramps 6.0.8. Windows uses the AIO installer. The snap needs snapd. |
+| `jbrowse-desktop-v4-3-0-linux-appimage` | same release, other file | native | Official Linux AppImage of JBrowse desktop 4.3.0. Windows uses the exe installer. |
+| `ugene-53-1-linux` | same release, other file | native | Official Linux UGENE 53.1. Windows uses the Windows zip from this release. |
+| `java21-linux` | same release, other file | native | Linux Temurin 21 JRE. The SHA-256 is the publisher file from this release. Windows uses the zip. |
+| `samtools-1-23-1-windows` | native alternative | official 1.25 source | Unofficial Win-NGS bundle of samtools 1.23.1 for Windows. Not an htslib release. Linux keeps the official 1.25 source. |
+| `bcftools-1-23-1-windows` | native alternative | official 1.25 source | Unofficial Win-NGS bundle of bcftools 1.23.1 for Windows. Not an htslib release. Linux keeps the official 1.25 source. |
 
 | Component | Pin / data snapshot | Category | Download size | License / source |
 |---|---|---|---|---|
@@ -76,6 +128,12 @@ Large files are optional and downloaded separately. Retrieval labels are not sou
 | [nextflow-26.10.5-dist](https://github.com/nextflow-io/nextflow) | 26.10.5 | pipelines | 0.05 GiB | [Apache-2.0](https://github.com/nextflow-io/nextflow) |
 | [gatk-4.7.0.0.zip](https://github.com/broadinstitute/gatk) | 4.7.0.0 | tools | 0.65 GiB | [Apache-2.0](https://github.com/broadinstitute/gatk/blob/0cde69eed30339f5978cbb1ac6e5cf3662f9e1f8/LICENSE.TXT) |
 | [ugene-53.1-win-x86-64.zip](https://github.com/ugeneunipro/ugene) | 53.1 | tools | 0.35 GiB | [GPL-2.0](https://github.com/ugeneunipro/ugene/blob/559b098575cd281e30f86ff72a5ceea065a700bd/LICENSE.txt) |
+| [gramps_6.0.8-1_amd64.snap](https://github.com/gramps-project/gramps) | v6.0.8 | tools | 0.09 GiB | [GPL-2.0](https://github.com/gramps-project/gramps/blob/e9c09a44791def6a6b81079dc7f8cbe8c7e69cc0/COPYING) |
+| [jbrowse-desktop-v4.3.0-linux.AppImage](https://github.com/GMOD/jbrowse-components) | v4.3.0 | tools | 0.11 GiB | [Apache-2.0](https://github.com/GMOD/jbrowse-components/blob/6a83698a567eb4119df8afab98b3e5e32632db0f/LICENSE) |
+| [ugene-53.1-linux-x86-64.tar.gz](https://github.com/ugeneunipro/ugene) | 53.1 | tools | 0.47 GiB | [GPL-2.0](https://github.com/ugeneunipro/ugene/blob/559b098575cd281e30f86ff72a5ceea065a700bd/LICENSE.txt) |
+| [OpenJDK21U-jre_x64_linux_hotspot_21.0.13_9.tar.gz](https://github.com/adoptium/temurin21-binaries) | 21.0.13+9 | tools | 0.05 GiB | [See upstream / Siehe Projektquelle](https://github.com/adoptium/temurin21-binaries) |
+| [samtools-1.23.1-windows-ucrt64.zip](https://github.com/win-ngs/samtools-windows-bundle) | 1.23.1 | tools | 0.01 GiB | [MIT](https://github.com/samtools/samtools) |
+| [bcftools-1.23.1-windows-ucrt64.zip](https://github.com/win-ngs/bcftools-windows-bundle) | 1.23.1 | tools | 0.02 GiB | [MIT](https://github.com/samtools/bcftools) |
 | [@genome-spy/core](https://github.com/genome-spy/genome-spy) | 1.2.0 | visualization | Unknown | [MIT](https://github.com/genome-spy/genome-spy) |
 | [igv](https://github.com/igvteam/igv.js) | 3.8.10 | visualization | Unknown | [MIT](https://github.com/igvteam/igv.js) |
 | [jbrowse](https://github.com/GMOD/jbrowse-components) | 4.3.0 | visualization | Unknown | [Apache-2.0](https://github.com/GMOD/jbrowse-components) |

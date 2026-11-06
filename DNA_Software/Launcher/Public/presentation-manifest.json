@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "README.de.md",
-      "sha256": "f33d78bd6f94d78fbbc0229c43e8f76e77950e57ec45eaa41474a8d1c89c483c",
-      "bytes": 1167
+      "sha256": "6fb6f9af8b04605f243aa62c7d306decbcca62bfabe482ed6c56f7ef8a4457a6",
+      "bytes": 2027
     },
     {
       "path": "CONTRIBUTING.md",
@@ -14,8 +14,8 @@
     },
     {
       "path": "docs/AGENTS.md",
-      "sha256": "819d9659882e3094be67d5f38cf0dd94c32420cca63fde6df57979472d9a4ee6",
-      "bytes": 1809
+      "sha256": "aaf8f01521dade8d129ce93eb69b6381315d4c4a6ca8f59875144df63b7b0d5d",
+      "bytes": 1975
     },
     {
       "path": "docs/ARCHITECTURE.md",
@@ -39,8 +39,8 @@
     },
     {
       "path": "docs/GETTING_STARTED.md",
-      "sha256": "b4510e8b813f58f813df547f0bfd4bade748e8b0615eceb780a1ed33e339ed5c",
-      "bytes": 4946
+      "sha256": "a1814b3c29cd7ff52ad21f17e671f5e2a793295d4ddf0b46e5ef31c43e98a26c",
+      "bytes": 6804
     },
     {
       "path": "docs/images/00-first-run.png",
@@ -149,8 +149,8 @@
     },
     {
       "path": "docs/VERSIONS.md",
-      "sha256": "139380fefda1e67e884c5856c6211b750ac0aa49292040f7c8cd3c9bb7f6e078",
-      "bytes": 31299
+      "sha256": "bf66b9e42b3e70ee63c3a26aa1543c685c41f0a456a4deb4410903f163f135c7",
+      "bytes": 40423
     },
     {
       "path": "docs/RESULTS_AND_FINDINGS.md",
@@ -274,8 +274,8 @@
     },
     {
       "path": "docs/DEVELOPMENT.md",
-      "sha256": "dbdb01389c26b7edb28cc612e1cc126e288f28c5ce3afb1f92f8e1c020156d20",
-      "bytes": 1505
+      "sha256": "3443c6b2b61fb81e579267ee9237a233395e194232a9a42aeebcb68418ec9ca2",
+      "bytes": 1799
     },
     {
       "path": "docs/images/peru-painted-story.png",
@@ -294,8 +294,8 @@
     },
     {
       "path": "docs/QUALITY.md",
-      "sha256": "086fd91516c1d036cc8e1f956aa01263cd7ca2afe1ee253c3f185303f60a4196",
-      "bytes": 3510
+      "sha256": "40a7a996b260f640e4ca790812adc95e42ef6e7ef2fe8e72fdf984e4726adecb",
+      "bytes": 3611
     },
     {
       "path": "docs/PRIVACY.md",
@@ -344,8 +344,8 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "259d9ea8b4bc330e06bc655bd08b8ced4ef05b90d8441d699e21151a67709fdb",
-      "bytes": 6093
+      "sha256": "1769b73df6277e41bd7acb38408f343ded2ee2326dd9a07f4965710151ef5ad2",
+      "bytes": 7315
     },
     {
       "path": "site/style.css",

@@ -23,7 +23,14 @@ def atomic(path, obj):
 
 
 def linux(path):
+    """Path inside the Linux tool host.
+
+    On Windows that host is the WSL distro, so a drive-letter file becomes
+    /mnt/<drive>/... On Linux the file is already on the host and is used as-is.
+    """
     p = Path(path).resolve()
+    if os.name != "nt":
+        return p.as_posix()
     if len(p.drive) != 2 or p.drive[1] != ":":
         raise ValueError(
             "Select local drive files for WSL. Copy network files to the SSD first."
@@ -136,6 +143,7 @@ class Job:
             "#!/usr/bin/env bash",
             "set -euo pipefail",
             "source " + Q(linux(ROOT / "DNA_Software/Start/profile-dna.sh")),
+            "export PATH=" + Q(linux(ROOT / "DNA_Software/Linux/bin")) + ":$PATH",
             "export PYTHONUNBUFFERED=1",
             "echo $$ > " + Q(linux(self.folder / "linux.pid")),
             "mkdir -p " + Q(self.o()),
@@ -809,7 +817,7 @@ class Job:
                 pidfile = self.folder / "linux.pid"
                 if pidfile.exists():
                     pgid = pidfile.read_text().strip()
-                    if pgid.isdigit():
+                    if pgid.isdigit() and os.name == "nt":
                         subprocess.run(
                             [
                                 windows_executable("wsl.exe"),
@@ -826,6 +834,11 @@ class Job:
                             capture_output=True,
                             timeout=10,
                         )
+                    elif pgid.isdigit():
+                        try:
+                            os.killpg(int(pgid), 15)
+                        except ProcessLookupError:
+                            pass
                 proc.terminate()
                 thread.join(3)
                 raise InterruptedError("Order cancelled on request.")
@@ -1532,21 +1545,29 @@ class Job:
                     ).read_text()
                 ),
             )
-            self.run_process(
-                [
-                    windows_executable("wsl.exe"),
-                    "-d",
-                    distro_name(ROOT),
-                    "-u",
-                    "dna",
-                    "--",
-                    "env",
-                    "DNA_LAUNCHER_JOB=" + self.id,
-                    "setsid",
-                    "bash",
-                    linux(self.folder / "ausfuehren.sh"),
-                ]
-            )
+            if os.name == "nt":
+                self.run_process(
+                    [
+                        windows_executable("wsl.exe"),
+                        "-d",
+                        distro_name(ROOT),
+                        "-u",
+                        "dna",
+                        "--",
+                        "env",
+                        "DNA_LAUNCHER_JOB=" + self.id,
+                        "setsid",
+                        "bash",
+                        linux(self.folder / "ausfuehren.sh"),
+                    ]
+                )
+            else:
+                env = os.environ.copy()
+                env["DNA_LAUNCHER_JOB"] = self.id
+                self.run_process(
+                    ["setsid", "bash", str(self.folder / "ausfuehren.sh")],
+                    env=env,
+                )
         else:
             self.windows()
         for entry in sources if self.task["action"] != "import" else []:

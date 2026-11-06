@@ -1,6 +1,6 @@
 # GUI, CLI, JSON and MCP
 
-Start the app or `python DNA_Software/Launcher/dna_cli.py serve`. The local control file contains a credential; keep it private. GUI commands can require the desktop owner to be connected. Mutations use registered schemas/effects rather than arbitrary shell execution.
+On Windows, start `DNA_Launcher.exe`. On Linux, run `python3 DNA_Software/Launcher/dna_cli.py desktop` or `./DNA-Workbench.sh` from the Linux zip. `python DNA_Software/Launcher/dna_cli.py serve` starts the service without a window. The local control file contains a credential; keep it private. GUI commands can require the desktop owner to be connected. Mutations use registered schemas/effects rather than arbitrary shell execution.
 
 ```powershell
 .\DNA.cmd commands
