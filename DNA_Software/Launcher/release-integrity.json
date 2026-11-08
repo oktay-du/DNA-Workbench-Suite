@@ -111,7 +111,7 @@
     },
     {
       "path": "DNA_Software/Launcher/source_store.py",
-      "sha256": "50c9e32cbd724d06418ace0f3e4c8d334c53c67635df5321462624e4694bfd5d"
+      "sha256": "4a9cec544c2afe67ddb4bbfabffc541f24fd4f0b0bde04cbfaa8c05d71f8b76f"
     },
     {
       "path": "DNA_Software/Launcher/linux_helpers.py",
@@ -279,7 +279,7 @@
     },
     {
       "path": "DNA_Software/Launcher/suite_api.py",
-      "sha256": "e5004f44f628fc5a8fdc5c7e67390646adecf6c2150e28ab256dddec5be349b6"
+      "sha256": "25b9b336543f625605945a48761efc572576df60bb64112bd5aafd2f1cbb5a84"
     },
     {
       "path": "DNA_Software/Launcher/app.html",
@@ -571,7 +571,7 @@
     },
     {
       "path": "DNA_Software/Launcher/profile_pipeline.py",
-      "sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732"
+      "sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f"
     },
     {
       "path": "DNA_Software/Launcher/snp_liftover.py",
@@ -591,11 +591,11 @@
     },
     {
       "path": "DNA_Software/Launcher/portable_paths.py",
-      "sha256": "eeda73f230b93e19e7d7a1fde3568ede862447a4c9bf40d4749248b7bb8aa01f"
+      "sha256": "756b3117a65ce9282ffff0fe4f4da01c302558922ae094b4d0b1b965569b2fff"
     },
     {
       "path": "DNA_Software/Launcher/portable_json.py",
-      "sha256": "c64a4c471562c9a83070d952eea91fcf0a7b429066242e87e5df8183f52d47b4"
+      "sha256": "43bc9587ee1e3b9992b2cb60d3e8693b5de56ef90ca613841e10b2e174cd0b3a"
     },
     {
       "path": "DNA_Software/Launcher/Portable.ps1",
@@ -603,7 +603,7 @@
     },
     {
       "path": "DNA_Software/Launcher/test_portability.py",
-      "sha256": "0df42e96dd31de61042a0774dfefadf7e75864f91fcf94c927f073aa1bec35f0"
+      "sha256": "e853563412ee67c2f6e0b2de51ea32d00a1f4ed8b06dba30cc321234dde0cba2"
     },
     {
       "path": "DNA_Software/Launcher/PORTABILITY.md",

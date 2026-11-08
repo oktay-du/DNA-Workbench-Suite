@@ -32,6 +32,29 @@ class PortableTests(unittest.TestCase):
             self.assertTrue(Path(os.environ[key]).is_relative_to(self.root))
             self.assertTrue(Path(os.environ[key]).is_dir())
 
+    def test_previous_roots_are_reread_when_the_record_changes(self):
+        portable_paths.configure(self.root)
+        renamed = self.base / "Renamed suite"
+        self.root.rename(renamed)
+        self.root = renamed
+        portable_paths.configure(renamed)
+        old = str(self.base / "Suite with spaces" / "Projects/p/calls.vcf")
+        moved = portable_paths.rebase(old, renamed)
+        self.assertEqual(moved, str(renamed / "Projects/p/calls.vcf"))
+        self.assertEqual(portable_paths.rebase(old, renamed), moved)
+        first = portable_json.loads('{"count": 1, "nested": {"ok": true}}')
+        first["count"] = 9
+        first["nested"]["ok"] = False
+        second = portable_json.loads('{"count": 1, "nested": {"ok": true}}')
+        self.assertEqual(second, {"count": 1, "nested": {"ok": True}})
+        record = renamed / "DNA_Software/UserData/Launcher/portable-location.json"
+        data = json.loads(record.read_text(encoding="utf-8"))
+        data["previous_roots"] = []
+        record.write_text(json.dumps(data), encoding="utf-8")
+        portable_json._CACHE["sentinel"] = {"stale": True}
+        self.assertEqual(portable_paths.rebase(old, renamed), old)
+        self.assertNotIn("sentinel", portable_json._CACHE)
+
     def test_move_records_old_location(self):
         portable_paths.configure(self.root)
         new = self.base / "Renamed suite"

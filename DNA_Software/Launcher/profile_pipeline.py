@@ -1066,8 +1066,11 @@ def queue_path(person):
     )
 
 
-def summary(person):
-    rows = source_store.listing(person)
+def summary(person, rows=None):
+    # Callers that already listed the library, such as the workspace snapshot,
+    # pass those rows. A second listing would repeat the same reads.
+    if rows is None:
+        rows = source_store.listing(person)
     sets = []
     with closing(source_store.connect(person)) as db:
         if db.execute(
