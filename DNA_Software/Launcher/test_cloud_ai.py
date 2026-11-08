@@ -1,4 +1,4 @@
-import unittest, tempfile, json, time, contextlib
+import os, unittest, tempfile, json, time, contextlib
 from pathlib import Path
 from unittest.mock import patch
 import cloud_ai as c
@@ -9,6 +9,13 @@ class CloudTests(unittest.TestCase):
         self.tmp = tempfile.TemporaryDirectory()
         self.stack = contextlib.ExitStack()
         self.stack.enter_context(patch.object(c, "STATE", Path(self.tmp.name)))
+        self.stack.enter_context(
+            patch.dict(
+                os.environ,
+                {"DNA_CREDENTIAL_HOME": str(Path(self.tmp.name) / "config")},
+                clear=False,
+            )
+        )
         c.REVIEWS.clear()
         c.JOBS.clear()
 
@@ -50,6 +57,23 @@ class CloudTests(unittest.TestCase):
             b"test-not-a-real-api-key", (c.STATE / "openai.dpapi").read_bytes()
         )
         self.assertEqual(c.key(), "test-not-a-real-api-key")
+        if os.name != "nt":
+            stored = (c.STATE / "openai.dpapi").read_bytes()
+            self.assertTrue(stored.startswith(b"DNACRED1"))
+            key_file = (
+                Path(os.environ["DNA_CREDENTIAL_HOME"])
+                / "dna-workbench"
+                / "api-credential.key"
+            )
+            self.assertEqual(key_file.stat().st_mode & 0o777, 0o600)
+            self.assertNotIn(b"test-not-a-real-api-key", key_file.read_bytes())
+            with patch.dict(
+                os.environ,
+                {"DNA_CREDENTIAL_HOME": str(Path(self.tmp.name) / "other")},
+            ):
+                with self.assertRaises(ValueError):
+                    c.crypt(stored, True)
+            self.assertEqual(c.key(), "test-not-a-real-api-key")
         c.save({"remove_key": True})
         self.assertFalse(c.status()["enabled"])
         self.assertFalse(c.status()["key_present"])

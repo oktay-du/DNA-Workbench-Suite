@@ -14,7 +14,7 @@ Generated images are validated by the same profile artwork importer and labelled
 
 ## Credentials and portability
 
-Keys are never returned to the UI, CLI or model. They are encrypted with Windows CurrentUser DPAPI in `DNA_Software/UserData/Launcher/CloudAI/openai.dpapi`, relative to the suite root. Settings contain no plaintext key. Moving the suite to another Windows account/computer requires re-entering the key. Profile exports and explicit public packaging exclude this runtime directory. Do not paste keys into CLI arguments, prompts or issue reports. This protects stored credentials, not an already compromised Windows account.
+Keys are never returned to the UI, CLI or model. The ciphertext is stored in `DNA_Software/UserData/Launcher/CloudAI/openai.dpapi`, relative to the suite root. On Windows it is sealed with CurrentUser DPAPI. On Linux it is sealed with AES-GCM; the 32-byte account key is a private file at `~/.config/dna-workbench/api-credential.key` (mode 0600). It is not stored under the suite's redirected `XDG_CONFIG_HOME`. Settings contain no plaintext key. Moving the suite to another account or computer requires re-entering the key, because that account secret does not travel with the suite folder. Profile exports and explicit public packaging exclude this runtime directory. Do not paste keys into CLI arguments, prompts or issue reports. This protects stored credentials, not an already compromised account.
 
 ## AI-assisted PDF and DNA orchestration
 

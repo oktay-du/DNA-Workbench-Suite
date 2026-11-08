@@ -5,7 +5,7 @@ same prepare/submit contract after endpoint and credential handling review.
 """
 
 from pathlib import Path
-import concurrent.futures, ctypes, json, os, re, secrets, threading, time, urllib.request, urllib.error, uuid
+import concurrent.futures, ctypes, json, os, re, secrets, stat, threading, time, urllib.request, urllib.error, uuid
 
 APP = Path(__file__).parent
 ROOT = APP.parents[1]
@@ -41,12 +41,11 @@ def config():
         return dict(DEFAULT)
 
 
-def crypt(raw, decrypt=False):
-    if os.name != "nt":
-        raise ValueError(
-            "Encrypted API credentials require Windows; local mode remains available."
-        )
+_CREDENTIAL_PREFIX = b"DNACRED1"
+_UNAVAILABLE = "Credential unavailable for this account. Enter it again in Settings."
 
+
+def _windows_crypt(raw, decrypt=False):
     class Blob(ctypes.Structure):
         _fields_ = [("size", ctypes.c_ulong), ("data", ctypes.POINTER(ctypes.c_ubyte))]
 
@@ -69,13 +68,94 @@ def crypt(raw, decrypt=False):
     kernel.LocalFree.argtypes = [ctypes.c_void_p]
     kernel.LocalFree.restype = ctypes.c_void_p
     if not fn(ctypes.byref(src), None, None, None, None, 1, ctypes.byref(out)):
-        raise ValueError(
-            "Credential unavailable for this Windows account. Enter it again in Settings."
-        )
+        raise ValueError(_UNAVAILABLE)
     try:
         return ctypes.string_at(out.data, out.size)
     finally:
         kernel.LocalFree(out.data)
+
+
+def _credential_key_path():
+    # The suite redirects XDG_CONFIG_HOME into its own folder. The account
+    # secret stays in the home directory so copying the suite does not copy it.
+    configured = os.environ.get("DNA_CREDENTIAL_HOME", "").strip()
+    base = Path(configured).expanduser() if configured else Path.home() / ".config"
+    if not base.is_absolute():
+        raise ValueError("DNA_CREDENTIAL_HOME must be an absolute path.")
+    return base / "dna-workbench" / "api-credential.key"
+
+
+def _account_key():
+    path = _credential_key_path()
+    path.parent.mkdir(mode=0o700, parents=True, exist_ok=True)
+    flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL
+    if hasattr(os, "O_NOFOLLOW"):
+        flags |= os.O_NOFOLLOW
+    try:
+        fd = os.open(path, flags, 0o600)
+    except FileExistsError:
+        fd = None
+    if fd is not None:
+        try:
+            os.write(fd, secrets.token_bytes(32))
+        finally:
+            os.close(fd)
+    read_flags = os.O_RDONLY
+    if hasattr(os, "O_NOFOLLOW"):
+        read_flags |= os.O_NOFOLLOW
+    fd = os.open(path, read_flags)
+    try:
+        info = os.fstat(fd)
+        if (
+            not stat.S_ISREG(info.st_mode)
+            or info.st_mode & 0o077
+            or hasattr(os, "getuid")
+            and info.st_uid != os.getuid()
+        ):
+            raise ValueError(
+                "API credential key must be a private file owned by this account."
+            )
+        data = os.read(fd, 33)
+    finally:
+        os.close(fd)
+    if len(data) != 32:
+        raise ValueError(_UNAVAILABLE)
+    return data
+
+
+def _linux_crypt(raw, decrypt=False):
+    try:
+        from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+    except ImportError:
+        raise ValueError(
+            "Encrypted API credentials need the cryptography package; local mode remains available."
+        ) from None
+    secret = _account_key()
+    if not decrypt:
+        nonce = secrets.token_bytes(12)
+        return (
+            _CREDENTIAL_PREFIX
+            + nonce
+            + AESGCM(secret).encrypt(nonce, raw, _CREDENTIAL_PREFIX)
+        )
+    if (
+        not raw.startswith(_CREDENTIAL_PREFIX)
+        or len(raw) < len(_CREDENTIAL_PREFIX) + 12 + 16
+    ):
+        raise ValueError(_UNAVAILABLE)
+    nonce = raw[len(_CREDENTIAL_PREFIX) : len(_CREDENTIAL_PREFIX) + 12]
+    try:
+        return AESGCM(secret).decrypt(
+            nonce, raw[len(_CREDENTIAL_PREFIX) + 12 :], _CREDENTIAL_PREFIX
+        )
+    except Exception:
+        raise ValueError(_UNAVAILABLE) from None
+
+
+def crypt(raw, decrypt=False):
+    if os.name == "nt":
+        return _windows_crypt(raw, decrypt)
+    return _linux_crypt(raw, decrypt)
 
 
 def key():
@@ -99,7 +179,7 @@ def status():
         endpoint="https://api.openai.com/v1",
         providers=[{"id": "openai", "name": "OpenAI", "chat": True, "images": True}],
         framework_version=1,
-        notice="Off by default. Keys are encrypted for this Windows account; re-enter on another computer. No automatic profile uploads. Provider billing applies.",
+        notice="Off by default. Keys are encrypted for this account; re-enter on another computer. No automatic profile uploads. Provider billing applies.",
     )
 
 
