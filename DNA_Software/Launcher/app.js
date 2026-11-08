@@ -347,23 +347,7 @@ function drawPrevious(container, plan, pid, task) {
           });
           preview.replaceChildren();
           if ([".html", ".htm", ".svg"].includes(result.kind)) {
-            const frame = el("iframe");
-            frame.setAttribute(
-              "sandbox",
-              result.interactive_story ? "allow-scripts allow-modals" : ""
-            );
-            frame.title = result.name;
-            frame.className = "result-preview";
-            frame.style.height = result.interactive_story ? "78vh" : "";
-            if (result.interactive_story) {
-              frame.srcdoc =
-                "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none';\">" +
-                result.text;
-            } else
-              frame.srcdoc =
-                "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-inline'; img-src data:;\">" +
-                result.text;
-            preview.append(frame);
+            preview.append(reportFrame(result));
           } else preview.append(el("pre", result.text, "result-text"));
           if (result.truncated)
             preview.append(notice(t("Preview truncated; full file is in the result folder.")));
@@ -919,6 +903,7 @@ function render() {
   if (route === "donations") return donationsPage();
   if (route === "ai") return run(aiPage);
   if (route === "jobs") return run(jobsPage);
+  if (route === "quality") return run(qualityPage);
   if (route === "family") return embed("/", t("Family tree & inheritance"));
   if (route === "matching") return embed("/research", t("DNA comparisons"));
   if (route === "ancestry") return embed("/visual", t("Ancestry & traits"));
@@ -1287,6 +1272,78 @@ function sequenceLab() {
     });
   });
   $("main").append(architecture);
+}
+function reportFrame(result) {
+  const frame = el("iframe");
+  frame.title = result.name || "Combined quality report";
+  frame.className = result.interactive_report ? "quality-report-frame" : "result-preview";
+  if (result.interactive_report) {
+    frame.setAttribute("sandbox", "allow-scripts");
+    frame.srcdoc = result.text;
+    return frame;
+  }
+  frame.setAttribute(
+    "sandbox",
+    result.interactive_story ? "allow-scripts allow-modals" : ""
+  );
+  frame.style.height = result.interactive_story ? "78vh" : "";
+  frame.srcdoc = result.interactive_story
+    ? "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none';\">" +
+      result.text
+    : "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-inline'; img-src data:;\">" +
+      result.text;
+  return frame;
+}
+async function mountQualityReport(host, pid, job) {
+  try {
+    const result = await api("/suite/result-preview", {
+      person: pid,
+      job,
+      file: "multiqc_report.html",
+    });
+    host.replaceChildren();
+    if (result.truncated) {
+      host.append(notice("The quality report is too large to show in the workspace."));
+      return;
+    }
+    host.append(reportFrame(result));
+  } catch (error) {
+    host.replaceChildren(notice(error.message));
+  }
+}
+async function qualityPage() {
+  header(
+    routeName("quality"),
+    routeName("quality"),
+    t("Documented workflows with explicit tools, input requirements and traceable outputs.")
+  );
+  const card = el("section", "", "card");
+  card.append(el("h2", "Combined quality report"));
+  const job = (state.jobs || []).find((row) => row.task === "multiqc" && row.status === "Complete");
+  const host = el("div", "", "quality-report");
+  if (!job) {
+    card.append(
+      el(
+        "p",
+        "No combined quality report yet. Run Combine quality reports after a FASTQ or VCF quality job.",
+        "muted"
+      )
+    );
+  } else {
+    card.append(
+      el(
+        "p",
+        "This summary stays in the workspace. It reads completed quality files and does not judge clinical use.",
+        "muted"
+      )
+    );
+    card.append(host);
+  }
+  $("main").append(card);
+  taskGrid(
+    state.catalog.tasks.filter((x) => x.category === "Quality & formats" && x.id !== "profile_view")
+  );
+  if (job) await mountQualityReport(host, currentPerson(), job.job);
 }
 function taskGrid(tasks, destination = $("main")) {
   const grid = el("div", "", "task-grid");
@@ -1786,24 +1843,30 @@ async function jobsPageDetail(id, pid) {
         fieldNodes.files.value = files.join(" | ");
       }
     });
-    actions.append(
-      exportButton,
-      button(t("Open PDF report"), () =>
-        native({
-          action: "suite-open-artifact",
-          person: pid,
-          job: id,
-          file: "local-analysis-report.pdf",
-        })
-      )
-    );
+    actions.append(exportButton);
+    if (result.status?.task !== "multiqc")
+      actions.append(
+        button(t("Open PDF report"), () =>
+          native({
+            action: "suite-open-artifact",
+            person: pid,
+            job: id,
+            file: "local-analysis-report.pdf",
+          })
+        )
+      );
   }
   if (result.command) {
     const d = el("details", "", "method-details");
     d.append(el("summary", t("Command")), el("pre", result.command, "code-block"));
     c.append(d);
   }
+  const reportHost = el("div", "", "quality-report");
+  if (result.status?.task === "multiqc" && result.status?.status === "Complete")
+    c.append(reportHost);
   $("main").append(c);
+  if (reportHost.parentElement)
+    await mountQualityReport(reportHost, pid, id);
 }
 function renderLocalSettings() {
   header("Your workspace", "Your workspace", t("Language, appearance and local services."));

@@ -508,6 +508,7 @@ class Handler(BaseHTTPRequestHandler):
                 else "text/css; charset=utf-8",
             )
             self.send_header("Content-Length", str(len(data)))
+            self.send_header("Cache-Control", "no-store")
             self.send_header("Connection", "close")
             self.end_headers()
             for offset in range(0, len(data), 16384):

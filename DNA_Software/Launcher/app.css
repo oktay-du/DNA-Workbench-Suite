@@ -1017,6 +1017,17 @@ footer {
   border: 0;
   border-radius: 8px;
 }
+.quality-report {
+  margin-top: 12px;
+}
+.quality-report-frame {
+  width: 100%;
+  height: calc(100vh - 280px);
+  min-height: 480px;
+  border: 0;
+  border-radius: 8px;
+  background: white;
+}
 .result-text {
   max-height: 360px;
   overflow: auto;

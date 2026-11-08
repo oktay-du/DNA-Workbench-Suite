@@ -69,7 +69,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Locales/de.json",
-    "sha256": "9d3b00114e5629270c813403158a8b8d28995d25875e6ee94967d72b00b0f09e"
+    "sha256": "6cd7e34df2d99425d08d45abed2b83c6b16a5780df00043a6dca39b548dc936c"
   },
   {
     "path": "DNA_Software/Launcher/Locales/de-intents.json",
@@ -117,7 +117,7 @@
   },
   {
     "path": "DNA_Software/Launcher/family.py",
-    "sha256": "d8ba51917b319ef8639f7fafdacee824cdd937d4871349abcee3a8134ddf5e77"
+    "sha256": "b10ce23cea5bf31dce62722274117c7c8d12feb8605616977dd8a577ded02629"
   },
   {
     "path": "DNA_Software/Launcher/family.html",
@@ -277,7 +277,7 @@
   },
   {
     "path": "DNA_Software/Launcher/suite_api.py",
-    "sha256": "e5004f44f628fc5a8fdc5c7e67390646adecf6c2150e28ab256dddec5be349b6"
+    "sha256": "130e39f6245c91c3ab56020f512e9c8b0ab13eb3fa4ae38f4cd6117e93604aae"
   },
   {
     "path": "DNA_Software/Launcher/app.html",
@@ -285,11 +285,11 @@
   },
   {
     "path": "DNA_Software/Launcher/app.css",
-    "sha256": "bff00878c0246db0ce460a0605b7446974efc0c2483c22f542b1cd00284b9a90"
+    "sha256": "8b7c4977db02d217c88f0294c8c72ffe36e0021af11776fc9b260a368a4d7bdf"
   },
   {
     "path": "DNA_Software/Launcher/app.js",
-    "sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf"
+    "sha256": "1a22c0e2476e5f0ed2ddfd89f89f31c6c864e43ead2cecb38a0ed93e42de85be"
   },
   {
     "path": "DNA_Software/Launcher/shared-ui.js",
@@ -317,7 +317,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_suite_api.py",
-    "sha256": "289f607bb3fa5784a86439ba2a579083f754d2145128b3920906f416d0dcf019"
+    "sha256": "88e106a86a0f5ec0ec87166acfbf455c79e7a5a8d414cba69097cbffb6f7a07a"
   },
   {
     "path": "DNA_Software/Launcher/test_menu_snapshot.py",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "c6a05c88c499fa252b1be894b9b75cc4418b8b043e31a5c5fa9a924b8041f579"
+    "sha256": "6fbb76e2540278f11cc1a3cb5c10472af8f2b13d674b5b05e9659c58ae9d2e48"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
