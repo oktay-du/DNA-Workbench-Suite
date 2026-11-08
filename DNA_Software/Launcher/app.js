@@ -336,6 +336,14 @@ function drawPrevious(container, plan, pid, task) {
         t("View result"),
         async () => {
           const name = pick.value;
+          if (name === "multiqc_report.html") {
+            $("task-dialog").close();
+            qualityView = "report";
+            activeJob = job.job;
+            activeJobOwner = pid;
+            go("quality");
+            return;
+          }
           if (/\.(pdf|png|jpe?g|gif|bmp)$/i.test(name)) {
             native({ action: "suite-open-artifact", person: pid, job: job.job, file: name });
             return;
@@ -397,6 +405,7 @@ function drawPrevious(container, plan, pid, task) {
 const $ = (id) => document.getElementById(id);
 let state = null,
   route = "dashboard",
+  qualityView = "report",
   selectedTask = null,
   fieldNodes = {},
   chatHistory = [],
@@ -851,6 +860,7 @@ function render() {
   }
   if (!nav.some(([, items]) => items.some((x) => x[0] === route))) route = "dashboard";
   $("main").replaceChildren();
+  document.documentElement.classList.remove("quality-lock");
   $("breadcrumb").textContent = routeName(route);
   for (const n of $("navigation").querySelectorAll("a")) {
     const active = n.dataset.route === route;
@@ -1294,56 +1304,61 @@ function reportFrame(result) {
       result.text;
   return frame;
 }
-async function mountQualityReport(host, pid, job) {
-  try {
-    const result = await api("/suite/result-preview", {
-      person: pid,
-      job,
-      file: "multiqc_report.html",
-    });
-    host.replaceChildren();
-    if (result.truncated) {
-      host.append(notice("The quality report is too large to show in the workspace."));
-      return;
-    }
-    host.append(reportFrame(result));
-  } catch (error) {
-    host.replaceChildren(notice(error.message));
-  }
+function qualityReportFrame(pid, job) {
+  const frame = el("iframe");
+  frame.title = "MultiQC report";
+  frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
+  frame.referrerPolicy = "no-referrer";
+  frame.src =
+    "/quality-report/" +
+    encodeURIComponent(pid) +
+    "/" +
+    encodeURIComponent(job) +
+    "/multiqc_report.html";
+  return frame;
+}
+function latestQualityJob() {
+  return (state.jobs || []).find((row) => row.task === "multiqc" && row.status === "Complete");
 }
 async function qualityPage() {
+  const job = latestQualityJob();
+  const showReport = job && qualityView !== "workflows";
   header(
     routeName("quality"),
     routeName("quality"),
-    t("Documented workflows with explicit tools, input requirements and traceable outputs.")
+    showReport
+      ? "The full quality report stays in this window. It reads completed quality files and does not judge clinical use."
+      : t("Documented workflows with explicit tools, input requirements and traceable outputs."),
+    job
+      ? [
+          button(showReport ? "Quality workflows" : "Full quality report", () => {
+            qualityView = showReport ? "workflows" : "report";
+            render();
+          }, "secondary"),
+        ]
+      : []
   );
-  const card = el("section", "", "card");
-  card.append(el("h2", "Combined quality report"));
-  const job = (state.jobs || []).find((row) => row.task === "multiqc" && row.status === "Complete");
-  const host = el("div", "", "quality-report");
-  if (!job) {
-    card.append(
-      el(
-        "p",
-        "No combined quality report yet. Run Combine quality reports after a FASTQ or VCF quality job.",
-        "muted"
-      )
+  if (!showReport) {
+    if (!job) {
+      const card = el("section", "", "card");
+      card.append(
+        el(
+          "p",
+          "No combined quality report yet. Run Combine quality reports after a FASTQ or VCF quality job.",
+          "muted"
+        )
+      );
+      $("main").append(card);
+    }
+    taskGrid(
+      state.catalog.tasks.filter((x) => x.category === "Quality & formats" && x.id !== "profile_view")
     );
-  } else {
-    card.append(
-      el(
-        "p",
-        "This summary stays in the workspace. It reads completed quality files and does not judge clinical use.",
-        "muted"
-      )
-    );
-    card.append(host);
+    return;
   }
+  document.documentElement.classList.add("quality-lock");
+  const card = el("div", "", "quality-report-page");
+  card.append(qualityReportFrame(currentPerson(), job.job));
   $("main").append(card);
-  taskGrid(
-    state.catalog.tasks.filter((x) => x.category === "Quality & formats" && x.id !== "profile_view")
-  );
-  if (job) await mountQualityReport(host, currentPerson(), job.job);
 }
 function taskGrid(tasks, destination = $("main")) {
   const grid = el("div", "", "task-grid");
@@ -1861,12 +1876,12 @@ async function jobsPageDetail(id, pid) {
     d.append(el("summary", t("Command")), el("pre", result.command, "code-block"));
     c.append(d);
   }
-  const reportHost = el("div", "", "quality-report");
-  if (result.status?.task === "multiqc" && result.status?.status === "Complete")
-    c.append(reportHost);
+  if (result.status?.task === "multiqc" && result.status?.status === "Complete") {
+    const report = el("div", "", "quality-report-page");
+    report.append(qualityReportFrame(pid, id));
+    c.append(report);
+  }
   $("main").append(c);
-  if (reportHost.parentElement)
-    await mountQualityReport(reportHost, pid, id);
 }
 function renderLocalSettings() {
   header("Your workspace", "Your workspace", t("Language, appearance and local services."));

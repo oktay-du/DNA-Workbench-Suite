@@ -377,6 +377,26 @@ def compute_calculate(r):
     return out
 
 
+def quality_report_file(route):
+    """The finished MultiQC page for one job, and nothing else in that folder."""
+    from urllib.parse import unquote, urlparse
+    import security_paths
+
+    path = unquote(urlparse(route).path)
+    parts = [part for part in path.split("/") if part]
+    if (
+        len(parts) != 4
+        or parts[0] != "quality-report"
+        or parts[3] != "multiqc_report.html"
+    ):
+        return None
+    base = security_paths.job(ROOT, parts[1], parts[2]) / "Results"
+    file = (base / "multiqc_report.html").resolve()
+    if not file.is_file() or not file.is_relative_to(base.resolve()):
+        raise ValueError("Quality report is not available.")
+    return file
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):
         pass
@@ -536,6 +556,22 @@ class Handler(BaseHTTPRequestHandler):
         if self.path == "/favicon.ico":
             self.send_response(204)
             self.end_headers()
+            return
+        try:
+            report = quality_report_file(self.path)
+        except ValueError:
+            self.send_error(404)
+            return
+        if report is not None:
+            data = report.read_bytes()
+            self.send_response(200)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(data)))
+            self.send_header("Cache-Control", "no-store")
+            self.send_header("X-Frame-Options", "SAMEORIGIN")
+            self.send_header("Content-Security-Policy", "frame-ancestors 'self'")
+            self.end_headers()
+            self.wfile.write(data)
             return
         if self.path not in [
             "/",
