@@ -785,6 +785,18 @@ def install_on_linux_host(tool):
             ],
             check=True,
         )
+        if tool == "multiqc":
+            wrapper = ROOT / "DNA_Software/Linux/bin/multiqc"
+            wrapper.parent.mkdir(parents=True, exist_ok=True)
+            wrapper.write_text(
+                "#!/bin/sh\n"
+                "export PYTHONPATH="
+                + shlex.quote(str(folder))
+                + '"${PYTHONPATH:+:$PYTHONPATH}"\n'
+                'exec python3 -m multiqc "$@"\n',
+                encoding="utf-8",
+            )
+            wrapper.chmod(0o755)
         return {
             "tool": tool,
             "status": "Installed into the suite package folder",
@@ -951,10 +963,15 @@ def install(tool, license_reviewed=False):
         dest = ROOT / "DNA_Software/Windows" / ("IGV" if tool == "igv" else "Java21")
         dest.mkdir(parents=True, exist_ok=True)
         with zipfile.ZipFile(archive) as z:
-            for name in z.namelist():
-                if not (dest / name).resolve().is_relative_to(dest.resolve()):
+            for entry in z.infolist():
+                path = (dest / entry.filename).resolve()
+                if not path.is_relative_to(dest.resolve()):
                     raise ValueError("Inadmissible archival path.")
-            z.extractall(dest)
+                if entry.is_dir():
+                    path.mkdir(parents=True, exist_ok=True)
+                else:
+                    path.parent.mkdir(parents=True, exist_ok=True)
+                    path.write_bytes(z.read(entry))
         return {"tool": tool, "status": "Windows-Archiv eingerichtet"}
     if tool == "yhaplo":
         archive = fetch(artifact)

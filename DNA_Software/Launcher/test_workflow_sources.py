@@ -57,6 +57,26 @@ class WorkflowSourcesTests(unittest.TestCase):
     def plan(self, task="pharmcat", history=None):
         return ws.plan(self.root, "P1", task, history or [])
 
+    def test_multiqc_suggests_a_completed_quality_folder(self):
+        folder = self.root / "Projects/Launcher/P1/job_fastp/Results"
+        folder.mkdir(parents=True)
+        (folder / "fastp.json").write_text("{}")
+        older = self.root / "Projects/Launcher/P1/job_old/Results"
+        older.mkdir(parents=True)
+        (older / "fastp.json").write_text("{}")
+        os_time = older.stat().st_mtime - 50
+        import os
+
+        os.utime(older, (os_time, os_time))
+        plan = self.plan(
+            "multiqc",
+            history=[
+                {"status": "Complete", "job": "job_old", "title": "older"},
+                {"status": "Complete", "job": "job_fastp", "title": "FASTQ"},
+            ],
+        )
+        self.assertEqual(plan["inputs"]["folder"], str(folder))
+
     def test_compatible_quality_wins_not_size_or_date(self):
         self.file("large_imputed.vcf", 900000, measurement="Imputed")
         best = self.file("measured.vcf", 100)

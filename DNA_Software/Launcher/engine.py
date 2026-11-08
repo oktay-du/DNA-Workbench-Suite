@@ -392,7 +392,17 @@ class Job:
                 ]
                 cmd(*args)
         elif a == "multiqc":
-            cmd("multiqc", self.p("folder"), "-o", self.o())
+            if not Path(v["folder"]).is_dir():
+                raise ValueError("Select a quality report folder.")
+            packages = linux(ROOT / "DNA_Software/Windows/PythonPackages")
+            lines.append(
+                "PYTHONPATH="
+                + Q(packages)
+                + "${PYTHONPATH:+:$PYTHONPATH} python3 -m multiqc "
+                + Q(self.p("folder"))
+                + " -o "
+                + Q(self.o())
+            )
         elif a == "sarek":
             rf = reference()
             sheet = self.folder / "samplesheet.csv"

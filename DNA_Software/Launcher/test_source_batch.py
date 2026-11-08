@@ -197,7 +197,7 @@ class SourceBatchTests(unittest.TestCase):
             "raw.txt",
             payload=b"# MyHeritage\n# build=38\nrsid\tchromosome\tposition\tgenotype\nrs10\t1\t10\tAG\n",
         )
-        out = self.root / "Projects/Launcher/P1/conversion/results"
+        out = self.root / "Projects/Launcher/P1/conversion/Results"
         out.mkdir(parents=True)
         (out / "output.vcf").write_bytes(
             b"##fileformat=VCFv4.2\n##reference=GRCh38\n#CHROM\tPOS\tID\tREF\tALT\tQUAL\tFILTER\tINFO\tFORMAT\tS\n1\t10\trs10\tA\tG\t.\tPASS\t.\tGT\t0/1\n"

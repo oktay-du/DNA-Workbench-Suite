@@ -65,6 +65,19 @@ class DemandTests(unittest.TestCase):
         self.assertIn("snps==2.12.1", command)
         self.assertTrue(any(part.endswith("PythonPackages") for part in command))
 
+    def test_linux_multiqc_wrapper_calls_the_suite_module(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            with (
+                patch.object(demand, "ROOT", root),
+                patch.object(demand.os, "name", "posix"),
+                patch.object(demand.subprocess, "run"),
+            ):
+                demand.install("multiqc")
+            text = (root / "DNA_Software/Linux/bin/multiqc").read_text()
+        self.assertIn("python3 -m multiqc", text)
+        self.assertIn("PythonPackages", text)
+
     def test_linux_plink19_names_the_package_when_it_is_missing(self):
         with (
             patch.object(demand.os, "name", "posix"),

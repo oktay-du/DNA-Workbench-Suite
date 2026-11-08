@@ -262,6 +262,31 @@ def manifest(task, values, rows):
     return {"task": task, "sources": sources, "inputs": values}
 
 
+def latest_quality_folder(root, pid, history):
+    """Newest completed job folder that already holds a quality report.
+
+    MultiQC reads a directory of tool reports. The sample FASTQ jobs write
+    those reports, so the folder can be suggested without scanning private
+    downloads.
+    """
+    markers = (
+        "fastp.json",
+        "fastq_quality.json",
+        "samtools_stats.txt",
+        "vcf_statistik.txt",
+    )
+    found = []
+    for job in history or []:
+        if job.get("status") != "Complete" or not job.get("job"):
+            continue
+        base = security_paths.job(root, pid, job["job"]) / "Results"
+        if base.is_dir() and any((base / name).is_file() for name in markers):
+            found.append(base)
+    if not found:
+        return None
+    return str(max(found, key=lambda path: path.stat().st_mtime))
+
+
 def result_files(root, pid, job):
     base = security_paths.job(root, pid, job) / "Results"
     rows = []
@@ -486,6 +511,14 @@ def plan(root, pid, task, history, scope_ids=None):
         warnings.append(
             "Sources have different reference builds; do not process together."
         )
+    if task == "multiqc" and not chosen.get("folder"):
+        folder = latest_quality_folder(root, pid, history)
+        if folder:
+            chosen["folder"] = folder
+        else:
+            warnings.append(
+                "No completed quality-report folder yet. Run FASTQ or VCF quality first."
+            )
     if task in ("profile_generate", "best_dataset"):
         available = [
             j

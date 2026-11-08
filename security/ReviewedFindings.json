@@ -95,7 +95,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B404",
       "code_sha256": "0b6175c8e62a6c1e49d04e774ed2220a176e25f5835b9e91519644b1cd5fefc2",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -107,7 +107,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "af9e0939bddbb3c0f16db88a12dd8cd87a845f9a96857ed8837fb01cc45e4cca",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -137,7 +137,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "fcd2008ee15cc24aeac4530473e633b653d5fee07828f10345c365e1b43873a6",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -152,7 +152,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "4ee013f7a6d0c4b9cb248c9804c084cd0b64789c4be5bd321c88ea15a618ec77",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -167,7 +167,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "e48aa40765de0886b74520ec8ed2d4436fb86f5a88413b4a47a9a453101e1014",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -182,7 +182,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B606",
       "code_sha256": "7748a78ee8c890fa453eae84b042fc1d7fd1319323129e29227818acf17913c6",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "os.startfile opens the fixed suite job directory or a URL selected from the constant loopback-service map. Neither executable text nor an untrusted URL is passed to a shell.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -194,7 +194,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "e7f4ccf4ae60cb4d57fbd5e49dde215e4e7c7511dc0fda768dc2f8983ca952dd",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -209,7 +209,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "2600e93ae00c61f6a435a90156606e889f4b96e9ee8e85367d6467b68207f967",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -224,7 +224,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "96afd178caab00a16c5972b95882a6a92bc736eb68105ae9c32140e6d493d2e0",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -239,7 +239,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B606",
       "code_sha256": "b9cf2265b302149ff6b7b567c91a05edfaab339962d97f9dfc4d6844a22a64fb",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "os.startfile opens the fixed suite job directory or a URL selected from the constant loopback-service map. Neither executable text nor an untrusted URL is passed to a shell.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -350,7 +350,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "e46e1dcacdd843e2ac1a7fee15e65e86d621b9780f57280018723ab6a4bb0ca9",
-      "file_sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -365,7 +365,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "1968bdaa0ddb61024c3b504202b0e27074fbaf6578c5f2494f9afd33e25ae0da",
-      "file_sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -395,7 +395,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "8481db053172b2dea656e272c3e31689268143d9f7022d57b6bc42c483892290",
-      "file_sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -410,7 +410,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "1b76ca3750f0f1f4afdaf895c5524e71b1130cf03d1febc5ffcca7f119c084fc",
-      "file_sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -425,7 +425,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "43973cac3b888177eda85807006a63dd34f0e2d0534eaa3b7de0c7fb25503e39",
-      "file_sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -620,7 +620,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B404",
       "code_sha256": "b81589c0c15d4b6a3b5b772cff8d2305585d78abead28b26b91de2071c4c9973",
-      "file_sha256": "8224097e69d5a1bd0d15929e8e6c6fa161f036b0399ec614e1788757e4c170f4",
+      "file_sha256": "e5004f44f628fc5a8fdc5c7e67390646adecf6c2150e28ab256dddec5be349b6",
       "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -632,7 +632,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B603",
       "code_sha256": "0a86c5224c7c06d744b55d90b9811ff27f1700ef9a06f1a97f05ad71913a6519",
-      "file_sha256": "8224097e69d5a1bd0d15929e8e6c6fa161f036b0399ec614e1788757e4c170f4",
+      "file_sha256": "e5004f44f628fc5a8fdc5c7e67390646adecf6c2150e28ab256dddec5be349b6",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -647,7 +647,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B603",
       "code_sha256": "ca68c9e2dd723ca5089bce272e2c90c3f3080a9112afe85a9ce224dffdb1455e",
-      "file_sha256": "8224097e69d5a1bd0d15929e8e6c6fa161f036b0399ec614e1788757e4c170f4",
+      "file_sha256": "e5004f44f628fc5a8fdc5c7e67390646adecf6c2150e28ab256dddec5be349b6",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -782,7 +782,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "6c2e0afa52a3dddaf7da04859f5e46df1ad90e7bbadc1230c9d7c97e3ee9a15f",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -796,7 +796,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "2585541b1cdb3685233e886e1e49a34c18356a8b7b32a367d3c205687d9d0496",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -810,7 +810,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "bf961aaf80c9887adce2b7544f014edf7df6d0e8642f1fe9551c1b5400a12344",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -824,7 +824,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "9296df13b6bad7d396f4fc246d45a73407d7d99580bf0eb68e1115cf8ecaa4e1",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -838,7 +838,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "5f41c8d719be8f299196a0a2abe424fc5e016824792bfcb805daec8394ffbd7c",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -878,7 +878,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "077aa9ab9ba78df27c02b91359bc6abd884d318e0ed9a970398824d38fa2a58b",
-      "file_sha256": "8224097e69d5a1bd0d15929e8e6c6fa161f036b0399ec614e1788757e4c170f4",
+      "file_sha256": "e5004f44f628fc5a8fdc5c7e67390646adecf6c2150e28ab256dddec5be349b6",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -892,7 +892,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "3af2316151ce5a1a6dd5e1ddc7834b8a850c644f824ede4573cf961b487d8fde",
-      "file_sha256": "8224097e69d5a1bd0d15929e8e6c6fa161f036b0399ec614e1788757e4c170f4",
+      "file_sha256": "e5004f44f628fc5a8fdc5c7e67390646adecf6c2150e28ab256dddec5be349b6",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -958,7 +958,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "43af1af9d126953d19119d1f835498525f8e61f42887d4abef103ffa3e60a7a9",
-      "file_sha256": "e31c6244859f2b4f132e3aa9d220d21f14ac15aff0246fdc104fe0fdb29ccc8e",
+      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -971,7 +971,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "641adae45d2f29596d0ce109dc6434790e2da97588c858b3aa9e7d1609a2a39c",
-      "file_sha256": "e31c6244859f2b4f132e3aa9d220d21f14ac15aff0246fdc104fe0fdb29ccc8e",
+      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -989,7 +989,7 @@
         "test_feedback",
         "test_security_boundaries"
       ],
-      "file_sha256": "a1cd13870b2f9e631654abcad79b000209833511223c296fbab857331dc089b4"
+      "file_sha256": "23dc57e8613f20c644de570d01403d246e4c5dfd9083e6f1ccf6fbd64e5fdc87"
     },
     {
       "tool": "Bearer",
@@ -1025,7 +1025,7 @@
         "test_agent_control"
       ],
       "code_sha256": "917bba60340da595fcd3d3754103b5b6225fb3f9bd8418b98298f9272ada1cee",
-      "file_sha256": "483678b4743a088e47981212b543f842af61f979288bca1e4e9184195407c09b"
+      "file_sha256": "901a46687892ceca2b02405ae331758467eccd6e964821c7ef3ee7e1f11d3ead"
     },
     {
       "tool": "Bearer",
@@ -1111,7 +1111,7 @@
       "path": "DNA_Software/Launcher/batch_intake.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "a829b1d5353107199187030695df0e576467eb55107732d286fa41c6703648fb",
-      "file_sha256": "9a70f72e7d725e905f12204186faa4f2bf09fa30bb1eae0f6448217e15153a78",
+      "file_sha256": "a946552bfce984cd483290d8a7259c4fd69d948f9ee67a5deb3473820dc17747",
       "reason": "Authenticated batch intake reads explicitly selected local files; collection rejects links/network inputs. Managed output destinations use profile-scoped roots.",
       "tests": [
         "test_batch_intake"
@@ -1122,7 +1122,7 @@
       "path": "DNA_Software/Launcher/batch_intake.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "e01f8d4e454e6b195ea4c0143ea7d5ee113de8432139d2a2b62b5801bdb431d4",
-      "file_sha256": "9a70f72e7d725e905f12204186faa4f2bf09fa30bb1eae0f6448217e15153a78",
+      "file_sha256": "a946552bfce984cd483290d8a7259c4fd69d948f9ee67a5deb3473820dc17747",
       "reason": "Authenticated batch intake reads explicitly selected local files; collection rejects links/network inputs. Managed output destinations use profile-scoped roots.",
       "tests": [
         "test_batch_intake"
@@ -1265,7 +1265,7 @@
       "path": "DNA_Software/Launcher/dna_cli.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ffa90dc74e4e97b4c085badb1addce9ee2e6f668b4b54ab95c73b506cc35e1b2",
-      "file_sha256": "c1a1c2b374bc5504d5d84dcc23fdddd15b2b3cfe073a8f6f88da463e5eaf3a8f",
+      "file_sha256": "0cefafe15efe4508fa359d2cda6a16d4a9b9b2b20bbe763e061efea4ba6e01df",
       "reason": "This is an explicit local CLI path, selected by the OS user, not a network filesystem endpoint. Shared command validation applies to API commands.",
       "tests": [
         "test_agent_control"
@@ -1282,7 +1282,7 @@
         "test_security_boundaries",
         "test_research_explorer"
       ],
-      "file_sha256": "102b520169eba15e122cf5b87340270446f78e20ff488c4fcbc6726c11271d5a"
+      "file_sha256": "023191bd460ebf165c5db93cd4c99d511ea5eecb3cdce7b04d205c50ce5c0a69"
     },
     {
       "tool": "Bearer",
@@ -1295,7 +1295,7 @@
         "test_security_boundaries",
         "test_research_explorer"
       ],
-      "file_sha256": "102b520169eba15e122cf5b87340270446f78e20ff488c4fcbc6726c11271d5a"
+      "file_sha256": "023191bd460ebf165c5db93cd4c99d511ea5eecb3cdce7b04d205c50ce5c0a69"
     },
     {
       "tool": "Bearer",
@@ -1308,7 +1308,7 @@
         "test_security_boundaries",
         "test_research_explorer"
       ],
-      "file_sha256": "102b520169eba15e122cf5b87340270446f78e20ff488c4fcbc6726c11271d5a"
+      "file_sha256": "023191bd460ebf165c5db93cd4c99d511ea5eecb3cdce7b04d205c50ce5c0a69"
     },
     {
       "tool": "Bearer",
@@ -1321,7 +1321,7 @@
         "test_security_boundaries",
         "test_research_explorer"
       ],
-      "file_sha256": "102b520169eba15e122cf5b87340270446f78e20ff488c4fcbc6726c11271d5a"
+      "file_sha256": "023191bd460ebf165c5db93cd4c99d511ea5eecb3cdce7b04d205c50ce5c0a69"
     },
     {
       "tool": "Bearer",
@@ -1334,14 +1334,14 @@
         "test_security_boundaries",
         "test_research_explorer"
       ],
-      "file_sha256": "102b520169eba15e122cf5b87340270446f78e20ff488c4fcbc6726c11271d5a"
+      "file_sha256": "023191bd460ebf165c5db93cd4c99d511ea5eecb3cdce7b04d205c50ce5c0a69"
     },
     {
       "tool": "Bearer",
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ffbed60910bdd97a29f9fe5ed39b536841f371263feb68d18553634175e24ca4",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -1353,7 +1353,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "8180c3e53f97c3216e321f8b8554fd43e85c27b0a1151631b40a45275365bb74",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -1365,7 +1365,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f397a0f23cfb4373f62019b62bcbc0e6ee93fbf4975f167d3bdf90cbee03f38e",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -1410,7 +1410,7 @@
       "path": "DNA_Software/Launcher/inspector.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "b532f2e0a7956f32388a97157e44e4f1aa1135e819d79e747c06dedc69fd92e2",
-      "file_sha256": "1dc5930a95e15ebeb69024e53af2d75340e0c30e3cbacfef2a5da5c717345fc7",
+      "file_sha256": "ccdfeec6d9486d2608c89e47a83937d8372a133f03db91277f0d1ff9b14a2ccd",
       "reason": "Intake intentionally reads explicitly selected local DNA files to identify formats. Profile IDs and inspection output folders are checked at the command boundary.",
       "tests": [
         "test_batch_intake"
@@ -1421,7 +1421,7 @@
       "path": "DNA_Software/Launcher/inspector.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "33c89b2e5b379f07db162f709bb7961a95c294e6f38292d7a5277ff8eda0ac51",
-      "file_sha256": "1dc5930a95e15ebeb69024e53af2d75340e0c30e3cbacfef2a5da5c717345fc7",
+      "file_sha256": "ccdfeec6d9486d2608c89e47a83937d8372a133f03db91277f0d1ff9b14a2ccd",
       "reason": "Intake intentionally reads explicitly selected local DNA files to identify formats. Profile IDs and inspection output folders are checked at the command boundary.",
       "tests": [
         "test_batch_intake"
@@ -1432,7 +1432,7 @@
       "path": "DNA_Software/Launcher/inspector.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f270eac7ca1fde3b9e17cda94975520b355894b0240f569b95be941866332b34",
-      "file_sha256": "1dc5930a95e15ebeb69024e53af2d75340e0c30e3cbacfef2a5da5c717345fc7",
+      "file_sha256": "ccdfeec6d9486d2608c89e47a83937d8372a133f03db91277f0d1ff9b14a2ccd",
       "reason": "Intake intentionally reads explicitly selected local DNA files to identify formats. Profile IDs and inspection output folders are checked at the command boundary.",
       "tests": [
         "test_batch_intake"
@@ -1443,7 +1443,7 @@
       "path": "DNA_Software/Launcher/inspector.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "3ee0d3b495e65beb743aabdfecca1c768b63255b6b0bf5f5768608304b7ac5de",
-      "file_sha256": "1dc5930a95e15ebeb69024e53af2d75340e0c30e3cbacfef2a5da5c717345fc7",
+      "file_sha256": "ccdfeec6d9486d2608c89e47a83937d8372a133f03db91277f0d1ff9b14a2ccd",
       "reason": "Intake intentionally reads explicitly selected local DNA files to identify formats. Profile IDs and inspection output folders are checked at the command boundary.",
       "tests": [
         "test_batch_intake"
@@ -1454,7 +1454,7 @@
       "path": "DNA_Software/Launcher/linux_helpers.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "818f4fcb1bc95ff3a44b1024a28c0c1dbd051a42ee9aacbb2c2a02a1b76db762",
-      "file_sha256": "1f656dfc11f124012f8810993295354c9985c03774f6bcec08693e7d62260b82",
+      "file_sha256": "a3fb52d090f9a04df6448bd6c9bf2965eadac29c1a079b41832772414d780dcb",
       "reason": "Local Linux worker paths are explicit command arguments quoted by the launcher. The helper reads analysis inputs and writes within its supplied job output.",
       "tests": [
         "test_security_boundaries"
@@ -1465,7 +1465,7 @@
       "path": "DNA_Software/Launcher/linux_helpers.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "5556e70f81497c05e8e33c69d96787e306c62572699afa9baa427ee55fbe45c4",
-      "file_sha256": "1f656dfc11f124012f8810993295354c9985c03774f6bcec08693e7d62260b82",
+      "file_sha256": "a3fb52d090f9a04df6448bd6c9bf2965eadac29c1a079b41832772414d780dcb",
       "reason": "Local Linux worker paths are explicit command arguments quoted by the launcher. The helper reads analysis inputs and writes within its supplied job output.",
       "tests": [
         "test_security_boundaries"
@@ -1476,7 +1476,7 @@
       "path": "DNA_Software/Launcher/linux_helpers.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "a02407d6c3833c625d89dea1ddc0673ce81b4592a0869d460c1af92cecba02d5",
-      "file_sha256": "1f656dfc11f124012f8810993295354c9985c03774f6bcec08693e7d62260b82",
+      "file_sha256": "a3fb52d090f9a04df6448bd6c9bf2965eadac29c1a079b41832772414d780dcb",
       "reason": "Local Linux worker paths are explicit command arguments quoted by the launcher. The helper reads analysis inputs and writes within its supplied job output.",
       "tests": [
         "test_security_boundaries"
@@ -1725,7 +1725,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "06f73ce6dc4a3b512be7deb0d9b8a01c819cf9f71202f9abe1c08a7e5a04b1c7",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1736,7 +1736,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "23d45ebb5eeb9d1b8639dbd5300b30f5ad082de35ff158ea2b731c8bd5d6f970",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1747,7 +1747,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "b532f2e0a7956f32388a97157e44e4f1aa1135e819d79e747c06dedc69fd92e2",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1758,7 +1758,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "82f2906a6aadc0126e0bc7f3c4054d94db252a25a37efbdd9a37a0b6dd9f8e13",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1769,7 +1769,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "eef7ebf8e687b524565dd7cfdbe2b4ca54a73786d57f15f005e95df551fb18c2",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1780,7 +1780,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "999f95e91c804d9d79986cd90bc3dee44f876acb15f4bfe2f7ed5e12b1722459",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1791,7 +1791,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "54c34f46d4d2088378a396a97865de79ef648eb87f22b4ed735640bafd8477da",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1802,7 +1802,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "51ba4fd1b9a8d36e5617ca1b0e1a1389a730519e40ee8ae7a11c4a07becab03b",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1813,7 +1813,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ae09a1f89fb48b4f035f5eccc8a69773c7c66c3be56fa8f716effd5c72983cd7",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1824,7 +1824,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "931b0bbaff3ba85a2b92f517960fb6de914a501cdf059b4af9daf33acc71960f",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1835,7 +1835,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ba2b0f0696ba6bb4dc33e4c526494e99a219d7d7bc33cd4b76549034596b8432",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1846,7 +1846,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "9a7d4cc8350b3d6e819b6e6739f68c0fc72ac2a1d824d7573d45b03111af3c39",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1857,7 +1857,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "2f4bb4721f8126278c27471befb27deac6585a937af7ef3b551e99cb2dc1f893",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1868,7 +1868,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "a4812b0227ef29e35402858717a92c733741f0f1c13c5bf534fe602e3004e3e1",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1879,7 +1879,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "2341805f31cbd3e205d06e03ef094f6017d6fc0bc54e2a69b8b9a97b6c233098",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1890,7 +1890,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "1f43955e45ebae1ba1e5427fce16c52c99dd699bf631d01ef91ca9a36e00e5ba",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1901,7 +1901,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f784dcc4a45217dd41e641cb9ad7f65007bfbf3ef137296f643d178be71759ce",
-      "file_sha256": "2a840cb4fe5061e5bd6c635c8c86a4e38a7bd67f386ee586fb51a053aff81d45",
+      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -2080,7 +2080,7 @@
       "path": "DNA_Software/Launcher/result_cache.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "3907b34cce9f05981a97542529440a1776b8a2570c4e1c9f3b03a817e02af12a",
-      "file_sha256": "90ea8e77a14514f68887a6b1ffa2bb94f79cba414409aeb5092cc6119edeb1bc",
+      "file_sha256": "88ff1e9d124b478666f680722b63d8cde8bfa6ebb758078176b3225a9d989b96",
       "reason": "Cached job IDs and sealed artifact names pass security_paths containment checks. Output existence, regular-file type, size and modification time are verified before reuse.",
       "tests": [
         "test_result_cache"
@@ -2190,7 +2190,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "289bd6b9bed18a369c264c32bffce029e9348ead06468b9bd3110336ace25b2c",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2201,7 +2201,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ce82382a6ca35d28c1575f747b93c1321b955b8c86d5e91c31572ad436c8eb5c",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2212,7 +2212,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "40e2da02961e1c2292656766678ea3da9cd5e56c9c42c7772109f2c6bd4b1033",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2223,7 +2223,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "d1993fa87b46aa927484268c2a3f0acb38522d9d05a289b3b822967bc23957e0",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2234,7 +2234,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "14bca08cc2f2c8b1563a8f4373726f5a00adc27088eef6863bcdd8908fb28181",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2245,7 +2245,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "7ccd431ba3cc6be3a2c55d5dd8d21eae29d54373884b50e6037d1dd93d541dab",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2256,7 +2256,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "8d0485c8f98bcf850137be388efc419ff32e1ff37f5db8fb26046c56d685b697",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2267,7 +2267,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "0bbd1d13194f40f115287a84a2e0806624997cf50237d2fb73486df8a1421940",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2278,7 +2278,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "fcb74a9cd0a32faf04e4fd0ceeed7b4677831dad9e4726627161d3f65e798778",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2289,7 +2289,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "2ef9b1998fb26aeb94fc4d161d0d052cd97cacb8a109a7268a73070aeae1057e",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2300,7 +2300,7 @@
       "path": "DNA_Software/Launcher/sequence_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "97e9705555eca344f26acd7cae5975708460deb7b93190808043c699a9c71eed",
-      "file_sha256": "3b4268a530d661b6acd39bafcebb5b367894ad578327192ef8a839acc15d273c",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
       "reason": "Sequence conversion is an explicit local CLI/workflow operation on selected input files. It does not expose an unauthenticated file-reading endpoint.",
       "tests": [
         "test_sequence_tools"
@@ -2355,7 +2355,7 @@
       "path": "DNA_Software/Launcher/source_store.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "cfc9645d8f7f022911e8ca2ab92a76423da77dc408fd72eaa13fa79953e25ee5",
-      "file_sha256": "a74b7ba1bf46f63d8c531341d07ab6f49cf74549d59864e584694ba75b053f0a",
+      "file_sha256": "50c9e32cbd724d06418ace0f3e4c8d334c53c67635df5321462624e4694bfd5d",
       "reason": "Profile roots validate managed IDs. Imports retain explicit source selection and checksum lineage; source metadata cannot introduce SQL or managed path traversal.",
       "tests": [
         "test_security_boundaries"
@@ -2366,7 +2366,7 @@
       "path": "DNA_Software/Launcher/source_store.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f0d1ab72ace57994d9f8d901f5b7f3f4e4a6bf7451a4861bfc14cf29f1a17ed0",
-      "file_sha256": "a74b7ba1bf46f63d8c531341d07ab6f49cf74549d59864e584694ba75b053f0a",
+      "file_sha256": "50c9e32cbd724d06418ace0f3e4c8d334c53c67635df5321462624e4694bfd5d",
       "reason": "Profile roots validate managed IDs. Imports retain explicit source selection and checksum lineage; source metadata cannot introduce SQL or managed path traversal.",
       "tests": [
         "test_security_boundaries"
@@ -2410,7 +2410,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "530db5801c1f7821ca9e9f44e88b8527b3417bae3e64f65d28e176e33b48cd42",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2422,7 +2422,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "447a8fc5057b2cfc323f45e432b7c3cb28ea5b66b307d76baa9d18c0213d234b",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2434,7 +2434,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "2a0b53d2c44fa226ac2aeefb3698c38b4123b9aa0a87ac5bbf629b8af1bb09c0",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2446,7 +2446,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "75fc6d1009027974cfe914e9994398a61f18536dfefbec333de708bd91c27650",
-      "file_sha256": "1c3e25f31e540e74213f2f40c4dae1e337b1d772749d68325cabcbdc4a283120",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2529,7 +2529,7 @@
         "test_agent_control"
       ],
       "code_sha256": "ecd30a5edec6aa3c0dfd82d52efc1f3a4521ee5249cfb28fd19aca45ece4823c",
-      "file_sha256": "e31c6244859f2b4f132e3aa9d220d21f14ac15aff0246fdc104fe0fdb29ccc8e",
+      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
       "diff_review": "Reviewed sequence-lab DOM renderer, fixed project links, filtered tool cards, and removal of generic English fallback copy in favor of specific existing tool/field descriptions. el/textContent remain the rendering boundary; no source HTML or automatic analyses added. Browser synthetic job, escaping tests and web quality positive controls passed."
     },
     {
@@ -2549,7 +2549,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "d0f4c8df09974eb17df58451e9c59ae6b8b3f2b878521f8c684e5262436f48de",
-      "file_sha256": "e31c6244859f2b4f132e3aa9d220d21f14ac15aff0246fdc104fe0fdb29ccc8e",
+      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2561,7 +2561,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "2bff5f066f70f0608ee7243dddf04a4f6cb873f6c9818aa2e6c19a69b6332903",
-      "file_sha256": "e31c6244859f2b4f132e3aa9d220d21f14ac15aff0246fdc104fe0fdb29ccc8e",
+      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2632,13 +2632,181 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "9a6fa86273c8ea101776c2b7a5b2e6a8bd5481e01ea873c8aa857d6cce3526b1",
-      "file_sha256": "fd7b05c500d4b87a6ced8b7b6e1991375a19fffbdaa11b9a98914ce3dddbd464",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
       "reason": "Read-only dependency probe uses the System32 WSL executable and an argument vector with shell=False. Module IDs come from the fixed catalog mapping; repr serializes that list into Python code, not shell text. No arbitrary command is accepted.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
         "test_on_demand"
       ],
       "diff_review": "Reviewed fixed dependency mapping for two named sequence tools; no dynamic package strings or shell recipes added. Existing install command boundaries unchanged."
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/desktop_host.py",
+      "rule": "B404",
+      "code_sha256": "3df7ad9243fcef2f8cd150e313180663572115fad05a47d4aea5b1d029b976d6",
+      "file_sha256": "e5cd4bf8a9fdd0040ae4e5c70cdc275b1ffa9ac4d56c2b1cb5c44595ae2f909a",
+      "reason": "Importing subprocess does not execute a command. The desktop starts the suite's own family.py with the current interpreter and a private service file.",
+      "tests": [
+        "test_desktop_host"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/desktop_host.py",
+      "rule": "B603",
+      "code_sha256": "ccc5b3651636352b2b3cf3d4100119ff6dee68492f4aa412dd2044b79fc2460a",
+      "file_sha256": "e5cd4bf8a9fdd0040ae4e5c70cdc275b1ffa9ac4d56c2b1cb5c44595ae2f909a",
+      "reason": "The argument vector is the current Python interpreter, family.py, --embedded, and a service file created in a private temporary directory. shell=True is not used.",
+      "tests": [
+        "test_desktop_host"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "6d83cf6f53cb13afeefc2ac2d26e2b43a10235e493add2c2f53043a5b47a3c5a",
+      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "reason": "Cancel on Windows sends a numeric process-group id to wsl.exe kill. The id is read from the job's own pid file and must be digits. Linux cancel uses os.killpg instead.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_linux_bash_jobs_skip_the_windows_host"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B404",
+      "code_sha256": "c1e4ea2b2bc0f461bff96971aa5e0ee06bdea616c4bf4e7c2abe1fdd1f8b0d00",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
+      "reason": "Importing subprocess does not execute a command. Calls in this file start declared local tools or a script this installer just wrote.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "a22a1fed863800caf61ab1653079699b7f41d3d2f8887c0c5d66e43fab316486",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
+      "reason": "The installer runs a script it just wrote. On Windows the vector is wsl.exe with a fixed distro and user. On Linux the vector is bash and that script path. shell=True is not used.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts.ToolHostTests.test_linux_file_is_installed_without_wsl"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "3de990f439d70968f16cb412f77120955c64743505bbe8ba4c51839691eacdd8",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
+      "reason": "The argument vector is the current interpreter, pip, a fixed option list, the suite package folder, and requirement pins from the tool table. The tool id must already be a declared recipe.",
+      "tests": [
+        "test_on_demand.OnDemandTests.test_linux_pip_install_uses_the_suite_folder",
+        "test_on_demand.OnDemandTests.test_linux_multiqc_wrapper_calls_the_suite_module"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "58f0281661db32415d457aad4031a46426934b1155f2c5ec2693baf5c85429c3",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
+      "reason": "pip receives the current interpreter and pins from the declared tool table. The tool id is checked against TOOLS before this call. Nothing in the vector is a shell string.",
+      "tests": [
+        "test_on_demand.OnDemandTests.test_linux_pip_install_uses_the_suite_folder"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "python_lang_file_permissions",
+      "code_sha256": "9569e9505d586516af77446522ec8ff0a3cc141e7766fa47a7957881b18a0190",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
+      "reason": "The downloaded program keeps its existing mode and gains only the execute bit so the wrapper can start it. The wrapper itself is written as mode 0755.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_linux_file_is_installed_without_wsl"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/desktop_host.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "c9005a55e70b28ba23b02ab39a6b6fd4a2ed585f39758ed84fbce4dd691e3087",
+      "file_sha256": "e5cd4bf8a9fdd0040ae4e5c70cdc275b1ffa9ac4d56c2b1cb5c44595ae2f909a",
+      "reason": "The service file is service.json inside a temporary directory this process created. The desktop reads that file only to learn the loopback URL.",
+      "tests": [
+        "test_desktop_host"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/inspector.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "d33f22abb877f518e3060e020e85bd11795045f01d30b01878b05621b09108d4",
+      "file_sha256": "ccdfeec6d9486d2608c89e47a83937d8372a133f03db91277f0d1ff9b14a2ccd",
+      "reason": "The checksum reads a file the caller already selected. It does not join a user string onto a root or follow a path from a request.",
+      "tests": [
+        "test_quality"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/linux_helpers.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "299265a3706048506804f4a4a8a0907d677e34b7cfb740f20214a5cc56acc4ad",
+      "file_sha256": "a3fb52d090f9a04df6448bd6c9bf2965eadac29c1a079b41832772414d780dcb",
+      "reason": "The reader opens one selected chip file. A synthetic table is accepted only when the first line carries the educational marker and every row has four expected fields.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_synthetic_chip_inspect_writes_a_count"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "e7ca1248653269045b65cdc4b4ce7046af9a3a4c1e573844d145d2512652f059",
+      "file_sha256": "057606b1955ac73f662e49232d963628bfc7235e8d6a4112e487ff3c5a98284d",
+      "reason": "Each archive member is resolved under the destination and rejected when it escapes that directory. Directories are created and file bytes are written only after that check.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_place_archive_rejects_parent_paths"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/release_tools.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "0b97d3e29399fa2e56718640e121ab2f35e22926d72124db5237ab92578f39a4",
+      "file_sha256": "c74c96ab238d619d7d3067819d8cab2dce0a03bd52db344ea4b2505a7e934f27",
+      "reason": "The archive path is the release zip chosen by the build command. The zip is created from the public allowlist, not from a request path.",
+      "tests": [
+        "test_linux_release.LinuxReleaseTests.test_linux_zip_contains_the_desktop_launcher"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/sequence_tools.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "57c719fed6244c7731d9b212d0fb83a294b8e7d3a971bd7732d7c9d560abfd60",
+      "file_sha256": "05816cd14cfbf58decce622a365874aa8b3b1b1b7db15fcf66ff51da79e8f439",
+      "reason": "The page is sequence-view.html inside the job output directory. The person name and sequence are HTML-escaped. The file is not written beside the source sequence.",
+      "tests": [
+        "test_sequence_tools.SequenceToolsTests.test_missing_seqviz_writes_a_local_view"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/agent.js",
+      "rule": "javascript_lang_observable_timing",
+      "code_sha256": "6e142f8453842b495d2b48e9e3ddcb1d0e4165a70b0b62ce193a4bc4eb32bdb2",
+      "file_sha256": "5a668956ad8bb0c2e64733c433af566af747b1a357a3e5402d84db5cc5c1fc25",
+      "reason": "The loop waits until the open workspace view applies a navigation event. It compares a route name with the current hash. It does not compare a secret.",
+      "tests": [
+        "test_agent_control.AgentControlTests.test_compact_navigation_uses_typed_gui_channel"
+      ]
     }
   ]
 }
