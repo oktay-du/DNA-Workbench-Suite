@@ -1292,10 +1292,7 @@ function reportFrame(result) {
     frame.srcdoc = result.text;
     return frame;
   }
-  frame.setAttribute(
-    "sandbox",
-    result.interactive_story ? "allow-scripts allow-modals" : ""
-  );
+  frame.setAttribute("sandbox", result.interactive_story ? "allow-scripts allow-modals" : "");
   frame.style.height = result.interactive_story ? "78vh" : "";
   frame.srcdoc = result.interactive_story
     ? "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none';\">" +
@@ -1331,10 +1328,14 @@ async function qualityPage() {
       : t("Documented workflows with explicit tools, input requirements and traceable outputs."),
     job
       ? [
-          button(showReport ? "Quality workflows" : "Full quality report", () => {
-            qualityView = showReport ? "workflows" : "report";
-            render();
-          }, "secondary"),
+          button(
+            showReport ? "Quality workflows" : "Full quality report",
+            () => {
+              qualityView = showReport ? "workflows" : "report";
+              render();
+            },
+            "secondary"
+          ),
         ]
       : []
   );
@@ -1351,7 +1352,9 @@ async function qualityPage() {
       $("main").append(card);
     }
     taskGrid(
-      state.catalog.tasks.filter((x) => x.category === "Quality & formats" && x.id !== "profile_view")
+      state.catalog.tasks.filter(
+        (x) => x.category === "Quality & formats" && x.id !== "profile_view"
+      )
     );
     return;
   }

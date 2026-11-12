@@ -958,7 +958,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "43af1af9d126953d19119d1f835498525f8e61f42887d4abef103ffa3e60a7a9",
-      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
+      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -971,7 +971,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "641adae45d2f29596d0ce109dc6434790e2da97588c858b3aa9e7d1609a2a39c",
-      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
+      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -2529,7 +2529,7 @@
         "test_agent_control"
       ],
       "code_sha256": "ecd30a5edec6aa3c0dfd82d52efc1f3a4521ee5249cfb28fd19aca45ece4823c",
-      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
+      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
       "diff_review": "Reviewed sequence-lab DOM renderer, fixed project links, filtered tool cards, and removal of generic English fallback copy in favor of specific existing tool/field descriptions. el/textContent remain the rendering boundary; no source HTML or automatic analyses added. Browser synthetic job, escaping tests and web quality positive controls passed."
     },
     {
@@ -2549,7 +2549,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "d0f4c8df09974eb17df58451e9c59ae6b8b3f2b878521f8c684e5262436f48de",
-      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
+      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2561,7 +2561,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "2bff5f066f70f0608ee7243dddf04a4f6cb873f6c9818aa2e6c19a69b6332903",
-      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
+      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
