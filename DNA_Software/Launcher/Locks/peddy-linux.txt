@@ -1,11 +1,11 @@
 # Tested on Ubuntu 24.04 / Python 3.12; tools remain optional.
-click==8.5.0
+click==8.5.1
 cloudpickle==3.1.2
 coloredlogs==15.0.1
 contourpy==1.4.0
 cycler==0.12.1
 Cython==3.3.1
-cyvcf2==0.34.0
+cyvcf2==0.35.0
 fonttools==4.68.0
 humanfriendly==10.0
 joblib==1.6.0
@@ -15,7 +15,7 @@ narwhals==2.28.0
 networkx==3.7
 numpy==2.5.4
 packaging==26.3
-pandas==3.1.0
+pandas==3.1.1
 peddy==0.4.8
 pillow==13.0.0
 pyparsing==3.3.3
@@ -23,6 +23,6 @@ python-dateutil==4.0.0
 scikit-learn==1.9.1
 scipy==1.18.1
 seaborn==0.13.2
-threadpoolctl==3.7.0
+threadpoolctl==3.8.0
 toolshed==0.4.8
 tzdata==2026.6

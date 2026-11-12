@@ -6,10 +6,10 @@ joblib==1.6.0
 markdown-it-py==4.2.0
 mdurl==0.1.2
 numpy==2.5.4
-pandas==3.1.0
+pandas==3.1.1
 psutil==7.2.2
 pyabpoa==1.5.7.1
-pyarrow==26.0.0
+pyarrow==26.0.1
 Pygments==2.21.0
 pysam==0.24.1
 pytabix==0.1
