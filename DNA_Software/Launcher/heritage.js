@@ -35,10 +35,16 @@ function heritageCandidates(name) {
 }
 function openCulture(region) {
   const matches = heritageCandidates(region.name);
-  heritageElement("culture-relation").textContent =
-    "Selected results region:" +
-    region.name +
-    "The following location information is cultural context and not an additional DNA assignment.";
+  heritageElement("culture-relation").replaceChildren(
+    heritageText("span", "Selected results region:"),
+    " ",
+    heritageText("strong", region.name),
+    " · ",
+    heritageText(
+      "span",
+      "The following location information is cultural context and not an additional DNA assignment."
+    )
+  );
   const choices = heritageElement("culture-candidates");
   choices.replaceChildren();
   for (const p of matches.slice(0, 8)) {
@@ -74,9 +80,9 @@ function showCulture(id) {
   heritageElement("culture-motif").dataset.motif = p.theme?.motif || "neutral";
   const copy = heritageElement("culture-copy");
   copy.replaceChildren(
-    heritageText("h4", "Landschaft & Orte"),
+    heritageText("h4", "Landscape & places"),
     heritageText("p", p.landscape),
-    heritageText("h4", "Architektur & Kultur"),
+    heritageText("h4", "Architecture & culture"),
     heritageText("p", p.architecture)
   );
   if (!p.curated)
@@ -128,7 +134,7 @@ function updateCulturePhoto() {
   license.href = photo.license_url;
   license.target = "_blank";
   license.rel = "noreferrer";
-  const source = heritageText("a", "Bildquelle");
+  const source = heritageText("a", "Image source");
   source.href = photo.source;
   source.target = "_blank";
   source.rel = "noreferrer";
@@ -138,15 +144,18 @@ function updateCulturePhoto() {
     source,
     heritageText("small", photo.modification)
   );
-  if (photo.place !== heritagePlace.id)
-    credit.append(
+  if (photo.place !== heritagePlace.id) {
+    const note = heritageText("small", "");
+    note.append(
+      heritageText("span", "Example image from:"),
+      " ",
       heritageText(
-        "small",
-        "This image shows an example from " +
-          (heritageContext.heritage.places.find((p) => p.id === photo.place)?.name || photo.place) +
-          ", not the chosen place itself."
+        "span",
+        heritageContext.heritage.places.find((p) => p.id === photo.place)?.name || photo.place
       )
     );
+    credit.append(note);
+  }
 }
 function renderHeritage(result, context, person) {
   heritageContext = context;
@@ -159,19 +168,22 @@ function renderHeritage(result, context, person) {
   const badge = heritageElement("ancestry-state");
   badge.textContent = activeResult ? "Result available" : state.label;
   badge.className = "badge " + (activeResult ? "" : "amber");
-  heritageElement("ancestry-state-detail").textContent = activeResult
+  const detail = activeResult
     ? "Showing the selected result version, with its source, model and data snapshot."
     : state.state === "available"
       ? "Another version of the result contains parts of origin, and the currently selected version does not contain an evaluation of origin."
       : state.detail;
+  heritageElement("ancestry-state-detail").textContent = detail;
   if (!activeResult) heritageElement("mode").textContent = "Still in progress";
   heritageElement("mode").className = "badge " + (activeResult ? "" : "amber");
   if (!activeResult) {
     const empty = heritageElement("regions").querySelector(".empty");
     if (empty)
-      empty.textContent =
-        "· No complete estimate of origin is yet available for this selection." +
-        heritageElement("ancestry-state-detail").textContent;
+      empty.replaceChildren(
+        heritageText("span", "No complete ancestry estimate is available for this selection."),
+        " ",
+        heritageText("span", detail)
+      );
   }
   const traitsReady = Boolean(result?.traits && Object.keys(result.traits).length);
   heritageElement("traits-state").textContent = traitsReady
@@ -182,10 +194,10 @@ function renderHeritage(result, context, person) {
   if (!heritageElement("place-select").options.length) {
     const curated = context.heritage.places
       .filter((p) => p.curated)
-      .sort((a, b) => a.name.localeCompare(b.name, "de"));
+      .sort((a, b) => a.name.localeCompare(b.name, document.documentElement.lang));
     const rest = context.heritage.places
       .filter((p) => !p.curated)
-      .sort((a, b) => a.name.localeCompare(b.name, "de"));
+      .sort((a, b) => a.name.localeCompare(b.name, document.documentElement.lang));
     for (const [label, items] of [
       ["Culture maps with their own text", curated],
       ["Further Countries and Territories · Under construction", rest],
@@ -239,12 +251,10 @@ function renderHeritage(result, context, person) {
     }
   }
   const stateText = heritageElement("status");
-  stateText.append(
-    heritageText(
-      "p",
-      activeResult
-        ? "Origin: Result available."
-        : "Origin: Still in progress." + heritageElement("ancestry-state-detail").textContent
-    )
+  const origin = heritageText("p", "");
+  origin.append(
+    heritageText("span", activeResult ? "Origin: Result available." : "Origin: Still in progress.")
   );
+  if (!activeResult) origin.append(" ", heritageText("span", detail));
+  stateText.append(origin);
 }

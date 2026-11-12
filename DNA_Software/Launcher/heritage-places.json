@@ -184,7 +184,7 @@
     },
     {
       "id": "as",
-      "name": "Amerikanisch-Samoa",
+      "name": "American Samoa",
       "aliases": [
         "Amerikanisch-Samoa"
       ],
@@ -259,7 +259,7 @@
     },
     {
       "id": "ax",
-      "name": "Ålandinseln",
+      "name": "Åland Islands",
       "aliases": [
         "Ålandinseln"
       ],
@@ -508,7 +508,7 @@
     },
     {
       "id": "bq",
-      "name": "Karibische Niederlande",
+      "name": "Caribbean Netherlands",
       "aliases": [
         "Karibische Niederlande"
       ],
@@ -576,7 +576,7 @@
     },
     {
       "id": "bv",
-      "name": "Bouvetinsel",
+      "name": "Bouvet Island",
       "aliases": [
         "Bouvetinsel"
       ],
@@ -666,7 +666,7 @@
     },
     {
       "id": "cc",
-      "name": "Kokosinseln",
+      "name": "Cocos (Keeling) Islands",
       "aliases": [
         "Kokosinseln"
       ],
@@ -764,7 +764,7 @@
     },
     {
       "id": "ck",
-      "name": "Cookinseln",
+      "name": "Cook Islands",
       "aliases": [
         "Cookinseln"
       ],
@@ -846,7 +846,7 @@
     },
     {
       "id": "cp",
-      "name": "Clipperton-Insel",
+      "name": "Clipperton Island",
       "aliases": [
         "Clipperton-Insel"
       ],
@@ -936,7 +936,7 @@
     },
     {
       "id": "cx",
-      "name": "Weihnachtsinsel",
+      "name": "Christmas Island",
       "aliases": [
         "Weihnachtsinsel"
       ],
@@ -1319,7 +1319,7 @@
     },
     {
       "id": "fm",
-      "name": "Mikronesien",
+      "name": "Micronesia",
       "aliases": [
         "Mikronesien"
       ],
@@ -1684,7 +1684,7 @@
     },
     {
       "id": "hk",
-      "name": "Sonderverwaltungsregion Hongkong",
+      "name": "Hong Kong SAR China",
       "aliases": [
         "Sonderverwaltungsregion Hongkong"
       ],
@@ -1790,7 +1790,7 @@
     },
     {
       "id": "ic",
-      "name": "Kanarische Inseln",
+      "name": "Canary Islands",
       "aliases": [
         "Kanarische Inseln"
       ],
@@ -1896,7 +1896,7 @@
     },
     {
       "id": "io",
-      "name": "Britisches Territorium im Indischen Ozean",
+      "name": "British Indian Ocean Territory",
       "aliases": [
         "Britisches Territorium im Indischen Ozean"
       ],
@@ -2133,7 +2133,7 @@
     },
     {
       "id": "km",
-      "name": "Komoren",
+      "name": "Comoros",
       "aliases": [
         "Komoren"
       ],
@@ -2216,7 +2216,7 @@
     },
     {
       "id": "ky",
-      "name": "Kaimaninseln",
+      "name": "Cayman Islands",
       "aliases": [
         "Kaimaninseln"
       ],
@@ -2525,7 +2525,7 @@
     },
     {
       "id": "mh",
-      "name": "Marshallinseln",
+      "name": "Marshall Islands",
       "aliases": [
         "Marshallinseln"
       ],
@@ -2600,7 +2600,7 @@
     },
     {
       "id": "mo",
-      "name": "Sonderverwaltungsregion Macau",
+      "name": "Macao SAR China",
       "aliases": [
         "Sonderverwaltungsregion Macau"
       ],
@@ -2705,7 +2705,7 @@
     },
     {
       "id": "mv",
-      "name": "Malediven",
+      "name": "Maldives",
       "aliases": [
         "Malediven"
       ],
@@ -2833,7 +2833,7 @@
     },
     {
       "id": "nf",
-      "name": "Norfolkinsel",
+      "name": "Norfolk Island",
       "aliases": [
         "Norfolkinsel"
       ],
@@ -2908,7 +2908,7 @@
     },
     {
       "id": "no",
-      "name": "Norwegen",
+      "name": "Norway",
       "aliases": [
         "Norwegen",
         "Norwegian",
@@ -3153,7 +3153,7 @@
     },
     {
       "id": "pn",
-      "name": "Pitcairninseln",
+      "name": "Pitcairn Islands",
       "aliases": [
         "Pitcairninseln"
       ],
@@ -3394,7 +3394,7 @@
     },
     {
       "id": "sc",
-      "name": "Seychellen",
+      "name": "Seychelles",
       "aliases": [
         "Seychellen"
       ],
@@ -3447,7 +3447,7 @@
     },
     {
       "id": "sg",
-      "name": "Singapur",
+      "name": "Singapore",
       "aliases": [
         "Singapur"
       ],
@@ -4067,7 +4067,7 @@
     },
     {
       "id": "va",
-      "name": "Vatikanstadt",
+      "name": "Vatican City",
       "aliases": [
         "Vatikanstadt"
       ],
@@ -4112,7 +4112,7 @@
     },
     {
       "id": "vg",
-      "name": "Britische Jungferninseln",
+      "name": "British Virgin Islands",
       "aliases": [
         "Britische Jungferninseln"
       ],
@@ -4127,7 +4127,7 @@
     },
     {
       "id": "vi",
-      "name": "Amerikanische Jungferninseln",
+      "name": "U.S. Virgin Islands",
       "aliases": [
         "Amerikanische Jungferninseln"
       ],

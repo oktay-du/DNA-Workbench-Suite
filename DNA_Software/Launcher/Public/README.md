@@ -6,7 +6,6 @@
 [![Build](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/build.yml/badge.svg)](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/build.yml)
 [![Security checks](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/codeql.yml/badge.svg)](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/codeql.yml)
 [![Windows and Linux](https://img.shields.io/badge/Windows%20%2B%20Linux-x64-243b53?style=flat-square)](docs/GETTING_STARTED.md)
-[![Source available](https://img.shields.io/badge/License-source_available-586b78?style=flat-square)](LICENSE)
 
 **DNA sources, family evidence and reusable research workflows — in one local workspace for Windows and Linux.**
 
@@ -102,6 +101,6 @@ Use the [synthetic Samples](Samples/README.md). Keep personal DNA, medical recor
 
 Maintained by **Oktay Du / OD** · **oktaydu@proton.me** · Created with AI assistance.
 
-Source available under the component terms in [LICENSE](LICENSE). PolyForm Noncommercial applies to designated original contributions; separate commercial permissions can be discussed by email. [Licenses & Notices](docs/LICENSING.md) · [Privacy](docs/PRIVACY.md) · [Research notice](docs/LEGAL.md) · [Security](SECURITY.md).
+[Privacy](docs/PRIVACY.md) · [Research notice](docs/LEGAL.md) · [Security](SECURITY.md).
 
-Support is optional. The [NOWPayments registration link](https://account.nowpayments.io/de/create-account?link_id=2318328728) is an affiliate link; OD may benefit. Donations do not purchase a commercial license.
+Support is optional. The [NOWPayments registration link](https://account.nowpayments.io/de/create-account?link_id=2318328728) is an affiliate link; OD may benefit.

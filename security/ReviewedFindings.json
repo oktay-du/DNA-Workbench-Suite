@@ -440,7 +440,7 @@
       "path": "DNA_Software/Launcher/plugin_hub.py",
       "rule": "B404",
       "code_sha256": "5ba503bcbb9757d88afdd1d320e51e673591bd22ea0599b69eed664ec35c3ea6",
-      "file_sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "file_sha256": "f0ad27ae43cf344b443ac0113ab608b92629f392d1bb7582dd4f5ca710cc97e9",
       "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -451,7 +451,7 @@
       "path": "DNA_Software/Launcher/plugin_hub.py",
       "rule": "B603",
       "code_sha256": "77752fe7cc7b64cda61dd3737f3b83f3c7dcf57f9dedcebb988cb1f0b1cbf60e",
-      "file_sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "file_sha256": "f0ad27ae43cf344b443ac0113ab608b92629f392d1bb7582dd4f5ca710cc97e9",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -465,7 +465,7 @@
       "path": "DNA_Software/Launcher/plugin_hub.py",
       "rule": "B603",
       "code_sha256": "cd2c75a6786b7602e1c9006dbc509ea8a9689e1c64a311600e66f0fcc8b9990e",
-      "file_sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "file_sha256": "f0ad27ae43cf344b443ac0113ab608b92629f392d1bb7582dd4f5ca710cc97e9",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -479,7 +479,7 @@
       "path": "DNA_Software/Launcher/plugin_hub.py",
       "rule": "B603",
       "code_sha256": "86b7efb14a2a17ef64ee4fb57b00f6430b8ee3c60d924c92f20bc8c4a4f2bdf3",
-      "file_sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "file_sha256": "f0ad27ae43cf344b443ac0113ab608b92629f392d1bb7582dd4f5ca710cc97e9",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -662,7 +662,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "B404",
       "code_sha256": "465295e1081bb018adfa66681fe64c2df28ab18158ae8fadd85a97a7b2c420e2",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -673,7 +673,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "B603",
       "code_sha256": "915def17b756a84cd7a9d7bf938818eefb4ac4d339aec106cf58066b83a767df",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -687,7 +687,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "B603",
       "code_sha256": "997b1600e862cbb39463db1662d75a7c77be4320c45e9492741c28752b606b6f",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -701,7 +701,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "B603",
       "code_sha256": "6530abfd3bfcbda54c4125c70f9bf2c52c6e81023ae87fbe4a55c6ad63b440e7",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -715,7 +715,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "B603",
       "code_sha256": "52205651af6e1aa5f8cc83a90f3ff01e4c3588b57e6edd9b4f7cc6dd95fd570d",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -852,7 +852,7 @@
       "path": "DNA_Software/Launcher/plugin_hub.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "67c322bf020476b88fe520d6683db266b4ba62825c0a9d3e179f86989e4ed69b",
-      "file_sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "file_sha256": "f0ad27ae43cf344b443ac0113ab608b92629f392d1bb7582dd4f5ca710cc97e9",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -865,7 +865,7 @@
       "path": "DNA_Software/Launcher/plugin_hub.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "62868ca222861a657b1b36e3a8391406251a75e856870ef74b73b0622cf87fa9",
-      "file_sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "file_sha256": "f0ad27ae43cf344b443ac0113ab608b92629f392d1bb7582dd4f5ca710cc97e9",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -906,7 +906,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "3b5fc06faff76d9533eb64b3a2bc7cd32c3e6442dcaed9b76c593cff0d1c8026",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -919,7 +919,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "e956e7736e6cf0da1c62a09214626d551a7b0ca36515e7f7c97d350a4fa8008c",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -932,7 +932,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "b3dbc07de3b53352a0c6620b7634d4a49b384e1c5f090c5c3cb17dd01a968b77",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -945,7 +945,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "39100d0c1afd12adc7dc486501bdc07454f18d671a187af7bdb1be318e29a84d",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -958,7 +958,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "43af1af9d126953d19119d1f835498525f8e61f42887d4abef103ffa3e60a7a9",
-      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
+      "file_sha256": "29608bfdd6c95593ad84a013480064daee6522aa4d2f0685162fe29bfa7db692",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -971,7 +971,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "641adae45d2f29596d0ce109dc6434790e2da97588c858b3aa9e7d1609a2a39c",
-      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
+      "file_sha256": "29608bfdd6c95593ad84a013480064daee6522aa4d2f0685162fe29bfa7db692",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -989,14 +989,14 @@
         "test_feedback",
         "test_security_boundaries"
       ],
-      "file_sha256": "23dc57e8613f20c644de570d01403d246e4c5dfd9083e6f1ccf6fbd64e5fdc87"
+      "file_sha256": "1df084d33397e255f7e0c478c87295d3356a130ee38cbf4fc5723532bac79bea"
     },
     {
       "tool": "Bearer",
       "path": "DNA_Software/Launcher/heritage.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "fb679f6412fc2d1c285c39c7afc4c23a1f837b3849ebe26e01953c5735d39734",
-      "file_sha256": "250cd745860883503902fb21faa0f545eebe14204534faf94fdad1f76f69f886",
+      "file_sha256": "4f934f4e5a67f801a0bbe42dcffe4fe8f043889dd940de236f3e22a854ba989d",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -1007,8 +1007,8 @@
       "tool": "Bearer",
       "path": "DNA_Software/Launcher/heritage.js",
       "rule": "javascript_lang_dangerous_insert_html",
-      "code_sha256": "f4f354cd76a75a4c598ed15c5af4d19f06adbbcb18c06434b461238a9bb45358",
-      "file_sha256": "250cd745860883503902fb21faa0f545eebe14204534faf94fdad1f76f69f886",
+      "code_sha256": "6183c9cbda6ad5c0bdd87a4d33b58c4182b7571c5d321927dab3f8f7c1319b30",
+      "file_sha256": "4f934f4e5a67f801a0bbe42dcffe4fe8f043889dd940de236f3e22a854ba989d",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -1492,7 +1492,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "5d8c37fe59ff3bafb79406a6ff3766e5510c2882165a4a913854a16df3b66a02"
+      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
     },
     {
       "tool": "Bearer",
@@ -1504,7 +1504,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "5d8c37fe59ff3bafb79406a6ff3766e5510c2882165a4a913854a16df3b66a02"
+      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
     },
     {
       "tool": "Bearer",
@@ -1516,7 +1516,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "5d8c37fe59ff3bafb79406a6ff3766e5510c2882165a4a913854a16df3b66a02"
+      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
     },
     {
       "tool": "Bearer",
@@ -1528,7 +1528,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "5d8c37fe59ff3bafb79406a6ff3766e5510c2882165a4a913854a16df3b66a02"
+      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
     },
     {
       "tool": "Bearer",
@@ -1540,7 +1540,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "5d8c37fe59ff3bafb79406a6ff3766e5510c2882165a4a913854a16df3b66a02"
+      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
     },
     {
       "tool": "Bearer",
@@ -1552,7 +1552,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "5d8c37fe59ff3bafb79406a6ff3766e5510c2882165a4a913854a16df3b66a02"
+      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
     },
     {
       "tool": "Bearer",
@@ -1564,7 +1564,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "5d8c37fe59ff3bafb79406a6ff3766e5510c2882165a4a913854a16df3b66a02"
+      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
     },
     {
       "tool": "Bearer",
@@ -1626,7 +1626,7 @@
       "path": "DNA_Software/Launcher/plugin_hub.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "83d1a610d999f5da725ee966cd0ccca31fd975c4540a9e127b392a60af37951d",
-      "file_sha256": "20a400efe8d486a3f2f010c25d2d6e09cdc3a19d154dd832acac0b68d6ce2435",
+      "file_sha256": "f0ad27ae43cf344b443ac0113ab608b92629f392d1bb7582dd4f5ca710cc97e9",
       "reason": "Source downloads use a curated project ID lookup and a fixed audit manifest; arbitrary scraped project links cannot supply executable paths or commands.",
       "tests": [
         "test_plugins"
@@ -2388,7 +2388,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "10153b6921720a122e11cf34c1f7f18833e067a3d4c317910b30649b6573a434",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Tools are looked up in the curated locked registry. Views read explicitly selected local data; HTTP serving separately enforces its allowed asset/run roots and range protocol.",
       "tests": [
         "test_visual_tools"
@@ -2399,7 +2399,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "a0fd03400b33d8afe5f186dec29f982b78cac220c830ebca18c834ce80b27e1f",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Tools are looked up in the curated locked registry. Views read explicitly selected local data; HTTP serving separately enforces its allowed asset/run roots and range protocol.",
       "tests": [
         "test_visual_tools"
@@ -2502,7 +2502,7 @@
       "path": "DNA_Software/Launcher/visual_tools.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "b702278cd6ea6860a9afce815158e0a203e51d93076b86ad8220bed383e0dd03",
-      "file_sha256": "57879ca528bdc292121c2222d5c993a579cb1a4f23b7e13e288107e4ad1a66b3",
+      "file_sha256": "3debb7c9e8071a40038047ddf3866f40610cb6fda56e95a6e3d71c79587ccf6b",
       "reason": "Tools are looked up in the curated locked registry. Views read explicitly selected local data; HTTP serving separately enforces its allowed asset/run roots and range protocol.",
       "tests": [
         "test_visual_tools"
@@ -2529,7 +2529,7 @@
         "test_agent_control"
       ],
       "code_sha256": "ecd30a5edec6aa3c0dfd82d52efc1f3a4521ee5249cfb28fd19aca45ece4823c",
-      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
+      "file_sha256": "29608bfdd6c95593ad84a013480064daee6522aa4d2f0685162fe29bfa7db692",
       "diff_review": "Reviewed sequence-lab DOM renderer, fixed project links, filtered tool cards, and removal of generic English fallback copy in favor of specific existing tool/field descriptions. el/textContent remain the rendering boundary; no source HTML or automatic analyses added. Browser synthetic job, escaping tests and web quality positive controls passed."
     },
     {
@@ -2542,14 +2542,14 @@
         "test_agent_control"
       ],
       "code_sha256": "1ac99e373566c630fe4b8fc51f5558ac9b9f37226acb8062193b7fbc22ce22e1",
-      "file_sha256": "b75f018a83d481c38122f9845c8a9fd1d22f5fda9d639c1c59fb91ad643fd849"
+      "file_sha256": "5a817a53f7ad10974c7eece714b31607a71b06b5bd203bac6b24656944950b49"
     },
     {
       "tool": "Bearer",
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "d0f4c8df09974eb17df58451e9c59ae6b8b3f2b878521f8c684e5262436f48de",
-      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
+      "file_sha256": "29608bfdd6c95593ad84a013480064daee6522aa4d2f0685162fe29bfa7db692",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2561,7 +2561,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "2bff5f066f70f0608ee7243dddf04a4f6cb873f6c9818aa2e6c19a69b6332903",
-      "file_sha256": "0f22da4db5353c181c4c2ccdeb76ff7cb97fe88cf129155298f1833a8be97724",
+      "file_sha256": "29608bfdd6c95593ad84a013480064daee6522aa4d2f0685162fe29bfa7db692",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"

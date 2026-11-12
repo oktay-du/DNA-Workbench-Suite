@@ -192,7 +192,7 @@
       "category": "Files & sources",
       "title": "Compare source identity",
       "description": "Test two VCFs on common SNPs for genotype compliance.",
-      "tools": "BCFtools · Vergleichsskript",
+      "tools": "BCFtools · comparison script",
       "action": "compare",
       "fields": [
         {
@@ -679,7 +679,7 @@
       "category": "WGS & variants",
       "title": "Compare source conflicts",
       "description": "Shared variants and genotype deviations as a report.",
-      "tools": "BCFtools · Konfliktbericht",
+      "tools": "BCFtools · conflict report",
       "action": "compare",
       "fields": [
         {
@@ -854,7 +854,7 @@
       "id": "whatshap",
       "category": "WGS & variants",
       "title": "Phase using sequencing reads",
-      "description": "WhatsHap verwendet passende Reads statt nur statistischer Referenzpanels.",
+      "description": "WhatsHap uses matching reads in addition to statistical reference panels.",
       "tools": "WhatsHap",
       "action": "whatshap",
       "fields": [
@@ -913,7 +913,7 @@
       "id": "truvari",
       "category": "Quality & formats",
       "title": "Compare structural variants",
-      "description": "Zwei kompatible SV-VCFs anhand expliziter Parameter vergleichen.",
+      "description": "Compare two compatible SV VCFs using explicit parameters.",
       "tools": "Truvari",
       "action": "truvari",
       "fields": [
@@ -1565,7 +1565,7 @@
       "category": "Reports & management",
       "title": "Export datasets and reports",
       "description": "Enter reports and supporting documents into a clearly named ZIP.",
-      "tools": "ZIP-Export · SHA-256",
+      "tools": "ZIP export · SHA-256",
       "action": "export",
       "fields": [
         {
@@ -1870,7 +1870,7 @@
       "category": "Files & sources",
       "title": "Index source variants",
       "description": "Store genotypes and quality fields from selected VCFs separately.",
-      "tools": "SQLite · VCF-Index",
+      "tools": "SQLite · VCF index",
       "action": "variant_index",
       "fields": [
         {

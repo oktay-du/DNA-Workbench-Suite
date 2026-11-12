@@ -36,9 +36,14 @@
       original.set(node, { english, rendered });
       if (value !== rendered) node.nodeValue = rendered;
     }
-    for (const element of document.querySelectorAll("[placeholder],[title],[aria-label]")) {
+    for (const element of document.querySelectorAll(
+      "[placeholder],[title],[aria-label],optgroup[label]"
+    )) {
       let saved = attributes.get(element) || {};
-      for (const name of ["placeholder", "title", "aria-label"]) {
+      const names = element.matches("optgroup")
+        ? ["label"]
+        : ["placeholder", "title", "aria-label"];
+      for (const name of names) {
         const value = element.getAttribute(name);
         if (value === null) continue;
         const prior = saved[name],

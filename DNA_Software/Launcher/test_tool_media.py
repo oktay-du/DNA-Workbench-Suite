@@ -11,7 +11,23 @@ class MediaTests(unittest.TestCase):
             "plugin_hub.listing",
             return_value={
                 "projects": [
-                    {"id": "jbrowse", "task": "", "installable": True, "visual": True}
+                    {
+                        "id": "jbrowse",
+                        "task": "",
+                        "installable": True,
+                        "visual": True,
+                        "installed": True,
+                    },
+                    {
+                        "id": "genomespy",
+                        "name": "GenomeSpy",
+                        "url": "https://example.invalid/genomespy",
+                        "license": "MIT",
+                        "task": "",
+                        "installable": True,
+                        "visual": True,
+                        "installed": False,
+                    },
                 ]
             },
         ):
@@ -24,6 +40,14 @@ class MediaTests(unittest.TestCase):
             ]
         )
         self.assertFalse(next(x for x in r["tools"] if x["id"] == "circos")["adapter"])
+        self.assertTrue(
+            next(x for x in r["tools"] if x["id"] == "jbrowse")["adapter"]["installed"]
+        )
+        self.assertFalse(
+            next(x for x in r["tools"] if x["id"] == "genomespy")["adapter"][
+                "installed"
+            ]
+        )
         self.assertFalse(any("command" in x for x in r["tools"]))
 
     def test_bounded_validated_cache_and_provenance(self):

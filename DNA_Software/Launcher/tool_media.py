@@ -17,6 +17,7 @@ GUARD = threading.Lock()
 def catalog():
     value = json.loads((APP / "genocat-catalog.json").read_text(encoding="utf-8"))
     import plugin_hub
+    from visual_tools import CURATED
 
     curated = {p["id"]: p for p in plugin_hub.listing()["projects"]}
     aliases = {
@@ -24,6 +25,21 @@ def catalog():
         "integrative-genomics-viewer": "igvjs",
         "jbrowse": "jbrowse",
     }
+    listed = {aliases.get(row["id"], row["id"]) for row in value["tools"]}
+    visual_names = {row["id"]: row["name"] for row in CURATED}
+    visual_names["seqviz"] = "SeqViz"
+    for id, project in curated.items():
+        if not project["visual"] or id in listed:
+            continue
+        value["tools"].append(
+            {
+                "id": id,
+                "name": visual_names.get(id, id),
+                "catalog_date": "",
+                "metadata": {"browser": project["url"], "license": project["license"]},
+                "images": [],
+            }
+        )
     for row in value["tools"]:
         id = aliases.get(row["id"], row["id"])
         p = curated.get(id)
@@ -32,6 +48,7 @@ def catalog():
                 "id": id,
                 "task": p["task"],
                 "installable": p["installable"],
+                "installed": p.get("installed"),
                 "visual": p["visual"],
             }
             if p

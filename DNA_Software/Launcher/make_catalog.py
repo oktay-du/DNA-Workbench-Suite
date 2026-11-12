@@ -135,7 +135,7 @@ add(
     "Files & sources",
     "Compare source identity",
     "Test two VCFs on common SNPs for genotype compliance.",
-    "BCFtools · Vergleichsskript",
+    "BCFtools · comparison script",
     "compare",
     [
         vcf("a", "First-source VCF"),
@@ -295,7 +295,7 @@ add(
     "WGS & variants",
     "Compare source conflicts",
     "Shared variants and genotype deviations as a report.",
-    "BCFtools · Konfliktbericht",
+    "BCFtools · conflict report",
     "compare",
     [
         vcf("a", "Normalised first-source VCF"),
@@ -344,7 +344,7 @@ add(
     "whatshap",
     "WGS & variants",
     "Phase using sequencing reads",
-    "WhatsHap verwendet passende Reads statt nur statistischer Referenzpanels.",
+    "WhatsHap uses matching reads in addition to statistical reference panels.",
     "WhatsHap",
     "whatshap",
     [vcf(), field("alignment", "BAM / CRAM from the same sample"), ref(), build()],
@@ -354,7 +354,7 @@ add(
     "truvari",
     "Quality & formats",
     "Compare structural variants",
-    "Zwei kompatible SV-VCFs anhand expliziter Parameter vergleichen.",
+    "Compare two compatible SV VCFs using explicit parameters.",
     "Truvari",
     "truvari",
     [
@@ -544,7 +544,7 @@ add(
     "Reports & management",
     "Export selected findings",
     "Enter reports and supporting documents into a clearly named ZIP.",
-    "ZIP-Export · SHA-256",
+    "ZIP export · SHA-256",
     "export",
     [field("files", "Reports and evidence to export", multi=True)],
     "Only the explicitly selected files are copied. The same file names are given separate subfolders. The ZIP and the source files are given checksums. Large raw data is not attached unasked.",
@@ -707,7 +707,7 @@ add(
     "Files & sources",
     "Index source variants",
     "Store genotypes and quality fields from selected VCFs separately.",
-    "SQLite · VCF-Index",
+    "SQLite · VCF index",
     "variant_index",
     [
         field("files", "Registered VCF / VCF.gz sources", multi=True),

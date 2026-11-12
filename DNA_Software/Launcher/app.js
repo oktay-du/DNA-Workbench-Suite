@@ -2312,6 +2312,21 @@ function donationsPage() {
     ),
     affiliate
   );
+  for (const [provider, name, description] of [
+    ["patreon", "Patreon", "Support OD with a Patreon gift."],
+    ["unmineable-referral", "unMineable", "Optional referral link. OD may benefit."],
+  ]) {
+    const link = el(
+      "a",
+      t(provider === "patreon" ? "Patreon gift ↗" : "unMineable referral ↗"),
+      "button secondary"
+    );
+    link.href = state.project.support_links[provider];
+    link.target = "_blank";
+    link.rel = provider === "patreon" ? "noopener noreferrer" : "noopener noreferrer sponsored";
+    link.dataset.command = "app.support";
+    settingRow(card, name, t(description), link);
+  }
   $("main").append(card);
 }
 

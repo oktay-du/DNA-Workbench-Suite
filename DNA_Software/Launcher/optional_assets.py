@@ -4,7 +4,7 @@
 
 from pathlib import Path
 import datetime, hashlib, json, os, shutil, uuid
-import security_paths
+import durable_store, network_io, security_paths
 
 APP = Path(__file__).resolve().parent
 ROOT = APP.parents[1]
@@ -165,6 +165,77 @@ def stage(args):
                 "Source changed; validated destination retained and source not removed"
             )
         src.unlink()
+    return record(row, dest, digest)
+
+
+def download(args):
+    if args.get("rights_reviewed") is not True:
+        raise ValueError(
+            "Review upstream terms and confirm your necessary rights first"
+        )
+    row = plan(args["asset"])
+    lock = json.loads((APP / "install-lock.json").read_text(encoding="utf-8"))
+    item = next(i for i in lock["items"] if i["id"] == row["id"])
+    expected = row["expected_sha256"]
+    cache = Path(row["cache_path"])
+    if expected and cache.exists():
+        with cache.open("rb") as stream:
+            digest = hashlib.file_digest(stream, "sha256").hexdigest()
+        if digest != expected:
+            raise ValueError(
+                "Destination contains different bytes; nothing overwritten"
+            )
+        return record(row, cache, digest)
+
+    folder = cache.parent if expected else Path(row["staging_folder"])
+    folder.mkdir(parents=True, exist_ok=True)
+    part = folder / ("." + uuid.uuid4().hex + ".part")
+    sha256 = hashlib.sha256()
+    md5 = hashlib.md5(usedforsecurity=False) if item.get("expected_md5") else None
+    size = 0
+    expected_size = item.get("expected_bytes")
+    try:
+        with (
+            network_io.open_https(item["url"], timeout=90) as response,
+            part.open("xb") as output,
+        ):
+            while block := response.read(1024 * 1024):
+                size += len(block)
+                if expected_size and size > expected_size:
+                    raise ValueError("Download size differs from the catalog")
+                sha256.update(block)
+                if md5 is not None:
+                    md5.update(block)
+                output.write(block)
+        if not size or (expected_size and size != expected_size):
+            raise ValueError("Download size differs from the catalog")
+        digest = sha256.hexdigest()
+        if (expected and digest != expected) or (
+            md5 is not None and md5.hexdigest() != item["expected_md5"]
+        ):
+            raise ValueError("Download checksum differs from the catalog")
+        dest = (
+            cache
+            if expected
+            else security_paths.contained(folder, digest[:16] + "-" + cache.name)
+        )
+        try:
+            if os.name == "nt":
+                part.rename(dest)
+            else:
+                os.link(part, dest)
+        except FileExistsError:
+            with dest.open("rb") as stream:
+                if hashlib.file_digest(stream, "sha256").hexdigest() != digest:
+                    raise ValueError(
+                        "Destination contains different bytes; nothing overwritten"
+                    ) from None
+        return record(row, dest, digest)
+    finally:
+        part.unlink(missing_ok=True)
+
+
+def record(row, dest, digest):
     receipt = {
         "asset": row["id"],
         "sha256": digest,
@@ -183,6 +254,5 @@ def stage(args):
         ROOT / "DNA_Software/UserData/Launcher/AssetReceipts",
         security_paths.identifier(row["id"]) + ".json",
     )
-    receipts.parent.mkdir(parents=True, exist_ok=True)
-    receipts.write_text(json.dumps(receipt, indent=2), encoding="utf-8")
+    durable_store.write(receipts, receipt)
     return receipt

@@ -265,7 +265,7 @@ function ensureEvidence() {
       "Select Profiles, Build and Filters at the top and click “Show Comparisons.” Without matching segment or QC data, results remain open."
     )
   );
-  p.append(button("Jetzt lokal vergleichen", analyze));
+  p.append(button("Run local comparison", analyze));
   return false;
 }
 function renderDashboard() {
@@ -373,7 +373,7 @@ function renderShared() {
   );
 }
 function renderRoh() {
-  const p = section("Homozygotie-Abschnitte des Bezugsprofils");
+  const p = section("Runs of homozygosity in the reference profile");
   table(
     p,
     [
@@ -1022,7 +1022,7 @@ function show() {
   $("feature-title").textContent = f.title;
   $("feature-help").textContent = f.description;
   $("feature-state").textContent = f.status;
-  $("reference").textContent = "Reference feature: " + f.reference;
+  $("reference").replaceChildren(el("span", "Reference feature:"), " ", el("span", f.reference));
   for (const b of $("menu").querySelectorAll("button"))
     b.classList.toggle("active", b.dataset.feature === f.id);
   const action = f.action;

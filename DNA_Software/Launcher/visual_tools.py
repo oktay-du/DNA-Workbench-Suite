@@ -265,6 +265,8 @@ def install(tool):
             "For this project, there is no tested installation adapter yet. Open project page."
         )
     item = LOCK[tool]
+    if item["kind"] == "pip" and os.name != "nt":
+        raise ValueError("This installation recipe requires Windows.")
     dest = BASE / tool
     dest.mkdir(parents=True, exist_ok=True)
     if installed(tool):

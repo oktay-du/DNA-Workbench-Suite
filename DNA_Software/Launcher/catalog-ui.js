@@ -2,8 +2,7 @@
 (function () {
   const cache = new Map();
   let indexPromise = null;
-  const tr = (de, en) =>
-    typeof t === "function" ? t(de, en) : document.documentElement.lang === "en" ? en : de;
+  const tr = (english) => (typeof t === "function" ? t(english) : english);
   const node = (tag, text = "") => {
     const n = document.createElement(tag);
     n.textContent = text;
@@ -93,11 +92,15 @@
       data = await cmd("tools.catalog");
     if (route !== "genocat") return;
     const info = el("section", "", "card");
+    const counts = node("p");
+    counts.append(
+      node("span", "Gallery entries:"),
+      " " + data.tools.length + " · ",
+      node("span", "GenoCAT snapshot:"),
+      " " + data.catalog_date
+    );
     info.append(
-      node(
-        "p",
-        data.tools.length + " " + tr("catalog entries · metadata dated ") + data.catalog_date
-      ),
+      counts,
       node(
         "p",
         tr(
@@ -114,17 +117,37 @@
     info.append(search);
     const grid = el("div", "", "task-grid tool-catalog-grid");
     root.append(grid);
+    const installPriority = ({ adapter }) =>
+      adapter?.installable && adapter.installed !== true ? 0 : adapter?.installed ? 1 : 2;
+    const tools = [...data.tools].sort((a, b) => installPriority(a) - installPriority(b));
     const draw = () => {
       grid.replaceChildren();
       const term = search.value.toLowerCase();
-      for (const r of data.tools.filter((x) =>
+      for (const r of tools.filter((x) =>
         (x.name + " " + x.summary).toLowerCase().includes(term)
       )) {
         const card = el("article", "", "card task-card");
+        const metadata = node("p");
+        for (const [label, key] of [
+          ["Formats:", "supported_files"],
+          ["Layout:", "genome_layout"],
+          ["Access:", "access_format"],
+        ]) {
+          if (metadata.childNodes.length) metadata.append(" · ");
+          metadata.append(node("span", label), " ");
+          const values = [r.metadata[key] || []].flat();
+          for (const [index, value] of (values.length ? values : ["Not specified"]).entries()) {
+            if (index) metadata.append(", ");
+            metadata.append(node("span", value.replace(/^[“”]|[“”]$/g, "")));
+          }
+        }
         card.append(
           node("h3", r.name),
-          node("p", r.summary),
-          node("small", "GenoCAT " + r.catalog_date + " · " + r.metadata.license),
+          metadata,
+          node(
+            "small",
+            r.catalog_date ? "GenoCAT " + r.catalog_date : tr("Reviewed suite adapter")
+          ),
           link(tr("Project / installation ↗"), r.metadata.browser)
         );
         const details = node("details"),
@@ -138,13 +161,15 @@
         });
         card.append(details);
         if (r.adapter) {
-          if (r.adapter.installable)
+          if (r.adapter.installed) card.append(node("p", tr("Installed")));
+          else if (r.adapter.installable)
             card.append(
               button(tr("Install in suite"), async () => {
                 await cmd("plugin.submit", { id: r.adapter.id, action: "install" });
                 go("plugins");
               })
             );
+          else card.append(node("p", tr("Automatic installation unavailable on this system.")));
           if (r.adapter.task)
             card.append(button(tr("Open with active profile"), () => openTask(r.adapter.task)));
           else if (r.adapter.visual)

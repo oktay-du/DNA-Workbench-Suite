@@ -76,12 +76,17 @@ def listing():
     for item in audit()["projects"]:
         id = item["id"]
         visual = id in visual_tools.LOCK
+        visual_installable = visual and (
+            os.name == "nt" or visual_tools.LOCK[id]["kind"] != "pip"
+        )
         tool = id in on_demand.TOOLS
         recipe = (
             "visual"
-            if visual
+            if visual_installable
             else "on-demand"
-            if tool and on_demand.TOOLS[id][2] not in ("manual", "windows-manual")
+            if not visual
+            and tool
+            and on_demand.TOOLS[id][2] not in ("manual", "windows-manual")
             else ""
         )
         receipt = cached("source-" + id + ".json")

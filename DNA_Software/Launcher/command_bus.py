@@ -487,6 +487,14 @@ def _build_definitions():
         ["local_files", "may_move_files"],
     )
     add(
+        "assets.download",
+        "Download one registered optional asset after rights review. Files without a pinned SHA-256 are staged for review.",
+        obj({"asset": S, "rights_reviewed": B}, ["asset", "rights_reviewed"]),
+        "assets:download",
+        False,
+        ["external_download", "local_files"],
+    )
+    add(
         "app.info",
         "Author OD, license and optional donation address. Does not submit payments.",
         obj(),
@@ -524,7 +532,13 @@ def _build_definitions():
         obj(
             {
                 "provider": enum(
-                    ["nowpayments", "buymeacoffee", "nowpayments-affiliate"]
+                    [
+                        "nowpayments",
+                        "buymeacoffee",
+                        "patreon",
+                        "unmineable-referral",
+                        "nowpayments-affiliate",
+                    ]
                 )
             },
             ["provider"],
@@ -1489,11 +1503,13 @@ def invoke(handler, args):
     if group == "assets":
         import optional_assets
 
+        if action == "catalog":
+            return optional_assets.catalog()
+        if action == "plan":
+            return optional_assets.plan(args["asset"])
         return (
-            optional_assets.catalog()
-            if action == "catalog"
-            else optional_assets.plan(args["asset"])
-            if action == "plan"
+            optional_assets.download(args)
+            if action == "download"
             else optional_assets.stage(args)
         )
     if group == "feedback":
@@ -1520,7 +1536,8 @@ def invoke(handler, args):
         if action == "support":
             return {
                 "url": release_tools.info()["support_links"][args["provider"]],
-                "affiliate": args["provider"] == "nowpayments-affiliate",
+                "affiliate": args["provider"]
+                in ("nowpayments-affiliate", "unmineable-referral"),
                 "optional": True,
                 "payment_submitted": False,
             }

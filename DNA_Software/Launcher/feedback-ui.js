@@ -7,7 +7,6 @@ window.renderNoticesPage = async function () {
     ["ai", "AI-assisted development"],
     ["privacy", "Privacy"],
     ["research", "Research use"],
-    ["licensing", "Licensing"],
   ]) {
     const card = el("section", "", "card");
     card.append(
@@ -20,17 +19,11 @@ window.renderNoticesPage = async function () {
     mail = el("a", data.contact.email);
   mail.href = "mailto:" + data.contact.email;
   contact.append(el("h2", data.contact.name), mail);
-  for (const [label, text] of [
-    ["PolyForm Noncommercial 1.0.0", data.license_text],
-    ["Legacy MIT license", data.legacy_license_text],
-  ]) {
-    const detail = el("details");
-    detail.append(el("summary", label), el("pre", text));
-    contact.append(detail);
-  }
   $("main").append(contact);
   const links = el("section", "", "card");
-  for (const [label, href] of Object.entries(data.links)) {
+  for (const [label, href] of Object.entries(data.links).filter(([label]) =>
+    ["Privacy notice", "Research and legal notice"].includes(label)
+  )) {
     const a = el("a", t(label));
     a.href = href;
     a.target = "_blank";
@@ -38,39 +31,6 @@ window.renderNoticesPage = async function () {
     links.append(a, el("br"));
   }
   $("main").append(links);
-  const inventory = el("details", "", "card");
-  inventory.append(el("summary", t("Third-party license inventory")));
-  inventory.addEventListener("toggle", async () => {
-    if (!inventory.open || inventory.dataset.loaded) return;
-    inventory.dataset.loaded = "true";
-    try {
-      const data = (await dnaAgent.execute("app.license_inventory", {})).result;
-      inventory.append(
-        el("p", t("Upstream declarations; optional and development tools are not all bundled.")),
-        table(
-          [
-            [
-              t("Component"),
-              (r) => {
-                const a = el("a", r.name);
-                a.href = r.source;
-                a.target = "_blank";
-                a.rel = "noopener noreferrer";
-                return a;
-              },
-            ],
-            [t("License"), "license"],
-            [t("Role"), "scope"],
-          ],
-          data.items
-        )
-      );
-    } catch (error) {
-      delete inventory.dataset.loaded;
-      inventory.append(el("p", error.message));
-    }
-  });
-  $("main").append(inventory);
 };
 window.renderFeedbackPage = async function () {
   header(
@@ -299,6 +259,32 @@ window.renderOptionalAssetsPage = async function () {
     );
     stage.disabled = true;
     actions.append(stage);
+    let downloading = false;
+    const downloadStatus = el("p");
+    downloadStatus.setAttribute("role", "status");
+    const download = button(
+      t(r.expected_sha256 ? "Download to cache" : "Download for manual review"),
+      async () => {
+        downloading = true;
+        download.disabled = true;
+        downloadStatus.textContent = t("Downloading…");
+        try {
+          const { result } = await dnaAgent.execute("assets.download", {
+            asset: r.id,
+            rights_reviewed: rights.checked,
+          });
+          downloadStatus.replaceChildren(el("span", result.status), " ", el("code", result.path));
+        } catch (error) {
+          downloadStatus.textContent = t("Download failed.");
+          throw error;
+        } finally {
+          downloading = false;
+          download.disabled = !rights.checked;
+        }
+      }
+    );
+    download.disabled = true;
+    actions.prepend(download);
     let automatic = null;
     if (r.automatic_available) {
       automatic = button(
@@ -319,6 +305,7 @@ window.renderOptionalAssetsPage = async function () {
     }
     rights.onchange = () => {
       stage.disabled = !rights.checked;
+      download.disabled = !rights.checked || downloading;
       if (automatic) automatic.disabled = !rights.checked;
     };
     detail.append(
@@ -326,9 +313,10 @@ window.renderOptionalAssetsPage = async function () {
       file,
       mode,
       actions,
+      downloadStatus,
       notice(
         t(
-          "Manual staging verifies storage only. It does not execute files, complete installation, validate science or override upstream conditions. Unknown-license assets require further review."
+          "Downloads with a pinned SHA-256 go to the cache. Other downloads go to the manual staging folder. Downloading and staging do not install or run a file."
         )
       ),
       status

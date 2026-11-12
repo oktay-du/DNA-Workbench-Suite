@@ -17,8 +17,8 @@ Eine Anwendung für Windows und Linux: DNA-Quelldateien, Familienprofile, Forsch
 
 Nach dem Entpacken unter Windows `DNA_Launcher.exe` starten und Core einrichten. Unter Linux `./DNA-Workbench.sh` starten. Mit den künstlichen Beispieldaten beginnen. Optionale Module werden bei Bedarf installiert. WSL ist nur unter Windows nötig und kann Administratorrechte und einen Neustart brauchen. Windows-only-Installer wie Gramps, JBrowse Desktop und UGENE haben keine Linux-Datei im Katalog. Wine wird nicht verwendet. [Welche Programme auf welchem System laufen](docs/VERSIONS.md).
 
-Forschungssoftware, kein klinisches Diagnosesystem. Quelldaten und Ergebnisse bleiben standardmäßig lokal. Optionale externe Dienste haben eigene Datenschutz- und Lizenzbedingungen.
+Forschungssoftware, kein klinisches Diagnosesystem. Quelldaten und Ergebnisse bleiben standardmäßig lokal. Für optionale externe Dienste gelten eigene Datenschutzbedingungen.
 
-[Lizenzen und Hinweise](docs/LICENSING.md) · [Datenschutz](docs/PRIVACY.md) · Kontakt: **oktaydu@proton.me**
+[Datenschutz](docs/PRIVACY.md) · Kontakt: **oktaydu@proton.me**
 
 Mit KI-Unterstützung erstellt. Freiwillige Unterstützung: [NOWPayments](https://nowpayments.io/donation/oktayd) · [Buy Me a Coffee](https://buymeacoffee.com/okioki).
