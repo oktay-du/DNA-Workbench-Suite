@@ -9,7 +9,7 @@
 
 **DNA files, family records and research workflows in one local workspace. 36 offline interface languages.**
 
-[**Download**](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest) · [Website](https://oktay-du.github.io/DNA-Workbench-Suite/) · [Getting started](docs/GETTING_STARTED.md) · [Screenshots](docs/GALLERY.md) · [Wiki](https://github.com/oktay-du/DNA-Workbench-Suite/wiki) · [Deutsch](README.de.md)
+[**Download**](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest) · [Website](https://oktay-du.github.io/DNA-Workbench-Suite/) · [Getting started](docs/GETTING_STARTED.md) · [Screenshots](docs/GALLERY.md) · [Wiki](https://github.com/oktay-du/DNA-Workbench-Suite/wiki) ·
 
 [Contribute](CONTRIBUTING.md) · [**Improve with AI**](AI_CONTRIBUTING.md) · [Report a bug](https://github.com/oktay-du/DNA-Workbench-Suite/issues/new/choose)
 
