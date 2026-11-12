@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import json, shutil, subprocess, sys, tempfile, time, urllib.request
+from urllib.error import HTTPError
 import public_package
 
 with tempfile.TemporaryDirectory() as folder:
@@ -39,6 +40,20 @@ with tempfile.TemporaryDirectory() as folder:
             config["url"] + "/Locales/de.json", timeout=20
         ) as response:
             assert json.loads(response.read())["Settings"] == "Einstellungen"
+        with urllib.request.urlopen(
+            config["url"] + "/Locales/languages.json", timeout=20
+        ) as response:
+            assert len(json.loads(response.read())) == 36
+        with urllib.request.urlopen(
+            config["url"] + "/Locales/flags/tr.svg", timeout=20
+        ) as response:
+            assert response.headers.get_content_type() == "image/svg+xml"
+        try:
+            urllib.request.urlopen(config["url"] + "/Locales/unknown.json", timeout=20)
+        except HTTPError as error:
+            assert error.code == 404
+        else:
+            raise AssertionError("An unregistered language asset was served")
         proc.stdin.close()
         proc.wait(timeout=8)
         assert proc.returncode == 0

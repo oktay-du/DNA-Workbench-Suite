@@ -2966,6 +2966,18 @@
       "tests": [
         "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
       ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/family.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "c0f39a0e7372a48190b1f371522f534e03562a2b9d43404ca803d612d189f072",
+      "file_sha256": "f7de0cb8b5ef174502244f5daa8c8709dccc142b913abee3fb9cc12b1f59c431",
+      "reason": "The request path is used only as an exact lookup key in STATIC_WEB_FILES or localization.ui_assets(). The former contains fixed bundled filenames and the latter constructs paths from the bundled manifest after validating each language code and flag. Unregistered requests never produce a filesystem path.",
+      "tests": [
+        "test_embedded_service",
+        "test_localization.LocalizationTests.test_interface_languages_have_local_dictionaries_and_flags"
+      ]
     }
   ]
 }

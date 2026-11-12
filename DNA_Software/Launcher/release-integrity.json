@@ -199,7 +199,7 @@
     },
     {
       "path": "DNA_Software/Launcher/test_embedded_service.py",
-      "sha256": "27ae38489fbb49f232442720a3caaa9116db85e5820802af983644424f7f3fe7"
+      "sha256": "67e92a3d1a86a1acc4b0ae89303a939fce349e5a9020d26d1ecdf84e95430c80"
     },
     {
       "path": "DNA_Software/Launcher/test_dependencies.py",

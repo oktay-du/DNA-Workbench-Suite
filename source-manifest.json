@@ -197,7 +197,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_embedded_service.py",
-    "sha256": "27ae38489fbb49f232442720a3caaa9116db85e5820802af983644424f7f3fe7"
+    "sha256": "67e92a3d1a86a1acc4b0ae89303a939fce349e5a9020d26d1ecdf84e95430c80"
   },
   {
     "path": "DNA_Software/Launcher/test_dependencies.py",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "2c1b1c6520b771ab32970051cc461741706747657dec2775ca756f8003b244a8"
+    "sha256": "dcd53ef55da5192950fa50fcd19f286454a76620b8081ebf4401d9116b06e7d5"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
