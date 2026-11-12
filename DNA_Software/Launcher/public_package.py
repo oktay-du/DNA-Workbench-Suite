@@ -46,6 +46,7 @@ LAUNCHER = [
     "install-foundation.sh",
     "dependency_manager.py",
     "install-lock.json",
+    "windows-arm64-packages.json",
     "fetch_webview_sdk.py",
     "fetch_webview_runtime.py",
     "fetch_world.py",
@@ -88,12 +89,17 @@ LAUNCHER += [
     "shared-ui.js",
     "shared-ui.css",
     "local_ai.py",
+    "hardware.py",
+    "local_ai_runtime.py",
+    "ai-runtimes.json",
     "mcp_dna.py",
     "ai-packages.json",
     "test_import_mode.py",
     "test_suite_api.py",
     "test_menu_snapshot.py",
     "test_local_ai.py",
+    "test_hardware.py",
+    "test_windows_arm64.py",
 ]
 LAUNCHER += [
     "derived_sources.py",
@@ -260,6 +266,7 @@ LAUNCHER += [
     "tool_hosts.py",
     "test_tool_hosts.py",
     "build_linux.sh",
+    "MacWebView.swift",
     "build_linux_appimage.sh",
     "agent.js",
     "DNA.cmd",
@@ -371,8 +378,9 @@ def entries():
         yield samples / "manifest.json", "Samples/manifest.json"
 
 
-def payload():
-    out = HERE / "core-payload.zip"
+def payload(arch="x64"):
+    out = HERE / ("core-payload.zip" if arch == "x64" else "core-payload-arm64.zip")
+    webview_sdk = HERE / ("WebView2" if arch == "x64" else "WebView2-arm64")
     integrity = [
         {"path": target, "sha256": hashlib.sha256(source.read_bytes()).hexdigest()}
         for source, target in entries()
@@ -389,6 +397,7 @@ def payload():
             indent=2,
         ),
         encoding="utf-8",
+        newline="\n",
     )
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for source, target in entries():
@@ -398,8 +407,8 @@ def payload():
             "Microsoft.Web.WebView2.WinForms.dll",
             "WebView2Loader.dll",
         ]:
-            z.write(HERE / "WebView2" / name, name)
-        for source in (HERE / "WebView2").glob("*LICENSE*"):
+            z.write(webview_sdk / name, name)
+        for source in webview_sdk.glob("*LICENSE*"):
             z.write(source, "DNA_Software/Launcher/WebView2/" + source.name)
     print("Core payload:", out.stat().st_size, "bytes")
 
@@ -431,7 +440,7 @@ def presentation_entries():
                 ".github/ISSUE_TEMPLATE/feature_request.yml",
             )
             or re.fullmatch(
-                r"docs/(?:[A-Z_]+\.md|software-data-catalog\.json|images/[a-z0-9-]+\.(?:png|jpg|svg))",
+                r"docs/(?:[A-Z_]+\.md|software-data-catalog\.json|images/[a-z0-9-]+\.(?:png|jpg|svg|webp|gif|webm))",
                 name,
             )
         ):
@@ -568,6 +577,10 @@ def package():
 
 
 if __name__ == "__main__":
-    import sys
+    import argparse
 
-    payload() if "--payload" in sys.argv else package()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--payload", action="store_true")
+    parser.add_argument("--arch", choices=("x64", "arm64"), default="x64")
+    args = parser.parse_args()
+    payload(args.arch) if args.payload else package()

@@ -1,9 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net48</TargetFramework>
+    <DnaArchitecture Condition="'$(DnaArchitecture)' == ''">x64</DnaArchitecture>
+    <TargetFramework Condition="'$(DnaArchitecture)' != 'arm64'">net48</TargetFramework>
+    <TargetFramework Condition="'$(DnaArchitecture)' == 'arm64'">net481</TargetFramework>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>$(DnaArchitecture)</PlatformTarget>
+    <DefineConstants Condition="'$(DnaArchitecture)' == 'arm64'">$(DefineConstants);DNA_WINDOWS_ARM64</DefineConstants>
+    <ApplicationManifest Condition="'$(DnaArchitecture)' == 'arm64'">app.manifest</ApplicationManifest>
+    <ApplicationIcon Condition="'$(DnaArchitecture)' == 'arm64'">dna.ico</ApplicationIcon>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <Nullable>disable</Nullable>
@@ -18,6 +23,8 @@
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
-    <EmbeddedResource Include="core-payload.zip" LogicalName="DNA.Core.zip" Condition="Exists('core-payload.zip')" />
+    <EmbeddedResource Include="core-payload.zip" LogicalName="DNA.Core.zip" Condition="'$(DnaArchitecture)' != 'arm64' And Exists('core-payload.zip')" />
+    <EmbeddedResource Include="core-payload-arm64.zip" LogicalName="DNA.Core.zip" Condition="'$(DnaArchitecture)' == 'arm64'" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net481" Version="1.0.3" PrivateAssets="all" Condition="'$(DnaArchitecture)' == 'arm64'" />
   </ItemGroup>
 </Project>

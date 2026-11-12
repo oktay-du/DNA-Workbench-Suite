@@ -1,0 +1,170 @@
+{
+  "platforms": {
+    "Darwin-arm64": {
+      "cpu": [
+        [
+          "llama-b12068-bin-macos-arm64.tar.gz",
+          16548390,
+          "0b12600a3f04acc4d74e876cbe4ca70be8fe04093bb19d825828bb4f49048936"
+        ]
+      ],
+      "metal": [
+        [
+          "llama-b12068-bin-macos-arm64.tar.gz",
+          16548390,
+          "0b12600a3f04acc4d74e876cbe4ca70be8fe04093bb19d825828bb4f49048936"
+        ]
+      ]
+    },
+    "Darwin-x64": {
+      "cpu": [
+        [
+          "llama-b12068-bin-macos-x64.tar.gz",
+          12287213,
+          "ef80b3c2de25aac6e164cb2fd8a897878d66adee923b7e5bb3331ca00906da8f"
+        ]
+      ]
+    },
+    "Linux-arm64": {
+      "cpu": [
+        [
+          "llama-b12068-bin-ubuntu-arm64.tar.gz",
+          18617125,
+          "eb4224b3cca7473780ea9072fd18645945b622fe70e3e3f4d56a0c6039637504"
+        ]
+      ],
+      "cuda": [
+        [
+          "llama-b12068-bin-ubuntu-cuda-13.4-arm64.tar.gz",
+          163120490,
+          "c8520ecab64121f0dc20d51aa522e7fd6f99620eb9722b4dd4ef0cb8d967fe13"
+        ],
+        [
+          "cudart-llama-b12068-bin-ubuntu-cuda-13.4-arm64.tar.gz",
+          552522172,
+          "7af7e96cbb702e4ce9b3f91cc00ecc00e4c053dfc52d78ba636cd2f460e1838a"
+        ]
+      ],
+      "vulkan": [
+        [
+          "llama-b12068-bin-ubuntu-vulkan-arm64.tar.gz",
+          29060473,
+          "80912debf56a8557279662deb486ed3032248360b5385e8bec953faa8df7c886"
+        ]
+      ]
+    },
+    "Linux-x64": {
+      "cpu": [
+        [
+          "llama-b12068-bin-ubuntu-x64.tar.gz",
+          22934017,
+          "b24315bd9efc79bee5df80bf8f8f3528f7962940681f80ad9fcc10e5ff6b20b5"
+        ]
+      ],
+      "cuda": [
+        [
+          "llama-b12068-bin-ubuntu-cuda-12.8-x64.tar.gz",
+          187091970,
+          "3838417309d60df3dcd950712d14f43e3465f1552c606dfc269b041c606643da"
+        ],
+        [
+          "cudart-llama-b12068-bin-ubuntu-cuda-12.8-x64.tar.gz",
+          594371572,
+          "808320b0964811e4da0e3e43d60edbf1ef7fe50853bdde9508cc17c3deb4438d"
+        ]
+      ],
+      "rocm": [
+        [
+          "llama-b12068-bin-ubuntu-rocm-10.0-x64.tar.gz",
+          255409048,
+          "0c11e3bd422902d2ad2f228b3f912b8e8487412f04dd28b89889f9714db9b938"
+        ]
+      ],
+      "sycl": [
+        [
+          "llama-b12068-bin-ubuntu-sycl-fp32-x64.tar.gz",
+          66366982,
+          "1c91233514b388257aab4e532702187c5a5e316eea46a64baadaadb1df883efd"
+        ]
+      ],
+      "vulkan": [
+        [
+          "llama-b12068-bin-ubuntu-vulkan-x64.tar.gz",
+          35740324,
+          "2e02b9f0b7883a08d0ef9506a50bb24a669b0a4390d38de4dd39e080b360a4cd"
+        ]
+      ]
+    },
+    "Windows-arm64": {
+      "cpu": [
+        [
+          "llama-b12068-bin-win-cpu-arm64.zip",
+          13098350,
+          "76cb6f32bf6ee4cd2c009673bf37e90f3b15bf1e765a1d814086174afdad2550"
+        ]
+      ],
+      "cuda": [
+        [
+          "llama-b12068-bin-win-cuda-13.4-arm64.zip",
+          156641335,
+          "5c7c25473fafc493085f465ef20adaa0565f4d7ea39b3f637aa1b7699d664720"
+        ],
+        [
+          "cudart-llama-bin-win-cuda-13.4-arm64.zip",
+          153262407,
+          "642dcde8805b3e3165ca710a5443b3b4044b27d96bd3ee3132473988c9bcb774"
+        ]
+      ],
+      "opencl": [
+        [
+          "llama-b12068-bin-win-opencl-adreno-arm64.zip",
+          14088777,
+          "5a7de2ac3b18e29c81b42985eed7618900e21e6182c4ceae4e381d489b8613b4"
+        ]
+      ],
+      "vulkan": [
+        [
+          "llama-b12068-bin-win-vulkan-arm64.zip",
+          25626754,
+          "73c4501046c170ea2a421851ab45161fc728fb013c9379d2bd4c4f951d3ac6e5"
+        ]
+      ]
+    },
+    "Windows-x64": {
+      "cuda": [
+        [
+          "llama-b12068-bin-win-cuda-12.4-x64.zip",
+          286852067,
+          "2660e3fc5644985a88b9616cf3c32857f2b3ad612c0149de0154bb7095d76711"
+        ],
+        [
+          "cudart-llama-bin-win-cuda-12.4-x64.zip",
+          391443627,
+          "8c79a9b226de4b3cacfd1f83d24f962d0773be79f1e7b75c6af4ded7e32ae1d6"
+        ]
+      ],
+      "rocm": [
+        [
+          "llama-b12068-bin-win-rocm-10.0-x64.zip",
+          267332391,
+          "1be67eb085134476ea9aad974f5eacace7734344a8abf91c8bb5c6a604e510c6"
+        ]
+      ],
+      "sycl": [
+        [
+          "llama-b12068-bin-win-sycl-x64.zip",
+          155926360,
+          "5815a1e5b00e752f1370a4b4aa4a10de60c1fd82f7aa297571dba88765de6194"
+        ]
+      ],
+      "vulkan": [
+        [
+          "llama-b12068-bin-win-vulkan-x64.zip",
+          37554335,
+          "e9380d6649324e9827cc2f1348c856a2ae3084258c38c4afef1c7d16dd5a8d15"
+        ]
+      ]
+    }
+  },
+  "release": "b12068"
+}

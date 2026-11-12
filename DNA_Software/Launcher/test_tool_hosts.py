@@ -68,6 +68,17 @@ class ToolHostTests(unittest.TestCase):
             self.assertTrue(os.access(target, os.X_OK))
             self.assertIn("Linux file", result["status"])
 
+    def test_native_alternative_never_installs_a_pinned_linux_x64_binary(self):
+        with (
+            mock.patch.object(on_demand, "uses_host_tool_packages", return_value=True),
+            mock.patch.object(on_demand, "host_command", return_value=None),
+            mock.patch.object(on_demand, "install_on_linux_host", return_value=None),
+            mock.patch.object(on_demand, "install_linux_local") as pinned_install,
+        ):
+            with self.assertRaisesRegex(ValueError, "compatible host build"):
+                on_demand.install("mosdepth")
+            pinned_install.assert_not_called()
+
     def test_windows_companion_extracts_the_exe(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

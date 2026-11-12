@@ -1,5 +1,8 @@
 from system_tools import windows_executable
 import network_io
+import hardware
+import logging
+import platform
 
 """Local multilingual OCR and explicit-source-language translation of saved reports."""
 from pathlib import Path, PurePosixPath
@@ -130,13 +133,6 @@ def translate(text, source, target):
         encode = processor.encode
     else:
         raise ValueError("Translation tokenizer missing; repair model installation")
-    translator = ctranslate2.Translator(
-        str(folder / "model"),
-        device="cpu",
-        compute_type="int8",
-        inter_threads=1,
-        intra_threads=min(4, os.cpu_count() or 2),
-    )
     # Bounded sentence/line chunks avoid context truncation; no generative summarisation.
     chunks = []
     for line in text.splitlines():
@@ -148,9 +144,33 @@ def translate(text, source, target):
             for start in range(0, len(words), 100):
                 chunks.append(" ".join(words[start : start + 100]))
     nonempty = [encode(c) for c in chunks if c]
-    results = translator.translate_batch(
-        nonempty, beam_size=4, replace_unknowns=True, max_decoding_length=512
-    )
+    if not nonempty:
+        return "\n".join(chunks)
+
+    def run(device):
+        translator = ctranslate2.Translator(
+            str(folder / "model"),
+            device=device,
+            compute_type="int8" if device == "cpu" else "int8_float32",
+            inter_threads=1,
+            intra_threads=hardware.cpu_threads(),
+        )
+        return translator.translate_batch(
+            nonempty, beam_size=4, replace_unknowns=True, max_decoding_length=512
+        )
+
+    device = "mps" if platform.system() == "Darwin" else "cuda"
+    try:
+        if "int8_float32" not in ctranslate2.get_supported_compute_types(device):
+            device = "cpu"
+        results = run(device)
+    except (RuntimeError, ValueError, OSError):
+        if device == "cpu":
+            raise
+        logging.getLogger(__name__).info(
+            "Document translation accelerator unavailable; retrying on CPU"
+        )
+        results = run("cpu")
     decoded = iter(
         processor.decode(r.hypotheses[0]).replace("▁", " ").replace("_", " ")
         for r in results
@@ -160,14 +180,17 @@ def translate(text, source, target):
 
 def linux_path(p):
     p = Path(p).resolve()
+    if os.name != "nt":
+        return p.as_posix()
     if len(p.drive) != 2:
         raise ValueError("OCR needs a local Windows drive")
     return "/mnt/" + p.drive[0].lower() + "/" + p.as_posix()[3:]
 
 
 def wsl(*args, timeout=120):
-    p = subprocess.run(
-        [
+    command = list(args)
+    if os.name == "nt":
+        command = [
             windows_executable("wsl.exe"),
             "-d",
             distro_name(source_store.ROOT),
@@ -175,7 +198,9 @@ def wsl(*args, timeout=120):
             "dna",
             "--",
             *args,
-        ],
+        ]
+    p = subprocess.run(
+        command,
         capture_output=True,
         timeout=timeout,
         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
@@ -224,7 +249,14 @@ def ocr_pages(path, folder, languages, log=print, cancel=lambda: False):
             linux_path(stem),
         )
         raw = wsl(
-            "tesseract", linux_path(image), "stdout", "-l", "+".join(codes), "tsv"
+            "env",
+            "OMP_THREAD_LIMIT=" + str(hardware.cpu_threads(4)),
+            "tesseract",
+            linux_path(image),
+            "stdout",
+            "-l",
+            "+".join(codes),
+            "tsv",
         )
         rows = list(csv.DictReader(io.StringIO(raw), delimiter="\t"))
         lines = {}

@@ -1,0 +1,24 @@
+{
+  "python-windows": {
+    "id": "python-windows",
+    "name": "cpython-3.12.16+20261026-aarch64-pc-windows-msvc-install_only_stripped.tar.gz",
+    "version": "3.12.16",
+    "url": "https://github.com/astral-sh/python-build-standalone/releases/download/20261026/cpython-3.12.16%2B20261026-aarch64-pc-windows-msvc-install_only_stripped.tar.gz",
+    "relative_path": "DNA_Software/Downloads/cpython-3.12.16+20261026-aarch64-pc-windows-msvc-install_only_stripped.tar.gz",
+    "expected_bytes": 21057339,
+    "expected_sha256": "3b2e4da9209cec3e0eaf4db31176977a88df32d598ff94a7899c34cd8304db04",
+    "source": "https://github.com/astral-sh/python-build-standalone",
+    "group": "core",
+    "target": "DNA_Software/Windows/Python-arm64/cpython-3.12.16-windows-aarch64"
+  },
+  "ubuntu-wsl": {
+    "name": "Ubuntu-24.04-WSL",
+    "url": "https://cdimage.ubuntu.com/releases/24.04.5/release/ubuntu-24.04.5-wsl-arm64.wsl",
+    "relative_path": "DNA_Software/Downloads/ubuntu-24.04.5-wsl-arm64.wsl",
+    "version": "Ubuntu 24.04 LTS",
+    "source": "https://cdimage.ubuntu.com/releases/24.04.5/release/SHA256SUMS",
+    "expected_sha256": "74478b5024d9047397ba79d17c27f73caf85ada4988f88cffc2892d65e6a806b",
+    "id": "ubuntu-wsl",
+    "group": "linux"
+  }
+}

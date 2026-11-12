@@ -13,8 +13,8 @@ using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 
 [assembly: System.Reflection.AssemblyVersion("1.0.1.0")]
-[assembly: System.Reflection.AssemblyFileVersion("1.0.5.0")]
-[assembly: System.Reflection.AssemblyInformationalVersion("1.0.5")]
+[assembly: System.Reflection.AssemblyFileVersion("1.0.6.0")]
+[assembly: System.Reflection.AssemblyInformationalVersion("1.0.6")]
 
 namespace DnaWorkbench
 {
@@ -242,7 +242,7 @@ namespace DnaWorkbench
             if (!File.Exists(Path.Combine(appdir, "catalog.json")))
                 throw new FileNotFoundException("Launcher resources missing. Please leave the EXE in the root folder of the DNA SSD.");
             catalog = json.Deserialize<Catalog>(File.ReadAllText(Path.Combine(appdir, "catalog.json"), Encoding.UTF8));
-            python = Directory.GetFiles(Path.Combine(root, "DNA_Software", "Windows", "Python"), "python.exe", SearchOption.AllDirectories).First();
+            python = Directory.GetFiles(Path.Combine(root, "DNA_Software", "Windows", PortableEnvironment.PythonFolder), "python.exe", SearchOption.AllDirectories).First();
             Directory.CreateDirectory(jobsroot);
             if (startup != null)
             {
@@ -1050,6 +1050,9 @@ namespace DnaWorkbench
                 }
                 if (generation != viewGeneration || workspace == null || workspace.IsDisposed)
                     return;
+#if DNA_WINDOWS_ARM64
+                string fixedRuntime = null;
+#else
                 string fixedRuntime = Path.Combine(root, "DNA_Software", "Windows", "WebView2Runtime");
                 if (Directory.Exists(fixedRuntime))
                 {
@@ -1058,6 +1061,7 @@ namespace DnaWorkbench
                 }
                 else
                     fixedRuntime = null;
+#endif
                 string userData = Path.GetFullPath(Path.Combine(root, "DNA_Software", "UserData", "Launcher", "WebView2"));
                 Directory.CreateDirectory(userData);
                 familyView = new WebView2 { Dock = DockStyle.Fill, CreationProperties = new CoreWebView2CreationProperties { UserDataFolder = userData, BrowserExecutableFolder = fixedRuntime } };

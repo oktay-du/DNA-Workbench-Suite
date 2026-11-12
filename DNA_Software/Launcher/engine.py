@@ -7,6 +7,8 @@ import sys, os, subprocess, shlex, time, datetime, traceback, hashlib, csv, zipf
 import portable_json as json
 import source_store
 import inspector
+import hardware
+import platform
 
 ROOT = Path(__file__).resolve().parents[2]
 CAT = json.loads(Path(__file__).with_name("catalog.json").read_text(encoding="utf-8"))
@@ -193,20 +195,57 @@ class Job:
     def shell(self):
         a = self.task["action"]
         v = self.v
+        cpu_limit = hardware.cpu_threads()
+        # Resolve the Linux-visible CPU count at execution time, including a smaller WSL allocation.
+        threads = '"$dna_threads"'
+        extra_threads = '"$((dna_threads - 1))"'
+        heavy_workers = '"$((dna_threads < 4 ? dna_threads : 4))"'
         lines = [
             "#!/usr/bin/env bash",
             "set -euo pipefail",
-            "source " + Q(linux(ROOT / "DNA_Software/Start/profile-dna.sh")),
-            "export PATH=" + Q(linux(ROOT / "DNA_Software/Linux/bin")) + ":$PATH",
+            *(
+                [
+                    "source " + Q(linux(ROOT / "DNA_Software/Start/profile-dna.sh")),
+                ]
+                if sys.platform != "darwin"
+                else []
+            ),
+            *(
+                ["export PATH=" + Q(linux(ROOT / "DNA_Software/Linux/bin")) + ":$PATH"]
+                if os.name == "nt"
+                or (
+                    sys.platform.startswith("linux")
+                    and platform.machine().lower() in {"amd64", "x86_64"}
+                )
+                else []
+            ),
             "export PYTHONUNBUFFERED=1",
+            "dna_threads=$(nproc 2>/dev/null || getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)",
+            f"(( dna_threads <= {cpu_limit} )) || dna_threads={cpu_limit}",
+            "export DNA_WORKBENCH_CPUS=$dna_threads",
             "echo $$ > " + Q(linux(self.folder / "linux.pid")),
             "mkdir -p " + Q(self.o()),
             "cd " + Q(self.o()),
         ]
         helper = linux(Path(__file__).with_name("linux_helpers.py"))
 
-        def cmd(*args):
-            lines.append(" ".join(Q(str(x)) for x in args))
+        def cmd(*args, thread_options=()):
+            command, *arguments = args
+            head = Q(command)
+            if command in {"plink19", "plink2"}:
+                head += " --threads " + threads
+            if (
+                command == "bcftools"
+                and arguments[0] in {"index", "norm", "view", "merge"}
+                or command == "samtools"
+                and arguments[0] == "index"
+            ):
+                # HTSlib counts these workers in addition to the main thread.
+                flag = "-@" if command == "samtools" else "--threads"
+                thread_options = (*thread_options, flag, extra_threads)
+            lines.append(
+                " ".join([head, *(Q(str(x)) for x in arguments), *thread_options])
+            )
 
         def py(*args):
             cmd(analysis_python(), helper, *args)
@@ -332,12 +371,10 @@ class Job:
                 self.o("fastp.html"),
                 "-j",
                 self.o("fastp.json"),
-                "-w",
-                "4",
             ]
             if v.get("r2"):
                 args += ["-I", self.p("r2"), "-O", self.o("gefiltert_R2.fastq.gz")]
-            cmd(*args)
+            cmd(*args, thread_options=("-w", threads))
         elif a in ["bam_qc", "deepvariant"]:
             source = self.p("bam")
             iscram = source.lower().endswith(".cram")
@@ -347,25 +384,30 @@ class Job:
             cmd("ln", "-s", source, align)
             rf = reference() if v.get("reference") else None
             cmd("samtools", "quickcheck", "-v", align)
-            cmd("samtools", "index", "-@", "4", align)
+            cmd("samtools", "index", align)
             if a == "bam_qc":
                 extra = ["--reference", rf] if rf else []
                 lines.append(
-                    " ".join(Q(x) for x in ["samtools", "flagstat", *extra, align])
+                    "samtools flagstat -@ "
+                    + extra_threads
+                    + " "
+                    + " ".join(Q(x) for x in [*extra, align])
                     + " > flagstat.txt"
                 )
                 lines.append(
-                    " ".join(Q(x) for x in ["samtools", "stats", *extra, align])
+                    "samtools stats -@ "
+                    + extra_threads
+                    + " "
+                    + " ".join(Q(x) for x in [*extra, align])
                     + " > samtools_stats.txt"
                 )
                 cmd(
                     "mosdepth",
-                    "-t",
-                    "4",
                     "-n",
                     *(["--fasta", rf] if rf else []),
                     self.o("abdeckung"),
                     align,
+                    thread_options=("-t", threads),
                 )
                 cmd("multiqc", self.o(), "-o", self.o("qualitaetsbericht"))
             else:
@@ -373,13 +415,28 @@ class Job:
                     str(PurePosixPath(source).parent),
                     str(PurePosixPath(self.p("reference")).parent),
                 }
-                args = ["docker", "run", "--rm", "--user", "1000:1000"]
+                cpu_image = "google/deepvariant:1.10.0"
+                gpu_image = cpu_image + "-gpu"
+                probe = "import tensorflow as tf; assert tf.config.list_physical_devices('GPU')"
+                lines += [
+                    "deepvariant_gpu=()",
+                    "deepvariant_image=" + Q(cpu_image),
+                    "if docker image inspect " + Q(gpu_image) + " >/dev/null 2>&1 && "
+                    "timeout 30s docker run --rm --pull=never --gpus 1 "
+                    "--network=none --entrypoint /usr/bin/python3 "
+                    + Q(gpu_image)
+                    + " -c "
+                    + Q(probe)
+                    + " >/dev/null 2>&1; then",
+                    "  deepvariant_gpu=(--gpus 1)",
+                    "  deepvariant_image=" + Q(gpu_image),
+                    "fi",
+                ]
+                args = ["--user", "1000:1000"]
                 for d in sorted(dirs):
                     args += ["-v", d + ":" + d + ":ro"]
-                args += [
-                    "-v",
-                    self.o() + ":" + self.o(),
-                    "google/deepvariant:1.10.0",
+                args += ["-v", self.o() + ":" + self.o()]
+                caller = [
                     "/opt/deepvariant/bin/run_deepvariant",
                     "--model_type=" + v["model"],
                     "--ref=" + rf,
@@ -387,10 +444,16 @@ class Job:
                     "--output_vcf=" + self.o("varianten.vcf.gz"),
                     "--output_gvcf=" + self.o("varianten.g.vcf.gz"),
                     "--intermediate_results_dir=" + self.o("zwischenschritte"),
-                    "--num_shards=4",
                     "--vcf_stats_report=true",
                 ]
-                cmd(*args)
+                lines.append(
+                    'docker run --rm --platform linux/amd64 "${deepvariant_gpu[@]}" '
+                    + " ".join(Q(arg) for arg in args)
+                    + ' "$deepvariant_image" '
+                    + " ".join(Q(arg) for arg in caller)
+                    + " --num_shards="
+                    + heavy_workers
+                )
         elif a == "multiqc":
             if not Path(v["folder"]).is_dir():
                 raise ValueError("Select a quality report folder.")
@@ -468,8 +531,7 @@ class Job:
                 self.o("fastq_quality.html"),
                 "--json",
                 self.o("fastq_quality.json"),
-                "--thread",
-                "2",
+                thread_options=("--thread", threads),
             )
         elif a == "variant_convert":
             mode, name = {
@@ -572,13 +634,12 @@ class Job:
             cmd(
                 "peddy",
                 "--plot",
-                "-p",
-                "4",
                 *(["--sites", "hg38"] if v["build"] == "GRCh38" else []),
                 "--prefix",
                 self.o("familien_qc"),
                 ready,
                 self.p("ped"),
+                thread_options=("-p", heavy_workers),
             )
         elif a == "whatshap":
             py("check_build", self.p("vcf"), v["build"])
@@ -696,7 +757,9 @@ class Job:
             )
             py("pca_count", prefix + ".psam", self.o())
             lines.append(
-                "plink2 --pfile "
+                "plink2 --threads "
+                + threads
+                + " --pfile "
                 + Q(prefix)
                 + " --extract "
                 + Q(self.o("ld.prune.in"))
@@ -717,8 +780,8 @@ class Job:
                 "chrom=" + v["chrom"],
                 "out=" + self.o("phasiert"),
                 "impute=false",
-                "nthreads=4",
                 *(["ref=" + self.p("refpanel")] if v.get("refpanel") else []),
+                thread_options=("nthreads=" + threads,),
             )
         elif a == "ibd":
             cmd(
@@ -726,7 +789,7 @@ class Job:
                 "gt=" + self.p("vcf"),
                 "map=" + self.p("map"),
                 "out=" + self.o("segmente"),
-                "nthreads=4",
+                thread_options=("nthreads=" + threads,),
             )
         elif a == "rfmix":
             target = prepared(self.p("query"), "ziel")
@@ -744,6 +807,7 @@ class Job:
                 "--chromosome=" + v["chrom"],
                 "-o",
                 self.o("lokale_ancestry"),
+                thread_options=("--n-threads", threads),
             )
         elif a == "mito":
             ready = prepared(self.p("vcf"), "mt_input")
@@ -783,6 +847,7 @@ class Job:
                 "-t",
                 "text",
                 "excel",
+                thread_options=("--mp", '"$((dna_threads < 2 ? dna_threads : 2))"'),
             )
         elif a == "vep":
             if v["build"] != "GRCh38":
@@ -808,6 +873,7 @@ class Job:
                 "--symbol",
                 "--canonical",
                 "--no_stats",
+                thread_options=("--fork", heavy_workers),
             )
         elif a == "pharmcat":
             if v["build"] != "GRCh38":
@@ -849,17 +915,16 @@ class Job:
                 v["build"],
                 "--outdir",
                 self.o("pgs"),
-                "--max_cpus",
-                "4",
                 "--max_memory",
                 "10.GB",
+                thread_options=("--max_cpus", threads),
             )
         else:
             raise ValueError("Not yet an execution adapter for" + a)
         lines.append('printf "\\nDNA_LAUNCHER_STEP_SUCCESS\\n"')
         return "\n".join(lines) + "\n"
 
-    def run_process(self, args, env=None):
+    def run_process(self, args, env=None, start_new_session=False):
         self.log("> " + subprocess.list2cmdline([str(x) for x in args]))
         proc = subprocess.Popen(
             args,
@@ -869,6 +934,7 @@ class Job:
             encoding="utf-8",
             errors="replace",
             env=env,
+            start_new_session=start_new_session,
             creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
         )
 
@@ -1457,6 +1523,19 @@ class Job:
     def launch(self):
         core = self.task["core"]
         flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+        if sys.platform == "darwin":
+            native_apps = {
+                "Gramps": "Gramps",
+                "IGV": "IGV",
+                "JBrowse": "JBrowse Desktop",
+            }
+            if core == "Explorer":
+                subprocess.run(["open", str(ROOT / "Projects/Launcher")], check=True)
+                return
+            if core in native_apps:
+                subprocess.run(["open", "-a", native_apps[core]], check=True)
+                return
+            raise ValueError("This desktop shortcut has no macOS adapter.")
         if core == "Explorer":
             os.startfile(str(ROOT / "Projects/Launcher"))
             return
@@ -1610,8 +1689,9 @@ class Job:
                 env = os.environ.copy()
                 env["DNA_LAUNCHER_JOB"] = self.id
                 self.run_process(
-                    ["setsid", "bash", str(self.folder / "ausfuehren.sh")],
+                    ["bash", str(self.folder / "ausfuehren.sh")],
                     env=env,
+                    start_new_session=True,
                 )
         else:
             self.windows()

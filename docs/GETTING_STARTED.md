@@ -30,6 +30,14 @@ Extract `DNAWorkbench-Linux-x64.zip` into a writable folder and run `./DNA-Workb
 
 Linux programs such as samtools, bcftools, PLINK2 Linux and Haplogrep Linux run on this host. Windows-only pins stay unused. WSL is not installed.
 
+## ARM64 and macOS previews
+
+- **Windows ARM64.** Extract the ARM64 ZIP and run `DNA_Launcher.exe` on Windows 11 ARM64 with WebView2 Evergreen. Core installs portable ARM64 Python. Optional WSL setup uses Ubuntu ARM64.
+- **Linux ARM64.** Extract the ARM64 ZIP and run `./DNA-Workbench.sh` with native Python 3.12, GTK 3 and WebKitGTK 4.1. Install compatible native tool builds where the published x64 pins do not apply.
+- **macOS.** Check the release assets for an Intel or Apple Silicon preview. Keep `DNA-Workbench.app` beside the extracted workspace files and use macOS 13 or later with Python 3.12 or later. The ZIP is an unsigned development preview.
+
+Run `python DNA_Software/Launcher/dna_cli.py serve` for a local headless service. Run `commands` or `schema` through the same CLI to inspect available operations.
+
 ## Folder layout
 
 | Folder beside the EXE | Contents |

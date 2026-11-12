@@ -32,12 +32,17 @@ jobs:
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           retention-days: 7
-          name: DNA-Workbench-Windows-x64-alpha
+          name: DNA-Workbench-Suite-Windows-x64
           path: DNAWorkbench_Release/*/*
 
   linux:
-    name: Build Linux package
-    runs-on: ubuntu-24.04
+    name: Build Linux package (${{ matrix.arch }})
+    strategy:
+      matrix:
+        include:
+          - { runner: ubuntu-24.04, arch: x64 }
+          - { runner: ubuntu-24.04-arm, arch: arm64 }
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
@@ -51,8 +56,79 @@ jobs:
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           retention-days: 7
-          name: DNA-Workbench-Linux-x64-alpha
-          path: DNAWorkbench_Release/*/DNAWorkbench-Linux-x64.zip
+          name: DNA-Workbench-Suite-Linux-${{ matrix.arch }}
+          path: DNAWorkbench_Release/*/DNAWorkbench-Linux-${{ matrix.arch }}.zip
+
+  macos:
+    name: Build macOS package (${{ matrix.arch }})
+    strategy:
+      matrix:
+        include:
+          - { runner: macos-15-intel, arch: x64, mach: x86_64 }
+          - { runner: macos-15, arch: arm64, mach: arm64 }
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+      - name: Verify desktop packaging and build the native WebView
+        run: |
+          python -m unittest discover -s DNA_Software/Launcher -p "test_linux_release.py"
+          python DNA_Software/Launcher/release_tools.py --target macos --arch "${{ matrix.arch }}"
+          unzip -p DNAWorkbench_Release/*/DNAWorkbench-macOS-${{ matrix.arch }}.zip DNA-Workbench.app/Contents/MacOS/DNAWorkbenchWebView > "$RUNNER_TEMP/DNAWorkbenchWebView"
+          lipo -verify_arch "${{ matrix.mach }}" "$RUNNER_TEMP/DNAWorkbenchWebView"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          retention-days: 7
+          name: DNA-Workbench-Suite-macOS-${{ matrix.arch }}
+          path: DNAWorkbench_Release/*/DNAWorkbench-macOS-${{ matrix.arch }}.zip
+
+  windows-arm64:
+    name: Build and test Windows ARM64
+    runs-on: windows-11-arm
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+          architecture: arm64
+      - name: Build, stage and test the native Windows launcher
+        shell: powershell
+        run: |
+          python DNA_Software/Launcher/dna_cli.py commands --search workflow
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          .\DNA_Software\Launcher\build.ps1 -Architecture arm64
+          python DNA_Software/Launcher/public_package.py
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python DNA_Software/Launcher/release_tools.py --target windows --arch arm64
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $bundle = (Get-ChildItem 'DNAWorkbench_Release/*/windows-arm64/DNAWorkbench-Windows-arm64.zip').FullName
+          $scratch = Join-Path $env:RUNNER_TEMP 'dna-arm64-bootstrap'
+          Expand-Archive -LiteralPath $bundle -DestinationPath $scratch
+          $exe = Join-Path $scratch 'DNA_Launcher.exe'
+          $process = Start-Process -FilePath $exe -ArgumentList '--bootstrap-check' -WindowStyle Hidden -PassThru
+          if (-not $process.WaitForExit(60000)) { $process.Kill(); throw 'ARM64 launcher timed out' }
+          if ($process.ExitCode -ne 0 -or -not (Test-Path -LiteralPath (Join-Path $scratch 'bootstrap-check.txt'))) {
+            throw 'ARM64 launcher bootstrap failed'
+          }
+          python DNA_Software/Launcher/test_windows_arm64.py $exe (Join-Path $scratch 'WebView2Loader.dll')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $env:DNA_WORKBENCH_WINDOWS_ARCH = 'arm64'
+          & (Join-Path $scratch 'DNA_Software/Launcher/setup.ps1') -Root $scratch -Mode Core
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $portable = (Get-ChildItem (Join-Path $scratch 'DNA_Software/Windows/Python-arm64/*/python.exe')).FullName
+          python DNA_Software/Launcher/test_windows_arm64.py $portable
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & $portable (Join-Path $scratch 'DNA_Software/Launcher/dna_cli.py') commands --search workflow
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          retention-days: 7
+          name: DNA-Workbench-Suite-Windows-arm64
+          path: DNAWorkbench_Release/*/windows-arm64/*
 
   script-security:
     name: PowerShell security and syntax

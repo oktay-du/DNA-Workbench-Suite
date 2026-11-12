@@ -30,7 +30,9 @@ class BatchTests(unittest.TestCase):
         b.OWNER = None
 
     def wait(self, j):
-        for _ in range(500):
+        # Windows CI can take longer to finish the SQLite work and close file handles.
+        deadline = time.monotonic() + 30
+        while time.monotonic() < deadline:
             if b.ACTIVE is None:
                 return b.read(j["person"], j["job"])
             time.sleep(0.01)

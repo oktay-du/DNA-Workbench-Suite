@@ -5,6 +5,11 @@ $Root=[IO.Path]::GetFullPath($Root)
 Initialize-DnaPortable $Root
 $taskDistro=Get-DnaDistroName $Root
 $manifest=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'install-lock.json') -Raw | ConvertFrom-Json
+$nativeArchitecture=if($env:PROCESSOR_ARCHITEW6432){$env:PROCESSOR_ARCHITEW6432}else{$env:PROCESSOR_ARCHITECTURE}
+$armDesktop=$env:DNA_WORKBENCH_WINDOWS_ARCH -eq 'arm64' -or (-not $env:DNA_WORKBENCH_WINDOWS_ARCH -and $nativeArchitecture -eq 'arm64')
+$armPackages=if($armDesktop -or $nativeArchitecture -eq 'arm64'){Get-Content -LiteralPath (Join-Path $PSScriptRoot 'windows-arm64-packages.json') -Raw | ConvertFrom-Json}
+$corePython=if($armDesktop){$armPackages.'python-windows'}else{$manifest.items|Where-Object id -eq 'python-windows'}
+$ubuntuPackage=if($nativeArchitecture -eq 'arm64'){$armPackages.'ubuntu-wsl'}else{$manifest.items|Where-Object id -eq 'ubuntu-wsl'}
 $logDir=Join-Path $Root 'DNA_Software/Logs/Setup';New-Item -ItemType Directory -Force -Path $logDir | Out-Null
 $stateFile=Join-Path $logDir 'status.json'
 function State([string]$stage,[string]$detail){@{stage=$stage;detail=$detail;mode=$Mode;updated=(Get-Date).ToString('o');root=$Root}|ConvertTo-Json|Set-Content -LiteralPath $stateFile -Encoding UTF8;Write-Host ($stage+': '+$detail)}
@@ -26,8 +31,10 @@ function Fetch($item){
  Move-Item -LiteralPath $part -Destination $target;return $target
 }
 function InstallCore{
- foreach($id in @('python-windows','webview2-runtime')){
-  $item=$manifest.items|Where-Object id -eq $id
+ $items=@($corePython)
+ if(-not $armDesktop){$items+=@($manifest.items|Where-Object id -eq 'webview2-runtime')}
+ foreach($item in $items){
+  $id=$item.id
   $dest=Target $item.target
   $probe=if($id-eq'python-windows'){Join-Path $dest 'python.exe'}else{if(Test-Path $dest){Get-ChildItem -LiteralPath $dest -Filter msedgewebview2.exe -Recurse|Select-Object -First 1 -ExpandProperty FullName}}
   if($probe -and(Test-Path -LiteralPath $probe)){State 'Vorhanden' $id;continue}
@@ -62,7 +69,11 @@ function EnsureLinux{
  if(Test-Path $reg){$existing=@(Get-ChildItem $reg|ForEach-Object{Get-ItemProperty $_.PSPath}|Where-Object DistributionName -eq $taskDistro)}
  if($existing.Count){$base=([string]$existing[0].BasePath)-replace '^\\\\\?\\','';if([IO.Path]::GetFullPath($base).TrimEnd('\')-ine$target.TrimEnd('\')){throw 'DNA-SSD ist an einem anderen Ort registriert. Nichts wurde entfernt.'}}
  elseif(Test-Path -LiteralPath $disk){& wsl.exe --import-in-place $taskDistro $disk;if($LASTEXITCODE-ne 0){throw "Existing SSD distribution could not be registered."}}
- else{$archive=Fetch ($manifest.items|Where-Object id -eq 'ubuntu-wsl');New-Item -ItemType Directory -Force -Path $target|Out-Null;& wsl.exe --import $taskDistro $target $archive --version 2;if($LASTEXITCODE-ne 0){throw 'Ubuntu-Import fehlgeschlagen.'}}
+ else{$archive=Fetch $ubuntuPackage;New-Item -ItemType Directory -Force -Path $target|Out-Null;& wsl.exe --import $taskDistro $target $archive --version 2;if($LASTEXITCODE-ne 0){throw 'Ubuntu-Import fehlgeschlagen.'}}
+ $guestArchitecture=& wsl.exe -d $taskDistro -u root -- dpkg --print-architecture
+ if($LASTEXITCODE-ne 0 -or ([string]$guestArchitecture).Trim() -ine $(if($nativeArchitecture -eq 'arm64'){'arm64'}else{'amd64'})){
+  throw "The existing Ubuntu workspace does not match the host CPU architecture. Use a separate workspace folder for this architecture."
+ }
  $mount=(Get-DnaLinuxRoot $Root).TrimEnd('/')
  & wsl.exe -d $taskDistro -u root -- test -x /opt/dna/envs/analysis/bin/python
  if($LASTEXITCODE-ne 0){& wsl.exe -d $taskDistro -u root -- bash ($mount+'/DNA_Software/Launcher/setup-linux-public.sh') $mount;if($LASTEXITCODE-ne 0){throw 'Linux-Basiseinrichtung fehlgeschlagen. Siehe Installationsprotokoll.'}}
@@ -75,8 +86,8 @@ try{
  if($Mode-in @('Core','Linux','Tools')){InstallCore}
  if($Mode-in @('Linux','Tools')){EnsureLinux}
  if($Mode-eq'Tools'){
-  $py=Get-ChildItem -LiteralPath (Join-Path $Root 'DNA_Software/Windows/Python') -Filter python.exe -Recurse|Select-Object -First 1
-  & $py.FullName (Join-Path $PSScriptRoot 'dependency_manager.py') install-foundation
+  $py=Join-Path (Target $corePython.target) 'python.exe'
+  & $py (Join-Path $PSScriptRoot 'dependency_manager.py') install-foundation
   if($LASTEXITCODE-ne 0){throw "tool device not completely."}
  }
  if($Mode-in @('References','Sources')){$group=if($Mode-eq'References'){'references'}else{'sources'};foreach($item in $manifest.items|Where-Object group -eq $group){if($item.license_notice){State 'Ausgelassen' ($item.name+': '+$item.license_notice);continue};$null=Fetch $item}}

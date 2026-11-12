@@ -5,9 +5,9 @@
 [![Release](https://img.shields.io/github/v/release/oktay-du/DNA-Workbench-Suite?style=flat-square&color=087f8c)](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest)
 [![Build](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/build.yml/badge.svg)](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/build.yml)
 [![Security checks](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/codeql.yml/badge.svg)](https://github.com/oktay-du/DNA-Workbench-Suite/actions/workflows/codeql.yml)
-[![Windows and Linux](https://img.shields.io/badge/Windows%20%2B%20Linux-x64-243b53?style=flat-square)](docs/GETTING_STARTED.md)
+[![Platforms](https://img.shields.io/badge/desktop-x64%20%2B%20ARM64-243b53?style=flat-square)](docs/GETTING_STARTED.md)
 
-**DNA sources, family evidence and reusable research workflows — in one local workspace for Windows and Linux.**
+**DNA files, family records and research workflows in one local workspace. 36 offline interface languages.**
 
 [**Download**](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest) · [Website](https://oktay-du.github.io/DNA-Workbench-Suite/) · [Getting started](docs/GETTING_STARTED.md) · [Screenshots](docs/GALLERY.md) · [Wiki](https://github.com/oktay-du/DNA-Workbench-Suite/wiki) · [Deutsch](README.de.md)
 
@@ -19,7 +19,9 @@
 
 </div>
 
-![Application overview in light mode with synthetic profiles](docs/images/03-overview-light.png)
+![Short tour of DNA Workbench showing dark and light mode, the language picker and synthetic profile files](docs/images/workspace-demo.gif)
+
+[Watch the full app tour](https://oktay-du.github.io/DNA-Workbench-Suite/#tour) · [Browse screenshots](docs/GALLERY.md) · [See all interface languages](https://oktay-du.github.io/DNA-Workbench-Suite/#languages)
 
 ## Start with your sources. Keep the evidence.
 
@@ -38,9 +40,11 @@ Import supported DNA files and family records, compare compatible sources, follo
 
 ## Get started
 
-**Windows.** Download [DNAWorkbench-Windows-x64.zip](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Windows-x64.zip), extract it into a writable folder, and run `DNA_Launcher.exe`. Core setup downloads portable Python and WebView2.
+**Windows.** Download [DNAWorkbench-Windows-x64.zip](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Windows-x64.zip), extract it into a writable folder, and run `DNA_Launcher.exe`. Core setup downloads portable Python and WebView2 on x64. The [Windows ARM64 preview](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Windows-arm64.zip) uses Windows 11 and WebView2 Evergreen.
 
-**Linux.** Download [DNAWorkbench-Linux-x64.zip](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Linux-x64.zip), extract it into a writable folder, and run `./DNA-Workbench.sh`.
+**Linux.** Download [DNAWorkbench-Linux-x64.zip](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Linux-x64.zip), extract it into a writable folder, and run `./DNA-Workbench.sh`. An [ARM64 preview](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Linux-arm64.zip) is also available.
+
+**macOS.** Check the [release notes](https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest) for preview builds. The native WebKit host uses macOS 13 or later and Python 3.12 or later.
 
 Then try the included artificial sample profiles. Import data you are authorized to process, and install the modules needed for your chosen workflow. Application data, downloads and caches stay in the application folder. [Installation and portability →](docs/GETTING_STARTED.md)
 

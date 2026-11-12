@@ -1,142 +1,258 @@
 <!doctype html>
-<html lang="en"
-  ><head
-    ><meta charset="utf-8" /><meta
-      name="viewport"
-      content="width=device-width,initial-scale=1" /><meta
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
       name="description"
-      content="DNA Workbench Suite: a local Windows and Linux workspace for DNA sources, family evidence and reproducible research. Version 1.0.5 by OD." /><title
-      >DNA Workbench Suite · Your genome. Your workspace.</title
-    ><link rel="stylesheet" href="style.css" /></head
-  ><body
-    ><div class="wrap"
-      ><nav
-        ><strong>◈ DNA Workbench Suite / OD</strong><a href="#features">Features</a
-        ><a href="#requirements">Requirements</a><a href="#start">Get started</a
-        ><a href="https://github.com/oktay-du/DNA-Workbench-Suite">GitHub</a
-        ><a href="#support">Support</a></nav
-      ><header class="hero"
-        ><span class="badge">Version 1.0.5 · Windows and Linux x64 · Research software</span
-        ><h1>Your genome.<br />Your workspace.</h1
-        ><p
-          >Bring DNA sources, family records and research tools together on Windows or Linux. Keep
-          evidence traceable, reuse results and explore your data locally.</p
-        ><div class="actions"
-          ><a
-            class="button primary"
-            href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Windows-x64.zip"
-            >Download for Windows</a
-          ><a
-            class="button primary"
-            href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/latest/download/DNAWorkbench-Linux-x64.zip"
-            >Download for Linux</a
-          ><a
-            href="https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/GETTING_STARTED.md"
-            >Read the guide →</a
-          ></div
-        ></header
-      ><img
-        class="screenshot"
-        src="images/03-overview-light.png"
-        alt="DNA Workbench workspace in light mode with synthetic sample data"
-      /><section id="features"
-        ><span class="eyebrow">One workspace, clear provenance</span
-        ><h2>From files to reusable evidence.</h2
-        ><div class="grid"
-          ><article class="card"
-            ><span class="step">01 / PREPARE</span><h3>Import and organize</h3
-            ><p
-              >Select batches, folders or supported archives. Review formats, providers and
-              reference builds before choosing move or copy. Keep source names and content
-              hashes.</p
-            ></article
-          ><article class="card"
-            ><span class="step">02 / REVIEW</span><h3>Compare sources</h3
-            ><p
-              >Inspect source quality and conflicts. Keep measured, imputed and phased evidence
-              distinct and create a versioned BestDataset for compatible workflows.</p
-            ></article
-          ><article class="card"
-            ><span class="step">03 / EXPLORE</span><h3>Follow a workflow</h3
-            ><p
-              >Investigate family connections, ancestry and variants with supported tools. Save
-              results, review their evidence and export reports or profile backups.</p
-            ></article
-          ></div
-        ></section
-      ><section
-        ><h2>Use the tools that fit your research.</h2
-        ><p
-          >Optional modules install on demand. View exact versions, prerequisites and license
-          conditions inside the application.</p
-        ><div class="tool-links"
-          ><a href="https://github.com/samtools/samtools">SAMtools</a
-          ><a href="https://github.com/samtools/bcftools">BCFtools</a
-          ><a href="https://www.cog-genomics.org/plink/2.0/">PLINK</a
-          ><a href="https://github.com/igvteam/igv">IGV</a
-          ><a href="https://github.com/GMOD/jbrowse-components">JBrowse</a
-          ><a href="https://github.com/genome-spy/genome-spy">GenomeSpy</a
-          ><a href="https://github.com/KarchinLab/open-cravat">OpenCRAVAT</a
-          ><a href="https://github.com/Ensembl/ensembl-vep">VEP</a
-          ><a href="https://github.com/PharmGKB/PharmCAT">PharmCAT</a
-          ><a href="https://github.com/gramps-project/gramps">Gramps</a></div
-        ></section
-      ><section id="requirements"
-        ><h2>Requirements</h2
-        ><div class="grid"
-          ><article class="card"
-            ><h3>Windows x64</h3
-            ><p
-              >Extract DNAWorkbench-Windows-x64.zip and run DNA_Launcher.exe. The host needs .NET
-              Framework 4.8. Core setup downloads portable Python and WebView2. Linux programs such
-              as samtools run inside WSL, which can require administrator access and a restart.</p
-            ></article
-          ><article class="card"
-            ><h3>Linux x64</h3
-            ><p
-              >Extract DNAWorkbench-Linux-x64.zip and run ./DNA-Workbench.sh. The host supplies
-              Python 3.12, GTK 3 and WebKitGTK 4.1. The same Linux programs run on this host. WSL is
-              not used, and Windows-only installers are not started through Wine.</p
-            ></article
-          ></div
-        ></section
-      ><section id="start"
-        ><h2>Start with a sample. Keep control of your data.</h2
-        ><p
-          >On Windows, extract the package, run DNA_Launcher.exe and complete Core setup. On Linux,
-          extract the package and run ./DNA-Workbench.sh. Artificial sample profiles are included.
-          Personal DNA and large references are not included in the repository.</p
-        ><p
-          >Local processing is the default. Optional cloud AI and external services have separate
-          data flows and policies.</p
-        ><p
-          >Developers can use the same typed commands through GUI, CLI, JSON and MCP. The app
-          includes 36 interface languages that work offline.</p
-        ><a href="https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/FEATURES.md"
-          >Explore the feature catalogue →</a
-        ></section
-      ><section id="support"
-        ><h2>Support independent development.</h2
-        ><p
-          ><a href="https://nowpayments.io/donation/oktayd">Donate with NOWPayments</a> ·
-          <a href="https://buymeacoffee.com/okioki">Buy Me a Coffee</a> ·
-          <a href="https://www.patreon.com/Oktaydu/gift">Patreon gift</a></p
-        ><a href="https://buymeacoffee.com/okioki"
-          ><img
-            class="support-qr"
-            src="images/support-qr.jpg"
-            width="120"
-            alt="Buy Me a Coffee donation QR code" /></a
-        ><p>Support is optional.</p></section
-      ><footer
-        ><p>© 2026 Oktay Du / OD · Created with AI assistance.</p
-        ><p>Research software, not a clinical diagnostic system.</p
-        ><p
-          ><a href="privacy.html">Privacy</a> · <a href="legal.html">Research and license</a> ·
-          <a href="https://github.com/oktay-du/DNA-Workbench-Suite/issues/new/choose">Feedback</a> ·
+      content="DNA Workbench Suite is a local workspace for organizing DNA files, family records, and research results in 36 offline interface languages."
+    />
+    <meta property="og:title" content="DNA Workbench Suite · Your genome. Your workspace." />
+    <meta
+      property="og:image"
+      content="https://oktay-du.github.io/DNA-Workbench-Suite/images/workspace-preview.webp"
+    />
+    <title>DNA Workbench Suite · Your genome. Your workspace.</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="landing">
+    <div class="wrap">
+      <nav aria-label="Primary">
+        <strong class="brand"><span aria-hidden="true">◈</span> DNA Workbench Suite</strong>
+        <a href="#tour">App tour</a>
+        <a href="#languages">Languages</a>
+        <a href="#downloads">Downloads</a>
+        <a href="https://github.com/oktay-du/DNA-Workbench-Suite">GitHub</a>
+      </nav>
+      <main>
+        <header class="hero">
+          <div>
+            <a
+              class="release"
+              href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
+              >Release 1.0.6</a
+            >
+            <h1>Your genome.<br />Your workspace.</h1>
+            <p
+              >Organize DNA files and family records, check where results came from, and keep your
+              research on your own computer.</p
+            >
+            <div class="actions">
+              <a class="button primary" href="#downloads">Download DNA Workbench</a>
+              <a class="button" href="#tour">Watch the app tour</a>
+            </div>
+          </div>
+          <figure class="hero-screen">
+            <img
+              src="images/workspace-preview.webp"
+              width="1440"
+              height="860"
+              alt="DNA Workbench in dark mode showing four synthetic profiles and registered sample files"
+              fetchpriority="high"
+            />
+            <figcaption>Workspace overview with synthetic sample data</figcaption>
+          </figure>
+        </header>
+
+        <section id="tour" class="tour">
+          <div class="section-heading">
+            <h2>See the workspace in action.</h2>
+            <p>Switch themes, change the interface language, and open the profile file manager.</p>
+          </div>
+          <video
+            controls
+            playsinline
+            preload="none"
+            poster="images/workspace-preview.webp"
+            aria-label="Silent tour showing the theme switch, language picker, and synthetic sample files"
+          >
+            <source src="images/workspace-demo.webm" type="video/webm" />
+            <a href="images/workspace-demo.gif">View the animated tour</a>
+          </video>
+          <div class="gallery">
+            <figure>
+              <img
+                src="images/workspace-files.webp"
+                width="1440"
+                height="860"
+                alt="Profile file manager listing synthetic DNA example files"
+                loading="lazy"
+              />
+              <figcaption>Browse sample files by profile</figcaption>
+            </figure>
+            <figure>
+              <img
+                src="images/workspace-languages.webp"
+                width="1440"
+                height="860"
+                alt="DNA Workbench language picker with flags and language names in their own scripts"
+                loading="lazy"
+              />
+              <figcaption>Change language from the toolbar</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section id="features">
+          <div class="section-heading"><h2>From files to reusable evidence.</h2></div>
+          <div class="grid">
+            <article class="card"
+              ><h3>Import and organize</h3
+              ><p
+                >Review providers, formats and reference builds before copying or moving files.</p
+              ></article
+            >
+            <article class="card"
+              ><h3>Compare sources</h3
+              ><p
+                >Inspect source quality and conflicts. Keep measured, imputed and phased records
+                distinguishable.</p
+              ></article
+            >
+            <article class="card"
+              ><h3>Follow a workflow</h3
+              ><p
+                >Explore family connections and variants with optional tools. Save results and
+                export reports with source information.</p
+              ></article
+            >
+          </div>
+        </section>
+
+        <section id="languages" class="language-section">
+          <div class="section-heading">
+            <h2>36 interface languages, offline.</h2>
+            <p>Choose a language in the app toolbar. The language packs ship with the workspace.</p>
+          </div>
+          <ul class="language-grid" aria-label="Available interface languages">
+            <li><bdi lang="de">Deutsch</bdi></li>
+            <li><bdi lang="en">English</bdi></li>
+            <li><bdi lang="tr">Türkçe</bdi></li>
+            <li><bdi lang="es">Español</bdi></li>
+            <li><bdi lang="fr">Français</bdi></li>
+            <li><bdi lang="pt">Português</bdi></li>
+            <li><bdi lang="it">Italiano</bdi></li>
+            <li><bdi lang="nl">Nederlands</bdi></li>
+            <li><bdi lang="sv">Svenska</bdi></li>
+            <li><bdi lang="el">Ελληνικά</bdi></li>
+            <li><bdi lang="cs">Čeština</bdi></li>
+            <li><bdi lang="ro">Română</bdi></li>
+            <li><bdi lang="hu">Magyar</bdi></li>
+            <li><bdi lang="pl">Polski</bdi></li>
+            <li><bdi lang="uk">Українська</bdi></li>
+            <li><bdi lang="ru">Русский</bdi></li>
+            <li><bdi lang="ar">العربية</bdi></li>
+            <li><bdi lang="fa">فارسی</bdi></li>
+            <li><bdi lang="ur">اردو</bdi></li>
+            <li><bdi lang="hi">हिन्दी</bdi></li>
+            <li><bdi lang="ne">नेपाली</bdi></li>
+            <li><bdi lang="ka">ქართული</bdi></li>
+            <li><bdi lang="hy">Հայերեն</bdi></li>
+            <li><bdi lang="mn">Монгол</bdi></li>
+            <li><bdi lang="zh-Hans">简体中文</bdi></li>
+            <li><bdi lang="ja">日本語</bdi></li>
+            <li><bdi lang="ko">한국어</bdi></li>
+            <li><bdi lang="id">Bahasa Indonesia</bdi></li>
+            <li><bdi lang="ms">Bahasa Melayu</bdi></li>
+            <li><bdi lang="vi">Tiếng Việt</bdi></li>
+            <li><bdi lang="th">ไทย</bdi></li>
+            <li><bdi lang="fil">Filipino</bdi></li>
+            <li><bdi lang="am">አማርኛ</bdi></li>
+            <li><bdi lang="sw">Kiswahili</bdi></li>
+            <li><bdi lang="so">Soomaali</bdi></li>
+            <li><bdi lang="ha">Hausa</bdi></li>
+          </ul>
+        </section>
+
+        <section id="downloads">
+          <div class="section-heading">
+            <h2>Download for your computer.</h2>
+            <p
+              >Pick the architecture that matches your system. Available packages and verification
+              status are listed in the release notes.</p
+            >
+          </div>
+          <div class="grid downloads">
+            <article class="card">
+              <h3>Windows</h3>
+              <p
+                >Extract the ZIP and open <code>DNA_Launcher.exe</code>. The ARM64 preview requires
+                Windows 11 and WebView2 Evergreen.</p
+              >
+              <a
+                href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Windows-x64.zip"
+                >Download x64</a
+              >
+              <a
+                href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Windows-arm64.zip"
+                >ARM64 preview</a
+              >
+            </article>
+            <article class="card">
+              <h3>Linux</h3>
+              <p
+                >Run <code>./DNA-Workbench.sh</code> with Python 3.12, GTK 3 and WebKitGTK 4.1
+                installed.</p
+              >
+              <a
+                href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Linux-x64.zip"
+                >Download x64</a
+              >
+              <a
+                href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Linux-arm64.zip"
+                >ARM64 preview</a
+              >
+            </article>
+            <article class="card">
+              <h3>macOS</h3>
+              <p
+                >The preview uses a native WebKit window. It requires macOS 13 or later and Python
+                3.12 or later.</p
+              >
+              <a href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
+                >See macOS availability</a
+              >
+            </article>
+          </div>
+          <p class="download-note"
+            ><a
+              href="https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/GETTING_STARTED.md"
+              >Installation guide</a
+            >
+            ·
+            <a href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
+              >Release notes and checksums</a
+            ></p
+          >
+        </section>
+
+        <section id="support" class="support">
+          <div>
+            <h2>Support independent development.</h2>
+            <p
+              ><a href="https://nowpayments.io/donation/oktayd">NOWPayments</a> ·
+              <a href="https://buymeacoffee.com/okioki">Buy Me a Coffee</a> ·
+              <a href="https://www.patreon.com/Oktaydu/gift">Patreon gift</a></p
+            >
+          </div>
+          <a href="https://buymeacoffee.com/okioki"
+            ><img
+              class="support-qr"
+              src="images/support-qr.jpg"
+              width="120"
+              alt="Buy Me a Coffee donation QR code"
+              loading="lazy"
+          /></a>
+        </section>
+      </main>
+      <footer>
+        <p>© 2026 Oktay Du / OD · Research software, not a clinical diagnostic system.</p>
+        <p
+          ><a href="privacy.html">Privacy</a> <a href="legal.html">Research and license</a>
+          <a href="https://github.com/oktay-du/DNA-Workbench-Suite/issues/new/choose">Feedback</a>
           <a href="mailto:oktaydu@proton.me">Contact</a></p
-        ></footer
-      ></div
-    ></body
-  ></html
->
+        >
+      </footer>
+    </div>
+  </body>
+</html>

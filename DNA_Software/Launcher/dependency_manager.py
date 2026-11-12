@@ -1,5 +1,6 @@
 from system_tools import windows_executable
 import network_io
+import hardware
 
 """Public metadata and immutable update staging. No personal DNA is transmitted."""
 from portable_paths import distro_name
@@ -404,11 +405,10 @@ def stage_clinvar(item):
 
 def foundation():
     # Public recipe for the selected core scientific tools; no licensed RFMix.
-    items = [
-        i
-        for i in LOCK["items"]
-        if i["id"] in ["samtools-1-25-tar-bz2", "bcftools-1-25-tar-bz2", "mosdepth"]
-    ]
+    archives = {"samtools-1-25-tar-bz2", "bcftools-1-25-tar-bz2"}
+    if not hardware.windows_arm64():
+        archives.add("mosdepth")
+    items = [i for i in LOCK["items"] if i["id"] in archives]
     plan = STATE / "foundation-plan.json"
     write(plan, items)
     for item in items:

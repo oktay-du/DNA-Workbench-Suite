@@ -68,7 +68,7 @@ def main(argv=None):
     sub.add_parser("serve", help="Start core loopback service without GUI/WSL/model")
     sub.add_parser(
         "desktop",
-        help="Open the Linux workspace window (WebKitGTK, not the system browser)",
+        help="Open the native Linux or macOS workspace window",
     )
     sub.add_parser("openapi")
     sub.add_parser(

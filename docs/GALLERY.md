@@ -2,6 +2,12 @@
 
 Representative application views use synthetic profiles and illustrative results. Optional modules and settings affect the interface shown.
 
+## Theme, language and files
+
+![Short tour with synthetic sample data](images/workspace-demo.gif)
+
+[Watch the video tour](https://oktay-du.github.io/DNA-Workbench-Suite/#tour).
+
 ## Light mode
 
 ![Application overview in light mode](images/03-overview-light.png)

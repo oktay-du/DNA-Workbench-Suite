@@ -1,4 +1,10 @@
-﻿param([string]$OutputName='DNA_Launcher.exe')
+﻿param(
+ [string]$OutputName,
+ [ValidateSet('x64','arm64')][string]$Architecture='x64'
+)
+if (-not $OutputName) {
+ $OutputName=if($Architecture-eq'arm64'){'DNA_Launcher_ARM64.exe'}else{'DNA_Launcher.exe'}
+}
 $ErrorActionPreference='Stop'
 $taskRoot=Split-Path -Parent (Split-Path -Parent $PSScriptRoot)
 Add-Type -AssemblyName System.Drawing
@@ -19,6 +25,25 @@ $taskPythonPath=$null;$taskPythonDir=Join-Path $taskRoot 'DNA_Software/Windows/P
 if(Test-Path $taskPythonDir){$taskPythonPath=Get-ChildItem -LiteralPath $taskPythonDir -Filter python.exe -Recurse|Where-Object FullName -NotMatch '\\venv\\'|Select-Object -First 1 -ExpandProperty FullName}
 if(-not$taskPythonPath){$taskPythonCommand=Get-Command python.exe -ErrorAction SilentlyContinue;if($taskPythonCommand){$taskPythonPath=$taskPythonCommand.Source}}
 if(-not$taskPythonPath){throw "Python is needed for building."}
+if ($Architecture -eq 'arm64') {
+ $armSdk=Join-Path $PSScriptRoot 'WebView2-arm64/WebView2Loader.dll'
+ if (-not (Test-Path -LiteralPath $armSdk)) {
+  & $taskPythonPath (Join-Path $PSScriptRoot 'fetch_webview_sdk.py') --arch arm64
+  if ($LASTEXITCODE -ne 0) { throw "The ARM64 WebView2 SDK could not load." }
+ }
+ & $taskPythonPath (Join-Path $PSScriptRoot 'public_package.py') --payload --arch arm64
+ if ($LASTEXITCODE -ne 0) { throw "The ARM64 core payload could not be built." }
+ $armOutput=Join-Path $PSScriptRoot 'bin/arm64-publish'
+ & dotnet build (Join-Path $PSScriptRoot 'DNAWorkbench.csproj') --configuration Release --output $armOutput -p:DnaArchitecture=arm64
+ if ($LASTEXITCODE -ne 0) { throw "The ARM64 launcher could not be compiled." }
+ Copy-Item -LiteralPath (Join-Path $armOutput 'DNAWorkbench.exe') -Destination (Join-Path $taskRoot $OutputName) -Force
+ $armConfig=Join-Path $armOutput 'DNAWorkbench.exe.config'
+ if (Test-Path -LiteralPath $armConfig) {
+  Copy-Item -LiteralPath $armConfig -Destination (Join-Path $taskRoot ($OutputName+'.config')) -Force
+ }
+ Write-Output ($OutputName + ' built.')
+ return
+}
 if(-not(Test-Path (Join-Path $PSScriptRoot 'WebView2/Microsoft.Web.WebView2.Core.dll'))){& $taskPythonPath (Join-Path $PSScriptRoot 'fetch_webview_sdk.py');if($LASTEXITCODE-ne 0){throw "WebView2 SDK could not load."}}
 & $taskPythonPath (Join-Path $PSScriptRoot 'public_package.py') --payload
 if($LASTEXITCODE-ne 0){throw "The core package could not be built."}

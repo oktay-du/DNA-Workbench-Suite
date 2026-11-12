@@ -816,6 +816,11 @@ if __name__ == "__main__":
     import suite_api
 
     suite_api.start_refresh_service()
+    import hardware
+    import local_ai
+
+    hardware.detect_in_background()
+    local_ai.prepare_runtime()
     if "--embedded" in sys.argv:
         path = Path(sys.argv[sys.argv.index("--embedded") + 1])
         path.parent.mkdir(parents=True, exist_ok=True)

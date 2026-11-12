@@ -4,10 +4,12 @@ import network_io
 """Explicit per-function preparation; status checks never start a WSL distro."""
 from portable_paths import distro_name
 from pathlib import Path
-import datetime, hashlib, os, shlex, shutil, subprocess, sys, tarfile, urllib.request, zipfile
+import datetime, hashlib, os, platform, shlex, shutil, subprocess, sys, tarfile, urllib.request, zipfile
 import portable_json as json
 import portable_paths
 import tool_hosts
+import hardware
+from importlib.util import find_spec
 
 portable_paths.configure()
 ROOT = Path(__file__).resolve().parents[2]
@@ -282,6 +284,9 @@ LINUX_LOCAL = {
     "mosdepth",
     "gramps",
 }
+# The pinned guest binaries for these tools target x86-64. An ARM guest can
+# still use a compatible version that is already on its PATH.
+WSL_X64_ONLY = {"plink2", "haplogrep"}
 WINDOWS_COMPANION = {
     "plink2": ("plink2-windows", "DNA_Software/Windows/PLINK2", "plink2.exe"),
     "haplogrep": (
@@ -319,6 +324,46 @@ LINUX_SPEC = {
     ),
     "gramps": ("gramps-6-0-8-1-amd64-snap", None, None, None),
 }
+
+
+def uses_host_tool_packages():
+    return os.name != "nt" and (
+        sys.platform == "darwin" or platform.machine().lower() in {"arm64", "aarch64"}
+    )
+
+
+HOST_COMMANDS = {
+    "java-windows": "java",
+    "haplogrep": "haplogrep",
+    "open-cravat": "oc",
+    "document-ocr": "tesseract",
+}
+
+
+def host_command(tool):
+    return shutil.which(HOST_COMMANDS.get(tool, tool))
+
+
+HOST_MODULES = {
+    "biopython": ("Bio",),
+    "document-reader": ("pypdf",),
+    "helix-3d": ("manifold3d", "numpy"),
+    "plotly": ("plotly",),
+    "pyliftover": ("pyliftover",),
+    "pyfastx": ("pyfastx",),
+    "pysam": ("pysam",),
+    "sequence-python": ("Bio", "pyfastx", "numpy"),
+    "snps": ("snps",),
+    "storybook-pdf": ("reportlab", "pypdf", "PIL"),
+}
+
+
+def host_tool_available(tool):
+    if tool in HOST_MODULES:
+        return all(find_spec(module) is not None for module in HOST_MODULES[tool])
+    if tool == "document-ocr":
+        return bool(host_command(tool) and shutil.which("pdftoppm"))
+    return bool(host_command(tool))
 
 
 def skips_wsl(tool):
@@ -463,7 +508,8 @@ def linux_state():
 
 def status(task, filename=""):
     required = mapped(task, filename)
-    needs_linux = any(not skips_wsl(tool) for tool in required)
+    host_packages = uses_host_tool_packages()
+    needs_linux = not host_packages and any(not skips_wsl(tool) for tool in required)
     state = (
         linux_state()
         if needs_linux
@@ -505,9 +551,21 @@ def status(task, filename=""):
     for tool in required:
         source, artifact, recipe = TOOLS[tool]
         artifact = tool_hosts.prefer(tool, artifact)
+        arm_guest = hardware.windows_arm64()
+        unsupported_pin = arm_guest and tool in WSL_X64_ONLY
+        if unsupported_pin or (arm_guest and tool == "mosdepth"):
+            artifact = None
         known = installed.get(tool)
         item = next((i for i in LOCK["items"] if i["id"] == artifact), {})
-        if tool in WINDOWS and os.name == "nt":
+        if host_packages:
+            if tool in LINUX_LOCAL:
+                artifact, item = None, {}
+            known = host_tool_available(tool)
+            if tool == "seqviz":
+                import visual_tools
+
+                known = visual_tools.installed("seqviz")
+        elif tool in WINDOWS and os.name == "nt":
             base = ROOT / "DNA_Software/Windows"
             known = (
                 bool(list((base / "Java21").glob("**/java.exe")))
@@ -584,8 +642,13 @@ def status(task, filename=""):
                 else "Check after Linux start",
                 "source": source,
                 "recipe": recipe,
-                "installable": (os.name != "nt" and tool in LINUX_LOCAL)
-                or recipe not in ["manual", "windows-manual"],
+                "installable": tool == "seqviz"
+                if host_packages
+                else not unsupported_pin
+                and (
+                    (os.name != "nt" and tool in LINUX_LOCAL)
+                    or recipe not in ["manual", "windows-manual"]
+                ),
                 "version": item.get("version")
                 or item.get("commit")
                 or PIP.get(tool, "Paketquelle / nach Installation protokolliert"),
@@ -810,6 +873,25 @@ def install(tool, license_reviewed=False):
         raise ValueError("Unbekanntes Werkzeug.")
     if tool == "rfmix" and not license_reviewed:
         raise ValueError(LICENSE)
+    arm_guest = hardware.windows_arm64()
+    if arm_guest and tool in WSL_X64_ONLY:
+        raise ValueError(
+            "The bundled Linux tool targets x86-64. Use a compatible build on the ARM64 Ubuntu PATH."
+        )
+    if uses_host_tool_packages():
+        if tool == "seqviz":
+            import visual_tools
+
+            return visual_tools.install("seqviz")
+        if host_tool_available(tool):
+            return {
+                "tool": tool,
+                "status": "Host program is available",
+                "path": host_command(tool) or sys.executable,
+            }
+        raise ValueError(
+            "Install a compatible host build in PATH or in the workspace Python environment."
+        )
     if os.name != "nt" and tool in LINUX_LOCAL:
         return install_linux_local(tool)
     if os.name != "nt":
@@ -1067,9 +1149,14 @@ def install(tool, license_reviewed=False):
     elif tool == "docker":
         apt("docker.io")
     elif tool == "mosdepth":
-        lines.append(
-            "install -m755 " + Q(linux_path(fetch(artifact))) + " /opt/dna/bin/mosdepth"
-        )
+        if arm_guest:
+            apt("mosdepth")
+        else:
+            lines.append(
+                "install -m755 "
+                + Q(linux_path(fetch(artifact)))
+                + " /opt/dna/bin/mosdepth"
+            )
     elif tool == "beagle":
         jar = fetch(artifact)
         apt("openjdk-21-jre-headless")

@@ -1,4 +1,4 @@
-"""Linux desktop window for the same loopback workspace the Windows EXE hosts.
+"""Native desktop window for the same loopback workspace the Windows EXE hosts.
 
 The window is the desktop owner. It does not open the system browser.
 """
@@ -63,6 +63,16 @@ def open_webkit(url):
     Gtk.main()
 
 
+def open_macos(url):
+    root = Path(__file__).resolve().parents[2]
+    viewer = root / "DNA-Workbench.app/Contents/MacOS/DNAWorkbenchWebView"
+    if not viewer.is_file():
+        raise FileNotFoundError(
+            "Build or extract the macOS application alongside the workspace."
+        )
+    subprocess.run([str(viewer), url], check=True)
+
+
 def run():
     folder = Path(tempfile.mkdtemp(prefix="dna-desktop-"))
     info_path = folder / "service.json"
@@ -74,7 +84,11 @@ def run():
     )
     try:
         service = wait_for_service(info_path, process)
-        open_webkit(workspace_url(service["url"]))
+        url = workspace_url(service["url"])
+        if sys.platform == "darwin":
+            open_macos(url)
+        else:
+            open_webkit(url)
     finally:
         if process.poll() is None and process.stdin is not None:
             process.stdin.close()

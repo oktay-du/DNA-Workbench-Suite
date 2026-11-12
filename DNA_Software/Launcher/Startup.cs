@@ -40,6 +40,13 @@ namespace DnaWorkbench
     }
     public static class PortableEnvironment
     {
+#if DNA_WINDOWS_ARM64
+        public const string WindowsArchitecture = "arm64";
+        public const string PythonFolder = "Python-arm64";
+#else
+        public const string WindowsArchitecture = "x64";
+        public const string PythonFolder = "Python";
+#endif
         public static void Configure()
         {
             LegacyLayout.Migrate(AppDomain.CurrentDomain.BaseDirectory);
@@ -52,6 +59,7 @@ namespace DnaWorkbench
                 Environment.SetEnvironmentVariable(pair.Key, path);
             }
             Environment.SetEnvironmentVariable("DNA_SUITE_ROOT", root);
+            Environment.SetEnvironmentVariable("DNA_WORKBENCH_WINDOWS_ARCH", WindowsArchitecture);
             Environment.SetEnvironmentVariable("PYTHONNOUSERSITE", "1");
             Environment.CurrentDirectory = root;
         }
@@ -261,7 +269,7 @@ namespace DnaWorkbench
                 else
                     Row("WSL-Host", L("Checking / optional"), L("PowerShell check does not block startup"));
 
-                string basePython = Path.Combine(root, "DNA_Software", "Windows", "Python");
+                string basePython = Path.Combine(root, "DNA_Software", "Windows", PortableEnvironment.PythonFolder);
                 Context.Python = Directory.Exists(basePython) ? Directory.GetFiles(basePython, "python.exe", SearchOption.AllDirectories).FirstOrDefault(p => !p.Contains("\\venv\\")) : null;
                 if (Context.Python == null)
                 {
@@ -270,6 +278,18 @@ namespace DnaWorkbench
                     return;
                 }
                 Row("Python", L("✓ present"), Context.Python);
+#if DNA_WINDOWS_ARM64
+                string webViewVersion;
+                try { webViewVersion = Microsoft.Web.WebView2.Core.CoreWebView2Environment.GetAvailableBrowserVersionString(); }
+                catch (Microsoft.Web.WebView2.Core.WebView2RuntimeNotFoundException) { webViewVersion = null; }
+                if (String.IsNullOrEmpty(webViewVersion))
+                {
+                    Row(L("App interface"), L("Missing"), "Microsoft Edge WebView2 Evergreen Runtime (ARM64)");
+                    status.Text = "Install the Microsoft Edge WebView2 Evergreen Runtime for ARM64, then restart DNA Workbench.";
+                    return;
+                }
+                Row(L("App interface"), L("✓ present"), webViewVersion);
+#else
                 string runtime = Path.Combine(root, "DNA_Software", "Windows", "WebView2Runtime");
                 bool found = Directory.Exists(runtime) && Directory.GetFiles(runtime, "msedgewebview2.exe", SearchOption.AllDirectories).Length > 0;
                 Row(L("App interface"), found ? L("✓ portable runtime") : L("Missing"), L("Install Core if no runtime is present"));
@@ -278,6 +298,7 @@ namespace DnaWorkbench
                     status.Text = L("Portable interface missing: install Core.");
                     return;
                 }
+#endif
                 if (Context.Server == null || Context.Server.HasExited)
                 {
                     string folder = Path.Combine(root, "DNA_Software", "UserData", "Launcher", "Sitzungen", Guid.NewGuid().ToString("N"));

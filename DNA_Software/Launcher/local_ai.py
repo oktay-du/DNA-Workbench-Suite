@@ -4,6 +4,9 @@ import localization
 """Small local assistant with bounded evidence access and typed action proposals."""
 from pathlib import Path
 import atexit, hashlib, os, re, secrets, socket, subprocess, threading, time, urllib.request, zipfile
+
+import hardware
+import local_ai_runtime
 import portable_json as json
 import source_store, visual_store, suite_api
 
@@ -17,6 +20,7 @@ SERVER = None
 PORT = None
 KEY = None
 INSTALL = {"state": "idle"}
+RUNTIME_PREPARATION = threading.Lock()
 ROUTES = {
     "intake",
     "genocat",
@@ -56,7 +60,7 @@ def sha(path):
 
 def ready():
     return (
-        (BASE / "runtime/llama-server.exe").is_file()
+        local_ai_runtime.executable(BASE, "cpu") is not None
         and (BASE / "models" / MANIFEST["model"]["filename"]).is_file()
         and (BASE / "installation.json").is_file()
     )
@@ -67,9 +71,13 @@ def status():
         "installed": ready(),
         "running": SERVER is not None and SERVER.poll() is None,
         "model": MANIFEST["model"]["name"],
-        "download_bytes": MANIFEST["model"]["bytes"] + 24609139,
+        "download_bytes": MANIFEST["model"]["bytes"]
+        + sum(
+            asset[1]
+            for asset in local_ai_runtime.builds().get("cpu", [("", 24609139, "")])
+        ),
         "installation": dict(INSTALL),
-        "note": "Local CPU model. Small models may be inaccurate; verified suite evidence and typed actions remain authoritative.",
+        "note": "Local model. Small models may be inaccurate; verified suite evidence and typed actions remain authoritative.",
     }
 
 
@@ -81,7 +89,10 @@ def install():
     def work():
         try:
             BASE.mkdir(parents=True, exist_ok=True)
-            for kind in ("runtime", "model"):
+            native_cpu = "cpu" in local_ai_runtime.builds()
+            if native_cpu:
+                local_ai_runtime.install(BASE, "cpu")
+            for kind in ("model",) if native_cpu else ("runtime", "model"):
                 spec = MANIFEST[kind]
                 dest = BASE / (
                     "runtime.zip" if kind == "runtime" else "models/" + spec["filename"]
@@ -129,7 +140,7 @@ def install():
                             output = folder / relative
                             output.parent.mkdir(parents=True, exist_ok=True)
                             output.write_bytes(zipped.read(entry))
-            if not (BASE / "runtime/llama-server.exe").is_file():
+            if local_ai_runtime.executable(BASE, "cpu") is None:
                 raise ValueError("llama-server entry point missing")
             (BASE / "installation.json").write_text(
                 json.dumps(MANIFEST, indent=2), encoding="utf-8"
@@ -137,6 +148,7 @@ def install():
             INSTALL.update(
                 state="complete", detail="Checksums verified; local model available"
             )
+            prepare_runtime()
         except Exception as error:
             INSTALL.update(state="failed", detail=str(error))
 
@@ -144,11 +156,35 @@ def install():
     return status()
 
 
+def prepare_runtime():
+    if not ready() or not RUNTIME_PREPARATION.acquire(blocking=False):
+        return
+
+    def work():
+        try:
+            local_ai_runtime.prepare(BASE)
+        finally:
+            RUNTIME_PREPARATION.release()
+
+    threading.Thread(target=work, daemon=True, name="local-ai-runtime").start()
+
+
+def terminate(process):
+    if process.poll() is None:
+        process.terminate()
+        try:
+            process.wait(timeout=3)
+        except subprocess.TimeoutExpired:
+            process.kill()
+            process.wait()
+
+
 def stop():
     global SERVER
-    if SERVER is not None and SERVER.poll() is None:
-        SERVER.terminate()
-    SERVER = None
+    with GUARD:
+        if SERVER is not None:
+            terminate(SERVER)
+            SERVER = None
 
 
 atexit.register(stop)
@@ -168,36 +204,67 @@ def start():
             PORT = sock.getsockname()[1]
         KEY = secrets.token_urlsafe(32)
         STATE.mkdir(parents=True, exist_ok=True)
-        command = [
-            str(BASE / "runtime/llama-server.exe"),
-            "-m",
-            str(BASE / "models" / MANIFEST["model"]["filename"]),
-            "--host",
-            "127.0.0.1",
-            "--port",
-            str(PORT),
-            "--api-key",
-            KEY,
-            "--ctx-size",
-            "4096",
-            "--threads",
-            str(min(4, os.cpu_count() or 2)),
-            "--parallel",
-            "1",
-            "--n-gpu-layers",
-            "0",
-            "--no-webui",
-        ]
-        with (STATE / "runtime.log").open("ab") as log:
-            SERVER = subprocess.Popen(
-                command,
-                stdin=subprocess.DEVNULL,
-                stdout=log,
-                stderr=log,
-                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+        prepare_runtime()
+        for backend in (
+            *local_ai_runtime.candidates(
+                hardware.gpu_vendors(), local_ai_runtime.builds()
+            ),
+            "cpu",
+        ):
+            binary = local_ai_runtime.executable(BASE, backend)
+            if binary is None:
+                continue
+            device = (
+                None if backend == "cpu" else local_ai_runtime.device(binary, backend)
             )
-        for _ in range(120):
-            if SERVER.poll() is not None:
+            if backend != "cpu" and device is None:
+                continue
+            try:
+                SERVER = start_server(binary, device)
+                return
+            except (OSError, ValueError, subprocess.SubprocessError):
+                if backend == "cpu":
+                    raise
+        raise ValueError("Local model runtime is unavailable")
+
+
+def start_server(binary, device):
+    command = [
+        str(binary),
+        "-m",
+        str(BASE / "models" / MANIFEST["model"]["filename"]),
+        "--host",
+        "127.0.0.1",
+        "--port",
+        str(PORT),
+        "--api-key",
+        KEY,
+        "--ctx-size",
+        "4096",
+        "--threads",
+        str(hardware.cpu_threads()),
+        "--parallel",
+        "1",
+        "--device",
+        device or "none",
+        "--n-gpu-layers",
+        "auto" if device else "0",
+        "--no-webui",
+    ]
+    with (STATE / "runtime.log").open("ab") as log:
+        process = subprocess.Popen(
+            command,
+            cwd=binary.parent,
+            env=local_ai_runtime.environment(binary),
+            stdin=subprocess.DEVNULL,
+            stdout=log,
+            stderr=log,
+            creationflags=local_ai_runtime.HIDDEN,
+        )
+    try:
+        deadline = time.monotonic() + 60
+        while time.monotonic() < deadline:
+            if process.poll() is not None:
                 raise ValueError(
                     "Local AI could not start; see " + str(STATE / "runtime.log")
                 )
@@ -210,10 +277,14 @@ def start():
                     timeout=1,
                 ) as response:
                     if response.status == 200:
-                        return
+                        return process
             except (OSError, ValueError):
-                time.sleep(0.5)
+                pass
+            time.sleep(0.25)
         raise ValueError("Local model startup timed out")
+    except BaseException:
+        terminate(process)
+        raise
 
 
 def evidence(pid, query=""):

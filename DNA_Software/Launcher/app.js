@@ -2051,18 +2051,7 @@ async function aiPage() {
   side.append(
     el("span", cloud.assistant === "api" && cloud.enabled ? "API AI" : "LOCAL AI", "eyebrow"),
     el("h2", cloud.assistant === "api" && cloud.enabled ? cloud.chat_model : status.model),
-    el("span", status.installed ? t("Installed") : t("Optional download"), "pill"),
-    el(
-      "p",
-      cloud.assistant === "api" && cloud.enabled
-        ? t(
-            "API chat is selected. The local CPU model remains available separately as an optional alternative."
-          )
-        : t(
-            "Small CPU model. No cloud account or DNA upload. Check its answers against the evidence."
-          ),
-      "muted"
-    )
+    el("span", status.installed ? t("Installed") : t("Optional download"), "pill")
   );
   if (!status.installed)
     side.append(

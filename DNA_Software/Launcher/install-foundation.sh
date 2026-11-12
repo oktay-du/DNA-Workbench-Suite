@@ -9,7 +9,12 @@ for tool in samtools bcftools; do
  fi
  ln -sfn "/opt/dna/tools/$tool-1.25/bin/$tool" "/opt/dna/bin/$tool"
 done
-install -m755 "$ssd/DNA_Software/Downloads/mosdepth" /opt/dna/bin/mosdepth
+if [ "$(uname -m)" = aarch64 ]; then
+ apt-get update
+ apt-get install -y --no-install-recommends mosdepth
+else
+ install -m755 "$ssd/DNA_Software/Downloads/mosdepth" /opt/dna/bin/mosdepth
+fi
 export PIP_CACHE_DIR=/opt/dna/cache/pip
 /opt/dna/envs/analysis/bin/python -m pip install --require-hashes -r "$ssd/DNA_Software/Launcher/Locks/foundation-linux.txt"
 /opt/dna/envs/analysis/bin/python -m pip freeze > /opt/dna/cache/installed-python-lock.txt

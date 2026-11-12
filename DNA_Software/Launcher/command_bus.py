@@ -1285,7 +1285,7 @@ def _build_definitions():
     add("ai.stop", "Unload the owned local model runtime.", obj(), "ai:stop", False)
     add(
         "ai.install",
-        "Install the pinned optional local CPU model and runtime.",
+        "Install the pinned optional local model and runtime.",
         obj(),
         "ai:install",
         False,

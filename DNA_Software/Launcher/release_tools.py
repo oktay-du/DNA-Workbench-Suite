@@ -1,7 +1,7 @@
 """Public release staging from an explicit allowlist. No personal workspace exports."""
 
 from pathlib import Path
-import hashlib, json, os, zipfile, urllib.parse
+import hashlib, json, os, platform, plistlib, subprocess, sys, zipfile, urllib.parse
 
 ROOT = Path(__file__).resolve().parents[2]
 APP = Path(__file__).parent
@@ -57,23 +57,67 @@ exec python3 DNA_Software/Launcher/dna_cli.py desktop
 """
 
 
-def build_linux_zip(archive):
-    """Package the Linux desktop from the public allowlist.
+MAC_LAUNCHER = """#!/bin/sh
+set -eu
+cd "$(dirname "$0")/../../.."
+PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+export PATH
+PYTHON=$(command -v python3.12 || command -v python3 || true)
+if [ -z "$PYTHON" ] || ! "$PYTHON" -c 'import sys; sys.exit(sys.version_info < (3, 12))'; then
+    /usr/bin/osascript -e 'display alert "DNA Workbench needs Python 3.12 or later."'
+    exit 1
+fi
+exec "$PYTHON" DNA_Software/Launcher/dna_cli.py desktop
+"""
 
-    This is the Linux counterpart of the Windows release zip. It does not
-    require DNA_Launcher.exe. The shell launcher opens the WebKitGTK window.
-    """
+
+def zip_entry(bundle, name, data, mode=0o644):
+    info = zipfile.ZipInfo(name)
+    info.create_system = 3
+    info.external_attr = (0o100000 | mode) << 16
+    info.compress_type = zipfile.ZIP_DEFLATED
+    bundle.writestr(info, data)
+
+
+def build_desktop_zip(archive, mac_viewer=None):
+    """Package native desktop entry points and the public workspace source."""
     import public_package
 
     archive = Path(archive)
     archive.parent.mkdir(parents=True, exist_ok=True)
     seen = set()
     with zipfile.ZipFile(archive, "w", compression=zipfile.ZIP_DEFLATED) as bundle:
-        info = zipfile.ZipInfo("DNA-Workbench.sh")
-        info.create_system = 3
-        info.external_attr = 0o100755 << 16
-        bundle.writestr(info, LINUX_LAUNCHER)
-        seen.add("DNA-Workbench.sh")
+        if mac_viewer is None:
+            zip_entry(bundle, "DNA-Workbench.sh", LINUX_LAUNCHER, 0o755)
+            seen.add("DNA-Workbench.sh")
+        else:
+            prefix = "DNA-Workbench.app/Contents/"
+            zip_entry(bundle, prefix + "MacOS/DNAWorkbench", MAC_LAUNCHER, 0o755)
+            zip_entry(bundle, prefix + "MacOS/DNAWorkbenchWebView", mac_viewer, 0o755)
+            zip_entry(
+                bundle,
+                prefix + "Info.plist",
+                plistlib.dumps(
+                    {
+                        "CFBundleIdentifier": "io.github.oktay-du.DNAWorkbenchSuite",
+                        "CFBundleExecutable": "DNAWorkbench",
+                        "CFBundleName": "DNA Workbench",
+                        "CFBundlePackageType": "APPL",
+                        "CFBundleShortVersionString": json.loads(
+                            (APP / "install-lock.json").read_text(encoding="utf-8")
+                        )["app_version"],
+                        "LSMinimumSystemVersion": "13.0",
+                        "NSHighResolutionCapable": True,
+                        "NSAppTransportSecurity": {
+                            "NSExceptionDomains": {
+                                "127.0.0.1": {
+                                    "NSExceptionAllowsInsecureHTTPLoads": True
+                                },
+                            },
+                        },
+                    }
+                ),
+            )
         selected = list(public_package.entries()) + list(
             public_package.presentation_entries()
         )
@@ -93,12 +137,52 @@ def build_linux_zip(archive):
     return archive
 
 
-def stage_linux():
+def build_linux_zip(archive):
+    return build_desktop_zip(archive)
+
+
+def desktop_arch(machine):
+    try:
+        return {"x86_64": "x64", "amd64": "x64", "aarch64": "arm64", "arm64": "arm64"}[
+            machine.lower()
+        ]
+    except KeyError:
+        raise ValueError(f"Unsupported desktop architecture: {machine}") from None
+
+
+def stage_desktop(target, arch):
     version = json.loads((APP / "install-lock.json").read_text(encoding="utf-8"))[
         "app_version"
     ]
     dest = ROOT / "DNAWorkbench_Release" / version
-    archive = build_linux_zip(dest / "DNAWorkbench-Linux-x64.zip")
+    if target == "macos":
+        if sys.platform != "darwin":
+            raise ValueError(
+                "Building the macOS application requires macOS and Xcode tools."
+            )
+        from tempfile import TemporaryDirectory
+
+        with TemporaryDirectory(prefix="dna-macos-build-") as folder:
+            binary = Path(folder) / "DNAWorkbenchWebView"
+            swift_arch = "x86_64" if arch == "x64" else "arm64"
+            subprocess.run(
+                [
+                    "/usr/bin/xcrun",
+                    "swiftc",
+                    "-O",
+                    "-target",
+                    swift_arch + "-apple-macos13.0",
+                    str(APP / "MacWebView.swift"),
+                    "-o",
+                    str(binary),
+                ],
+                check=True,
+            )
+            archive = build_desktop_zip(
+                dest / f"DNAWorkbench-macOS-{arch}.zip", binary.read_bytes()
+            )
+    else:
+        archive = build_linux_zip(dest / f"DNAWorkbench-Linux-{arch}.zip")
     with archive.open("rb") as stream:
         digest = hashlib.file_digest(stream, "sha256").hexdigest()
     files = [{"path": archive.name, "sha256": digest, "bytes": archive.stat().st_size}]
@@ -107,7 +191,8 @@ def stage_linux():
             {
                 "version": version,
                 "author": "OD",
-                "target": "linux",
+                "target": target,
+                "architecture": arch,
                 "files": files,
                 "signed": False,
                 "publication_status": "Prepared locally; not uploaded to GitHub",
@@ -122,18 +207,25 @@ def stage_linux():
     return str(dest)
 
 
-def prepare():
+def prepare(arch="x64"):
     import public_package, command_bus
 
     version = json.loads((APP / "install-lock.json").read_text(encoding="utf-8"))[
         "app_version"
     ]
     dest = ROOT / "DNAWorkbench_Release" / version
+    if arch == "arm64":
+        dest = dest / "windows-arm64"
     dest.mkdir(parents=True, exist_ok=True)
+    launcher = "DNA_Launcher_ARM64.exe" if arch == "arm64" else "DNA_Launcher.exe"
     selected = [
-        (ROOT / "DNA_Launcher.exe", "DNA_Launcher.exe"),
+        (ROOT / launcher, "DNA_Launcher.exe"),
         (ROOT / "DNAWorkbench_Source.zip", "DNAWorkbench_Source.zip"),
     ]
+    if arch == "arm64":
+        config = ROOT / (launcher + ".config")
+        if config.is_file():
+            selected.append((config, "DNA_Launcher.exe.config"))
     selected += [
         (APP / "Public" / name, name)
         for name in [
@@ -194,13 +286,11 @@ def prepare():
         "\n".join(x["sha256"] + "  " + x["path"] for x in files) + "\n",
         encoding="ascii",
     )
-    with zipfile.ZipFile(
-        dest / "DNAWorkbench-Windows-x64.zip", "w", zipfile.ZIP_DEFLATED
-    ) as z:
+    archive = dest / f"DNAWorkbench-Windows-{arch}.zip"
+    with zipfile.ZipFile(archive, "w", zipfile.ZIP_DEFLATED) as z:
         for row in files:
             if row["path"] != "DNAWorkbench_Source.zip":
                 z.write(dest / row["path"], row["path"])
-    archive = dest / "DNAWorkbench-Windows-x64.zip"
     with archive.open("rb") as stream:
         archive_hash = hashlib.file_digest(stream, "sha256").hexdigest()
     files.append(
@@ -232,18 +322,27 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description="Stage the native release zip")
     parser.add_argument(
         "--target",
-        choices=("auto", "windows", "linux"),
+        choices=("auto", "windows", "linux", "macos"),
         default="auto",
         help="auto builds the package for this operating system",
+    )
+    parser.add_argument(
+        "--arch", choices=("x64", "arm64"), help="Target desktop architecture"
     )
     args = parser.parse_args(argv)
     target = args.target
     if target == "auto":
-        target = "windows" if os.name == "nt" else "linux"
+        target = (
+            "windows"
+            if os.name == "nt"
+            else "macos"
+            if sys.platform == "darwin"
+            else "linux"
+        )
     if target == "windows":
-        print(prepare())
+        print(prepare(args.arch or "x64"))
     else:
-        print(stage_linux())
+        print(stage_desktop(target, args.arch or desktop_arch(platform.machine())))
     return 0
 
 

@@ -1,6 +1,10 @@
 import network_io
 from pathlib import Path
-import json, zipfile, io, hashlib
+import argparse, json, zipfile, io, hashlib
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--arch", choices=("x64", "arm64"), default="x64")
+arch = parser.parse_args().arch
 
 base = "https://api.nuget.org/v3-flatcontainer/microsoft.web.webview2/"
 version = "1.0.4314.35"
@@ -12,7 +16,7 @@ if (
     != "90778deb1b77e36292828b4b5833c9255c27533f40e0ddd55891ae718944edc4"
 ):
     raise RuntimeError("WebView2 SDK checksum mismatch")
-out = Path(__file__).with_name("WebView2")
+out = Path(__file__).with_name("WebView2" if arch == "x64" else "WebView2-arm64")
 out.mkdir(exist_ok=True)
 with zipfile.ZipFile(io.BytesIO(data)) as z:
     wanted = {"Microsoft.Web.WebView2.Core.dll", "Microsoft.Web.WebView2.WinForms.dll"}
@@ -20,7 +24,7 @@ with zipfile.ZipFile(io.BytesIO(data)) as z:
         if (
             name.startswith("lib/net462/")
             and Path(name).name in wanted
-            or name == "runtimes/win-x64/native/WebView2Loader.dll"
+            or name == f"runtimes/win-{arch}/native/WebView2Loader.dll"
         ):
             (out / Path(name).name).write_bytes(z.read(name))
         if "license" in Path(name).name.lower() and not name.endswith("/"):
