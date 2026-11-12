@@ -796,7 +796,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "2585541b1cdb3685233e886e1e49a34c18356a8b7b32a367d3c205687d9d0496",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -810,7 +810,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "bf961aaf80c9887adce2b7544f014edf7df6d0e8642f1fe9551c1b5400a12344",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -824,7 +824,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "9296df13b6bad7d396f4fc246d45a73407d7d99580bf0eb68e1115cf8ecaa4e1",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -838,7 +838,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "5f41c8d719be8f299196a0a2abe424fc5e016824792bfcb805daec8394ffbd7c",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -958,7 +958,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "43af1af9d126953d19119d1f835498525f8e61f42887d4abef103ffa3e60a7a9",
-      "file_sha256": "8ade8104f13d16e28fcfb5080d8b02950bb081fd8081ba4113afc3f388f2944b",
+      "file_sha256": "6c7baa4543192fc23cf1a5172f4ef6cd8763084856a17e87e787d9faad14c7eb",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -971,7 +971,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "641adae45d2f29596d0ce109dc6434790e2da97588c858b3aa9e7d1609a2a39c",
-      "file_sha256": "8ade8104f13d16e28fcfb5080d8b02950bb081fd8081ba4113afc3f388f2944b",
+      "file_sha256": "6c7baa4543192fc23cf1a5172f4ef6cd8763084856a17e87e787d9faad14c7eb",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -1265,7 +1265,7 @@
       "path": "DNA_Software/Launcher/dna_cli.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ffa90dc74e4e97b4c085badb1addce9ee2e6f668b4b54ab95c73b506cc35e1b2",
-      "file_sha256": "0cefafe15efe4508fa359d2cda6a16d4a9b9b2b20bbe763e061efea4ba6e01df",
+      "file_sha256": "9e0d8b0fbe4b2f74a291972d4c02742ecd6516c4ff36a12a635a8f7179bc811f",
       "reason": "This is an explicit local CLI path, selected by the OS user, not a network filesystem endpoint. Shared command validation applies to API commands.",
       "tests": [
         "test_agent_control"
@@ -1341,7 +1341,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ffbed60910bdd97a29f9fe5ed39b536841f371263feb68d18553634175e24ca4",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -1353,7 +1353,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "8180c3e53f97c3216e321f8b8554fd43e85c27b0a1151631b40a45275365bb74",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -1365,7 +1365,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f397a0f23cfb4373f62019b62bcbc0e6ee93fbf4975f167d3bdf90cbee03f38e",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2410,7 +2410,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "530db5801c1f7821ca9e9f44e88b8527b3417bae3e64f65d28e176e33b48cd42",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2422,7 +2422,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "447a8fc5057b2cfc323f45e432b7c3cb28ea5b66b307d76baa9d18c0213d234b",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2434,7 +2434,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "2a0b53d2c44fa226ac2aeefb3698c38b4123b9aa0a87ac5bbf629b8af1bb09c0",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2446,7 +2446,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "75fc6d1009027974cfe914e9994398a61f18536dfefbec333de708bd91c27650",
-      "file_sha256": "fb9325873f3dd806b23929c0dd4065f0463219876e6539eff1465167ca4ed58e",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2469,7 +2469,7 @@
       "path": "DNA_Software/Launcher/family.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "da6d14b4a93df6e0f7448246937ff8f784983a035fd0b5c688d0fb9db32550bf",
-      "file_sha256": "f7de0cb8b5ef174502244f5daa8c8709dccc142b913abee3fb9cc12b1f59c431",
+      "file_sha256": "e3a3bfe04cb817c20534374f67176e733c430b730ab00bc4481f82a8d5985ebd",
       "reason": "Routes map to constant static asset paths; explicit local CLI imports are OS-user actions. Authenticated profile commands use validated IDs.",
       "tests": [
         "test_family"
@@ -2480,7 +2480,7 @@
       "path": "DNA_Software/Launcher/family.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "173a0bd19c8303bc3e9b3ed050cc7a8699d9e747adbf9faed75e89414176c149",
-      "file_sha256": "f7de0cb8b5ef174502244f5daa8c8709dccc142b913abee3fb9cc12b1f59c431",
+      "file_sha256": "e3a3bfe04cb817c20534374f67176e733c430b730ab00bc4481f82a8d5985ebd",
       "reason": "Routes map to constant static asset paths; explicit local CLI imports are OS-user actions. Authenticated profile commands use validated IDs.",
       "tests": [
         "test_family"
@@ -2529,7 +2529,7 @@
         "test_agent_control"
       ],
       "code_sha256": "ecd30a5edec6aa3c0dfd82d52efc1f3a4521ee5249cfb28fd19aca45ece4823c",
-      "file_sha256": "8ade8104f13d16e28fcfb5080d8b02950bb081fd8081ba4113afc3f388f2944b",
+      "file_sha256": "6c7baa4543192fc23cf1a5172f4ef6cd8763084856a17e87e787d9faad14c7eb",
       "diff_review": "Reviewed sequence-lab DOM renderer, fixed project links, filtered tool cards, and removal of generic English fallback copy in favor of specific existing tool/field descriptions. el/textContent remain the rendering boundary; no source HTML or automatic analyses added. Browser synthetic job, escaping tests and web quality positive controls passed."
     },
     {
@@ -2549,7 +2549,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "d0f4c8df09974eb17df58451e9c59ae6b8b3f2b878521f8c684e5262436f48de",
-      "file_sha256": "8ade8104f13d16e28fcfb5080d8b02950bb081fd8081ba4113afc3f388f2944b",
+      "file_sha256": "6c7baa4543192fc23cf1a5172f4ef6cd8763084856a17e87e787d9faad14c7eb",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2561,7 +2561,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "2bff5f066f70f0608ee7243dddf04a4f6cb873f6c9818aa2e6c19a69b6332903",
-      "file_sha256": "8ade8104f13d16e28fcfb5080d8b02950bb081fd8081ba4113afc3f388f2944b",
+      "file_sha256": "6c7baa4543192fc23cf1a5172f4ef6cd8763084856a17e87e787d9faad14c7eb",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2573,7 +2573,7 @@
       "path": "DNA_Software/Launcher/dependency_manager.py",
       "rule": "python_lang_weak_hash_md5",
       "code_sha256": "4522c750cef8dd65553b6bba64c4ba9897758d4a3d6db60f023a7bf906ca4ecd",
-      "file_sha256": "b995a1466f3a17ef5fed90aefb9ca40df645ddbab4902c58fc0f220158082227",
+      "file_sha256": "235ef56f6ee11ac86ae2c32ef9056f50dee4f8818919a1b2d8887e38dda88600",
       "reason": "usedforsecurity=False marks legacy publisher MD5 as a transfer-corruption check only. Downloads use verified public HTTPS; SHA-256 is computed and checked where supplied. MD5 alone never authenticates executable updates.",
       "tests": [
         "test_security_boundaries",
@@ -2585,7 +2585,7 @@
       "path": "DNA_Software/Launcher/dependency_manager.py",
       "rule": "python_lang_weak_hash_md5",
       "code_sha256": "43c5bb7d7c59e1f8cd9b8ca92b97b433c7cf22e502889af4816e812924a35f06",
-      "file_sha256": "b995a1466f3a17ef5fed90aefb9ca40df645ddbab4902c58fc0f220158082227",
+      "file_sha256": "235ef56f6ee11ac86ae2c32ef9056f50dee4f8818919a1b2d8887e38dda88600",
       "reason": "usedforsecurity=False marks legacy publisher MD5 as a transfer-corruption check only. Downloads use verified public HTTPS; SHA-256 is computed and checked where supplied. MD5 alone never authenticates executable updates.",
       "tests": [
         "test_security_boundaries",
@@ -2597,7 +2597,7 @@
       "path": "DNA_Software/Launcher/dependency_manager.py",
       "rule": "python_lang_weak_hash_md5",
       "code_sha256": "d009a169f6335c4df79086a68c0e6e4946214cb9c9d694cfd5b25ad2a307ca49",
-      "file_sha256": "b995a1466f3a17ef5fed90aefb9ca40df645ddbab4902c58fc0f220158082227",
+      "file_sha256": "235ef56f6ee11ac86ae2c32ef9056f50dee4f8818919a1b2d8887e38dda88600",
       "reason": "usedforsecurity=False marks legacy publisher MD5 as a transfer-corruption check only. Downloads use verified public HTTPS; SHA-256 is computed and checked where supplied. MD5 alone never authenticates executable updates.",
       "tests": [
         "test_security_boundaries",
@@ -2609,7 +2609,7 @@
       "path": "DNA_Software/Launcher/dependency_manager.py",
       "rule": "python_lang_weak_hash_md5",
       "code_sha256": "fa5439c90b3f85292eeab50e201ef16b49dc9687fc8e182255af0ef983251bbf",
-      "file_sha256": "b995a1466f3a17ef5fed90aefb9ca40df645ddbab4902c58fc0f220158082227",
+      "file_sha256": "235ef56f6ee11ac86ae2c32ef9056f50dee4f8818919a1b2d8887e38dda88600",
       "reason": "usedforsecurity=False marks legacy publisher MD5 as a transfer-corruption check only. Downloads use verified public HTTPS; SHA-256 is computed and checked where supplied. MD5 alone never authenticates executable updates.",
       "tests": [
         "test_security_boundaries",
@@ -2736,7 +2736,7 @@
       "path": "DNA_Software/Launcher/desktop_host.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "c9005a55e70b28ba23b02ab39a6b6fd4a2ed585f39758ed84fbce4dd691e3087",
-      "file_sha256": "e5cd4bf8a9fdd0040ae4e5c70cdc275b1ffa9ac4d56c2b1cb5c44595ae2f909a",
+      "file_sha256": "0fb921b0379eca76f60f44f6e7c8dc7ef5f2872298366d6f56c613f98b104b5d",
       "reason": "The service file is service.json inside a temporary directory this process created. The desktop reads that file only to learn the loopback URL.",
       "tests": [
         "test_desktop_host"
@@ -2780,7 +2780,7 @@
       "path": "DNA_Software/Launcher/release_tools.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "0b97d3e29399fa2e56718640e121ab2f35e22926d72124db5237ab92578f39a4",
-      "file_sha256": "c74c96ab238d619d7d3067819d8cab2dce0a03bd52db344ea4b2505a7e934f27",
+      "file_sha256": "b512fef5800d55e092b6c9f20c2352dc2592ff9c865c20391ae8b3b7a767f8e6",
       "reason": "The archive path is the release zip chosen by the build command. The zip is created from the public allowlist, not from a request path.",
       "tests": [
         "test_linux_release.LinuxReleaseTests.test_linux_zip_contains_the_desktop_launcher"
@@ -2972,11 +2972,142 @@
       "path": "DNA_Software/Launcher/family.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "c0f39a0e7372a48190b1f371522f534e03562a2b9d43404ca803d612d189f072",
-      "file_sha256": "f7de0cb8b5ef174502244f5daa8c8709dccc142b913abee3fb9cc12b1f59c431",
+      "file_sha256": "e3a3bfe04cb817c20534374f67176e733c430b730ab00bc4481f82a8d5985ebd",
       "reason": "The request path is used only as an exact lookup key in STATIC_WEB_FILES or localization.ui_assets(). The former contains fixed bundled filenames and the latter constructs paths from the bundled manifest after validating each language code and flag. Unregistered requests never produce a filesystem path.",
       "tests": [
         "test_embedded_service",
         "test_localization.LocalizationTests.test_interface_languages_have_local_dictionaries_and_flags"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/desktop_host.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "bcf5319980190a47f1d8a8ff6ef0c6116af054a8e63be43257a9c1f3133910f5",
+      "file_sha256": "0fb921b0379eca76f60f44f6e7c8dc7ef5f2872298366d6f56c613f98b104b5d",
+      "reason": "The macOS viewer is a fixed executable inside the installed app bundle. The service URL must be a credential-free HTTP loopback workspace URL before launch and the Swift viewer repeats the check. The process receives an argument vector without a shell.",
+      "tests": [
+        "test_desktop_host.DesktopHostTests.test_workspace_url_rejects_anything_except_loopback"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "7d3d539c398f14d64afc855635d29202c8a7657fe666fa2105b12aec8febc520",
+      "file_sha256": "e1377716e11347624977aef11d79fa18252471e267f82ce550bd99de5300272f",
+      "reason": "The launcher passes a typed argument vector to Popen without a shell. Workflow and host adapters supply the executable; user file paths are arguments. The platform change only adds the POSIX session flag.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_tool_contracts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "318baa18f4a6dc927a9aa1de5622f9e7217cb3c5da04c3820ee2068ad22a5d34",
+      "file_sha256": "a24a824321045fe3f0671b652761c9f0c6f38fa1624033d3e6fbdb317bc26916",
+      "reason": "The executable and GGUF filename come from the pinned local installation. Launch arguments contain internal device IDs and the local socket and never include chat text. Popen uses an argument vector without a shell.",
+      "tests": [
+        "test_hardware.HardwareTests.test_failed_accelerator_server_falls_back_to_cpu",
+        "test_local_ai"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "2401f4323f978f0dea2b0b52221081e911341af6903f07305d125225ccf60bfb",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "The device probe runs the installed llama-server from the app-managed runtime folder with the fixed --list-devices argument. Installation verifies publisher size and SHA-256 before exposing an executable. No shell runs.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_hardware.HardwareTests.test_gpu_order_and_device_filter"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "343a77ea9cea66e02ee21f86f66521a2a799df4a418e93abb48bccc32a664140",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "Backend and archive names come from the bundled release manifest. Writes start in a fresh temporary directory under the fixed app runtime folder. Archives must match the pinned digest, ZIP members pass safe_member, and the tar data filter confines members and links. The completed directory is renamed into the app cache.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_visual_tools.VisualToolTests.test_archive_traversal_rejected"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "c7511520312a3612491bfecec379247e67ed7c3d152dc1c7fd867ead1d81033e",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "Backend and archive names come from the bundled release manifest. Writes start in a fresh temporary directory under the fixed app runtime folder. Archives must match the pinned digest, ZIP members pass safe_member, and the tar data filter confines members and links. The completed directory is renamed into the app cache.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_visual_tools.VisualToolTests.test_archive_traversal_rejected"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "ea0da74e2c2efaf2ada38c4853579b98d8bf36ed566fa3650a10c5490fcb7f4a",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "Backend and archive names come from the bundled release manifest. Writes start in a fresh temporary directory under the fixed app runtime folder. Archives must match the pinned digest, ZIP members pass safe_member, and the tar data filter confines members and links. The completed directory is renamed into the app cache.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_visual_tools.VisualToolTests.test_archive_traversal_rejected"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "45089a2309d64e998fc98c3e834440eb43d487d5a7b793a1e8d9b87733dbb347",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "Backend and archive names come from the bundled release manifest. Writes start in a fresh temporary directory under the fixed app runtime folder. Archives must match the pinned digest, ZIP members pass safe_member, and the tar data filter confines members and links. The completed directory is renamed into the app cache.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_visual_tools.VisualToolTests.test_archive_traversal_rejected"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "aaef7e7e20386d7842eaf7947ecad18aef9bf71b848a03ab105116e2bc35f4dd",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "Backend and archive names come from the bundled release manifest. Writes start in a fresh temporary directory under the fixed app runtime folder. Archives must match the pinned digest, ZIP members pass safe_member, and the tar data filter confines members and links. The completed directory is renamed into the app cache.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_visual_tools.VisualToolTests.test_archive_traversal_rejected"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "d5544c1621c99a6738236a1e9fa391853e47fc70db45faa3cda7c9ff3ed20971",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "Backend and archive names come from the bundled release manifest. Writes start in a fresh temporary directory under the fixed app runtime folder. Archives must match the pinned digest, ZIP members pass safe_member, and the tar data filter confines members and links. The completed directory is renamed into the app cache.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_visual_tools.VisualToolTests.test_archive_traversal_rejected"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/local_ai_runtime.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "011434f655fb29b8997e42f4181071f26c14c3b35090fc220a17a32a39da6475",
+      "file_sha256": "420d1a621c5feb8a3241b0766a587acf6a22fd9618599f21f623bb4710f7693d",
+      "reason": "Backend and archive names come from the bundled release manifest. Writes start in a fresh temporary directory under the fixed app runtime folder. Archives must match the pinned digest, ZIP members pass safe_member, and the tar data filter confines members and links. The completed directory is renamed into the app cache.",
+      "tests": [
+        "test_hardware.HardwareTests.test_runtime_download_is_verified_before_publish",
+        "test_visual_tools.VisualToolTests.test_archive_traversal_rejected"
       ]
     }
   ]
