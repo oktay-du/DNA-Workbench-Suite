@@ -41,7 +41,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Launcher.cs",
-    "sha256": "48ebd39f7cadef4783243c9150feea5653e4b82c07673dbae36641ae3368f88c"
+    "sha256": "42c44b5348f6afa585a6cf8300bc30171e8f47d94e76d84406b7dd38bdfd2d49"
   },
   {
     "path": "DNA_Software/Launcher/Startup.cs",
@@ -157,7 +157,7 @@
   },
   {
     "path": "DNA_Software/Launcher/install-lock.json",
-    "sha256": "5fd7aa8020bcc8c62b21bec40da1e73d3a93001424825eeca4fd0096deed0af4"
+    "sha256": "252f751a29f390fb4cadaaf0c9d71b03db32e97979352a56ac8713a83c4bab58"
   },
   {
     "path": "DNA_Software/Launcher/fetch_webview_sdk.py",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "dcd53ef55da5192950fa50fcd19f286454a76620b8081ebf4401d9116b06e7d5"
+    "sha256": "f2a7d8bb23c16005bf27414d47c524877cfa436f644f5f2bda5812f7089bae80"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -773,7 +773,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "6bbdc286e7548a882540494903c6d4ce3f5b4a57e283f8baafdfd87e547634b4"
+    "sha256": "55d780ae89dbb25b29ef304ed7003034aa33113b8ded1c3d43f8bb0fd8a0ab8c"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -781,7 +781,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/README.md",
-    "sha256": "70bcadd60b7df41bb74854b24c6056a7ea7de76ddf3d721d366ce55efae125d1"
+    "sha256": "c1031e76d27486c1ba8d28c8f3da2b89bb595a546a35077eb004ac95e7405a4e"
   },
   {
     "path": "DNA_Software/Launcher/Public/LICENSE",
@@ -797,11 +797,11 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/RELEASING.md",
-    "sha256": "c045e4a166660a9fe4d192cb0f8c83a5538c40d546bb5194f94345fc2c1c6c61"
+    "sha256": "235fbfff544dd481c6a0864324e5bae42a46aa545b1e49199f446da30ba92133"
   },
   {
     "path": "DNA_Software/Launcher/Public/FUNDING.yml",
-    "sha256": "3b850793b70a1e40d6923989cb4c5e7ac97d3c5d77abb28f83d4786c493320ea"
+    "sha256": "d032180685dd6fe156b42ba672d3ed7347f050b39a586c3a307d13626082891e"
   },
   {
     "path": "DNA_Software/Launcher/Public/build.yml",
@@ -1517,7 +1517,7 @@
   },
   {
     "path": "README.de.md",
-    "sha256": "b1a84d81e477acf8ff9a0315e2c9e34e1d1371bbdb613e8b139f8d0990917df4"
+    "sha256": "520bb36bd786d0bee583870dcefd851f4db5c21e09cf4ccfe3f387375edb4af0"
   },
   {
     "path": "CONTRIBUTING.md",
@@ -1633,7 +1633,7 @@
   },
   {
     "path": "docs/VERSIONS.md",
-    "sha256": "20c4222d54aab9991bb6150210dce1350bd85d8a74351b8713a9fb501628e6f8"
+    "sha256": "2db2c379d21489bd446278d5b178791dbe0eb2583314e2d816093df7cb17413a"
   },
   {
     "path": "docs/RESULTS_AND_FINDINGS.md",
@@ -1789,7 +1789,7 @@
   },
   {
     "path": "site/index.html",
-    "sha256": "db2a2bd9eab4362cbdf2d727790a8039da6b8c6d4e5c90dcc817fa5683b64584"
+    "sha256": "90772684b240bfc00d9b9e9895ed70a255478f186542566795ab8187b8c0bcd0"
   },
   {
     "path": "site/style.css",

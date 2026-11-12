@@ -2,7 +2,7 @@
 
 Pins, archive presence, package metadata and successful execution are different evidence. No private DNA or local account paths are exported. Reference and model licenses remain separate.
 
-Catalog snapshot: 2026-11-08 · suite 1.0.4
+Catalog snapshot: 2026-11-08 · suite 1.0.5
 
 Large files are optional and downloaded separately. Retrieval labels are not source publication dates. Unknown sizes/checksums are intentionally left unknown.
 

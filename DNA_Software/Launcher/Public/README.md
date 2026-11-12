@@ -103,4 +103,4 @@ Maintained by **Oktay Du / OD** · **oktaydu@proton.me** · Created with AI assi
 
 [Privacy](docs/PRIVACY.md) · [Research notice](docs/LEGAL.md) · [Security](SECURITY.md).
 
-Support is optional. The [NOWPayments registration link](https://account.nowpayments.io/de/create-account?link_id=2318328728) is an affiliate link; OD may benefit.
+Support is optional.

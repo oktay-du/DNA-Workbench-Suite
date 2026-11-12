@@ -13,4 +13,4 @@ Author: OD. Optional support: https://nowpayments.io/donation/oktayd
 The current package is unsigned alpha software. Checksums are not signatures. Windows, WSL and the Linux desktop each have host requirements. No successful clean-PC installation claim is made solely from synthetic tests.
 
 
-Support: [Buy Me a Coffee](https://buymeacoffee.com/okioki) · [NOWPayments donation](https://nowpayments.io/donation/oktayd). Optional [NOWPayments registration affiliate link](https://account.nowpayments.io/de/create-account?link_id=2318328728): OD may benefit; no registration is required to use the suite. Supplied QR image belongs to the author-provided support assets.
+Support: [Buy Me a Coffee](https://buymeacoffee.com/okioki) · [NOWPayments donation](https://nowpayments.io/donation/oktayd). Supplied QR image belongs to the author-provided support assets.

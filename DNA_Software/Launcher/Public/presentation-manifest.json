@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "README.de.md",
-      "sha256": "b1a84d81e477acf8ff9a0315e2c9e34e1d1371bbdb613e8b139f8d0990917df4",
+      "sha256": "520bb36bd786d0bee583870dcefd851f4db5c21e09cf4ccfe3f387375edb4af0",
       "bytes": 1975
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "path": "docs/VERSIONS.md",
-      "sha256": "20c4222d54aab9991bb6150210dce1350bd85d8a74351b8713a9fb501628e6f8",
+      "sha256": "2db2c379d21489bd446278d5b178791dbe0eb2583314e2d816093df7cb17413a",
       "bytes": 40423
     },
     {
@@ -344,8 +344,8 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "db2a2bd9eab4362cbdf2d727790a8039da6b8c6d4e5c90dcc817fa5683b64584",
-      "bytes": 7341
+      "sha256": "90772684b240bfc00d9b9e9895ed70a255478f186542566795ab8187b8c0bcd0",
+      "bytes": 7019
     },
     {
       "path": "site/style.css",
