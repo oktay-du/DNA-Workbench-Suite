@@ -614,6 +614,7 @@ def dispatch(action, r):
         ):
             raise ValueError("Open file about Show result.")
         story = False
+        report = path.name == "multiqc_report.html"
         if path.name == "Heritage_Story.html":
             try:
                 story = (
@@ -624,7 +625,7 @@ def dispatch(action, r):
                 )
             except (OSError, ValueError, KeyError):
                 pass
-        limit = 64 * 1024 * 1024 if story else 524288
+        limit = 8 * 1024 * 1024 if report else 64 * 1024 * 1024 if story else 524288
         with path.open("rb") as stream:
             text = stream.read(limit).decode("utf-8", errors="replace")
         return {
@@ -633,6 +634,7 @@ def dispatch(action, r):
             "text": text,
             "truncated": path.stat().st_size > limit,
             "interactive_story": story,
+            "interactive_report": report,
         }
     if action == "new-person":
         pid = source_store.new_person(str(r.get("label", "")).strip())
