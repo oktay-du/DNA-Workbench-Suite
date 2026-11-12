@@ -11,7 +11,11 @@ portable_paths.configure()
 
 
 def emit(value):
-    print(json.dumps(value, ensure_ascii=False, allow_nan=False), flush=True)
+    try:
+        print(json.dumps(value, ensure_ascii=False, allow_nan=False), flush=True)
+    except UnicodeEncodeError:
+        # A redirected Windows console may use a legacy code page.
+        print(json.dumps(value, ensure_ascii=True, allow_nan=False), flush=True)
 
 
 def rpc(message, client=None):

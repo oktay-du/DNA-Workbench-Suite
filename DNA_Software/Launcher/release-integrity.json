@@ -827,7 +827,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/build.yml",
-      "sha256": "dbcf9813085511975e17236a0a314f88caa488de3caaf304c000de9745f22717"
+      "sha256": "a70807c84c6e94b076820ba1c71dd73870ff4593b8973b016dfabd65b19223a1"
     },
     {
       "path": "DNA_Software/Launcher/Public/.gitignore",
@@ -867,7 +867,7 @@
     },
     {
       "path": "DNA_Software/Launcher/dna_cli.py",
-      "sha256": "e42e44d56dd8731b0aacde4ae08f2c5874debdaa9b51e877ad9a2195aa8fc566"
+      "sha256": "9e0d8b0fbe4b2f74a291972d4c02742ecd6516c4ff36a12a635a8f7179bc811f"
     },
     {
       "path": "DNA_Software/Launcher/desktop_host.py",
