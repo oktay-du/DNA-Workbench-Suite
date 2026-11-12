@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 # Required Notice: Copyright 2026 Oktay Du / OD — DNA Workbench
 import tempfile, unittest, hashlib, io, json
+from email.message import Message
 from pathlib import Path
 from unittest.mock import patch
 import optional_assets as a
@@ -130,9 +131,23 @@ class AssetTests(unittest.TestCase):
                 self.assertEqual(cache.read_bytes(), payload)
                 self.assertFalse(a.download(args)["installed"])
                 self.assertEqual(network.call_count, 2)
+                cache.write_bytes(b"existing different file")
+                with self.assertRaisesRegex(ValueError, "nothing overwritten"):
+                    a.download(args)
+                self.assertEqual(cache.read_bytes(), b"existing different file")
+                self.assertEqual(network.call_count, 2)
                 row["expected_sha256"] = None
                 result = a.download(args)
                 staged = Path(result["path"])
                 self.assertEqual(staged.parent, root / "ManualAssets/asset")
                 self.assertEqual(staged.read_bytes(), payload)
                 self.assertFalse(result["executed"])
+
+                web_page = io.BytesIO(b"<html>Sign in</html>")
+                web_page.headers = Message()
+                web_page.headers["Content-Type"] = "text/html; charset=utf-8"
+                network.side_effect = None
+                network.return_value = web_page
+                with self.assertRaisesRegex(ValueError, "returned a web page"):
+                    a.download(args)
+                self.assertEqual(list(staged.parent.iterdir()), [staged])

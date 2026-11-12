@@ -3,7 +3,7 @@
 """Guided, rights-reviewed asset staging. Never executes imported files."""
 
 from pathlib import Path
-import datetime, hashlib, json, os, shutil, uuid
+import datetime, hashlib, json, os, shutil, urllib.request, uuid
 import durable_store, network_io, security_paths
 
 APP = Path(__file__).resolve().parent
@@ -196,9 +196,22 @@ def download(args):
     expected_size = item.get("expected_bytes")
     try:
         with (
-            network_io.open_https(item["url"], timeout=90) as response,
+            network_io.open_https(
+                urllib.request.Request(
+                    item["url"],
+                    headers={"User-Agent": "DNAWorkbench-explicit-optional-download"},
+                ),
+                timeout=90,
+            ) as response,
             part.open("xb") as output,
         ):
+            if (
+                getattr(response, "headers", None)
+                and response.headers.get_content_type() == "text/html"
+            ):
+                raise ValueError(
+                    "The provider returned a web page instead of a download"
+                )
             while block := response.read(1024 * 1024):
                 size += len(block)
                 if expected_size and size > expected_size:

@@ -1492,7 +1492,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
     },
     {
       "tool": "Bearer",
@@ -1504,7 +1504,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
     },
     {
       "tool": "Bearer",
@@ -1516,7 +1516,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
     },
     {
       "tool": "Bearer",
@@ -1528,7 +1528,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
     },
     {
       "tool": "Bearer",
@@ -1540,7 +1540,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
     },
     {
       "tool": "Bearer",
@@ -1552,7 +1552,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
     },
     {
       "tool": "Bearer",
@@ -1564,7 +1564,7 @@
         "test_optional_assets",
         "test_security_boundaries"
       ],
-      "file_sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
     },
     {
       "tool": "Bearer",
@@ -2841,6 +2841,130 @@
       "reason": "The error text is passed to notice(), which builds a node with textContent. replaceChildren receives that node. The string is not assigned to innerHTML.",
       "tests": [
         "test_suite_api.SuiteTests.test_multiqc_report_stays_inside_the_preview"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/feedback-ui.js",
+      "rule": "javascript_lang_dangerous_insert_html",
+      "code_sha256": "a18c6563e9476039df8c4bef619d22138ced5a6b18aa2ffa509688a25d704233",
+      "file_sha256": "1df084d33397e255f7e0c478c87295d3356a130ee38cbf4fc5723532bac79bea",
+      "reason": "The status and local cache path are rendered into elements created by el, which assigns textContent. replaceChildren receives DOM nodes and a literal spacer; it does not parse either value as HTML.",
+      "tests": [
+        "test_optional_assets",
+        "Playwright optional-download UI smoke test"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/heritage.js",
+      "rule": "javascript_lang_dangerous_insert_html",
+      "code_sha256": "e046cdb90e905566e6cc8a92b6356c16a11c6925fda5bad77f1f1ad62345623e",
+      "file_sha256": "4f934f4e5a67f801a0bbe42dcffe4fe8f043889dd940de236f3e22a854ba989d",
+      "reason": "The region name and the surrounding labels are assigned to textContent by heritageText. Only constructed DOM nodes and literal separators are passed to replaceChildren.",
+      "tests": [
+        "test_heritage",
+        "Playwright ancestry English/German smoke test"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/heritage.js",
+      "rule": "javascript_lang_dangerous_insert_html",
+      "code_sha256": "7d818d0d465f13940fcb21b216e5d21b104e2849e8dc73a5a5f5f6d3d757f909",
+      "file_sha256": "4f934f4e5a67f801a0bbe42dcffe4fe8f043889dd940de236f3e22a854ba989d",
+      "reason": "The ancestry detail is passed through heritageText, which assigns textContent. The status labels and detail remain separate text nodes and cannot inject markup.",
+      "tests": [
+        "test_heritage",
+        "Playwright ancestry English/German smoke test"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "88a7b2a3ac2dfe0945077e2a365c119b7bb7c9a9afa8e974abaa84d5ccb85e3f",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "plan selects a registered asset and resolves the declared cache path via security_paths.contained. This read verifies the already-cached bytes against the pinned SHA-256 without replacing the file.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "372fd4d7a69569ddc56a4d7fda66de11f2161a1c1fd66dfc9aae66515b31831f",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "The directory is either the parent of the contained registry cache path or the asset-specific staging folder already resolved by plan. A download URL or response cannot supply a destination.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "fec44dd5e569f4ebadb8772cba0ce49751538e14a7c99281d4acb4f17df29233",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "The download temporary file has an internally generated UUID name under the resolved cache/staging folder. Exclusive creation avoids overwriting an existing entry.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "4938cfee2c58f396e1f78ff17c82fb996421b23b9d111552f417c01710a09198",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "On Windows rename publishes the completed temporary file without replacing an existing destination. Its target is the contained registry path or the contained staging folder with a digest-prefixed registry filename.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "49d86893f5ee26c9555b88bb78a955c3de2671f50492dc9bf5d4b82677f8746f",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "The destination was selected only from contained catalog paths. If another writer already published it, the read compares bytes by SHA-256 and leaves a different file in place.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "95ed07ded4efd91ae174cf0462fd133508335505735ad58cc33d9fd04186736b",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "The finally block cleans up the unique UUID-named temporary file in the resolved managed directory. No request argument is passed to unlink.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_weak_hash_md5",
+      "code_sha256": "e056cda6bca54d3c1448ff1c16ebff2bd21e9674233dfe67f5f91bce44f781c2",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "MD5 is enabled only for legacy transfer checks declared by the registry and is explicitly marked usedforsecurity=False. A pinned SHA-256 is required for the active cache. Other downloads stay in manual staging.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_weak_hash_md5",
+      "code_sha256": "43c5bb7d7c59e1f8cd9b8ca92b97b433c7cf22e502889af4816e812924a35f06",
+      "file_sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018",
+      "reason": "Updating the optional publisher MD5 is a legacy transfer check only. SHA-256 is computed independently for every download. Files without a pinned SHA-256 are stored for manual review.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
       ]
     }
   ]

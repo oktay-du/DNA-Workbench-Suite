@@ -445,7 +445,7 @@
   },
   {
     "path": "DNA_Software/Launcher/GENOCAT.md",
-    "sha256": "d4442e0fb73f56c8066cdc4315ff5af8da9048e597478b3edeaf0b6dc42658e1"
+    "sha256": "9e09e97c493079edbd3116282d96db6def87a400ad88e034356208e5caee2fee"
   },
   {
     "path": "DNA_Software/Launcher/test_cloud_ai.py",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "2fb839a0ccb127e0c079025f4ef29f7b5f34bdb4b86940da2483584c3233e062"
+    "sha256": "ea41f83490d24b8318bf7a3cddbf65376a9a6cec84b3583232c399096abfd9e4"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -673,11 +673,11 @@
   },
   {
     "path": "DNA_Software/Launcher/optional_assets.py",
-    "sha256": "667378fee1769d8cc34364bbde72277ca707ca0fe632f0505a0a7ed8d9e434e1"
+    "sha256": "b94d00c205455e336dda284b588d286fe3508bd31bb914a0f95419eae16dd018"
   },
   {
     "path": "DNA_Software/Launcher/test_optional_assets.py",
-    "sha256": "1d5faa8d81812d1a7dcce45f7dfd1378c86a6e7b6d79b177f4f233694e346441"
+    "sha256": "d6277d074cd8630dda137e82a8dce4fc97d073450853f0bd434a967e52c878b7"
   },
   {
     "path": "DNA_Software/Launcher/Notices/LEGACY-MIT-LICENSE.txt",
@@ -773,7 +773,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "ad097283fbf1ff3223561b933b23adc66d31df159f4e216b9fea2f0770954a8a"
+    "sha256": "b7a67b668717715d104201e7c04bcda8722c48c23aee97d91d09bcf57f612942"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -1497,7 +1497,7 @@
   },
   {
     "path": "docs/OPTIONAL_IMPORTS.md",
-    "sha256": "9319c4954637bd599cdedc04ad87a363349d0abf9a7c9a188956db3c4c5ef373"
+    "sha256": "657d3988f57246d2878b067787b0e42e548fa92b782cc22902f7d9e63f9d1228"
   },
   {
     "path": "site/index.html",
