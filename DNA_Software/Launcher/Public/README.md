@@ -101,6 +101,8 @@ Use the [synthetic Samples](Samples/README.md). Keep personal DNA, medical recor
 
 Maintained by **Oktay Du / OD** · **oktaydu@proton.me** · Created with AI assistance.
 
+Designated original contributions are available under [PolyForm Noncommercial 1.0.0](DNA_Software/Launcher/Notices/POLYFORM-NONCOMMERCIAL-1.0.0.md).
+
 [Privacy](docs/PRIVACY.md) · [Research notice](docs/LEGAL.md) · [Security](SECURITY.md).
 
 Support is optional.

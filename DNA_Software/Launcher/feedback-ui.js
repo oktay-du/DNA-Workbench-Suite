@@ -18,7 +18,9 @@ window.renderNoticesPage = async function () {
   const contact = el("section", "", "card"),
     mail = el("a", data.contact.email);
   mail.href = "mailto:" + data.contact.email;
-  contact.append(el("h2", data.contact.name), mail);
+  const license = el("details");
+  license.append(el("summary", "PolyForm Noncommercial 1.0.0"), el("pre", data.license_text));
+  contact.append(el("h2", data.contact.name), mail, license);
   $("main").append(contact);
   const links = el("section", "", "card");
   for (const [label, href] of Object.entries(data.links).filter(([label]) =>

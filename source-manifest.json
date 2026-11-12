@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "f2a7d8bb23c16005bf27414d47c524877cfa436f644f5f2bda5812f7089bae80"
+    "sha256": "0581d3062d63a13e10ef3f6e71ac41579df16881683b237397f3b1a25eacc30f"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -669,7 +669,7 @@
   },
   {
     "path": "DNA_Software/Launcher/feedback-ui.js",
-    "sha256": "1df084d33397e255f7e0c478c87295d3356a130ee38cbf4fc5723532bac79bea"
+    "sha256": "1cbde6b1626105e7e19281316f0865b65e870410a0d398c775e7f82920305013"
   },
   {
     "path": "DNA_Software/Launcher/optional_assets.py",
@@ -773,7 +773,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "55d780ae89dbb25b29ef304ed7003034aa33113b8ded1c3d43f8bb0fd8a0ab8c"
+    "sha256": "84cca512c144d3c443ad177fce3833e799c3bdb1c7082eca556419bb8fc22243"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -781,7 +781,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/README.md",
-    "sha256": "c1031e76d27486c1ba8d28c8f3da2b89bb595a546a35077eb004ac95e7405a4e"
+    "sha256": "499b81c19f4569ef81b6a49b791d234172cd4774215c94b72668a83925dd9a93"
   },
   {
     "path": "DNA_Software/Launcher/Public/LICENSE",
@@ -1517,7 +1517,7 @@
   },
   {
     "path": "README.de.md",
-    "sha256": "520bb36bd786d0bee583870dcefd851f4db5c21e09cf4ccfe3f387375edb4af0"
+    "sha256": "0d08d5d0f20b5ca08c771810e7e36c3e4eccd71fb33a13bcfe380728a81f66ac"
   },
   {
     "path": "CONTRIBUTING.md",
@@ -1769,7 +1769,7 @@
   },
   {
     "path": "site/legal.html",
-    "sha256": "82430cb053c32440757382b6f796a8699a11af42f538c933119837dfe507782c"
+    "sha256": "8a95aef6bf13d738fbd1cc0ba0931a3c489785f9e69b595883013347d9169039"
   },
   {
     "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
@@ -1789,7 +1789,7 @@
   },
   {
     "path": "site/index.html",
-    "sha256": "90772684b240bfc00d9b9e9895ed70a255478f186542566795ab8187b8c0bcd0"
+    "sha256": "85b5ea5211c0aa8135c8643ffc49385ae7d5f542c0b9629011937a313d0b0200"
   },
   {
     "path": "site/style.css",

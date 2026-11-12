@@ -667,7 +667,7 @@
     },
     {
       "path": "DNA_Software/Launcher/feedback-ui.js",
-      "sha256": "1df084d33397e255f7e0c478c87295d3356a130ee38cbf4fc5723532bac79bea"
+      "sha256": "1cbde6b1626105e7e19281316f0865b65e870410a0d398c775e7f82920305013"
     },
     {
       "path": "DNA_Software/Launcher/optional_assets.py",
@@ -771,7 +771,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-      "sha256": "55d780ae89dbb25b29ef304ed7003034aa33113b8ded1c3d43f8bb0fd8a0ab8c"
+      "sha256": "84cca512c144d3c443ad177fce3833e799c3bdb1c7082eca556419bb8fc22243"
     },
     {
       "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -779,7 +779,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/README.md",
-      "sha256": "c1031e76d27486c1ba8d28c8f3da2b89bb595a546a35077eb004ac95e7405a4e"
+      "sha256": "499b81c19f4569ef81b6a49b791d234172cd4774215c94b72668a83925dd9a93"
     },
     {
       "path": "DNA_Software/Launcher/Public/LICENSE",

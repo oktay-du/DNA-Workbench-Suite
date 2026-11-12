@@ -19,6 +19,8 @@ Nach dem Entpacken unter Windows `DNA_Launcher.exe` starten und Core einrichten.
 
 Forschungssoftware, kein klinisches Diagnosesystem. Quelldaten und Ergebnisse bleiben standardmäßig lokal. Für optionale externe Dienste gelten eigene Datenschutzbedingungen.
 
+Für die ausgewiesenen eigenen Beiträge gilt [PolyForm Noncommercial 1.0.0](DNA_Software/Launcher/Notices/POLYFORM-NONCOMMERCIAL-1.0.0.md).
+
 [Datenschutz](docs/PRIVACY.md) · Kontakt: **oktaydu@proton.me**
 
 Mit KI-Unterstützung erstellt. Freiwillige Unterstützung: [NOWPayments](https://nowpayments.io/donation/oktayd) · [Buy Me a Coffee](https://buymeacoffee.com/okioki).

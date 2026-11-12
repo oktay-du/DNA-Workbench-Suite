@@ -989,7 +989,7 @@
         "test_feedback",
         "test_security_boundaries"
       ],
-      "file_sha256": "1df084d33397e255f7e0c478c87295d3356a130ee38cbf4fc5723532bac79bea"
+      "file_sha256": "1cbde6b1626105e7e19281316f0865b65e870410a0d398c775e7f82920305013"
     },
     {
       "tool": "Bearer",
@@ -2848,7 +2848,7 @@
       "path": "DNA_Software/Launcher/feedback-ui.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "a18c6563e9476039df8c4bef619d22138ced5a6b18aa2ffa509688a25d704233",
-      "file_sha256": "1df084d33397e255f7e0c478c87295d3356a130ee38cbf4fc5723532bac79bea",
+      "file_sha256": "1cbde6b1626105e7e19281316f0865b65e870410a0d398c775e7f82920305013",
       "reason": "The status and local cache path are rendered into elements created by el, which assigns textContent. replaceChildren receives DOM nodes and a literal spacer; it does not parse either value as HTML.",
       "tests": [
         "test_optional_assets",

@@ -4,8 +4,8 @@
   "files": [
     {
       "path": "README.de.md",
-      "sha256": "520bb36bd786d0bee583870dcefd851f4db5c21e09cf4ccfe3f387375edb4af0",
-      "bytes": 1975
+      "sha256": "0d08d5d0f20b5ca08c771810e7e36c3e4eccd71fb33a13bcfe380728a81f66ac",
+      "bytes": 2119
     },
     {
       "path": "CONTRIBUTING.md",
@@ -319,8 +319,8 @@
     },
     {
       "path": "site/legal.html",
-      "sha256": "82430cb053c32440757382b6f796a8699a11af42f538c933119837dfe507782c",
-      "bytes": 1535
+      "sha256": "8a95aef6bf13d738fbd1cc0ba0931a3c489785f9e69b595883013347d9169039",
+      "bytes": 1844
     },
     {
       "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
@@ -344,8 +344,8 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "90772684b240bfc00d9b9e9895ed70a255478f186542566795ab8187b8c0bcd0",
-      "bytes": 7019
+      "sha256": "85b5ea5211c0aa8135c8643ffc49385ae7d5f542c0b9629011937a313d0b0200",
+      "bytes": 7024
     },
     {
       "path": "site/style.css",
