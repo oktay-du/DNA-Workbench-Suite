@@ -620,7 +620,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B404",
       "code_sha256": "b81589c0c15d4b6a3b5b772cff8d2305585d78abead28b26b91de2071c4c9973",
-      "file_sha256": "25b9b336543f625605945a48761efc572576df60bb64112bd5aafd2f1cbb5a84",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -632,7 +632,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B603",
       "code_sha256": "0a86c5224c7c06d744b55d90b9811ff27f1700ef9a06f1a97f05ad71913a6519",
-      "file_sha256": "25b9b336543f625605945a48761efc572576df60bb64112bd5aafd2f1cbb5a84",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -647,7 +647,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B603",
       "code_sha256": "ca68c9e2dd723ca5089bce272e2c90c3f3080a9112afe85a9ce224dffdb1455e",
-      "file_sha256": "25b9b336543f625605945a48761efc572576df60bb64112bd5aafd2f1cbb5a84",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -878,7 +878,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "077aa9ab9ba78df27c02b91359bc6abd884d318e0ed9a970398824d38fa2a58b",
-      "file_sha256": "25b9b336543f625605945a48761efc572576df60bb64112bd5aafd2f1cbb5a84",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -892,7 +892,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "3af2316151ce5a1a6dd5e1ddc7834b8a850c644f824ede4573cf961b487d8fde",
-      "file_sha256": "25b9b336543f625605945a48761efc572576df60bb64112bd5aafd2f1cbb5a84",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -958,7 +958,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "43af1af9d126953d19119d1f835498525f8e61f42887d4abef103ffa3e60a7a9",
-      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
+      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -971,7 +971,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_dangerous_insert_html",
       "code_sha256": "641adae45d2f29596d0ce109dc6434790e2da97588c858b3aa9e7d1609a2a39c",
-      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
+      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
       "reason": "The reported statements assign textContent or append DOM nodes through a helper with constant tag names. They do not assign innerHTML, outerHTML or insertAdjacentHTML. Untrusted profile/report text is rendered as text, not executable markup.",
       "tests": [
         "test_agent_control",
@@ -2469,7 +2469,7 @@
       "path": "DNA_Software/Launcher/family.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "da6d14b4a93df6e0f7448246937ff8f784983a035fd0b5c688d0fb9db32550bf",
-      "file_sha256": "d8ba51917b319ef8639f7fafdacee824cdd937d4871349abcee3a8134ddf5e77",
+      "file_sha256": "0269b95bec889dd1337e3ae5f998e0f4fe4a425925657b5604b58bdb141f48ab",
       "reason": "Routes map to constant static asset paths; explicit local CLI imports are OS-user actions. Authenticated profile commands use validated IDs.",
       "tests": [
         "test_family"
@@ -2480,7 +2480,7 @@
       "path": "DNA_Software/Launcher/family.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "173a0bd19c8303bc3e9b3ed050cc7a8699d9e747adbf9faed75e89414176c149",
-      "file_sha256": "d8ba51917b319ef8639f7fafdacee824cdd937d4871349abcee3a8134ddf5e77",
+      "file_sha256": "0269b95bec889dd1337e3ae5f998e0f4fe4a425925657b5604b58bdb141f48ab",
       "reason": "Routes map to constant static asset paths; explicit local CLI imports are OS-user actions. Authenticated profile commands use validated IDs.",
       "tests": [
         "test_family"
@@ -2529,7 +2529,7 @@
         "test_agent_control"
       ],
       "code_sha256": "ecd30a5edec6aa3c0dfd82d52efc1f3a4521ee5249cfb28fd19aca45ece4823c",
-      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
+      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
       "diff_review": "Reviewed sequence-lab DOM renderer, fixed project links, filtered tool cards, and removal of generic English fallback copy in favor of specific existing tool/field descriptions. el/textContent remain the rendering boundary; no source HTML or automatic analyses added. Browser synthetic job, escaping tests and web quality positive controls passed."
     },
     {
@@ -2549,7 +2549,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "d0f4c8df09974eb17df58451e9c59ae6b8b3f2b878521f8c684e5262436f48de",
-      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
+      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2561,7 +2561,7 @@
       "path": "DNA_Software/Launcher/app.js",
       "rule": "javascript_lang_observable_timing",
       "code_sha256": "2bff5f066f70f0608ee7243dddf04a4f6cb873f6c9818aa2e6c19a69b6332903",
-      "file_sha256": "7670b8d532a074042c7b63cfddeae021387e40d0e89df79492b79e53aa439adf",
+      "file_sha256": "4285d05dc0ef94791a243f0ee7025141be8756655f6739dd8132f704cd7e7dfb",
       "reason": "The comparison is between UI route names for navigation, not secret tokens or authentication material. Constant-time comparison is not applicable.",
       "tests": [
         "test_agent_control"
@@ -2830,6 +2830,17 @@
       "tests": [
         "test_portability",
         "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/app.js",
+      "rule": "javascript_lang_dangerous_insert_html",
+      "code_sha256": "2ba23515b46227b2b3c119b13dd5fb0d2cf51312a3deca40614d33e97910ae71",
+      "file_sha256": "1a22c0e2476e5f0ed2ddfd89f89f31c6c864e43ead2cecb38a0ed93e42de85be",
+      "reason": "The error text is passed to notice(), which builds a node with textContent. replaceChildren receives that node. The string is not assigned to innerHTML.",
+      "tests": [
+        "test_suite_api.SuiteTests.test_multiqc_report_stays_inside_the_preview"
       ]
     }
   ]

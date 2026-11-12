@@ -102,6 +102,20 @@ class SuiteTests(unittest.TestCase):
                     }
                 )
 
+    def test_multiqc_report_stays_inside_the_preview(self):
+        folder = suite_api.job_path("P001_Test", "demo") / "Results"
+        folder.mkdir(parents=True)
+        page = "<h1>MultiQC</h1>" + ("A" * 600000)
+        (folder / "multiqc_report.html").write_text(page, encoding="utf-8")
+        result = suite_api.dispatch(
+            "result-preview",
+            {"person": "P001_Test", "job": "demo", "file": "multiqc_report.html"},
+        )
+        self.assertTrue(result["interactive_report"])
+        self.assertFalse(result["truncated"])
+        self.assertTrue(result["text"].startswith("<h1>MultiQC</h1>"))
+        self.assertEqual(len(result["text"]), len(page))
+
     def test_result_preview_cannot_escape_output(self):
         p = suite_api.job_path("P001_Test", "demo")
         (p / "Results").mkdir(parents=True)

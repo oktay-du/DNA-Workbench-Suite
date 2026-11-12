@@ -336,6 +336,14 @@ function drawPrevious(container, plan, pid, task) {
         t("View result"),
         async () => {
           const name = pick.value;
+          if (name === "multiqc_report.html") {
+            $("task-dialog").close();
+            qualityView = "report";
+            activeJob = job.job;
+            activeJobOwner = pid;
+            go("quality");
+            return;
+          }
           if (/\.(pdf|png|jpe?g|gif|bmp)$/i.test(name)) {
             native({ action: "suite-open-artifact", person: pid, job: job.job, file: name });
             return;
@@ -347,23 +355,7 @@ function drawPrevious(container, plan, pid, task) {
           });
           preview.replaceChildren();
           if ([".html", ".htm", ".svg"].includes(result.kind)) {
-            const frame = el("iframe");
-            frame.setAttribute(
-              "sandbox",
-              result.interactive_story ? "allow-scripts allow-modals" : ""
-            );
-            frame.title = result.name;
-            frame.className = "result-preview";
-            frame.style.height = result.interactive_story ? "78vh" : "";
-            if (result.interactive_story) {
-              frame.srcdoc =
-                "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none';\">" +
-                result.text;
-            } else
-              frame.srcdoc =
-                "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-inline'; img-src data:;\">" +
-                result.text;
-            preview.append(frame);
+            preview.append(reportFrame(result));
           } else preview.append(el("pre", result.text, "result-text"));
           if (result.truncated)
             preview.append(notice(t("Preview truncated; full file is in the result folder.")));
@@ -413,6 +405,7 @@ function drawPrevious(container, plan, pid, task) {
 const $ = (id) => document.getElementById(id);
 let state = null,
   route = "dashboard",
+  qualityView = "report",
   selectedTask = null,
   fieldNodes = {},
   chatHistory = [],
@@ -867,6 +860,7 @@ function render() {
   }
   if (!nav.some(([, items]) => items.some((x) => x[0] === route))) route = "dashboard";
   $("main").replaceChildren();
+  document.documentElement.classList.remove("quality-lock");
   $("breadcrumb").textContent = routeName(route);
   for (const n of $("navigation").querySelectorAll("a")) {
     const active = n.dataset.route === route;
@@ -919,6 +913,7 @@ function render() {
   if (route === "donations") return donationsPage();
   if (route === "ai") return run(aiPage);
   if (route === "jobs") return run(jobsPage);
+  if (route === "quality") return run(qualityPage);
   if (route === "family") return embed("/", t("Family tree & inheritance"));
   if (route === "matching") return embed("/research", t("DNA comparisons"));
   if (route === "ancestry") return embed("/visual", t("Ancestry & traits"));
@@ -1287,6 +1282,83 @@ function sequenceLab() {
     });
   });
   $("main").append(architecture);
+}
+function reportFrame(result) {
+  const frame = el("iframe");
+  frame.title = result.name || "Combined quality report";
+  frame.className = result.interactive_report ? "quality-report-frame" : "result-preview";
+  if (result.interactive_report) {
+    frame.setAttribute("sandbox", "allow-scripts");
+    frame.srcdoc = result.text;
+    return frame;
+  }
+  frame.setAttribute(
+    "sandbox",
+    result.interactive_story ? "allow-scripts allow-modals" : ""
+  );
+  frame.style.height = result.interactive_story ? "78vh" : "";
+  frame.srcdoc = result.interactive_story
+    ? "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; form-action 'none';\">" +
+      result.text
+    : "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'none'; style-src 'unsafe-inline'; img-src data:;\">" +
+      result.text;
+  return frame;
+}
+function qualityReportFrame(pid, job) {
+  const frame = el("iframe");
+  frame.title = "MultiQC report";
+  frame.setAttribute("sandbox", "allow-scripts allow-same-origin");
+  frame.referrerPolicy = "no-referrer";
+  frame.src =
+    "/quality-report/" +
+    encodeURIComponent(pid) +
+    "/" +
+    encodeURIComponent(job) +
+    "/multiqc_report.html";
+  return frame;
+}
+function latestQualityJob() {
+  return (state.jobs || []).find((row) => row.task === "multiqc" && row.status === "Complete");
+}
+async function qualityPage() {
+  const job = latestQualityJob();
+  const showReport = job && qualityView !== "workflows";
+  header(
+    routeName("quality"),
+    routeName("quality"),
+    showReport
+      ? "The full quality report stays in this window. It reads completed quality files and does not judge clinical use."
+      : t("Documented workflows with explicit tools, input requirements and traceable outputs."),
+    job
+      ? [
+          button(showReport ? "Quality workflows" : "Full quality report", () => {
+            qualityView = showReport ? "workflows" : "report";
+            render();
+          }, "secondary"),
+        ]
+      : []
+  );
+  if (!showReport) {
+    if (!job) {
+      const card = el("section", "", "card");
+      card.append(
+        el(
+          "p",
+          "No combined quality report yet. Run Combine quality reports after a FASTQ or VCF quality job.",
+          "muted"
+        )
+      );
+      $("main").append(card);
+    }
+    taskGrid(
+      state.catalog.tasks.filter((x) => x.category === "Quality & formats" && x.id !== "profile_view")
+    );
+    return;
+  }
+  document.documentElement.classList.add("quality-lock");
+  const card = el("div", "", "quality-report-page");
+  card.append(qualityReportFrame(currentPerson(), job.job));
+  $("main").append(card);
 }
 function taskGrid(tasks, destination = $("main")) {
   const grid = el("div", "", "task-grid");
@@ -1786,22 +1858,28 @@ async function jobsPageDetail(id, pid) {
         fieldNodes.files.value = files.join(" | ");
       }
     });
-    actions.append(
-      exportButton,
-      button(t("Open PDF report"), () =>
-        native({
-          action: "suite-open-artifact",
-          person: pid,
-          job: id,
-          file: "local-analysis-report.pdf",
-        })
-      )
-    );
+    actions.append(exportButton);
+    if (result.status?.task !== "multiqc")
+      actions.append(
+        button(t("Open PDF report"), () =>
+          native({
+            action: "suite-open-artifact",
+            person: pid,
+            job: id,
+            file: "local-analysis-report.pdf",
+          })
+        )
+      );
   }
   if (result.command) {
     const d = el("details", "", "method-details");
     d.append(el("summary", t("Command")), el("pre", result.command, "code-block"));
     c.append(d);
+  }
+  if (result.status?.task === "multiqc" && result.status?.status === "Complete") {
+    const report = el("div", "", "quality-report-page");
+    report.append(qualityReportFrame(pid, id));
+    c.append(report);
   }
   $("main").append(c);
 }

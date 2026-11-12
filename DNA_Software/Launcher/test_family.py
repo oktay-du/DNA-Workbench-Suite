@@ -137,6 +137,37 @@ class FamilyTests(unittest.TestCase):
             server.shutdown()
             server.server_close()
 
+    def test_quality_report_is_served_inside_the_workspace(self):
+        import threading, urllib.request, urllib.error
+
+        folder = self.path / "Projects/Launcher/P1/job_fastp/Results"
+        folder.mkdir(parents=True)
+        page = "<!doctype html><title>MultiQC</title><h1>Whole report</h1>"
+        (folder / "multiqc_report.html").write_text(page, encoding="utf-8")
+        (folder / "secret.txt").write_text("private", encoding="utf-8")
+        server = family.ThreadingHTTPServer(("127.0.0.1", 0), family.Handler)
+        server.token = "synthetic-test-token"
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        try:
+            url = "http://127.0.0.1:" + str(server.server_port)
+            with urllib.request.urlopen(
+                url + "/quality-report/P1/job_fastp/multiqc_report.html"
+            ) as response:
+                body = response.read().decode()
+                self.assertIn("Whole report", body)
+                self.assertEqual(response.headers.get("X-Frame-Options"), "SAMEORIGIN")
+            with self.assertRaises(urllib.error.HTTPError) as missing:
+                urllib.request.urlopen(url + "/quality-report/P1/job_fastp/secret.txt")
+            self.assertEqual(missing.exception.code, 404)
+            with self.assertRaises(urllib.error.HTTPError) as escaped:
+                urllib.request.urlopen(
+                    url + "/quality-report/P1/job_fastp/../../secret.txt"
+                )
+            self.assertEqual(escaped.exception.code, 404)
+        finally:
+            server.shutdown()
+            server.server_close()
+
     def test_foreign_host_rejected(self):
         import threading, urllib.request, urllib.error
 
