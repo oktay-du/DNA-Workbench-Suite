@@ -3,22 +3,29 @@ using System.IO;
 using System.IO.Compression;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 namespace DnaWorkbench
 {
     public static class NativeLocale
     {
-        static Dictionary<string, string> german;
-        public static string Text(string english, bool enabled)
+        static Dictionary<string, string> messages;
+        static string loadedLanguage;
+        public static string Text(string english, string language)
         {
-            if (!enabled)
+            if (String.IsNullOrEmpty(language) || language == "en" ||
+                !Regex.IsMatch(language, @"\A[a-z]{2,3}(?:-[A-Z][a-z]{3})?\z"))
                 return english;
             try
             {
-                if (german == null)
-                    german = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(File.ReadAllText(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DNA_Software/Launcher/Locales/de.json")));
+                if (loadedLanguage != language)
+                {
+                    string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DNA_Software/Launcher/Locales", language + ".json");
+                    messages = new JavaScriptSerializer().Deserialize<Dictionary<string, string>>(File.ReadAllText(path));
+                    loadedLanguage = language;
+                }
                 string translated;
-                return german.TryGetValue(english, out translated) ? translated : english;
+                return messages.TryGetValue(english, out translated) ? translated : english;
             }
             catch { return english; }
         }

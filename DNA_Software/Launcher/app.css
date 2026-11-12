@@ -42,10 +42,11 @@ textarea:focus-visible {
 }
 #sidebar {
   position: fixed;
-  inset: 0 auto 0 0;
+  inset-block: 0;
+  inset-inline-start: 0;
   width: 250px;
   background: var(--sidebar);
-  border-right: 1px solid var(--line);
+  border-inline-end: 1px solid var(--line);
   padding: 31px 17px 12px;
   display: flex;
   flex-direction: column;
@@ -122,7 +123,7 @@ textarea:focus-visible {
 }
 .nav-item .count {
   font-size: 10px;
-  margin-left: auto;
+  margin-inline-start: auto;
   background: var(--surface);
   padding: 2px 6px;
   border: 1px solid var(--line);
@@ -145,10 +146,10 @@ textarea:focus-visible {
   height: 6px;
   border-radius: 50%;
   background: var(--accent);
-  margin-right: 8px;
+  margin-inline-end: 8px;
 }
 .app-shell {
-  margin-left: 250px;
+  margin-inline-start: 250px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -242,8 +243,8 @@ textarea {
   display: flex;
   align-items: center;
   gap: 5px;
-  padding-left: 15px;
-  border-left: 1px solid var(--line);
+  padding-inline-start: 15px;
+  border-inline-start: 1px solid var(--line);
 }
 .avatar {
   display: inline-grid;
@@ -532,7 +533,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   font-size: 11px;
-  text-align: left;
+  text-align: start;
 }
 th {
   font-size: 9px;
@@ -569,7 +570,7 @@ tr:last-child td {
   background: var(--raised);
   border-radius: 8px;
   color: var(--muted);
-  border-left: 3px solid var(--accent);
+  border-inline-start: 3px solid var(--accent);
   margin: 17px 0;
 }
 .form-grid {
@@ -684,7 +685,7 @@ dialog::backdrop {
   background: var(--surface);
   color: var(--ink);
   width: 100%;
-  text-align: left;
+  text-align: start;
   padding: 14px;
   border-bottom: 1px solid var(--line);
   cursor: pointer;
@@ -766,7 +767,7 @@ dialog::backdrop {
   background: var(--raised);
 }
 .chat-bubble.user {
-  margin-left: auto;
+  margin-inline-start: auto;
   background: var(--accent-soft);
   color: var(--ink);
 }
@@ -836,7 +837,7 @@ footer {
   gap: 0;
 }
 #footer-state {
-  margin-left: auto;
+  margin-inline-start: auto;
 }
 .mobile-menu {
   display: none;
@@ -868,7 +869,7 @@ footer {
     font-size: 19px;
   }
   .app-shell {
-    margin-left: 225px;
+    margin-inline-start: 225px;
   }
   #sidebar {
     width: 225px;
@@ -894,7 +895,7 @@ footer {
     padding: 12px 4px;
   }
   .app-shell {
-    margin-left: 72px;
+    margin-inline-start: 72px;
   }
   .breadcrumbs {
     display: none;
@@ -904,7 +905,7 @@ footer {
     height: 68px;
   }
   .profile-selector {
-    padding-left: 0;
+    padding-inline-start: 0;
     border: 0;
   }
   .page-header {
@@ -957,26 +958,71 @@ footer {
   }
 }
 
+.language-picker {
+  position: relative;
+}
+.language-choice {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-block-size: 44px;
+  padding: 6px 10px;
+  border: 0;
+  border-radius: 7px;
+  color: var(--ink);
+  background: transparent;
+  text-align: start;
+  cursor: pointer;
+}
+summary.language-choice {
+  background: var(--raised);
+  list-style: none;
+}
+summary.language-choice::-webkit-details-marker {
+  display: none;
+}
+summary.language-choice::after {
+  content: "▾";
+  margin-inline-start: auto;
+}
+.language-choice:hover,
+.language-choice[aria-pressed="true"] {
+  background: var(--nav-active);
+  color: var(--accent);
+}
+.language-choice:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px;
+}
+.language-options {
+  position: absolute;
+  inset-block-start: calc(100% + 5px);
+  inset-inline-end: 0;
+  z-index: 30;
+  display: grid;
+  inline-size: min(16rem, calc(100vw - 24px));
+  max-block-size: min(23rem, 55vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
 .language-flag {
-  display: inline-block;
-  width: 19px;
-  height: 13px;
+  inline-size: 24px;
+  block-size: 18px;
   border-radius: 2px;
   box-shadow: 0 0 0 1px #8883;
   flex-shrink: 0;
-  margin-right: -15px;
 }
-.flag-de {
-  background: linear-gradient(#171717 0 33%, #d63439 33% 66%, #efbd38 66%);
-}
-.flag-en {
-  background:
-    linear-gradient(90deg, transparent 42%, #c82939 42% 58%, transparent 58%),
-    linear-gradient(transparent 35%, #c82939 35% 65%, transparent 65%),
-    linear-gradient(90deg, transparent 35%, #fff 35% 65%, transparent 65%),
-    linear-gradient(transparent 25%, #fff 25% 75%, transparent 75%),
-    linear-gradient(34deg, transparent 43%, #fff 43% 57%, transparent 57%),
-    linear-gradient(-34deg, transparent 43%, #fff 43% 57%, transparent 57%), #1b3869;
+@media (max-width: 700px) {
+  .language-options {
+    position: fixed;
+    inset: auto 12px 12px;
+    inline-size: auto;
+  }
 }
 
 .source-context {
@@ -1228,7 +1274,7 @@ html.quality-lock #main {
 .table-scroll td,
 .table-scroll th {
   padding: 10px;
-  text-align: left;
+  text-align: start;
   vertical-align: top;
   border-bottom: 1px solid #7895a533;
 }
@@ -1254,7 +1300,7 @@ html.quality-lock #main {
   align-items: center;
 }
 .provider-scopes details {
-  padding-left: 1.8rem;
+  padding-inline-start: 1.8rem;
 }
 .provider-scopes p {
   font-size: 0.82rem;

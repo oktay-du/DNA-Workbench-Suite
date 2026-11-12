@@ -129,9 +129,9 @@ namespace DnaWorkbench
         {
             get; private set;
         }
-        bool transferred; readonly bool manual; bool german; string L(string english)
+        bool transferred; readonly bool manual; string language; string L(string english)
         {
-            return NativeLocale.Text(english, german);
+            return NativeLocale.Text(english, language);
         }
         static string Q(string s)
         {
@@ -146,9 +146,14 @@ namespace DnaWorkbench
             {
                 string config = Path.Combine(root, "DNA_Software", "UserData", "Launcher", "appearance.json");
                 if (File.Exists(config))
-                    german = Convert.ToString(json.Deserialize<Dictionary<string, object>>(File.ReadAllText(config))["language"], System.Globalization.CultureInfo.InvariantCulture) == "de";
+                    language = Convert.ToString(json.Deserialize<Dictionary<string, object>>(File.ReadAllText(config))["language"], System.Globalization.CultureInfo.InvariantCulture);
             }
             catch { }
+            if (language == "ar" || language == "fa" || language == "ur")
+            {
+                RightToLeft = RightToLeft.Yes;
+                RightToLeftLayout = true;
+            }
             Text = L("DNA Workbench · Startup check");
             ClientSize = new Size(690, 470);
             StartPosition = FormStartPosition.CenterScreen;

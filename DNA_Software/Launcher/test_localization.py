@@ -15,6 +15,25 @@ class LocalizationTests(unittest.TestCase):
         self.assertEqual(catalog["categories"][0], "All steps")
         self.assertTrue(all("ä" not in x["title"] for x in catalog["tasks"]))
 
+    def test_interface_languages_have_local_dictionaries_and_flags(self):
+        languages = localization.languages()
+        self.assertEqual(len(languages), 36)
+        self.assertEqual(
+            {code for code, row in languages.items() if row.get("dir") == "rtl"},
+            {"ar", "fa", "ur"},
+        )
+        assets = localization.ui_assets()
+        for code, row in languages.items():
+            with self.subTest(language=code):
+                flag = assets[f"/Locales/flags/{row['flag']}.svg"]
+                self.assertTrue(flag.read_bytes().startswith(b"<svg"))
+                if code != "en":
+                    dictionary = localization.dictionary(code)
+                    self.assertIn("Language", dictionary)
+                    self.assertNotEqual(dictionary["Language"], "Language")
+                    self.assertGreaterEqual(len(dictionary), 3000)
+        self.assertEqual(localization.dictionary("../project_info"), {})
+
     def test_legacy_paths_are_rebased_only_inside_the_workspace(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

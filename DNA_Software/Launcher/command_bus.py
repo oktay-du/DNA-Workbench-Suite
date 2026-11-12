@@ -5,6 +5,7 @@ validation stays in the suite backends. Imported results are data, not commands.
 """
 
 import copy, datetime, hashlib, json, math, threading, uuid
+import localization
 import suite_api
 
 ROUTES = [
@@ -562,7 +563,7 @@ def _build_definitions():
         "Change the suite language and appearance.",
         obj(
             {
-                "language": enum(["de", "en"]),
+                "language": enum(list(localization.languages())),
                 "theme": enum(["light", "dark", "system"]),
                 "design": enum(["studio", "archive"]),
             },

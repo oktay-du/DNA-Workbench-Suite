@@ -1,33 +1,36 @@
 (function () {
   "use strict";
   let locale = {},
-    language = "en",
-    scheduled = false;
+    languages = [{ id: "en", name: "English", flag: "gb" }],
+    scheduled = false,
+    revision = 0;
+  const dictionaries = new Map([["en", Promise.resolve({})]]);
   const original = new WeakMap(),
     attributes = new WeakMap();
   const css = document.createElement("link");
   css.rel = "stylesheet";
   css.href = "/shared-ui.css";
   document.head.append(css);
-  const ready = fetch("/Locales/de.json")
-    .then((r) => {
-      if (!r.ok) throw Error("Locale unavailable");
-      return r.json();
-    })
+  function fetchJson(path) {
+    return fetch(path).then((response) => {
+      if (!response.ok) throw Error("Locale unavailable");
+      return response.json();
+    });
+  }
+  const ready = fetchJson("/Locales/languages.json")
     .then((value) => {
-      locale = value;
-      translate();
+      languages = value;
     })
     .catch(() => {});
   function text(english) {
-    return language === "de" ? locale[english] || english : english;
+    return Object.hasOwn(locale, english) ? locale[english] : english;
   }
   function translate() {
     scheduled = false;
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
     let node;
     while ((node = walker.nextNode())) {
-      if (node.parentElement?.closest("script,style,pre,code,textarea")) continue;
+      if (node.parentElement?.closest('script,style,pre,code,textarea,[translate="no"]')) continue;
       const value = node.nodeValue,
         prior = original.get(node);
       const english = prior && value === prior.rendered ? prior.english : value;
@@ -39,7 +42,8 @@
     for (const element of document.querySelectorAll(
       "[placeholder],[title],[aria-label],optgroup[label]"
     )) {
-      let saved = attributes.get(element) || {};
+      if (element.closest('[translate="no"]')) continue;
+      const saved = attributes.get(element) || {};
       const names = element.matches("optgroup")
         ? ["label"]
         : ["placeholder", "title", "aria-label"];
@@ -55,18 +59,36 @@
       attributes.set(element, saved);
     }
   }
-  function apply(settings = {}) {
-    language = settings.language === "de" ? "de" : "en";
-    document.documentElement.lang = language;
+  async function apply(settings = {}) {
+    const request = ++revision;
     document.documentElement.dataset.theme =
       settings.theme === "system"
         ? matchMedia("(prefers-color-scheme: dark)").matches
           ? "dark"
           : "light"
         : settings.theme || "light";
+    await ready;
+    if (request !== revision) return;
+    const chosen =
+      languages.find((row) => row.id === settings.language) ||
+      languages.find((row) => row.id === "en");
+    if (!dictionaries.has(chosen.id)) {
+      dictionaries.set(
+        chosen.id,
+        fetchJson("/Locales/" + chosen.id + ".json").catch(() => {
+          dictionaries.delete(chosen.id);
+          return {};
+        })
+      );
+    }
+    const dictionary = await dictionaries.get(chosen.id);
+    if (request !== revision) return;
+    locale = dictionary;
+    document.documentElement.lang = chosen.id;
+    document.documentElement.dir = chosen.dir || "ltr";
     translate();
   }
-  window.DnaI18n = { text, apply, ready };
+  window.DnaI18n = { text, apply, ready, languages: () => languages };
   try {
     apply(JSON.parse(localStorage.getItem("dna.appearance") || "{}"));
   } catch {

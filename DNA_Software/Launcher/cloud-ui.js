@@ -259,7 +259,7 @@ window.reviewedCloudChat = async function (message) {
       kind: "chat",
       person: pid,
       text: message,
-      language: state.settings.language,
+      language: state.settings.language === "de" ? "de" : "en",
     });
   if (!job) return null;
   const result = await waitCloud(job.job);

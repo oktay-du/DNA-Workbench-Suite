@@ -758,6 +758,7 @@ function workspaceStamp(s) {
   });
 }
 async function loadSnapshot(force) {
+  await window.DnaI18n.ready;
   const epoch = ++refreshEpoch,
     pid = currentPerson(),
     next = await api("/suite/snapshot", {
@@ -783,6 +784,76 @@ async function loadSnapshot(force) {
 function refresh() {
   return loadSnapshot(true);
 }
+function languagePicker(compact = false) {
+  const choices = window.DnaI18n.languages(),
+    selected = choices.find((row) => row.id === state.settings.language) || choices[0],
+    picker = el("details", "", "language-picker"),
+    summary = el("summary", "", "language-choice"),
+    list = el("div", "", "language-options");
+  function label(row, short = false) {
+    const flag = el("img", "", "language-flag"),
+      name = el("bdi", short ? row.id.toUpperCase() : row.name);
+    flag.src = "/Locales/flags/" + row.flag + ".svg";
+    flag.alt = "";
+    name.lang = row.id;
+    name.translate = false;
+    return [flag, name];
+  }
+  summary.setAttribute("aria-label", "Language");
+  summary.append(...label(selected, compact));
+  list.setAttribute("role", "group");
+  list.setAttribute("aria-label", "Choose language");
+  const buttons = choices.map((row) => {
+    const control = el("button", "", "language-choice");
+    control.type = "button";
+    control.setAttribute("aria-pressed", String(row.id === selected.id));
+    const [flag, name] = label(row);
+    flag.loading = "lazy";
+    control.append(flag, name);
+    control.onclick = () => {
+      picker.open = false;
+      summary.focus();
+      if (row.id !== selected.id)
+        run(async () => {
+          await saveSettings({ language: row.id });
+          document
+            .querySelector(compact ? "#language summary" : "#main .language-picker summary")
+            ?.focus();
+        });
+    };
+    return control;
+  });
+  list.append(...buttons);
+  picker.append(summary, list);
+  picker.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && picker.open) {
+      event.preventDefault();
+      picker.open = false;
+      summary.focus();
+    } else if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+      event.preventDefault();
+      picker.open = true;
+      const current = buttons.indexOf(document.activeElement);
+      const index =
+        event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? buttons.length - 1
+            : event.key === "ArrowDown"
+              ? Math.min(current + 1, buttons.length - 1)
+              : current < 0
+                ? buttons.length - 1
+                : Math.max(current - 1, 0);
+      buttons[index].focus();
+    }
+  });
+  return picker;
+}
+document.addEventListener("pointerdown", (event) => {
+  for (const picker of document.querySelectorAll(".language-picker[open]")) {
+    if (!picker.contains(event.target)) picker.open = false;
+  }
+});
 function applySettings() {
   window.DnaI18n?.apply(state.settings);
   const actual =
@@ -793,9 +864,11 @@ function applySettings() {
       : state.settings.theme;
   document.documentElement.dataset.theme = actual;
   document.documentElement.dataset.design = state.settings.design || "studio";
-  document.documentElement.lang = state.settings.language;
-  $("language").value = state.settings.language;
-  $("language").setAttribute("aria-label", t("Language"));
+  const language = $("language");
+  if (language.dataset.locale !== state.settings.language) {
+    language.replaceChildren(languagePicker(true));
+    language.dataset.locale = state.settings.language;
+  }
   $("profile").setAttribute("aria-label", t("Active profile"));
   $("menu-toggle").setAttribute("aria-label", t("Open or close navigation"));
   $("nav-shade").setAttribute("aria-label", t("Close navigation"));
@@ -804,7 +877,6 @@ function applySettings() {
   $("theme-toggle").setAttribute("aria-label", t("Switch theme"));
   $("close-task").setAttribute("aria-label", t("Close dialog"));
   $("close-search").setAttribute("aria-label", t("Close search"));
-  $("language-flag").className = "language-flag flag-" + state.settings.language;
   $("search-label").textContent = t("Search");
   $("donate-toggle").textContent = "♡ " + t("Donate");
   $("local-label").textContent = t("Local on your SSD");
@@ -823,8 +895,9 @@ function applySettings() {
     );
 }
 async function saveSettings(change) {
-  Object.assign(state.settings, change);
-  await api("/suite/settings", state.settings);
+  const settings = await api("/suite/settings", { ...state.settings, ...change });
+  refreshEpoch++;
+  state.settings = settings;
   applySettings();
   renderNavigation();
   render();
@@ -1890,15 +1963,11 @@ function renderLocalSettings() {
   header("Your workspace", "Your workspace", t("Language, appearance and local services."));
   const card = el("section", "", "card");
   card.append(el("h2", t("Settings")));
-  const language = el("select");
-  language.append(new Option("🇩🇪 Deutsch", "de"), new Option("🇬🇧 English", "en"));
-  language.value = state.settings.language;
-  language.onchange = () => run(() => saveSettings({ language: language.value }));
   settingRow(
     card,
     t("Language"),
     t("Menus and controls. Provider reports retain their original language."),
-    language
+    languagePicker()
   );
   const modes = el("div", "", "theme-options");
   for (const [id, de, en] of [
@@ -2071,7 +2140,7 @@ async function aiPage() {
               : await api("/ai/chat", {
                   person: currentPerson(),
                   message,
-                  language: state.settings.language,
+                  language: state.settings.language === "de" ? "de" : "en",
                 });
           if (sendingPerson !== currentPerson()) return;
           if (!result) {
@@ -2209,7 +2278,6 @@ $("profile").onchange = () =>
     await refresh();
     if (task) await openTask(task);
   });
-$("language").onchange = () => run(() => saveSettings({ language: $("language").value }));
 $("theme-toggle").onclick = () =>
   run(() =>
     saveSettings({ theme: document.documentElement.dataset.theme === "dark" ? "light" : "dark" })

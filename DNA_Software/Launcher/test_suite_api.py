@@ -30,6 +30,8 @@ class SuiteTests(unittest.TestCase):
     def test_settings_persist_and_validate(self):
         suite_api.settings({"language": "en", "theme": "dark"})
         self.assertEqual(suite_api.settings()["theme"], "dark")
+        suite_api.settings({"language": "zh-Hans", "theme": "system"})
+        self.assertEqual(suite_api.settings()["language"], "zh-Hans")
         with self.assertRaises(ValueError):
             suite_api.settings({"language": "unknown", "theme": "dark"})
 

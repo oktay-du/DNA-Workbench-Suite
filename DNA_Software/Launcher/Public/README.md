@@ -75,7 +75,7 @@ Availability and prerequisites vary by module. Large reference genomes, panels a
 | Integration author | [GUI, CLI, JSON and MCP](docs/AGENTS.md) · [Input contracts](docs/TOOL_FORMATS.md) |
 | User | [Feedback and improvements](https://github.com/oktay-du/DNA-Workbench-Suite/issues/new/choose) · [Wiki](https://github.com/oktay-du/DNA-Workbench-Suite/wiki) |
 
-The Windows shell uses C# and WebView2. The Linux shell uses Python with GTK 3 and WebKitGTK. Local workflows use Python, and embedded views use HTML, CSS and JavaScript. English is the source language, with German localization and light/dark themes.
+The Windows shell uses C# and WebView2. The Linux shell uses Python with GTK 3 and WebKitGTK. Local workflows use Python, and embedded views use HTML, CSS and JavaScript. Choose from 36 interface languages in the toolbar or Settings. Language packs are included for offline use.
 
 <details>
 <summary><strong>Development commands</strong></summary>

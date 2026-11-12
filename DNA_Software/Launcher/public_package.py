@@ -2,6 +2,7 @@
 
 from pathlib import Path
 import hashlib, json, shutil, zipfile
+import localization
 
 ROOT = Path(__file__).resolve().parents[2]
 HERE = Path(__file__).parent
@@ -22,8 +23,8 @@ LAUNCHER = [
     "layout_migration.py",
     "test_localization.py",
     "legacy-layout.json",
-    "Locales/de.json",
     "Locales/de-intents.json",
+    "Notices/FLAG-ICONS-LICENSE.txt",
     "Dependencies.cs",
     "app.manifest",
     "build.ps1",
@@ -325,6 +326,10 @@ def entries():
         source = HERE / name
         if source.exists():
             yield source, "DNA_Software/Launcher/" + name
+    for route, source in localization.ui_assets().items():
+        if not source.is_file():
+            raise FileNotFoundError(f"Missing interface language asset: {route}")
+        yield source, "DNA_Software/Launcher" + route
     # Only image files explicitly named in the public, curated attribution manifest.
     if (HERE / "heritage-images.json").is_file():
         import re

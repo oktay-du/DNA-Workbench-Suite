@@ -6,6 +6,7 @@ import portable_json as json
 import family, source_store, inspector
 import portable_paths
 import security_paths
+import localization
 
 portable_paths.configure()
 APP = Path(__file__).parent
@@ -25,10 +26,11 @@ PROCESSES = {}
 def settings(r=None):
     path = ROOT / "DNA_Software/UserData/Launcher/appearance.json"
     if r is not None:
-        if r.get("language") not in ("de", "en") or r.get("theme") not in (
-            "light",
-            "dark",
-            "system",
+        language = r.get("language")
+        if (
+            not isinstance(language, str)
+            or language not in localization.languages()
+            or r.get("theme") not in ("light", "dark", "system")
         ):
             raise ValueError("Invalid language or presentation.")
         if r.get("design", "studio") not in ("studio", "archive"):
@@ -43,7 +45,13 @@ def settings(r=None):
             backup=True,
         )
     try:
-        return json.loads(path.read_text(encoding="utf-8"))
+        value = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(value, dict):
+            raise ValueError("Invalid appearance settings")
+        language = value.get("language")
+        if not isinstance(language, str) or language not in localization.languages():
+            value["language"] = "en"
+        return value
     except (OSError, ValueError):
         return {"language": "en", "theme": "light"}
 

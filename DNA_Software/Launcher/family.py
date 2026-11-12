@@ -5,6 +5,7 @@ import collections, sqlite3, re, secrets, sys, webbrowser, threading
 import portable_json as json
 from http.server import ThreadingHTTPServer, BaseHTTPRequestHandler
 import source_store
+import localization
 from contextlib import closing, nullcontext
 
 ROOT = source_store.ROOT
@@ -397,6 +398,38 @@ def quality_report_file(route):
     return file
 
 
+STATIC_WEB_FILES = {
+    route: Path(__file__).with_name(route[1:])
+    for route in (
+        "/tool-wizard.js",
+        "/intake-ui.js",
+        "/cloud-ui.js",
+        "/catalog-ui.js",
+        "/artwork-ui.js",
+        "/themes.css",
+        "/workflows-ui.js",
+        "/profile-files.js",
+        "/profile-extras.js",
+        "/release-ui.js",
+        "/feedback-ui.js",
+        "/design-tokens.css",
+        "/workbench-ui.css",
+        "/ui-components.js",
+        "/profile-page.js",
+        "/heritage.js",
+        "/heritage.css",
+        "/matching.js",
+        "/matching.css",
+        "/plugins.js",
+        "/app.js",
+        "/app.css",
+        "/agent.js",
+        "/shared-ui.js",
+        "/shared-ui.css",
+    )
+}
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, *args):
         pass
@@ -458,78 +491,31 @@ class Handler(BaseHTTPRequestHandler):
 
         if visual_tools.serve(self):
             return
-        if self.path in [
-            "/tool-wizard.js",
-            "/intake-ui.js",
-            "/cloud-ui.js",
-            "/catalog-ui.js",
-            "/artwork-ui.js",
-            "/themes.css",
-            "/workflows-ui.js",
-            "/profile-files.js",
-            "/profile-extras.js",
-            "/release-ui.js",
-            "/feedback-ui.js",
-            "/design-tokens.css",
-            "/workbench-ui.css",
-            "/ui-components.js",
-            "/profile-page.js",
-            "/heritage.js",
-            "/heritage.css",
-            "/matching.js",
-            "/matching.css",
-            "/plugins.js",
-            "/app.js",
-            "/app.css",
-            "/agent.js",
-            "/shared-ui.js",
-            "/shared-ui.css",
-            "/Locales/de.json",
-        ]:
-            file = {
-                route: Path(__file__).parent / route[1:]
-                for route in [
-                    "/tool-wizard.js",
-                    "/intake-ui.js",
-                    "/cloud-ui.js",
-                    "/catalog-ui.js",
-                    "/artwork-ui.js",
-                    "/themes.css",
-                    "/workflows-ui.js",
-                    "/profile-files.js",
-                    "/profile-extras.js",
-                    "/release-ui.js",
-                    "/feedback-ui.js",
-                    "/design-tokens.css",
-                    "/workbench-ui.css",
-                    "/ui-components.js",
-                    "/profile-page.js",
-                    "/heritage.js",
-                    "/heritage.css",
-                    "/matching.js",
-                    "/matching.css",
-                    "/plugins.js",
-                    "/app.js",
-                    "/app.css",
-                    "/agent.js",
-                    "/shared-ui.js",
-                    "/shared-ui.css",
-                    "/Locales/de.json",
-                ]
-            }[self.path]
+        locale_asset = localization.ui_assets().get(self.path)
+        file = locale_asset or STATIC_WEB_FILES.get(self.path)
+        if file is not None:
             data = file.read_bytes()
             self.send_response(200)
             self.send_header(
                 "Content-Type",
                 "application/json; charset=utf-8"
                 if self.path.endswith(".json")
+                else "image/svg+xml"
+                if self.path.endswith(".svg")
                 else "text/javascript; charset=utf-8"
                 if self.path.endswith(".js")
                 else "text/css; charset=utf-8",
             )
             self.send_header("Content-Length", str(len(data)))
-            self.send_header("Cache-Control", "no-store")
+            self.send_header(
+                "Cache-Control", "private, max-age=3600" if locale_asset else "no-store"
+            )
             self.send_header("Connection", "close")
+            if self.path.endswith(".svg"):
+                self.send_header(
+                    "Content-Security-Policy",
+                    "default-src 'none'; style-src 'unsafe-inline'; sandbox",
+                )
             self.end_headers()
             for offset in range(0, len(data), 16384):
                 self.wfile.write(data[offset : offset + 16384])

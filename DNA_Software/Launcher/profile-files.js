@@ -63,7 +63,7 @@ window.renderProfileFileManager = async function () {
     const d = new Date(value);
     return Number.isNaN(d.getTime())
       ? value
-      : d.toLocaleString(state.settings.language === "de" ? "de-DE" : "en-GB", {
+      : d.toLocaleString(state.settings.language === "en" ? "en-GB" : state.settings.language, {
           dateStyle: "medium",
           timeStyle: "short",
         });

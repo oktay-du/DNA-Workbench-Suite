@@ -6,6 +6,7 @@ Included components retain their listed licenses, copyright notices and permissi
 
 - Microsoft WebView2 SDK / Fixed Version Runtime: Microsoft terms. Official packages are downloaded from NuGet and Microsoft; SDK license files travel with the embedded payload. Runtime CAB and its license files remain separate.
 - Natural Earth land outlines: public domain. Source and archive SHA-256 are in world-land.json.
+- Language picker flags: [flag-icons 7.6.0](https://github.com/lipis/flag-icons), MIT. The notice is included at `DNA_Software/Launcher/Notices/FLAG-ICONS-LICENSE.txt`.
 - Heritage place names: Unicode CLDR, Unicode License v3; notice in Notices/UNICODE-LICENSE.txt. The German culture summaries and decorative patterns are our own text/design.
 - Heritage photographs: individual Creative Commons/public-domain terms apply. Titles, authors, source pages, license links and SHA-256 are retained in heritage-images.json and shown next to each image. They are not relicensed under our project licenses.
 - Python / python-build-standalone: PSF and included component licenses; distributed as an unmodified official archive downloaded by the installer.

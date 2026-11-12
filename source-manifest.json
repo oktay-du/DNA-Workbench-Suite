@@ -45,15 +45,15 @@
   },
   {
     "path": "DNA_Software/Launcher/Startup.cs",
-    "sha256": "56bb8d8d5d292e8b6c2c91eeb41eba23d41b2cb8a060a4340ade88fd9e53b04c"
+    "sha256": "838bc8aed4661f529b75bc9957afb12800fd62dd097055ee6c28492dea43ee9b"
   },
   {
     "path": "DNA_Software/Launcher/LegacyLayout.cs",
-    "sha256": "c5010339841d9d82a2a1edfee20372494426f757adcd09cba6218678aa18ca44"
+    "sha256": "c6c25e7d20eb9ca8965a3ae0b33cbf1de83ba0cb678f8c5e25886fd2ca48f4a7"
   },
   {
     "path": "DNA_Software/Launcher/localization.py",
-    "sha256": "ef6b6240e3856298ec655b84eef8c489b3e03d5e664458553cc376151ea39372"
+    "sha256": "46e21519ad173e600beb66381503115467f8da2b578c3d743a6296a5103b1ddd"
   },
   {
     "path": "DNA_Software/Launcher/layout_migration.py",
@@ -61,19 +61,19 @@
   },
   {
     "path": "DNA_Software/Launcher/test_localization.py",
-    "sha256": "d5837efe2aa303047b1b07be7dc584b0f00f21d3b8cb86cbb4899edaef21c875"
+    "sha256": "2582f3ea1c6e750e0c0ff0264000e48e554928d15687def37683c5455ad18a14"
   },
   {
     "path": "DNA_Software/Launcher/legacy-layout.json",
     "sha256": "948d10a0dc9a2a1c756d4f77ec73f5292cfdb4954f68356cc6874bd0608d265a"
   },
   {
-    "path": "DNA_Software/Launcher/Locales/de.json",
-    "sha256": "232935ea88548d0a85785ff3ed100184e57d071397034f42a86879097042d12a"
-  },
-  {
     "path": "DNA_Software/Launcher/Locales/de-intents.json",
     "sha256": "62a371c07ee627c2c11fd70396bf0292621b6969460a6e56168894716e2703f0"
+  },
+  {
+    "path": "DNA_Software/Launcher/Notices/FLAG-ICONS-LICENSE.txt",
+    "sha256": "8f1195d55a2fd315a07d812328470ca9ba2abb78c8d317ff19619d5125e00cea"
   },
   {
     "path": "DNA_Software/Launcher/Dependencies.cs",
@@ -117,7 +117,7 @@
   },
   {
     "path": "DNA_Software/Launcher/family.py",
-    "sha256": "0269b95bec889dd1337e3ae5f998e0f4fe4a425925657b5604b58bdb141f48ab"
+    "sha256": "f7de0cb8b5ef174502244f5daa8c8709dccc142b913abee3fb9cc12b1f59c431"
   },
   {
     "path": "DNA_Software/Launcher/family.html",
@@ -177,7 +177,7 @@
   },
   {
     "path": "DNA_Software/Launcher/public_package.py",
-    "sha256": "33b7544fd793ebe114a6a4b693e98bb3c8c1d169afef6f34e8385d4cbdb9da26"
+    "sha256": "2c2f3f009a3544fdfcb1946059059f5dd5ab40f25d4aeff7bc9b159d9572bb16"
   },
   {
     "path": "DNA_Software/Launcher/test_family.py",
@@ -277,23 +277,23 @@
   },
   {
     "path": "DNA_Software/Launcher/suite_api.py",
-    "sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511"
+    "sha256": "5a0aabbe3ff5019093cb01c75c33e277976a9a90ffae482a52ea7109e42a1263"
   },
   {
     "path": "DNA_Software/Launcher/app.html",
-    "sha256": "cc4403f34dc1a33ccb5467a749b27075706bdd0298a1d5a08960ecb9a7ccb2b3"
+    "sha256": "2f00d30ace64fc4085eca49308ff723cc34a15948aa70ef28df68c0e223bc1c5"
   },
   {
     "path": "DNA_Software/Launcher/app.css",
-    "sha256": "5cda89dbe006bcdb134f2f3f088d913fb1c6500b22dcfa5149c2c959dd29a229"
+    "sha256": "33feff036c8e53fb3642364399731b7468f3771cf1e16ee6bf8991c2d63f2422"
   },
   {
     "path": "DNA_Software/Launcher/app.js",
-    "sha256": "29608bfdd6c95593ad84a013480064daee6522aa4d2f0685162fe29bfa7db692"
+    "sha256": "8ade8104f13d16e28fcfb5080d8b02950bb081fd8081ba4113afc3f388f2944b"
   },
   {
     "path": "DNA_Software/Launcher/shared-ui.js",
-    "sha256": "5a817a53f7ad10974c7eece714b31607a71b06b5bd203bac6b24656944950b49"
+    "sha256": "16d1aafba7264b2547f50e81b6db11a690cbf8e7e2c42c60911ccdc1f17db07c"
   },
   {
     "path": "DNA_Software/Launcher/shared-ui.css",
@@ -317,7 +317,7 @@
   },
   {
     "path": "DNA_Software/Launcher/test_suite_api.py",
-    "sha256": "88e106a86a0f5ec0ec87166acfbf455c79e7a5a8d414cba69097cbffb6f7a07a"
+    "sha256": "6381b36a9e85e83c31d51323507fc64cf4e5d66a164e375b34224e8794b6196b"
   },
   {
     "path": "DNA_Software/Launcher/test_menu_snapshot.py",
@@ -417,7 +417,7 @@
   },
   {
     "path": "DNA_Software/Launcher/cloud-ui.js",
-    "sha256": "124ff8c5863af649041fd7f0ea2378537f2e13dc951be308ff6c73579f3798fc"
+    "sha256": "cd5ad87ccd9bbc17f1516dc67b91c4a5fa596a8e7d83280d84c9e626bc90cebf"
   },
   {
     "path": "DNA_Software/Launcher/tool_media.py",
@@ -509,7 +509,7 @@
   },
   {
     "path": "DNA_Software/Launcher/profile-files.js",
-    "sha256": "d023288a2979bb5138906692f525b1459204bde07c6ae74ce3210bb3bf6c4f9b"
+    "sha256": "f63d932cbf705ee1092057ce9e4ec11093c2dc400f2fef8dd6421ca5fd47b8e1"
   },
   {
     "path": "DNA_Software/Launcher/execution_journal.py",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "ea41f83490d24b8318bf7a3cddbf65376a9a6cec84b3583232c399096abfd9e4"
+    "sha256": "2c1b1c6520b771ab32970051cc461741706747657dec2775ca756f8003b244a8"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -709,7 +709,7 @@
   },
   {
     "path": "DNA_Software/Launcher/workbench-ui.css",
-    "sha256": "25082cc753cc74f98fb26695558ebe343f5c52247ba36739fac31abdbf4d57a4"
+    "sha256": "e2bee5c9d185ffe2f26ce8af74cc4d4b711b7f246d3fdaf3919166e0c0460beb"
   },
   {
     "path": "DNA_Software/Launcher/ui-components.js",
@@ -773,7 +773,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "b7a67b668717715d104201e7c04bcda8722c48c23aee97d91d09bcf57f612942"
+    "sha256": "6bbdc286e7548a882540494903c6d4ce3f5b4a57e283f8baafdfd87e547634b4"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -781,7 +781,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/README.md",
-    "sha256": "4501f328f30fad3d3092bad13ae2b41d52152f75e63bae02b6cd3272f50afa1f"
+    "sha256": "70bcadd60b7df41bb74854b24c6056a7ea7de76ddf3d721d366ce55efae125d1"
   },
   {
     "path": "DNA_Software/Launcher/Public/LICENSE",
@@ -789,7 +789,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/THIRD_PARTY.md",
-    "sha256": "204b55a7c476c2fa7557e82c276af4159592f4259ae36c6ed3be207453161ea1"
+    "sha256": "27d27b102a44ca40b669618529ccc671db468231b48dd818fc6f83bf401fbea8"
   },
   {
     "path": "DNA_Software/Launcher/Public/SECURITY.md",
@@ -833,7 +833,7 @@
   },
   {
     "path": "DNA_Software/Launcher/command_bus.py",
-    "sha256": "5e0b292160f7579a74da54317c6d9ff2e241f0e17704de972033c179212834cc"
+    "sha256": "209ec3ba0468d55a5fe3ff3976ef8455700db33e04158c90bb4fa375c9dbb0d3"
   },
   {
     "path": "DNA_Software/Launcher/agent_control.py",
@@ -1018,6 +1018,294 @@
   {
     "path": "DNA_Software/Launcher/CULTURAL_ATLAS.md",
     "sha256": "b18b9fe0dfe8fe4d59385c90ee143ec603013e999da7a08e015b0fc74b9f4994"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/languages.json",
+    "sha256": "77d365da66044cee0a05a724bcd24340e9dcaa04ead890147e415f80229e4093"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/de.json",
+    "sha256": "b7a7c58efd3f249dac8e51008fa786ecc6340dcbfd544b05e0ad1d34223a53fe"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/de.svg",
+    "sha256": "efd480af5a154a7651f29da23ee0d09dbc892410fb4041898ddf8face336c575"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/gb.svg",
+    "sha256": "c8be1e7208798a4ae692ee1e937065d498bb29e741943f6172b29118b8ed8066"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/tr.json",
+    "sha256": "9e36cce94f9f1379c535444fbffcf393c8f59a677311bbf9124aaed2c64ffb0a"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/tr.svg",
+    "sha256": "256a1d6afbedb9f731566982331a1cd1ad14aba211b8a61d338855879505e74f"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/es.json",
+    "sha256": "0a740ba2c407123c164b552890fb02f073ae1e364e78b5abee591ee61f4b8b9d"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/es.svg",
+    "sha256": "f9cfaff858e95f830733ade9591037b5322dfb5827a53b70956a3d190bb49b9a"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/fr.json",
+    "sha256": "64c1e5999de8ad84c46d14c938b32ef4f5b55203e1a0fc1dbbe65ea20c64e303"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/fr.svg",
+    "sha256": "a526851c372e3372b1596be71af355ea72b1650bbc4c06e6e2c226900d3de6cc"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/pt.json",
+    "sha256": "d4c528d24c95aa47f79c6a87680373acd41dfe00a06670872a4e2464365e285a"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/pt.svg",
+    "sha256": "a7a2cf0b44aaaaf4f3bdc0ee0fa308ec7085bdfedd3f72da1473d43fd2a569fb"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/it.json",
+    "sha256": "0a2ca246978c0c840f34ccc088c8e387df54f2300e794790f34d7e5ab58b7d45"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/it.svg",
+    "sha256": "9fa88118818d9b64838f578e2babcca3d0630aed21b5c33b34aff7ac5ce506bc"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/nl.json",
+    "sha256": "df32c84851db1d6e0d0da421c54ae1a862b6cf13e50f8d0001886fa66622c9f1"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/nl.svg",
+    "sha256": "8f691f17fe70894537af8e92f2ca47761d353639b0defc15cbe561eb503ab010"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/sv.json",
+    "sha256": "45dab9c37e1fa8cd9486873f478d15541fccc389bd4deabe8934a2998e9bd190"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/se.svg",
+    "sha256": "b3b5071e6c1d4a0e3db828bab5c7dfd68d0e90fcf3b25b15e9a2c4f96c1f79c9"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/el.json",
+    "sha256": "03e96088a11258b433c7fa44d4266003008d270ac3e763a4f6f2c15771be8b3d"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/gr.svg",
+    "sha256": "a184070f7678b06777be8ac38cb05ba41829591a6dac9b64b2b72db66aec82f5"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/cs.json",
+    "sha256": "6cacfe79a61e8261c4d159cf72cf16f1229571273ef6b78bb58a35949e5fb176"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/cz.svg",
+    "sha256": "d601fcc2e5b1fd48b79d53c55108af4c0e90793f146db51f3ee449d8d69512bc"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ro.json",
+    "sha256": "670a801d84da2c7eca69ce612d2c953990da1c86a2a457f95b2c51fe4ed0011d"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/ro.svg",
+    "sha256": "17a3a747fc5e63302aaa670a667e5812f3676f46768e5a3e87b254bd41762840"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/hu.json",
+    "sha256": "55fdd2cec1a97999f75c145a02dd0545af898d6da728c3930307fb8e876524b5"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/hu.svg",
+    "sha256": "4891ce591bf29b5b68609c29d973a30f1ef109032d8dab369208d0d5f615bc74"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/pl.json",
+    "sha256": "fe9d0bbfdc01073ef413a62a33a17bd3143c47ca69890467f5bdcd472f366e38"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/pl.svg",
+    "sha256": "06687a4b90fc00195d0795aea1c26a9f73f1b6ea6a76e358724b2f1f32b7c8f4"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/uk.json",
+    "sha256": "edc3676b41e1dcb5a9c5888e81767de22bf92b1236eeefa87bdb81991ee19573"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/ua.svg",
+    "sha256": "b7892e2bee1b25eb5407d6f5249b020dcece29ee1c9cc1a8a6a10c4f38ce6801"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ru.json",
+    "sha256": "3e73623f370258af35599e969cf68c7d347ae3233f60cbc0b9711778857fb6f2"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/ru.svg",
+    "sha256": "7100aaae51ff3b6a2bf0ca932b3bc518bdc760814725e7cca31d821a26c3dd7c"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ar.json",
+    "sha256": "eb0283cedc32198edfc3b1e10983a7e71e4582d135d2424533b4aee65d342d8a"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/sa.svg",
+    "sha256": "5738c8cfca5fea63587cbcf69237996c8ce6283f8016853150686f37311b620e"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/fa.json",
+    "sha256": "6b96079ea61c508b07ec116e426920a5d4afd3f798089bb24803f406e1e4822a"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/ir.svg",
+    "sha256": "cb363e09bafbff6de7c2fba6a002ca33f0563dc83a2328d34adb492cf80ca629"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ur.json",
+    "sha256": "de2a8973c2113f26250f1905dd4e0cca3b96261f0cdaff3c9ac2f69eb65c138c"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/pk.svg",
+    "sha256": "89e851c0d541d8166b297e13bed97e0cb500bdb4ae48fd83a86b606a078352a8"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/hi.json",
+    "sha256": "2cdc91db917d8a83a5dcbc771c90a9a2dc9e593cb29f15f73564f413e93d31e6"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/in.svg",
+    "sha256": "91185efa1a9b52cdc0e470712518efeefc4e4d6a6555bae9de997ba71885bb98"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ne.json",
+    "sha256": "d7292885db5abddde46ae8ca3f3396a38befd9450739f4e0b4f9fa2a1423bfdd"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/np.svg",
+    "sha256": "b84c02e2fa659d0be6fc6b5963d5e9fbd25c3a6ab4d469aa61f1e3cdbd3f4637"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ka.json",
+    "sha256": "73202117277d082931c423dd0ea7b7c2cc152498f8225bf41a7548e696eed8ba"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/ge.svg",
+    "sha256": "0280a1279c3d1d772f1e885ee821e37a1cdb4aa085ca2870825fe10bad8d7ff1"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/hy.json",
+    "sha256": "6aafa3a842c7ea83d48e7c61bf96a009d235226e64c4cbcf8d3b4cc402db8329"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/am.svg",
+    "sha256": "efb6cdaad5658ae5024c86b099a96c4e3769028894240f4015cbc090a0e90e0f"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/mn.json",
+    "sha256": "6d1296acb204b0b08ab35a13dbde3220e3067bf4e20478c2c2ccf5681f122e9e"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/mn.svg",
+    "sha256": "92d5422514f63fc10800714e71e14b576437e69a22645cf74a7ac0f516d67a69"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/zh-Hans.json",
+    "sha256": "7b5a46cdeb537db98c676d75ae1b6eb21030d6557e3c16b049fb0439703c0ecb"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/cn.svg",
+    "sha256": "981da9bdf82d48e31691f20578cefcb26cf7d0bd95e4ebd5c0df00bdfe988c1a"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ja.json",
+    "sha256": "fe1a8ff802cc53e483d053a1fc10071caba3962890f66ce4da2f7f60249d3839"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/jp.svg",
+    "sha256": "bfea80baf9989383dc4bf7ca594ed95be0df0ff125bfc88d0bfa878eb0198022"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ko.json",
+    "sha256": "68d09ef1e4ba88a4b677d6b062a15332f93cd0ad194154fdce7121c75ed80030"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/kr.svg",
+    "sha256": "7a6cd5b51d0e2841ed8b79b1147ad8a66cf3c09f6344d4a63b5e4413ffa5d15b"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/id.json",
+    "sha256": "2d7dc624d93cd0b34c7f59675fba8c5aa6751f2073412b5449f1a68e9c8720b4"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/id.svg",
+    "sha256": "5cd3acc4939dd7eae6318c8d75df8c0d1733f650e2504a2635b0dbf3dfabb040"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ms.json",
+    "sha256": "4f44ff72f146d2b56c425cf9ca385c9a63d23b31c9c4c025fc52afc49b3eccfa"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/my.svg",
+    "sha256": "bb30e84a099d2d9dc286ab091bdd40ae7a8e332eb49827f2df4f11803e613667"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/vi.json",
+    "sha256": "e251567ffd793abb0600e208899f9ef8c44822b37af50b02ca4de6275aba67f5"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/vn.svg",
+    "sha256": "2355037201315d74581ab0ad60b5587a29a087d26b0525bdeb8676e64fae5b86"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/th.json",
+    "sha256": "cf164368e059875915c3788dbf73c21d040bdbe35832d0c703896f5f5ad1454e"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/th.svg",
+    "sha256": "329cc0d520536d6eb4b9304105f23650c2d02bbdba8f8696e996dbf166de6f2e"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/fil.json",
+    "sha256": "27bc75534a08f4b42133590ef874618b9201b48f9a1961626ca2146ecdfe8d80"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/ph.svg",
+    "sha256": "c3bd5e08ddc5f6dbdfa899af9efb45577e3841402e6a7f5d00fef754816b2884"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/am.json",
+    "sha256": "d501f201d104be4ae7906690f86f47dd2a76e298714f61dec7da143fc7fb42a3"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/et.svg",
+    "sha256": "a136cd1152e5ab4b02f2ff2eab4f5ae5b48ed3594afd7f3160899f12575b41c7"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/sw.json",
+    "sha256": "8831c1f31fda8578127ee71f6c49a6026c3b2765d7c09209da3be008a6a46dc6"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/tz.svg",
+    "sha256": "fd317abae009fa3629c51b82a6b9f1c529a7254406478047734bb52de83611cd"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/so.json",
+    "sha256": "ec1649c7b896cdfd3b8912621a36a9f6594c6fae6b174da2b00da1074127e03f"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/so.svg",
+    "sha256": "249e1acb87efcd0ef0f685285f14f5063f0bf260e0d28ca462e713c3f6178e7d"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/ha.json",
+    "sha256": "e91f5e7c5ecdbb248425efc6d510cf88d093f7db59b31f50270486f1cdb43bb6"
+  },
+  {
+    "path": "DNA_Software/Launcher/Locales/flags/ng.svg",
+    "sha256": "b7a2a45a6499095efce41592428ff558ec5bd83d2751858dfe5fa4589334b66f"
   },
   {
     "path": "DNA_Software/Launcher/heritage-assets/am-geghard.jpg",
@@ -1501,7 +1789,7 @@
   },
   {
     "path": "site/index.html",
-    "sha256": "c7673f51d9f9c20586f32c1497fd07b600ba72a8379310bc12a527d81ef6f8a7"
+    "sha256": "db2a2bd9eab4362cbdf2d727790a8039da6b8c6d4e5c90dcc817fa5683b64584"
   },
   {
     "path": "site/style.css",
