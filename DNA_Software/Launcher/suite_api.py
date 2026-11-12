@@ -188,13 +188,14 @@ def snapshot(pid=None, catalog_token=None):
     import release_tools, sample_data
 
     token = catalog_stamp()
+    files = source_store.listing(pid) if pid else []
     data = {
         "sample_profile": sample_data.is_sample(pid) if pid else False,
         "project": release_tools.info(),
         "people": people,
         "person": pid,
-        "files": source_store.listing(pid) if pid else [],
-        "best_selection": profile_pipeline.summary(pid) if pid else {"sets": []},
+        "files": files,
+        "best_selection": profile_pipeline.summary(pid, files) if pid else {"sets": []},
         "jobs": jobs(pid) if pid else [],
         "settings": settings(),
         "catalog_token": token,

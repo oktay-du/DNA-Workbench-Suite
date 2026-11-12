@@ -115,10 +115,32 @@ def build_hint(path):
     return ""
 
 
+def _by_key(db, sql, key):
+    return {row[key]: row for row in db.execute(sql)}
+
+
 def listing(person):
     db = connect(person)
     db.row_factory = sqlite3.Row
     __import__("layout_migration").database(db, ROOT)
+    containers = _by_key(
+        db,
+        "SELECT file_id,parent_sha256,member FROM archive_payloads",
+        "file_id",
+    )
+    annotations = {}
+    if db.execute(
+        "SELECT 1 FROM sqlite_master WHERE type='table' AND name='file_annotations'"
+    ).fetchone():
+        annotations = _by_key(
+            db,
+            "SELECT file_id,origin,lifecycle,payload FROM file_annotations",
+            "file_id",
+        )
+    inspections = _by_key(db, "SELECT sha256,payload FROM inspections", "sha256")
+    metadata = _by_key(db, "SELECT file_id,payload FROM source_metadata", "file_id")
+    from inspector import chromosome_hint
+
     rows = []
     for row in db.execute(
         """SELECT f.id,f.batch_id,b.provider,b.label,b.declared_build,b.measurement,b.created,f.original_name,f.original_path,f.index_state,f.call_count,o.sha256,o.stored_rel,o.bytes,o.kind,o.detected_build FROM files f JOIN batches b ON f.batch_id=b.id JOIN blobs o ON f.sha256=o.sha256 WHERE NOT EXISTS(SELECT 1 FROM file_tombstones t WHERE t.file_id=f.id) ORDER BY b.created DESC,f.original_name"""
@@ -130,36 +152,23 @@ def listing(person):
         r["origin"] = "imported"
         r["lifecycle"] = "imported"
         r["comparison"] = {}
-        container = db.execute(
-            "SELECT parent_sha256,member FROM archive_payloads WHERE file_id=?",
-            (r["id"],),
-        ).fetchone()
+        container = containers.get(r["id"])
         if container:
             r.update(
-                container_sha256=container[0],
-                container_member=container[1],
+                container_sha256=container["parent_sha256"],
+                container_member=container["member"],
                 independent_measurement=False,
             )
-        if db.execute(
-            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='file_annotations'"
-        ).fetchone():
-            annotation = db.execute(
-                "SELECT origin,lifecycle,payload FROM file_annotations WHERE file_id=?",
-                (r["id"],),
-            ).fetchone()
-            if annotation:
-                r.update(
-                    origin=annotation[0],
-                    lifecycle=annotation[1],
-                    comparison=json.loads(annotation[2]),
-                )
-        inspection = db.execute(
-            "SELECT payload FROM inspections WHERE sha256=?", (r["sha256"],)
-        ).fetchone()
-        detail = json.loads(inspection[0]) if inspection else {}
+        annotation = annotations.get(r["id"])
+        if annotation:
+            r.update(
+                origin=annotation["origin"],
+                lifecycle=annotation["lifecycle"],
+                comparison=json.loads(annotation["payload"]),
+            )
+        inspection = inspections.get(r["sha256"])
+        detail = json.loads(inspection["payload"]) if inspection else {}
         if detail:
-            from inspector import chromosome_hint
-
             detail.setdefault("profile", {})["chromosomes"] = chromosome_hint(detail)
             if detail.get("measurement", "Unknown") != "Unknown":
                 r["measurement"] = detail["measurement"]
@@ -180,11 +189,9 @@ def listing(person):
         r["profile"] = detail.get("profile", {})
         r["versions"] = detail.get("versions", [])
         r["declared_version"] = ""
-        perfile = db.execute(
-            "SELECT payload FROM source_metadata WHERE file_id=?", (r["id"],)
-        ).fetchone()
+        perfile = metadata.get(r["id"])
         if perfile:
-            source_meta = json.loads(perfile[0])
+            source_meta = json.loads(perfile["payload"])
             r["declared_version"] = source_meta.get("declared_version", "")
             r["measurement"] = source_meta.get("measurement") or r["measurement"]
             r["metadata_provenance"] = source_meta.get("provenance", "user-declared")

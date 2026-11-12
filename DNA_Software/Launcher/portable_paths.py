@@ -4,6 +4,7 @@ from pathlib import Path
 import hashlib, json, os, uuid
 
 ROOT = Path(__file__).resolve().parents[2]
+_ROOTS = {}
 INTERNAL = (
     "Profiles",
     "DNA_Software",
@@ -68,20 +69,48 @@ def configure(root=ROOT):
         tmp = state.with_name(state.name + "." + uuid.uuid4().hex + ".tmp")
         tmp.write_text(json.dumps(value, indent=2), encoding="utf-8")
         os.replace(tmp, state)
+        _ROOTS.pop(str(root), None)
+        import portable_json
+
+        portable_json.clear_cache()
     return value
+
+
+def remembered_roots(root=ROOT):
+    """Previous install locations, reread only when that record changes."""
+    root = Path(root)
+    file = root / "DNA_Software/UserData/Launcher/portable-location.json"
+    try:
+        info = file.stat()
+        stamp = (info.st_mtime_ns, info.st_size)
+    except OSError:
+        stamp = None
+    key = str(root)
+    cached = _ROOTS.get(key)
+    if cached is not None and cached[0] == stamp:
+        return cached[1]
+    if cached is not None:
+        import portable_json
+
+        portable_json.clear_cache()
+    aliases = []
+    if stamp is not None:
+        try:
+            aliases = json.loads(file.read_text(encoding="utf-8-sig")).get(
+                "previous_roots", []
+            )
+        except (OSError, ValueError):
+            aliases = []
+    if not isinstance(aliases, list):
+        aliases = []
+    _ROOTS[key] = (stamp, aliases)
+    return aliases
 
 
 def rebase(value, root=ROOT, aliases=None):
     root = Path(root)
     if aliases is None:
-        try:
-            aliases = json.loads(
-                (
-                    root / "DNA_Software/UserData/Launcher/portable-location.json"
-                ).read_text(encoding="utf-8-sig")
-            ).get("previous_roots", [])
-        except (OSError, ValueError):
-            aliases = []
+        aliases = remembered_roots(root)
 
     def convert(s):
         if not isinstance(s, str):

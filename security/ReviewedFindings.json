@@ -620,7 +620,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B404",
       "code_sha256": "b81589c0c15d4b6a3b5b772cff8d2305585d78abead28b26b91de2071c4c9973",
-      "file_sha256": "130e39f6245c91c3ab56020f512e9c8b0ab13eb3fa4ae38f4cd6117e93604aae",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -632,7 +632,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B603",
       "code_sha256": "0a86c5224c7c06d744b55d90b9811ff27f1700ef9a06f1a97f05ad71913a6519",
-      "file_sha256": "130e39f6245c91c3ab56020f512e9c8b0ab13eb3fa4ae38f4cd6117e93604aae",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -647,7 +647,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "B603",
       "code_sha256": "ca68c9e2dd723ca5089bce272e2c90c3f3080a9112afe85a9ce224dffdb1455e",
-      "file_sha256": "130e39f6245c91c3ab56020f512e9c8b0ab13eb3fa4ae38f4cd6117e93604aae",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -878,7 +878,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "077aa9ab9ba78df27c02b91359bc6abd884d318e0ed9a970398824d38fa2a58b",
-      "file_sha256": "130e39f6245c91c3ab56020f512e9c8b0ab13eb3fa4ae38f4cd6117e93604aae",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -892,7 +892,7 @@
       "path": "DNA_Software/Launcher/suite_api.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "3af2316151ce5a1a6dd5e1ddc7834b8a850c644f824ede4573cf961b487d8fde",
-      "file_sha256": "130e39f6245c91c3ab56020f512e9c8b0ab13eb3fa4ae38f4cd6117e93604aae",
+      "file_sha256": "043905a36b8d6498db81c6f504393575ba078e65dbf861388e3e6cc89ffd6511",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -1648,7 +1648,7 @@
       "path": "DNA_Software/Launcher/portable_paths.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "9d39b76171cca14238dddfc11a26d7cb58d8bd64e6881ff7884a44749f21e460",
-      "file_sha256": "eeda73f230b93e19e7d7a1fde3568ede862447a4c9bf40d4749248b7bb8aa01f",
+      "file_sha256": "756b3117a65ce9282ffff0fe4f4da01c302558922ae094b4d0b1b965569b2fff",
       "reason": "Local relocation converts saved app-root paths after an explicit installation move. It is not an unauthenticated remote file API; shared managed-path checks apply at input/job boundaries.",
       "tests": [
         "test_security_boundaries"
@@ -1659,7 +1659,7 @@
       "path": "DNA_Software/Launcher/portable_paths.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "c7766c278091859477cc1df9ae8ed4746fc4b9682b51a8beba0dac399b36f0e0",
-      "file_sha256": "eeda73f230b93e19e7d7a1fde3568ede862447a4c9bf40d4749248b7bb8aa01f",
+      "file_sha256": "756b3117a65ce9282ffff0fe4f4da01c302558922ae094b4d0b1b965569b2fff",
       "reason": "Local relocation converts saved app-root paths after an explicit installation move. It is not an unauthenticated remote file API; shared managed-path checks apply at input/job boundaries.",
       "tests": [
         "test_security_boundaries"
@@ -1670,7 +1670,7 @@
       "path": "DNA_Software/Launcher/portable_paths.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "658c427964382d720cbdd00f069b67c47257a99a0f1d04d312165ed6f719463c",
-      "file_sha256": "eeda73f230b93e19e7d7a1fde3568ede862447a4c9bf40d4749248b7bb8aa01f",
+      "file_sha256": "756b3117a65ce9282ffff0fe4f4da01c302558922ae094b4d0b1b965569b2fff",
       "reason": "Local relocation converts saved app-root paths after an explicit installation move. It is not an unauthenticated remote file API; shared managed-path checks apply at input/job boundaries.",
       "tests": [
         "test_security_boundaries"
@@ -1725,7 +1725,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "06f73ce6dc4a3b512be7deb0d9b8a01c819cf9f71202f9abe1c08a7e5a04b1c7",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1736,7 +1736,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "23d45ebb5eeb9d1b8639dbd5300b30f5ad082de35ff158ea2b731c8bd5d6f970",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1747,7 +1747,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "b532f2e0a7956f32388a97157e44e4f1aa1135e819d79e747c06dedc69fd92e2",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1758,7 +1758,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "82f2906a6aadc0126e0bc7f3c4054d94db252a25a37efbdd9a37a0b6dd9f8e13",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1769,7 +1769,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "eef7ebf8e687b524565dd7cfdbe2b4ca54a73786d57f15f005e95df551fb18c2",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1780,7 +1780,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "999f95e91c804d9d79986cd90bc3dee44f876acb15f4bfe2f7ed5e12b1722459",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1791,7 +1791,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "54c34f46d4d2088378a396a97865de79ef648eb87f22b4ed735640bafd8477da",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1802,7 +1802,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "51ba4fd1b9a8d36e5617ca1b0e1a1389a730519e40ee8ae7a11c4a07becab03b",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1813,7 +1813,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ae09a1f89fb48b4f035f5eccc8a69773c7c66c3be56fa8f716effd5c72983cd7",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1824,7 +1824,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "931b0bbaff3ba85a2b92f517960fb6de914a501cdf059b4af9daf33acc71960f",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1835,7 +1835,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ba2b0f0696ba6bb4dc33e4c526494e99a219d7d7bc33cd4b76549034596b8432",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1846,7 +1846,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "9a7d4cc8350b3d6e819b6e6739f68c0fc72ac2a1d824d7573d45b03111af3c39",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1857,7 +1857,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "2f4bb4721f8126278c27471befb27deac6585a937af7ef3b551e99cb2dc1f893",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1868,7 +1868,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "a4812b0227ef29e35402858717a92c733741f0f1c13c5bf534fe602e3004e3e1",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1879,7 +1879,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "2341805f31cbd3e205d06e03ef094f6017d6fc0bc54e2a69b8b9a97b6c233098",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1890,7 +1890,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "1f43955e45ebae1ba1e5427fce16c52c99dd699bf631d01ef91ca9a36e00e5ba",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -1901,7 +1901,7 @@
       "path": "DNA_Software/Launcher/profile_pipeline.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f784dcc4a45217dd41e641cb9ad7f65007bfbf3ef137296f643d178be71759ce",
-      "file_sha256": "5642fc5a38580c631813bde2bf29ec3cbbf3729d21c44c4b1992d678ad308732",
+      "file_sha256": "5c361434871d49305ccf9cb5af2a4407c4564af7202a6280f8eaa7a7b4c2372f",
       "reason": "Profile IDs and source-store roots are validated centrally; indexed reads are from registered local sources and analysis artifacts use managed job roots.",
       "tests": [
         "test_profile_pipeline"
@@ -2355,7 +2355,7 @@
       "path": "DNA_Software/Launcher/source_store.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "cfc9645d8f7f022911e8ca2ab92a76423da77dc408fd72eaa13fa79953e25ee5",
-      "file_sha256": "50c9e32cbd724d06418ace0f3e4c8d334c53c67635df5321462624e4694bfd5d",
+      "file_sha256": "4a9cec544c2afe67ddb4bbfabffc541f24fd4f0b0bde04cbfaa8c05d71f8b76f",
       "reason": "Profile roots validate managed IDs. Imports retain explicit source selection and checksum lineage; source metadata cannot introduce SQL or managed path traversal.",
       "tests": [
         "test_security_boundaries"
@@ -2366,7 +2366,7 @@
       "path": "DNA_Software/Launcher/source_store.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f0d1ab72ace57994d9f8d901f5b7f3f4e4a6bf7451a4861bfc14cf29f1a17ed0",
-      "file_sha256": "50c9e32cbd724d06418ace0f3e4c8d334c53c67635df5321462624e4694bfd5d",
+      "file_sha256": "4a9cec544c2afe67ddb4bbfabffc541f24fd4f0b0bde04cbfaa8c05d71f8b76f",
       "reason": "Profile roots validate managed IDs. Imports retain explicit source selection and checksum lineage; source metadata cannot introduce SQL or managed path traversal.",
       "tests": [
         "test_security_boundaries"
@@ -2806,6 +2806,30 @@
       "reason": "The loop waits until the open workspace view applies a navigation event. It compares a route name with the current hash. It does not compare a secret.",
       "tests": [
         "test_agent_control.AgentControlTests.test_compact_navigation_uses_typed_gui_channel"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/portable_paths.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "37b170dada5084587b88e3a477a74728b29a41fffefd0dfdf6cebc7c5888e209",
+      "file_sha256": "756b3117a65ce9282ffff0fe4f4da01c302558922ae094b4d0b1b965569b2fff",
+      "reason": "Local relocation converts saved app-root paths after an explicit installation move. The previous-location record is a fixed file under the install folder. It is not an unauthenticated remote file API; shared managed-path checks apply at input/job boundaries.",
+      "tests": [
+        "test_portability",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/portable_paths.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "9696c2fdb26d0f1df50e296e7c7a6bec7b9407c0b14f9ad84b199b6149c62120",
+      "file_sha256": "756b3117a65ce9282ffff0fe4f4da01c302558922ae094b4d0b1b965569b2fff",
+      "reason": "Local relocation converts saved app-root paths after an explicit installation move. The previous-location record is a fixed file under the install folder. It is not an unauthenticated remote file API; shared managed-path checks apply at input/job boundaries.",
+      "tests": [
+        "test_portability",
+        "test_security_boundaries"
       ]
     },
     {
