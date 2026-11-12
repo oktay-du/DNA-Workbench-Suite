@@ -580,7 +580,7 @@
   "API key · never displayed again": "API-Schlüssel · wird nie zurückgelesen",
   "Key saved — leave blank to keep": "Schlüssel gespeichert – leer lassen zum Behalten",
   "Enter locally here": "Hier lokal eingeben",
-  "Encrypted for this Windows account inside the suite folder. Re-enter on another computer. No credentials in profile backups or public packages. OpenAI is supported first; additional providers need separately reviewed adapters.": "Verschlüsselt für dieses Windows-Konto im Suite-Ordner. Auf einem anderen Rechner erneut eingeben. Keine Schlüssel in Profilbackups oder öffentlichen Paketen. Unterstützt wird zunächst OpenAI; weitere Anbieter erhalten eigene geprüfte Adapter.",
+  "Encrypted for this account. Re-enter the key on another computer. No credentials in profile backups or public packages. OpenAI is supported first; additional providers need separately reviewed adapters.": "Verschlüsselt für dieses Konto. Den Schlüssel auf einem anderen Rechner erneut eingeben. Keine Schlüssel in Profilbackups oder öffentlichen Paketen. Unterstützt wird zunächst OpenAI; weitere Anbieter erhalten eigene geprüfte Adapter.",
   "Save API settings": "API-Einstellungen speichern",
   "Saved. No API request was made.": "Gespeichert. Kein API-Aufruf ausgeführt.",
   "Remove key & disable": "Schlüssel entfernen & deaktivieren",

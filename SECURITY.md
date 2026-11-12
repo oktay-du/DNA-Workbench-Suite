@@ -9,7 +9,7 @@ Local SHA-256 manifests detect differences against a local baseline, not publish
 CLI, JSON, GUI and MCP commands share validation. Local control credentials must not be published. Imported reports and tool output are untrusted data, never instructions to execute.
 
 
-Optional API features are disabled initially. Saving a key does not contact the provider. Keys are protected by Windows CurrentUser DPAPI inside the suite runtime folder and require re-entry after moving to another account/computer. Every external AI request requires a visible text review and explicit consent. Profile evidence is excluded by default. See [API boundary and limitations](docs/API_AI.md). Provider output never executes tool calls automatically].
+Optional API features are disabled initially. Saving a key does not contact the provider. Keys are encrypted for the current account: Windows CurrentUser DPAPI, or AES-GCM on Linux with the account key kept outside the suite folder. They require re-entry after moving to another account or computer. Every external AI request requires a visible text review and explicit consent. Profile evidence is excluded by default. See [API boundary and limitations](docs/API_AI.md). Provider output never executes tool calls automatically].
 
 ## Automated checks
 

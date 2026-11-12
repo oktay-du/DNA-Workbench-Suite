@@ -117,7 +117,7 @@ window.renderCloudSettings = async function (host) {
       el(
         "p",
         t(
-          "Encrypted for this Windows account inside the suite folder. Re-enter on another computer. No credentials in profile backups or public packages. OpenAI is supported first; additional providers need separately reviewed adapters."
+          "Encrypted for this account. Re-enter the key on another computer. No credentials in profile backups or public packages. OpenAI is supported first; additional providers need separately reviewed adapters."
         ),
         "field-help"
       )

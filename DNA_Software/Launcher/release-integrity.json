@@ -71,7 +71,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Locales/de.json",
-      "sha256": "f7778ecbbf5ba9cefc981390aee099d61f711a216e7f4146b74b970da64ed465"
+      "sha256": "510603e1c9a39083e51c7cddab8ad8610240e732114f7d064fa441df2bb66f81"
     },
     {
       "path": "DNA_Software/Launcher/Locales/de-intents.json",
@@ -415,11 +415,11 @@
     },
     {
       "path": "DNA_Software/Launcher/cloud_ai.py",
-      "sha256": "9e218e9e91aaccd79c5bfc5221f2a40f8d1b26ea875d6de57563b51cd2b6fe29"
+      "sha256": "7b54228e258e54433f81a97576020fbce9f266031394c19b396f963b2fc4ffd9"
     },
     {
       "path": "DNA_Software/Launcher/cloud-ui.js",
-      "sha256": "5677619695f2998e9b622d184d2cda8e8cf4bad84c17c1cf9bd3ad17a473773b"
+      "sha256": "124ff8c5863af649041fd7f0ea2378537f2e13dc951be308ff6c73579f3798fc"
     },
     {
       "path": "DNA_Software/Launcher/tool_media.py",
@@ -443,7 +443,7 @@
     },
     {
       "path": "DNA_Software/Launcher/API_AI.md",
-      "sha256": "598e7720ad3a08eb6919fb4be1f35f087ff71fd5cb2f4ac18aca8181b24718d5"
+      "sha256": "52eae79012729f69282705a4985ab9bffe6edb7414dbca278735d7d17d06cbdd"
     },
     {
       "path": "DNA_Software/Launcher/GENOCAT.md",
@@ -451,7 +451,7 @@
     },
     {
       "path": "DNA_Software/Launcher/test_cloud_ai.py",
-      "sha256": "839ace4bc39c5ab34d6545e42967291f0d2236b56c00e08e6b86ae5c4f4eba1a"
+      "sha256": "1f5bba9aa47e62889408d1cb53643288717f26a18b97b1cc4fb8b11a52664748"
     },
     {
       "path": "DNA_Software/Launcher/test_tool_media.py",
@@ -607,7 +607,7 @@
     },
     {
       "path": "DNA_Software/Launcher/PORTABILITY.md",
-      "sha256": "939cb52b74aaa80018da34e215dc2e127ede342dd69aed1f9e72a88880eaae0d"
+      "sha256": "3dc307fb93baaf2d9c1eb370cfe7b336a5fdf4f860ca2aef21dce8194c6090da"
     },
     {
       "path": "DNA_Software/Launcher/portable-check.ps1",
@@ -771,7 +771,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-      "sha256": "cf036286887da6adb3a3739aea716f33e73e23fb17e1adc73c7c910ff807fa72"
+      "sha256": "8fb7aa8dc9c9dcd080ffccf15ef0853dbac40ee22990548e612184390312e26f"
     },
     {
       "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -791,7 +791,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/SECURITY.md",
-      "sha256": "84062e9fb3cae0f0e5d73031587dd489690680bd9b939ab9819eedad1924eaf5"
+      "sha256": "e4fc7b953f423e7ddb1c7010d0e5c4ef9c8ca8735898e4abb94172c3b04de21d"
     },
     {
       "path": "DNA_Software/Launcher/Public/RELEASING.md",
