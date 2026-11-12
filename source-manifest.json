@@ -9,11 +9,11 @@
   },
   {
     "path": "DNA_Software/Launcher/Locks/foundation-linux.in",
-    "sha256": "4022fc2cd7338894fc10f706aedfba8629d7f876871599f7628e8ec8a67516f8"
+    "sha256": "81f6f10881cfc37b2f832ead308c2496f24a63fa5fe0bd2c92e1b75c09676d10"
   },
   {
     "path": "DNA_Software/Launcher/Locks/foundation-linux.txt",
-    "sha256": "a76a1973d98444cf425a08d45c37ce8338e3aba8cb83586b0a825de1b1fb710f"
+    "sha256": "d72b9d671f534802e1a549aad56ba5a46dff8a7db5f63c2c07454f203cee55e9"
   },
   {
     "path": "DNA_Software/Launcher/security_sql.py",
@@ -69,7 +69,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Locales/de.json",
-    "sha256": "510603e1c9a39083e51c7cddab8ad8610240e732114f7d064fa441df2bb66f81"
+    "sha256": "bd3cfdaf55d84285b9a3383248b1e9b7e4159c58d9421ad165886d8aaa8f01eb"
   },
   {
     "path": "DNA_Software/Launcher/Locales/de-intents.json",
@@ -157,7 +157,7 @@
   },
   {
     "path": "DNA_Software/Launcher/install-lock.json",
-    "sha256": "89d844f54800641f5a21fc6556c5170c661de17a81a9e08d529fb75de5554175"
+    "sha256": "5fd7aa8020bcc8c62b21bec40da1e73d3a93001424825eeca4fd0096deed0af4"
   },
   {
     "path": "DNA_Software/Launcher/fetch_webview_sdk.py",
@@ -545,7 +545,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Locks/document-translation-windows.txt",
-    "sha256": "f6766d2b716d0eb0ac252b86187491ce256983d1d10216a85ff85ab5bffab85e"
+    "sha256": "11f370b29360826f4a38cdd931c0081b58a56bfcf5d10be1c5d1561fd7a2db2e"
   },
   {
     "path": "DNA_Software/Launcher/result_cache.py",
@@ -649,7 +649,7 @@
   },
   {
     "path": "DNA_Software/Launcher/release-integrity.json",
-    "sha256": "22e5a2f118235dd079fe80b90bbeef4c2307ada3122a08d45b8eb19db0dffebc"
+    "sha256": "f449134a85c9d1b6d1235d667ed3c3d46a76435fdae63c6499c1fff8a71f5e6c"
   },
   {
     "path": "DNA_Software/Launcher/23ANDME_EXPORTS.md",
@@ -701,7 +701,7 @@
   },
   {
     "path": "DNA_Software/Launcher/third-party-inventory.json",
-    "sha256": "2b86b3a5ee4ebb9c2b6d73a82161fb7d3c4532b2f26607b9f62d2f045ec463b5"
+    "sha256": "f61477160bd77c1def62bbacb40c4aa5f75ae6aa061c28210f875e45b10d4bc2"
   },
   {
     "path": "DNA_Software/Launcher/design-tokens.css",
@@ -773,7 +773,7 @@
   },
   {
     "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-    "sha256": "8fb7aa8dc9c9dcd080ffccf15ef0853dbac40ee22990548e612184390312e26f"
+    "sha256": "992355359e3a8b74abd936be24a19ab5b545ba04783233a72588defe956f224e"
   },
   {
     "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -897,19 +897,19 @@
   },
   {
     "path": "DNA_Software/Launcher/Locks/peddy-linux.txt",
-    "sha256": "3caf3791baa1fa48adc0ec5a037d74dac6fb9157746aafe5ba80187214aa8905"
+    "sha256": "fbed277c9c1bbbbe04fc274a4d0c7b1694c67c634312c46f3553008b71bc012c"
   },
   {
     "path": "DNA_Software/Launcher/Locks/whatshap-linux.txt",
-    "sha256": "d58963293f6b30623acf5bd81d60393c9fbed33e6cf9282b7c793e7870b2620f"
+    "sha256": "82138390ff7892892f6677f0dc1b34d88656a7a78a7561721ebedf76fd36735e"
   },
   {
     "path": "DNA_Software/Launcher/Locks/truvari-linux.txt",
-    "sha256": "6b92567e9662e7f6c4c0d273a607c4f04d9488063fc365aa245af7044ee9f741"
+    "sha256": "95025d669677f0e7de7ae92a766a6f048f254c24302c43619e65f6f7262e86ba"
   },
   {
     "path": "DNA_Software/Launcher/Locks/pycirclize-windows.txt",
-    "sha256": "34a6aca3156844b3e3cb2aca14a39578ff2846d9d9def63ca09f691f15b7e31d"
+    "sha256": "c3627b8b6cd5af6a7821f02ac6ef4380bed4defa742714de5f118baef00401fc"
   },
   {
     "path": "DNA_Software/Launcher/Locks/dnafeaturesviewer-windows.txt",
@@ -1229,7 +1229,7 @@
   },
   {
     "path": "README.de.md",
-    "sha256": "e8e8e9188eff0acec45415994133bb9aa0e9bf01dc4c3800919444a70e907d67"
+    "sha256": "febdaadc14ad361abe2b7457fcafb5e2121bf73c3fb5f27b7eae6473b904c2b2"
   },
   {
     "path": "CONTRIBUTING.md",
@@ -1345,7 +1345,7 @@
   },
   {
     "path": "docs/VERSIONS.md",
-    "sha256": "7df972ab965b817471f724bd0af90169be37dc45ee358b3c20692c2cc9232d0c"
+    "sha256": "20c4222d54aab9991bb6150210dce1350bd85d8a74351b8713a9fb501628e6f8"
   },
   {
     "path": "docs/RESULTS_AND_FINDINGS.md",
@@ -1461,7 +1461,7 @@
   },
   {
     "path": "docs/QUALITY.md",
-    "sha256": "40a7a996b260f640e4ca790812adc95e42ef6e7ef2fe8e72fdf984e4726adecb"
+    "sha256": "5dc6b44e4849d4b53c2666565b91494a7f3c8e36c25159fd1b0415e8ec4a1438"
   },
   {
     "path": "docs/PRIVACY.md",
@@ -1473,7 +1473,7 @@
   },
   {
     "path": "docs/DEPENDENCY_LICENSES.md",
-    "sha256": "12b99e73122edcd6ce2a59d1ecdc1fd4853bdfb6706efc108a4a65fb335b8780"
+    "sha256": "ae99a21a98f358d10c046ad003ecb83a17c54023831ec75ec7723de57a4a5c35"
   },
   {
     "path": "site/privacy.html",
@@ -1501,7 +1501,7 @@
   },
   {
     "path": "site/index.html",
-    "sha256": "b96d6784f7a2802fc673469bd2a44a8babaaa91c4778f0a53d27cd92d57849e6"
+    "sha256": "05f934438a639e7ebd0827e75c7c7b8354d63a011318485ff73d7238c3941b3c"
   },
   {
     "path": "site/style.css",

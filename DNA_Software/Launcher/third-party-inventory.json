@@ -2876,10 +2876,10 @@
     },
     {
       "name": "ruff",
-      "version": "0.17.3",
-      "source": "https://pypi.org/project/ruff/0.17.3/",
+      "version": "0.17.4",
+      "source": "https://pypi.org/project/ruff/0.17.4/",
       "license": "MIT",
-      "license_url": "https://pypi.org/project/ruff/0.17.3/",
+      "license_url": "https://pypi.org/project/ruff/0.17.4/",
       "scope": "Pinned Python dependency; may be optional or development-only"
     },
     {

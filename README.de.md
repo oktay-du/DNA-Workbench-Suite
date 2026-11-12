@@ -1,6 +1,6 @@
 # DNA Workbench Suite
 
-**Version 1.0.3 · Windows und Linux x64 · Lokale Genomforschung · Von OD**
+**Version 1.0.4 · Windows und Linux x64 · Lokale Genomforschung · Von OD**
 
 Eine Anwendung für Windows und Linux: DNA-Quelldateien, Familienprofile, Forschungswerkzeuge und wiederverwendbare Ergebnisse. Englischer Anwendungskern mit deutscher Übersetzung sowie hellem und dunklem Design.
 

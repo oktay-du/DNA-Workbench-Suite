@@ -364,7 +364,7 @@ Metadata snapshot: 2026-11-05. Roles distinguish optional, host and development 
 | [rich](https://pypi.org/project/rich/15.0.0/) | 15.0.0 | [MIT](https://pypi.org/project/rich/15.0.0/) | Pinned Python dependency; may be optional or development-only |
 | [rich-click](https://pypi.org/project/rich-click/1.9.9/) | 1.9.9 | [See distribution license; full notice in upstream package](https://pypi.org/project/rich-click/1.9.9/) | Pinned Python dependency; may be optional or development-only |
 | [rpds-py](https://pypi.org/project/rpds-py/2026.9.1/) | 2026.9.1 | [MIT](https://pypi.org/project/rpds-py/2026.9.1/) | Pinned Python dependency; may be optional or development-only |
-| [ruff](https://pypi.org/project/ruff/0.17.3/) | 0.17.3 | [MIT](https://pypi.org/project/ruff/0.17.3/) | Pinned Python dependency; may be optional or development-only |
+| [ruff](https://pypi.org/project/ruff/0.17.4/) | 0.17.4 | [MIT](https://pypi.org/project/ruff/0.17.3/) | Pinned Python dependency; may be optional or development-only |
 | [Ruff](https://github.com/astral-sh/ruff) | See pinned manifest / host | [MIT](https://github.com/astral-sh/ruff/blob/main/LICENSE) | Development |
 | [s3transfer](https://pypi.org/project/s3transfer/0.19.3/) | 0.19.3 | [Apache License 2.0](https://pypi.org/project/s3transfer/0.19.3/) | Pinned Python dependency; may be optional or development-only |
 | [sacremoses](https://pypi.org/project/sacremoses/0.2.0/) | 0.2.0 | [License :: OSI Approved :: MIT License](https://pypi.org/project/sacremoses/0.2.0/) | Pinned Python dependency; may be optional or development-only |

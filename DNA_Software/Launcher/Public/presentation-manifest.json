@@ -4,7 +4,7 @@
   "files": [
     {
       "path": "README.de.md",
-      "sha256": "e8e8e9188eff0acec45415994133bb9aa0e9bf01dc4c3800919444a70e907d67",
+      "sha256": "febdaadc14ad361abe2b7457fcafb5e2121bf73c3fb5f27b7eae6473b904c2b2",
       "bytes": 2027
     },
     {
@@ -149,7 +149,7 @@
     },
     {
       "path": "docs/VERSIONS.md",
-      "sha256": "7df972ab965b817471f724bd0af90169be37dc45ee358b3c20692c2cc9232d0c",
+      "sha256": "20c4222d54aab9991bb6150210dce1350bd85d8a74351b8713a9fb501628e6f8",
       "bytes": 40423
     },
     {
@@ -294,7 +294,7 @@
     },
     {
       "path": "docs/QUALITY.md",
-      "sha256": "40a7a996b260f640e4ca790812adc95e42ef6e7ef2fe8e72fdf984e4726adecb",
+      "sha256": "5dc6b44e4849d4b53c2666565b91494a7f3c8e36c25159fd1b0415e8ec4a1438",
       "bytes": 3611
     },
     {
@@ -309,7 +309,7 @@
     },
     {
       "path": "docs/DEPENDENCY_LICENSES.md",
-      "sha256": "12b99e73122edcd6ce2a59d1ecdc1fd4853bdfb6706efc108a4a65fb335b8780",
+      "sha256": "ae99a21a98f358d10c046ad003ecb83a17c54023831ec75ec7723de57a4a5c35",
       "bytes": 86111
     },
     {
@@ -344,7 +344,7 @@
     },
     {
       "path": "site/index.html",
-      "sha256": "b96d6784f7a2802fc673469bd2a44a8babaaa91c4778f0a53d27cd92d57849e6",
+      "sha256": "05f934438a639e7ebd0827e75c7c7b8354d63a011318485ff73d7238c3941b3c",
       "bytes": 7315
     },
     {

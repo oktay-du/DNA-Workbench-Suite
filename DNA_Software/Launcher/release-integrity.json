@@ -1,5 +1,5 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.4",
   "files": [
     {
       "path": "DNA.cmd",
@@ -11,11 +11,11 @@
     },
     {
       "path": "DNA_Software/Launcher/Locks/foundation-linux.in",
-      "sha256": "4022fc2cd7338894fc10f706aedfba8629d7f876871599f7628e8ec8a67516f8"
+      "sha256": "81f6f10881cfc37b2f832ead308c2496f24a63fa5fe0bd2c92e1b75c09676d10"
     },
     {
       "path": "DNA_Software/Launcher/Locks/foundation-linux.txt",
-      "sha256": "a76a1973d98444cf425a08d45c37ce8338e3aba8cb83586b0a825de1b1fb710f"
+      "sha256": "d72b9d671f534802e1a549aad56ba5a46dff8a7db5f63c2c07454f203cee55e9"
     },
     {
       "path": "DNA_Software/Launcher/security_sql.py",
@@ -71,7 +71,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Locales/de.json",
-      "sha256": "510603e1c9a39083e51c7cddab8ad8610240e732114f7d064fa441df2bb66f81"
+      "sha256": "bd3cfdaf55d84285b9a3383248b1e9b7e4159c58d9421ad165886d8aaa8f01eb"
     },
     {
       "path": "DNA_Software/Launcher/Locales/de-intents.json",
@@ -159,7 +159,7 @@
     },
     {
       "path": "DNA_Software/Launcher/install-lock.json",
-      "sha256": "89d844f54800641f5a21fc6556c5170c661de17a81a9e08d529fb75de5554175"
+      "sha256": "5fd7aa8020bcc8c62b21bec40da1e73d3a93001424825eeca4fd0096deed0af4"
     },
     {
       "path": "DNA_Software/Launcher/fetch_webview_sdk.py",
@@ -547,7 +547,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Locks/document-translation-windows.txt",
-      "sha256": "f6766d2b716d0eb0ac252b86187491ce256983d1d10216a85ff85ab5bffab85e"
+      "sha256": "11f370b29360826f4a38cdd931c0081b58a56bfcf5d10be1c5d1561fd7a2db2e"
     },
     {
       "path": "DNA_Software/Launcher/result_cache.py",
@@ -699,7 +699,7 @@
     },
     {
       "path": "DNA_Software/Launcher/third-party-inventory.json",
-      "sha256": "2b86b3a5ee4ebb9c2b6d73a82161fb7d3c4532b2f26607b9f62d2f045ec463b5"
+      "sha256": "f61477160bd77c1def62bbacb40c4aa5f75ae6aa061c28210f875e45b10d4bc2"
     },
     {
       "path": "DNA_Software/Launcher/design-tokens.css",
@@ -771,7 +771,7 @@
     },
     {
       "path": "DNA_Software/Launcher/Public/presentation-manifest.json",
-      "sha256": "8fb7aa8dc9c9dcd080ffccf15ef0853dbac40ee22990548e612184390312e26f"
+      "sha256": "992355359e3a8b74abd936be24a19ab5b545ba04783233a72588defe956f224e"
     },
     {
       "path": "DNA_Software/Launcher/Public/.gitattributes",
@@ -895,19 +895,19 @@
     },
     {
       "path": "DNA_Software/Launcher/Locks/peddy-linux.txt",
-      "sha256": "3caf3791baa1fa48adc0ec5a037d74dac6fb9157746aafe5ba80187214aa8905"
+      "sha256": "fbed277c9c1bbbbe04fc274a4d0c7b1694c67c634312c46f3553008b71bc012c"
     },
     {
       "path": "DNA_Software/Launcher/Locks/whatshap-linux.txt",
-      "sha256": "d58963293f6b30623acf5bd81d60393c9fbed33e6cf9282b7c793e7870b2620f"
+      "sha256": "82138390ff7892892f6677f0dc1b34d88656a7a78a7561721ebedf76fd36735e"
     },
     {
       "path": "DNA_Software/Launcher/Locks/truvari-linux.txt",
-      "sha256": "6b92567e9662e7f6c4c0d273a607c4f04d9488063fc365aa245af7044ee9f741"
+      "sha256": "95025d669677f0e7de7ae92a766a6f048f254c24302c43619e65f6f7262e86ba"
     },
     {
       "path": "DNA_Software/Launcher/Locks/pycirclize-windows.txt",
-      "sha256": "34a6aca3156844b3e3cb2aca14a39578ff2846d9d9def63ca09f691f15b7e31d"
+      "sha256": "c3627b8b6cd5af6a7821f02ac6ef4380bed4defa742714de5f118baef00401fc"
     },
     {
       "path": "DNA_Software/Launcher/Locks/dnafeaturesviewer-windows.txt",

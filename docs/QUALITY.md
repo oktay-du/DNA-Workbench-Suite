@@ -4,7 +4,7 @@ The build workflow checks Python, C#, JavaScript, HTML, CSS, PowerShell, Shell, 
 
 | Tool | Version / configuration | Purpose |
 | --- | --- | --- |
-| Ruff | 0.17.3, hash-locked | Python errors, unused bindings and consistent formatting |
+| Ruff | 0.17.4, hash-locked | Python errors, unused bindings and consistent formatting |
 | .NET analyzers | .NET 8 recommended rules, warnings fail the build | C# correctness, culture-safe protocols and allocation/lookup issues |
 | ESLint | 10.14.0 | Recommended JavaScript checks with classic-script globals derived from actual page script groups |
 | Prettier | 3.9.10 | JavaScript, HTML and CSS readability |
