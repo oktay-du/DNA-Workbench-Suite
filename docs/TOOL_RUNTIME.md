@@ -204,7 +204,7 @@ Other tools stay at `route` until a run is recorded.
 
 | Tool | windows-x64 | windows-arm64 | linux-x64 | linux-arm64 | macos-x64 | macos-arm64 |
 |---|---|---|---|---|---|---|
-| `rfmix` | release-note | route | route | executed | route | route |
+| `rfmix` | release-note | route | executed | executed | route | route |
 | `vep` | release-note | route | route | route | route | route |
 | `vep-cache` | release-note | route | route | route | route | route |
 | `open-cravat` | release-note | route | route | route | route | route |
@@ -259,14 +259,18 @@ for arm64. The engine command used `--platform=linux/arm64` and
 `--n-threads=3`. The log contains `RFMIX v2.03-r0`. The synthetic
 chromosome wrote `Q1` with PopA 0.5 and PopB 0.5.
 
-The same installer on Linux x64 is the `RFMix synthetic run (Linux x64)`
-job. That x64 image run is not recorded as passed here.
-Windows and macOS Kiri use these Linux images. Those hosts were not
-the execution machine: macOS runners have no Docker engine, and Apple
-Silicon runners do not support the nested virtualization a Linux VM
-needs. Windows runners ship a Windows container engine, not the Kiri
-Linux pipe. The architecture script is checked on Windows x64, Windows
-ARM64, macOS x64 and macOS ARM64 without building the image.
+Debian amd64 image was executed on GitHub `ubuntu-24.04`
+(14 November 2026, 00:49 Europe/Berlin, commit `0de8548`).
+Host machine `x86_64`. The recorded platform was `linux/amd64`.
+The log contains `RFMIX v2.03-r0`. The synthetic chromosome wrote `Q1`
+with PopA 0.5 and PopB 0.5. Eleven tests passed.
+
+The architecture script and command checks passed on that same commit
+for Windows x64, Windows ARM64, macOS x64 and macOS ARM64. Those jobs
+do not build the image. Windows and macOS Kiri use the Linux images
+above. macOS runners have no Docker engine, and Apple Silicon runners
+do not support the nested virtualization a Linux VM needs. Windows
+runners ship a Windows container engine, not the Kiri Linux pipe.
 
 ### Next gap
 
