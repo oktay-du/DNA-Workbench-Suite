@@ -4176,6 +4176,182 @@
         "test_security_boundaries.SecurityPathTests.test_inspection_rejects_requests_outside_managed_folders",
         "test_security_boundaries.SecurityPathTests.test_links_cannot_redirect_managed_outputs"
       ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "58a9b21049f7ba00a0bf0b37a90574ca78d30afb26d94197799f7c5324310692",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Container cancellation sends the fixed rm -f operation plus a randomly generated container name to the same resolved local runtime as the original job.",
+      "tests": [
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "47afbd296d6a870db434b47ac19c4806745d20687064d2c677e31b16602fa6b0",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Queries the CPU count of the already resolved local GPU runtime using fixed Docker info arguments.",
+      "tests": [
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "fc32e8e5b2cb24b77d945ec68050daf3bd0d8ecd219b6d92fc45089d6352a679",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "The resolved Docker executable probes one of the local Unix socket paths selected by the runtime adapter via protocol and format arguments.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "c7f74028b82e8b66250cf0bf16897b4775c9fdccd72e1b105f7cba1c72179127",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "The resolved runtime inspects local images from a fixed list of DeepVariant tags; this inspection does not run or pull images.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "b3c51ab1c9410dbb90a496803920b25b03e6248495c03b3b028cb51dd0ceb002",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "The local GPU probe runs fixed Python source in the selected DeepVariant image with no host files and networking disabled.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "64f5b16aa837ca58489133f05eb7950bfd68f9046c89cca953b5041f192df38d",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "Runs Homebrew through its known executable with an argument vector. The formula is supplied by the managed tool registry.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "af6c90080e9c8f90e28b083e7be14fc6211597227e5035eaea67eb770e308e29",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "Executes the managed HaploGrep JAR with the fixed trees argument to verify the registered tree is present.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "cf130096bc29e6dffa94fbe370c9abd6fc36a528d5639c7a1fe24b646fa2de95",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "Build uses a packaged recipe and a private temporary archive path. The runtime command is an argument vector.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "d8b140bd83669655d7586609d9b28927c244726c0aff58c087f31f651b726f3c",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "Loads only the archive produced above by the managed container build into the selected local runtime.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "1a0c3e9ade4f38256a7f71a7a88f190c71a5e72cdf0dd028e2bf5a0650b7ca8a",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "Installs only curated OpenCRAVAT modules using a fixed container recipe and registry values in the generated shell commands.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "0971b6e584d068e5803adfc5386ef858e9f3982afc2efc7a4737d3c46bc6ceca",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "Pulls only the pinned VEP image from the known registry using the managed local runtime and separate arguments.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "rule": "B603",
+      "code_sha256": "094858dcf37cd507c5d857eb49b49ce92eedcd2d0db955b1f441a369129db3ee",
+      "file_sha256": "5dfd8af2a5fb06643989d91bca492b8e4a38986c990af6ff48505fa1ca95839a",
+      "reason": "Starts a tool installation command selected by the curated plugin registry. No request can supply a raw command line.",
+      "tests": [
+        "test_plugins"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/system_tools.py",
+      "rule": "B404",
+      "code_sha256": "9e53cd445b98e24f841e5cfd49de93f64f96071eb608d3f919d71911d9b7bbe9",
+      "file_sha256": "a8a4e73f34af9499064d4bfc3c6dd58fa68e0adbf9256a2992c8838f7495207d",
+      "reason": "The subprocess import only loads the standard-library module. Execution sites are reviewed separately.",
+      "tests": [
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/system_tools.py",
+      "rule": "B603",
+      "code_sha256": "1db447ec7003f58684330c8291a6385aaa4c8868de4df0750887a686225735b8",
+      "file_sha256": "a8a4e73f34af9499064d4bfc3c6dd58fa68e0adbf9256a2992c8838f7495207d",
+      "reason": "The local GPU probe runs fixed Python source in the pinned GPU image without mounting host files, with network disabled and no implicit pulls.",
+      "tests": [
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/system_tools.py",
+      "rule": "B603",
+      "code_sha256": "215d7af7817739951d83230862218e624d3332c9a4dcc26cbebe37e8971b552e",
+      "file_sha256": "a8a4e73f34af9499064d4bfc3c6dd58fa68e0adbf9256a2992c8838f7495207d",
+      "reason": "Queries a resolved local container runtime with structured arguments selected by the adapter. No shell expands these arguments.",
+      "tests": [
+        "test_tool_hosts"
+      ]
     }
   ]
 }
