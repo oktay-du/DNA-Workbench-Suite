@@ -27,10 +27,9 @@ this change or explicitly attributed to the v1.0.7 release notes.
 - Installable tools still without an AArch64 process run: 46.
 - Shared workflows with a complete ARM64 track run: 0.
 
-The AArch64 RFMix evidence is an emulated ELF run, described below.
-It is not a native ARM64 machine and not yet the Debian image.
-The image run is the `RFMix synthetic run on Linux ARM64` GitHub Actions job.
-That job is not described as passed here.
+The AArch64 RFMix process run is the Debian arm64 image on
+`ubuntu-24.04-arm`, described below. The earlier qemu-user ELF run
+remains recorded there as well.
 
 ## Shared workflows
 
@@ -205,7 +204,7 @@ Other tools stay at `route` until a run is recorded.
 
 | Tool | windows-x64 | windows-arm64 | linux-x64 | linux-arm64 | macos-x64 | macos-arm64 |
 |---|---|---|---|---|---|---|
-| `rfmix` | release-note | route | route | emulated | route | route |
+| `rfmix` | release-note | route | route | executed | route | route |
 | `vep` | release-note | route | route | route | route | route |
 | `vep-cache` | release-note | route | route | route | route | route |
 | `open-cravat` | release-note | route | route | route | route | route |
@@ -251,12 +250,23 @@ has no ARM64 CPU and no container engine:
 - The same fixture on the unpatched x64 build also produced `0.50000` and `0.50000`. Window boundaries differed, so the check is the global proportion and the required files, not identical window edges.
 - BCFtools 1.19 on that host sorted and indexed the same VCFs; the x64 binary accepted the compressed files. The image pins BCFtools 1.21.
 
-Native Linux ARM64 container execution, license acknowledgement through
-`install("rfmix")`, and the engine's Kiri command are what
-`DNA_RFMIX_SMOKE=1` runs on `ubuntu-24.04-arm`. Until that job is green,
-do not describe the Debian image as executed on ARM64 hardware.
-Apple Silicon uses the same ARM64 image recipe inside Kiri and was not run.
-Windows ARM64 WSL uses the same script and was not run.
+Debian arm64 image was executed on GitHub `ubuntu-24.04-arm`
+(14 November 2026, 00:45 Europe/Berlin, commit `7b1b054`).
+Host machine `aarch64`, Python 3.12.16, Docker Engine 28.0.4.
+`install("rfmix")` after license acknowledgement built
+`dna-workbench/rfmix:1`. The image installed Debian `bcftools` 1.21-1
+for arm64. The engine command used `--platform=linux/arm64` and
+`--n-threads=3`. The log contains `RFMIX v2.03-r0`. The synthetic
+chromosome wrote `Q1` with PopA 0.5 and PopB 0.5.
+
+The same installer on Linux x64 is the `RFMix synthetic run (Linux x64)`
+job. That x64 image run is not recorded as passed here.
+Windows and macOS Kiri use these Linux images. Those hosts were not
+the execution machine: macOS runners have no Docker engine, and Apple
+Silicon runners do not support the nested virtualization a Linux VM
+needs. Windows runners ship a Windows container engine, not the Kiri
+Linux pipe. The architecture script is checked on Windows x64, Windows
+ARM64, macOS x64 and macOS ARM64 without building the image.
 
 ### Next gap
 

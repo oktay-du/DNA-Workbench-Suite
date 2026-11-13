@@ -9,7 +9,10 @@ arch=$(dpkg --print-architecture 2>/dev/null || uname -m)
 case "$arch" in
   amd64|x86_64) ;;
   arm64|aarch64)
-    sed -i 's/ -march=core2//g' Makefile.am
+    # Redirect instead of sed -i so GNU sed and BSD sed both update the file.
+    edited=$(mktemp)
+    sed 's/ -march=core2//g' Makefile.am > "$edited"
+    mv "$edited" Makefile.am
     ;;
   *)
     printf 'RFMix build supports amd64 and arm64 only: %s\n' "$arch" >&2

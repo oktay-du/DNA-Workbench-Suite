@@ -26,4 +26,5 @@ class ToolRuntimeDocumentTests(unittest.TestCase):
         self.assertEqual(len(tool_runtime.open_linux_arm64_tools()), 46)
         self.assertNotIn("rfmix", tool_runtime.open_linux_arm64_tools())
         self.assertIn("qemu-aarch64-static", text)
-        self.assertIn("do not describe the Debian image as executed", text)
+        self.assertIn("Debian arm64 image was executed", text)
+        self.assertIn("ubuntu-24.04-arm", text)
