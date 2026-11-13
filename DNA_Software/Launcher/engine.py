@@ -19,6 +19,7 @@ from pathlib import Path, PurePosixPath
 import sys, os, subprocess, shlex, time, datetime, traceback, hashlib, csv, zipfile, html, re, socket, threading, gzip, shutil
 import portable_json as json
 import source_store
+import security_paths
 import inspector
 import hardware
 import platform
@@ -2959,17 +2960,38 @@ def main():
             print(json.dumps(source_store.profile(sys.argv[2]), ensure_ascii=False))
             return 0
         if sys.argv[1] == "--inspect":
-            request = Path(sys.argv[2])
-            r = json.loads(request.read_text(encoding="utf-8-sig"))
+            request = security_paths.input_file(sys.argv[2])
             folder = request.parent
-            status = json.loads((folder / "status.json").read_text(encoding="utf-8"))
+            project_root = (ROOT / "Projects").resolve()
+            verification = (project_root / "Source verification").resolve()
+            launcher = (project_root / "Launcher").resolve()
+            legacy = request.name == "pruefanfrage.json" and folder.is_relative_to(
+                verification
+            )
+            if not legacy and (
+                request.name != "check-request.json"
+                or not folder.is_relative_to(launcher)
+            ):
+                raise ValueError("Unexpected inspection request path.")
+            r = json.loads(request.read_text(encoding="utf-8-sig"))
+            if legacy:
+                inspector.check_batch(
+                    r["person"], r["files"], folder, lambda s: print(s, flush=True)
+                )
+                return 0
+            status_file = security_paths.contained(folder, "status.json")
+            results_folder = security_paths.contained(folder, "Results")
+            summary_file = security_paths.contained(
+                results_folder, "check-summary.json"
+            )
+            status = json.loads(status_file.read_text(encoding="utf-8"))
             try:
                 results = inspector.check_batch(
                     r["person"], r["files"], folder, lambda s: print(s, flush=True)
                 )
-                (folder / "Results").mkdir(exist_ok=True)
+                results_folder.mkdir(exist_ok=True)
                 shutil.copyfile(
-                    folder / "inspection.json", folder / "Results/check-summary.json"
+                    security_paths.contained(folder, "inspection.json"), summary_file
                 )
                 atomic(
                     folder / "inputs.json",

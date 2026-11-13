@@ -3299,6 +3299,838 @@
       "tests": [
         "test_tool_hosts.ToolHostTests.test_macos_launch_uses_system_open"
       ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "7d3d539c398f14d64afc855635d29202c8a7657fe666fa2105b12aec8febc520",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The worker launches an argument vector from the registered job adapters without invoking an OS shell. Container shell commands are fixed templates and runtime arguments interpolated into them are quoted or typed.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_tool_contracts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "e64143f55b2e09644625f57a9a47861f6baf3b16e01e66ecca770014f1c9cd73",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Cleanup receives the same resolved runtime prefix as launch, followed by the fixed rm -f command and a UUID-generated container name. Arguments go directly to the runtime.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "2585541b1cdb3685233e886e1e49a34c18356a8b7b32a367d3c205687d9d0496",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Only the local UGENE recipe selects the executable from the installed UGENE directory. The optional user-selected document is a separate argument.",
+      "tests": [
+        "test_security_boundaries",
+        "test_plugins",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "bf961aaf80c9887adce2b7544f014edf7df6d0e8642f1fe9551c1b5400a12344",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Only the fixed family and visual actions reach this branch and the executable path is fixed to the suite launcher.",
+      "tests": [
+        "test_security_boundaries",
+        "test_plugins",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "36a4168079e2cf661b880a60edcc72df6ad6032ddbac4eaba77bde66dd30f85e",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The desktop tool resolver returns an argument vector from the fixed tool map with an optional absolute document path. The vector is passed directly without shell expansion.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "9296df13b6bad7d396f4fc246d45a73407d7d99580bf0eb68e1115cf8ecaa4e1",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The array starts the Windows system PowerShell with the fixed suite script. This call is limited to the Linux and Jupyter menu actions.",
+      "tests": [
+        "test_security_boundaries",
+        "test_plugins",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "5f41c8d719be8f299196a0a2abe424fc5e016824792bfcb805daec8394ffbd7c",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The array starts the Windows system PowerShell with the fixed suite script. The action comes from the registered job catalog, rather than user-provided script text.",
+      "tests": [
+        "test_security_boundaries",
+        "test_plugins",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "67c322bf020476b88fe520d6683db266b4ba62825c0a9d3e179f86989e4ed69b",
+      "file_sha256": "5dfd8af2a5fb06643989d91bca492b8e4a38986c990af6ff48505fa1ca95839a",
+      "reason": "Both the executable entry and import snippet come from the curated visual tool lock. The installed check validates the entry point before this call.",
+      "tests": [
+        "test_security_boundaries",
+        "test_plugins",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "rule": "python_lang_os_command_injection",
+      "code_sha256": "62868ca222861a657b1b36e3a8391406251a75e856870ef74b73b0622cf87fa9",
+      "file_sha256": "5dfd8af2a5fb06643989d91bca492b8e4a38986c990af6ff48505fa1ca95839a",
+      "reason": "The probe invokes the fixed Windows WSL executable with the suite distro, fixed Python environment and a probe snippet whose selected identifiers are passed as Python literals.",
+      "tests": [
+        "test_security_boundaries",
+        "test_plugins",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "ffbed60910bdd97a29f9fe5ed39b536841f371263feb68d18553634175e24ca4",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The checksum helper reads an explicitly selected local input stream, or a result already produced in its job. This operation neither constructs an output path nor modifies the input.",
+      "tests": [
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "c15804c33113dba7e39391951686c9c35504d6648147f6204fe854824a3a68a8",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Kiri uses a per-job TemporaryDirectory and a fixed or validated output list. Before publication, output files and report trees are rejected if they contain links or unexpected file types. Published names are known result names or basenames from the isolated staging directory.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "3865910f251ce87c51f2dfc98f75a492bb5f7df731e3c683df609767b8899d34",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Kiri uses a per-job TemporaryDirectory and a fixed or validated output list. Before publication, output files and report trees are rejected if they contain links or unexpected file types. Published names are known result names or basenames from the isolated staging directory.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "d8018d241c8098ba0d90bb31c9ace0c570cbaaa81566e37c3c4a68d343fb069c",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Kiri uses a per-job TemporaryDirectory and a fixed or validated output list. Before publication, output files and report trees are rejected if they contain links or unexpected file types. Published names are known result names or basenames from the isolated staging directory.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "19589e34ef8082566bc0942ca7e5581f84b6229a40d1e9329c2fc88b5efd0f4d",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Kiri uses a per-job TemporaryDirectory and a fixed or validated output list. Before publication, output files and report trees are rejected if they contain links or unexpected file types. Published names are known result names or basenames from the isolated staging directory.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "4534d8e5311e2ef17b6a18fb5b19fefa1054b0610bfa8079a6ba8a592a465845",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Kiri uses a per-job TemporaryDirectory and a fixed or validated output list. Before publication, output files and report trees are rejected if they contain links or unexpected file types. Published names are known result names or basenames from the isolated staging directory.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "5787eaee3cc22cc9744b459fc912a2d8773c84e0754cdbe6fba611727a7025b7",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Kiri uses a per-job TemporaryDirectory and a fixed or validated output list. Before publication, output files and report trees are rejected if they contain links or unexpected file types. Published names are known result names or basenames from the isolated staging directory.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "ed22aa341d7a84f715e264f5efa31acd69be014b89c8bc459f4048a02789022b",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Kiri uses a per-job TemporaryDirectory and a fixed or validated output list. Before publication, output files and report trees are rejected if they contain links or unexpected file types. Published names are known result names or basenames from the isolated staging directory.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "8180c3e53f97c3216e321f8b8554fd43e85c27b0a1151631b40a45275365bb74",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The compression task opens only a user-selected source for reading and writes a gzip under the managed job results using the source basename.",
+      "tests": [
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "f397a0f23cfb4373f62019b62bcbc0e6ee93fbf4975f167d3bdf90cbee03f38e",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The exporter copies a selected local input to the fixed Files subdirectory of its managed job, with a numeric prefix and basename. It verifies the resulting bytes.",
+      "tests": [
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/linux_helpers.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "818f4fcb1bc95ff3a44b1024a28c0c1dbd051a42ee9aacbb2c2a02a1b76db762",
+      "file_sha256": "2cdd754b3bbbf3778d9f4d111360e847cbd42a07326d3f0d5bcc9de997fc7085",
+      "reason": "The helper writes a fixed report.html under a caller-provided local job folder or isolated container output mount. The title is HTML-escaped.",
+      "tests": [
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/linux_helpers.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "299265a3706048506804f4a4a8a0907d677e34b7cfb740f20214a5cc56acc4ad",
+      "file_sha256": "2cdd754b3bbbf3778d9f4d111360e847cbd42a07326d3f0d5bcc9de997fc7085",
+      "reason": "The helper reads the selected local chip file or the fixed isolated container input mount. No output name is derived from the path.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_synthetic_chip_inspect_writes_a_count"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/linux_helpers.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "5556e70f81497c05e8e33c69d96787e306c62572699afa9baa427ee55fbe45c4",
+      "file_sha256": "2cdd754b3bbbf3778d9f4d111360e847cbd42a07326d3f0d5bcc9de997fc7085",
+      "reason": "The helper writes the fixed VCF filename to the managed job results folder or the isolated container output mount.",
+      "tests": [
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/linux_helpers.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "a02407d6c3833c625d89dea1ddc0673ce81b4592a0869d460c1af92cecba02d5",
+      "file_sha256": "2cdd754b3bbbf3778d9f4d111360e847cbd42a07326d3f0d5bcc9de997fc7085",
+      "reason": "The helper reads the PLINK sample table provided by the managed job. Its outputs use fixed names.",
+      "tests": [
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "bd412b8e9af10a0ef976d073cf6fd472a942e7b666bf3001c82a8795e2b78827",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "The manifest or contained asset-specific staging directory supplies the destination. Temporary filenames use a generated UUID. The source is checked as a local file and bytes are verified before the staged copy is published.",
+      "tests": [
+        "test_optional_assets",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "66dbd514079a10fe6eb6f1124634322a3dcc37650174ea72e4f3c491e28ba11a",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "The manifest or contained asset-specific staging directory supplies the destination. Temporary filenames use a generated UUID. The source is checked as a local file and bytes are verified before the staged copy is published.",
+      "tests": [
+        "test_optional_assets",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "c8d66f1ac0000e8c278fa5ed12bab2e6e28ef406ef334b3035a2dc7642682de8",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "The manifest or contained asset-specific staging directory supplies the destination. Temporary filenames use a generated UUID. The source is checked as a local file and bytes are verified before the staged copy is published.",
+      "tests": [
+        "test_optional_assets",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "93ec0ea325b2b35854f926f07818dfff800ec94796355e3ef4b4443003983a7f",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "The manifest or contained asset-specific staging directory supplies the destination. Temporary filenames use a generated UUID. The source is checked as a local file and bytes are verified before the staged copy is published.",
+      "tests": [
+        "test_optional_assets",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "9a4a164600c04bfd0da107230dbbf2a3dc583af353bb619e87ef725adcbf04a7",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "The manifest or contained asset-specific staging directory supplies the destination. Temporary filenames use a generated UUID. The source is checked as a local file and bytes are verified before the staged copy is published.",
+      "tests": [
+        "test_optional_assets",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "f468adc28b693874389571ffc311ea5cef74131dfd2fff90ec5e4fc7b190a14f",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "The manifest or contained asset-specific staging directory supplies the destination. Temporary filenames use a generated UUID. The source is checked as a local file and bytes are verified before the staged copy is published.",
+      "tests": [
+        "test_optional_assets",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "897aee249862a58523c80850893da2b211456d5826127cb8d55aa0dc39e7f9a3",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "The manifest or contained asset-specific staging directory supplies the destination. Temporary filenames use a generated UUID. The source is checked as a local file and bytes are verified before the staged copy is published.",
+      "tests": [
+        "test_optional_assets",
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "88a7b2a3ac2dfe0945077e2a365c119b7bb7c9a9afa8e974abaa84d5ccb85e3f",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "Download paths are resolved by the catalog plan under the managed cache or asset-specific staging directory. The exclusive temporary file has a generated name and bytes are verified before publication. Existing destinations are checked for a matching SHA-256.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "372fd4d7a69569ddc56a4d7fda66de11f2161a1c1fd66dfc9aae66515b31831f",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "Download paths are resolved by the catalog plan under the managed cache or asset-specific staging directory. The exclusive temporary file has a generated name and bytes are verified before publication. Existing destinations are checked for a matching SHA-256.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "fec44dd5e569f4ebadb8772cba0ce49751538e14a7c99281d4acb4f17df29233",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "Download paths are resolved by the catalog plan under the managed cache or asset-specific staging directory. The exclusive temporary file has a generated name and bytes are verified before publication. Existing destinations are checked for a matching SHA-256.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "4938cfee2c58f396e1f78ff17c82fb996421b23b9d111552f417c01710a09198",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "Download paths are resolved by the catalog plan under the managed cache or asset-specific staging directory. The exclusive temporary file has a generated name and bytes are verified before publication. Existing destinations are checked for a matching SHA-256.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "49d86893f5ee26c9555b88bb78a955c3de2671f50492dc9bf5d4b82677f8746f",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "Download paths are resolved by the catalog plan under the managed cache or asset-specific staging directory. The exclusive temporary file has a generated name and bytes are verified before publication. Existing destinations are checked for a matching SHA-256.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "95ed07ded4efd91ae174cf0462fd133508335505735ad58cc33d9fd04186736b",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "Download paths are resolved by the catalog plan under the managed cache or asset-specific staging directory. The exclusive temporary file has a generated name and bytes are verified before publication. Existing destinations are checked for a matching SHA-256.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "83d1a610d999f5da725ee966cd0ccca31fd975c4540a9e127b392a60af37951d",
+      "file_sha256": "5dfd8af2a5fb06643989d91bca492b8e4a38986c990af6ff48505fa1ca95839a",
+      "reason": "A curated project ID and verified hexadecimal commit select the filename under the fixed source archive folder. The ZIP is validated and stored without execution.",
+      "tests": [
+        "test_plugins"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_using_user_input",
+      "code_sha256": "530db5801c1f7821ca9e9f44e88b8527b3417bae3e64f65d28e176e33b48cd42",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
+      "tests": [
+        "test_security_boundaries"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_weak_hash_md5",
+      "code_sha256": "e056cda6bca54d3c1448ff1c16ebff2bd21e9674233dfe67f5f91bce44f781c2",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "MD5 is used only for legacy upstream transfer verification with usedforsecurity=False. The active cache requires a pinned SHA-256; items without one remain in manual staging.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/optional_assets.py",
+      "rule": "python_lang_weak_hash_md5",
+      "code_sha256": "43c5bb7d7c59e1f8cd9b8ca92b97b433c7cf22e502889af4816e812924a35f06",
+      "file_sha256": "7420e10559c8a4f0bdf39a594880ee85b9f848a09dcbd657aee4480eb7a8bf5b",
+      "reason": "MD5 is used only for legacy upstream transfer verification with usedforsecurity=False. The active cache requires a pinned SHA-256; items without one remain in manual staging.",
+      "tests": [
+        "test_optional_assets.AssetTests.test_download_checks_hash_and_routes_unpinned_bytes_to_manual_staging"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B404",
+      "code_sha256": "0b6175c8e62a6c1e49d04e774ed2220a176e25f5835b9e91519644b1cd5fefc2",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "226b663f25fb6078b5edcc99bd120e7f66fe883552365708884be0393ea41c3a",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Workflow and host adapters construct typed argument vectors and pass file paths as data. The POSIX session flag changes process grouping without invoking a shell.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_tool_contracts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "6d83cf6f53cb13afeefc2ac2d26e2b43a10235e493add2c2f53043a5b47a3c5a",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Cancel on Windows sends a numeric process-group id to wsl.exe kill. The id is read from the job's own pid file and must be digits. Linux cancel uses os.killpg instead.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_linux_bash_jobs_skip_the_windows_host"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B108",
+      "code_sha256": "cc4bbcd0dd2f1cf6fc27b6da87d869118c97979469e9bc09cf9e3219ae90d533",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The /tmp argument mounts a temporary filesystem inside the isolated container. It is not a host path or a predictable host file; the runtime initializes the mount with nosuid and nodev.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B108",
+      "code_sha256": "8f76ef86256fea53d459ddec004acbc85de3abe36f22cc238950f6634e32eb2e",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The /tmp argument mounts a temporary filesystem inside the isolated container. It is not a host path or a predictable host file; the runtime initializes the mount with nosuid and nodev.",
+      "tests": [
+        "test_security_boundaries",
+        "test_tool_contracts",
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "fcd2008ee15cc24aeac4530473e633b653d5fee07828f10345c365e1b43873a6",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "4ee013f7a6d0c4b9cb248c9804c084cd0b64789c4be5bd321c88ea15a618ec77",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "e48aa40765de0886b74520ec8ed2d4436fb86f5a88413b4a47a9a453101e1014",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "830aa3f831afe060dc8201c3a80a9cbed70c8126a1ea4d3e3f875a03d1e15aa4",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Starts an installed desktop tool selected by a fixed tool map. The resolver returns an argument vector with the optional document as an absolute path, without shell interpretation.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_native_launch_reports_nonzero_exit"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "0073350b0d30d8a8852e180e88387f2af6a6108bbecf8318efa2b4c0dfc7c9a0",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Uses the absolute macOS system opener and the fixed workspace project folder. No shell interprets the arguments.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_macos_launch_uses_system_open"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "23596bdc9faeeb7a150b8b3a17fc2b7b0e92fb7ff6e75826e2491a9e77e8bd66",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "Uses the absolute Linux desktop opener and the fixed workspace project folder. No shell interprets the arguments.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_macos_launch_uses_system_open"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B606",
+      "code_sha256": "7748a78ee8c890fa453eae84b042fc1d7fd1319323129e29227818acf17913c6",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "os.startfile opens the fixed suite job directory or a URL selected from the constant loopback-service map. Neither executable text nor an untrusted URL is passed to a shell.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "e7f4ccf4ae60cb4d57fbd5e49dde215e4e7c7511dc0fda768dc2f8983ca952dd",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "2600e93ae00c61f6a435a90156606e889f4b96e9ee8e85367d6467b68207f967",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "96afd178caab00a16c5972b95882a6a92bc736eb68105ae9c32140e6d493d2e0",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B606",
+      "code_sha256": "b9cf2265b302149ff6b7b567c91a05edfaab339962d97f9dfc4d6844a22a64fb",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "os.startfile opens the fixed suite job directory or a URL selected from the constant loopback-service map. Neither executable text nor an untrusted URL is passed to a shell.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B404",
+      "code_sha256": "fc454775f3d94964a07abf909886b6f29578cb311ae8ff1bee8ae01e0097b368",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "Importing subprocess does not execute commands. The module's flagged process calls are reviewed separately at their call sites.",
+      "tests": [
+        "test_tool_hosts"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "e46e1dcacdd843e2ac1a7fee15e65e86d621b9780f57280018723ab6a4bb0ca9",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "1968bdaa0ddb61024c3b504202b0e27074fbaf6578c5f2494f9afd33e25ae0da",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "a22a1fed863800caf61ab1653079699b7f41d3d2f8887c0c5d66e43fab316486",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "The installer runs a script it just wrote. On Windows the vector is wsl.exe with a fixed distro and user. On Linux the vector is bash and that script path. shell=True is not used.",
+      "tests": [
+        "test_on_demand",
+        "test_tool_hosts.ToolHostTests.test_linux_file_is_installed_without_wsl"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "8481db053172b2dea656e272c3e31689268143d9f7022d57b6bc42c483892290",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "1b76ca3750f0f1f4afdaf895c5524e71b1130cf03d1febc5ffcca7f119c084fc",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "3de990f439d70968f16cb412f77120955c64743505bbe8ba4c51839691eacdd8",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "The argument vector is the current interpreter, pip, a fixed option list, the suite package folder, and requirement pins from the tool table. The tool id must already be a declared recipe.",
+      "tests": [
+        "test_on_demand.OnDemandTests.test_linux_pip_install_uses_the_suite_folder",
+        "test_on_demand.OnDemandTests.test_linux_multiqc_wrapper_calls_the_suite_module"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/on_demand.py",
+      "rule": "B603",
+      "code_sha256": "43973cac3b888177eda85807006a63dd34f0e2d0534eaa3b7de0c7fb25503e39",
+      "file_sha256": "70cd53aa2b82e0a836854ae5d3ef2b25581fda8cd56cfe37cda111be5b6560af",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "rule": "B404",
+      "code_sha256": "5ba503bcbb9757d88afdd1d320e51e673591bd22ea0599b69eed664ec35c3ea6",
+      "file_sha256": "5dfd8af2a5fb06643989d91bca492b8e4a38986c990af6ff48505fa1ca95839a",
+      "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "rule": "B603",
+      "code_sha256": "77752fe7cc7b64cda61dd3737f3b83f3c7dcf57f9dedcebb988cb1f0b1cbf60e",
+      "file_sha256": "5dfd8af2a5fb06643989d91bca492b8e4a38986c990af6ff48505fa1ca95839a",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/plugin_hub.py",
+      "rule": "B603",
+      "code_sha256": "cd2c75a6786b7602e1c9006dbc509ea8a9689e1c64a311600e66f0fcc8b9990e",
+      "file_sha256": "5dfd8af2a5fb06643989d91bca492b8e4a38986c990af6ff48505fa1ca95839a",
+      "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
+      "tests": [
+        "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
+        "test_security_boundaries.SecurityPathTests.test_host_tools_do_not_accept_an_arbitrary_executable",
+        "test_agent_control",
+        "test_on_demand"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/system_tools.py",
+      "rule": "B108",
+      "code_sha256": "25914f26f0bbbdf19cb0e573544bfda7afaa97ca19fbb63a291d9ffda44ff936",
+      "file_sha256": "a8a4e73f34af9499064d4bfc3c6dd58fa68e0adbf9256a2992c8838f7495207d",
+      "reason": "The /tmp argument mounts a temporary filesystem inside the isolated container. It is not a host path or a predictable host file; the runtime initializes the mount with nosuid and nodev.",
+      "tests": [
+        "test_tool_hosts"
+      ]
     }
   ]
 }

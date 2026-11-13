@@ -60,6 +60,46 @@ class SecurityPathTests(unittest.TestCase):
                 with self.subTest(value=value), self.assertRaises(ValueError):
                     security_paths.local_path(value)
 
+    def test_inspection_rejects_requests_outside_managed_folders(self):
+        import engine
+
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            request = root / "check-request.json"
+            request.write_text("{}", encoding="utf-8")
+            with (
+                patch.object(engine, "ROOT", root),
+                patch.object(
+                    engine.sys, "argv", ["engine.py", "--inspect", str(request)]
+                ),
+                patch.object(engine.inspector, "check_batch") as check,
+            ):
+                self.assertEqual(engine.main(), 1)
+            check.assert_not_called()
+
+    def test_legacy_inspection_does_not_require_a_job_status_file(self):
+        import engine
+
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            target = root / "Projects/Source verification/P001_Ich/check"
+            target.mkdir(parents=True)
+            request = target / "pruefanfrage.json"
+            request.write_text(
+                '{"person":"P001_Ich","files":["sample.vcf"]}', encoding="utf-8"
+            )
+            with (
+                patch.object(engine, "ROOT", root),
+                patch.object(
+                    engine.sys, "argv", ["engine.py", "--inspect", str(request)]
+                ),
+                patch.object(engine.inspector, "check_batch") as check,
+            ):
+                self.assertEqual(engine.main(), 0)
+            self.assertEqual(
+                check.call_args.args[:3], ("P001_Ich", ["sample.vcf"], target)
+            )
+
     def test_links_cannot_redirect_managed_outputs(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)
