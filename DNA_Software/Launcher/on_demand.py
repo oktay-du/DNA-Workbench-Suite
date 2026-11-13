@@ -1,4 +1,4 @@
-from system_tools import windows_executable
+from system_tools import DESKTOP_APPS, desktop_tool_command, windows_executable
 import network_io
 
 """Explicit per-function preparation; status checks never start a WSL distro."""
@@ -241,7 +241,7 @@ def mapped(task, filename=""):
             "Haplogrep": ["haplogrep"],
             "GrampsWeb": ["docker"],
             "Gramps": ["gramps"],
-            "IGV": ["igv", "java-windows"],
+            "IGV": ["igv", "java-windows"] if os.name == "nt" else ["igv"],
             "JBrowse": ["jbrowse"],
             "Jupyter": ["jupyter-windows"],
             "Start": ["linux-shell"],
@@ -359,6 +359,8 @@ HOST_MODULES = {
 
 
 def host_tool_available(tool):
+    if tool in DESKTOP_APPS:
+        return desktop_tool_command(ROOT, tool) is not None
     if tool in HOST_MODULES:
         return all(find_spec(module) is not None for module in HOST_MODULES[tool])
     if tool == "document-ocr":
@@ -401,10 +403,10 @@ def publish_linux_bin(source, name):
     source = Path(source)
     source.chmod(source.stat().st_mode | 0o111)
     target = bindir / name
-    if target.exists() or target.is_symlink():
-        target.unlink()
     if source.parent == bindir and source.name == name:
         return target
+    if target.exists() or target.is_symlink():
+        target.unlink()
     wrapper = "#!/bin/sh\nexec " + shlex.quote(str(source)) + ' "$@"\n'
     target.write_text(wrapper, encoding="utf-8")
     target.chmod(0o755)
@@ -509,7 +511,7 @@ def linux_state():
 def status(task, filename=""):
     required = mapped(task, filename)
     host_packages = uses_host_tool_packages()
-    needs_linux = not host_packages and any(not skips_wsl(tool) for tool in required)
+    needs_linux = os.name == "nt" and any(not skips_wsl(tool) for tool in required)
     state = (
         linux_state()
         if needs_linux
@@ -613,24 +615,23 @@ def status(task, filename=""):
                 known = visual_tools.installed("seqviz")
             if tool == "ugene":
                 known = bool(list((base / "UGENE").glob("**/ugeneui.exe")))
+        elif os.name != "nt" and tool in DESKTOP_APPS:
+            known = host_tool_available(tool)
+            if tool not in LINUX_LOCAL:
+                artifact, item = None, {}
         elif os.name != "nt" and tool in LINUX_LOCAL:
             bindir = ROOT / "DNA_Software/Linux/bin"
-            if tool == "gramps":
-                known = shutil.which("gramps") is not None
-            elif tool == "java-windows":
+            if tool == "java-windows":
                 known = bool(find_named(ROOT / "DNA_Software/Linux/Java21", "java"))
             elif tool == "haplogrep":
                 known = (bindir / "haplogrep").is_file()
-            elif tool == "ugene":
-                known = (bindir / "ugene").is_file()
-            elif tool == "jbrowse":
-                known = (bindir / "jbrowse-desktop.AppImage").is_file()
             elif tool == "mosdepth":
                 known = (bindir / "mosdepth").is_file()
             elif tool == "plink2":
                 known = (bindir / "plink2").is_file()
-        elif tool in WINDOWS:
-            known = False
+            known = known or host_tool_available(tool)
+        elif os.name != "nt":
+            known = host_tool_available(tool)
         records.append(
             {
                 "id": tool,
@@ -645,6 +646,7 @@ def status(task, filename=""):
                 "installable": tool == "seqviz"
                 if host_packages
                 else not unsupported_pin
+                and not (os.name != "nt" and tool == "igv")
                 and (
                     (os.name != "nt" and tool in LINUX_LOCAL)
                     or recipe not in ["manual", "windows-manual"]
@@ -892,6 +894,12 @@ def install(tool, license_reviewed=False):
         raise ValueError(
             "Install a compatible host build in PATH or in the workspace Python environment."
         )
+    if os.name != "nt" and tool in DESKTOP_APPS:
+        command = desktop_tool_command(ROOT, tool)
+        if command:
+            return {"tool": tool, "status": "Host program is available"}
+        if tool not in LINUX_LOCAL:
+            raise ValueError("Install a compatible desktop build on the host.")
     if os.name != "nt" and tool in LINUX_LOCAL:
         return install_linux_local(tool)
     if os.name != "nt":

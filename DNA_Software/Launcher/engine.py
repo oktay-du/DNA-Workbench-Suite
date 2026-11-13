@@ -1,4 +1,4 @@
-from system_tools import windows_executable
+from system_tools import desktop_tool_command, windows_executable
 
 """Portable local job runner for DNA Workbench. Never uploads DNA files."""
 from portable_paths import distro_name
@@ -991,6 +991,9 @@ class Job:
         a = self.task["action"]
         v = self.v
         if a == "ugene":
+            if os.name != "nt":
+                self.launch_native_tool("ugene", v.get("file"))
+                return
             candidates = list(
                 (ROOT / "DNA_Software/Windows/UGENE").glob("**/ugeneui.exe")
             )
@@ -1520,24 +1523,43 @@ class Job:
         else:
             raise ValueError("Unbekannte Windows-Aktion.")
 
+    def launch_native_tool(self, tool, filename=None):
+        command = desktop_tool_command(ROOT, tool, filename)
+        if not command:
+            raise ValueError(
+                f"Install a compatible desktop build of {tool}. For genome tracks, "
+                "IGV.js and JBrowse Web are available through the tool gallery."
+                if tool in {"igv", "jbrowse"}
+                else f"Install a compatible desktop build of {tool}."
+            )
+        # Desktop apps outlive the job. Record an immediate startup failure.
+        with (self.folder / "software.log").open("ab") as log:
+            process = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT)
+        try:
+            code = process.wait(timeout=2)
+        except subprocess.TimeoutExpired:
+            return
+        if code:
+            raise RuntimeError(f"{tool} could not start. See software.log.")
+
     def launch(self):
         core = self.task["core"]
         flags = getattr(subprocess, "CREATE_NO_WINDOW", 0)
-        if sys.platform == "darwin":
-            native_apps = {
-                "Gramps": "Gramps",
-                "IGV": "IGV",
-                "JBrowse": "JBrowse Desktop",
-            }
+        if os.name != "nt":
+            if core in {"Gramps", "IGV", "JBrowse"}:
+                self.launch_native_tool(core.lower())
+                return
             if core == "Explorer":
-                subprocess.run(
-                    ["/usr/bin/open", str(ROOT / "Projects/Launcher")], check=True
-                )
-                return
-            if core in native_apps:
-                subprocess.run(["/usr/bin/open", "-a", native_apps[core]], check=True)
-                return
-            raise ValueError("This desktop shortcut has no macOS adapter.")
+                folder = str(ROOT / "Projects/Launcher")
+                if sys.platform == "darwin":
+                    subprocess.run(["/usr/bin/open", folder], check=True)
+                    return
+                if Path("/usr/bin/xdg-open").is_file():
+                    subprocess.run(["/usr/bin/xdg-open", folder], check=True)
+                    return
+            raise ValueError(
+                "This desktop shortcut has no adapter for this operating system."
+            )
         if core == "Explorer":
             os.startfile(str(ROOT / "Projects/Launcher"))
             return

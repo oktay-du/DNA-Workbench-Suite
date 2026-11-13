@@ -17,12 +17,15 @@ $env:XDG_CACHE_HOME=Join-Path $taskUser 'Cache'
 $env:TEMP=Join-Path $taskUser 'Temp'
 $env:TMP=$env:TEMP
 New-Item -ItemType Directory -Path $env:TEMP -Force | Out-Null
-$taskPython=Get-ChildItem -LiteralPath (Join-Path $taskSoftware 'Windows/Python') -Filter python.exe -Recurse | Select-Object -First 1
+$pythonFolder=if($env:DNA_WORKBENCH_WINDOWS_ARCH -eq 'arm64' -or (-not $env:DNA_WORKBENCH_WINDOWS_ARCH -and ($env:PROCESSOR_ARCHITECTURE -eq 'ARM64' -or $env:PROCESSOR_ARCHITEW6432 -eq 'ARM64'))){'Windows/Python-arm64'}else{'Windows/Python'}
+$pythonRoot=Join-Path $taskSoftware $pythonFolder
+$taskPython=if(Test-Path -LiteralPath $pythonRoot){Get-ChildItem -LiteralPath $pythonRoot -Filter python.exe -Recurse | Select-Object -First 1}
 $env:PYTHONPATH=Join-Path $taskSoftware 'Windows/PythonPackages'
 $env:JUPYTER_CONFIG_DIR=Join-Path $taskUser 'Jupyter/config'
 $env:JUPYTER_DATA_DIR=Join-Path $taskUser 'Jupyter/data'
 $env:JUPYTER_RUNTIME_DIR=Join-Path $taskUser 'Jupyter/runtime'
-$taskJava=Get-ChildItem -LiteralPath (Join-Path $taskSoftware 'Windows/Java21') -Filter java.exe -Recurse | Select-Object -First 1
+$javaRoot=Join-Path $taskSoftware 'Windows/Java21'
+$taskJava=if(Test-Path -LiteralPath $javaRoot){Get-ChildItem -LiteralPath $javaRoot -Filter java.exe -Recurse | Select-Object -First 1}
 if($taskJava){$env:JAVA_HOME=Split-Path -Parent (Split-Path -Parent $taskJava.FullName);$env:PATH=(Join-Path $env:JAVA_HOME 'bin')+';'+$env:PATH}
 function Ensure-DnaWsl {
     & (Join-Path $taskSsd 'DNA_Software/Launcher/setup.ps1') -Root $taskSsd -Mode Linux -InstallWslHost
@@ -75,6 +78,7 @@ switch($Action){
         & wsl.exe -d $taskDistro -u dna -- /opt/dna/bin/haplogrep server
     }
     'IGV' {
+        if(-not $taskJava){throw 'Install the optional Java runtime before starting IGV.'}
         $taskIgv=Join-Path $taskSoftware 'Windows/IGV/IGV_2.19.8'
         $taskIgvHome=Join-Path $taskUser 'IGV'
         New-Item -ItemType Directory -Path $taskIgvHome -Force | Out-Null
@@ -82,7 +86,9 @@ switch($Action){
         try { & $taskJava.FullName ('-Duser.home='+$taskIgvHome) '-Xmx8g' '-Dproduction=true' '--module-path=lib' '@igv.args' '--module=org.igv/org.broad.igv.ui.Main' } finally {Pop-Location}
     }
     'JBrowse' { & (Join-Path $taskSoftware 'Windows/JBrowse-4.3.0/jbrowse-desktop.exe') ('--user-data-dir='+ (Join-Path $taskUser 'JBrowse')) }
-    'Jupyter' { & $taskPython.FullName -m jupyterlab ('--ServerApp.root_dir='+ (Join-Path $taskSsd 'Projects')) '--ServerApp.ip=127.0.0.1' '--ServerApp.port=8890' '--no-browser' }
+    'Jupyter' {
+        if(-not $taskPython){throw 'Complete Core setup before starting JupyterLab.'}
+        & $taskPython.FullName -m jupyterlab ('--ServerApp.root_dir='+ (Join-Path $taskSsd 'Projects')) '--ServerApp.ip=127.0.0.1' '--ServerApp.port=8890' '--no-browser' }
     'OpenCRAVAT' {
         Ensure-DnaWsl
         $taskDrive=([IO.Path]::GetPathRoot($taskSsd)).Substring(0,1).ToLowerInvariant()

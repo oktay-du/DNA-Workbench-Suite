@@ -11,6 +11,7 @@ from unittest import mock
 import engine
 import on_demand
 import tool_hosts
+import system_tools
 
 
 class ToolHostTests(unittest.TestCase):
@@ -118,22 +119,92 @@ class ToolHostTests(unittest.TestCase):
         job = object.__new__(engine.Job)
         with (
             mock.patch.object(engine.sys, "platform", "darwin"),
+            mock.patch.object(engine.os, "name", "posix"),
             mock.patch.object(engine.subprocess, "run") as launch,
+            mock.patch.object(job, "launch_native_tool") as native,
         ):
             job.task = {"core": "Explorer"}
             job.launch()
             launch.assert_called_once_with(
                 ["/usr/bin/open", str(engine.ROOT / "Projects/Launcher")], check=True
             )
-            launch.reset_mock()
             job.task = {"core": "IGV"}
             job.launch()
-            launch.assert_called_once_with(["/usr/bin/open", "-a", "IGV"], check=True)
-            launch.reset_mock()
+            native.assert_called_once_with("igv")
             job.task = {"core": "Unsupported"}
-            with self.assertRaisesRegex(ValueError, "no macOS adapter"):
+            with self.assertRaisesRegex(ValueError, "no adapter"):
                 job.launch()
-            launch.assert_not_called()
+
+    def test_macos_resolves_jbrowse_2_bundle(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            bundle = root / "Applications/JBrowse 2.app"
+            info = bundle / "Contents/Info.plist"
+            info.parent.mkdir(parents=True)
+            info.touch()
+            with (
+                mock.patch.object(system_tools.sys, "platform", "darwin"),
+                mock.patch.object(system_tools.Path, "home", return_value=root),
+            ):
+                self.assertEqual(
+                    system_tools.desktop_tool_command(root, "jbrowse"),
+                    ["/usr/bin/open", "-a", str(bundle)],
+                )
+
+    def test_linux_arm64_uses_host_desktop_tool_instead_of_bundled_x64(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            tool = root / "bin/ugene"
+            file = root / "example file.fa"
+            with (
+                mock.patch.object(system_tools.sys, "platform", "linux"),
+                mock.patch.object(
+                    system_tools.platform, "machine", return_value="aarch64"
+                ),
+                mock.patch.object(system_tools.shutil, "which", return_value=str(tool)),
+            ):
+                self.assertEqual(
+                    system_tools.desktop_tool_command(root, "ugene", file),
+                    [str(tool), str(file.resolve())],
+                )
+
+    def test_publishing_an_already_installed_linux_binary_preserves_it(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            binary = root / "DNA_Software/Linux/bin/ugene"
+            binary.parent.mkdir(parents=True)
+            binary.write_bytes(b"example")
+            with mock.patch.object(on_demand, "ROOT", root):
+                self.assertEqual(on_demand.publish_linux_bin(binary, "ugene"), binary)
+            self.assertEqual(binary.read_bytes(), b"example")
+
+    def test_native_launch_reports_nonzero_exit(self):
+        job = object.__new__(engine.Job)
+        with tempfile.TemporaryDirectory() as tmp:
+            job.folder = Path(tmp)
+            command = [str(job.folder / "ugene"), str(job.folder / "sequence.fa")]
+            with (
+                mock.patch.object(engine, "desktop_tool_command", return_value=command),
+                mock.patch.object(engine.subprocess, "Popen") as spawn,
+            ):
+                spawn.return_value.wait.return_value = 1
+                with self.assertRaisesRegex(RuntimeError, "could not start"):
+                    job.launch_native_tool("ugene", command[1])
+                self.assertEqual(spawn.call_args.args, (command,))
+                self.assertTrue((job.folder / "software.log").is_file())
+
+    def test_linux_status_checks_native_tools_without_wsl(self):
+        with (
+            mock.patch.object(on_demand.os, "name", "posix"),
+            mock.patch.object(on_demand, "uses_host_tool_packages", return_value=False),
+            mock.patch.object(on_demand, "host_tool_available", return_value=True),
+            mock.patch.object(on_demand, "linux_state") as wsl,
+        ):
+            for task in ("igv", "bam_qc"):
+                status = on_demand.status(task)
+                self.assertFalse(status["needs_linux"])
+                self.assertTrue(status["ready"])
+            wsl.assert_not_called()
 
     def test_linux_bash_jobs_skip_the_windows_host(self):
         with mock.patch.object(engine.os, "name", "posix"):

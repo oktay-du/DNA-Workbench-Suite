@@ -95,7 +95,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B404",
       "code_sha256": "0b6175c8e62a6c1e49d04e774ed2220a176e25f5835b9e91519644b1cd5fefc2",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "Importing subprocess does not execute a command. Calls in this file were reviewed separately; the suite intentionally launches local analysis tools.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -137,7 +137,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "fcd2008ee15cc24aeac4530473e633b653d5fee07828f10345c365e1b43873a6",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -152,7 +152,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "4ee013f7a6d0c4b9cb248c9804c084cd0b64789c4be5bd321c88ea15a618ec77",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -167,7 +167,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "e48aa40765de0886b74520ec8ed2d4436fb86f5a88413b4a47a9a453101e1014",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -182,7 +182,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B606",
       "code_sha256": "7748a78ee8c890fa453eae84b042fc1d7fd1319323129e29227818acf17913c6",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "os.startfile opens the fixed suite job directory or a URL selected from the constant loopback-service map. Neither executable text nor an untrusted URL is passed to a shell.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -194,7 +194,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "e7f4ccf4ae60cb4d57fbd5e49dde215e4e7c7511dc0fda768dc2f8983ca952dd",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -209,7 +209,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "2600e93ae00c61f6a435a90156606e889f4b96e9ee8e85367d6467b68207f967",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -224,7 +224,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "96afd178caab00a16c5972b95882a6a92bc736eb68105ae9c32140e6d493d2e0",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -239,7 +239,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B606",
       "code_sha256": "b9cf2265b302149ff6b7b567c91a05edfaab339962d97f9dfc4d6844a22a64fb",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "os.startfile opens the fixed suite job directory or a URL selected from the constant loopback-service map. Neither executable text nor an untrusted URL is passed to a shell.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters"
@@ -350,7 +350,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "e46e1dcacdd843e2ac1a7fee15e65e86d621b9780f57280018723ab6a4bb0ca9",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -365,7 +365,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "1968bdaa0ddb61024c3b504202b0e27074fbaf6578c5f2494f9afd33e25ae0da",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -395,7 +395,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "8481db053172b2dea656e272c3e31689268143d9f7022d57b6bc42c483892290",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -410,7 +410,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "1b76ca3750f0f1f4afdaf895c5524e71b1130cf03d1febc5ffcca7f119c084fc",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -425,7 +425,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "43973cac3b888177eda85807006a63dd34f0e2d0534eaa3b7de0c7fb25503e39",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "An explicit argument vector starts a known suite worker, audited tool or OS executable; shell=True is not used. Registry-selected names are checked before lookup, user paths are data arguments, and generated Bash values are quoted with shlex.quote. This is intentional local tool execution, not an arbitrary shell command API.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -796,7 +796,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "2585541b1cdb3685233e886e1e49a34c18356a8b7b32a367d3c205687d9d0496",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -810,7 +810,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "bf961aaf80c9887adce2b7544f014edf7df6d0e8642f1fe9551c1b5400a12344",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -824,7 +824,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "9296df13b6bad7d396f4fc246d45a73407d7d99580bf0eb68e1115cf8ecaa4e1",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -838,7 +838,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "5f41c8d719be8f299196a0a2abe424fc5e016824792bfcb805daec8394ffbd7c",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "Local tool execution uses argument vectors with shell=False. Executables and Python import snippets come from the curated registry or fixed suite workers; user path arguments are not interpolated into executable code. Generated Bash values use shlex.quote.",
       "tests": [
         "test_security_boundaries",
@@ -1341,7 +1341,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "ffbed60910bdd97a29f9fe5ed39b536841f371263feb68d18553634175e24ca4",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -1353,7 +1353,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "8180c3e53f97c3216e321f8b8554fd43e85c27b0a1151631b40a45275365bb74",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -1365,7 +1365,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_traversal",
       "code_sha256": "f397a0f23cfb4373f62019b62bcbc0e6ee93fbf4975f167d3bdf90cbee03f38e",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2410,7 +2410,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "530db5801c1f7821ca9e9f44e88b8527b3417bae3e64f65d28e176e33b48cd42",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2422,7 +2422,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "447a8fc5057b2cfc323f45e432b7c3cb28ea5b66b307d76baa9d18c0213d234b",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2434,7 +2434,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "2a0b53d2c44fa226ac2aeefb3698c38b4123b9aa0a87ac5bbf629b8af1bb09c0",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2446,7 +2446,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_path_using_user_input",
       "code_sha256": "75fc6d1009027974cfe914e9994398a61f18536dfefbec333de708bd91c27650",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The local worker reads its explicit request file and validated user-selected data paths; the authenticated API creates requests in identifier-checked profile/job folders. Fixed output names remain in that job.",
       "tests": [
         "test_security_boundaries"
@@ -2667,7 +2667,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "6d83cf6f53cb13afeefc2ac2d26e2b43a10235e493add2c2f53043a5b47a3c5a",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "Cancel on Windows sends a numeric process-group id to wsl.exe kill. The id is read from the job's own pid file and must be digits. Linux cancel uses os.killpg instead.",
       "tests": [
         "test_tool_hosts.ToolHostTests.test_linux_bash_jobs_skip_the_windows_host"
@@ -2690,7 +2690,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "a22a1fed863800caf61ab1653079699b7f41d3d2f8887c0c5d66e43fab316486",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "The installer runs a script it just wrote. On Windows the vector is wsl.exe with a fixed distro and user. On Linux the vector is bash and that script path. shell=True is not used.",
       "tests": [
         "test_on_demand",
@@ -2702,7 +2702,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B603",
       "code_sha256": "3de990f439d70968f16cb412f77120955c64743505bbe8ba4c51839691eacdd8",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "The argument vector is the current interpreter, pip, a fixed option list, the suite package folder, and requirement pins from the tool table. The tool id must already be a declared recipe.",
       "tests": [
         "test_on_demand.OnDemandTests.test_linux_pip_install_uses_the_suite_folder",
@@ -2995,7 +2995,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "python_lang_os_command_injection",
       "code_sha256": "7d3d539c398f14d64afc855635d29202c8a7657fe666fa2105b12aec8febc520",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "The launcher passes a typed argument vector to Popen without a shell. Workflow and host adapters supply the executable; user file paths are arguments. The platform change only adds the POSIX session flag.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -3137,7 +3137,7 @@
       "path": "DNA_Software/Launcher/engine.py",
       "rule": "B603",
       "code_sha256": "226b663f25fb6078b5edcc99bd120e7f66fe883552365708884be0393ea41c3a",
-      "file_sha256": "8bcdd27ebb9695a32330e804c122107c3f1e7293bde36f17d0bacaf7281e9e0e",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
       "reason": "Workflow and host adapters construct typed argument vectors and pass file paths as data. The POSIX session flag changes process grouping without invoking a shell.",
       "tests": [
         "test_security_boundaries.ParserAndSqlTests.test_argument_vector_does_not_interpret_shell_metacharacters",
@@ -3239,7 +3239,7 @@
       "path": "DNA_Software/Launcher/on_demand.py",
       "rule": "B404",
       "code_sha256": "fc454775f3d94964a07abf909886b6f29578cb311ae8ff1bee8ae01e0097b368",
-      "file_sha256": "0e2d98dbb165c26e54b235c7fe1eb51ee8bcac3bdd980410b4bf66e7cd7b0acc",
+      "file_sha256": "1e657ab9f1729174074d432c0668df4a484abd7dbe6925879425123f85a92ebb",
       "reason": "Importing subprocess does not execute commands. The module's flagged process calls are reviewed separately at their call sites.",
       "tests": [
         "test_tool_hosts"
@@ -3265,6 +3265,39 @@
       "reason": "The macOS package builder invokes an absolute Apple tool path and a fixed compiler. The target is selected from the supported architecture pair, with fixed source and a temporary output path passed as separate arguments.",
       "tests": [
         "test_linux_release.LinuxReleaseTests.test_macos_zip_contains_a_native_app_entry_point"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "830aa3f831afe060dc8201c3a80a9cbed70c8126a1ea4d3e3f875a03d1e15aa4",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
+      "reason": "Starts an installed desktop tool selected by a fixed tool map. The resolver returns an argument vector with the optional document as an absolute path, without shell interpretation.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_native_launch_reports_nonzero_exit"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "0073350b0d30d8a8852e180e88387f2af6a6108bbecf8318efa2b4c0dfc7c9a0",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
+      "reason": "Uses the absolute macOS system opener and the fixed workspace project folder. No shell interprets the arguments.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_macos_launch_uses_system_open"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "B603",
+      "code_sha256": "23596bdc9faeeb7a150b8b3a17fc2b7b0e92fb7ff6e75826e2491a9e77e8bd66",
+      "file_sha256": "87365dd3bd528fc069435f877b820fc323abdee406d4adc5d690f39bc6efe672",
+      "reason": "Uses the absolute Linux desktop opener and the fixed workspace project folder. No shell interprets the arguments.",
+      "tests": [
+        "test_tool_hosts.ToolHostTests.test_macos_launch_uses_system_open"
       ]
     }
   ]
