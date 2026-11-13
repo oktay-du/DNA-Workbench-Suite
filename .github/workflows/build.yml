@@ -144,6 +144,7 @@ jobs:
         run: |
           sudo mkdir -p /run/kiri
           sudo ln -sfn /var/run/docker.sock /run/kiri/docker.sock
+          test -S /run/kiri/docker.sock
           docker version
       - name: Install the pinned image and run the synthetic chromosome
         env:

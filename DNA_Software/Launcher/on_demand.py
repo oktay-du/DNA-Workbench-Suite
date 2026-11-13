@@ -1115,9 +1115,11 @@ def install_vep_cache():
 def install_kiri_image(prefix, env, recipe, image, build_context):
     import tempfile
 
+    dockerfile = str(ROOT / "DNA_Software/Start" / recipe)
+    context = str(build_context)
     with tempfile.TemporaryDirectory() as directory:
         archive = Path(directory) / "image.tar"
-        subprocess.run(
+        exported = subprocess.run(
             [
                 *prefix,
                 "build",
@@ -1126,13 +1128,25 @@ def install_kiri_image(prefix, env, recipe, image, build_context):
                 "-t",
                 image,
                 "-f",
-                str(ROOT / "DNA_Software/Start" / recipe),
-                str(build_context),
+                dockerfile,
+                context,
             ],
             env=env,
-            check=True,
+            capture_output=True,
         )
-        subprocess.run([*prefix, "load", "-i", str(archive)], env=env, check=True)
+        if exported.returncode == 0:
+            subprocess.run([*prefix, "load", "-i", str(archive)], env=env, check=True)
+            return
+        detail = (exported.stderr or b"") + (exported.stdout or b"")
+        if b"exporter is not supported" not in detail.lower():
+            raise subprocess.CalledProcessError(
+                exported.returncode, exported.args, exported.stdout, exported.stderr
+            )
+    subprocess.run(
+        [*prefix, "build", "-t", image, "-f", dockerfile, context],
+        env=env,
+        check=True,
+    )
 
 
 def rfmix_compile_lines(folder, dest, script):

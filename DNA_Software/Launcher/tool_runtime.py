@@ -27,13 +27,18 @@ def catalog():
 
 
 def task_tools(task):
+    """Tool ids for one catalog task, independent of the machine running the report."""
     action = task.get("action", "")
     if action in on_demand.REQUIREMENTS:
         return list(on_demand.REQUIREMENTS[action])
+    previous = on_demand.os.name
+    on_demand.os.name = "posix"
     try:
         return list(on_demand.mapped(task["id"]))
     except ValueError:
         return []
+    finally:
+        on_demand.os.name = previous
 
 
 def pin(tool):
@@ -108,6 +113,9 @@ def render():
         "",
         "## Catalog tasks",
         "",
+        "The required-tools column follows the non-Windows selection in",
+        "`on_demand.mapped`. On Windows, IGV also requires `java-windows`.",
+        "",
         "| Task | Platform | Kind | Required tools |",
         "|---|---|---|---|",
     ]
@@ -173,7 +181,7 @@ def render():
         "- Archive SHA-256 `1ca6db8b3e7abb64c7b0e3af44ade69244cf813468c24d687ea26f88a70a4f17`.",
         "- Source: https://github.com/slowkoni/rfmix",
         "- License gate: `acknowledge_rfmix()` writes `DNA_Software/UserData/Launcher/Needed/rfmix-license-reviewed.json` before `fetch`. The notice is `DNA_Software/Launcher/Notices/RFMIX-LICENSE.txt`. Checking the box does not grant a license.",
-        "- Kiri install: `install_kiri_rfmix` copies the verified archive, the notice and `DNA_Software/Start/rfmix-march.sh` into the build context, then `install_kiri_image` builds `kiri-rfmix.Dockerfile`.",
+        "- Kiri install: `install_kiri_rfmix` copies the verified archive, the notice and `DNA_Software/Start/rfmix-march.sh` into the build context, then `install_kiri_image` builds `kiri-rfmix.Dockerfile`. When that builder rejects the docker exporter, the same recipe is built with `docker build -t`, which loads the tag into the engine.",
         "- Image contents: `/usr/local/bin/rfmix` and Debian `bcftools=1.21-1`. The final stage also installs `libstdc++6`, `libgomp1` and `zlib1g`.",
         "- WSL install: `/opt/dna/tools/rfmix-<first 12 hex of the commit>/bin/rfmix` linked from `/opt/dna/bin/rfmix`. The same march script runs there.",
         "- Start: with a matching Kiri image, `Job.run_with_kiri` sorts and indexes both VCFs with BCFtools, then runs `rfmix -f -r -m -g --chromosome --n-threads -o`. Thread count is `hardware.cpu_threads()`: at least 1, at most 8, and one below the visible CPU count when more than one CPU is visible. RFMix has no CUDA, HIP, Vulkan, SYCL or Metal switch. The job checks that `lokale_ancestry.msp.tsv`, `lokale_ancestry.fb.tsv` and `lokale_ancestry.rfmix.Q` are non-empty.",

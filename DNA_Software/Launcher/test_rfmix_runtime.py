@@ -186,12 +186,68 @@ class RfmixCommandTests(unittest.TestCase):
         self.assertNotIn("--gpus", script)
 
 
+class RfmixImageBuildTests(unittest.TestCase):
+    def test_unsupported_docker_exporter_builds_the_tag_directly(self):
+        calls = []
+
+        def run(command, **_kwargs):
+            calls.append(list(command))
+            if "--output" in command:
+                return subprocess.CompletedProcess(
+                    command,
+                    1,
+                    b"",
+                    b"Docker exporter is not supported for the docker driver.\n",
+                )
+            return subprocess.CompletedProcess(command, 0, b"", b"")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(on_demand.subprocess, "run", side_effect=run):
+                on_demand.install_kiri_image(
+                    ["docker", "--host", "unix:///run/kiri/docker.sock"],
+                    {},
+                    "kiri-rfmix.Dockerfile",
+                    "dna-workbench/rfmix:1",
+                    Path(tmp),
+                )
+        self.assertEqual(len(calls), 2)
+        self.assertIn("--output", calls[0])
+        self.assertNotIn("--output", calls[1])
+        self.assertIn("-t", calls[1])
+        self.assertIn("dna-workbench/rfmix:1", calls[1])
+        self.assertNotIn("load", calls[1])
+
+    def test_compile_failure_is_not_retried(self):
+        def run(command, **_kwargs):
+            return subprocess.CompletedProcess(command, 1, b"", b"make: error\n")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            with patch.object(on_demand.subprocess, "run", side_effect=run) as mocked:
+                with self.assertRaises(subprocess.CalledProcessError):
+                    on_demand.install_kiri_image(
+                        ["docker"],
+                        {},
+                        "kiri-rfmix.Dockerfile",
+                        "dna-workbench/rfmix:1",
+                        Path(tmp),
+                    )
+        self.assertEqual(mocked.call_count, 1)
+
+
 class RfmixSmokeTests(unittest.TestCase):
+    def test_requested_smoke_fails_without_the_engine(self):
+        with (
+            patch.dict(os.environ, {"DNA_RFMIX_SMOKE": "1"}),
+            patch.object(on_demand, "kiri_docker", return_value=None),
+        ):
+            with self.assertRaisesRegex(AssertionError, "Docker socket"):
+                self.test_engine_runs_the_synthetic_chromosome()
+
     def test_engine_runs_the_synthetic_chromosome(self):
         if os.environ.get("DNA_RFMIX_SMOKE") != "1":
             self.skipTest("Set DNA_RFMIX_SMOKE=1 to build and run the RFMix image.")
         if on_demand.kiri_docker() is None:
-            self.skipTest("The local Kiri or Docker socket is not available.")
+            self.fail("DNA_RFMIX_SMOKE=1 requires the local Kiri or Docker socket.")
         on_demand.install("rfmix", license_reviewed=True)
         route = system_tools.kiri_sequence_tool("rfmix")
         self.assertIsNotNone(route)
