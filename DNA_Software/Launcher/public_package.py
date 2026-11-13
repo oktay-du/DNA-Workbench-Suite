@@ -310,6 +310,7 @@ START = [
     "kiri-variants.Dockerfile",
     "kiri-opencravat.Dockerfile",
     "kiri-rfmix.Dockerfile",
+    "rfmix-march.sh",
     "dna-nextflow.config",
 ]
 LAUNCHER += [
@@ -317,6 +318,9 @@ LAUNCHER += [
     "on_demand.py",
     "Notices/RFMIX-LICENSE.txt",
     "test_on_demand.py",
+    "tool_runtime.py",
+    "test_tool_runtime.py",
+    "test_rfmix_runtime.py",
 ]
 LAUNCHER += ["data_scope.py", "test_data_scope.py", "DATA_SCOPE.md"]
 LAUNCHER += [

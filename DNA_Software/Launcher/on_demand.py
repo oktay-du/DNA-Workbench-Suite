@@ -1135,6 +1135,19 @@ def install_kiri_image(prefix, env, recipe, image, build_context):
         subprocess.run([*prefix, "load", "-i", str(archive)], env=env, check=True)
 
 
+def rfmix_compile_lines(folder, dest, script):
+    """Compile the pinned RFMix source after the architecture march check."""
+    return [
+        "cd " + Q(folder),
+        "sh " + Q(script),
+        "autoreconf --force --install",
+        "./configure --prefix=" + Q(dest),
+        "make -j2",
+        "make install",
+        "ln -sfn " + Q(dest + "/bin/rfmix") + " /opt/dna/bin/rfmix",
+    ]
+
+
 def install_kiri_rfmix(prefix, env):
     import tempfile
 
@@ -1146,6 +1159,9 @@ def install_kiri_rfmix(prefix, env):
             shutil.copyfile(source, stage / "rfmix.tar.gz")
             shutil.copyfile(
                 APP / "Notices/RFMIX-LICENSE.txt", stage / "RFMIX-LICENSE.txt"
+            )
+            shutil.copyfile(
+                APP.parent / "Start/rfmix-march.sh", stage / "rfmix-march.sh"
             )
             install_kiri_image(
                 prefix, env, "kiri-rfmix.Dockerfile", KIRI_RFMIX_IMAGE, stage
@@ -1726,14 +1742,9 @@ def install(tool, license_reviewed=False):
         item = next(i for i in LOCK["items"] if i["id"] == artifact)
         folder = "/opt/dna/build/rfmix-" + item["commit"]
         dest = "/opt/dna/tools/rfmix-" + item["commit"][:12]
-        lines += [
-            "cd " + Q(folder),
-            "autoreconf --force --install",
-            "./configure --prefix=" + Q(dest),
-            "make -j2",
-            "make install",
-            "ln -sfn " + Q(dest + "/bin/rfmix") + " /opt/dna/bin/rfmix",
-        ]
+        lines += rfmix_compile_lines(
+            folder, dest, linux_path(APP.parent / "Start/rfmix-march.sh")
+        )
     elif tool == "plink19":
         apt("plink1.9")
         wrapper("plink19", 'exec /usr/bin/plink1.9 "$@"')
