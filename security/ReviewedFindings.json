@@ -4164,6 +4164,18 @@
       "tests": [
         "test_linux_release.LinuxReleaseTests.test_macos_zip_contains_a_native_app_entry_point"
       ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/engine.py",
+      "rule": "python_lang_path_using_user_input",
+      "code_sha256": "82ac955ed32627fa64ec8f211a84a31cefde6cebe99b59c3989b7906d936bdb0",
+      "file_sha256": "5f2c538c623530f19101210c52be620e0b5c30a1622f9b929600af782a786cd0",
+      "reason": "The request must be a regular non-link file under the managed launcher job directory. The generated report and fixed summary destination are resolved with security_paths.contained before the copy. No caller supplies either filename.",
+      "tests": [
+        "test_security_boundaries.SecurityPathTests.test_inspection_rejects_requests_outside_managed_folders",
+        "test_security_boundaries.SecurityPathTests.test_links_cannot_redirect_managed_outputs"
+      ]
     }
   ]
 }
