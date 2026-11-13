@@ -432,6 +432,7 @@ def presentation_entries():
                 "site/privacy.html",
                 "site/legal.html",
                 "site/style.css",
+                "site/language.js",
                 "site/images/03-overview-light.png",
                 "site/images/provider-selection.png",
                 "site/images/08-workflow.png",
@@ -439,6 +440,10 @@ def presentation_entries():
                 ".github/ISSUE_TEMPLATE/bug_report.yml",
                 ".github/ISSUE_TEMPLATE/feature_request.yml",
             )
+            or re.fullmatch(
+                r"docs/readme/README\.[a-z]{2,3}(?:-[A-Z][a-z]{3})?\.md", name
+            )
+            or re.fullmatch(r"site/i18n/[a-z]{2,3}(?:-[A-Z][a-z]{3})?\.json", name)
             or re.fullmatch(
                 r"docs/(?:[A-Z_]+\.md|software-data-catalog\.json|images/[a-z0-9-]+\.(?:png|jpg|svg|webp|gif|webm))",
                 name,

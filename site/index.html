@@ -1,256 +1,405 @@
 <!doctype html>
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta
-      name="description"
       content="DNA Workbench Suite is a local workspace for organizing DNA files, family records, and research results in 36 offline interface languages."
-    />
-    <meta property="og:title" content="DNA Workbench Suite · Your genome. Your workspace." />
+      data-i18n-content="t53"
+      name="description" />
     <meta
-      property="og:image"
+      content="DNA Workbench Suite · Your genome. Your workspace."
+      data-i18n-content="t54"
+      property="og:title" />
+    <meta
       content="https://oktay-du.github.io/DNA-Workbench-Suite/images/workspace-preview.webp"
-    />
-    <title>DNA Workbench Suite · Your genome. Your workspace.</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
+      property="og:image" />
+    <title data-i18n="t01">DNA Workbench Suite · Your genome. Your workspace.</title>
+    <link href="style.css" rel="stylesheet" />
+    <script defer="" src="language.js"></script
+  ></head>
   <body class="landing">
     <div class="wrap">
-      <nav aria-label="Primary">
+      <nav aria-label="Primary" data-i18n-aria-label="t55">
         <strong class="brand"><span aria-hidden="true">◈</span> DNA Workbench Suite</strong>
-        <a href="#tour">App tour</a>
-        <a href="#languages">Languages</a>
-        <a href="#downloads">Downloads</a>
+        <a data-i18n="t02" href="#tour">App tour</a>
+        <a data-i18n="t03" href="#languages">Languages</a>
+        <a data-i18n="t04" href="#downloads">Downloads</a>
         <a href="https://github.com/oktay-du/DNA-Workbench-Suite">GitHub</a>
-      </nav>
+        <div class="site-language"
+          ><label data-i18n="t05" for="site-language">Website language</label
+          ><select id="site-language"
+            ><option dir="ltr" lang="de" value="de">Deutsch</option
+            ><option dir="ltr" lang="en" selected="" value="en">English</option
+            ><option dir="ltr" lang="tr" value="tr">Türkçe</option
+            ><option dir="ltr" lang="es" value="es">Español</option
+            ><option dir="ltr" lang="fr" value="fr">Français</option
+            ><option dir="ltr" lang="pt" value="pt">Português</option
+            ><option dir="ltr" lang="it" value="it">Italiano</option
+            ><option dir="ltr" lang="nl" value="nl">Nederlands</option
+            ><option dir="ltr" lang="sv" value="sv">Svenska</option
+            ><option dir="ltr" lang="el" value="el">Ελληνικά</option
+            ><option dir="ltr" lang="cs" value="cs">Čeština</option
+            ><option dir="ltr" lang="ro" value="ro">Română</option
+            ><option dir="ltr" lang="hu" value="hu">Magyar</option
+            ><option dir="ltr" lang="pl" value="pl">Polski</option
+            ><option dir="ltr" lang="uk" value="uk">Українська</option
+            ><option dir="ltr" lang="ru" value="ru">Русский</option
+            ><option dir="rtl" lang="ar" value="ar">العربية</option
+            ><option dir="rtl" lang="fa" value="fa">فارسی</option
+            ><option dir="rtl" lang="ur" value="ur">اردو</option
+            ><option dir="ltr" lang="hi" value="hi">हिन्दी</option
+            ><option dir="ltr" lang="ne" value="ne">नेपाली</option
+            ><option dir="ltr" lang="ka" value="ka">ქართული</option
+            ><option dir="ltr" lang="hy" value="hy">Հայերեն</option
+            ><option dir="ltr" lang="mn" value="mn">Монгол</option
+            ><option dir="ltr" lang="zh-Hans" value="zh-Hans">简体中文</option
+            ><option dir="ltr" lang="ja" value="ja">日本語</option
+            ><option dir="ltr" lang="ko" value="ko">한국어</option
+            ><option dir="ltr" lang="id" value="id">Bahasa Indonesia</option
+            ><option dir="ltr" lang="ms" value="ms">Bahasa Melayu</option
+            ><option dir="ltr" lang="vi" value="vi">Tiếng Việt</option
+            ><option dir="ltr" lang="th" value="th">ไทย</option
+            ><option dir="ltr" lang="fil" value="fil">Filipino</option
+            ><option dir="ltr" lang="am" value="am">አማርኛ</option
+            ><option dir="ltr" lang="sw" value="sw">Kiswahili</option
+            ><option dir="ltr" lang="so" value="so">Soomaali</option
+            ><option dir="ltr" lang="ha" value="ha">Hausa</option></select
+          ></div
+        ></nav
+      ><p data-i18n="t06" hidden="" id="language-status" role="status"
+        >The selected language could not be loaded.</p
+      >
       <main>
         <header class="hero">
           <div>
             <a
               class="release"
+              data-i18n="t07"
               href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
               >Release 1.0.6</a
             >
-            <h1>Your genome.<br />Your workspace.</h1>
-            <p
+            <h1 data-i18n="t08">Your genome. Your workspace.</h1>
+            <p data-i18n="t09"
               >Organize DNA files and family records, check where results came from, and keep your
               research on your own computer.</p
             >
             <div class="actions">
-              <a class="button primary" href="#downloads">Download DNA Workbench</a>
-              <a class="button" href="#tour">Watch the app tour</a>
+              <a class="button primary" data-i18n="t10" href="#downloads">Download DNA Workbench</a>
+              <a class="button" data-i18n="t11" href="#tour">Watch the app tour</a>
             </div>
           </div>
           <figure class="hero-screen">
             <img
+              alt="DNA Workbench in dark mode showing four synthetic profiles and registered sample files"
+              data-i18n-alt="t56"
+              fetchpriority="high"
+              height="860"
               src="images/workspace-preview.webp"
               width="1440"
-              height="860"
-              alt="DNA Workbench in dark mode showing four synthetic profiles and registered sample files"
-              fetchpriority="high"
             />
-            <figcaption>Workspace overview with synthetic sample data</figcaption>
+            <figcaption data-i18n="t12">Workspace overview with synthetic sample data</figcaption>
           </figure>
         </header>
-
-        <section id="tour" class="tour">
+        <section class="tour" id="tour">
           <div class="section-heading">
-            <h2>See the workspace in action.</h2>
-            <p>Switch themes, change the interface language, and open the profile file manager.</p>
+            <h2 data-i18n="t13">See the workspace in action.</h2>
+            <p data-i18n="t14"
+              >Switch themes, change the interface language, and open the profile file manager.</p
+            >
           </div>
           <video
-            controls
-            playsinline
-            preload="none"
-            poster="images/workspace-preview.webp"
             aria-label="Silent tour showing the theme switch, language picker, and synthetic sample files"
+            controls=""
+            data-i18n-aria-label="t57"
+            playsinline=""
+            poster="images/workspace-preview.webp"
+            preload="none"
           >
             <source src="images/workspace-demo.webm" type="video/webm" />
-            <a href="images/workspace-demo.gif">View the animated tour</a>
+            <a data-i18n="t15" href="images/workspace-demo.gif">View the animated tour</a>
           </video>
           <div class="gallery">
             <figure>
               <img
+                alt="Profile file manager listing synthetic DNA example files"
+                data-i18n-alt="t58"
+                height="860"
+                loading="lazy"
                 src="images/workspace-files.webp"
                 width="1440"
-                height="860"
-                alt="Profile file manager listing synthetic DNA example files"
-                loading="lazy"
               />
-              <figcaption>Browse sample files by profile</figcaption>
+              <figcaption data-i18n="t16">Browse sample files by profile</figcaption>
             </figure>
             <figure>
               <img
+                alt="DNA Workbench language picker with flags and language names in their own scripts"
+                data-i18n-alt="t59"
+                height="860"
+                loading="lazy"
                 src="images/workspace-languages.webp"
                 width="1440"
-                height="860"
-                alt="DNA Workbench language picker with flags and language names in their own scripts"
-                loading="lazy"
               />
-              <figcaption>Change language from the toolbar</figcaption>
+              <figcaption data-i18n="t17">Change language from the toolbar</figcaption>
             </figure>
           </div>
         </section>
-
         <section id="features">
-          <div class="section-heading"><h2>From files to reusable evidence.</h2></div>
+          <div class="section-heading"
+            ><h2 data-i18n="t18">From files to reusable evidence.</h2></div
+          >
           <div class="grid">
             <article class="card"
-              ><h3>Import and organize</h3
-              ><p
+              ><h3 data-i18n="t19">Import and organize</h3
+              ><p data-i18n="t20"
                 >Review providers, formats and reference builds before copying or moving files.</p
               ></article
             >
             <article class="card"
-              ><h3>Compare sources</h3
-              ><p
-                >Inspect source quality and conflicts. Keep measured, imputed and phased records
-                distinguishable.</p
+              ><h3 data-i18n="t21">Compare sources</h3
+              ><p data-i18n="t22"
+                >Check source quality and conflicts. Keep measured values distinct from estimated
+                values, and record when variants have been assigned to chromosome copies.</p
               ></article
             >
             <article class="card"
-              ><h3>Follow a workflow</h3
-              ><p
+              ><h3 data-i18n="t23">Follow a workflow</h3
+              ><p data-i18n="t24"
                 >Explore family connections and variants with optional tools. Save results and
                 export reports with source information.</p
               ></article
             >
           </div>
         </section>
-
-        <section id="languages" class="language-section">
+        <section class="language-section" id="languages">
           <div class="section-heading">
-            <h2>36 interface languages, offline.</h2>
-            <p>Choose a language in the app toolbar. The language packs ship with the workspace.</p>
+            <h2 data-i18n="t25">36 interface languages, offline.</h2>
+            <p data-i18n="t26"
+              >Choose a language in the app toolbar. The language packs ship with the workspace.</p
+            >
           </div>
-          <ul class="language-grid" aria-label="Available interface languages">
-            <li><bdi lang="de">Deutsch</bdi></li>
-            <li><bdi lang="en">English</bdi></li>
-            <li><bdi lang="tr">Türkçe</bdi></li>
-            <li><bdi lang="es">Español</bdi></li>
-            <li><bdi lang="fr">Français</bdi></li>
-            <li><bdi lang="pt">Português</bdi></li>
-            <li><bdi lang="it">Italiano</bdi></li>
-            <li><bdi lang="nl">Nederlands</bdi></li>
-            <li><bdi lang="sv">Svenska</bdi></li>
-            <li><bdi lang="el">Ελληνικά</bdi></li>
-            <li><bdi lang="cs">Čeština</bdi></li>
-            <li><bdi lang="ro">Română</bdi></li>
-            <li><bdi lang="hu">Magyar</bdi></li>
-            <li><bdi lang="pl">Polski</bdi></li>
-            <li><bdi lang="uk">Українська</bdi></li>
-            <li><bdi lang="ru">Русский</bdi></li>
-            <li><bdi lang="ar">العربية</bdi></li>
-            <li><bdi lang="fa">فارسی</bdi></li>
-            <li><bdi lang="ur">اردو</bdi></li>
-            <li><bdi lang="hi">हिन्दी</bdi></li>
-            <li><bdi lang="ne">नेपाली</bdi></li>
-            <li><bdi lang="ka">ქართული</bdi></li>
-            <li><bdi lang="hy">Հայերեն</bdi></li>
-            <li><bdi lang="mn">Монгол</bdi></li>
-            <li><bdi lang="zh-Hans">简体中文</bdi></li>
-            <li><bdi lang="ja">日本語</bdi></li>
-            <li><bdi lang="ko">한국어</bdi></li>
-            <li><bdi lang="id">Bahasa Indonesia</bdi></li>
-            <li><bdi lang="ms">Bahasa Melayu</bdi></li>
-            <li><bdi lang="vi">Tiếng Việt</bdi></li>
-            <li><bdi lang="th">ไทย</bdi></li>
-            <li><bdi lang="fil">Filipino</bdi></li>
-            <li><bdi lang="am">አማርኛ</bdi></li>
-            <li><bdi lang="sw">Kiswahili</bdi></li>
-            <li><bdi lang="so">Soomaali</bdi></li>
-            <li><bdi lang="ha">Hausa</bdi></li>
+          <ul
+            aria-label="Available interface languages"
+            class="language-grid"
+            data-i18n-aria-label="t60"
+          >
+            <li
+              ><a href="?lang=de#languages" hreflang="de"><bdi lang="de">Deutsch</bdi></a></li
+            >
+            <li
+              ><a href="?lang=en#languages" hreflang="en"><bdi lang="en">English</bdi></a></li
+            >
+            <li
+              ><a href="?lang=tr#languages" hreflang="tr"><bdi lang="tr">Türkçe</bdi></a></li
+            >
+            <li
+              ><a href="?lang=es#languages" hreflang="es"><bdi lang="es">Español</bdi></a></li
+            >
+            <li
+              ><a href="?lang=fr#languages" hreflang="fr"><bdi lang="fr">Français</bdi></a></li
+            >
+            <li
+              ><a href="?lang=pt#languages" hreflang="pt"><bdi lang="pt">Português</bdi></a></li
+            >
+            <li
+              ><a href="?lang=it#languages" hreflang="it"><bdi lang="it">Italiano</bdi></a></li
+            >
+            <li
+              ><a href="?lang=nl#languages" hreflang="nl"><bdi lang="nl">Nederlands</bdi></a></li
+            >
+            <li
+              ><a href="?lang=sv#languages" hreflang="sv"><bdi lang="sv">Svenska</bdi></a></li
+            >
+            <li
+              ><a href="?lang=el#languages" hreflang="el"><bdi lang="el">Ελληνικά</bdi></a></li
+            >
+            <li
+              ><a href="?lang=cs#languages" hreflang="cs"><bdi lang="cs">Čeština</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ro#languages" hreflang="ro"><bdi lang="ro">Română</bdi></a></li
+            >
+            <li
+              ><a href="?lang=hu#languages" hreflang="hu"><bdi lang="hu">Magyar</bdi></a></li
+            >
+            <li
+              ><a href="?lang=pl#languages" hreflang="pl"><bdi lang="pl">Polski</bdi></a></li
+            >
+            <li
+              ><a href="?lang=uk#languages" hreflang="uk"><bdi lang="uk">Українська</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ru#languages" hreflang="ru"><bdi lang="ru">Русский</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ar#languages" hreflang="ar"><bdi lang="ar">العربية</bdi></a></li
+            >
+            <li
+              ><a href="?lang=fa#languages" hreflang="fa"><bdi lang="fa">فارسی</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ur#languages" hreflang="ur"><bdi lang="ur">اردو</bdi></a></li
+            >
+            <li
+              ><a href="?lang=hi#languages" hreflang="hi"><bdi lang="hi">हिन्दी</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ne#languages" hreflang="ne"><bdi lang="ne">नेपाली</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ka#languages" hreflang="ka"><bdi lang="ka">ქართული</bdi></a></li
+            >
+            <li
+              ><a href="?lang=hy#languages" hreflang="hy"><bdi lang="hy">Հայերեն</bdi></a></li
+            >
+            <li
+              ><a href="?lang=mn#languages" hreflang="mn"><bdi lang="mn">Монгол</bdi></a></li
+            >
+            <li
+              ><a href="?lang=zh-Hans#languages" hreflang="zh-Hans"
+                ><bdi lang="zh-Hans">简体中文</bdi></a
+              ></li
+            >
+            <li
+              ><a href="?lang=ja#languages" hreflang="ja"><bdi lang="ja">日本語</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ko#languages" hreflang="ko"><bdi lang="ko">한국어</bdi></a></li
+            >
+            <li
+              ><a href="?lang=id#languages" hreflang="id"
+                ><bdi lang="id">Bahasa Indonesia</bdi></a
+              ></li
+            >
+            <li
+              ><a href="?lang=ms#languages" hreflang="ms"><bdi lang="ms">Bahasa Melayu</bdi></a></li
+            >
+            <li
+              ><a href="?lang=vi#languages" hreflang="vi"><bdi lang="vi">Tiếng Việt</bdi></a></li
+            >
+            <li
+              ><a href="?lang=th#languages" hreflang="th"><bdi lang="th">ไทย</bdi></a></li
+            >
+            <li
+              ><a href="?lang=fil#languages" hreflang="fil"><bdi lang="fil">Filipino</bdi></a></li
+            >
+            <li
+              ><a href="?lang=am#languages" hreflang="am"><bdi lang="am">አማርኛ</bdi></a></li
+            >
+            <li
+              ><a href="?lang=sw#languages" hreflang="sw"><bdi lang="sw">Kiswahili</bdi></a></li
+            >
+            <li
+              ><a href="?lang=so#languages" hreflang="so"><bdi lang="so">Soomaali</bdi></a></li
+            >
+            <li
+              ><a href="?lang=ha#languages" hreflang="ha"><bdi lang="ha">Hausa</bdi></a></li
+            >
           </ul>
         </section>
-
         <section id="downloads">
           <div class="section-heading">
-            <h2>Download for your computer.</h2>
-            <p
+            <h2 data-i18n="t27">Download for your computer.</h2>
+            <p data-i18n="t28"
               >Pick the architecture that matches your system. Available packages and verification
               status are listed in the release notes.</p
             >
           </div>
           <div class="grid downloads">
             <article class="card">
-              <h3>Windows</h3>
-              <p
-                >Extract the ZIP and open <code>DNA_Launcher.exe</code>. The ARM64 preview requires
-                Windows 11 and WebView2 Evergreen.</p
+              <h3 data-i18n="t29">Windows</h3>
+              <p data-i18n="t30"
+                >Extract the ZIP and open DNA_Launcher.exe. The ARM64 preview requires Windows 11
+                and WebView2 Evergreen.</p
               >
               <a
+                data-i18n="t32"
                 href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Windows-x64.zip"
                 >Download x64</a
               >
               <a
+                data-i18n="t33"
                 href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Windows-arm64.zip"
                 >ARM64 preview</a
               >
             </article>
             <article class="card">
-              <h3>Linux</h3>
-              <p
-                >Run <code>./DNA-Workbench.sh</code> with Python 3.12, GTK 3 and WebKitGTK 4.1
-                installed.</p
+              <h3 data-i18n="t34">Linux</h3>
+              <p data-i18n="t35"
+                >Run ./DNA-Workbench.sh with Python 3.12, GTK 3 and WebKitGTK 4.1 installed.</p
               >
               <a
+                data-i18n="t37"
                 href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Linux-x64.zip"
                 >Download x64</a
               >
               <a
+                data-i18n="t38"
                 href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/download/v1.0.6/DNAWorkbench-Linux-arm64.zip"
                 >ARM64 preview</a
               >
             </article>
             <article class="card">
-              <h3>macOS</h3>
-              <p
+              <h3 data-i18n="t39">macOS</h3>
+              <p data-i18n="t40"
                 >The preview uses a native WebKit window. It requires macOS 13 or later and Python
                 3.12 or later.</p
               >
-              <a href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
+              <a
+                data-i18n="t41"
+                href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
                 >See macOS availability</a
               >
             </article>
           </div>
           <p class="download-note"
             ><a
+              data-i18n="t42"
               href="https://github.com/oktay-du/DNA-Workbench-Suite/blob/main/docs/GETTING_STARTED.md"
               >Installation guide</a
             >
             ·
-            <a href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
+            <a
+              data-i18n="t43"
+              href="https://github.com/oktay-du/DNA-Workbench-Suite/releases/tag/v1.0.6"
               >Release notes and checksums</a
             ></p
           >
         </section>
-
-        <section id="support" class="support">
+        <section class="support" id="support">
           <div>
-            <h2>Support independent development.</h2>
+            <h2 data-i18n="t44">Support independent development.</h2>
             <p
-              ><a href="https://nowpayments.io/donation/oktayd">NOWPayments</a> ·
-              <a href="https://buymeacoffee.com/okioki">Buy Me a Coffee</a> ·
-              <a href="https://www.patreon.com/Oktaydu/gift">Patreon gift</a></p
+              ><a data-i18n="t45" href="https://nowpayments.io/donation/oktayd">NOWPayments</a> ·
+              <a data-i18n="t46" href="https://buymeacoffee.com/okioki">Buy Me a Coffee</a> ·
+              <a data-i18n="t47" href="https://www.patreon.com/Oktaydu/gift">Patreon gift</a></p
             >
           </div>
           <a href="https://buymeacoffee.com/okioki"
             ><img
+              alt="Buy Me a Coffee donation QR code"
               class="support-qr"
+              data-i18n-alt="t61"
+              loading="lazy"
               src="images/support-qr.jpg"
               width="120"
-              alt="Buy Me a Coffee donation QR code"
-              loading="lazy"
           /></a>
         </section>
       </main>
       <footer>
-        <p>© 2026 Oktay Du / OD · Research software, not a clinical diagnostic system.</p>
+        <p data-i18n="t48"
+          >© 2026 Oktay Du / OD · Research software, not a clinical diagnostic system.</p
+        >
         <p
-          ><a href="privacy.html">Privacy</a> <a href="legal.html">Research and license</a>
-          <a href="https://github.com/oktay-du/DNA-Workbench-Suite/issues/new/choose">Feedback</a>
-          <a href="mailto:oktaydu@proton.me">Contact</a></p
+          ><a data-i18n="t49" href="privacy.html">Privacy</a>
+          <a data-i18n="t50" href="legal.html">Research and license</a>
+          <a
+            data-i18n="t51"
+            href="https://github.com/oktay-du/DNA-Workbench-Suite/issues/new/choose"
+            >Feedback</a
+          >
+          <a data-i18n="t52" href="mailto:oktaydu@proton.me">Contact</a></p
         >
       </footer>
     </div>

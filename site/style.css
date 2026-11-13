@@ -50,7 +50,7 @@ nav a:hover {
   text-decoration: underline;
 }
 .brand {
-  margin-right: auto;
+  margin-inline-end: auto;
   font-size: 1.13rem;
   display: inline-flex;
   align-items: center;
@@ -275,4 +275,32 @@ footer a {
   .support-qr {
     width: 76px;
   }
+}
+
+.site-language {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 9px;
+  font-size: 0.9rem;
+}
+.site-language label {
+  font-weight: 650;
+}
+.site-language select {
+  font: inherit;
+  color: var(--ink);
+  background: white;
+  padding: 5px 9px;
+  border: 1px solid #7a9d91;
+  border-radius: 7px;
+  max-width: min(180px, 70vw);
+}
+.site-language select:focus-visible {
+  outline: 3px solid #bd6029;
+  outline-offset: 3px;
+}
+.language-grid a {
+  display: inline-block;
+  padding-block: 2px;
 }
