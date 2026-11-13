@@ -391,10 +391,11 @@ def pca_plot(eigenvec, labels, out):
 
 
 def score_sheet(prefix, person, out):
+    sampleset = re.sub(r"[^a-zA-Z0-9]", "", person) or "Sample"
     with Path(out, "samplesheet.csv").open("w", newline="") as f:
         w = csv.writer(f)
         w.writerow(["sampleset", "path_prefix", "chrom", "format"])
-        w.writerow([person, prefix, "", "pfile"])
+        w.writerow([sampleset, prefix, "", "pfile"])
 
 
 def main():

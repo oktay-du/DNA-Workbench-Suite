@@ -1,4 +1,21 @@
-from system_tools import DESKTOP_APPS, desktop_tool_command, windows_executable
+from system_tools import (
+    DEEPVARIANT_GPU_PROBE,
+    DESKTOP_APPS,
+    NATIVE_SEQUENCE_TOOLS,
+    desktop_tool_command,
+    homebrew_bin,
+    kiri_docker,
+    KIRI_RFMIX_IMAGE,
+    KIRI_VEP_IMAGE,
+    KIRI_OPENCRAVAT_IMAGE,
+    kiri_task_tool,
+    kiri_opencravat_modules,
+    kiri_vep_cache,
+    kiri_sequence_tool,
+    native_sequence_command,
+    windows_deepvariant_gpu,
+    windows_executable,
+)
 import network_io
 
 """Explicit per-function preparation; status checks never start a WSL distro."""
@@ -114,6 +131,11 @@ TOOLS = {
         "hap-ibd",
     ),
     "vep": ("https://github.com/Ensembl/ensembl-vep", "ensembl-ensembl-vep", "vep"),
+    "vep-cache": (
+        "https://www.ensembl.org/info/docs/tools/vep/script/vep_cache.html",
+        "vep-cache-116-grch38",
+        "vep-cache",
+    ),
     "pharmcat": (
         "https://github.com/PharmGKB/PharmCAT",
         "pharmcat-3-4-0-all-jar",
@@ -133,7 +155,11 @@ TOOLS = {
         "uqrmaie1-admixtools",
         "manual",
     ),
-    "opencravat-models": ("https://github.com/KarchinLab/open-cravat", None, "manual"),
+    "opencravat-models": (
+        "https://github.com/KarchinLab/open-cravat",
+        None,
+        "opencravat-models",
+    ),
     "gramps": (
         "https://github.com/gramps-project/gramps",
         "grampsaio-6-0-8-1-win64-exe",
@@ -179,22 +205,22 @@ REQUIREMENTS = {
     "profile_refresh": ["pyliftover"],
     "inspect": ["bcftools", "samtools", "snps"],
     "vcf_qc": ["bcftools"],
-    "chip_vcf": ["snps", "pysam", "samtools", "bcftools"],
-    "compare": ["bcftools", "pysam"],
+    "chip_vcf": ["snps", "pysam", "samtools"],
+    "compare": ["pysam"],
     "fastq_qc": ["fastp"],
     "bam_qc": ["samtools", "mosdepth", "multiqc"],
     "multiqc": ["multiqc"],
-    "sarek": ["nextflow", "sarek", "docker"],
+    "sarek": ["nextflow", "sarek", "docker", "samtools"],
     "deepvariant": ["deepvariant", "samtools", "docker"],
-    "normalize": ["bcftools"],
+    "normalize": ["bcftools", "samtools"],
     "filter": ["bcftools"],
     "peddy": ["peddy", "bcftools"],
-    "whatshap": ["whatshap", "samtools", "bcftools"],
-    "truvari": ["truvari", "bcftools"],
+    "whatshap": ["whatshap", "samtools"],
+    "truvari": ["truvari", "bcftools", "samtools"],
     "roh": ["plink19"],
     "merge": ["bcftools"],
     "kinship": ["plink2"],
-    "ref_export": ["plink2"],
+    "ref_export": ["plink2", "bcftools"],
     "pca": ["plink2", "plotly"],
     "beagle": ["beagle"],
     "ibd": ["hap-ibd"],
@@ -202,8 +228,8 @@ REQUIREMENTS = {
     "mito": ["haplogrep", "bcftools"],
     "yhaplo": ["yhaplo", "bcftools"],
     "opencravat_run": ["open-cravat", "opencravat-models"],
-    "vep": ["vep"],
-    "pharmcat": ["pharmcat", "bcftools"],
+    "vep": ["vep", "vep-cache"],
+    "pharmcat": ["pharmcat"],
     "pgs": ["nextflow", "pgsc-calc", "plink2", "docker"],
 }
 LICENSE = "RFMix: free academic research use only. Other uses require a separate Stanford license. Review https://github.com/slowkoni/rfmix#license. Checking a box does not grant a license."
@@ -284,9 +310,6 @@ LINUX_LOCAL = {
     "mosdepth",
     "gramps",
 }
-# The pinned guest binaries for these tools target x86-64. An ARM guest can
-# still use a compatible version that is already on its PATH.
-WSL_X64_ONLY = {"plink2", "haplogrep"}
 WINDOWS_COMPANION = {
     "plink2": ("plink2-windows", "DNA_Software/Windows/PLINK2", "plink2.exe"),
     "haplogrep": (
@@ -339,9 +362,258 @@ HOST_COMMANDS = {
     "document-ocr": "tesseract",
 }
 
+NATIVE_PIPELINES = {"sarek": "sarek", "pgsc-calc": "pgsc_calc"}
+NEXTFLOW_DIST = next(i for i in LOCK["items"] if i["id"] == "nextflow-dist")
+WINDOWS_KIRI_PIPELINES = {
+    "sarek": ("sarek", "samtools"),
+    "pgs": ("pgsc-calc", "plink2"),
+}
+
+
+def native_nextflow_path():
+    return LOG / NEXTFLOW_DIST["name"]
+
+
+def windows_kiri_pipeline(task):
+    if os.name != "nt" or task not in WINDOWS_KIRI_PIPELINES:
+        return None
+    tool, prep = WINDOWS_KIRI_PIPELINES[task]
+    source = native_pipeline_source(tool)
+    if not (source / "main.nf").is_file():
+        return None
+    launcher = ROOT / NEXTFLOW_DIST["relative_path"]
+    if not launcher.is_file():
+        return None
+    route = kiri_sequence_tool("nextflow")
+    if route is None:
+        return None
+    prep_route = kiri_sequence_tool(prep)
+    if prep_route is None or route.platform != prep_route.platform:
+        return None
+    return route, prep_route, source, launcher
+
+
+def install_native_nextflow():
+    import tempfile
+
+    target = native_nextflow_path()
+    source = fetch("nextflow-dist")
+    with tempfile.TemporaryDirectory(dir=target.parent) as stage:
+        executable = Path(stage) / target.name
+        shutil.copyfile(source, executable)
+        executable.chmod(0o755)
+        executable.replace(target)
+    return {
+        "tool": "nextflow",
+        "status": "Pinned Nextflow launcher installed. Java 17–26 is required.",
+        "path": str(target),
+    }
+
+
+def native_pipeline_source(tool):
+    artifact = TOOLS[tool][1]
+    item = next(i for i in LOCK["items"] if i["id"] == artifact)
+    return LOG / "nextflow-pipelines" / (NATIVE_PIPELINES[tool] + "-" + item["commit"])
+
+
+def native_pipeline_docker_socket():
+    docker = host_command("docker")
+    if not docker:
+        return None
+    candidates = (
+        (Path.home() / ".kiri/run/docker.sock", Path.home() / ".docker/run/docker.sock")
+        if sys.platform == "darwin"
+        else (
+            Path("/run/kiri/docker.sock"),
+            Path.home() / ".docker/desktop/docker.sock",
+        )
+    )
+    runtime = os.environ.get("XDG_RUNTIME_DIR")
+    rootless = (
+        Path(runtime) / "docker.sock"
+        if runtime and Path(runtime).is_absolute()
+        else None
+    )
+    env = {
+        key: value for key, value in os.environ.items() if not key.startswith("DOCKER_")
+    }
+    for path in (*candidates, rootless, Path("/var/run/docker.sock")):
+        if not path or not path.is_socket():
+            continue
+        try:
+            result = subprocess.run(
+                [
+                    docker,
+                    "--host",
+                    "unix://" + str(path),
+                    "version",
+                    "--format",
+                    "{{.Server.Os}}",
+                ],
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=3,
+            )
+            if result.returncode == 0 and result.stdout.strip() == "linux":
+                return str(path)
+        except (OSError, subprocess.TimeoutExpired):
+            continue
+    return None
+
+
+def deepvariant_docker_socket():
+    candidates = (
+        Path("/var/run/docker.sock"),
+        Path.home() / ".docker/run/docker.sock",
+        Path.home() / ".docker/desktop/docker.sock",
+    )
+    for path in candidates:
+        if path.is_socket() and path.resolve().name == "docker.sock":
+            resolved = path.resolve()
+            if not any(part in {".kiri", "kiri"} for part in resolved.parts):
+                return str(path)
+    return None
+
+
+def deepvariant_regular_image(state):
+    docker = ["docker"]
+    if os.name == "nt":
+        if not state["running"] or hardware.windows_arm64():
+            return False
+        docker = [
+            windows_executable("wsl.exe"),
+            "-d",
+            distro_name(ROOT),
+            "-u",
+            "dna",
+            "--",
+            "/usr/bin/docker",
+            "--host",
+            "unix:///run/docker-dna.sock",
+        ]
+    else:
+        if platform.machine().lower() not in {"amd64", "x86_64"}:
+            return False
+        endpoint = deepvariant_docker_socket()
+        if not endpoint:
+            return False
+        docker += ["--host", "unix://" + endpoint]
+    env = {
+        key: value
+        for key, value in os.environ.items()
+        if not key.upper().startswith("DOCKER_")
+    }
+    try:
+        for tag in ("1.10.0", "1.10.0-gpu"):
+            result = subprocess.run(
+                [
+                    *docker,
+                    "image",
+                    "inspect",
+                    "--format",
+                    "{{.Os}}/{{.Architecture}}",
+                    "google/deepvariant:" + tag,
+                ],
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=4,
+                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+            )
+            if result.returncode == 0 and result.stdout.strip() == "linux/amd64":
+                if tag == "1.10.0":
+                    return True
+                probe = subprocess.run(
+                    [
+                        *docker,
+                        "run",
+                        "--rm",
+                        "--pull=never",
+                        "--network=none",
+                        "--platform",
+                        "linux/amd64",
+                        "--gpus",
+                        "1",
+                        "--entrypoint",
+                        "/usr/bin/python3",
+                        "google/deepvariant:" + tag,
+                        "-c",
+                        DEEPVARIANT_GPU_PROBE,
+                    ],
+                    env=env,
+                    capture_output=True,
+                    timeout=30,
+                    creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+                )
+                return probe.returncode == 0
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return False
+
+
+def install_native_pipeline(tool):
+    import tempfile
+
+    target = native_pipeline_source(tool)
+    if not (target / "main.nf").is_file():
+        archive = fetch(TOOLS[tool][1])
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(dir=target.parent) as stage:
+            place_archive(archive, stage)
+            source = Path(stage) / target.name
+            if not (source / "main.nf").is_file():
+                raise ValueError("The pinned pipeline archive has no main.nf.")
+            try:
+                source.rename(target)
+            except OSError:
+                if not (target / "main.nf").is_file():
+                    raise
+    return {
+        "tool": tool,
+        "status": "Local pipeline source is available",
+        "path": str(target),
+    }
+
 
 def host_command(tool):
+    if tool == "nextflow" and os.name != "nt":
+        launcher = native_nextflow_path()
+        if launcher.is_file() and os.access(launcher, os.X_OK):
+            return str(launcher)
+    if tool in NATIVE_SEQUENCE_TOOLS and os.name != "nt":
+        return native_sequence_command(ROOT, tool)
+    if tool == "haplogrep" and os.name != "nt":
+        wrapper = ROOT / "DNA_Software/UserData/Launcher/Native/bin/haplogrep"
+        if wrapper.is_file() and os.access(wrapper, os.X_OK):
+            return str(wrapper)
     return shutil.which(HOST_COMMANDS.get(tool, tool))
+
+
+def native_brew():
+    brew = Path(homebrew_bin()) / "brew"
+    if brew.is_file() and os.access(brew, os.X_OK):
+        return str(brew)
+    return shutil.which("brew")
+
+
+def install_native_sequence_tool(tool):
+    binary = host_command(tool)
+    if not binary:
+        brew = native_brew()
+        if not brew:
+            if sys.platform == "darwin":
+                raise ValueError("Install Homebrew, then retry the tool installation.")
+            raise ValueError(
+                f"Install {tool} with your Linux package manager or install Homebrew and retry."
+            )
+        subprocess.run([brew, "install", tool], check=True)
+        binary = host_command(tool)
+        if not binary:
+            raise ValueError(
+                f"{tool} is missing from the job search path after installation."
+            )
+    return {"tool": tool, "status": "Host program is available", "path": binary}
 
 
 HOST_MODULES = {
@@ -359,6 +631,8 @@ HOST_MODULES = {
 
 
 def host_tool_available(tool):
+    if tool in NATIVE_PIPELINES and os.name != "nt":
+        return (native_pipeline_source(tool) / "main.nf").is_file()
     if tool in DESKTOP_APPS:
         return desktop_tool_command(ROOT, tool) is not None
     if tool in HOST_MODULES:
@@ -423,6 +697,63 @@ def extract_windows_companion(tool):
     return {
         "tool": tool,
         "status": "Windows file extracted. The Linux file is still used inside WSL when that workflow is a shell script.",
+    }
+
+
+HAPLOGREP_TREE = "trees/phylotree-fu-rcrs/1.3"
+HAPLOGREP_TREE_ID = "phylotree-fu-rcrs@1.3"
+
+
+def haplogrep_config(workspace):
+    return (
+        "port: 7001\nworkspace: "
+        + json.dumps(str(workspace))
+        + f"\nrepositories: []\nphylotrees:\n  - {HAPLOGREP_TREE}/tree.yaml\nexamples: []\n"
+    )
+
+
+def install_native_haplogrep():
+    java = shutil.which("java")
+    if not java:
+        raise ValueError("Install Java 17 or later for this operating system first.")
+    java = str(Path(java).resolve())
+    dest = ROOT / "DNA_Software/UserData/Launcher/Native/Haplogrep"
+    place_archive(fetch("haplogrep3-3-3-2-linux-tar-gz"), dest)
+    jar = dest / "haplogrep3.jar"
+    tree = dest / HAPLOGREP_TREE
+    place_archive(fetch("haplogrep-default-tree"), tree)
+    if not jar.is_file() or not (tree / "tree.yaml").is_file():
+        raise ValueError("Haplogrep package or reference tree is incomplete.")
+    workspace = ROOT / "DNA_Software/UserData/Haplogrep/jobs"
+    workspace.mkdir(parents=True, exist_ok=True)
+    (dest / "haplogrep3.yaml").write_text(haplogrep_config(workspace), encoding="utf-8")
+    result = subprocess.run(
+        [java, "-jar", str(jar), "trees"], cwd=dest, capture_output=True, timeout=30
+    )
+    if result.returncode or HAPLOGREP_TREE_ID.encode() not in result.stdout:
+        detail = (
+            (result.stdout + result.stderr).decode("utf-8", errors="replace").strip()
+        )
+        raise ValueError(
+            "Haplogrep could not load its local reference tree. " + detail[-1000:]
+        )
+    target = ROOT / "DNA_Software/UserData/Launcher/Native/bin/haplogrep"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    text = (
+        "#!/bin/sh\ncd "
+        + Q(str(dest))
+        + " || exit 1\nexec "
+        + Q(java)
+        + ' -jar ./haplogrep3.jar "$@"\n'
+    )
+    temp = target.with_suffix(".tmp")
+    temp.write_text(text, encoding="utf-8", newline="\n")
+    temp.chmod(0o755)
+    temp.replace(target)
+    return {
+        "tool": "haplogrep",
+        "status": "Local Java runtime ready",
+        "path": str(target),
     }
 
 
@@ -508,7 +839,7 @@ def linux_state():
     return result
 
 
-def status(task, filename=""):
+def status(task, filename="", *, allow_kiri=True):
     required = mapped(task, filename)
     host_packages = uses_host_tool_packages()
     needs_linux = os.name == "nt" and any(not skips_wsl(tool) for tool in required)
@@ -524,6 +855,11 @@ def status(task, filename=""):
     )
     installed = {}
     if needs_linux and state["running"]:
+        search_path = "/opt/dna/envs/analysis/bin:/opt/dna/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        if not hardware.windows_arm64():
+            search_path = (
+                linux_path(ROOT / "DNA_Software/Linux/bin") + ":" + search_path
+            )
         code = (
             "import importlib.util,json,shutil,pathlib; ids="
             + repr(required)
@@ -537,7 +873,7 @@ def status(task, filename=""):
             "dna",
             "--",
             "env",
-            "PATH=/opt/dna/bin:/opt/dna/envs/analysis/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "PATH=" + search_path,
             "/opt/dna/envs/analysis/bin/python",
             "-c",
             code,
@@ -554,13 +890,14 @@ def status(task, filename=""):
         source, artifact, recipe = TOOLS[tool]
         artifact = tool_hosts.prefer(tool, artifact)
         arm_guest = hardware.windows_arm64()
-        unsupported_pin = arm_guest and tool in WSL_X64_ONLY
-        if unsupported_pin or (arm_guest and tool == "mosdepth"):
+        if arm_guest and tool in {"mosdepth", "plink2"}:
             artifact = None
+        if os.name != "nt" and tool == "haplogrep":
+            artifact = "haplogrep3-3-3-2-linux-tar-gz"
         known = installed.get(tool)
         item = next((i for i in LOCK["items"] if i["id"] == artifact), {})
         if host_packages:
-            if tool in LINUX_LOCAL:
+            if tool in LINUX_LOCAL and tool != "haplogrep":
                 artifact, item = None, {}
             known = host_tool_available(tool)
             if tool == "seqviz":
@@ -625,13 +962,30 @@ def status(task, filename=""):
                 known = bool(find_named(ROOT / "DNA_Software/Linux/Java21", "java"))
             elif tool == "haplogrep":
                 known = (bindir / "haplogrep").is_file()
-            elif tool == "mosdepth":
-                known = (bindir / "mosdepth").is_file()
             elif tool == "plink2":
                 known = (bindir / "plink2").is_file()
             known = known or host_tool_available(tool)
         elif os.name != "nt":
             known = host_tool_available(tool)
+        if os.name != "nt" and task in {"sarek", "pgs"} and tool == "docker":
+            known = bool(known and native_pipeline_docker_socket())
+        if task == "deepvariant" and tool == "deepvariant":
+            known = deepvariant_regular_image(state)
+        if task == "vep":
+            if tool == "vep-cache":
+                known = bool(kiri_vep_cache(ROOT))
+        if os.name != "nt" and (tool in NATIVE_PIPELINES or tool == "nextflow"):
+            installable = True
+        elif os.name != "nt" and tool in NATIVE_SEQUENCE_TOOLS:
+            bundled_recipe = tool == "mosdepth" and not host_packages
+            installable = bool(known or bundled_recipe or native_brew())
+        elif host_packages:
+            installable = tool in {"seqviz", "haplogrep"}
+        else:
+            installable = not (os.name != "nt" and tool == "igv") and (
+                (os.name != "nt" and tool in LINUX_LOCAL)
+                or recipe not in ["manual", "windows-manual"]
+            )
         records.append(
             {
                 "id": tool,
@@ -643,14 +997,7 @@ def status(task, filename=""):
                 else "Check after Linux start",
                 "source": source,
                 "recipe": recipe,
-                "installable": tool == "seqviz"
-                if host_packages
-                else not unsupported_pin
-                and not (os.name != "nt" and tool == "igv")
-                and (
-                    (os.name != "nt" and tool in LINUX_LOCAL)
-                    or recipe not in ["manual", "windows-manual"]
-                ),
+                "installable": installable,
                 "version": item.get("version")
                 or item.get("commit")
                 or PIP.get(tool, "Paketquelle / nach Installation protokolliert"),
@@ -659,19 +1006,36 @@ def status(task, filename=""):
                 "license_notice": LICENSE if tool == "rfmix" else "",
             }
         )
-    reviewed = False
-    try:
-        record = json.loads(
-            (LOG / "rfmix-license-reviewed.json").read_text(encoding="utf-8")
-        )
-        reviewed = (
-            record.get("notice_sha256")
-            == hashlib.sha256(
-                (APP / "Notices/RFMIX-LICENSE.txt").read_bytes()
-            ).hexdigest()
-        )
-    except (OSError, ValueError):
-        pass
+    reviewed = rfmix_license_reviewed()
+    action = next(
+        (entry["action"] for entry in CAT["tasks"] if entry["id"] == task), ""
+    )
+    kiri_tool = kiri_task_tool(action, required) if allow_kiri else None
+    if action == "deepvariant" and allow_kiri and windows_deepvariant_gpu():
+        for record in records:
+            record.update(installed=True, state="Bereit")
+        needs_linux = False
+        kiri_tool = None
+    if kiri_tool == "rfmix" and not reviewed:
+        kiri_tool = None
+    if kiri_tool == "vep" and not kiri_vep_cache(ROOT):
+        kiri_tool = None
+    if kiri_tool == "opencravat_run" and not kiri_opencravat_modules(ROOT):
+        kiri_tool = None
+    if kiri_tool and any(not record["installed"] for record in records):
+        if kiri_sequence_tool(kiri_tool):
+            for record in records:
+                record.update(installed=True, state="Ready via local Kiri")
+            needs_linux = False
+    if (
+        allow_kiri
+        and task in WINDOWS_KIRI_PIPELINES
+        and not (state["running"] and all(record["installed"] for record in records))
+        and windows_kiri_pipeline(task)
+    ):
+        for record in records:
+            record.update(installed=True, state="Ready via local Kiri")
+        needs_linux = False
     return {
         "task": task,
         "linux": state,
@@ -685,7 +1049,199 @@ def status(task, filename=""):
     }
 
 
+def rfmix_license_reviewed():
+    from json import loads
+
+    try:
+        record = loads(
+            (LOG / "rfmix-license-reviewed.json").read_text(encoding="utf-8")
+        )
+        return (
+            isinstance(record, dict)
+            and record.get("confirmed_by_user") is True
+            and (
+                record.get("notice_sha256")
+                == hashlib.sha256(
+                    (APP / "Notices/RFMIX-LICENSE.txt").read_bytes()
+                ).hexdigest()
+            )
+        )
+    except (OSError, ValueError):
+        return False
+
+
+def acknowledge_rfmix():
+    import durable_store
+
+    durable_store.write(
+        LOG / "rfmix-license-reviewed.json",
+        {
+            "source": TOOLS["rfmix"][0],
+            "notice": LICENSE,
+            "notice_sha256": hashlib.sha256(
+                (APP / "Notices/RFMIX-LICENSE.txt").read_bytes()
+            ).hexdigest(),
+            "confirmed_by_user": True,
+            "time": datetime.datetime.now().astimezone().isoformat(),
+        },
+    )
+
+
+def install_vep_cache():
+    import tempfile
+
+    cache = ROOT / "References/VEP"
+    if not kiri_vep_cache(ROOT):
+        archive = fetch("vep-cache-116-grch38")
+        with tempfile.TemporaryDirectory(dir=cache) as directory:
+            stage = Path(directory)
+            with tarfile.open(archive, "r|gz") as packed:
+                packed.extractall(stage, filter="data")
+            source = stage / "homo_sapiens/116_GRCh38"
+            if not (source / "info.txt").is_file() or not any(source.glob("*/*.gz")):
+                raise ValueError(
+                    "The Ensembl archive does not contain the expected cache."
+                )
+            destination = cache / "homo_sapiens/116_GRCh38"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            try:
+                source.rename(destination)
+            except OSError:
+                if not kiri_vep_cache(ROOT):
+                    raise
+    return {"tool": "vep-cache", "path": str(cache), "status": "GRCh38 cache ready"}
+
+
+def install_kiri_image(prefix, env, recipe, image, build_context):
+    import tempfile
+
+    with tempfile.TemporaryDirectory() as directory:
+        archive = Path(directory) / "image.tar"
+        subprocess.run(
+            [
+                *prefix,
+                "build",
+                "--output",
+                f"type=docker,dest={archive}",
+                "-t",
+                image,
+                "-f",
+                str(ROOT / "DNA_Software/Start" / recipe),
+                str(build_context),
+            ],
+            env=env,
+            check=True,
+        )
+        subprocess.run([*prefix, "load", "-i", str(archive)], env=env, check=True)
+
+
+def install_kiri_rfmix(prefix, env):
+    import tempfile
+
+    acknowledge_rfmix()
+    if not kiri_sequence_tool("rfmix"):
+        source = fetch("slowkoni-rfmix", True)
+        with tempfile.TemporaryDirectory() as directory:
+            stage = Path(directory)
+            shutil.copyfile(source, stage / "rfmix.tar.gz")
+            shutil.copyfile(
+                APP / "Notices/RFMIX-LICENSE.txt", stage / "RFMIX-LICENSE.txt"
+            )
+            install_kiri_image(
+                prefix, env, "kiri-rfmix.Dockerfile", KIRI_RFMIX_IMAGE, stage
+            )
+    if not kiri_sequence_tool("rfmix"):
+        raise RuntimeError("The RFMix image is unavailable in the local Kiri engine.")
+    return {"tool": "rfmix", "status": "Ready via local Kiri"}
+
+
+OPENCRAVAT_MODULE_VERSIONS = {
+    "hg38": "1.47.2",
+    "vcf-converter": "2.2.1",
+    "textreporter": "2.1.0",
+    "excelreporter": "2.1.1",
+    "tagsampler": "1.1.6",
+    "casecontrol": "1.2.0",
+    "varmeta": "1.0.0",
+    "vcfinfo": "3.2.0",
+    "clinvar": "2026.11.01",
+    "gnomad4": "4.1.4",
+}
+
+
+def install_opencravat_models(local):
+    modules = ROOT / "References/OpenCRAVAT/modules"
+    if not local:
+        raise ValueError(
+            "Start the local Kiri engine before installing OpenCRAVAT modules."
+        )
+    prefix, env = local
+    route = kiri_sequence_tool("opencravat_run")
+    if route is None:
+        install_kiri_image(
+            prefix,
+            env,
+            "kiri-opencravat.Dockerfile",
+            KIRI_OPENCRAVAT_IMAGE,
+            ROOT / "DNA_Software/Launcher/Locks",
+        )
+        route = kiri_sequence_tool("opencravat_run")
+    if route is None:
+        raise RuntimeError("The OpenCRAVAT image is unavailable in local Kiri.")
+    if kiri_opencravat_modules(ROOT):
+        return {
+            "tool": "opencravat-models",
+            "path": str(modules),
+            "status": "Modules ready",
+        }
+    from engine import kiri_bind
+
+    modules.mkdir(parents=True, exist_ok=True)
+    command = [
+        *prefix,
+        "run",
+        "--rm",
+        "--pull=never",
+        "--platform",
+        route.platform,
+        "--mount",
+        kiri_bind(modules, "/modules"),
+        "--entrypoint",
+        "/bin/sh",
+    ]
+    setup = ""
+    ca = ROOT / "DNA_Software/UserData/Launcher/Nextflow/local-ca.pem"
+    if ca.is_file():
+        command += ["--mount", kiri_bind(ca, "/local-ca.pem", readonly=True)]
+        setup = (
+            "cat /etc/ssl/certs/ca-certificates.crt /local-ca.pem >/tmp/ca.pem\n"
+            "export REQUESTS_CA_BUNDLE=/tmp/ca.pem\n"
+        )
+    install_steps = [
+        shlex.join(
+            ["oc", "module", "install", "--md", "/modules", "-y", "-v", version, name]
+        )
+        for name, version in OPENCRAVAT_MODULE_VERSIONS.items()
+    ]
+    subprocess.run(
+        [*command, route.image, "-ec", setup + "\n".join(install_steps)],
+        env=env,
+        check=True,
+    )
+    if not kiri_opencravat_modules(ROOT):
+        raise RuntimeError(
+            "OpenCRAVAT did not install all required module files and indices."
+        )
+    return {
+        "tool": "opencravat-models",
+        "path": str(modules),
+        "status": "Modules ready",
+    }
+
+
 def fetch(artifact, license_reviewed=False):
+    import tempfile
+
     item = next(i for i in LOCK["items"] if i["id"] == artifact)
     if item.get("license_notice") and not license_reviewed:
         raise ValueError(LICENSE)
@@ -702,28 +1258,48 @@ def fetch(artifact, license_reviewed=False):
             raise ValueError("Existing archive deviates from the check value.")
         return p
     p.parent.mkdir(parents=True, exist_ok=True)
-    part = p.with_suffix(p.suffix + ".part")
-    sha = hashlib.sha256()
-    with (
-        network_io.open_https(
-            urllib.request.Request(
-                item["url"],
-                headers={"User-Agent": "DNAWorkbench-explicit-optional-download"},
-            ),
-            timeout=90,
-        ) as response,
-        part.open("wb") as out,
-    ):
-        while True:
-            chunk = response.read(8 * 1024 * 1024)
-            if not chunk:
-                break
-            out.write(chunk)
-            sha.update(chunk)
-    if sha.hexdigest() != expected:
+    expected_size = item.get("expected_bytes")
+    if not expected_size:
+        with tempfile.TemporaryDirectory(dir=p.parent) as directory:
+            return fetch_verified(item, p, Path(directory) / "download.part")
+    return fetch_verified(item, p, p.with_suffix(p.suffix + ".part"))
+
+
+def fetch_verified(item, destination, part):
+    if part.is_symlink():
+        raise ValueError("Refusing a linked partial download.")
+    expected_size = item.get("expected_bytes")
+    headers = {"User-Agent": "DNAWorkbench-explicit-optional-download"}
+    offset = part.stat().st_size if expected_size and part.is_file() else 0
+    if expected_size and offset > expected_size:
+        raise ValueError("Partial download is larger than the pinned archive.")
+    if offset:
+        headers["Range"] = f"bytes={offset}-"
+    if not expected_size or offset != expected_size:
+        with network_io.open_https(
+            urllib.request.Request(item["url"], headers=headers), timeout=90
+        ) as response:
+            resume = offset and response.status == 206
+            if resume and response.headers.get("Content-Range") != (
+                f"bytes {offset}-{expected_size - 1}/{expected_size}"
+            ):
+                raise ValueError("The provider returned an unexpected download range.")
+            size = offset if resume else 0
+            with part.open("ab" if resume else "wb") as out:
+                while chunk := response.read(1024 * 1024):
+                    size += len(chunk)
+                    if expected_size and size > expected_size:
+                        raise ValueError("Download is larger than the pinned archive.")
+                    out.write(chunk)
+            if expected_size and size != expected_size:
+                raise ValueError("Incomplete download. Retry to resume it.")
+    with part.open("rb") as stream:
+        digest = hashlib.file_digest(stream, "sha256").hexdigest()
+    if digest != item["expected_sha256"]:
+        part.unlink()
         raise ValueError("Download checksum is not correct.")
-    part.replace(p)
-    return p
+    part.replace(destination)
+    return destination
 
 
 def shell(lines):
@@ -873,13 +1449,45 @@ def install_on_linux_host(tool):
 def install(tool, license_reviewed=False):
     if tool not in TOOLS:
         raise ValueError("Unbekanntes Werkzeug.")
-    if tool == "rfmix" and not license_reviewed:
+    if tool == "rfmix" and not (license_reviewed or rfmix_license_reviewed()):
         raise ValueError(LICENSE)
+    if tool == "vep-cache":
+        return install_vep_cache()
+    if tool in {"rfmix", "vep", "open-cravat", "opencravat-models"}:
+        local = kiri_docker()
+        if local and tool == "rfmix":
+            return install_kiri_rfmix(*local)
+        if local and tool == "vep":
+            if not kiri_sequence_tool("vep"):
+                prefix, env = local
+                subprocess.run([*prefix, "pull", KIRI_VEP_IMAGE], env=env, check=True)
+            if not kiri_sequence_tool("vep"):
+                raise RuntimeError(
+                    "The Ensembl VEP image is unavailable in local Kiri."
+                )
+            return install_vep_cache()
+        if tool == "opencravat-models" or (local and tool == "open-cravat"):
+            return install_opencravat_models(local)
+    if os.name == "nt" and tool in NATIVE_PIPELINES and kiri_sequence_tool("nextflow"):
+        state = linux_state()
+        if not state["disk"] or state["wrong_location"]:
+            fetch("nextflow-dist")
+            return install_native_pipeline(tool)
+    if os.name != "nt" and tool in NATIVE_PIPELINES:
+        return install_native_pipeline(tool)
+    if os.name != "nt" and tool == "nextflow":
+        return install_native_nextflow()
     arm_guest = hardware.windows_arm64()
-    if arm_guest and tool in WSL_X64_ONLY:
-        raise ValueError(
-            "The bundled Linux tool targets x86-64. Use a compatible build on the ARM64 Ubuntu PATH."
-        )
+    if os.name != "nt" and tool == "haplogrep":
+        return install_native_haplogrep()
+    if os.name != "nt" and tool in NATIVE_SEQUENCE_TOOLS:
+        if (
+            tool == "mosdepth"
+            and not uses_host_tool_packages()
+            and not host_command(tool)
+        ):
+            return install_linux_local(tool)
+        return install_native_sequence_tool(tool)
     if uses_host_tool_packages():
         if tool == "seqviz":
             import visual_tools
@@ -907,7 +1515,11 @@ def install(tool, license_reviewed=False):
         if hosted:
             return hosted
     companion = None
-    if os.name == "nt" and tool in WINDOWS_COMPANION:
+    if (
+        os.name == "nt"
+        and tool in WINDOWS_COMPANION
+        and not (arm_guest and tool in {"plink2", "haplogrep"})
+    ):
         companion = extract_windows_companion(tool)
     state = linux_state() if tool not in WINDOWS else {"running": False}
     if tool not in WINDOWS and not state["running"]:
@@ -1133,7 +1745,9 @@ def install(tool, license_reviewed=False):
         lines += [
             "mkdir -p /opt/dna/cache/nextflow /opt/dna/sources/nextflow-assets",
             "install -m755 " + Q(linux_path(archive)) + " /opt/dna/bin/nextflow",
-            "NXF_VER=26.10.5 NXF_HOME=/opt/dna/cache/nextflow /opt/dna/bin/nextflow -version",
+            "NXF_VER="
+            + Q(NEXTFLOW_DIST["version"])
+            + " NXF_HOME=/opt/dna/cache/nextflow /opt/dna/bin/nextflow -version",
         ]
     elif tool in ("sarek", "pgsc-calc"):
         install("nextflow")
@@ -1146,7 +1760,9 @@ def install(tool, license_reviewed=False):
             + item["commit"]
         )
         body = (
-            "export NXF_HOME=/opt/dna/cache/nextflow\nexport NXF_ASSETS=/opt/dna/sources/nextflow-assets\nexport NXF_VER=26.10.5\nexport DOCKER_HOST=unix:///run/docker-dna.sock\nexec /opt/dna/bin/nextflow run "
+            "export NXF_HOME=/opt/dna/cache/nextflow\nexport NXF_ASSETS=/opt/dna/sources/nextflow-assets\nexport NXF_VER="
+            + Q(NEXTFLOW_DIST["version"])
+            + "\nunset DOCKER_CONTEXT DOCKER_TLS_VERIFY DOCKER_CERT_PATH\nexport DOCKER_HOST=unix:///run/docker-dna.sock\nexec /opt/dna/bin/nextflow run "
             + Q(folder)
             + " -profile docker -c "
             + Q(linux_path(ROOT / "DNA_Software/Start/dna-nextflow.config"))
@@ -1156,6 +1772,7 @@ def install(tool, license_reviewed=False):
         lines.append("test -f " + Q(folder + "/main.nf"))
     elif tool == "docker":
         apt("docker.io")
+        lines.append("usermod -aG docker dna")
     elif tool == "mosdepth":
         if arm_guest:
             apt("mosdepth")
@@ -1173,6 +1790,18 @@ def install(tool, license_reviewed=False):
         jar = fetch(artifact)
         apt("openjdk-21-jre-headless")
         wrapper("pharmcat", "exec java -jar " + Q(linux_path(jar)) + ' "$@"')
+    elif tool == "plink2" and arm_guest:
+        apt("plink2")
+        lines += [
+            "/usr/bin/plink2 --version",
+            "for flag in make-pgen make-king-table pca indep-pairwise export; do",
+            '  /usr/bin/plink2 --help "$flag" | grep -F -- "--$flag" >/dev/null || {',
+            '    printf "Installed PLINK 2 lacks required option: %s\\n" "$flag" >&2',
+            "    exit 1",
+            "  }",
+            "done",
+            "ln -sfn /usr/bin/plink2 /opt/dna/bin/plink2",
+        ]
     elif tool == "plink2":
         archive = fetch(artifact)
         folder = ROOT / "DNA_Software/Downloads/PLINK2_Linux"
@@ -1186,25 +1815,24 @@ def install(tool, license_reviewed=False):
     elif tool == "haplogrep":
         archive = fetch(artifact)
         tree = fetch("haplogrep-default-tree")
-        apt("unzip")
+        apt("unzip openjdk-21-jre-headless")
         dest = "/opt/dna/tools/haplogrep3"
+        config = haplogrep_config(
+            linux_path(ROOT / "DNA_Software/UserData/Haplogrep/jobs")
+        )
         lines += [
             "mkdir -p " + dest,
             "tar -xzf " + Q(linux_path(archive)) + " -C " + dest,
-            "mkdir -p " + dest + "/trees/phylotree-fu-rcrs-1.3",
-            "unzip -o "
-            + Q(linux_path(tree))
-            + " -d "
+            "mkdir -p " + dest + "/" + HAPLOGREP_TREE,
+            "unzip -o " + Q(linux_path(tree)) + " -d " + dest + "/" + HAPLOGREP_TREE,
+            "printf %s " + Q(config) + " > " + dest + "/haplogrep3.yaml",
+            "(cd "
             + dest
-            + "/trees/phylotree-fu-rcrs-1.3",
+            + " && java -jar ./haplogrep3.jar trees | grep -F -- "
+            + Q(HAPLOGREP_TREE_ID)
+            + ")",
         ]
-        config = (
-            "port: 7001\nworkspace: "
-            + json.dumps(linux_path(ROOT / "DNA_Software/UserData/Haplogrep/jobs"))
-            + "\nrepositories: []\nphylotrees:\n  - trees/phylotree-fu-rcrs-1.3/tree.yaml\nexamples: []\n"
-        )
-        lines.append("printf %s " + Q(config) + " > " + dest + "/haplogrep3.yaml")
-        wrapper("haplogrep", "cd " + dest + '\nexec ./haplogrep3 "$@"')
+        wrapper("haplogrep", "cd " + dest + '\nexec java -jar ./haplogrep3.jar "$@"')
     elif tool == "hap-ibd":
         archive = fetch(artifact)
         apt("openjdk-21-jdk-headless")
@@ -1253,21 +1881,7 @@ if __name__ == "__main__":
         if action == "acknowledge":
             if sys.argv[2] != "rfmix" or "--license-reviewed" not in sys.argv:
                 raise ValueError("Explicit license testing is required.")
-            LOG.mkdir(parents=True, exist_ok=True)
-            (LOG / "rfmix-license-reviewed.json").write_text(
-                json.dumps(
-                    {
-                        "source": TOOLS["rfmix"][0],
-                        "notice": LICENSE,
-                        "notice_sha256": hashlib.sha256(
-                            (APP / "Notices/RFMIX-LICENSE.txt").read_bytes()
-                        ).hexdigest(),
-                        "confirmed_by_user": True,
-                        "time": datetime.datetime.now().astimezone().isoformat(),
-                    }
-                ),
-                encoding="utf-8",
-            )
+            acknowledge_rfmix()
             result = {
                 "status": "User information is stored for the license check; this does not grant a license."
             }

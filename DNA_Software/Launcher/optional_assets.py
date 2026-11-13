@@ -186,6 +186,10 @@ def download(args):
                 "Destination contains different bytes; nothing overwritten"
             )
         return record(row, cache, digest)
+    if expected and item.get("expected_bytes"):
+        import on_demand
+
+        return record(row, on_demand.fetch(row["id"]), expected)
 
     folder = cache.parent if expected else Path(row["staging_folder"])
     folder.mkdir(parents=True, exist_ok=True)

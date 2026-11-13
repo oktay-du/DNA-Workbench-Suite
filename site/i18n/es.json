@@ -5,7 +5,7 @@
   "t04": "Descargas",
   "t05": "Idioma del sitio web",
   "t06": "No se pudo cargar el idioma seleccionado.",
-  "t07": "Versión 1.0.6",
+  "t07": "Versión 1.0.7",
   "t08": "Tu genoma. Tu espacio de trabajo.",
   "t09": "Organice archivos de ADN y registros familiares, verifique de dónde provienen los resultados y guarde su investigación en su propia computadora.",
   "t10": "Descargar DNA Workbench",
@@ -57,5 +57,6 @@
   "t58": "Administrador de archivos de perfil que enumera archivos de ejemplo de ADN sintético",
   "t59": "Selector de idioma DNA Workbench con banderas y nombres de idiomas en sus propios scripts",
   "t60": "Idiomas de interfaz disponibles",
-  "t61": "Código QR de donación Buy Me a Coffee"
+  "t61": "Código QR de donación Buy Me a Coffee",
+  "t62": "Ejecuta Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT y otros flujos opcionales en tu equipo. En Windows x64, DeepVariant puede usar NVIDIA CUDA mediante Docker Desktop."
 }

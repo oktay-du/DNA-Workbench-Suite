@@ -5,7 +5,7 @@
   "t04": "Unduhan",
   "t05": "Bahasa situs web",
   "t06": "Bahasa yang dipilih tidak dapat dimuat.",
-  "t07": "Rilis 1.0.6",
+  "t07": "Rilis 1.0.7",
   "t08": "Genom Anda. Ruang kerja Anda.",
   "t09": "Atur file DNA dan catatan keluarga, periksa dari mana hasilnya berasal, dan simpan penelitian Anda di komputer Anda sendiri.",
   "t10": "Unduh DNA Workbench",
@@ -57,5 +57,6 @@
   "t58": "Manajer file profil mencantumkan file contoh DNA sintetis",
   "t59": "Pemilih bahasa DNA Workbench dengan bendera dan nama bahasa dalam skripnya sendiri",
   "t60": "Bahasa antarmuka yang tersedia",
-  "t61": "Kode QR donasi Buy Me a Coffee"
+  "t61": "Kode QR donasi Buy Me a Coffee",
+  "t62": "Jalankan Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT, dan alur kerja opsional lainnya secara lokal. Di Windows x64, DeepVariant dapat menggunakan NVIDIA CUDA melalui Docker Desktop."
 }

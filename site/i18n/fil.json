@@ -5,7 +5,7 @@
   "t04": "Mga download",
   "t05": "Wika ng website",
   "t06": "Hindi ma-load ang napiling wika.",
-  "t07": "Paglabas 1.0.6",
+  "t07": "Paglabas 1.0.7",
   "t08": "Ang iyong genome. Ang iyong workspace.",
   "t09": "Ayusin ang mga file ng DNA at mga talaan ng pamilya, tingnan kung saan nanggaling ang mga resulta, at panatilihin ang iyong pananaliksik sa iyong sariling computer.",
   "t10": "I-download ang DNA Workbench",
@@ -57,5 +57,6 @@
   "t58": "Tagapamahala ng file ng profile na naglilista ng mga halimbawang file ng sintetikong DNA",
   "t59": "DNA Workbench tagapili ng wika na may mga flag at pangalan ng wika sa sarili nilang mga script",
   "t60": "Magagamit na mga wika ng interface",
-  "t61": "Buy Me a Coffee donasyon QR code"
+  "t61": "Buy Me a Coffee donasyon QR code",
+  "t62": "Patakbuhin nang lokal ang Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT at iba pang opsyonal na workflow. Sa Windows x64, magagamit ng DeepVariant ang NVIDIA CUDA sa pamamagitan ng Docker Desktop."
 }

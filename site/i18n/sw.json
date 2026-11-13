@@ -5,7 +5,7 @@
   "t04": "Vipakuliwa",
   "t05": "Lugha ya tovuti",
   "t06": "Lugha iliyochaguliwa haikuweza kupakiwa.",
-  "t07": "Kutolewa 1.0.6",
+  "t07": "Kutolewa 1.0.7",
   "t08": "Jenomu yako. Nafasi yako ya kazi.",
   "t09": "Panga faili za DNA na rekodi za familia, angalia matokeo yalipotoka, na uweke utafiti wako kwenye kompyuta yako mwenyewe.",
   "t10": "Pakua DNA Workbench",
@@ -57,5 +57,6 @@
   "t58": "Kidhibiti faili cha wasifu kinachoorodhesha faili za mfano za DNA",
   "t59": "DNA Workbench kiteua lugha kilicho na bendera na majina ya lugha katika hati zao",
   "t60": "Lugha za kiolesura zinazopatikana",
-  "t61": "Msimbo wa QR wa mchango wa Buy Me a Coffee"
+  "t61": "Msimbo wa QR wa mchango wa Buy Me a Coffee",
+  "t62": "Endesha Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT na michakato mingine ya hiari kwenye kompyuta yako. Kwenye Windows x64, DeepVariant inaweza kutumia NVIDIA CUDA kupitia Docker Desktop."
 }

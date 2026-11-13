@@ -54,6 +54,261 @@ class ToolHostTests(unittest.TestCase):
         self.assertFalse(path.startswith("/mnt/"))
         self.assertTrue(path.endswith("test_tool_hosts.py"))
 
+    def test_mac_desktop_path_finds_apple_silicon_homebrew(self):
+        with (
+            mock.patch.object(system_tools.sys, "platform", "darwin"),
+            mock.patch.object(system_tools.platform, "machine", return_value="arm64"),
+            mock.patch.object(system_tools.shutil, "which") as which,
+        ):
+            system_tools.native_sequence_command(on_demand.ROOT, "fastp")
+        self.assertEqual(which.call_args.args, ("fastp",))
+        self.assertEqual(
+            which.call_args.kwargs["path"].split(os.pathsep)[-1], "/opt/homebrew/bin"
+        )
+
+    def test_native_brew_install_rechecks_executable(self):
+        with (
+            mock.patch.object(on_demand, "native_brew", return_value="/brew/bin/brew"),
+            mock.patch.object(
+                on_demand, "host_command", side_effect=[None, "/brew/bin/bcftools"]
+            ),
+            mock.patch.object(on_demand.subprocess, "run") as run,
+        ):
+            result = on_demand.install_native_sequence_tool("bcftools")
+        run.assert_called_once_with(
+            ["/brew/bin/brew", "install", "bcftools"], check=True
+        )
+        self.assertEqual(result["path"], "/brew/bin/bcftools")
+
+    def test_kiri_probe_uses_only_the_local_endpoint_and_cached_image(self):
+        with (
+            mock.patch.object(
+                system_tools, "kiri_windows_pipe_exists", return_value=True
+            ),
+            mock.patch.dict(
+                os.environ,
+                {"DOCKER_CONTEXT": "remote", "DOCKER_HOST": "tcp://remote:2375"},
+            ),
+            mock.patch.object(system_tools.platform, "machine", return_value="x86_64"),
+            mock.patch.object(Path, "is_socket", return_value=True),
+            mock.patch.object(
+                system_tools.shutil, "which", return_value=str(Path(__file__).resolve())
+            ),
+            mock.patch.object(
+                system_tools.subprocess,
+                "run",
+                side_effect=[
+                    mock.Mock(returncode=0, stdout="amd64\n"),
+                    mock.Mock(
+                        returncode=0, stdout='{"Os":"linux","Architecture":"amd64"}'
+                    ),
+                ],
+            ) as run,
+        ):
+            prefix, env, platform, image = system_tools.kiri_sequence_tool("bcftools")
+        self.assertEqual(prefix[1], "--host")
+        self.assertTrue(prefix[2].startswith(("npipe://", "unix://")))
+        self.assertNotIn("DOCKER_HOST", env)
+        self.assertNotIn("DOCKER_CONTEXT", env)
+        self.assertEqual(platform, "linux/amd64")
+        self.assertEqual(image, system_tools.KIRI_BCFTOOLS_IMAGE)
+        self.assertEqual(
+            run.call_args.args[0],
+            [*prefix, "image", "inspect", "--format", "{{json .}}", image],
+        )
+
+    def test_deepvariant_rosetta_requires_working_tensorflow(self):
+        executable = str(Path(__file__).resolve())
+        for system, outcome in (("darwin", 0), ("darwin", 132), ("linux", 0)):
+            with (
+                self.subTest(system=system, outcome=outcome),
+                mock.patch.object(system_tools.os, "name", "posix"),
+                mock.patch.object(system_tools.sys, "platform", system),
+                mock.patch.object(
+                    system_tools,
+                    "Path",
+                    mock.Mock(
+                        return_value=mock.Mock(
+                            is_socket=lambda: True, is_absolute=lambda: True
+                        ),
+                        home=lambda: mock.MagicMock(),
+                    ),
+                ),
+                mock.patch.object(
+                    system_tools.shutil, "which", return_value=executable
+                ),
+                mock.patch.object(system_tools.os.path, "isabs", return_value=True),
+                mock.patch.object(
+                    system_tools.subprocess,
+                    "run",
+                    side_effect=[
+                        mock.Mock(returncode=0, stdout="arm64"),
+                        mock.Mock(
+                            returncode=0, stdout='{"Os":"linux","Architecture":"amd64"}'
+                        ),
+                        mock.Mock(returncode=outcome, stdout="DNA_DEEPVARIANT_CPU_OK"),
+                    ],
+                ) as run,
+            ):
+                route = system_tools.kiri_sequence_tool("deepvariant")
+            if system == "darwin" and outcome == 0:
+                self.assertEqual(route.platform, "linux/amd64")
+                self.assertIn("--network=none", run.call_args.args[0])
+                self.assertIn("--pull=never", run.call_args.args[0])
+                self.assertIn("/tmp:rw,nosuid,nodev,size=64m", run.call_args.args[0])
+            else:
+                self.assertIsNone(route)
+            self.assertEqual(run.call_count, 3 if system == "darwin" else 1)
+
+    def test_kiri_vep_accepts_only_the_pinned_archive_for_the_engine_architecture(self):
+        for arch, image_id in system_tools.KIRI_VEP_IMAGE_IDS.items():
+            for reported_id in (image_id, "sha256:" + "0" * 64):
+                with (
+                    self.subTest(arch=arch, reported_id=reported_id),
+                    mock.patch.object(
+                        system_tools, "kiri_windows_pipe_exists", return_value=True
+                    ),
+                    mock.patch.object(Path, "is_socket", return_value=True),
+                    mock.patch.object(
+                        system_tools.shutil,
+                        "which",
+                        return_value=str(Path(__file__).resolve()),
+                    ),
+                    mock.patch.object(
+                        system_tools.subprocess,
+                        "run",
+                        side_effect=[
+                            mock.Mock(returncode=0, stdout=arch),
+                            mock.Mock(returncode=1, stdout=""),
+                            mock.Mock(
+                                returncode=0,
+                                stdout=json.dumps(
+                                    {
+                                        "Os": "linux",
+                                        "Architecture": arch,
+                                        "Id": reported_id,
+                                    }
+                                ),
+                            ),
+                        ],
+                    ) as run,
+                ):
+                    route = system_tools.kiri_sequence_tool("vep")
+                self.assertEqual(run.call_args.args[0][-1], image_id)
+                if reported_id == image_id:
+                    self.assertEqual(route.platform, "linux/" + arch)
+                    self.assertEqual(route.image, image_id)
+                else:
+                    self.assertIsNone(route)
+
+    def test_kiri_arm64_engine_requires_an_arm64_image(self):
+        image_id = "sha256:" + "a" * 64
+        for image_arch in ("arm64", "amd64"):
+            with (
+                mock.patch.object(
+                    system_tools, "kiri_windows_pipe_exists", return_value=True
+                ),
+                self.subTest(image_arch=image_arch),
+                mock.patch.object(
+                    system_tools.platform, "machine", return_value="x86_64"
+                ),
+                mock.patch.object(Path, "is_socket", return_value=True),
+                mock.patch.object(
+                    system_tools.shutil,
+                    "which",
+                    return_value=str(Path(__file__).resolve()),
+                ),
+                mock.patch.object(
+                    system_tools.subprocess,
+                    "run",
+                    side_effect=[
+                        mock.Mock(returncode=0, stdout="arm64"),
+                        mock.Mock(
+                            returncode=0,
+                            stdout=json.dumps(
+                                {
+                                    "Os": "linux",
+                                    "Architecture": image_arch,
+                                    "Id": image_id,
+                                }
+                            ),
+                        ),
+                    ],
+                ) as run,
+            ):
+                route = system_tools.kiri_sequence_tool("fastp")
+            self.assertEqual(
+                run.call_args.args[0][-1], system_tools.KIRI_SEQUENCE_IMAGE
+            )
+            if image_arch == "arm64":
+                self.assertEqual(
+                    (route.platform, route.image), ("linux/arm64", image_id)
+                )
+            else:
+                self.assertIsNone(route)
+
+    def test_supported_tasks_report_kiri_as_ready(self):
+        with (
+            mock.patch.object(on_demand.hardware, "windows_arm64", return_value=False),
+            mock.patch.object(
+                on_demand, "linux_state", return_value={"running": False}
+            ),
+            mock.patch.object(on_demand, "host_tool_available", return_value=False),
+            mock.patch.object(
+                on_demand, "kiri_sequence_tool", return_value=(["docker"], {})
+            ),
+        ):
+            convert = on_demand.status("variant_convert")
+            self.assertTrue(convert["ready"])
+            self.assertFalse(convert["needs_linux"])
+            self.assertFalse(
+                on_demand.status("variant_convert", allow_kiri=False)["ready"]
+            )
+            self.assertTrue(on_demand.status("vcf_qc")["ready"])
+            self.assertTrue(on_demand.status("filter")["ready"])
+            self.assertTrue(on_demand.status("merge")["ready"])
+            self.assertTrue(on_demand.status("roh")["ready"])
+            self.assertTrue(on_demand.status("kinship")["ready"])
+            export = on_demand.status("ref_export")
+            self.assertTrue(export["ready"])
+            self.assertEqual(
+                {r["id"] for r in export["requirements"]}, {"plink2", "bcftools"}
+            )
+            on_demand.kiri_sequence_tool.assert_called_with("ref_export")
+            self.assertTrue(on_demand.status("multiqc")["ready"])
+            self.assertTrue(on_demand.status("beagle")["ready"])
+            on_demand.kiri_sequence_tool.assert_called_with("beagle")
+            self.assertTrue(on_demand.status("ibd")["ready"])
+            on_demand.kiri_sequence_tool.assert_called_with("hap-ibd")
+            self.assertTrue(on_demand.status("peddy")["ready"])
+            on_demand.kiri_sequence_tool.assert_called_with("peddy")
+            self.assertTrue(on_demand.status("whatshap")["ready"])
+            on_demand.kiri_sequence_tool.assert_called_with("whatshap")
+            for task in ("truvari", "mito", "yhaplo", "pharmcat", "gatk_validate"):
+                self.assertTrue(on_demand.status(task)["ready"])
+                on_demand.kiri_sequence_tool.assert_called_with(task)
+            for task in ("identity", "conflicts"):
+                self.assertTrue(on_demand.status(task)["ready"])
+                on_demand.kiri_sequence_tool.assert_called_with("pysam")
+            self.assertTrue(on_demand.status("pca")["ready"])
+            on_demand.kiri_sequence_tool.assert_called_with("pca")
+            normalization = on_demand.status("normalize")
+            self.assertTrue(normalization["ready"])
+            self.assertEqual(
+                {record["id"] for record in normalization["requirements"]},
+                {"samtools", "bcftools"},
+            )
+            on_demand.kiri_sequence_tool.assert_called_with("normalize")
+            self.assertTrue(on_demand.status("fastq_qc")["ready"])
+            self.assertTrue(on_demand.status("inspect", "example.bam")["ready"])
+            self.assertTrue(on_demand.status("inspect", "chip.txt")["ready"])
+            self.assertTrue(on_demand.status("chip_vcf")["ready"])
+            on_demand.kiri_sequence_tool.assert_called_with("chip_vcf")
+            alignment = on_demand.status("bam_qc")
+            self.assertTrue(alignment["ready"])
+            self.assertTrue(all(r["installed"] for r in alignment["requirements"]))
+            on_demand.kiri_sequence_tool.assert_called_with("bam_qc")
+
     def test_linux_file_is_installed_without_wsl(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -79,6 +334,76 @@ class ToolHostTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "compatible host build"):
                 on_demand.install("mosdepth")
             pinned_install.assert_not_called()
+
+    def test_haplogrep_native_requires_the_expected_local_tree_before_publish(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            archive = root / "haplogrep.zip"
+            with zipfile.ZipFile(archive, "w") as bundle:
+                bundle.writestr("haplogrep3.jar", b"test")
+                bundle.writestr("tree.yaml", "id: synthetic")
+            output = mock.Mock(
+                returncode=0, stdout=b"Available trees: other", stderr=b""
+            )
+            with (
+                mock.patch.object(on_demand, "ROOT", root),
+                mock.patch.object(on_demand, "fetch", return_value=archive),
+                mock.patch.object(
+                    on_demand.shutil, "which", return_value="/usr/bin/java"
+                ),
+                mock.patch.object(
+                    on_demand.subprocess, "run", return_value=output
+                ) as run,
+            ):
+                wrapper = root / "DNA_Software/UserData/Launcher/Native/bin/haplogrep"
+                with self.assertRaisesRegex(ValueError, "local reference tree"):
+                    on_demand.install_native_haplogrep()
+                self.assertFalse(wrapper.exists())
+                output.stdout = b"Available trees: phylotree-fu-rcrs@1.3"
+                self.assertEqual(
+                    on_demand.install_native_haplogrep()["path"], str(wrapper)
+                )
+                self.assertEqual(run.call_args.args[0][-1], "trees")
+                self.assertIn(' -jar ./haplogrep3.jar "$@"', wrapper.read_text())
+                self.assertTrue(Path(run.call_args.args[0][0]).is_absolute())
+                config = (
+                    root
+                    / "DNA_Software/UserData/Launcher/Native/Haplogrep/haplogrep3.yaml"
+                )
+                self.assertIn("repositories: []", config.read_text())
+                self.assertIn(
+                    "trees/phylotree-fu-rcrs/1.3/tree.yaml", config.read_text()
+                )
+
+    def test_wsl_arm64_plink_install_uses_native_package_and_checks_options(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            with (
+                mock.patch.object(on_demand.os, "name", "nt"),
+                mock.patch.object(
+                    on_demand.hardware, "windows_arm64", return_value=True
+                ),
+                mock.patch.object(
+                    on_demand, "linux_state", return_value={"running": True}
+                ),
+                mock.patch.object(on_demand, "extract_windows_companion") as companion,
+                mock.patch.object(on_demand, "fetch") as fetch,
+                mock.patch.object(on_demand, "LOG", Path(tmp)),
+                mock.patch.object(
+                    on_demand, "shell", return_value="install.log"
+                ) as shell,
+            ):
+                on_demand.install("plink2")
+                lines = shell.call_args.args[0]
+                self.assertIn(
+                    "apt-get install -y --no-install-recommends plink2", lines
+                )
+                self.assertIn(
+                    "for flag in make-pgen make-king-table pca indep-pairwise export; do",
+                    lines,
+                )
+                self.assertIn("ln -sfn /usr/bin/plink2 /opt/dna/bin/plink2", lines)
+                companion.assert_not_called()
+                fetch.assert_not_called()
 
     def test_windows_companion_extracts_the_exe(self):
         with tempfile.TemporaryDirectory() as tmp:

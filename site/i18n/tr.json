@@ -5,7 +5,7 @@
   "t04": "İndirilenler",
   "t05": "Web sitesi dili",
   "t06": "Seçilen dil yüklenemedi.",
-  "t07": "Sürüm 1.0.6",
+  "t07": "Sürüm 1.0.7",
   "t08": "Senin genomun. Çalışma alanınız.",
   "t09": "DNA dosyalarını ve aile kayıtlarını düzenleyin, sonuçların nereden geldiğini kontrol edin ve araştırmanızı kendi bilgisayarınızda saklayın.",
   "t10": "DNA Workbench'yi indirin",
@@ -57,5 +57,6 @@
   "t58": "Sentetik DNA örnek dosyalarını listeleyen profil dosya yöneticisi",
   "t59": "Kendi komut dosyalarında bayraklar ve dil adlarıyla DNA Workbench dil seçici",
   "t60": "Mevcut arayüz dilleri",
-  "t61": "Buy Me a Coffee bağış QR kodu"
+  "t61": "Buy Me a Coffee bağış QR kodu",
+  "t62": "Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT ve diğer isteğe bağlı iş akışlarını yerel olarak çalıştırın. Windows x64'te DeepVariant, Docker Desktop üzerinden NVIDIA CUDA kullanabilir."
 }

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "app_version": "1.0.6",
+  "app_version": "1.0.7",
   "release_repository": "oktay-du/DNA-Workbench-Suite",
   "items": [
     {
@@ -633,8 +633,11 @@
       "url": "https://ftp.ensembl.org/pub/release-116/variation/indexed_vep_cache/homo_sapiens_vep_116_GRCh38.tar.gz",
       "relative_path": "References/VEP/116/homo_sapiens_vep_116_GRCh38.tar.gz",
       "version": "116-GRCh38",
-      "source": "https://ftp.ensembl.org/pub/current_variation/indexed_vep_cache/",
+      "source": "https://www.ensembl.org/info/docs/tools/vep/script/vep_cache.html",
+      "license": "Ensembl terms of use",
       "expected_bytes": 27644657162,
+      "expected_sha256": "014c7dd9bb5ad06665866d62eb80f31ca761197bcb9b59280300676f996e600d",
+      "checksum_origin": "locally recorded from downloaded public archive; not independent publisher signature",
       "id": "vep-cache-116-grch38",
       "group": "references"
     },

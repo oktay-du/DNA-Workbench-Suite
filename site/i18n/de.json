@@ -5,7 +5,7 @@
   "t04": "Downloads",
   "t05": "Sprache der Website",
   "t06": "Die ausgewählte Sprache konnte nicht geladen werden.",
-  "t07": "Version 1.0.6",
+  "t07": "Version 1.0.7",
   "t08": "Dein Genom. Dein Arbeitsbereich.",
   "t09": "Ordne DNA-Dateien und Familienunterlagen, prüfe die Herkunft deiner Ergebnisse und behalte deine Forschung auf deinem eigenen Rechner.",
   "t10": "DNA Workbench herunterladen",
@@ -57,5 +57,6 @@
   "t58": "Dateiverwaltung mit synthetischen Beispieldateien",
   "t59": "Sprachauswahl mit Flaggen und den Namen der Sprachen in ihrer jeweiligen Schrift",
   "t60": "Verfügbare Oberflächensprachen",
-  "t61": "Buy Me a Coffee Spenden-QR-Code"
+  "t61": "Buy Me a Coffee Spenden-QR-Code",
+  "t62": "Führe Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT und weitere optionale Workflows lokal aus. Unter Windows x64 kann DeepVariant NVIDIA CUDA über Docker Desktop nutzen."
 }

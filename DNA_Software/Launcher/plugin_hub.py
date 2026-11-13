@@ -476,7 +476,9 @@ def submit(r):
                     command,
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
-                    timeout=3600,
+                    timeout=14400
+                    if id in {"vep", "vep-cache", "open-cravat", "opencravat-models"}
+                    else 3600,
                     env=dict(
                         os.environ, PYTHONIOENCODING="utf-8", PYTHONNOUSERSITE="1"
                     ),

@@ -5,7 +5,7 @@
   "t04": "Letöltések",
   "t05": "Weboldal nyelve",
   "t06": "A kiválasztott nyelvet nem sikerült betölteni.",
-  "t07": "Kiadás 1.0.6",
+  "t07": "Kiadás 1.0.7",
   "t08": "A genomod. Az Ön munkaterülete.",
   "t09": "Rendszerezze a DNS-fájlokat és a családi nyilvántartásokat, ellenőrizze, honnan származnak az eredmények, és tartsa a kutatást a saját számítógépén.",
   "t10": "Töltse le a DNA Workbench-t",
@@ -57,5 +57,6 @@
   "t58": "Szintetikus DNS-példafájlokat felsoroló profilfájlkezelő",
   "t59": "DNA Workbench nyelvválasztó zászlókkal és nyelvnevekkel saját szkriptekben",
   "t60": "Elérhető felületi nyelvek",
-  "t61": "Buy Me a Coffee adomány QR-kód"
+  "t61": "Buy Me a Coffee adomány QR-kód",
+  "t62": "Futtasd helyben a Sarek, a PGS Catalog Calculator, az RFMix, az Ensembl VEP, az OpenCRAVAT és más választható munkafolyamatokat. Windows x64 alatt a DeepVariant a Docker Desktopon keresztül használhatja az NVIDIA CUDA-t."
 }

@@ -5,7 +5,7 @@
   "t04": "Soo dejinta",
   "t05": "Luuqadda mareegaha",
   "t06": "Luqada la doortay lama rari karo",
-  "t07": "Siideynta 1.0.6",
+  "t07": "Siideynta 1.0.7",
   "t08": "genome-kaaga Goobtaada shaqada",
   "t09": "Abaabulaan faylasha DNA-ga iyo diiwaanka qoyska, hubi halka ay natiijadu ka timid, oo ku hay cilmi-baaristaada kumbuyuutarkaaga.",
   "t10": "Soo deji DNA Workbench",
@@ -57,5 +57,6 @@
   "t58": "Maareeyaha faylka xogta oo taxaya faylalka tusaalaha DNA-da ee synthetic",
   "t59": "DNA Workbench luqadda doorta oo leh calammo iyo magacyo luqadeed oo ku jira qoraallo iyaga u gaar ah",
   "t60": "Luqadaha is-dhexgalka ee la heli karo",
-  "t61": "Buy Me a Coffee deeqda QR code"
+  "t61": "Buy Me a Coffee deeqda QR code",
+  "t62": "Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT iyo hababka kale ee ikhtiyaariga ah ku socodsii kombiyuutarkaaga. Windows x64, DeepVariant wuxuu NVIDIA CUDA ku adeegsan karaa Docker Desktop."
 }

@@ -5,7 +5,7 @@
   "t04": "Downloads",
   "t05": "Taal van de website",
   "t06": "De geselecteerde taal kon niet worden geladen.",
-  "t07": "Versie 1.0.6",
+  "t07": "Versie 1.0.7",
   "t08": "Jouw genoom. Jouw werkruimte.",
   "t09": "Organiseer DNA-bestanden en familiegegevens, controleer waar de resultaten vandaan komen en bewaar uw onderzoek op uw eigen computer.",
   "t10": "DNA Workbench downloaden",
@@ -57,5 +57,6 @@
   "t58": "Profielbestandsbeheer met voorbeeldbestanden van synthetisch DNA",
   "t59": "DNA Workbench taalkiezer met vlaggen en taalnamen in hun eigen scripts",
   "t60": "Beschikbare interfacetalen",
-  "t61": "Buy Me a Coffee donatie QR-code"
+  "t61": "Buy Me a Coffee donatie QR-code",
+  "t62": "Voer Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT en andere optionele workflows lokaal uit. Op Windows x64 kan DeepVariant via Docker Desktop NVIDIA CUDA gebruiken."
 }

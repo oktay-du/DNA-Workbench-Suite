@@ -1,4 +1,17 @@
-from system_tools import desktop_tool_command, windows_executable
+from system_tools import (
+    DEEPVARIANT_GPU_PROBE,
+    desktop_tool_command,
+    homebrew_bin,
+    KIRI_NEXTFLOW_SOCKET,
+    KIRI_TASK_TOOLS,
+    kiri_task_tool,
+    kiri_opencravat_modules,
+    kiri_vep_cache,
+    kiri_sequence_tool,
+    linux_x64_bundle,
+    windows_deepvariant_gpu,
+    windows_executable,
+)
 
 """Portable local job runner for DNA Workbench. Never uploads DNA files."""
 from portable_paths import distro_name
@@ -16,6 +29,58 @@ TASKS = {t["id"]: t for t in CAT["tasks"]}
 CORE = ROOT / "DNA_Software/Start/DNA.ps1"
 NOW = lambda: datetime.datetime.now().astimezone().isoformat()
 Q = shlex.quote
+VARIANT_FORMATS = {
+    "VCF.gz (BGZF)": ("z", "converted.vcf.gz"),
+    "VCF": ("v", "converted.vcf"),
+    "BCF": ("b", "converted.bcf"),
+}
+
+
+def variant_filter_options(values):
+    terms = []
+    if values.get("pass_only") == "PASS only":
+        terms.append('FILTER="PASS"')
+    elif values.get("pass_only") != "All entries":
+        terms.append('(FILTER="PASS" || FILTER=".")')
+    for key in ("dp", "gq"):
+        threshold = int(values.get(key) or 0)
+        if threshold < 0:
+            raise ValueError("Thresholds shall be at least 0.")
+        if threshold:
+            terms.append("FMT/" + key.upper() + ">=" + str(threshold))
+    return ["-i", " && ".join(terms)] if terms else []
+
+
+def reference_panel(values):
+    panels = {
+        "1000 Genomes GRCh38": "1000G_GRCh38/all_hg38",
+        "HGDP GRCh38": "HGDP_GRCh38/hgdp_statphase",
+    }
+    selected = values.get("panel")
+    if selected not in panels:
+        raise ValueError("Select an installed GRCh38 reference panel.")
+    prefix = ROOT / "References" / panels[selected]
+    suffixes = (".pgen", ".pvar.zst", ".psam")
+    if any(not prefix.with_suffix(suffix).is_file() for suffix in suffixes):
+        raise ValueError(
+            "Reference panel is not installed or incomplete: " + prefix.name
+        )
+    chrom = values.get("chrom")
+    if chrom not in {str(n) for n in range(1, 23)}:
+        raise ValueError("Select a chromosome between 1 and 22.")
+    return prefix, suffixes, chrom
+
+
+def kiri_bind(path, target, readonly=False, *, desktop=False):
+    import io
+
+    source = str(Path(path).resolve()) if desktop else linux(path)
+    fields = ["type=bind", "source=" + source, "target=" + target]
+    if readonly:
+        fields.append("readonly")
+    value = io.StringIO()
+    csv.writer(value).writerow(fields)
+    return value.getvalue().removesuffix("\r\n")
 
 
 def atomic(path, obj):
@@ -192,7 +257,7 @@ class Job:
     def o(self, name=""):
         return linux(self.out / name)
 
-    def shell(self):
+    def shell(self, kiri_pipeline=False):
         a = self.task["action"]
         v = self.v
         cpu_limit = hardware.cpu_threads()
@@ -205,33 +270,40 @@ class Job:
             "set -euo pipefail",
             *(
                 [
-                    "source " + Q(linux(ROOT / "DNA_Software/Start/profile-dna.sh")),
+                    ("DNA_WSL_PROFILE=1 " if os.name == "nt" else "")
+                    + "source "
+                    + Q(linux(ROOT / "DNA_Software/Start/profile-dna.sh")),
                 ]
-                if sys.platform != "darwin"
+                if sys.platform != "darwin" and not kiri_pipeline
                 else []
             ),
             *(
                 ["export PATH=" + Q(linux(ROOT / "DNA_Software/Linux/bin")) + ":$PATH"]
-                if os.name == "nt"
-                or (
-                    sys.platform.startswith("linux")
-                    and platform.machine().lower() in {"amd64", "x86_64"}
+                if not kiri_pipeline
+                and (
+                    (os.name == "nt" and not hardware.windows_arm64())
+                    or linux_x64_bundle()
                 )
                 else []
             ),
+            *(["export PATH=$PATH:" + Q(homebrew_bin())] if os.name != "nt" else []),
             "export PYTHONUNBUFFERED=1",
             "dna_threads=$(nproc 2>/dev/null || getconf _NPROCESSORS_ONLN 2>/dev/null || echo 1)",
             f"(( dna_threads <= {cpu_limit} )) || dna_threads={cpu_limit}",
             "export DNA_WORKBENCH_CPUS=$dna_threads",
-            "echo $$ > " + Q(linux(self.folder / "linux.pid")),
+            *(
+                ["echo $$ > " + Q(linux(self.folder / "linux.pid"))]
+                if not kiri_pipeline
+                else []
+            ),
             "mkdir -p " + Q(self.o()),
             "cd " + Q(self.o()),
         ]
         helper = linux(Path(__file__).with_name("linux_helpers.py"))
 
-        def cmd(*args, thread_options=()):
+        def cmd(*args, thread_options=(), replace_shell=False):
             command, *arguments = args
-            head = Q(command)
+            head = ("exec " if replace_shell else "") + Q(command)
             if command in {"plink19", "plink2"}:
                 head += " --threads " + threads
             if (
@@ -248,7 +320,89 @@ class Job:
             )
 
         def py(*args):
-            cmd(analysis_python(), helper, *args)
+            cmd(
+                "/usr/bin/python3" if kiri_pipeline else analysis_python(),
+                helper,
+                *args,
+            )
+
+        def pipeline(tool, *args, thread_options=(), params_file=None):
+            work = linux(self.folder / "nextflow-work")
+            params_options = ["-params-file", linux(params_file)] if params_file else []
+            if os.name == "nt" and not kiri_pipeline:
+                cmd(
+                    tool,
+                    "-w",
+                    work,
+                    *params_options,
+                    *args,
+                    thread_options=thread_options,
+                )
+                return
+            import on_demand
+
+            source = on_demand.native_pipeline_source(tool)
+            endpoint = (
+                "/var/run/docker.sock"
+                if kiri_pipeline
+                else on_demand.native_pipeline_docker_socket()
+            )
+            profile = "docker"
+            if (
+                not kiri_pipeline
+                and sys.platform == "darwin"
+                and platform.machine().lower() in {"arm64", "aarch64"}
+            ):
+                if tool == "sarek":
+                    profile += ",emulate_amd64"
+                elif tool == "pgsc-calc":
+                    profile += ",arm"
+            lines.extend(
+                [
+                    "test -f "
+                    + Q(linux(source / "main.nf"))
+                    + " || { printf '%s\\n' "
+                    + Q("Install the pinned pipeline through the tool library: " + tool)
+                    + " >&2; exit 1; }",
+                    *(
+                        [
+                            "printf '%s\\n' "
+                            + Q(
+                                "Start a local Docker-compatible engine before running "
+                                + tool
+                            )
+                            + " >&2; exit 1"
+                        ]
+                        if not endpoint
+                        else []
+                    ),
+                    "unset DOCKER_CONTEXT DOCKER_TLS_VERIFY DOCKER_CERT_PATH",
+                    "export DOCKER_HOST="
+                    + Q("unix://" + (endpoint or "/var/run/docker.sock")),
+                    "export NXF_HOME="
+                    + Q(linux(ROOT / "DNA_Software/UserData/Launcher/Nextflow")),
+                    "export NXF_VER=" + Q(on_demand.NEXTFLOW_DIST["version"]),
+                ]
+            )
+            if kiri_pipeline:
+                lines.append("export DOCKER_CONFIG=/tmp/dna-nextflow-docker")
+            cmd(
+                "/opt/dna-nextflow"
+                if kiri_pipeline
+                else on_demand.host_command("nextflow") or "nextflow",
+                "run",
+                linux(source),
+                "-profile",
+                profile,
+                "-c",
+                linux(ROOT / "DNA_Software/Start/dna-nextflow.config"),
+                "-w",
+                work,
+                *params_options,
+                *args,
+                thread_options=thread_options,
+                replace_shell=kiri_pipeline,
+            )
 
         def prepared(source, name):
             target = self.o(name + ".vcf.gz")
@@ -417,20 +571,34 @@ class Job:
                 }
                 cpu_image = "google/deepvariant:1.10.0"
                 gpu_image = cpu_image + "-gpu"
-                probe = "import tensorflow as tf; assert tf.config.list_physical_devices('GPU')"
+                if os.name != "nt":
+                    import on_demand
+
+                    endpoint = on_demand.deepvariant_docker_socket()
+                    lines.append(
+                        "unset DOCKER_CONTEXT DOCKER_TLS_VERIFY DOCKER_CERT_PATH"
+                    )
+                    if endpoint:
+                        lines.append("export DOCKER_HOST=" + Q("unix://" + endpoint))
+                    else:
+                        lines.append(
+                            "printf '%s\\n' 'Start the local Docker engine for DeepVariant.' >&2; exit 1"
+                        )
                 lines += [
                     "deepvariant_gpu=()",
                     "deepvariant_image=" + Q(cpu_image),
                     "if docker image inspect " + Q(gpu_image) + " >/dev/null 2>&1 && "
-                    "timeout 30s docker run --rm --pull=never --gpus 1 "
+                    "timeout 30s docker run --rm --pull=never --platform linux/amd64 --gpus 1 "
                     "--network=none --entrypoint /usr/bin/python3 "
                     + Q(gpu_image)
                     + " -c "
-                    + Q(probe)
+                    + Q(DEEPVARIANT_GPU_PROBE)
                     + " >/dev/null 2>&1; then",
                     "  deepvariant_gpu=(--gpus 1)",
                     "  deepvariant_image=" + Q(gpu_image),
                     "fi",
+                    'docker image inspect "$deepvariant_image" >/dev/null 2>&1 || '
+                    "{ printf '%s\\n' 'The selected DeepVariant image is missing locally.' >&2; exit 1; }",
                 ]
                 args = ["--user", "1000:1000"]
                 for d in sorted(dirs):
@@ -447,7 +615,7 @@ class Job:
                     "--vcf_stats_report=true",
                 ]
                 lines.append(
-                    'docker run --rm --platform linux/amd64 "${deepvariant_gpu[@]}" '
+                    'docker run --rm --pull=never --network=none --platform linux/amd64 "${deepvariant_gpu[@]}" '
                     + " ".join(Q(arg) for arg in args)
                     + ' "$deepvariant_image" '
                     + " ".join(Q(arg) for arg in caller)
@@ -467,7 +635,16 @@ class Job:
                 + Q(self.o())
             )
         elif a == "sarek":
-            rf = reference()
+            rf = self.o("referenz.fa") if kiri_pipeline else reference()
+            reads = []
+            for key in ("r1", "r2"):
+                source = self.p(key)
+                target = self.o(key + ".fastq.gz")
+                if source.lower().endswith(".gz"):
+                    cmd("ln", "-s", source, target)
+                else:
+                    lines.append("gzip -c -- " + Q(source) + " > " + Q(target))
+                reads.append(target)
             sheet = self.folder / "samplesheet.csv"
             with sheet.open("w", newline="", encoding="utf-8") as f:
                 w = csv.writer(f)
@@ -477,15 +654,16 @@ class Job:
                 w.writerow(
                     [
                         self.person,
-                        {"XX": 2, "XY": 1}.get(v["sex"], 0),
+                        {"XX": "XX", "XY": "XY"}.get(v["sex"], "NA"),
                         0,
                         self.person,
                         "L001",
-                        self.p("r1"),
-                        self.p("r2"),
+                        *reads,
                     ]
                 )
-            cmd(
+            params_file = self.folder / "sarek-params.json"
+            atomic(params_file, {"genome": None, "igenomes_ignore": True})
+            pipeline(
                 "sarek",
                 "--input",
                 linux(sheet),
@@ -493,13 +671,13 @@ class Job:
                 rf,
                 "--fasta_fai",
                 rf + ".fai",
-                "--igenomes_ignore",
                 "--skip_tools",
                 "baserecalibrator",
                 "--tools",
                 v["caller"],
                 "--outdir",
                 self.o("sarek"),
+                params_file=params_file,
             )
         elif a == "normalize":
             py("check_build", self.p("vcf"), v["build"])
@@ -534,31 +712,16 @@ class Job:
                 thread_options=("--thread", threads),
             )
         elif a == "variant_convert":
-            mode, name = {
-                "VCF.gz (BGZF)": ("z", "converted.vcf.gz"),
-                "VCF": ("v", "converted.vcf"),
-                "BCF": ("b", "converted.bcf"),
-            }[v["output_format"]]
+            mode, name = VARIANT_FORMATS[v["output_format"]]
             cmd("bcftools", "view", "-O" + mode, "-o", self.o(name), self.p("vcf"))
             lines.append(
                 "bcftools stats " + Q(self.o(name)) + " > conversion_stats.txt"
             )
         elif a == "filter":
-            terms = []
-            if v.get("pass_only") == "PASS only":
-                terms.append('FILTER="PASS"')
-            elif v.get("pass_only") != "All entries":
-                terms.append('(FILTER="PASS" || FILTER=".")')
-            for key in ["dp", "gq"]:
-                n = int(v.get(key) or 0)
-                if n < 0:
-                    raise ValueError("Thresholds shall be at least 0.")
-                if n:
-                    terms.append("FMT/" + key.upper() + ">=" + str(n))
             cmd(
                 "bcftools",
                 "view",
-                *(["-i", " && ".join(terms)] if terms else []),
+                *variant_filter_options(v),
                 "-Oz",
                 "-o",
                 self.o("gefiltert.vcf.gz"),
@@ -704,28 +867,14 @@ class Job:
                 self.o("verwandtschaft"),
             )
         elif a == "ref_export":
-            panel = (
-                ROOT
-                / "References"
-                / (
-                    "1000G_GRCh38/all_hg38"
-                    if v["panel"].startswith("1000")
-                    else "HGDP_GRCh38/hgdp_statphase"
-                )
-            )
-            if not Path(str(panel) + ".psam").is_file():
-                raise ValueError(
-                    "Reference panel is not installed: "
-                    + panel.name
-                    + ". The sample set does not include 1000 Genomes or HGDP."
-                )
+            panel, _, chrom = reference_panel(v)
             cmd(
                 "plink2",
                 "--pfile",
                 linux(panel),
                 "vzs",
                 "--chr",
-                v["chrom"],
+                chrom,
                 "--snps-only",
                 "just-acgt",
                 "--max-alleles",
@@ -734,13 +883,13 @@ class Job:
                 "vcf",
                 "bgz",
                 "--out",
-                self.o("referenz_chr" + v["chrom"]),
+                self.o("referenz_chr" + chrom),
             )
             cmd(
                 "bcftools",
                 "index",
                 "-ft",
-                self.o("referenz_chr" + v["chrom"] + ".vcf.gz"),
+                self.o("referenz_chr" + chrom + ".vcf.gz"),
             )
         elif a == "pca":
             prefix = plink_input()
@@ -807,12 +956,15 @@ class Job:
                 "--chromosome=" + v["chrom"],
                 "-o",
                 self.o("lokale_ancestry"),
-                thread_options=("--n-threads", threads),
+                thread_options=("--n-threads=" + threads,),
             )
         elif a == "mito":
             ready = prepared(self.p("vcf"), "mt_input")
+            import on_demand
+
+            haplogrep = on_demand.host_command("haplogrep") if os.name != "nt" else None
             cmd(
-                "haplogrep",
+                haplogrep or "haplogrep",
                 "classify",
                 "--input",
                 ready,
@@ -860,7 +1012,7 @@ class Job:
                 "--offline",
                 "--cache",
                 "--dir_cache",
-                "/opt/dna/cache/vep",
+                linux(ROOT / "References/VEP"),
                 "--cache_version",
                 "116",
                 "--assembly",
@@ -889,23 +1041,11 @@ class Job:
                 "pharmakogenetik",
             )
         elif a == "pgs":
-            py("check_build", self.p("vcf"), v["build"])
-            cmd(
-                "plink2",
-                "--vcf",
-                self.p("vcf"),
-                "--chr",
-                "1-22",
-                "--snps-only",
-                "just-acgt",
-                "--max-alleles",
-                "2",
-                "--make-pgen",
-                "--out",
-                self.o("zielgenotypen"),
-            )
+            if not kiri_pipeline:
+                py("check_build", self.p("vcf"), v["build"])
+                cmd("plink2", *self.pgs_prepare_args())
             py("score_sheet", self.o("zielgenotypen"), self.person, self.o())
-            cmd(
+            pipeline(
                 "pgsc-calc",
                 "--input",
                 self.o("samplesheet.csv"),
@@ -921,10 +1061,33 @@ class Job:
             )
         else:
             raise ValueError("Not yet an execution adapter for" + a)
-        lines.append('printf "\\nDNA_LAUNCHER_STEP_SUCCESS\\n"')
+        if not kiri_pipeline:
+            lines.append('printf "\\nDNA_LAUNCHER_STEP_SUCCESS\\n"')
         return "\n".join(lines) + "\n"
 
-    def run_process(self, args, env=None, start_new_session=False):
+    def pgs_prepare_args(self):
+        return [
+            "--vcf",
+            self.p("vcf"),
+            "--chr",
+            "1-22",
+            "--snps-only",
+            "just-acgt",
+            "--max-alleles",
+            "2",
+            "--make-pgen",
+            "--out",
+            self.o("zielgenotypen"),
+        ]
+
+    def run_process(
+        self,
+        args,
+        env=None,
+        start_new_session=False,
+        cancel_command=None,
+        cancel_timeout=10,
+    ):
         self.log("> " + subprocess.list2cmdline([str(x) for x in args]))
         proc = subprocess.Popen(
             args,
@@ -951,7 +1114,7 @@ class Job:
             self.save()
             if (self.folder / "abbrechen.request").exists():
                 pidfile = self.folder / "linux.pid"
-                if pidfile.exists():
+                if pidfile.exists() and not cancel_command:
                     pgid = pidfile.read_text().strip()
                     if pgid.isdigit() and os.name == "nt":
                         subprocess.run(
@@ -976,6 +1139,29 @@ class Job:
                         except ProcessLookupError:
                             pass
                 proc.terminate()
+                if cancel_command:
+                    try:
+                        proc.wait(timeout=5)
+                    except subprocess.TimeoutExpired:
+                        proc.kill()
+                    try:
+                        cleanup = subprocess.run(
+                            cancel_command,
+                            env=env,
+                            capture_output=True,
+                            timeout=cancel_timeout,
+                        )
+                        if (
+                            cleanup.returncode
+                            and b"No such container" not in cleanup.stderr
+                        ):
+                            self.log(
+                                "Kiri could not confirm that the cancelled container was removed."
+                            )
+                    except (OSError, subprocess.TimeoutExpired):
+                        self.log(
+                            "Kiri could not confirm that the cancelled container was removed."
+                        )
                 thread.join(3)
                 raise InterruptedError("Order cancelled on request.")
             time.sleep(1)
@@ -986,6 +1172,956 @@ class Job:
                 + str(proc.returncode)
                 + " beendet. Details stehen im Protokoll."
             )
+
+    def run_kiri_pipeline(self, setup):
+        import uuid
+        import on_demand
+
+        route, prep, source, launcher = setup
+        if sha(launcher) != on_demand.NEXTFLOW_DIST["expected_sha256"]:
+            raise ValueError("The local Nextflow launcher failed its SHA-256 check.")
+        action = self.task["action"]
+        helper = Path(__file__).with_name("linux_helpers.py")
+        config = ROOT / "DNA_Software/Start/dna-nextflow.config"
+        cache = ROOT / "DNA_Software/UserData/Launcher/Nextflow"
+        cache.mkdir(parents=True, exist_ok=True)
+        script = self.folder / "ausfuehren.sh"
+        text = self.shell(kiri_pipeline=True)
+        script.write_bytes(text.encode("utf-8"))
+        (self.folder / "command.txt").write_text(text, encoding="utf-8")
+        job_path = linux(self.folder)
+        inputs = {
+            "sarek": ("reference", "r1", "r2"),
+            "pgs": ("vcf", "score"),
+        }[action]
+        prep_script = self.folder / "kiri-pipeline-prep.sh"
+        prep_script.write_text(
+            "#!/bin/bash\nset -euo pipefail\n"
+            + (
+                "ln -s -- "
+                + Q(self.p("reference"))
+                + " "
+                + Q(self.o("referenz.fa"))
+                + "\nsamtools faidx "
+                + Q(self.o("referenz.fa"))
+                + "\n"
+                if action == "sarek"
+                else shlex.join(
+                    [
+                        "plink2",
+                        "--threads",
+                        str(hardware.cpu_threads()),
+                        *self.pgs_prepare_args(),
+                    ]
+                )
+                + "\n"
+            ),
+            encoding="utf-8",
+            newline="\n",
+        )
+        if action == "pgs":
+            from linux_helpers import check_build
+
+            check_build(self.v["vcf"], self.v["build"])
+        paths = dict.fromkeys(Path(self.v[key]).resolve() for key in inputs)
+        binds = [kiri_bind(self.folder, job_path)]
+        binds.extend(kiri_bind(path, linux(path), readonly=True) for path in paths)
+        token = "dna-nextflow-" + uuid.uuid4().hex
+
+        def start(container, selected_route, mounts, args, *, network):
+            prefix, env, container_platform, image = selected_route
+            command = [
+                *prefix,
+                "run",
+                "--rm",
+                "--pull=never",
+                "--platform",
+                container_platform,
+                "--name",
+                container,
+                "--workdir",
+                job_path,
+                "--network",
+                network,
+                "--entrypoint",
+                "/bin/bash",
+            ]
+            for mount in mounts:
+                command.extend(["--mount", mount])
+            self.run_process(
+                [*command, image, *args],
+                env=env,
+                cancel_command=[
+                    *prefix,
+                    *(
+                        ["stop", "--time", "15"]
+                        if network == "bridge"
+                        else ["rm", "-f"]
+                    ),
+                    container,
+                ],
+                cancel_timeout=30 if network == "bridge" else 10,
+            )
+
+        self.log("Using local Kiri for " + action + ".")
+        prep_input = Path(self.v[inputs[0]]).resolve()
+        start(
+            token + "-prep",
+            prep,
+            [binds[0], kiri_bind(prep_input, linux(prep_input), readonly=True)],
+            [linux(prep_script)],
+            network="none",
+        )
+        mounts = [
+            *binds,
+            kiri_bind(launcher, "/opt/dna-nextflow", readonly=True),
+            kiri_bind(cache, linux(cache)),
+            kiri_bind(source, linux(source), readonly=True),
+            kiri_bind(helper, linux(helper), readonly=True),
+            kiri_bind(config, linux(config), readonly=True),
+            "type=bind,source=" + KIRI_NEXTFLOW_SOCKET + ",target=/var/run/docker.sock",
+        ]
+        extra_ca = cache / "local-ca.pem"
+        prelude = "export NXF_ANSI_LOG=false; "
+        if extra_ca.is_file():
+            mounts.append(kiri_bind(extra_ca, "/opt/dna-local-ca.pem", readonly=True))
+            prelude += (
+                'cp "$JAVA_HOME/lib/security/cacerts" /tmp/dna-cacerts; '
+                "keytool -importcert -noprompt -alias dna-local-ca "
+                "-file /opt/dna-local-ca.pem -keystore /tmp/dna-cacerts -storepass changeit; "
+                "cat /etc/ssl/certs/ca-certificates.crt /opt/dna-local-ca.pem > /tmp/dna-ca-bundle.pem; "
+                "export NXF_OPTS=-Djavax.net.ssl.trustStore=/tmp/dna-cacerts "
+                "CURL_CA_BUNDLE=/tmp/dna-ca-bundle.pem; "
+            )
+        start(
+            token,
+            route,
+            mounts,
+            ["-ec", prelude + "exec /bin/bash " + Q(linux(script))],
+            network="bridge",
+        )
+
+    def run_with_kiri(self, route, *, gpu=False):
+        import tempfile
+        import uuid
+
+        prefix, env, container_platform, image = route
+        action = self.task["action"]
+        threads = hardware.cpu_threads()
+        if gpu:
+            info = subprocess.run(
+                [*prefix, "info", "--format", "{{.NCPU}}"],
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=5,
+                check=True,
+                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
+            )
+            threads = min(threads, max(1, int(info.stdout.strip())))
+        directories = []
+        file_mounts = []
+        if action == "variant_convert":
+            mode, name = VARIANT_FORMATS[self.v["output_format"]]
+            inputs = {"vcf": "/input"}
+            names = [name, "conversion_stats.txt"]
+            command = (
+                f"bcftools view -O{mode} -o {name} /input && "
+                f"bcftools stats {name} > conversion_stats.txt"
+            )
+        elif action == "vcf_qc":
+            inputs = {"vcf": "/input"}
+            names = ["vcf_statistik.txt"]
+            command = "bcftools stats -s - /input > vcf_statistik.txt"
+        elif action == "beagle":
+            chrom = self.v["chrom"]
+            if chrom not in {str(n) for n in range(1, 23)}:
+                raise ValueError("Select a chromosome between 1 and 22.")
+            vcf = (
+                "/input.vcf.gz"
+                if self.v["vcf"].lower().endswith((".gz", ".bgz"))
+                else "/input.vcf"
+            )
+            inputs = {"vcf": vcf, "map": "/map"}
+            command_args = [
+                "java",
+                "-Djava.io.tmpdir=/output",
+                "-jar",
+                "/opt/beagle/beagle.jar",
+                "gt=" + vcf,
+                "map=/map",
+                "chrom=" + chrom,
+                "out=phasiert",
+                "impute=false",
+                f"nthreads={threads}",
+            ]
+            if self.v.get("refpanel"):
+                inputs["refpanel"] = "/panel.vcf.gz"
+                command_args.append("ref=/panel.vcf.gz")
+            names = ["phasiert.vcf.gz", "phasiert.log"]
+            command = shlex.join(command_args)
+        elif action == "ibd":
+            vcf = "/input.vcf"
+            if self.v["vcf"].lower().endswith((".gz", ".bgz")):
+                vcf += ".gz"
+            inputs = {"vcf": vcf, "map": "/map"}
+            names = ["segmente.ibd.gz", "segmente.hbd.gz", "segmente.log"]
+            command = (
+                "java -Djava.io.tmpdir=/output -jar /opt/hap-ibd/hap-ibd.jar "
+                f"gt={vcf} map=/map out=segmente nthreads={threads}"
+            )
+        elif action == "truvari":
+            from linux_helpers import check_build
+
+            for key in ("base", "comparison"):
+                check_build(self.v[key], self.v["build"])
+            inputs = {
+                "base": "/base",
+                "comparison": "/comparison",
+                "reference": "/reference",
+            }
+            reference = "reference.fa"
+            if self.v["reference"].lower().endswith((".gz", ".bgz")):
+                reference += ".gz"
+            names = ["sv_vergleichsergebnis/summary.json"]
+            directories.append("sv_vergleichsergebnis")
+            commands = []
+            for source, target in (
+                ("/base", "sv_basis"),
+                ("/comparison", "sv_vergleich"),
+            ):
+                vcf_name = target + ".vcf.gz"
+                names.extend((vcf_name, vcf_name + ".tbi"))
+                commands.extend(
+                    [
+                        f"bcftools sort -m 1G -Oz -o {vcf_name} -T {target}_sort.XXXXXX {source}",
+                        f"bcftools index --threads {threads - 1} -ft {vcf_name}",
+                    ]
+                )
+            commands.extend(
+                [
+                    f"ln -s /reference {reference}",
+                    f"samtools faidx {reference}",
+                    f"truvari bench -b sv_basis.vcf.gz -c sv_vergleich.vcf.gz -f {reference} -o sv_vergleichsergebnis",
+                ]
+            )
+            command = " && ".join(commands)
+        elif action == "mito":
+            inputs = {"vcf": "/input"}
+            names = ["mt_input.vcf.gz", "mt_input.vcf.gz.tbi", "haplogroups.txt"]
+            command = (
+                "bcftools sort -m 1G -Oz -o mt_input.vcf.gz -T mt_sort.XXXXXX /input "
+                f"&& bcftools index --threads {threads - 1} -ft mt_input.vcf.gz "
+                "&& cd /opt/haplogrep "
+                "&& java -Djava.io.tmpdir=/output -jar haplogrep3.jar classify "
+                "--input /output/mt_input.vcf.gz --output /output/haplogroups.txt "
+                "--tree phylotree-fu-rcrs@1.3"
+            )
+        elif action == "yhaplo":
+            from linux_helpers import check_build
+
+            if self.v["build"] != "GRCh37":
+                raise ValueError("yhaplo requires GRCh37.")
+            check_build(self.v["vcf"], "GRCh37")
+            inputs = {"vcf": "/input"}
+            names = [
+                "y_input.vcf.gz",
+                "y_input.vcf.gz.tbi",
+                "yhaplo/haplogroups.y_input.txt",
+            ]
+            directories.append("yhaplo")
+            command = (
+                "bcftools sort -m 1G -Oz -o y_input.vcf.gz -T y_sort.XXXXXX /input "
+                f"&& bcftools index --threads {threads - 1} -ft y_input.vcf.gz "
+                "&& yhaplo -i y_input.vcf.gz -o yhaplo -aao"
+            )
+        elif action == "rfmix":
+            import on_demand
+
+            if not on_demand.rfmix_license_reviewed():
+                raise ValueError(on_demand.LICENSE)
+            chrom = self.v["chrom"]
+            if chrom not in {str(n) for n in range(1, 23)}:
+                raise ValueError("Select a chromosome between 1 and 22.")
+            inputs = {
+                "query": "/query",
+                "refpanel": "/panel",
+                "samplemap": "/samples",
+                "map": "/map",
+            }
+            names = [
+                "ziel.vcf.gz",
+                "ziel.vcf.gz.tbi",
+                "referenz.vcf.gz",
+                "referenz.vcf.gz.tbi",
+                "lokale_ancestry.msp.tsv",
+                "lokale_ancestry.fb.tsv",
+                "lokale_ancestry.rfmix.Q",
+            ]
+            commands = ["cd /tmp"]
+            for target, source in (("ziel", "/query"), ("referenz", "/panel")):
+                commands.extend(
+                    [
+                        f"bcftools sort -m 1G -Oz -o {target}.vcf.gz -T {target}_sort.XXXXXX {source}",
+                        f"bcftools index --threads {threads - 1} -ft {target}.vcf.gz",
+                    ]
+                )
+            commands.append(
+                "rfmix -f ziel.vcf.gz -r referenz.vcf.gz -m /samples -g /map "
+                f"--chromosome={chrom} --n-threads={threads} -o lokale_ancestry"
+            )
+            commands.extend(f"cat {name} > /output/{name}" for name in names)
+            command = " && ".join(commands)
+        elif action == "opencravat_run":
+            from linux_helpers import check_build
+
+            build = self.v["build"]
+            if build not in {"GRCh37", "GRCh38"}:
+                raise ValueError("Select GRCh37 or GRCh38.")
+            check_build(self.v["vcf"], build)
+            modules = kiri_opencravat_modules(ROOT)
+            if not modules:
+                raise ValueError(
+                    "Install the OpenCRAVAT modules in References/OpenCRAVAT/modules."
+                )
+            vcf = (
+                "/input.vcf.gz"
+                if self.v["vcf"].lower().endswith((".gz", ".bgz"))
+                else "/input.vcf"
+            )
+            inputs = {"vcf": vcf}
+            file_mounts.append((modules, "/modules"))
+            names = ["annotation/varianten.sqlite"]
+            directories.append("annotation")
+            assembly = "hg38" if build == "GRCh38" else "hg19"
+            command = (
+                "HOME=/tmp TMPDIR=/tmp OPENCRAVAT_MD=/modules "
+                f"oc run {vcf} -l {assembly} -a clinvar gnomad4 -d annotation "
+                f"-n varianten -t text excel --mp {min(threads, 2)}"
+            )
+        elif action == "vep":
+            from linux_helpers import check_build
+
+            if self.v["build"] != "GRCh38":
+                raise ValueError(
+                    "Ensembl VEP requires the GRCh38 cache for this workflow."
+                )
+            check_build(self.v["vcf"], "GRCh38")
+            cache = kiri_vep_cache(ROOT)
+            if not cache:
+                raise ValueError(
+                    "Install the Ensembl VEP 116 GRCh38 cache in References/VEP."
+                )
+            vcf = (
+                "/input.vcf.gz"
+                if self.v["vcf"].lower().endswith((".gz", ".bgz"))
+                else "/input.vcf"
+            )
+            inputs = {"vcf": vcf}
+            file_mounts.append(
+                (
+                    cache / "homo_sapiens" / "116_GRCh38",
+                    "/cache/homo_sapiens/116_GRCh38",
+                )
+            )
+            names = ["vep_annotation.vcf"]
+            command = (
+                "vep --offline --cache --dir_cache /cache --cache_version 116 --assembly GRCh38 "
+                f"--input_file {vcf} --output_file STDOUT --vcf --symbol "
+                f"--canonical --no_stats --fork {min(threads, 4)} > vep_annotation.vcf"
+            )
+        elif action == "pharmcat":
+            from linux_helpers import check_build
+
+            if self.v["build"] != "GRCh38":
+                raise ValueError("PharmCAT requires the appropriate GRCh38-VCF.")
+            check_build(self.v["vcf"], "GRCh38")
+            vcf = "/input.vcf"
+            if self.v["vcf"].lower().endswith((".gz", ".bgz")):
+                vcf += ".gz"
+            inputs = {"vcf": vcf}
+            names = []
+            directories.append("pharmcat")
+            command = (
+                "mkdir pharmcat && java -Djava.io.tmpdir=/output -jar /opt/pharmcat/pharmcat.jar "
+                f"-vcf {vcf} -o pharmcat -bf pharmakogenetik "
+                "&& find pharmcat -type f -name '*.report.html' -size +0c -print -quit "
+                "| grep -q ."
+            )
+        elif action == "gatk_validate":
+            from linux_helpers import check_build
+
+            check_build(self.v["vcf"], self.v["build"])
+            vcf = (
+                "/input.vcf.gz"
+                if self.v["vcf"].lower().endswith((".gz", ".bgz"))
+                else "/input.vcf"
+            )
+            reference = (
+                "referenz.fa.gz"
+                if self.v["reference"].lower().endswith((".gz", ".bgz"))
+                else "referenz.fa"
+            )
+            inputs = {"vcf": "/variants", "reference": "/reference"}
+            names = [reference + ".fai", "referenz.dict"]
+            if reference.endswith(".gz"):
+                names.append(reference + ".gzi")
+            gatk = "java -Djava.io.tmpdir=/tmp -jar /opt/gatk/gatk-package-4.7.0.0-local.jar"
+            local_vcf = vcf.removeprefix("/")
+            index = (
+                f" && {gatk} IndexFeatureFile -I {local_vcf}"
+                if local_vcf.endswith(".gz")
+                else ""
+            )
+            command = (
+                f"cd /tmp && ln -s /variants {local_vcf} && ln -s /reference {reference} && samtools faidx {reference} "
+                f"&& {gatk} CreateSequenceDictionary -R {reference} -O referenz.dict "
+                f"{index} && {gatk} ValidateVariants -V {local_vcf} -R {reference} --validation-type-to-exclude IDS"
+                + "".join(f" && cat {name} > /output/{name}" for name in names)
+            )
+        elif action == "compare":
+            from linux_helpers import check_build
+
+            builds = self.v["build_a"], self.v["build_b"]
+            if builds[0] != builds[1] or builds[0] not in {"GRCh37", "GRCh38"}:
+                raise ValueError(
+                    "Select matching reference builds before comparing sources."
+                )
+            inputs = {}
+            for key, build in zip(("a", "b"), builds):
+                source = self.v[key]
+                check_build(source, build)
+                inputs[key] = f"/{key}.vcf" + (
+                    ".gz" if source.lower().endswith((".gz", ".bgz")) else ""
+                )
+            file_mounts.append(
+                (Path(__file__).with_name("linux_helpers.py"), "/helpers.py")
+            )
+            names = ["konflikte.tsv", "vergleich.json", "report.html"]
+            command = shlex.join(
+                [
+                    "python",
+                    "/helpers.py",
+                    "compare",
+                    inputs["a"],
+                    inputs["b"],
+                    *builds,
+                    ".",
+                ]
+            )
+        elif action == "whatshap":
+            from linux_helpers import check_build
+
+            check_build(self.v["vcf"], self.v["build"])
+            vcf = "/input.vcf"
+            if self.v["vcf"].lower().endswith((".gz", ".bgz")):
+                vcf += ".gz"
+            alignment = (
+                "reads.cram"
+                if self.v["alignment"].lower().endswith(".cram")
+                else "reads.bam"
+            )
+            reference = "reference.fa"
+            if self.v["reference"].lower().endswith((".gz", ".bgz")):
+                reference += ".gz"
+            inputs = {"vcf": vcf, "alignment": "/alignment", "reference": "/reference"}
+            names = ["read_phased.vcf", "phase_stats.tsv"]
+            command = (
+                f"ln -s /reference {reference} && ln -s /alignment {alignment} "
+                f"&& samtools faidx {reference} && samtools quickcheck -v {alignment} "
+                f"&& samtools index -@ {threads - 1} {alignment} "
+                f"&& whatshap phase --reference {reference} --output read_phased.vcf {vcf} {alignment} "
+                "&& whatshap stats --tsv phase_stats.tsv read_phased.vcf"
+            )
+        elif action == "peddy":
+            from linux_helpers import check_build
+
+            build = self.v["build"]
+            check_build(self.v["vcf"], build)
+            inputs = {"vcf": "/input", "ped": "/pedigree"}
+            names = [
+                "peddy_input.vcf.gz",
+                "peddy_input.vcf.gz.tbi",
+                "familien_qc.html",
+                "familien_qc.peddy.ped",
+                "familien_qc.het_check.csv",
+                "familien_qc.ped_check.csv",
+            ]
+            sites = " --sites hg38" if build == "GRCh38" else ""
+            command = (
+                "bcftools sort -m 1G -Oz -o peddy_input.vcf.gz -T peddy_sort.XXXXXX /input "
+                f"&& bcftools index --threads {threads - 1} -ft peddy_input.vcf.gz "
+                "&& mkdir -p .tmp "
+                "&& HOME=/output/.tmp TMPDIR=/output/.tmp MPLCONFIGDIR=/output/.tmp MPLBACKEND=Agg "
+                f"peddy --plot -p {min(threads, 4)}{sites} --prefix familien_qc peddy_input.vcf.gz /pedigree"
+            )
+        elif action == "multiqc":
+            inputs = {"folder": "/input"}
+            names = ["multiqc_report.html"]
+            directories.append("multiqc_data")
+            command = (
+                "mkdir -p .tmp && HOME=/output/.tmp TMPDIR=/output/.tmp "
+                "XDG_CACHE_HOME=/output/.tmp multiqc /input -o /output"
+            )
+        elif action == "roh":
+            inputs = {"vcf": "/input"}
+            names = [
+                "roh_input.bed",
+                "roh_input.bim",
+                "roh_input.fam",
+                "roh_input.log",
+                "roh.hom",
+                "roh.hom.indiv",
+                "roh.hom.summary",
+                "roh.log",
+            ]
+            command = (
+                f"plink19 --threads {threads} --vcf /input --double-id --chr 1-22 "
+                "--snps-only just-acgt --biallelic-only strict --make-bed --out roh_input "
+                f"&& plink19 --threads {threads} --bfile roh_input --homozyg --out roh"
+            )
+        elif action == "kinship":
+            inputs = {"vcf": "/input"}
+            names = [
+                "familie.pgen",
+                "familie.pvar",
+                "familie.psam",
+                "familie.log",
+                "verwandtschaft.kin0",
+                "verwandtschaft.log",
+            ]
+            command = (
+                f"plink2 --threads {threads} --vcf /input --chr 1-22 "
+                "--snps-only just-acgt --max-alleles 2 --geno 0.05 --make-pgen --out familie "
+                f"&& plink2 --threads {threads} --pfile familie --make-king-table --out verwandtschaft"
+            )
+        elif action == "ref_export":
+            panel, suffixes, chrom = reference_panel(self.v)
+            inputs = {}
+            file_mounts.extend(
+                (panel.with_suffix(suffix), "/panel" + suffix) for suffix in suffixes
+            )
+            prefix_name = "referenz_chr" + chrom
+            names = [
+                prefix_name + ".vcf.gz",
+                prefix_name + ".vcf.gz.tbi",
+                prefix_name + ".log",
+            ]
+            command = (
+                f"plink2 --threads {threads} --pfile /panel vzs --chr {chrom} "
+                f"--snps-only just-acgt --max-alleles 2 --export vcf bgz --out {prefix_name} "
+                f"&& bcftools index --threads {threads - 1} -ft {names[0]}"
+            )
+        elif action == "pca":
+            source = Path(self.v["file"])
+            inputs = {"file": "/input"}
+            flags = "--vcf /input"
+            if source.suffix.lower() == ".pgen":
+                compressed = source.with_suffix(".pvar.zst").is_file()
+                pvar_suffix = ".pvar.zst" if compressed else ".pvar"
+                inputs["file"] = "/cohort.pgen"
+                file_mounts.extend(
+                    (source.with_suffix(suffix), "/cohort" + suffix)
+                    for suffix in (".psam", pvar_suffix)
+                )
+                flags = "--pfile /cohort" + (" vzs" if compressed else "")
+            labels = "''"
+            if self.v.get("labels"):
+                inputs["labels"] = "/labels"
+                labels = "/labels"
+            file_mounts.append(
+                (Path(__file__).with_name("linux_helpers.py"), "/pca_helpers.py")
+            )
+            names = [
+                "kohorte.pgen",
+                "kohorte.pvar",
+                "kohorte.psam",
+                "kohorte.log",
+                "ld.prune.in",
+                "ld.log",
+                "pca_k.txt",
+                "pca.eigenval",
+                "pca.eigenvec",
+                "pca.log",
+                "pca_interaktiv.html",
+                "pca_mit_metadaten.tsv",
+            ]
+            command = (
+                f"plink2 --threads {threads} {flags} --chr 1-22 --max-alleles 2 "
+                "--snps-only just-acgt --geno 0.05 --make-pgen --out kohorte "
+                f"&& plink2 --threads {threads} --pfile kohorte --indep-pairwise 200 50 0.2 --out ld "
+                "&& /opt/pca/bin/python /pca_helpers.py pca_count kohorte.psam . "
+                f"&& plink2 --threads {threads} --pfile kohorte --extract ld.prune.in "
+                '--pca "$(cat pca_k.txt)" $(cat pca_mode.txt) --out pca '
+                f"&& /opt/pca/bin/python /pca_helpers.py pca_plot pca.eigenvec {labels} ."
+            )
+        elif action == "filter":
+            inputs = {"vcf": "/input"}
+            names = [
+                "gefiltert.vcf.gz",
+                "gefiltert.vcf.gz.tbi",
+                "filter-statistics.txt",
+            ]
+            view = shlex.join(
+                [
+                    "bcftools",
+                    "view",
+                    *variant_filter_options(self.v),
+                    "--threads",
+                    str(threads - 1),
+                    "-Oz",
+                    "-o",
+                    names[0],
+                    "/input",
+                ]
+            )
+            command = (
+                f"{view} && bcftools index --threads {threads - 1} -ft gefiltert.vcf.gz "
+                "&& bcftools stats gefiltert.vcf.gz > filter-statistics.txt"
+            )
+        elif action == "normalize":
+            from linux_helpers import check_build
+
+            check_build(self.v["vcf"], self.v["build"])
+            inputs = {"vcf": "/input", "reference": "/reference"}
+            names = [
+                "normalisiert.vcf.gz",
+                "normalisiert.vcf.gz.tbi",
+                "referenz.fa.fai",
+            ]
+            command = (
+                "ln -s /reference referenz.fa && samtools faidx referenz.fa "
+                f"&& bcftools norm --threads {threads - 1} -f referenz.fa "
+                "-m -any --check-ref e -Oz -o normalisiert.vcf.gz /input "
+                f"&& bcftools index --threads {threads - 1} -ft normalisiert.vcf.gz"
+            )
+        elif action == "merge":
+            from linux_helpers import check_build
+
+            sources = self.v["files"]
+            if len(sources) < 2:
+                raise ValueError("Select at least two normalized VCF files.")
+            inputs = {}
+            merged = "getrennte_proben.vcf.gz"
+            names = [merged, merged + ".tbi"]
+            commands = []
+            ready = []
+            for index, source in enumerate(sources, 1):
+                check_build(source, self.v["build"])
+                target = f"/input_{index}"
+                file_mounts.append((source, target))
+                sub = f"Source__{index}"
+                directories.append(sub)
+                sorted_vcf = f"quelle_{index}.vcf.gz"
+                renamed_vcf = f"benannt_{index}.vcf.gz"
+                names_file = f"{sub}/neue_probennamen.txt"
+                map_file = f"{sub}/probenzuordnung.tsv"
+                names.extend(
+                    [
+                        sorted_vcf,
+                        sorted_vcf + ".tbi",
+                        renamed_vcf,
+                        renamed_vcf + ".tbi",
+                        names_file,
+                        map_file,
+                    ]
+                )
+                ready.append(renamed_vcf)
+                # Query the same sorted header used by the native pysam helper.
+                sample_map = (
+                    'BEGIN { print "Original\tLauncher_Name" > mapping } '
+                    '{ name = prefix "_S" NR; print name; print $0 "\t" name > mapping } '
+                    "END { if (NR == 0) exit 1 }"
+                )
+                commands += [
+                    f"mkdir {sub}",
+                    f"bcftools sort -m 1G -Oz -o {sorted_vcf} -T quelle_{index}_sort.XXXXXX {target}",
+                    f"bcftools index --threads {threads - 1} -ft {sorted_vcf}",
+                    f"bcftools query -l {sorted_vcf} > {sub}/original_samples.txt",
+                    f"test -s {sub}/original_samples.txt",
+                    shlex.join(
+                        [
+                            "awk",
+                            "-v",
+                            f"prefix=Source{index}",
+                            "-v",
+                            f"mapping={map_file}",
+                            sample_map,
+                            f"{sub}/original_samples.txt",
+                        ]
+                    )
+                    + f" > {names_file}",
+                    f"rm {sub}/original_samples.txt",
+                    f"bcftools reheader -s {names_file} -o {renamed_vcf} {sorted_vcf}",
+                    f"bcftools index --threads {threads - 1} -ft {renamed_vcf}",
+                ]
+            commands += [
+                f"bcftools merge --threads {threads - 1} -m none -Oz -o {merged} "
+                + " ".join(ready),
+                f"bcftools index --threads {threads - 1} -ft {merged}",
+            ]
+            command = " && ".join(commands)
+        elif action == "chip_vcf":
+            from linux_helpers import check_build
+
+            check_build(self.v["file"], self.v["build"])
+            reference = "referenz.fa"
+            if self.v["reference"].lower().endswith((".gz", ".bgz")):
+                reference += ".gz"
+            inputs = {"file": "/chip", "reference": "/reference"}
+            file_mounts.append(
+                (Path(__file__).with_name("linux_helpers.py"), "/helpers.py")
+            )
+            names = [
+                "chip-statistics.json",
+                "report.html",
+                "konvertierung.json",
+                "gemessene_chippositionen.vcf",
+                "gemessene_chippositionen.vcf.gz",
+                "gemessene_chippositionen.vcf.gz.tbi",
+                reference + ".fai",
+            ]
+            if reference.endswith(".gz"):
+                names.append(reference + ".gzi")
+            command = (
+                f"ln -s /reference {reference} && samtools faidx {reference} && "
+                + shlex.join(
+                    [
+                        "python",
+                        "/helpers.py",
+                        "chip_vcf",
+                        "/chip",
+                        reference,
+                        self.v["build"],
+                        ".",
+                        self.person,
+                    ]
+                )
+            )
+        elif action == "inspect":
+            inputs = {"file": "/input"}
+            if self.v["file"].lower().endswith((".vcf", ".vcf.gz", ".vcf.bgz", ".bcf")):
+                names = ["vcf_header.txt", "vcf_statistik.txt"]
+                command = (
+                    "bcftools view -h /input > vcf_header.txt && "
+                    "bcftools stats /input > vcf_statistik.txt"
+                )
+            elif self.v["file"].lower().endswith((".bam", ".cram")):
+                names = ["alignment_header.txt"]
+                command = (
+                    "samtools quickcheck -v /input && "
+                    "samtools view -H /input > alignment_header.txt"
+                )
+            else:
+                file_mounts.append(
+                    (Path(__file__).with_name("linux_helpers.py"), "/helpers.py")
+                )
+                names = ["chip-statistics.json", "report.html"]
+                command = "python /helpers.py inspect_chip /input ."
+        elif action == "deepvariant":
+            model = self.v["model"]
+            if model not in {"WGS", "WES", "PACBIO"}:
+                raise ValueError("Select the model matching the sequencing technology.")
+            alignment = (
+                "reads.cram" if self.v["bam"].lower().endswith(".cram") else "reads.bam"
+            )
+            reference = "referenz.fa"
+            if self.v["reference"].lower().endswith((".gz", ".bgz")):
+                reference += ".gz"
+            inputs = {"bam": "/alignment", "reference": "/reference"}
+            names = [
+                "varianten.vcf.gz",
+                "varianten.g.vcf.gz",
+                reference + ".fai",
+                alignment + (".crai" if alignment.endswith(".cram") else ".bai"),
+            ]
+            command = (
+                f"ln -s /reference {reference} && ln -s /alignment {alignment} "
+                f"&& samtools faidx {reference} && samtools quickcheck -v {alignment} "
+                f"&& samtools index -@ {threads - 1} {alignment} && mkdir .tmp "
+                "&& HOME=/output/.tmp TMPDIR=/output/.tmp "
+                + ("" if gpu else "CUDA_VISIBLE_DEVICES= ")
+                + f"/opt/deepvariant/bin/run_deepvariant --model_type={model} "
+                f"--ref={reference} --reads={alignment} --output_vcf=varianten.vcf.gz "
+                "--output_gvcf=varianten.g.vcf.gz --vcf_stats_report=true "
+                f"--num_shards={min(threads, 4)}"
+            )
+        elif action == "bam_qc":
+            cram = self.v["bam"].lower().endswith(".cram")
+            reference = self.v.get("reference")
+            if cram and not reference:
+                raise ValueError("CRAM requires the exact matching reference FASTA.")
+            align = "reads.cram" if cram else "reads.bam"
+            inputs = {"bam": "/alignment"}
+            names = [
+                align + (".crai" if cram else ".bai"),
+                "flagstat.txt",
+                "samtools_stats.txt",
+                "abdeckung.mosdepth.global.dist.txt",
+                "abdeckung.mosdepth.summary.txt",
+            ]
+            commands = [f"ln -s /alignment {align}"]
+            if reference:
+                inputs["reference"] = "/reference"
+                commands += [
+                    "ln -s /reference referenz.fa",
+                    "samtools faidx referenz.fa",
+                ]
+                names.append("referenz.fa.fai")
+            ref_option = " --reference referenz.fa" if reference else ""
+            fasta_option = " --fasta referenz.fa" if reference else ""
+            commands += [
+                f"samtools quickcheck -v {align}",
+                f"samtools index {align}",
+                f"samtools flagstat -@ {threads - 1}{ref_option} {align} > flagstat.txt",
+                f"samtools stats -@ {threads - 1}{ref_option} {align} > samtools_stats.txt",
+                f"mosdepth -n -t {threads}{fasta_option} abdeckung {align}",
+                "mkdir -p .tmp",
+                "HOME=/output/.tmp TMPDIR=/output/.tmp XDG_CACHE_HOME=/output/.tmp "
+                "multiqc flagstat.txt samtools_stats.txt abdeckung.mosdepth.summary.txt "
+                "abdeckung.mosdepth.global.dist.txt -o qualitaetsbericht",
+            ]
+            command = " && ".join(commands)
+            names.append("qualitaetsbericht/multiqc_report.html")
+            directories.append("qualitaetsbericht")
+        elif action in {"fastq_qc", "fastq_report"}:
+            inputs = {"r1": "/read1"}
+            if self.v.get("r2"):
+                inputs["r2"] = "/read2"
+            inputs = {
+                key: target + (".gz" if self.v[key].endswith(".gz") else "")
+                for key, target in inputs.items()
+            }
+            read1 = inputs["r1"]
+            if action == "fastq_qc":
+                names = ["fastp.html", "fastp.json", "gefiltert_R1.fastq.gz"]
+                command = f"fastp -i {read1} -o gefiltert_R1.fastq.gz -h fastp.html -j fastp.json"
+                if "r2" in inputs:
+                    names.append("gefiltert_R2.fastq.gz")
+                    command += f" -I {inputs['r2']} -O gefiltert_R2.fastq.gz"
+            else:
+                names = ["fastq_quality.html", "fastq_quality.json"]
+                command = (
+                    f"fastp --in1 {read1} --disable_adapter_trimming "
+                    "--disable_quality_filtering --disable_length_filtering "
+                    "--html fastq_quality.html --json fastq_quality.json"
+                )
+                if "r2" in inputs:
+                    command += f" --in2 {inputs['r2']}"
+            command += f" --thread {threads}"
+        else:
+            raise ValueError("This task has no Kiri execution route.")
+        container = "dna-workbench-" + uuid.uuid4().hex
+        with tempfile.TemporaryDirectory(dir=self.folder) as staging:
+            if action == "opencravat_run":
+                (Path(staging) / "annotation").mkdir()
+            if action in {"gatk_validate", "vep", "rfmix"}:
+                for name in names:
+                    (Path(staging) / name).touch()
+            args = [
+                *prefix,
+                "run",
+                "--rm",
+                "--name",
+                container,
+                "--pull=never",
+                "--platform=" + container_platform,
+                "--network=none",
+                "--read-only",
+                "--cap-drop=ALL",
+                "--security-opt=no-new-privileges",
+                "--cpus",
+                str(threads),
+                "--mount",
+                kiri_bind(staging, "/output", desktop=gpu),
+                "--workdir",
+                "/output",
+                "--entrypoint",
+                "/bin/sh",
+            ]
+            if action == "chip_vcf" or (
+                action == "inspect" and command.startswith("python")
+            ):
+                args.extend(["--tmpfs", "/opt/dna/cache/snps:rw,mode=1777"])
+            if gpu:
+                args.extend(["--gpus", "1"])
+            if action in {"gatk_validate", "rfmix"}:
+                args.extend(["--tmpfs", "/tmp:rw,nosuid,nodev,mode=1777"])
+            if action == "opencravat_run":
+                args.extend(
+                    [
+                        "--tmpfs",
+                        "/tmp:rw,nosuid,nodev,mode=1777",
+                        "--tmpfs",
+                        "/usr/local/lib/python3.12/site-packages/cravat/workspace:rw,nosuid,nodev,mode=1777",
+                        "--tmpfs",
+                        "/usr/local/lib/python3.12/site-packages/cravat/metrics:rw,nosuid,nodev,mode=1777",
+                    ]
+                )
+            file_mounts.extend((self.v[key], target) for key, target in inputs.items())
+            for source, target in file_mounts:
+                args.extend(
+                    ["--mount", kiri_bind(source, target, readonly=True, desktop=gpu)]
+                )
+            if os.name != "nt":
+                args.extend(["--user", f"{os.getuid()}:{os.getgid()}"])
+            self.log(
+                "Using local Docker for " + action + "."
+                if gpu
+                else "Using local Kiri for " + action + "."
+            )
+            self.run_process(
+                [
+                    *args,
+                    image,
+                    "-ec",
+                    command,
+                ],
+                env=env,
+                cancel_command=[*prefix, "rm", "-f", container],
+            )
+            outputs = [Path(staging) / name for name in names]
+            if any(
+                p.is_symlink() or not p.is_file() or not p.stat().st_size
+                for p in outputs
+            ):
+                raise RuntimeError("Kiri did not produce all expected result files.")
+            for directory in directories:
+                report = Path(staging) / directory
+                if (
+                    not report.is_dir()
+                    or report.is_symlink()
+                    or any(
+                        p.is_symlink() or not (p.is_file() or p.is_dir())
+                        for p in report.rglob("*")
+                    )
+                ):
+                    raise RuntimeError(
+                        "Kiri returned an unexpected entry in the report."
+                    )
+            for directory in directories:
+                (Path(staging) / directory).rename(self.out / directory)
+            for path in outputs:
+                if path.parent == Path(staging):
+                    path.replace(self.out / path.name)
+            if action == "peddy":
+                for path in Path(staging).glob("familien_qc.*"):
+                    if path.is_file() and not path.is_symlink():
+                        path.replace(self.out / path.name)
+            if action == "deepvariant":
+                for pattern in (
+                    "varianten*.tbi",
+                    "varianten*.html",
+                    "referenz.fa.gz.gzi",
+                ):
+                    for path in Path(staging).glob(pattern):
+                        if path.is_file() and not path.is_symlink():
+                            path.replace(self.out / path.name)
+            if action == "pca":
+                for name in ("ld.prune.out", "pca_mode.txt"):
+                    path = Path(staging) / name
+                    if path.is_file() and not path.is_symlink():
+                        path.replace(self.out / name)
 
     def windows(self):
         a = self.task["action"]
@@ -1690,10 +2826,43 @@ class Job:
         if self.task["action"] == "launch":
             self.launch()
         elif linux_action:
-            for args in wsl_host_bootstrap(self.task["action"]):
-                self.run_process(args)
+            kiri = None
+            kiri_pipeline = None
+            action = self.task["action"]
+            gpu_route = windows_deepvariant_gpu() if action == "deepvariant" else None
+            if os.name == "nt" and action in {"sarek", "pgs"}:
+                import on_demand
+
+                if not on_demand.status(self.task["id"], allow_kiri=False)["ready"]:
+                    kiri_pipeline = on_demand.windows_kiri_pipeline(action)
+            if not gpu_route and action in KIRI_TASK_TOOLS:
+                import on_demand
+
+                filename = self.v.get("file", "") if action == "inspect" else ""
+                required = on_demand.mapped(self.task["id"], filename)
+                kiri_tool = kiri_task_tool(action, required)
+                if kiri_tool == "vep" and not kiri_vep_cache(ROOT):
+                    kiri_tool = None
+                if kiri_tool == "opencravat_run" and not kiri_opencravat_modules(ROOT):
+                    kiri_tool = None
+                if kiri_tool == "rfmix" and not on_demand.rfmix_license_reviewed():
+                    kiri_tool = None
+                if kiri_tool:
+                    if not on_demand.status(
+                        self.task["id"], filename, allow_kiri=False
+                    )["ready"]:
+                        kiri = kiri_sequence_tool(kiri_tool)
+            if not gpu_route and not kiri and not kiri_pipeline:
+                for args in wsl_host_bootstrap(self.task["action"]):
+                    self.run_process(args)
             atomic(self.folder / "versionen.json", recorded_installation())
-            if os.name == "nt":
+            if gpu_route:
+                self.run_with_kiri(gpu_route, gpu=True)
+            elif kiri_pipeline:
+                self.run_kiri_pipeline(kiri_pipeline)
+            elif kiri:
+                self.run_with_kiri(kiri)
+            elif os.name == "nt":
                 self.run_process(
                     [
                         windows_executable("wsl.exe"),

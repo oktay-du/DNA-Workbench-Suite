@@ -5,7 +5,7 @@
   "t04": "下载",
   "t05": "网站语言",
   "t06": "无法加载所选语言。",
-  "t07": "版本1.0.6",
+  "t07": "版本1.0.7",
   "t08": "你的基因组。你的工作空间。",
   "t09": "整理 DNA 文件和家庭记录，检查结果的来源，并将您的研究保存在您自己的计算机上。",
   "t10": "下载DNA Workbench",
@@ -57,5 +57,6 @@
   "t58": "列出合成 DNA 示例文件的配置文件文件管理器",
   "t59": "DNA Workbench 语言选择器，在自己的脚本中带有标志和语言名称",
   "t60": "可用的界面语言",
-  "t61": "Buy Me a Coffee 捐款二维码"
+  "t61": "Buy Me a Coffee 捐款二维码",
+  "t62": "在本机运行 Sarek、PGS Catalog Calculator、RFMix、Ensembl VEP、OpenCRAVAT 和其他可选工作流。在 Windows x64 上，DeepVariant 可通过 Docker Desktop 使用 NVIDIA CUDA。"
 }

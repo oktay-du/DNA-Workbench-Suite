@@ -5,7 +5,7 @@
   "t04": "Stahování",
   "t05": "Jazyk webových stránek",
   "t06": "Vybraný jazyk nelze načíst.",
-  "t07": "Vydání 1.0.6",
+  "t07": "Vydání 1.0.7",
   "t08": "Váš genom. Váš pracovní prostor.",
   "t09": "Uspořádejte soubory DNA a rodinné záznamy, zkontrolujte, odkud pocházejí výsledky, a uchovávejte svůj výzkum ve svém počítači.",
   "t10": "Stáhněte si DNA Workbench",
@@ -57,5 +57,6 @@
   "t58": "Správce souborů profilu se seznamem souborů příkladů syntetické DNA",
   "t59": "Výběr jazyka DNA Workbench s příznaky a názvy jazyků v jejich vlastních skriptech",
   "t60": "Dostupné jazyky rozhraní",
-  "t61": "Buy Me a Coffee darovací QR kód"
+  "t61": "Buy Me a Coffee darovací QR kód",
+  "t62": "Spouštějte Sarek, PGS Catalog Calculator, RFMix, Ensembl VEP, OpenCRAVAT a další volitelné postupy místně. Na Windows x64 může DeepVariant využít NVIDIA CUDA prostřednictvím Docker Desktop."
 }
