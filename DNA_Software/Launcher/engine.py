@@ -1530,10 +1530,12 @@ class Job:
                 "JBrowse": "JBrowse Desktop",
             }
             if core == "Explorer":
-                subprocess.run(["open", str(ROOT / "Projects/Launcher")], check=True)
+                subprocess.run(
+                    ["/usr/bin/open", str(ROOT / "Projects/Launcher")], check=True
+                )
                 return
             if core in native_apps:
-                subprocess.run(["open", "-a", native_apps[core]], check=True)
+                subprocess.run(["/usr/bin/open", "-a", native_apps[core]], check=True)
                 return
             raise ValueError("This desktop shortcut has no macOS adapter.")
         if core == "Explorer":

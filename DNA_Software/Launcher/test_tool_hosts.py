@@ -114,6 +114,27 @@ class ToolHostTests(unittest.TestCase):
         table = tool_hosts.markdown_table().strip()
         self.assertIn(table, text)
 
+    def test_macos_launch_uses_system_open(self):
+        job = object.__new__(engine.Job)
+        with (
+            mock.patch.object(engine.sys, "platform", "darwin"),
+            mock.patch.object(engine.subprocess, "run") as launch,
+        ):
+            job.task = {"core": "Explorer"}
+            job.launch()
+            launch.assert_called_once_with(
+                ["/usr/bin/open", str(engine.ROOT / "Projects/Launcher")], check=True
+            )
+            launch.reset_mock()
+            job.task = {"core": "IGV"}
+            job.launch()
+            launch.assert_called_once_with(["/usr/bin/open", "-a", "IGV"], check=True)
+            launch.reset_mock()
+            job.task = {"core": "Unsupported"}
+            with self.assertRaisesRegex(ValueError, "no macOS adapter"):
+                job.launch()
+            launch.assert_not_called()
+
     def test_linux_bash_jobs_skip_the_windows_host(self):
         with mock.patch.object(engine.os, "name", "posix"):
             self.assertEqual(engine.wsl_host_bootstrap("inspect"), [])
