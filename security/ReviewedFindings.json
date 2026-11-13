@@ -4131,6 +4131,39 @@
       "tests": [
         "test_tool_hosts"
       ]
+    },
+    {
+      "tool": "Bearer",
+      "path": "DNA_Software/Launcher/release_tools.py",
+      "rule": "python_lang_path_traversal",
+      "code_sha256": "0b97d3e29399fa2e56718640e121ab2f35e22926d72124db5237ab92578f39a4",
+      "file_sha256": "43679f43e047243d36ae70b32899596f7d1727380d418274f8ce149eb2694f9c",
+      "reason": "The archive path is the release zip chosen by the build command. The zip is created from the public allowlist, not from a request path.",
+      "tests": [
+        "test_linux_release.LinuxReleaseTests.test_linux_zip_contains_the_desktop_launcher"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/release_tools.py",
+      "rule": "B404",
+      "code_sha256": "a3dcb9eb716a0dc36fd90b1fd7521d2fa3b3c67ce9ae3eac5cb3e694001b4f20",
+      "file_sha256": "43679f43e047243d36ae70b32899596f7d1727380d418274f8ce149eb2694f9c",
+      "reason": "Importing subprocess does not execute commands. The module's flagged process calls are reviewed separately at their call sites.",
+      "tests": [
+        "test_linux_release.LinuxReleaseTests.test_macos_zip_contains_a_native_app_entry_point"
+      ]
+    },
+    {
+      "tool": "Bandit",
+      "path": "DNA_Software/Launcher/release_tools.py",
+      "rule": "B603",
+      "code_sha256": "ec1430c61b1aa8927dd7817a4c5672737cc740e03b3eb706078a83cd5d89a023",
+      "file_sha256": "43679f43e047243d36ae70b32899596f7d1727380d418274f8ce149eb2694f9c",
+      "reason": "The macOS package builder invokes an absolute Apple tool path and a fixed compiler. The target is selected from the supported architecture pair, with fixed source and a temporary output path passed as separate arguments.",
+      "tests": [
+        "test_linux_release.LinuxReleaseTests.test_macos_zip_contains_a_native_app_entry_point"
+      ]
     }
   ]
 }

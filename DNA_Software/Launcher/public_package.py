@@ -395,27 +395,29 @@ def entries():
         yield samples / "manifest.json", "Samples/manifest.json"
 
 
+def integrity_manifest(selected):
+    return json.dumps(
+        {
+            "version": json.loads(
+                (HERE / "install-lock.json").read_text(encoding="utf-8")
+            )["app_version"],
+            "files": [
+                {
+                    "path": target,
+                    "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+                }
+                for source, target in selected
+                if source.name != "release-integrity.json"
+            ],
+        },
+        indent=2,
+    ).encode("utf-8")
+
+
 def payload(arch="x64"):
     out = HERE / ("core-payload.zip" if arch == "x64" else "core-payload-arm64.zip")
     webview_sdk = HERE / ("WebView2" if arch == "x64" else "WebView2-arm64")
-    integrity = [
-        {"path": target, "sha256": hashlib.sha256(source.read_bytes()).hexdigest()}
-        for source, target in entries()
-        if source.name != "release-integrity.json"
-    ]
-    (HERE / "release-integrity.json").write_text(
-        json.dumps(
-            {
-                "version": json.loads(
-                    (HERE / "install-lock.json").read_text(encoding="utf-8")
-                )["app_version"],
-                "files": integrity,
-            },
-            indent=2,
-        ),
-        encoding="utf-8",
-        newline="\n",
-    )
+    (HERE / "release-integrity.json").write_bytes(integrity_manifest(entries()))
     with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
         for source, target in entries():
             z.write(source, target)

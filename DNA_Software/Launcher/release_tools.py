@@ -133,7 +133,14 @@ def build_desktop_zip(archive, mac_viewer=None):
             if target in seen or not source.is_file():
                 continue
             seen.add(target)
-            bundle.write(source, target)
+            if target == "DNA_Software/Launcher/release-integrity.json":
+                zip_entry(
+                    bundle,
+                    target,
+                    public_package.integrity_manifest(public_package.entries()),
+                )
+            else:
+                bundle.write(source, target)
     return archive
 
 

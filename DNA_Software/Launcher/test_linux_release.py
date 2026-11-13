@@ -1,5 +1,7 @@
 """The Linux release zip is built by the release tool, without the Windows EXE."""
 
+import hashlib
+import json
 import os
 import plistlib
 import stat
@@ -21,6 +23,14 @@ class LinuxReleaseTests(unittest.TestCase):
             self.assertIn("DNA_Software/Launcher/dna_cli.py", names)
             self.assertIn("DNA_Software/Launcher/desktop_host.py", names)
             self.assertNotIn("DNA_Launcher.exe", names)
+            app = "DNA_Software/Launcher/"
+            manifest = json.loads(bundle.read(app + "release-integrity.json"))
+            lock = json.loads(bundle.read(app + "install-lock.json"))
+            self.assertEqual(manifest["version"], lock["app_version"])
+            for row in manifest["files"]:
+                self.assertEqual(
+                    hashlib.sha256(bundle.read(row["path"])).hexdigest(), row["sha256"]
+                )
             script = bundle.read("DNA-Workbench.sh").decode()
             self.assertIn("dna_cli.py", script)
             self.assertIn("desktop", script)
