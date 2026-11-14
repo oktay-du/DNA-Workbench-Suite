@@ -182,6 +182,34 @@ jobs:
           python-version: '3.12'
       - name: Check the architecture script and the RFMix command
         run: python -m unittest discover -s DNA_Software/Launcher -p 'test_rfmix_runtime.py'
+      - name: Check the VEP image pull and help command
+        run: python -m unittest discover -s DNA_Software/Launcher -p 'test_vep_runtime.py'
+
+  vep-linux:
+    name: VEP image start (${{ matrix.name }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: Linux x64, runner: ubuntu-24.04 }
+          - { name: Linux ARM64, runner: ubuntu-24.04-arm }
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: '3.12'
+      - name: Point the Kiri endpoint at the host Docker engine
+        run: |
+          sudo mkdir -p /run/kiri
+          sudo ln -sfn /var/run/docker.sock /run/kiri/docker.sock
+          test -S /run/kiri/docker.sock
+          docker version
+      - name: Pull the pinned image and print its version
+        env:
+          DNA_VEP_SMOKE: '1'
+        run: python -m unittest discover -s DNA_Software/Launcher -p 'test_vep_runtime.py'
 
   script-security:
     name: PowerShell security and syntax

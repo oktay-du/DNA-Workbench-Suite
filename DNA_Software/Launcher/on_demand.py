@@ -1087,6 +1087,14 @@ def acknowledge_rfmix():
     )
 
 
+def prepare_vep_image(prefix, env):
+    """Pull the pinned multi-arch VEP image. The GRCh38 cache stays separate."""
+    if not kiri_sequence_tool("vep"):
+        subprocess.run([*prefix, "pull", KIRI_VEP_IMAGE], env=env, check=True)
+    if not kiri_sequence_tool("vep"):
+        raise RuntimeError("The Ensembl VEP image is unavailable in local Kiri.")
+
+
 def install_vep_cache():
     import tempfile
 
@@ -1503,13 +1511,7 @@ def install(tool, license_reviewed=False):
         if local and tool == "rfmix":
             return install_kiri_rfmix(*local)
         if local and tool == "vep":
-            if not kiri_sequence_tool("vep"):
-                prefix, env = local
-                subprocess.run([*prefix, "pull", KIRI_VEP_IMAGE], env=env, check=True)
-            if not kiri_sequence_tool("vep"):
-                raise RuntimeError(
-                    "The Ensembl VEP image is unavailable in local Kiri."
-                )
+            prepare_vep_image(*local)
             return install_vep_cache()
         if tool == "opencravat-models" or (local and tool == "open-cravat"):
             return install_opencravat_models(local)

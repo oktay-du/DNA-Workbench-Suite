@@ -321,6 +321,7 @@ LAUNCHER += [
     "tool_runtime.py",
     "test_tool_runtime.py",
     "test_rfmix_runtime.py",
+    "test_vep_runtime.py",
 ]
 LAUNCHER += ["data_scope.py", "test_data_scope.py", "DATA_SCOPE.md"]
 LAUNCHER += [
