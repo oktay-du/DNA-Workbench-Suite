@@ -1087,6 +1087,14 @@ def acknowledge_rfmix():
     )
 
 
+def prepare_vep_image(prefix, env):
+    """Pull the pinned multi-arch VEP image. The GRCh38 cache stays separate."""
+    if not kiri_sequence_tool("vep"):
+        subprocess.run([*prefix, "pull", KIRI_VEP_IMAGE], env=env, check=True)
+    if not kiri_sequence_tool("vep"):
+        raise RuntimeError("The Ensembl VEP image is unavailable in local Kiri.")
+
+
 def install_vep_cache():
     import tempfile
 
@@ -1112,12 +1120,26 @@ def install_vep_cache():
     return {"tool": "vep-cache", "path": str(cache), "status": "GRCh38 cache ready"}
 
 
+class ImageBuildFailed(subprocess.CalledProcessError):
+    """A Kiri image build failed. The message includes the builder output."""
+
+    def __str__(self):
+        captured = (self.stderr or b"") + (self.stdout or b"")
+        text = captured.decode("utf-8", "replace").strip()
+        base = super().__str__()
+        if not text:
+            return base
+        return base + "\n" + text
+
+
 def install_kiri_image(prefix, env, recipe, image, build_context):
     import tempfile
 
+    dockerfile = str(ROOT / "DNA_Software/Start" / recipe)
+    context = str(build_context)
     with tempfile.TemporaryDirectory() as directory:
         archive = Path(directory) / "image.tar"
-        subprocess.run(
+        exported = subprocess.run(
             [
                 *prefix,
                 "build",
@@ -1126,13 +1148,41 @@ def install_kiri_image(prefix, env, recipe, image, build_context):
                 "-t",
                 image,
                 "-f",
-                str(ROOT / "DNA_Software/Start" / recipe),
-                str(build_context),
+                dockerfile,
+                context,
             ],
             env=env,
-            check=True,
+            capture_output=True,
         )
-        subprocess.run([*prefix, "load", "-i", str(archive)], env=env, check=True)
+        if exported.returncode == 0:
+            subprocess.run([*prefix, "load", "-i", str(archive)], env=env, check=True)
+            return
+        detail = (exported.stderr or b"") + (exported.stdout or b"")
+        if b"exporter is not supported" not in detail.lower():
+            raise ImageBuildFailed(
+                exported.returncode,
+                exported.args,
+                exported.stdout,
+                exported.stderr,
+            )
+    subprocess.run(
+        [*prefix, "build", "-t", image, "-f", dockerfile, context],
+        env=env,
+        check=True,
+    )
+
+
+def rfmix_compile_lines(folder, dest, script):
+    """Compile the pinned RFMix source after the architecture march check."""
+    return [
+        "cd " + Q(folder),
+        "sh " + Q(script),
+        "autoreconf --force --install",
+        "./configure --prefix=" + Q(dest),
+        "make -j2",
+        "make install",
+        "ln -sfn " + Q(dest + "/bin/rfmix") + " /opt/dna/bin/rfmix",
+    ]
 
 
 def install_kiri_rfmix(prefix, env):
@@ -1146,6 +1196,9 @@ def install_kiri_rfmix(prefix, env):
             shutil.copyfile(source, stage / "rfmix.tar.gz")
             shutil.copyfile(
                 APP / "Notices/RFMIX-LICENSE.txt", stage / "RFMIX-LICENSE.txt"
+            )
+            shutil.copyfile(
+                APP.parent / "Start/rfmix-march.sh", stage / "rfmix-march.sh"
             )
             install_kiri_image(
                 prefix, env, "kiri-rfmix.Dockerfile", KIRI_RFMIX_IMAGE, stage
@@ -1458,13 +1511,7 @@ def install(tool, license_reviewed=False):
         if local and tool == "rfmix":
             return install_kiri_rfmix(*local)
         if local and tool == "vep":
-            if not kiri_sequence_tool("vep"):
-                prefix, env = local
-                subprocess.run([*prefix, "pull", KIRI_VEP_IMAGE], env=env, check=True)
-            if not kiri_sequence_tool("vep"):
-                raise RuntimeError(
-                    "The Ensembl VEP image is unavailable in local Kiri."
-                )
+            prepare_vep_image(*local)
             return install_vep_cache()
         if tool == "opencravat-models" or (local and tool == "open-cravat"):
             return install_opencravat_models(local)
@@ -1726,14 +1773,9 @@ def install(tool, license_reviewed=False):
         item = next(i for i in LOCK["items"] if i["id"] == artifact)
         folder = "/opt/dna/build/rfmix-" + item["commit"]
         dest = "/opt/dna/tools/rfmix-" + item["commit"][:12]
-        lines += [
-            "cd " + Q(folder),
-            "autoreconf --force --install",
-            "./configure --prefix=" + Q(dest),
-            "make -j2",
-            "make install",
-            "ln -sfn " + Q(dest + "/bin/rfmix") + " /opt/dna/bin/rfmix",
-        ]
+        lines += rfmix_compile_lines(
+            folder, dest, linux_path(APP.parent / "Start/rfmix-march.sh")
+        )
     elif tool == "plink19":
         apt("plink1.9")
         wrapper("plink19", 'exec /usr/bin/plink1.9 "$@"')

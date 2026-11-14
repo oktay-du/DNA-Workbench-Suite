@@ -160,7 +160,7 @@ The official 1.10.0 CPU and GPU images are Linux x64. On Apple Silicon, install 
 
 The GPU route uses a GPU-capable Docker engine and the NVIDIA runtime. On Windows x64, the app can use Docker Desktop's Linux engine directly while Kiri remains the default Docker context. Load the pinned GPU image with `docker --context desktop-linux pull docker.io/google/deepvariant@sha256:78fb1bb960f3b74a4308b62ba8b6232723d4c75e16a4a50f0d810d7086467dd1`. The app runs a small TensorFlow operation on the GPU before selecting the image. Kiri uses CPU execution.
 
-The tool library can build and install RFMix in local Kiri after the license acknowledgement. For a manual build, place the verified source archive identified by `slowkoni-rfmix` in a dedicated build folder as `rfmix.tar.gz`. Copy `DNA_Software/Launcher/Notices/RFMIX-LICENSE.txt` into that folder. From the project root:
+The tool library can build and install RFMix in local Kiri after the license acknowledgement. For a manual build, place the verified source archive identified by `slowkoni-rfmix` in a dedicated build folder as `rfmix.tar.gz`. Copy `DNA_Software/Launcher/Notices/RFMIX-LICENSE.txt` and `DNA_Software/Start/rfmix-march.sh` into that folder. The script keeps the upstream `-march=core2` flag on x64. On ARM64 it removes that flag, because AArch64 GCC rejects it, and compiles with the image compiler's default instruction set. Recorded runtimes are in [Tool runtime matrix](TOOL_RUNTIME.md). From the project root:
 
 ```sh
 docker --context kiri build -t dna-workbench/rfmix:1 -f DNA_Software/Start/kiri-rfmix.Dockerfile <build-folder>
