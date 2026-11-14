@@ -152,7 +152,7 @@ class VepSmokeTests(unittest.TestCase):
                 text=True,
             )
         detail = completed.stdout + completed.stderr
-        self.assertIn("version 116", detail.lower(), detail[-4000:])
+        self.assertRegex(detail, r"ensembl-vep\s+:\s+116\.")
         print(
             "VEP_SMOKE "
             + json.dumps(

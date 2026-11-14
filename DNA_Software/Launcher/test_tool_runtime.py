@@ -30,4 +30,4 @@ class ToolRuntimeDocumentTests(unittest.TestCase):
         self.assertIn("Debian amd64 image was executed", text)
         self.assertIn("ubuntu-24.04-arm", text)
         self.assertIn("27644657162", text)
-        self.assertIn("recorded as passed here", text)
+        self.assertIn("ensembl-vep : 116.1", text)

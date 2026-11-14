@@ -282,10 +282,12 @@ runners ship a Windows container engine, not the Kiri Linux pipe.
 - Cache pin: `homo_sapiens_vep_116_GRCh38.tar.gz`, 27644657162 bytes, SHA-256 `014c7dd9bb5ad06665866d62eb80f31ca761197bcb9b59280300676f996e600d`.
 - Start with a cache: `vep --offline --cache --dir_cache /cache --cache_version 116 --assembly GRCh38`, network disabled, cache and VCF read-only, output `vep_annotation.vcf`.
 
-The image start is `VEP image start` on `ubuntu-24.04` and
-`ubuntu-24.04-arm`. It pulls the pinned index, checks the config digest
-for the engine architecture, and runs `vep --help`. That job is not
-recorded as passed here. It does not download the cache and does not
+The pinned image started on GitHub `ubuntu-24.04` and `ubuntu-24.04-arm`
+(14 November 2026, 01:10 Europe/Berlin, commit `933c81b`).
+`prepare_vep_image` pulled the index. The engine image id matched the
+config digest for that architecture. `vep --help` printed
+`ensembl-vep : 116.1` on both hosts. The source archive pin remains
+`release/116.3`. This start did not download the cache and did not
 write `vep_annotation.vcf`. Windows and macOS runners cannot start this
 Linux image; they run the pull and command checks only.
 
