@@ -1112,6 +1112,18 @@ def install_vep_cache():
     return {"tool": "vep-cache", "path": str(cache), "status": "GRCh38 cache ready"}
 
 
+class ImageBuildFailed(subprocess.CalledProcessError):
+    """A Kiri image build failed. The message includes the builder output."""
+
+    def __str__(self):
+        captured = (self.stderr or b"") + (self.stdout or b"")
+        text = captured.decode("utf-8", "replace").strip()
+        base = super().__str__()
+        if not text:
+            return base
+        return base + "\n" + text
+
+
 def install_kiri_image(prefix, env, recipe, image, build_context):
     import tempfile
 
@@ -1139,8 +1151,11 @@ def install_kiri_image(prefix, env, recipe, image, build_context):
             return
         detail = (exported.stderr or b"") + (exported.stdout or b"")
         if b"exporter is not supported" not in detail.lower():
-            raise subprocess.CalledProcessError(
-                exported.returncode, exported.args, exported.stdout, exported.stderr
+            raise ImageBuildFailed(
+                exported.returncode,
+                exported.args,
+                exported.stdout,
+                exported.stderr,
             )
     subprocess.run(
         [*prefix, "build", "-t", image, "-f", dockerfile, context],

@@ -223,7 +223,7 @@ class RfmixImageBuildTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as tmp:
             with patch.object(on_demand.subprocess, "run", side_effect=run) as mocked:
-                with self.assertRaises(subprocess.CalledProcessError):
+                with self.assertRaises(subprocess.CalledProcessError) as caught:
                     on_demand.install_kiri_image(
                         ["docker"],
                         {},
@@ -232,6 +232,7 @@ class RfmixImageBuildTests(unittest.TestCase):
                         Path(tmp),
                     )
         self.assertEqual(mocked.call_count, 1)
+        self.assertIn("make: error", str(caught.exception))
 
 
 class RfmixSmokeTests(unittest.TestCase):
