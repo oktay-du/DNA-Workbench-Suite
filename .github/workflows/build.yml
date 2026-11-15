@@ -29,6 +29,22 @@ jobs:
         run: |
           python DNA_Software/Launcher/public_package.py
           python DNA_Software/Launcher/release_tools.py --target windows
+      - name: Start the staged Windows x64 launcher
+        shell: powershell
+        run: |
+          $bundle = (Get-ChildItem 'DNAWorkbench_Release/*/DNAWorkbench-Windows-x64.zip').FullName
+          $scratch = Join-Path $env:RUNNER_TEMP 'dna-x64-bootstrap'
+          Expand-Archive -LiteralPath $bundle -DestinationPath $scratch
+          $exe = Join-Path $scratch 'DNA_Launcher.exe'
+          python DNA_Software/Launcher/test_windows_x64.py $exe
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $process = Start-Process -FilePath $exe -ArgumentList '--bootstrap-check' -WindowStyle Hidden -PassThru
+          if (-not $process.WaitForExit(60000)) { $process.Kill(); throw 'x64 launcher timed out' }
+          if ($process.ExitCode -ne 0 -or -not (Test-Path -LiteralPath (Join-Path $scratch 'bootstrap-check.txt'))) {
+            throw 'x64 launcher bootstrap failed'
+          }
+          python DNA_Software/Launcher/test_windows_x64.py (Join-Path $scratch 'WebView2Loader.dll')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           retention-days: 7
