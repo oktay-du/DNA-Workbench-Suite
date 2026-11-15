@@ -13,8 +13,8 @@ using Microsoft.Web.WebView2.Core;
 using Microsoft.Web.WebView2.WinForms;
 
 [assembly: System.Reflection.AssemblyVersion("1.0.1.0")]
-[assembly: System.Reflection.AssemblyFileVersion("1.0.7.0")]
-[assembly: System.Reflection.AssemblyInformationalVersion("1.0.7")]
+[assembly: System.Reflection.AssemblyFileVersion("1.0.8.0")]
+[assembly: System.Reflection.AssemblyInformationalVersion("1.0.8")]
 
 namespace DnaWorkbench
 {
