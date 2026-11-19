@@ -13,7 +13,7 @@ kiwisolver==1.5.1
 matplotlib==3.11.2
 narwhals==2.28.0
 networkx==3.7
-numpy==2.5.4
+numpy==2.5.5
 packaging==26.3
 pandas==3.1.1
 peddy==0.4.8
