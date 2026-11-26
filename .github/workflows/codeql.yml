@@ -29,7 +29,7 @@ jobs:
       - uses: actions/setup-dotnet@0f4a354dd5547a28c70b7853dbd95d5b67886e73 # v6.1.0
         with:
           dotnet-version: '8.0.x'
-      - uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4
+      - uses: github/codeql-action/init@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4
         with:
           languages: csharp
           build-mode: manual
@@ -40,7 +40,7 @@ jobs:
           python DNA_Software/Launcher/public_package.py --payload
       - name: Build C# with resolved NuGet references
         run: dotnet build DNA_Software/Launcher/DNAWorkbench.csproj --configuration Release --no-incremental
-      - uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4
+      - uses: github/codeql-action/analyze@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4
         with:
           category: /language:csharp
   interpreted:
@@ -53,11 +53,11 @@ jobs:
       security-events: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - uses: github/codeql-action/init@33d7b85da1a04171e211befe2c739303b9a4c066 # v4
+      - uses: github/codeql-action/init@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4
         with:
           languages: python,javascript-typescript,actions
           build-mode: none
-      - uses: github/codeql-action/analyze@33d7b85da1a04171e211befe2c739303b9a4c066 # v4
+      - uses: github/codeql-action/analyze@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4
         with:
           category: /language:interpreted-and-actions
   dependencies:
@@ -67,7 +67,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5
+      - uses: actions/dependency-review-action@bbc44d14a204704ccc493733616cd1e93a0321ec # v5
         with:
           fail-on-severity: high
   python-security:
@@ -91,12 +91,12 @@ jobs:
           tar -xzf security-tools/bearer.tar.gz -C security-tools bearer
       - name: Scan production source and declared Python pins
         run: python scripts/Security-Audit.py --output security-reports --bearer security-tools/bearer
-      - uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4
+      - uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4
         if: always() && hashFiles('security-reports/bandit.sarif') != ''
         with:
           sarif_file: security-reports/bandit.sarif
           category: bandit-production
-      - uses: github/codeql-action/upload-sarif@33d7b85da1a04171e211befe2c739303b9a4c066 # v4
+      - uses: github/codeql-action/upload-sarif@1bd86f2fdb4b86187fa4059f16f31a3202acc9ea # v4
         if: always() && hashFiles('security-reports/bearer.sarif') != ''
         with:
           sarif_file: security-reports/bearer.sarif
