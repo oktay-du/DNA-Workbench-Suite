@@ -19,7 +19,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Launcher.cs;Startup.cs;LegacyLayout.cs;Dependencies.cs;OnDemand.cs;VisualTools.cs;ModernShell.cs" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4314.35" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4370.26" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.IO.Compression.FileSystem" />
